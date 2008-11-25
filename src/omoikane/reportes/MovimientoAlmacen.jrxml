@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<parameter name="IDMov" class="java.lang.String">
+		<defaultValueExpression><![CDATA["108"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     articulos.`id_articulo` AS articulos_id_articulo,
+     articulos.`codigo` AS articulos_codigo,
+     articulos.`descripcion` AS articulos_descripcion,
+     movimientos_almacen_detalles.`cantidad` AS movimientos_almacen_detalles_cantidad,
+     movimientos_almacen_detalles.`costo` AS movimientos_almacen_detalles_costo,
+     movimientos_almacen_detalles.`id_movimiento` AS movimientos_almacen_detalles_id_movimiento
+FROM
+     `movimientos_almacen_detalles` movimientos_almacen_detalles INNER JOIN `articulos` articulos ON movimientos_almacen_detalles.`id_articulo` = articulos.`id_articulo`
+WHERE
+     id_movimiento = $P{IDMov}]]>
+	</queryString>
+	<field name="articulos_id_articulo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="articulos_codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="articulos_descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="movimientos_almacen_detalles_cantidad" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="movimientos_almacen_detalles_costo" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="movimientos_almacen_detalles_id_movimiento" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="8"/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18">
+			<staticText>
+				<reportElement mode="Opaque" x="214" y="0" width="241" height="18" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="455" y="0" width="78" height="18" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="533" y="0" width="62" height="18" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="214" height="18" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51">
+			<textField hyperlinkType="None">
+				<reportElement x="214" y="0" width="241" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="455" y="0" width="78" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{movimientos_almacen_detalles_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="533" y="0" width="62" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{movimientos_almacen_detalles_costo}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle" hyperlinkType="None">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="214" height="50"/>
+				<imageExpression class="net.sf.jasperreports.engine.JRRenderable"><![CDATA[new net.sf.jasperreports.barcode.BarbecueRenderer(net.sourceforge.barbecue.BarcodeFactory.createCode128($F{articulos_codigo}))]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9"/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

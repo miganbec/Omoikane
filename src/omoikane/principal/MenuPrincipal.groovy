@@ -1,0 +1,35 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package omoikane.principal
+
+import omoikane.*;
+import omoikane.sistema.*
+import javax.swing.JFrame;
+
+/**
+ *
+ * @author Octavio
+ */
+class MenuPrincipal {
+    def menuPrincipal = new omoikane.formularios.MenuPrincipal()
+
+    void iniciar()
+    {
+        Herramientas.centrarVentana menuPrincipal
+        menuPrincipal.setVisible(true)
+        Principal.escritorio.getPanelEscritorio().add(menuPrincipal,javax.swing.JLayeredPane.PALETTE_LAYER)
+        menuPrincipal.toFront()
+        menuPrincipal.requestFocusInWindow()
+
+        try {
+            menuPrincipal.setSelected(true)
+        } catch(Exception e)
+        {
+            sistema.Dialogos.lanzarDialogoError(null, "Error al iniciar menu principal", Herramientas.getStackTraceString(e))
+        }
+    }
+}
+
