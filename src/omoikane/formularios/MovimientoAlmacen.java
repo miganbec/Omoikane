@@ -447,7 +447,6 @@ public void setModoDetalles()
             Object descrip = null, costo = null;
             JTextField campo = ((JTextField)this.getComponent());
             String codigo = campo.getText();
-            System.out.println(":"+codigo);
             if(codigo == "") { return false; }
             descrip= Almacenes.groovyPort("omoikane.principal.Articulos.getArticulo('codigo = \""+codigo+"\"').descripcion");
             costo  = Almacenes.groovyPort("omoikane.principal.Articulos.getArticulo('select * from articulos,precios where articulos.codigo = \""+codigo+"\" " +

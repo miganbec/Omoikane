@@ -69,25 +69,20 @@ public class Articulos
         formArticulo.toFront()
         try { formArticulo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
 
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def articulo   = db.rows("SELECT * FROM articulos WHERE id_articulo = $ID")
-        def existencia = db.firstRow("SELECT * FROM existencias WHERE id_articulo = $ID AND id_almacen = $IDAlmacen")
-        def precio     = db.firstRow("SELECT * FROM precios     WHERE id_articulo = $ID AND id_almacen = $IDAlmacen")
+        def art         = Nadesico.conectar().getArticulo(ID,IDAlmacen)
 
-        formArticulo.setTxtIDArticulo    ((String)articulo[0].id_articulo)
-        formArticulo.setTxtCodigo        (articulo[0].codigo)
-        formArticulo.setTxtIDLinea       (articulo[0].id_linea as String)
-        formArticulo.setTxtDescripcion   (articulo[0].descripcion)
-        formArticulo.setTxtUnidad        (articulo[0].unidad)
-        formArticulo.setTxtImpuestos     ((Double)articulo[0].impuestos as String)
-        formArticulo.setTxtUModificacion (articulo[0].uModificacion as String)
-        formArticulo.setTxtDescuento     (precio.descuento as String)
-        formArticulo.setTxtCosto         (precio.costo as String)
-        formArticulo.setTxtUtilidad      (precio.utilidad as String)
-        formArticulo.setTxtExistencias   (existencia.cantidad as String)
+        formArticulo.setTxtIDArticulo    art.id_articulo   as String
+        formArticulo.setTxtCodigo        art.codigo
+        formArticulo.setTxtIDLinea       art.id_linea      as String
+        formArticulo.setTxtDescripcion   art.descripcion
+        formArticulo.setTxtUnidad        art.unidad
+        formArticulo.setTxtImpuestos     art.impuestos     as String
+        formArticulo.setTxtUModificacion art.uModificacion as String
+        formArticulo.setTxtDescuento     art.descuento     as String
+        formArticulo.setTxtCosto         art.costo         as String
+        formArticulo.setTxtUtilidad      art.utilidad      as String
+        formArticulo.setTxtExistencias   art.cantidad      as String
         formArticulo.setModoDetalles();
-
-        db.close()
     }
     static def guardar(formArticulo)
     {
@@ -118,25 +113,11 @@ public class Articulos
         utilidad      = utilidad as Double
         existencias   = existencias as Double
 
-        def db
-
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-            def IDArticulo = db.executeInsert("INSERT INTO articulos SET codigo = ?, id_linea = ?, descripcion = ?, unidad = ? , impuestos = ?", [codigo, IDLinea, descripcion, unidad, impuestos])
-            IDArticulo = IDArticulo[0][0]
-            db.connection.autoCommit = false
-            db.executeInsert("INSERT INTO precios SET id_almacen = ?, id_articulo = ?, costo = ?, descuento = ?, utilidad = ?", [IDAlmacen, IDArticulo, costo, descuento, utilidad])
-            db.executeInsert("INSERT INTO existencias SET id_almacen = ?, id_articulo = ?, cantidad = ?", [IDAlmacen, IDArticulo, existencias])
-            db.commit()
-            Dialogos.lanzarAlerta("Artículo $descripcion agregado.")
-        } catch(Exception e) {
-            db.rollback()
-            Dialogos.lanzarDialogoError(null, "Error al enviar a la base de datos. El artículo no se registró.", omoikane.sistema.Herramientas.getStackTraceString(e))
-        }
-    
-        finally {
-            db.close()
-        }
+            def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.addArticulo(IDAlmacen, IDLinea, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias))
+        } catch(e) { Dialogos.error("Error al enviar a la base de datos. El artículo no se registró", e) }
+
         formArticulo.dispose()
         }
     }
@@ -185,37 +166,20 @@ public class Articulos
     }
     static def modificar(formArticulo)
     {
-        Herramientas.verificaCampos{
-        Herramientas.verificaCampo(formArticulo.getTxtCodigo(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Codigo sólo puede incluír números, letras, espacios, *, -,_ y +.")
-        Herramientas.verificaCampo(formArticulo.getTxtIDLinea(),/^([0-9]+)$/,"IDLinea sólo puede incluír números enteros.")
-        Herramientas.verificaCampo(formArticulo.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-        Herramientas.verificaCampo(formArticulo.getTxtImpuestos(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Impuestos sólo puede incluír números reales positivos")
-        Herramientas.verificaCampo(formArticulo.getTxtCosto(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Costo sólo puede incluír números reales positivos")
-        Herramientas.verificaCampo(formArticulo.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
-        Herramientas.verificaCampo(formArticulo.getTxtUtilidad(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Utilidad sólo puede incluír números reales positivos")
-        
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        try {
-          db.connection.autoCommit = false
-          db.executeUpdate("UPDATE articulos SET codigo = ?, id_linea = ?, descripcion = ?, unidad = ?, impuestos = ? WHERE id_articulo = ?"
-            , [
-                formArticulo.getTxtCodigo(),
-                formArticulo.getTxtIDLinea(),
-                formArticulo.getTxtDescripcion(),
-                formArticulo.getTxtUnidad(),
-                formArticulo.getTxtImpuestos(),
-                formArticulo.getTxtIDArticulo()
-            ])
-          Precios.modificar(db, IDAlmacen, formArticulo.ID, costo:    formArticulo.getTxtCosto()    as Double,
-                                                            utilidad: formArticulo.getTxtUtilidad() as Double,
-                                                            descuento:formArticulo.getTxtDescuento()as Double)
-          db.commit()
-        } catch(Exception e) {
-            db.rollback()
-        } finally {
-            db.close()
-        }
-        Dialogos.lanzarAlerta("Artículo modificado con éxito!")
-        }
+        def f = formArticulo
+        def c = [cod:f.getTxtCodigo(), lin:f.getTxtIDLinea(), des:f.getTxtDescripcion(), imp:f.getTxtImpuestos(), cos:f.getTxtCosto(),
+                 dto:f.getTxtDescuento(), uti:f.getTxtUtilidad(), art:f.getTxtIDArticulo(), uni:f.getTxtUnidad()]
+        Herramientas.verificaCampos {
+            Herramientas.verificaCampo(c.cod, /^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Codigo sólo puede incluír números, letras, espacios, *, -,_ y +.")
+            Herramientas.verificaCampo(c.lin, /^([0-9]+)$/,"ID Linea sólo puede incluír números enteros.")
+            Herramientas.verificaCampo(c.des, /^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+            Herramientas.verificaCampo(c.imp, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Impuestos sólo puede incluír números reales positivos")
+            Herramientas.verificaCampo(c.cos, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Costo sólo puede incluír números reales positivos")
+            Herramientas.verificaCampo(c.dto, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
+            Herramientas.verificaCampo(c.uti, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Utilidad sólo puede incluír números reales positivos")
+
+            def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.modArticulo(IDAlmacen, c.art, c.cod, c.lin, c.des, c.uni, c.imp, c.cos, c.uti, c.dto))
+            }
         }
 }

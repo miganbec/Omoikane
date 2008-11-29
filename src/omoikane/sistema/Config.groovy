@@ -23,6 +23,9 @@ class Config {
     }
 
     Object propertyMissing(String name, Object args) {
-        prefs."$name"
+        if(prefs."$name".size() > 0) {
+            return prefs."$name"
+        } else {
+            throw new Exception("Falta parámetro $name en la configuración!") }
     }
 }

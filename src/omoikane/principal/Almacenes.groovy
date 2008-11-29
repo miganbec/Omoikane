@@ -277,9 +277,8 @@ class Almacenes {
     {
         Herramientas.verificaCampos{
             Herramientas.verificaCampo(formMovimiento.getAlmacen(),/^([0-9]+)$/,"Almacen sólo puede incluír números enteros.")
-            Herramientas.verificaCampo(formMovimiento.getDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-            Herramientas.verificaCampo(formMovimiento.getFolio(),/^([a-zA-Z0-9_\-\s\ñ\Ñ]*)$/,"Folio sólo puede estar vacio o incluír números, letras, espacios, _ y -.")
-
+            Herramientas.verificaCampo(formMovimiento.getDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripción sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+            Herramientas.verificaCampo(formMovimiento.getFolio(),/^([a-zA-Z0-9_\-\s\ñ\Ñ]*)$/,"Folio sólo puede estar vacío o incluír números, letras, espacios, _ y -.")
 
         try {
             def tipo              = formMovimiento.getTipoMovimiento()
@@ -289,7 +288,7 @@ class Almacenes {
             def folio             = formMovimiento.getFolio()
             def tabPrincipalArray = formMovimiento.getTablaPrincipal()
             def granTotal         = formMovimiento.getGranTotal() as Double
-            almacen           = java.lang.Integer.valueOf(almacen)
+            almacen               = java.lang.Integer.valueOf(almacen)
             //def tablaPrincipal    = tabla2xml(tabPrincipalArray)
             def db                = null
             def IDMov             = -1

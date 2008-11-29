@@ -9,6 +9,13 @@ import omoikane.formularios.*;
 
 class Dialogos
 {
+    static def error(mensaje, detalles, parent = null)
+    {
+        //Recibe tanto detalles en texto como la excepciÃ³n directamente
+        if(!(detalles instanceof String)) { detalles = Herramientas.getStackTraceString(detalles) }
+
+        lanzarDialogoError(parent, mensaje, detalles)
+    }
     static def lanzarDialogoError(parent, mensaje, detalles)
     {
         String msjXLineas = "";

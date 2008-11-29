@@ -87,6 +87,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton13 = new javax.swing.JButton();
 
+        setIconifiable(true);
         setTitle("Menú Principal");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
