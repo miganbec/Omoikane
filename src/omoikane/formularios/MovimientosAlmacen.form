@@ -127,13 +127,13 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="7" rowCount="0">
-                <Column editable="true" title="Fecha" type="java.lang.Object"/>
+                <Column editable="false" title="Fecha" type="java.lang.Object"/>
                 <Column editable="false" title="ID Movimiento" type="java.lang.Object"/>
                 <Column editable="false" title="Folio" type="java.lang.Object"/>
-                <Column editable="true" title="Almacen" type="java.lang.Object"/>
-                <Column editable="true" title="Descripci&#xf3;n" type="java.lang.Object"/>
-                <Column editable="true" title="Tipo" type="java.lang.Object"/>
-                <Column editable="true" title="Monto" type="java.lang.Object"/>
+                <Column editable="false" title="Almacen" type="java.lang.Object"/>
+                <Column editable="false" title="Descripci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="false" title="Tipo" type="java.lang.Object"/>
+                <Column editable="false" title="Monto" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

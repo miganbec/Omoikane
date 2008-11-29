@@ -70,6 +70,8 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
 
+        this.btnAceptar.setVisible(false);
+
         Herramientas.centrarVentana(this);
 
         //Instrucciones para el funcionamiento de las teclas de navegación

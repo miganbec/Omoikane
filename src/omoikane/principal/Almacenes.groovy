@@ -37,46 +37,25 @@ class Almacenes {
         poblarAlmacenes(cat.getTablaAlmacenes(),"")
 
     }
+
     static def lanzarCatalogoDialogo()
     {
-        def foco= new Object()
+        def foco=new Object()
         def cat = (new omoikane.formularios.CatalogoAlmacenes())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de almacenes", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
-        cat.internalFrameClosed = { synchronized(foco) { foco.notifyAll() } }
+        cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
         cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
         def retorno
         cat.btnAceptar.actionPerformed = { def catTab = cat.tablaAlmacenes; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as int; cat.btnCerrar.doClick(); }
         poblarAlmacenes(cat.getTablaAlmacenes(),"")
-        synchronized(foco) { foco.wait() }
-        retorno
-   }
-    static def lanzarCatalogoDialogoOld()
-    {
-        def cat = new omoikane.formularios.CatalogoAlmacenes(), dial
-        cat.btnAceptar.setVisible true
-        def swb = SwingBuilder.build {
-            dial = dialog(modal:true, pack:true, undecorated:true, location:Herramientas.centrarVentana(cat), preferredSize:cat.preferredSize,
-              windowOpened:{
-                  try { cat.setSelected(true); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de almacenes", Herramientas.getStackTraceString(e)); }
-                  cat.txtBusqueda.requestFocus();
-              }) {
-
-              widget(cat)
-              cat.show true
-            }
-        }
-        cat.internalFrameClosed = { dial.dispose() }
-        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
-        def retorno
-        cat.btnAceptar.actionPerformed = { def catTab = cat.tablaAlmacenes; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as int; cat.btnCerrar.doClick(); }
-        poblarAlmacenes(cat.getTablaAlmacenes(),"")
-        dial.setVisible(true)  //Aquí se activa el diálogo modal y no proseguirá el script hasta que se cierre
+        synchronized(foco){foco.wait()}
         retorno
     }
+
     static def lanzarFormNuevoAlmacen()
     {
         def formAlmacen = new omoikane.formularios.Almacen()
@@ -90,14 +69,16 @@ class Almacenes {
     }
         static def guardar(formAlmacen)
     {
+        Herramientas.verificaCampos {
         def descripcion = formAlmacen.getTxtDescripcion()
-
+        Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
         def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
         def tablaAlmacenes = db.dataSet('almacenes')
         tablaAlmacenes.add(descripcion:descripcion)
         db.close()
         Dialogos.lanzarAlerta("Almacen $descripcion agregado.")
         formAlmacen.dispose()
+        }
     }
 
     static def lanzarDetallesAlmacen(ID)
@@ -159,13 +140,16 @@ class Almacenes {
     }
     static def modificar(formAlmacen)
     {
+        Herramientas.verificaCampos {
+        Herramientas.verificaCampo(formAlmacen.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
         def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
         db.executeUpdate("UPDATE almacenes SET descripcion = ? WHERE id_almacen = ?"
             , [
                 formAlmacen.getTxtDescripcion(),
                 formAlmacen.getTxtIDAlmacen()
             ])
-        Dialogos.lanzarAlerta("Almacen modificado con Ã©xito!")
+        Dialogos.lanzarAlerta("Almacen modificado con Exito!")
+        }
     }
 
     static def eliminarAlmacen(ID)
@@ -245,15 +229,15 @@ class Almacenes {
     static def lanzarNuevoMovimiento()
     {
         def nvo = (new omoikane.formularios.MovimientoAlmacen())
+        nvo.cellCodigo.component.keyPressed = { def src = it; if(it.getKeyCode()==it.VK_F2) { Thread.start { src.getSource().setText(Articulos.lanzarDialogoCatalogo()); src.getSource().requestFocus() } } }
         nvo.setVisible(true);
         escritorio.getPanelEscritorio().add(nvo)
         nvo.setModoNuevo()
         nvo.toFront()
         SwingBuilder.build {
           //Al presionar F2: (lanzarCatalogoDialogo)
-          nvo.getFieldAlmacen().keyPressed = { 
-              if(it.keyCode == it.VK_F2)           Thread.start { nvo.almacen = Almacenes.lanzarCatalogoDialogo() as String; nvo.getFieldAlmacen().requestFocus() } }
 
+          nvo.getFieldAlmacen().keyPressed = { if(it.keyCode == it.VK_F2) Thread.start { nvo.almacen = Almacenes.lanzarCatalogoDialogo() as String; nvo.getFieldAlmacen().requestFocus() } }
         }
         try { nvo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
         nvo
@@ -291,15 +275,21 @@ class Almacenes {
 
     static def guardarMovimiento(formMovimiento)
     {
+        Herramientas.verificaCampos{
+            Herramientas.verificaCampo(formMovimiento.getAlmacen(),/^([0-9]+)$/,"Almacen sólo puede incluír números enteros.")
+            Herramientas.verificaCampo(formMovimiento.getDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+            Herramientas.verificaCampo(formMovimiento.getFolio(),/^([a-zA-Z0-9_\-\s\ñ\Ñ]*)$/,"Folio sólo puede estar vacio o incluír números, letras, espacios, _ y -.")
+
+
         try {
             def tipo              = formMovimiento.getTipoMovimiento()
-            def almacen           = formMovimiento.getAlmacen() as Integer
+            def almacen           = formMovimiento.getAlmacen()
             def fecha             = formMovimiento.getFecha()
             def descripcion       = formMovimiento.getDescripcion()
             def folio             = formMovimiento.getFolio()
             def tabPrincipalArray = formMovimiento.getTablaPrincipal()
             def granTotal         = formMovimiento.getGranTotal() as Double
-
+            almacen           = java.lang.Integer.valueOf(almacen)
             //def tablaPrincipal    = tabla2xml(tabPrincipalArray)
             def db                = null
             def IDMov             = -1
@@ -316,6 +306,8 @@ class Almacenes {
 
 
                 tabPrincipalArray.each { row ->
+                    Herramientas.verificaCampo(row[2],/^([0-9]*[\.]{0,1}[0-9]+)$/,"Costo sólo puede incluír números reales positivos")
+                    Herramientas.verificaCampo(row[3],/^([0-9]*[\.]{0,1}[0-9]+)$/,"Cantidad sólo puede incluír números reales positivos")
                     movData << [codigo:row[0], descripcion:row[1], costo:row[2], cantidad:row[3], total:row[4]]
                     //aquí guardar
                     db.executeUpdate("INSERT INTO movimientos_almacen_detalles SET id_movimiento = ?, id_articulo = ?, cantidad = ?, costo = ?, id_almacen = ?",
@@ -325,7 +317,7 @@ class Almacenes {
 
                 def id_art, cant, cost;
                 tabPrincipalArray.each { row ->
-                    id_art = db.rows("SELECT id_articulo FROM articulos WHERE codigo = " + row[0])[0].id_articulo
+                    id_art = db.rows("SELECT id_articulo FROM articulos WHERE codigo = '" + row[0]+"'")[0].id_articulo
                     cost   = row[2]
                     cant   = row[3]
                     switch(tipo) {
@@ -346,15 +338,18 @@ class Almacenes {
 
                 db.commit()
                 Dialogos.lanzarAlerta("Movimiento \"$descripcion\" hecho al almacén.")
+                formMovimiento.dispose()
             } catch(Exception e) {
                 db.rollback()
-                Dialogos.lanzarDialogoError(null, "Error al enviar a la base de datos. El movimiento no se registró.", omoikane.sistema.Herramientas.getStackTraceString(e))
+                Dialogos.lanzarDialogoError(null, "Error al enviar a la base de datos. El movimiento no se Guardo verifique almacen ,cantidad ,costo .", omoikane.sistema.Herramientas.getStackTraceString(e))
             } finally {
                 db.connection.autoCommit = true
             }
         } catch(Exception e) {
-            Dialogos.lanzarDialogoError(null, "Error en la captura de los datos del formulario.", omoikane.sistema.Herramientas.getStackTraceString(e))
+            Dialogos.lanzarDialogoError(null, "Error en la captura de los datos del formulario NO DEJE LINEAS EN BLANCO SOLO FOLIO PUEDE ESTAR VACIO.", omoikane.sistema.Herramientas.getStackTraceString(e))
         }
+        }
+        
     }
 
     static def lanzarDetallesMovimiento(ID)

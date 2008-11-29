@@ -35,10 +35,6 @@ public class Grupo extends javax.swing.JInternalFrame {
 
         Herramientas.centrarVentana(this);
         
-        this.txtDescripcion.setInputVerifier(new VerificadorDeCampo("^([a-zA-Z0-9_\\- \\ñ\\Ñ\\*\\+]+)$", "El concepto sólo puede incluír números, letras, espacios, * y +."));
-        this.txtDescuento.setInputVerifier(new VerificadorDeCampo("^([0-9]*[\\.]{0,1}[0-9]+)$", "Campo descuento sólo permite valores decimales, ej: 15, 2, 1.5, etc."));
-        
-
     }
 
     /** This method is called from within the constructor to
@@ -137,7 +133,7 @@ public class Grupo extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 30));
 
         txtUModificacion.setEditable(false);
-        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 260, 20));
+        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 260, 30));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 10, 10));
 
         pack();

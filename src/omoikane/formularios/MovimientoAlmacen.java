@@ -32,6 +32,7 @@ import net.sf.jasperreports.view.*;
 public class MovimientoAlmacen extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
+    Celda cellCodigo = new Celda();
     /** Creates new form MovimientoAlmacen */
     public MovimientoAlmacen() {
         initComponents();
@@ -46,7 +47,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
 
         this.tablaPrincipal.addKeyListener(new TabListener());
         tablaPrincipal.getModel().addTableModelListener(modelListener);
-        tablaPrincipal.getColumn("Código artículo").setCellEditor(new Celda());
+        tablaPrincipal.getColumn("Código artículo").setCellEditor(cellCodigo);
 
         this.fecha.setDate(new java.util.Date());
         //tablaPrincipal.setDefaultEditor(Object.class, new Celda());
@@ -236,7 +237,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
     public SimpleDateFormat sdf          = new SimpleDateFormat("yyyy-MM-dd");
 
     public String  getTipoMovimiento()    { return (String)this.tipoMovimiento.getSelectedItem(); }
-    public Integer getAlmacen()           { return Integer.parseInt(this.almacen.getText()); }
+    public String getAlmacen()           { return (String)(this.almacen.getText()); }
     public String  getFecha()             { return (String)sdf.format(this.fecha.getDate()); }
     public String  getDescripcion()       { return (String)this.descripcion.getText(); }
     public String  getFolio()             { return (String)this.folio.getText(); }
@@ -378,6 +379,7 @@ public void setModoDetalles()
 
     public void calculaSumas()
     {
+        try{
         TableModel tm = this.tablaPrincipal.getModel();
         int tamTabla = tm.getRowCount();
         double costo, cantidad, totalFila, sumaTotal;
@@ -398,6 +400,8 @@ public void setModoDetalles()
         }
 
         txtSumaTotal.setText(String.valueOf(sumaTotal));
+    }
+        catch(Exception e){Dialogos.lanzarAlerta("Cantidades invalidas, puede que algun numero este mal escrito");}
     }
     
     //Clase encargada de recibir los eventos de la tabla, para crear nuevas filas y calcular sumas
@@ -437,14 +441,14 @@ public void setModoDetalles()
     class Celda extends DefaultCellEditor
     {
         JTextField componente;
-        Celda() { super(new JTextField()); componente = (JTextField) this.getComponent(); componente.addKeyListener(new CellCodigoKeyListener());}
+        Celda() { super(new JTextField()); componente = (JTextField) this.getComponent(); /*componente.addKeyListener(new CellCodigoKeyListener());*/}
 
         public boolean stopCellEditing() {
             Object descrip = null, costo = null;
             JTextField campo = ((JTextField)this.getComponent());
             String codigo = campo.getText();
-
-
+            System.out.println(":"+codigo);
+            if(codigo == "") { return false; }
             descrip= Almacenes.groovyPort("omoikane.principal.Articulos.getArticulo('codigo = \""+codigo+"\"').descripcion");
             costo  = Almacenes.groovyPort("omoikane.principal.Articulos.getArticulo('select * from articulos,precios where articulos.codigo = \""+codigo+"\" " +
                     "and articulos.id_articulo = precios.id_articulo and precios.id_almacen = '+omoikane.principal.Principal.config.idAlmacen[0].text()).costo");
@@ -461,19 +465,6 @@ public void setModoDetalles()
                 
             }
         }
-    }
-    class CellCodigoKeyListener extends KeyAdapter
-    {
-        public void keyPressed(KeyEvent ke)
-        {
-
-            if(ke.getKeyCode()==ke.VK_F2)
-            {
-                //Dialogos.lanzarAlerta("f2 en código");
-                ((JTextField)ke.getSource()).setText((String)Articulos.lanzarDialogoCatalogo());
-            }
-        }
-
     }
 }
 

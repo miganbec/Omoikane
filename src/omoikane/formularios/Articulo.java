@@ -35,13 +35,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         this.generarFondo(this);
 
         Herramientas.centrarVentana(this);
-
-        this.txtCodigo.setInputVerifier(new VerificadorDeCampo("^([a-zA-Z0-9_\\- \\ñ\\Ñ\\*\\+]+)$"     , "El código sólo puede incluír números, letras, espacios, * y +."));
-        this.txtDescripcion.setInputVerifier(new VerificadorDeCampo("^([a-zA-Z0-9_\\- \\ñ\\Ñ\\*\\+]+)$", "El concepto sólo puede incluír números, letras, espacios, * y +."));
-        this.txtIDLinea.setInputVerifier(new VerificadorDeCampo("^([0-9]*)$", "El campo línea sólo recibe números"));
-        this.txtImpuestos.setInputVerifier(new VerificadorDeCampo("^([0-9]*[\\.]{0,1}[0-9]+)$", "Campo impuestos sólo permite valores decimales, ej: 15, 2, 1.5, etc."));
-        this.txtUnidad.setInputVerifier(new VerificadorDeCampo("^([0-9]+)$", "Campo unidad sólo permite texto, ej: kg, lt, pza, etc."));
-
+        
     }
 
     /** This method is called from within the constructor to
@@ -61,11 +55,9 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtIDArticulo = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtUnidad = new javax.swing.JTextField();
         txtImpuestos = new javax.swing.JTextField();
         txtUModificacion = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
@@ -80,6 +72,8 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtUtilidad = new javax.swing.JTextField();
         txtDescuento = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        txtUnidad = new javax.swing.JComboBox();
+        jLabel13 = new javax.swing.JLabel();
 
         setTitle("Artículos");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,19 +112,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtDescripcion.setEditable(false);
         getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 10, 10));
-
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Unidad:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 20));
@@ -142,9 +123,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("<html>Última<br>Modificación:</html>");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
-
-        txtUnidad.setEditable(false);
-        getContentPane().add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 260, -1));
 
         txtImpuestos.setEditable(false);
         getContentPane().add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, -1));
@@ -173,6 +151,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
 
         txtIDLinea.setEditable(false);
+        txtIDLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDLineaActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtIDLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 260, -1));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,6 +186,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel12.setText("Descuento (%):");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, 20));
 
+        txtUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pza", "Kg", "Lt" }));
+        txtUnidad.setEnabled(false);
+        getContentPane().add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 260, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 10, 10));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -221,13 +209,17 @@ public class Articulo extends javax.swing.JInternalFrame {
         omoikane.principal.Articulos.modificar(this);
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void txtIDLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDLineaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDLineaActionPerformed
+
     public void setEditable(boolean editable)
     {
         this.txtCodigo.setEditable(editable);
         this.txtIDLinea.setEditable(editable);
         this.txtDescripcion.setEditable(editable);
         this.txtImpuestos.setEditable(editable);
-        this.txtUnidad.setEditable(editable);
+        this.txtUnidad.setEnabled(editable);
         this.txtCosto.setEditable(editable);
         this.txtUtilidad.setEditable(editable);
         this.txtDescuento.setEditable(editable);
@@ -259,6 +251,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -267,7 +260,6 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
@@ -277,7 +269,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     public javax.swing.JTextField txtIDLinea;
     private javax.swing.JTextField txtImpuestos;
     private javax.swing.JTextField txtUModificacion;
-    private javax.swing.JTextField txtUnidad;
+    private javax.swing.JComboBox txtUnidad;
     private javax.swing.JTextField txtUtilidad;
     // End of variables declaration//GEN-END:variables
 
@@ -294,6 +286,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     public void setTxtCodigo(String txtCodigo) {
         this.txtCodigo.setText(txtCodigo);
     }
+    public Component getIDLinea() { return this.txtIDLinea; }
 
     /**
      * @return the txtDescripcion
@@ -325,12 +318,12 @@ public class Articulo extends javax.swing.JInternalFrame {
 
     public String getTxtUnidad()
     {
-        return txtUnidad.getText();
+        return String.valueOf(txtUnidad.getSelectedItem());
     }
 
     public void setTxtUnidad(String txt)
     {
-        this.txtUnidad.setText(txt);
+        this.txtUnidad.setSelectedItem(txt);
     }
 
     public String getTxtImpuestos()

@@ -8,6 +8,9 @@ package omoikane.principal
 import omoikane.principal.*
 import omoikane.sistema.*
 import groovy.sql.*;
+import groovy.swing.*;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -30,6 +33,24 @@ class Grupos {
 
     }
 
+    static def lanzarCatalogoDialogo()
+    {
+        def foco = new Object()
+        def cat = (new omoikane.formularios.CatalogoGrupos())
+        cat.setVisible(true);
+        escritorio.getPanelEscritorio().add(cat)
+        cat.toFront()
+        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de grupos", Herramientas.getStackTraceString(e)) }
+        cat.txtBusqueda.requestFocus()
+        cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
+        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
+        def retorno
+        cat.btnAceptar.actionPerformed = { def catTab = cat.tablaGrupos; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as int; cat.btnCerrar.doClick(); }
+        poblarGrupos(cat.getTablaGrupos(),"")
+        synchronized(foco){foco.wait()}
+        retorno
+    }
+
     static def lanzarFormNuevoGrupo()
     {
         def formGrupo = new omoikane.formularios.Grupo()
@@ -44,6 +65,10 @@ class Grupos {
 
         static def guardar(formGrupo)
     {
+        Herramientas.verificaCampos{
+        Herramientas.verificaCampo(formGrupo.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+        Herramientas.verificaCampo(formGrupo.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
+
         def descripcion = formGrupo.getTxtDescripcion()
 
         def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
@@ -52,6 +77,7 @@ class Grupos {
         db.close()
         Dialogos.lanzarAlerta("Grupo $descripcion agregado.")
         formGrupo.dispose()
+        }
     }
 
     static def lanzarDetallesGrupo(ID)
@@ -96,6 +122,7 @@ class Grupos {
 
     static def lanzarModificarGrupo(ID)
     {
+        
         def formGrupo = new omoikane.formularios.Grupo()
         formGrupo.setVisible(true)
         escritorio.getPanelEscritorio().add(formGrupo)
@@ -112,9 +139,14 @@ class Grupos {
         formGrupo.setTxtUModificacion (grupo[0].uModificacion as String)
         formGrupo.setModoModificar();
         formGrupo
+        
     }
     static def modificar(formGrupo)
     {
+        Herramientas.verificaCampos{
+        Herramientas.verificaCampo(formGrupo.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+        Herramientas.verificaCampo(formGrupo.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
+
         def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
         db.executeUpdate("UPDATE grupos SET descripcion = ? , descuento = ? WHERE id_grupo = ?"
             , [
@@ -123,6 +155,7 @@ class Grupos {
                 formGrupo.getTxtIDGrupo()
             ])
         Dialogos.lanzarAlerta("Grupo modificado con éxito!")
+        }
     }
 
         static def eliminarGrupo(ID)

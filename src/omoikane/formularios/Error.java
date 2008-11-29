@@ -29,10 +29,10 @@ public class Error extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        /*((JPanel)this.getContentPane()).setOpaque(false);
+        ((JPanel)this.getContentPane()).setOpaque(false);
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
-        this.generarFondo(this);*/
+        this.generarFondo(this);
 
         this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER , 0), "cerrar");
         this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
@@ -42,6 +42,8 @@ public class Error extends javax.swing.JDialog {
         Dimension labelSize = this.getPreferredSize();
 
         setLocation(screenSize.width/2 - (labelSize.width/2), screenSize.height/2 - (labelSize.height/2));
+
+
     }
 
     class adminAcciones extends javax.swing.AbstractAction
@@ -55,6 +57,26 @@ public class Error extends javax.swing.JDialog {
         {
             this.dialogo.dispose();
         }
+    }
+
+    public void paintComponent(Graphics g)
+    {
+      Graphics2D g2d = (Graphics2D) g;
+      g2d.drawImage(fondo, 0, 0, null);
+
+    }
+    public void generarFondo(Component componente)
+    {
+      Rectangle areaDibujo = this.getBounds();
+      BufferedImage tmp;
+      GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+
+      tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
+      Graphics2D g2d = (Graphics2D) tmp.getGraphics();
+      g2d.setColor(new Color(55,55,255,165));
+      g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
+      fondo = tmp;
+
     }
 
     /** This method is called from within the constructor to

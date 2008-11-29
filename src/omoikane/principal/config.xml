@@ -11,5 +11,4 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <idAlmacen>1</idAlmacen>
-    <URLServidor>http://New-Eden:5542</URLServidor>
 </document>

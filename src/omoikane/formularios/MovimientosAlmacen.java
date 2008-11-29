@@ -96,10 +96,10 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         }
 
         String[] columnas = {"Fecha", "ID Movimiento", "Folio", "Almacen", "Descripción", "Tipo", "Monto"};
-        this.movimientos.setModel(new DefaultTableModel() {
-                boolean[] canEdit = new boolean [] { false, false, false, false, false, false, false};
-                public boolean isCellEditable(int rowIndex, int columnIndex) { return canEdit [columnIndex]; }});
-
+        this.movimientos.setModel(new DefaultTableModel(){
+        boolean[] canEdit =new boolean [] { false, false, false, false, false, false, false};
+        public boolean isCellEditable(int rowIndex, int columnIndex) {return canEdit [columnIndex];}});
+        
         ((DefaultTableModel)this.movimientos.getModel()).setColumnIdentifiers(columnas);
         omoikane.principal.Almacenes.poblarMovimientos(this.movimientos, this.txtBusqueda.getText(), fechaDesde, fechaHasta);
     }
@@ -176,7 +176,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, true, true, true, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

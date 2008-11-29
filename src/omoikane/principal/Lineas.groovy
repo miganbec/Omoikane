@@ -34,24 +34,19 @@ class Lineas {
     }
     static def lanzarCatalogoDialogo()
     {
-        def cat = new omoikane.formularios.CatalogoLineas(), dial
-        cat.btnAceptar.setVisible true
-        def swb = SwingBuilder.build {
-            dial = dialog(modal:true, pack:true, undecorated:true, location:Herramientas.centrarVentana(cat), preferredSize:cat.preferredSize,
-              windowOpened:{
-                  try { cat.setSelected(true); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de líneas", Herramientas.getStackTraceString(e)); }
-                  cat.txtBusqueda.requestFocus();
-              }) {
-
-              widget(cat)
-              cat.show true
-            }
-        }
-        cat.internalFrameClosed = { dial.dispose() }
+       def foco=new Object()
+        def cat = (new omoikane.formularios.CatalogoLineas())
+        cat.setVisible(true);
+        escritorio.getPanelEscritorio().add(cat)
+        cat.toFront()
+        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de grupos", Herramientas.getStackTraceString(e)) }
+        cat.txtBusqueda.requestFocus()
+        cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
+        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
         def retorno
         cat.btnAceptar.actionPerformed = { def catTab = cat.tablaLineas; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as int; cat.btnCerrar.doClick(); }
         poblarLineas(cat.getTablaLineas(),"")
-        dial.setVisible(true)  //Aquí se activa el diálogo modal y no proseguirá el script hasta que se cierre
+        synchronized(foco){foco.wait()}
         retorno
     }
 
@@ -69,6 +64,10 @@ class Lineas {
 
         static def guardar(formLinea)
     {
+        Herramientas.verificaCampos{
+        Herramientas.verificaCampo(formLinea.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+        Herramientas.verificaCampo(formLinea.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
+
         def descripcion = formLinea.getTxtDescripcion()
 
         def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
@@ -77,6 +76,7 @@ class Lineas {
         db.close()
         Dialogos.lanzarAlerta("Linea $descripcion agregado.")
         formLinea.dispose()
+        }
     }
 
     static def lanzarDetallesLinea(ID)
@@ -140,6 +140,9 @@ class Lineas {
     }
     static def modificar(formLinea)
     {
+        Herramientas.verificaCampos{
+        Herramientas.verificaCampo(formLinea.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+        Herramientas.verificaCampo(formLinea.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
         def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
         db.executeUpdate("UPDATE lineas SET descripcion = ? , descuento = ? WHERE id_linea = ?"
             , [
@@ -148,6 +151,7 @@ class Lineas {
                 formLinea.getTxtIDLinea()
             ])
         Dialogos.lanzarAlerta("Linea modificado con éxito!")
+        }
     }
 
         static def eliminarLinea(ID)

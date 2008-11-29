@@ -34,9 +34,7 @@ public class Almacen extends javax.swing.JInternalFrame {
         this.generarFondo(this);
 
         Herramientas.centrarVentana(this);
-
-        this.txtDescripcion.setInputVerifier(new VerificadorDeCampo("^([a-zA-Z0-9_\\- \\ñ\\Ñ\\*\\+]+)$", "El concepto sólo puede incluír números, letras, espacios, * y +."));
-
+       
     }
 
     /** This method is called from within the constructor to

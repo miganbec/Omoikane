@@ -12,6 +12,19 @@ import groovy.inspect.swingui.*
 
 class Herramientas
 {
+    def static void verificaCampo(txt,expresion,error)
+    {
+        if(!(txt==~ expresion))
+        {throw new Alerta(error)}
+    }
+
+    def static void verificaCampos(c)
+    {
+        try { c() }
+        catch (Alerta e){Dialogos.lanzarAlerta(e.message)}
+        catch (e) {Dialogos.lanzarDialogoError(null,e.message,getStackTraceString(e))}
+    }
+
     def static String getStackTraceString(java.lang.Exception exc)
     {
         String salida = exc.toString() + "\n";
