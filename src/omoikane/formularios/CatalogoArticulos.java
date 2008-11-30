@@ -33,6 +33,10 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public String          codigoSeleccionado;
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     public String          txtQuery;
+    Statement control = null;
+    String driver;
+    String protocol;
+    Connection conn;
     
     class TimerBusqueda extends Thread
     {
@@ -45,7 +49,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             synchronized(this)
             {
                 busquedaActiva = true;
-                try { this.wait(600); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
+                try { this.wait(1000); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
                 if(busquedaActiva) { ca.buscar(); }
             }
         }
@@ -63,6 +67,15 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     /** Creates new form CatalogoArticulos */
     public CatalogoArticulos() {
         initComponents();
+        //Conectar a MySQL
+        try {
+            driver   = "com.mysql.jdbc.Driver";
+            protocol = "jdbc:mysql://localhost/omoikane?user=root&password=";
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(protocol);
+            conn.setAutoCommit(false);
+        } catch(Exception e) { Dialogos.error("Error al conectar", e); }
+        
         setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,precios.costo as xCosto,existencias.cantidad as xExistencias " +
                 "from articulos, precios, existencias, lineas " +
                 "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
@@ -135,28 +148,16 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     public void setQueryTable(String query)
     {
-        Statement control = null;
-        String driver;
-        String protocol;
-        Connection conn;
         txtQuery = query;
 
         try
         {
-            driver   = "com.mysql.jdbc.Driver";
-            protocol = "jdbc:mysql://localhost/omoikane?user=root&password=";
-            Class.forName(driver).newInstance();
-
-            conn = DriverManager.getConnection(protocol);
-
-            conn.setAutoCommit(false);
             control = conn.createStatement();
 
             String[]  columnas = {"Código", "Línea", "Concepto", "Unidad", "Precio", "Existencias"};
             ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
             Class[]   clases   = {String.class, String.class, String.class, String.class, Double.class, Double.class};
             ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
-
             ResultSet rs                     = control.executeQuery(query);
             ScrollableTableModel modeloTabla = new ScrollableTableModel(rs,cols, cls);
             this.jTable1.setModel(modeloTabla);
@@ -415,6 +416,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
+        try { this.conn.close(); } catch(Exception e) { Dialogos.error("No se pudo cerrar la conexión con el servidor", e); }
         this.dispose();
 }//GEN-LAST:event_btnCerrarActionPerformed
 
@@ -452,6 +454,9 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER) {
+            this.txtBusqueda.selectAll();
+        }
         if(evt.getKeyCode() == evt.VK_DOWN)
         {
             int sigFila = jTable1.getSelectedRow()+1;
