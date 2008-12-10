@@ -9,9 +9,25 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import groovy.inspect.swingui.*
+import groovy.swing.SwingBuilder;
 
-class Herramientas
+public class Herramientas
 {
+    def static void setColumnsWidth(tabla, anchos) {
+        tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        def tabAncho = tabla.getBounds().width
+        def column
+        def anchoCols= anchos
+        def residuo  = 0.0, preAncho, ancho
+        for (int i=0; i<anchoCols.size(); i++) {
+          column  = tabla.getColumnModel().getColumn(i);
+          preAncho= anchoCols[i]*tabAncho
+          ancho   = Math.floor(preAncho)
+          residuo+= preAncho-ancho
+          if(i==anchoCols.size()-1) { ancho += Math.floor(residuo) }
+          column.setPreferredWidth(ancho as int)
+        }
+    }
     def static void verificaCampo(txt,expresion,error)
     {
         if(!(txt==~ expresion))
@@ -64,6 +80,15 @@ class Herramientas
         componente.getActionMap().put(nombre, claseAccion);
         componente.getInputMap(JInternalFrame.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(tecla, 0), nombre);
         componente.getActionMap().put(nombre, claseAccion);
+    }
+    def static In2ActionX(componente, tecla, nombre, Closure cls) {
+        def ax = ProxyGenerator.instantiateAggregateFromBaseClass([actionPerformed:{e -> cls()}], AbstractAction.class)
+        componente.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(tecla, 0), nombre);
+        componente.getActionMap().put(nombre, ax);
+    }
+    def static iconificable(cat) {
+        cat.setIconifiable(true);
+        SwingBuilder.build { cat.internalFrameIconified = { e -> omoikane.principal.Principal.escritorio.escritorioFrame.fondoToBack() } }
     }
 
 }

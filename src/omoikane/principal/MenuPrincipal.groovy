@@ -23,6 +23,7 @@ class MenuPrincipal {
         Principal.escritorio.getPanelEscritorio().add(menuPrincipal,javax.swing.JLayeredPane.PALETTE_LAYER)
         menuPrincipal.toFront()
         menuPrincipal.requestFocusInWindow()
+        Herramientas.iconificable(menuPrincipal)
 
         try {
             menuPrincipal.setSelected(true)

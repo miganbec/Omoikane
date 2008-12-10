@@ -11,7 +11,6 @@
 
 package omoikane.formularios;
 
-
 import java.sql.*;
 import java.util.*;
 import javax.swing.table.*;
@@ -22,7 +21,7 @@ import java.awt.event.*;
 import omoikane.sistema.*;
 
 /**
- *
+ * /////////////////////////////////////////////////////
  * @author Octavio
  */
 public class CatalogoArticulos extends javax.swing.JInternalFrame {
@@ -33,10 +32,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public String          codigoSeleccionado;
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     public String          txtQuery;
-    Statement control = null;
-    String driver;
-    String protocol;
-    Connection conn;
+    omoikane.sistema.NadesicoTableModel modelo;
     
     class TimerBusqueda extends Thread
     {
@@ -66,15 +62,19 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     }
     /** Creates new form CatalogoArticulos */
     public CatalogoArticulos() {
-        initComponents();
         //Conectar a MySQL
-        try {
-            driver   = "com.mysql.jdbc.Driver";
-            protocol = "jdbc:mysql://localhost/omoikane?user=root&password=";
-            Class.forName(driver).newInstance();
-            conn = DriverManager.getConnection(protocol);
-            conn.setAutoCommit(false);
-        } catch(Exception e) { Dialogos.error("Error al conectar", e); }
+
+        initComponents();
+
+        String[]  columnas = {"Código", "Línea", "Concepto", "Unidad", "Precio", "Existencias"};
+        ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
+        Class[]   clases   = {String.class, String.class, String.class, String.class, Double.class, Double.class};
+        ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
+
+        NadesicoTableModel modeloTabla = new NadesicoTableModel(cols, cls);
+        //jTable1.enableInputMethods(false);
+        this.modelo = modeloTabla;
+        this.jTable1.setModel(modeloTabla);
         
         setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,precios.costo as xCosto,existencias.cantidad as xExistencias " +
                 "from articulos, precios, existencias, lineas " +
@@ -88,10 +88,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension labelSize = this.getPreferredSize();
-
-        //setLocation(screenSize.width/2 - (labelSize.width/2), screenSize.height/2 - (labelSize.height/2));
         Herramientas.centrarVentana(this);
         this.btnAceptar.setVisible(false);
 
@@ -104,37 +100,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0));
         setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
 
-
-        //La larga asignación de teclas a acciones (presionar F4 para ver detalles por ejemplo), fue lo más
-        //  corta que pude hacerla v_v
-
-        Action cerrar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            ((CatalogoArticulos)e.getSource()).btnCerrar.doClick();
-        } };
-        Action detalles = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            ((CatalogoArticulos)e.getSource()).btnDetalles.doClick();
-        } };
-        Action nuevo = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            ((CatalogoArticulos)e.getSource()).btnNuevo.doClick();
-        } };
-        Action modificar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            ((CatalogoArticulos)e.getSource()).btnModificar.doClick();
-        } };
-        Action eliminar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            ((CatalogoArticulos)e.getSource()).btnEliminar.doClick();
-        } };
-
-        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
-        getActionMap().put("cerrar"                 , cerrar  );
-        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0), "detalles");
-        getActionMap().put("detalles"                 , detalles  );
-        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0), "nuevo");
-        getActionMap().put("nuevo"                 , nuevo  );
-        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0), "modificar");
-        getActionMap().put("modificar"                 , modificar  );
-        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "eliminar");
-        getActionMap().put("eliminar"                 , eliminar  );
-
     }
     public void setModoDialogo()
     {
@@ -146,23 +111,10 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         getActionMap().put("aceptar"                 , aceptar  );
     }
 
-    public void setQueryTable(String query)
-    {
+    public void setQueryTable(String query) {
         txtQuery = query;
 
-        try
-        {
-            control = conn.createStatement();
-
-            String[]  columnas = {"Código", "Línea", "Concepto", "Unidad", "Precio", "Existencias"};
-            ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-            Class[]   clases   = {String.class, String.class, String.class, String.class, Double.class, Double.class};
-            ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
-            ResultSet rs                     = control.executeQuery(query);
-            ScrollableTableModel modeloTabla = new ScrollableTableModel(rs,cols, cls);
-            this.jTable1.setModel(modeloTabla);
-        }
-        catch (Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error al conectar a MySQL", omoikane.sistema.Herramientas.getStackTraceString(e)); }
+        modelo.setQuery(query);
 
     }
     /** This method is called from within the constructor to
@@ -191,6 +143,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         chkLineas = new javax.swing.JCheckBox();
         chkGrupos = new javax.swing.JCheckBox();
 
+        setIconifiable(true);
+        setTitle("Catálogo de artículos");
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -416,15 +370,14 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        try { this.conn.close(); } catch(Exception e) { Dialogos.error("No se pudo cerrar la conexión con el servidor", e); }
         this.dispose();
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        int IDArticulo = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDArticulo = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         if(IDArticulo != -1) {
-            String descripcion = ((ScrollableTableModel)jTable1.getModel()).getDescripcion(jTable1.getSelectedRow());
+            String descripcion = ((NadesicoTableModel)jTable1.getModel()).getDescripcion(jTable1.getSelectedRow());
             if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar éste artículo: \""+descripcion+"\"?", "lala", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 omoikane.principal.Articulos.eliminarArticulo(IDArticulo);
             }
@@ -433,7 +386,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        int IDArticulo = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDArticulo = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
 
         //Lanzar la ventana de detalles:
         if(IDArticulo != -1) { omoikane.principal.Articulos.lanzarModificarArticulo(IDArticulo); }
@@ -446,7 +399,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
         // TODO add your handling code here:
-        int IDArticulo = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDArticulo = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         
         //Lanzar la ventana de detalles:
         if(IDArticulo != -1) { omoikane.principal.Articulos.lanzarDetallesArticulo(IDArticulo); }
@@ -519,7 +472,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        ScrollableTableModel stm = ((ScrollableTableModel)jTable1.getModel());
+        NadesicoTableModel stm = ((NadesicoTableModel)jTable1.getModel());
         int IDArticulo = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
 
         if(IDArticulo != -1) { 
@@ -632,180 +585,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
-
-}
-
-
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-//Modelo para esta tabla
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-
-class ScrollableTableModel extends AbstractTableModel {
-	ResultSet	resultSet	= null;
-	Connection	connection	= null;
-	java.util.List	colNames	= null;
-	int             rowCount        = -1;
-	java.util.List  colClasses      = null;
-	Statement       stmt            = null;
-
-	/**
-	 * <p>A constructor with a scrollable
-	 * <code>java.sql.ResultSet</code> as parameter.</p>
-	 * @param rs The scrollable <code>java.sql.ResultSet</code>
-	 * @param colNames A <code>java.util.List</code> containing
-	 * the column names
-	 */
-	public ScrollableTableModel(ResultSet rs, java.util.List colNames, ArrayList colClases) {
-
-		if (rs == null) {
-                        omoikane.sistema.Dialogos.lanzarDialogoError(null, "La consulta es nula al obtener listado", "");
-		}
-		Statement s = null;
-		try {
-			s = rs.getStatement();
-		} catch (SQLException e) {
-                        omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error obteniendo declaración de la consulta", omoikane.sistema.Herramientas.getStackTraceString(e));
-			}
-		Connection c = null;
-		try {
-			c = s.getConnection();
-		} catch (SQLException e) {
-                        omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error obteniendo conexión de la consulta", omoikane.sistema.Herramientas.getStackTraceString(e));
-                }
-		if (!supportsScrollInsensitive(c)) {
-                        omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error: La base de datos no soporta insensitive scroll", "");
-		}
-
-                this.colNames   = new ArrayList(colNames);
-                this.colClasses = colClases;
-
-		this.resultSet = rs;
-		this.stmt = s;
-	}
-
-	/**
-	 * <p>Fills the <code>colNames</code> property from the
-	 * <code>resultSet</code> if this property is null
-	 * using the current <code>resultSet</code>.</p>
-	 * @see ScrollableTableModel#fillColNames(ResultSet)
-	 */
-	/**
-	 * @return The number of columns in this model.
-	 */
-	public int getColumnCount() {
-		return colNames.size();
-	}
-
-	/**
-	 * @return The number of rows in this model.
-	 */
-	public int getRowCount() {
-		if (this.rowCount == -1) {
-			try {
-				resultSet.last();
-				this.rowCount = resultSet.getRow();
-			} catch (SQLException e) {
-                                omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error al pasar a la última fila", omoikane.sistema.Herramientas.getStackTraceString(e));
-                        }
-		}
-
-		return rowCount;
-	}
-
-	/**
-	 * <p>Returns the value for the cell at columnIndex
-	 * and rowIndex</p>
-	 * @param rowIndex The row whose value is to be queried
-	 * @param columnIndex The column whose value is to be queried
-	 * @return The value Object at the specified cell
-	 */
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		int rowNdx = rowIndex + 1;
-		int colNdx = columnIndex + 1;
-		try {
-			resultSet.absolute(rowNdx);
-			return resultSet.getObject(colNdx+1); //Para saltar el ID y no mostrarlo
-		} catch (SQLException e) {
-                        omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error obteniendo valor en la celda: " + rowIndex + ", " + columnIndex, omoikane.sistema.Herramientas.getStackTraceString(e));
-                        return null;
-                }
-        }
-
-        public int getIDArticuloFila(int rowIndex)
-        {
-            //return (Integer)getValueAt(rowIndex, -1);
-            
-            if(rowIndex == -1)
-            { Dialogos.lanzarAlerta("Ningúna fila ha sido seleccionada."); }
-            else
-            { return (Integer)getValueAt(rowIndex, -1); }
-            return -1;
-            
-        }
-        public String getDescripcion(int rowIndex)
-        {
-            return (String)getValueAt(rowIndex, 1);
-        }
-
-	/**
-	 * @return The column name
-	 */
-	public String getColumnName(int column) {
-		return (String)colNames.get(column);
-	}
-
-	/**
-	 * <p>Returns the most specific superclass for all the cell values in the column.</p>
-	 * @param columnIndex The index of the column
-	 * @return The common ancestor class of the object values in the model.
-	 */
-	public Class getColumnClass(int columnIndex) {
-
-		Class c = (Class)colClasses.get(columnIndex);
-
-		return c;
-	}
-
-	/**
-	 * <p>Verifies if the current DBM supports the scroll insensitive feature.</p>
-	 * @param con The opened connection.
-	 * @return <code>true</code> if the DMB supports the scroll insensitive
-	 * feature or <code>false</code> if not.
-	 */
-	private boolean supportsScrollInsensitive(Connection con) {
-		DatabaseMetaData md = null;
-		try {
-			md = con.getMetaData();
-		} catch (SQLException e) {
-                        omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error obteniendo metadata", omoikane.sistema.Herramientas.getStackTraceString(e));
-                        return false;
-		}
-		try {
-			return md.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE);
-		} catch (SQLException e) {
-                        omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error obteniendo información de metadata", omoikane.sistema.Herramientas.getStackTraceString(e));
-                        return false;
-		}
-	} // supportsScrollInsensitive()
-
-	/**
-	 * Closes the <code>java.sql.Statement</code> used to
-	 * execute the query.
-	 */
-	public void destroy() {
-		if (stmt != null) {
-			try {
-				stmt.close();
-			} catch (SQLException e) {
-				}
-		}
-		stmt = null;
-	}
 
 }

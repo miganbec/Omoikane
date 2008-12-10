@@ -13,6 +13,9 @@ import javax.swing.*;
 import java.awt.event.WindowListener;
 import javax.swing.event.*;
 import groovy.inspect.swingui.*;
+import javax.swing.table.TableColumn
+import java.awt.event.*;
+import groovy.swing.*
 
 public class Articulos
 {
@@ -26,9 +29,20 @@ public class Articulos
         def cat = (new omoikane.formularios.CatalogoArticulos())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+        
+        Herramientas.setColumnsWidth(cat.jTable1, [0.14,0.2,0.4,0.06,0.1,0.1]);
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
+
+        Herramientas.iconificable(cat)
+
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de artículos", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
+
     }
 
     public static String lanzarDialogoCatalogo()
@@ -56,10 +70,13 @@ public class Articulos
     }
     static def eliminarArticulo(ID)
     {
+        Dialogos.lanzarAlerta("Función desactivada!")
+        /*
         def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
         db.execute("DELETE FROM articulos WHERE id_articulo = " + ID)
         db.close()
         Dialogos.lanzarAlerta("Artículo " + ID + " supuestamente eliminado")
+        */
     }
     static def lanzarDetallesArticulo(ID)
     {
@@ -82,7 +99,9 @@ public class Articulos
         formArticulo.setTxtCosto         art.costo         as String
         formArticulo.setTxtUtilidad      art.utilidad      as String
         formArticulo.setTxtExistencias   art.cantidad      as String
+        formArticulo.ID                   = ID
         formArticulo.setModoDetalles();
+        formArticulo
     }
     static def guardar(formArticulo)
     {
@@ -116,6 +135,7 @@ public class Articulos
         try {
             def serv = Nadesico.conectar()
             Dialogos.lanzarAlerta(serv.addArticulo(IDAlmacen, IDLinea, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias))
+            serv.desconectar()
         } catch(e) { Dialogos.error("Error al enviar a la base de datos. El artículo no se registró", e) }
 
         formArticulo.dispose()
@@ -138,30 +158,8 @@ public class Articulos
     }
     static def lanzarModificarArticulo(ID)
     {
-        def formArticulo = new omoikane.formularios.Articulo()
-        formArticulo.setVisible(true)
-        escritorio.getPanelEscritorio().add(formArticulo)
-        formArticulo.toFront()
-        try { formArticulo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
-
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def articulo = db.rows("SELECT * FROM articulos WHERE id_articulo = $ID")
-        def existencia = db.firstRow("SELECT * FROM existencias WHERE id_articulo = $ID AND id_almacen = $IDAlmacen")
-        def precio     = db.firstRow("SELECT * FROM precios     WHERE id_articulo = $ID AND id_almacen = $IDAlmacen")
-        db.close()
-
-        formArticulo.setTxtIDArticulo    ((String)articulo[0].id_articulo)
-        formArticulo.setTxtCodigo        (articulo[0].codigo)
-        formArticulo.setTxtIDLinea       (articulo[0].id_linea as String)
-        formArticulo.setTxtDescripcion   (articulo[0].descripcion)
-        formArticulo.setTxtUnidad        (articulo[0].unidad)
-        formArticulo.setTxtImpuestos     ((Double)articulo[0].impuestos as String)
-        formArticulo.setTxtUModificacion (articulo[0].uModificacion as String)
-        formArticulo.setTxtDescuento     (precio.descuento as String)
-        formArticulo.setTxtCosto         (precio.costo as String)
-        formArticulo.setTxtUtilidad      (precio.utilidad as String)
-        formArticulo.setTxtExistencias   (existencia.cantidad as String)
-        formArticulo.ID                   = ID
+        def formArticulo = lanzarDetallesArticulo(ID)
+        Dialogos.lanzarAlerta("Eliminar codigo viejo de lanzarModificarArticulo")
         formArticulo.setModoModificar();
     }
     static def modificar(formArticulo)

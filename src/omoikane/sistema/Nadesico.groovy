@@ -15,11 +15,13 @@ import omoikane.principal.*
  */
 class Nadesico {
     def conn = null
+    def sesion = null
     Nadesico() { iniciar() }
 
 	def iniciar() {
         try {
             conn = new XMLRPCServerProxy(Principal.config.URLServidor[0].text())
+            sesion = conn.login()
         } catch(Exception e) { Dialogos.error("Error al conectar con el servidor", e) }
         conn
     }
@@ -32,7 +34,18 @@ class Nadesico {
         try {
             return conn.invokeMethod("$name", args)
         } catch(e) {
-            Dialogos.error("Error al conectar con el servidor", e) }
+            throw new Exception("Error en la llamada al procedimiento remoto: ${e.message}", e) }
     }
+    def desconectar() {
+        conn.logout(sesion)
+    }
+    protected void finalize() throws Throwable {
+        try {
+            desconectar()
+        } finally {
+            super.finalize()
+        }
+    }
+
 }
 

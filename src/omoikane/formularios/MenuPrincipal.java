@@ -108,6 +108,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/package-toys-128x128.png"))); // NOI18N
         jButton3.setText("Vender");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 230, 60));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14));
@@ -234,6 +239,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         omoikane.principal.Lineas.lanzarCatalogo();
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        omoikane.principal.Caja.lanzar();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
 

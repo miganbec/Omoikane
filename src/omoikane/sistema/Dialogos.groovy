@@ -18,26 +18,29 @@ class Dialogos
     }
     static def lanzarDialogoError(parent, mensaje, detalles)
     {
-        String msjXLineas = "";
-        int largo = 50, nLetrasLinea = 0;
-        String[] palabras  = mensaje.split(" ");
+        println "[Error: $mensaje]"
+        try {
+            String msjXLineas = "";
+            int largo = 50, nLetrasLinea = 0;
+            String[] palabras  = mensaje.split(" ");
 
-        for(int i = 0; i < palabras.length; i++)
-        {
-            if(nLetrasLinea + palabras[i].length() <= largo)
+            for(int i = 0; i < palabras.length; i++)
             {
-                nLetrasLinea += palabras[i].length();
-                msjXLineas += " " + palabras[i];
-            } else {
-                nLetrasLinea = palabras[i].length();
-                msjXLineas += "<br>" + palabras[i];
+                if(nLetrasLinea + palabras[i].length() <= largo)
+                {
+                    nLetrasLinea += palabras[i].length();
+                    msjXLineas += " " + palabras[i];
+                } else {
+                    nLetrasLinea = palabras[i].length();
+                    msjXLineas += "<br>" + palabras[i];
+                }
             }
-        }
 
-        def pm = new omoikane.formularios.Error(parent, true);
-        pm.setMensaje("<html>"+msjXLineas+"</html>");
-        pm.setTxtDetalles(detalles)
-        pm.setVisible(true)
+            def pm = new omoikane.formularios.Error(parent, true);
+            pm.setMensaje("<html>"+msjXLineas+"</html>");
+            pm.setTxtDetalles(detalles)
+            pm.setVisible(true)
+        } catch(e) { println "Error en el mensaje de error! ${e.message}"; e.printStackTrace() } 
     }
     static def lanzarAlerta(mensaje)
     {

@@ -267,27 +267,27 @@ class Almacenes {
             Herramientas.verificaCampo(formMovimiento.getDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripción sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
             Herramientas.verificaCampo(formMovimiento.getFolio(),/^([a-zA-Z0-9_\-\s\ñ\Ñ]*)$/,"Folio sólo puede estar vacío o incluír números, letras, espacios, _ y -.")
 
-        try {
-            def tipo              = formMovimiento.getTipoMovimiento()
-            def almacen           = formMovimiento.getAlmacen()
-            def fecha             = formMovimiento.getFecha()
-            def descripcion       = formMovimiento.getDescripcion()
-            def folio             = formMovimiento.getFolio()
-            def tabPrincipalArray = formMovimiento.getTablaPrincipal()
-            def granTotal         = formMovimiento.getGranTotal() as Double
+            try {
+                def tipo              = formMovimiento.getTipoMovimiento()
+                def almacen           = formMovimiento.getAlmacen()
+                def fecha             = formMovimiento.getFecha()
+                def descripcion       = formMovimiento.getDescripcion()
+                def folio             = formMovimiento.getFolio()
+                def tabPrincipalArray = formMovimiento.getTablaPrincipal()
+                def granTotal         = formMovimiento.getGranTotal() as Double
 
-            almacen               = java.lang.Integer.valueOf(almacen)
-            //def tablaPrincipal    = tabla2xml(tabPrincipalArray)
-                try {
-                    def serv = Nadesico.conectar()
-                    def msj = serv.addMovimiento([almacen:almacen, fecha:fecha, descripcion:descripcion, tipo:tipo, granTotal:granTotal, folio:folio],tabPrincipalArray)
-                    Dialogos.lanzarAlerta(" "+msj)
-                    formMovimiento.dispose()
-                }catch(Exception e) {
-           Dialogos.lanzarDialogoError(null, "Error en la base de datos", omoikane.sistema.Herramientas.getStackTraceString(e))
-        }
-                }catch(Exception e) {
-            Dialogos.lanzarDialogoError(null, "Error en la captura de los datos del formulario NO DEJE LINEAS EN BLANCO SOLO FOLIO PUEDE ESTAR VACIO.", omoikane.sistema.Herramientas.getStackTraceString(e))}
+                almacen               = java.lang.Integer.valueOf(almacen)
+                //def tablaPrincipal    = tabla2xml(tabPrincipalArray)
+                    try {
+                        def serv = Nadesico.conectar()
+                        def msj = serv.addMovimiento([almacen:almacen, fecha:fecha, descripcion:descripcion, tipo:tipo, granTotal:granTotal, folio:folio],tabPrincipalArray)
+                        Dialogos.lanzarAlerta(" "+msj)
+                        formMovimiento.dispose()
+                    } catch(Exception e) {
+                        Dialogos.lanzarDialogoError(null, "Error en la base de datos", omoikane.sistema.Herramientas.getStackTraceString(e))
+                    }
+            } catch(Exception e) {
+                    Dialogos.lanzarDialogoError(null, "Error en la captura de los datos del formulario NO DEJE LINEAS EN BLANCO SOLO FOLIO PUEDE ESTAR VACIO.", omoikane.sistema.Herramientas.getStackTraceString(e)) }
         }
     }
 
@@ -317,7 +317,7 @@ class Almacenes {
         /*def movData = []
         def i       = 0
         form.getTablaPrincipal().each { row ->
-            movData[i]                = [codigo:row[0], descripcion:row[1]]
+            movData[i]    a            = [codigo:row[0], descripcion:row[1]]
             //movData[i]['codigo']      = row[0]
             //movData[i]['descripcion'] = row[1]
             movData[i]['costo']       = row[2]

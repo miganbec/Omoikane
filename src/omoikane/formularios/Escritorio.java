@@ -20,8 +20,14 @@ public class Escritorio extends javax.swing.JFrame {
     /** Creates new form Escritorio */
     public Escritorio() {
         initComponents();
+        this.PanelEscritorio.setVisible(true);
+        //lblImagenFondo.setVisible(true);
+
         this.transferFocus();
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+    }
+    public void fondoToBack() {
+        PanelEscritorio.moveToBack(this.lblImagenFondo);
     }
 
     /** This method is called from within the constructor to
@@ -47,6 +53,7 @@ public class Escritorio extends javax.swing.JFrame {
 
         PanelEscritorio.setFocusable(false);
         PanelEscritorio.setMinimumSize(new java.awt.Dimension(1280, 800));
+        PanelEscritorio.setOpaque(false);
 
         reloj.setText("HORA");
         reloj.setVerticalAlignment(javax.swing.SwingConstants.TOP);
