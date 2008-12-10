@@ -284,14 +284,14 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
         // TODO add your handling code here:
         int sel = this.movimientos.getSelectedRow();
-        Long id;
+        int id;
 
         if(sel == -1)
         {
             Dialogos.lanzarAlerta("Ningúna fila ha sido seleccionada.");
         } else {
             //++++++++++++++++++++++++++++
-            id = (Long) this.movimientos.getValueAt(sel, 1);
+            id = (Integer)this.movimientos.getValueAt(sel, 1);
             //Lanzar ventana y agregarle un listener
             JInternalFrame wnd = (JInternalFrame) omoikane.principal.Almacenes.lanzarDetallesMovimiento(id);
             wnd.addInternalFrameListener(iframeAdapter);

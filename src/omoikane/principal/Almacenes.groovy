@@ -72,11 +72,12 @@ class Almacenes {
         Herramientas.verificaCampos {
         def descripcion = formAlmacen.getTxtDescripcion()
         Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def tablaAlmacenes = db.dataSet('almacenes')
-        tablaAlmacenes.add(descripcion:descripcion)
-        db.close()
-        Dialogos.lanzarAlerta("Almacen $descripcion agregado.")
+
+        try {
+            def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.addAlmacen(descripcion))
+        } catch(e) { Dialogos.error("Error al enviar a la base de datos. El grupo no se registró", e) }
+
         formAlmacen.dispose()
         }
     }
@@ -89,15 +90,12 @@ class Almacenes {
         formAlmacen.toFront()
         try { formAlmacen.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles almacen", Herramientas.getStackTraceString(e)) }
 
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def almacen = db.rows("SELECT * FROM almacenes WHERE id_almacen = $ID")
+        def alm         = Nadesico.conectar().getAlmacen(ID)
 
-        formAlmacen.setTxtIDAlmacen    ((String)almacen[0].id_almacen)
-        formAlmacen.setTxtDescripcion   (almacen[0].descripcion)
-        formAlmacen.setTxtUModificacion (almacen[0].uModificacion as String)
+        formAlmacen.setTxtIDAlmacen      alm.id_almacen    as String
+        formAlmacen.setTxtDescripcion    alm.descripcion
+        formAlmacen.setTxtUModificacion  alm.uModificacion as String
         formAlmacen.setModoDetalles();
-
-        db.close()
         formAlmacen
     }
 
@@ -106,9 +104,7 @@ class Almacenes {
 
         def dataTabMovs = tablaMovs.getModel()
          try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-            def movimientos = db.rows(queryAlmacen =("SELECT * FROM almacenes WHERE (descripcion LIKE '%"+txtBusqueda+"%' OR id_almacen LIKE '%"+txtBusqueda+"%')") )
-            db.close()
+            def movimientos = Nadesico.conectar().getRows(queryAlmacen =("SELECT * FROM almacenes WHERE (descripcion LIKE '%"+txtBusqueda+"%' OR id_almacen LIKE '%"+txtBusqueda+"%')") )
             def filaNva = []
 
             movimientos.each {
@@ -128,13 +124,11 @@ class Almacenes {
         formAlmacen.toFront()
         try { formAlmacen.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Almacen", Herramientas.getStackTraceString(e)) }
 
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def almacen = db.rows("SELECT * FROM Almacenes WHERE id_almacen = $ID")
-        db.close()
+        def alm         = Nadesico.conectar().getAlmacen(ID)
 
-        formAlmacen.setTxtIDAlmacen    ((String)almacen[0].id_almacen)
-        formAlmacen.setTxtDescripcion   (almacen[0].descripcion)
-        formAlmacen.setTxtUModificacion (almacen[0].uModificacion as String)
+        formAlmacen.setTxtIDAlmacen      alm.id_almacen    as String
+        formAlmacen.setTxtDescripcion    alm.descripcion
+        formAlmacen.setTxtUModificacion  alm.uModificacion as String
         formAlmacen.setModoModificar();
         formAlmacen
     }
@@ -142,13 +136,8 @@ class Almacenes {
     {
         Herramientas.verificaCampos {
         Herramientas.verificaCampo(formAlmacen.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        db.executeUpdate("UPDATE almacenes SET descripcion = ? WHERE id_almacen = ?"
-            , [
-                formAlmacen.getTxtDescripcion(),
-                formAlmacen.getTxtIDAlmacen()
-            ])
-        Dialogos.lanzarAlerta("Almacen modificado con Exito!")
+        def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.modAlmacen(formAlmacen.getTxtIDAlmacen(),formAlmacen.getTxtDescripcion()))
         }
     }
 
@@ -203,16 +192,14 @@ class Almacenes {
         //Comienza la población
         def dataTabMovs = tablaMovs.getModel()
         try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-            def movimientos = db.rows(queryMovs = ("SELECT * FROM movimientos_almacen WHERE (descripcion LIKE '%"+busqueda+"%' OR monto LIKE '%"+busqueda+"%' OR folio LIKE '%"+busqueda+"%')" + whereFecha))
-
-            db.close()
+            
+            def movimientos = Nadesico.conectar().getRows(queryMovs = ("SELECT * FROM movimientos_almacen WHERE (descripcion LIKE '%"+busqueda+"%' OR monto LIKE '%"+busqueda+"%' OR folio LIKE '%"+busqueda+"%')" + whereFecha))
             def filaNva = []
             def fecha
 
             movimientos.each {
-                fecha = it.fecha.toString()
-                fecha = fecha.split("-")[2]+"-"+fecha.split("-")[1]+"-"+fecha.split("-")[0]
+                //ObjectBrowser.inspect it.fecha
+                fecha = String.format("%02d-%02d-%04d", it.fecha.getDate(), (it.fecha.getMonth()+1), (it.fecha.getYear()+1900))
                 filaNva = [fecha, it.id_movimiento, it.folio, it.id_almacen, it.descripcion, it.tipo, it.monto]
                 dataTabMovs.addRow(filaNva.toArray())
             }
@@ -288,67 +275,20 @@ class Almacenes {
             def folio             = formMovimiento.getFolio()
             def tabPrincipalArray = formMovimiento.getTablaPrincipal()
             def granTotal         = formMovimiento.getGranTotal() as Double
+
             almacen               = java.lang.Integer.valueOf(almacen)
             //def tablaPrincipal    = tabla2xml(tabPrincipalArray)
-            def db                = null
-            def IDMov             = -1
-
-            try {
-
-                db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-                db.connection.autoCommit = false
-
-                IDMov   = db.executeInsert("INSERT INTO movimientos_almacen SET id_almacen = ?, fecha = ?, descripcion = ?, tipo = ?, monto = ?, folio = ?", [almacen, fecha, descripcion, tipo, granTotal, folio])
-
-                IDMov = IDMov[0][0]
-                def movData = []
-
-
-                tabPrincipalArray.each { row ->
-                    Herramientas.verificaCampo(row[2],/^([0-9]*[\.]{0,1}[0-9]+)$/,"Costo sólo puede incluír números reales positivos")
-                    Herramientas.verificaCampo(row[3],/^([0-9]*[\.]{0,1}[0-9]+)$/,"Cantidad sólo puede incluír números reales positivos")
-                    movData << [codigo:row[0], descripcion:row[1], costo:row[2], cantidad:row[3], total:row[4]]
-                    //aquí guardar
-                    db.executeUpdate("INSERT INTO movimientos_almacen_detalles SET id_movimiento = ?, id_articulo = ?, cantidad = ?, costo = ?, id_almacen = ?",
-                    [IDMov, Articulos.getArticulo("codigo = '${row[0]}'").id_articulo, row[3], row[2], almacen])
-                }
-
-
-                def id_art, cant, cost;
-                tabPrincipalArray.each { row ->
-                    id_art = db.rows("SELECT id_articulo FROM articulos WHERE codigo = '" + row[0]+"'")[0].id_articulo
-                    cost   = row[2]
-                    cant   = row[3]
-                    switch(tipo) {
-                        case "Entrada al almacén":
-                            cant = "+$cant"
-                        break
-                        case "Salida del almacén":
-                            cant = "-$cant"
-                        break
-                        case "Ajuste": break
-                        default:
-                            throw new Exception("Tipo de movimiento erróneo (pj. entrada, salida, ajuste)")
-                        break
-                    }
-                    Existencias.cambiar(db, almacen, id_art, cant)
-                    Precios.modificar(db, almacen, id_art, costo:cost)
-                }
-
-                db.commit()
-                Dialogos.lanzarAlerta("Movimiento \"$descripcion\" hecho al almacén.")
-                formMovimiento.dispose()
-            } catch(Exception e) {
-                db.rollback()
-                Dialogos.lanzarDialogoError(null, "Error al enviar a la base de datos. El movimiento no se Guardo verifique almacen ,cantidad ,costo .", omoikane.sistema.Herramientas.getStackTraceString(e))
-            } finally {
-                db.connection.autoCommit = true
-            }
-        } catch(Exception e) {
-            Dialogos.lanzarDialogoError(null, "Error en la captura de los datos del formulario NO DEJE LINEAS EN BLANCO SOLO FOLIO PUEDE ESTAR VACIO.", omoikane.sistema.Herramientas.getStackTraceString(e))
+                try {
+                    def serv = Nadesico.conectar()
+                    def msj = serv.addMovimiento([almacen:almacen, fecha:fecha, descripcion:descripcion, tipo:tipo, granTotal:granTotal, folio:folio],tabPrincipalArray)
+                    Dialogos.lanzarAlerta(" "+msj)
+                    formMovimiento.dispose()
+                }catch(Exception e) {
+           Dialogos.lanzarDialogoError(null, "Error en la base de datos", omoikane.sistema.Herramientas.getStackTraceString(e))
         }
+                }catch(Exception e) {
+            Dialogos.lanzarDialogoError(null, "Error en la captura de los datos del formulario NO DEJE LINEAS EN BLANCO SOLO FOLIO PUEDE ESTAR VACIO.", omoikane.sistema.Herramientas.getStackTraceString(e))}
         }
-        
     }
 
     static def lanzarDetallesMovimiento(ID)
@@ -360,28 +300,15 @@ class Almacenes {
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
 
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def mov = db.rows("SELECT * FROM movimientos_almacen WHERE id_movimiento = $ID")
+        def mov         = Nadesico.conectar().getMovimiento(ID)
 
-        mov = mov[0]
         form.setTipoMovimiento(mov.tipo)
         form.setAlmacen(mov.id_almacen as String)
         form.setFecha(mov.fecha as String)
         form.setDescripcion(mov.descripcion)
         form.setFolio(mov.folio as String)
-
-        def tabMatriz = []
-        def articulo
-
-        db.eachRow("SELECT * FROM movimientos_almacen_detalles WHERE id_movimiento = $ID")
-        {
-            articulo = Articulos.getArticulo("id_articulo = ${it.id_articulo}")
-            tabMatriz << [articulo.codigo, articulo.descripcion, it.costo, it.cantidad, it.cantidad*it.costo]
-            
-        }
-        db.close()
         //def lmov = xml2tabla(mov.detalles)
-        form.setTablaPrincipal(tabMatriz as List)
+        form.setTablaPrincipal(mov.tabMatriz as List)
         form.setModoDetalles()
         form
     }

@@ -65,16 +65,19 @@ class Lineas {
         static def guardar(formLinea)
     {
         Herramientas.verificaCampos{
+        def descripcion = formLinea.getTxtDescripcion()
+        def descuento   = formLinea.getTxtDescuento()
+
         Herramientas.verificaCampo(formLinea.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
         Herramientas.verificaCampo(formLinea.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
 
-        def descripcion = formLinea.getTxtDescripcion()
+        descuento = descuento as Double
 
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def tablaLineas = db.dataSet('lineas')
-        tablaLineas.add(descripcion:descripcion)
-        db.close()
-        Dialogos.lanzarAlerta("Linea $descripcion agregado.")
+        try {
+            def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.addLinea(descripcion, descuento))
+        } catch(e) { Dialogos.error("Error al enviar a la base de datos. La linea no se registró", e) }
+
         formLinea.dispose()
         }
     }
@@ -87,16 +90,13 @@ class Lineas {
         formLinea.toFront()
         try { formLinea.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles linea", Herramientas.getStackTraceString(e)) }
 
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def linea = db.rows("SELECT * FROM lineas WHERE id_linea = $ID")
-
-        formLinea.setTxtIDLinea    ((String)linea[0].id_linea)
-        formLinea.setTxtDescripcion   (linea[0].descripcion)
-        formLinea.setTxtDescuento     ((Double)linea[0].descuento as String)
-        formLinea.setTxtUModificacion (linea[0].uModificacion as String)
+        def lin         = Nadesico.conectar().getLinea(ID)
+        
+        formLinea.setTxtIDLinea        lin.id_linea      as String
+        formLinea.setTxtDescripcion    lin.descripcion
+        formLinea.setTxtDescuento      lin.descuento     as String
+        formLinea.setTxtUModificacion  lin.uModificacion as String
         formLinea.setModoDetalles();
-
-        db.close()
         formLinea
     }
 
@@ -105,9 +105,7 @@ class Lineas {
 
         def dataTabMovs = tablaMovs.getModel()
          try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-            def movimientos = db.rows(queryLineas =("SELECT * FROM lineas WHERE (descripcion LIKE '%"+txtBusqueda+"%' OR id_linea LIKE '%"+txtBusqueda+"%')") )
-            db.close()
+            def movimientos = Nadesico.conectar().getRows(queryLineas =("SELECT * FROM lineas WHERE (descripcion LIKE '%"+txtBusqueda+"%' OR id_linea LIKE '%"+txtBusqueda+"%')") )
             def filaNva = []
 
             movimientos.each {
@@ -127,30 +125,24 @@ class Lineas {
         formLinea.toFront()
         try { formLinea.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Linea", Herramientas.getStackTraceString(e)) }
 
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def linea = db.rows("SELECT * FROM lineas WHERE id_linea = $ID")
-        db.close()
+        def lin         = Nadesico.conectar().getLinea(ID)
 
-        formLinea.setTxtIDLinea    ((String)linea[0].id_linea)
-        formLinea.setTxtDescripcion   (linea[0].descripcion)
-        formLinea.setTxtDescuento    ((Double)linea[0].descuento as String)
-        formLinea.setTxtUModificacion (linea[0].uModificacion as String)
+        formLinea.setTxtIDLinea        lin.id_linea      as String
+        formLinea.setTxtDescripcion    lin.descripcion
+        formLinea.setTxtDescuento      lin.descuento     as String
+        formLinea.setTxtUModificacion  lin.uModificacion as String
         formLinea.setModoModificar();
         formLinea
     }
+
     static def modificar(formLinea)
     {
         Herramientas.verificaCampos{
         Herramientas.verificaCampo(formLinea.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
         Herramientas.verificaCampo(formLinea.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        db.executeUpdate("UPDATE lineas SET descripcion = ? , descuento = ? WHERE id_linea = ?"
-            , [
-                formLinea.getTxtDescripcion(),
-                formLinea.getTxtDescuento(),
-                formLinea.getTxtIDLinea()
-            ])
-        Dialogos.lanzarAlerta("Linea modificado con éxito!")
+        
+        def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.modLinea(formLinea.getTxtIDLinea(),formLinea.getTxtDescripcion(),formLinea.getTxtDescuento()))
         }
     }
 

@@ -224,6 +224,11 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         getContentPane().add(btnEliminarRenglon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
         fecha.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
+        fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaActionPerformed(evt);
+            }
+        });
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 160, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
@@ -331,6 +336,10 @@ public void setModoDetalles()
         // TODO add your handling code here:
         omoikane.principal.Almacenes.lanzarImprimirMovimiento(this);
     }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaActionPerformed
 
     public void paintComponent(Graphics g)
     {
