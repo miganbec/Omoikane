@@ -68,7 +68,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVenta = new javax.swing.JTable();
         btnAceptar = new javax.swing.JButton();
-        btnDetalles = new javax.swing.JButton();
+        btnCatalogo = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         txtCaptura = new javax.swing.JTextField();
@@ -77,19 +77,22 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        txtDescuento = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        txtNArticulos = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        txtSubtotal = new javax.swing.JLabel();
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,11 +120,11 @@ public class Caja extends javax.swing.JInternalFrame {
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Terminar Venta[Enter]");
 
-        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
-        btnDetalles.setText("Buscar Artículo [F2]");
-        btnDetalles.addActionListener(new java.awt.event.ActionListener() {
+        btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
+        btnCatalogo.setText("Buscar Artículo [F2]");
+        btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetallesActionPerformed(evt);
+                btnCatalogoActionPerformed(evt);
             }
         });
 
@@ -167,13 +170,13 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(0, 0, 31, 15);
 
-        jLabel6.setBackground(new java.awt.Color(153, 51, 0));
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 42));
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("$ 1,233.00");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(0, 10, 250, 60);
+        txtTotal.setBackground(new java.awt.Color(153, 51, 0));
+        txtTotal.setFont(new java.awt.Font("Tahoma", 1, 42));
+        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtTotal.setText("$ 0.00");
+        jPanel1.add(txtTotal);
+        txtTotal.setBounds(0, 10, 250, 60);
 
         jPanel2.setBackground(new Color(0,255,0,220));
         jPanel2.setLayout(null);
@@ -181,17 +184,17 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Subtotal");
+        jLabel9.setText("Descuento");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(0, 0, 60, 15);
+        jLabel9.setBounds(0, 0, 70, 15);
 
-        jLabel7.setBackground(new java.awt.Color(153, 51, 0));
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("$ 1,233.00");
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(0, 10, 250, 30);
+        txtDescuento.setBackground(new java.awt.Color(153, 51, 0));
+        txtDescuento.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtDescuento.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtDescuento.setText("$ 0.00");
+        jPanel2.add(txtDescuento);
+        txtDescuento.setBounds(0, 10, 250, 30);
 
         jPanel4.setBackground(new Color(55,55,255,160));
         jPanel4.setLayout(null);
@@ -203,13 +206,13 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel4.add(jLabel10);
         jLabel10.setBounds(0, 0, 60, 15);
 
-        jLabel11.setBackground(new java.awt.Color(153, 51, 0));
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("23");
-        jPanel4.add(jLabel11);
-        jLabel11.setBounds(0, 10, 250, 30);
+        txtNArticulos.setBackground(new java.awt.Color(153, 51, 0));
+        txtNArticulos.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtNArticulos.setForeground(new java.awt.Color(255, 255, 255));
+        txtNArticulos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtNArticulos.setText("0");
+        jPanel4.add(txtNArticulos);
+        txtNArticulos.setBounds(0, 10, 250, 30);
 
         jPanel5.setBackground(new Color(55,55,255,160));
         jPanel5.setLayout(null);
@@ -239,13 +242,31 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel6.add(jLabel14);
         jLabel14.setBounds(0, 0, 60, 15);
 
-        jLabel15.setBackground(new java.awt.Color(153, 51, 0));
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("09-12-2008");
-        jPanel6.add(jLabel15);
-        jLabel15.setBounds(0, 10, 250, 30);
+        txtFecha.setBackground(new java.awt.Color(153, 51, 0));
+        txtFecha.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtFecha.setForeground(new java.awt.Color(255, 255, 255));
+        txtFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtFecha.setText("09-12-2008");
+        jPanel6.add(txtFecha);
+        txtFecha.setBounds(0, 10, 250, 30);
+
+        jPanel7.setBackground(new Color(55,55,255,160));
+        jPanel7.setLayout(null);
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Subtotal");
+        jPanel7.add(jLabel16);
+        jLabel16.setBounds(0, 0, 60, 15);
+
+        txtSubtotal.setBackground(new java.awt.Color(153, 51, 0));
+        txtSubtotal.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtSubtotal.setForeground(new java.awt.Color(255, 255, 255));
+        txtSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtSubtotal.setText("0");
+        jPanel7.add(txtSubtotal);
+        txtSubtotal.setBounds(0, 10, 250, 30);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -254,11 +275,12 @@ public class Caja extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -270,6 +292,8 @@ public class Caja extends javax.swing.JInternalFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -286,9 +310,10 @@ public class Caja extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(168, 168, 168))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(174, 174, 174))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(363, 363, 363)
@@ -301,7 +326,7 @@ public class Caja extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDetalles)
+                        .addComponent(btnCatalogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -312,7 +337,7 @@ public class Caja extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -320,7 +345,7 @@ public class Caja extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCaptura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -328,7 +353,7 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnImprimir)
                             .addComponent(btnEliminar)
-                            .addComponent(btnDetalles)
+                            .addComponent(btnCatalogo)
                             .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -345,10 +370,10 @@ public class Caja extends javax.swing.JInternalFrame {
         this.dispose();
 }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
+    private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
         // TODO add your handling code here:
 
-}//GEN-LAST:event_btnDetallesActionPerformed
+}//GEN-LAST:event_btnCatalogoActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
@@ -367,21 +392,18 @@ public class Caja extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    public javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -390,9 +412,15 @@ public class Caja extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tablaVenta;
     public javax.swing.JTextField txtCaptura;
+    private javax.swing.JLabel txtDescuento;
+    public javax.swing.JLabel txtFecha;
+    private javax.swing.JLabel txtNArticulos;
+    private javax.swing.JLabel txtSubtotal;
+    private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
 
 }

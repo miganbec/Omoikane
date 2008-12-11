@@ -42,19 +42,14 @@ public class Articulos
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de artículos", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
-
+        cat
     }
 
     public static String lanzarDialogoCatalogo()
     {
         def foco=new Object()
-        def cat = (new omoikane.formularios.CatalogoArticulos())
+        def cat = lanzarCatalogo()
         cat.setModoDialogo()
-        cat.setVisible(true);
-        escritorio.getPanelEscritorio().add(cat)
-        cat.toFront()
-        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de Articulos", Herramientas.getStackTraceString(e)) }
-        cat.txtBusqueda.requestFocus()
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
         cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
         def retorno
