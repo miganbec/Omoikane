@@ -67,7 +67,7 @@ public class Caja extends javax.swing.JInternalFrame {
         btnCerrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVenta = new javax.swing.JTable();
-        btnAceptar = new javax.swing.JButton();
+        btnTerminar = new javax.swing.JButton();
         btnCatalogo = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -112,13 +112,13 @@ public class Caja extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Concepto", "Cantidad", "Precio", "Descuento", "Total"
+                "ID Artículo", "Concepto", "Cantidad", "Precio", "Descuento", "Total"
             }
         ));
         jScrollPane1.setViewportView(tablaVenta);
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/accept.png"))); // NOI18N
-        btnAceptar.setText("Terminar Venta[Enter]");
+        btnTerminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/accept.png"))); // NOI18N
+        btnTerminar.setText("Terminar Venta[Enter]");
 
         btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
         btnCatalogo.setText("Buscar Artículo [F2]");
@@ -324,7 +324,7 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAceptar)
+                        .addComponent(btnTerminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCatalogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,7 +337,7 @@ public class Caja extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -354,7 +354,7 @@ public class Caja extends javax.swing.JInternalFrame {
                             .addComponent(btnImprimir)
                             .addComponent(btnEliminar)
                             .addComponent(btnCatalogo)
-                            .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -391,11 +391,11 @@ public class Caja extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
     public javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnImprimir;
+    public javax.swing.JButton btnTerminar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

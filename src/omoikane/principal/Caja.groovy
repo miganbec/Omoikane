@@ -12,7 +12,9 @@ import omoikane.sistema.*
  * @author Usuario
  */
 class Caja {
+    static def IDCaja    = 1
     static def IDAlmacen = 1
+    static def IDCliente = 1
     static def escritorio = omoikane.principal.Principal.escritorio
 
 	static def lanzar() {
@@ -21,7 +23,7 @@ class Caja {
         Herramientas.centrarVentana(form);
         form.setVisible(true);
         Herramientas.iconificable(form)
-        Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.13,0.13,0.13,0.13]);
+        Herramientas.setColumnsWidth(form.tablaVenta, [0.03,0.48,0.12,0.12,0.12,0.13]);
 
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario caja", Herramientas.getStackTraceString(e)) }
@@ -37,7 +39,7 @@ class Caja {
             def dat   = form.modelo.getDataVector()
             def sumas = [0.0,0.0,0.0]
             dat.each { linea ->
-                sumas[0] += linea[1] as Double; sumas[1] += linea[3] as Double; sumas[2] += aDoble(linea[4])
+                sumas[0] += linea[2] as Double; sumas[1] += linea[4] as Double; sumas[2] += aDoble(linea[5])
             }
             form.txtNArticulos.text = sumas[0]
             form.txtSubtotal.text   = cifra (sumas[2])
@@ -52,7 +54,7 @@ class Caja {
                 if(art == null || art == 0) { Dialogos.lanzarAlerta("Artículo no encontrado!!"); } else {
                     def total   = cifra(cantidad * art.costo)
                     form.txtCaptura.text = ""
-                    form.modelo.addRow([art.descripcion,cantidad,art.costo,art.descuento,total].toArray())
+                    form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,art.costo,art.descuento,total].toArray())
                     sumarTodo()
                     form.repaint()
                 }
@@ -66,5 +68,15 @@ class Caja {
           }
         def catArticulos = { def retorno = Articulos.lanzarDialogoCatalogo() as String; return retorno==null?"":retorno }
         form.btnCatalogo.actionPerformed = { e -> Thread.start { form.txtCaptura.text = form.txtCaptura.text + catArticulos(); form.txtCaptura.requestFocus() } }
+        form.btnTerminar.actionPerformed = { e ->
+            try {
+            def detalles = []
+            form.modelo.getDataVector().each {
+                detalles << [IDArticulo:it[0], cantidad:it[2], precio:it[3], descuento:it[4], total:aDoble(it[5])]
+            }
+            def salida = Nadesico.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), 0, aDoble(form.txtTotal.text), detalles)
+            Dialogos.lanzarAlerta(salida)
+            } catch(err) { Dialogos.error("Error: La venta no se pudo registrar", err) }
+        }
     }
 }

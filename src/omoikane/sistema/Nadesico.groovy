@@ -31,10 +31,10 @@ class Nadesico {
     }
 
     Object methodMissing(String name, Object args) {
-        try {
+        //try {
             return conn.invokeMethod("$name", args)
-        } catch(e) {
-            throw new Exception("Error en la llamada al procedimiento remoto: ${e.message}", e) }
+        //} catch(e) {
+          //  throw new Exception("Error en la llamada al procedimiento remoto: ${e.message}", e) }
     }
     def desconectar() {
         conn.logout(sesion)
