@@ -585,7 +585,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable1;
     public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 

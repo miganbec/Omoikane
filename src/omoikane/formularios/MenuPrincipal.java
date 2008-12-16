@@ -86,6 +86,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton13 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setIconifiable(true);
         setTitle("Menú Principal");
@@ -206,6 +207,15 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 230, 60));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/vcard-128x128.png"))); // NOI18N
+        jButton2.setText("<html>Detalles<br>de Ventas</html>");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 230, 60));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -245,6 +255,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         omoikane.principal.Caja.lanzar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        omoikane.principal.Ventas.lanzarCatalogo();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
 
@@ -275,6 +289,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
