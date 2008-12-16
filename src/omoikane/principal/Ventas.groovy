@@ -24,6 +24,7 @@ import groovy.swing.*
 class Ventas {
 
     static def lastMovID  = -1
+    static def IDAlmacen = 1
     static def escritorio = omoikane.principal.Principal.escritorio
     //static def getVenta(where) { new Venta(where)}
 
@@ -53,11 +54,12 @@ class Ventas {
         Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
         Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
         Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
+        Herramientas.iconificable(form)
 
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
 
-        def mov         = Nadesico.conectar().getVenta(ID)
+        def mov         = Nadesico.conectar().getVenta(ID,IDAlmacen)
         form.setCliente(mov.id_cliente as String)
         form.setDescuento(mov.descuento as String)
         form.setImpuesto(mov.impuestos as String)

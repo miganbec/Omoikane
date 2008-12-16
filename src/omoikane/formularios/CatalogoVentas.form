@@ -23,14 +23,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane1" pref="884" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="886" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="372" max="32767" attributes="0"/>
+                              <EmptySpace pref="374" max="32767" attributes="0"/>
                               <Component id="btnCerrar" min="-2" pref="230" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -44,20 +44,21 @@
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtFechaHasta" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="btnFiltrar" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtFechaHasta" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="btnFiltrar" min="-2" pref="120" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="chkUsuario" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="chkFecha" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="chkUsuario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="chkAlmacen" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                       <Component id="chkCaja" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
@@ -66,7 +67,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDetalles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="419" pref="419" max="419" attributes="0"/>
-                      <Component id="btnImprimir" pref="187" max="32767" attributes="0"/>
+                      <Component id="btnImprimir" pref="189" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -94,9 +95,8 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="chkCaja" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkAlmacen" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="chkFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="chkUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -133,6 +133,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBusqueda">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBusquedaKeyTyped"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
@@ -228,12 +231,8 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkUsuario">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Usuario"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="chkAlmacen">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Almacen"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkCaja">
