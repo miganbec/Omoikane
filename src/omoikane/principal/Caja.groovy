@@ -14,7 +14,7 @@ import omoikane.sistema.*
 class Caja {
     static def IDCaja    = 1
     static def IDAlmacen = 1
-    static def IDCliente = 1
+    static def IDCliente = 0
     static def escritorio = omoikane.principal.Principal.escritorio
 
 	static def lanzar() {
@@ -52,15 +52,17 @@ class Caja {
                 def cantidad= captura.size()==1?1:captura[0..captura.size()-2].inject(1) { acum, i -> acum*(i as Double) }
                 def art     = serv.codigo2Articulo(IDAlmacen, captura[captura.size()-1])
                 if(art == null || art == 0) { Dialogos.lanzarAlerta("Artículo no encontrado!!"); } else {
-                    def total   = cifra(cantidad * art.costo)
+                    def precio  = serv.getPrecio(art.id_articulo, IDAlmacen, IDCliente)
+                    println "precio:$precio"
+                    def total   = cifra(cantidad * precio.total)
                     form.txtCaptura.text = ""
-                    form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,art.costo,art.descuento,total].toArray())
+                    form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,precio.total,precio['descuento$'],total].toArray())
                     sumarTodo()
                     form.repaint()
                 }
             } catch(e) { Dialogos.error("Error al obtener información de nadesico!", e) }
         }
-        form.txtCaptura.keyPressed = { e -> 
+        form.txtCaptura.keyPressed = {   e ->
             if(e.keyCode==e.VK_ENTER) addArtic(form.txtCaptura.text)
             //Al presionar   F2: (lanzarCatalogoDialogo)
             if(e.keyCode == e.VK_F2) { form.btnCatalogo.doClick() }
@@ -75,7 +77,10 @@ class Caja {
                 detalles << [IDArticulo:it[0], cantidad:it[2], precio:it[3], descuento:it[4], total:aDoble(it[5])]
             }
             def salida = Nadesico.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), 0, aDoble(form.txtTotal.text), detalles)
+            serv.desconectar()
             Dialogos.lanzarAlerta(salida)
+            form.dispose()
+            lanzar()
             } catch(err) { Dialogos.error("Error: La venta no se pudo registrar", err) }
         }
     }
