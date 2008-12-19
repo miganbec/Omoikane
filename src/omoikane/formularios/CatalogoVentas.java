@@ -62,9 +62,9 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         calendario.add(Calendar.DAY_OF_MONTH, -30);
          txtFechaDesde.setDate(calendario.getTime());
 
-        String[]  columnas = {"Venta", "Caja", "Almacen", "Cliente", "Fecha","Total"};
+        String[]  columnas = { "Fecha","Venta", "Caja", "Almacen", "Cliente","Total"};
         ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-        Class[]   clases   = {Integer.class, Integer.class, Integer.class, Integer.class, String.class, Double.class};
+        Class[]   clases   = {String.class, Integer.class, Integer.class, String.class, String.class, Double.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
         NadesicoTableModel modeloTabla = new NadesicoTableModel(cols, cls);
@@ -72,7 +72,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
 
-        setQueryTable("SELECT id_venta,id_venta,id_caja,id_almacen,id_cliente,fecha_hora,total FROM ventas WHERE id_almacen="+IDAlmacen+" ");
+        setQueryTable("SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -117,8 +117,8 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         btnCerrar = new javax.swing.JButton();
         txtFechaDesde = new org.jdesktop.swingx.JXDatePicker();
         txtFechaHasta = new org.jdesktop.swingx.JXDatePicker();
-        chkFecha = new javax.swing.JCheckBox();
-        chkUsuario = new javax.swing.JCheckBox();
+        chkCajero = new javax.swing.JCheckBox();
+        chkCliente = new javax.swing.JCheckBox();
         chkCaja = new javax.swing.JCheckBox();
         btnAceptar = new javax.swing.JButton();
         btnDetalles = new javax.swing.JButton();
@@ -176,15 +176,15 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        chkFecha.setText("Fecha");
-        chkFecha.addActionListener(new java.awt.event.ActionListener() {
+        chkCajero.setText("Cajero");
+        chkCajero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkFechaActionPerformed(evt);
+                chkCajeroActionPerformed(evt);
             }
         });
 
-        chkUsuario.setSelected(true);
-        chkUsuario.setText("Usuario");
+        chkCliente.setSelected(true);
+        chkCliente.setText("Cliente");
 
         chkCaja.setText("Caja");
 
@@ -244,13 +244,14 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                                         .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(chkUsuario))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(chkCliente)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(chkCaja)))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(chkFecha)
-                        .addGap(180, 180, 180)
-                        .addComponent(chkCaja)
-                        .addGap(90, 90, 90))
+                        .addComponent(chkCajero)
+                        .addGap(317, 317, 317))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,9 +278,9 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                             .addComponent(txtFechaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkCaja)
-                            .addComponent(chkFecha)
-                            .addComponent(chkUsuario)))
+                            .addComponent(chkCajero)
+                            .addComponent(chkCliente)
+                            .addComponent(chkCaja)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -309,9 +310,9 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         this.dispose();
 }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void chkFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFechaActionPerformed
+    private void chkCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCajeroActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_chkFechaActionPerformed
+}//GEN-LAST:event_chkCajeroActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
@@ -346,35 +347,24 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         buscar();
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
-    public boolean getBuscarUsuario()
+    public boolean getBuscarCliente()
     {
-        return this.chkUsuario.getModel().isSelected();
+        return this.chkCliente.getModel().isSelected();
     }
     public boolean getBuscarCaja() {
         return this.chkCaja.getModel().isSelected();
     }
-    public boolean getBuscarFecha() {
-        return this.chkFecha.getModel().isSelected();
+    public boolean getBuscarCajero() {
+        return this.chkCajero.getModel().isSelected();
     }
 
     public void buscar()
     {
-        boolean xUsuario = getBuscarUsuario();
+     
+        boolean xCliente = getBuscarCliente();
         boolean xCaja = getBuscarCaja();
-        boolean xFecha = getBuscarFecha();
-        String busqueda = this.txtBusqueda.getText();
-        String query    = "SELECT id_venta,id_venta,id_caja,id_almacen,id_cliente,fecha_hora,total FROM ventas WHERE id_almacen="+IDAlmacen+" ";
-        if(xUsuario || xCaja || xFecha) { query += "AND ("; }
-        if(xUsuario) {
-                query += "(id_cliente like '%"+busqueda+"%') ";
-        }
-        if(xUsuario && (xCaja || xFecha)) { query += "OR "; }
-        if(xCaja) {
-                query += "(id_caja like '%"+busqueda+"%') ";
-        }
-        if((xCaja||xUsuario) && xFecha) { query += "OR "; }
-        if(xFecha) {
-
+        boolean xCajero= getBuscarCajero();
+        String whereFecha = "" ;
         String fechaDesde     = "";
         String fechaHasta     = "";
         SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
@@ -383,26 +373,28 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             try {
                 fechaDesde = sdf.format(this.txtFechaDesde.getDate());
                 fechaHasta = sdf.format(this.txtFechaHasta.getDate());
+                whereFecha = " AND ventas.fecha_hora >= '%"+fechaDesde+"%' AND ventas.fecha_hora <= '%"+fechaHasta+"%' ";
+
             } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
         }
-            
-                String whereFecha = "";
-        // Determina si se hará una búsqueda por fecha y de ser asi crea la clausua necesaria
-        if(fechaHasta != "" || fechaDesde != "")
-        {
-            if(fechaHasta == "" || fechaDesde == "")
-            {
-                Dialogos.lanzarAlerta("El intervalo de fechas para filtrar resultados está incompleto, completelo o vacíelo para dejar de leer este mensaje.");
-                fechaDesde = ""; fechaHasta = "";
-            } else {
-                whereFecha = " AND fecha_hora >= '$fechaDesde' AND fecha <= '$fechaHasta'";
-            }
+ 
+        String busqueda = this.txtBusqueda.getText();
+        String query    = "SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente ";
+        if(xCliente || xCaja || xCajero) { query += "AND ("; }
+        if(xCliente) {
+                query += "(clientes.razonSocial like '%"+busqueda+"%') ";
         }
-        //Comienza la población
-        query += whereFecha;
+        if(xCliente && (xCaja || xCajero)) { query += "OR "; }
+        if(xCaja) {
+                query += "(id_caja like '%"+busqueda+"%') ";
         }
-        if(xUsuario || xCaja || xFecha) { query += ")"; }
+        if((xCaja||xCliente) && xCajero) { query += "OR "; }
+        if(xCajero) {
+                query += "(id_caja like '%"+busqueda+"%') ";
+        }
+        if(xCliente || xCaja || xCajero) { query += ")" +whereFecha; }
         setQueryTable(query);
+
     }
 
     public void paintComponent(Graphics g)
@@ -431,8 +423,8 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JCheckBox chkCaja;
-    private javax.swing.JCheckBox chkFecha;
-    private javax.swing.JCheckBox chkUsuario;
+    private javax.swing.JCheckBox chkCajero;
+    private javax.swing.JCheckBox chkCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

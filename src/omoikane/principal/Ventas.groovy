@@ -1,6 +1,6 @@
 /*
  * To change this template, choose Tools | Templates
- * and open the template in the editor.pppppp
+ * and open the template in the editor.ppppzzzzpp
  */
 
 package omoikane.principal
@@ -34,7 +34,7 @@ class Ventas {
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
 
-        Herramientas.setColumnsWidth(cat.jTable1, [0.12,0.12,0.12,0.12,0.4,0.12]);
+        Herramientas.setColumnsWidth(cat.jTable1, [0.3,0.05,0.05,0.25,0.25,0.1]);
         Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }

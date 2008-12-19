@@ -50,17 +50,19 @@
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Component id="btnFiltrar" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="chkUsuario" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="chkCliente" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      <Component id="chkCaja" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="chkFecha" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                      <Component id="chkCaja" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="chkCajero" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
@@ -94,9 +96,9 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="chkCajero" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="chkCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="chkCaja" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -221,18 +223,18 @@
     </Component>
     <Component class="org.jdesktop.swingx.JXDatePicker" name="txtFechaHasta">
     </Component>
-    <Component class="javax.swing.JCheckBox" name="chkFecha">
+    <Component class="javax.swing.JCheckBox" name="chkCajero">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha"/>
+        <Property name="text" type="java.lang.String" value="Cajero"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkFechaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkCajeroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="chkUsuario">
+    <Component class="javax.swing.JCheckBox" name="chkCliente">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
-        <Property name="text" type="java.lang.String" value="Usuario"/>
+        <Property name="text" type="java.lang.String" value="Cliente"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkCaja">
