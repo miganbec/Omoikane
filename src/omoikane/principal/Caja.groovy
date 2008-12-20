@@ -53,7 +53,6 @@ class Caja {
                 def art     = serv.codigo2Articulo(IDAlmacen, captura[captura.size()-1])
                 if(art == null || art == 0) { Dialogos.lanzarAlerta("Artículo no encontrado!!"); } else {
                     def precio  = serv.getPrecio(art.id_articulo, IDAlmacen, IDCliente)
-                    println "precio:$precio"
                     def total   = cifra(cantidad * precio.total)
                     form.txtCaptura.text = ""
                     form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,precio.total,precio['descuento$'],total].toArray())
@@ -76,9 +75,10 @@ class Caja {
             form.modelo.getDataVector().each {
                 detalles << [IDArticulo:it[0], cantidad:it[2], precio:it[3], descuento:it[4], total:aDoble(it[5])]
             }
-            def salida = Nadesico.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), 0, aDoble(form.txtTotal.text), detalles)
+            def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), 0, aDoble(form.txtTotal.text), detalles)
             serv.desconectar()
-            Dialogos.lanzarAlerta(salida)
+            (new Ticket(IDAlmacen, salida.ID)).probar()
+            Dialogos.lanzarAlerta(salida.mensaje)
             form.dispose()
             lanzar()
             } catch(err) { Dialogos.error("Error: La venta no se pudo registrar", err) }

@@ -45,6 +45,7 @@ public class Escritorio extends javax.swing.JFrame {
         lblImagenFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Omoikane");
         setFocusable(false);
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1280, 800));

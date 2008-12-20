@@ -1,0 +1,19 @@
+****************************************
+*             SFM Tlapacoyan           *
+****************************************
+Nahum Medina García
+Valdez
+RFC: MEGN560328MQ0
+Fecha: [%fecha%] - Folio: [%folio%]
+<% 3.times { %> ${fecha} <% } %>
+
+[%contenido%]
+[%cantidad%]@[%descripcion%] = [%subtotal%]
+[%/contenido%]
+
+Subtotal: [%subtotal%]
+Descuento: [%descuento%]
+Impuestos: [%impuestos%]
+
+Total: [%total%]
+Gracias por su compra!

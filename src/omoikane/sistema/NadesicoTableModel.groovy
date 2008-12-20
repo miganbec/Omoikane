@@ -14,8 +14,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- *
- * @author Usuario
+ * //////////////////
+ * @author Usuario //
  */
 
 public class NadesicoTableModel extends AbstractTableModel {
