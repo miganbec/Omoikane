@@ -34,10 +34,11 @@ class Ventas {
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
 
-        Herramientas.setColumnsWidth(cat.jTable1, [0.3,0.05,0.05,0.25,0.25,0.1]);
+        Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.1,0.25,0.25,0.1]);
         Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F2    , "filtrar" ) { cat.btnFiltrar.doClick() }
         Herramientas.iconificable(cat)
 
         cat.toFront()
@@ -60,16 +61,30 @@ class Ventas {
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
 
         def mov         = Nadesico.conectar().getVenta(ID,IDAlmacen)
-        form.setCliente(mov.id_cliente as String)
+        form.setCliente(mov.nombreCliente as String)
         form.setDescuento(mov.descuento as String)
         form.setImpuesto(mov.impuestos as String)
         //form.setTipoSalida(mov.tabMatriz as String)
         form.setSubtotal(mov.subtotal as String)
         form.setTotal(mov.total as String)
-        form.setAlmacen(mov.id_almacen as String)
+        form.setAlmacen(mov.nombreAlmacen as String)
         form.setFecha(mov.fecha_hora as String)
         form.setTablaPrincipal(mov.tabMatriz as List)
         form
     }
+
+    static def lanzarImprimir(queryMovs)
+    {
+        def reporte = new Reporte('omoikane/reportes/ReporteVentas.jasper', [QueryTxt:queryMovs]);
+        reporte.lanzarPreview()
+    }
+
+    static def lanzarImprimirVenta(form)
+    {
+
+        def reporte = new Reporte('omoikane/reportes/VentaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",IDMov:lastMovID as String]);
+        reporte.lanzarPreview()
+        }
+
 }
 

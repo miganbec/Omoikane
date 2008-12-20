@@ -31,7 +31,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
     public int             IDSeleccionado;
     public String          codigoSeleccionado;
     public String          txtQuery;
-    omoikane.sistema.NadesicoTableModel modelo;
+    VentasTableModel modelo;
 
     class TimerBusqueda extends Thread
     {
@@ -67,7 +67,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         Class[]   clases   = {String.class, Integer.class, Integer.class, String.class, String.class, Double.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
-        NadesicoTableModel modeloTabla = new NadesicoTableModel(cols, cls);
+        VentasTableModel modeloTabla = new VentasTableModel(cols, cls);
         //jTable1.enableInputMethods(false);
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
@@ -129,6 +129,9 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         jLabel2.setText("Catalogo Ventas");
 
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyTyped(evt);
             }
@@ -147,7 +150,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         jLabel4.setText("Hasta:");
 
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
-        btnFiltrar.setText("Filtrar [Enter]");
+        btnFiltrar.setText("Filtrar [F2]");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
@@ -175,6 +178,10 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
+
+        txtFechaDesde.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
+
+        txtFechaHasta.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
 
         chkCajero.setText("Cajero");
         chkCajero.addActionListener(new java.awt.event.ActionListener() {
@@ -339,6 +346,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
+        omoikane.principal.Ventas.lanzarImprimir(txtQuery);
        
 }//GEN-LAST:event_btnImprimirActionPerformed
 
@@ -346,6 +354,52 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         buscar();
     }//GEN-LAST:event_txtBusquedaKeyTyped
+
+    private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER) {
+            this.txtBusqueda.selectAll();
+        }
+        if(evt.getKeyCode() == evt.VK_DOWN)
+        {
+            int sigFila = jTable1.getSelectedRow()+1;
+            if(sigFila < jTable1.getRowCount())
+            {
+                this.jTable1.setRowSelectionInterval(sigFila, sigFila);
+                this.jTable1.scrollRectToVisible(jTable1.getCellRect(sigFila, 1, true));
+            }
+        }
+        if(evt.getKeyCode() == evt.VK_UP)
+        {
+            int antFila = jTable1.getSelectedRow()-1;
+            if(antFila >= 0) {
+                this.jTable1.setRowSelectionInterval(antFila, antFila);
+                this.jTable1.scrollRectToVisible(jTable1.getCellRect(antFila, 1, true));
+            }
+        }
+        if(evt.getKeyCode() == evt.VK_PAGE_DOWN)
+        {
+            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / jTable1.getRowHeight();
+            int sigFila = jTable1.getSelectedRow()+nFilas;
+            if(sigFila > jTable1.getRowCount()) {
+                sigFila = jTable1.getRowCount()-1;
+            }
+            if(sigFila < jTable1.getRowCount()) {
+                this.jTable1.setRowSelectionInterval(sigFila, sigFila);
+                this.jTable1.scrollRectToVisible(jTable1.getCellRect(sigFila, 1, true));
+            }
+        }
+        if(evt.getKeyCode() == evt.VK_PAGE_UP)
+        {
+            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / jTable1.getRowHeight();
+            int antFila = jTable1.getSelectedRow()-nFilas;
+            if(antFila < 0) {
+                antFila = 0;
+            }
+            this.jTable1.setRowSelectionInterval(antFila, antFila);
+            this.jTable1.scrollRectToVisible(jTable1.getCellRect(antFila, 1, true));
+        }
+    }//GEN-LAST:event_txtBusquedaKeyPressed
 
     public boolean getBuscarCliente()
     {
@@ -373,13 +427,13 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             try {
                 fechaDesde = sdf.format(this.txtFechaDesde.getDate());
                 fechaHasta = sdf.format(this.txtFechaHasta.getDate());
-                whereFecha = " AND ventas.fecha_hora >= '%"+fechaDesde+"%' AND ventas.fecha_hora <= '%"+fechaHasta+"%' ";
+                whereFecha = " AND ventas.fecha_hora >= '"+fechaDesde+"' AND ventas.fecha_hora <= '"+fechaHasta+"'  ";
 
             } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
         }
  
         String busqueda = this.txtBusqueda.getText();
-        String query    = "SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente ";
+        String query    = "SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente "+whereFecha;
         if(xCliente || xCaja || xCajero) { query += "AND ("; }
         if(xCliente) {
                 query += "(clientes.razonSocial like '%"+busqueda+"%') ";
@@ -392,7 +446,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         if(xCajero) {
                 query += "(id_caja like '%"+busqueda+"%') ";
         }
-        if(xCliente || xCaja || xCajero) { query += ")" +whereFecha; }
+        if(xCliente || xCaja || xCajero) { query += ")"; }
         setQueryTable(query);
 
     }
@@ -437,3 +491,13 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+class VentasTableModel extends NadesicoTableModel{
+VentasTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
+public Object getValueAt(int row,int col){    if(col==0)
+    {
+    SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");
+    return sdf.format((java.util.Date) super.getValueAt(row, col));}
+    else
+    {return super.getValueAt(row,col);}
+}}
