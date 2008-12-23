@@ -11,6 +11,9 @@ import groovy.sql.*;
 import groovy.swing.*;
 import javax.swing.*;
 import java.awt.*;
+import omoikane.sistema.*;
+import javax.swing.event.*;
+import java.awt.event.*;
 
 /**
  *
@@ -26,6 +29,13 @@ class Grupos {
         def cat = (new omoikane.formularios.CatalogoGrupos())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de Grupos", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
@@ -39,6 +49,13 @@ class Grupos {
         def cat = (new omoikane.formularios.CatalogoGrupos())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de grupos", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
@@ -56,6 +73,7 @@ class Grupos {
         def formGrupo = new omoikane.formularios.Grupo()
         formGrupo.setVisible(true)
         escritorio.getPanelEscritorio().add(formGrupo)
+        Herramientas.iconificable(formGrupo)
         formGrupo.toFront()
         try { formGrupo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Grupo", Herramientas.getStackTraceString(e)) }
         formGrupo.setEditable(true);
@@ -88,6 +106,7 @@ class Grupos {
         def formGrupo = new omoikane.formularios.Grupo()
         formGrupo.setVisible(true)
         escritorio.getPanelEscritorio().add(formGrupo)
+        Herramientas.iconificable(formGrupo)
         formGrupo.toFront()
         try { formGrupo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Grupo", Herramientas.getStackTraceString(e)) }
 
@@ -124,6 +143,7 @@ class Grupos {
         def formGrupo = new omoikane.formularios.Grupo()
         formGrupo.setVisible(true)
         escritorio.getPanelEscritorio().add(formGrupo)
+        Herramientas.iconificable(formGrupo)
         formGrupo.toFront()
         try { formGrupo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Grupo", Herramientas.getStackTraceString(e)) }
 

@@ -6,7 +6,11 @@
 package omoikane.principal
 
 import omoikane.sistema.*
-
+import java.text.*;
+import groovy.sql.*;
+import omoikane.sistema.*;
+import javax.swing.event.*;
+import java.awt.event.*;
 /**
  *
  * @author Usuario
@@ -15,6 +19,7 @@ class Caja {
     static def IDCaja    = 1
     static def IDAlmacen = 1
     static def IDCliente = 0
+    static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
 
 	static def lanzar() {
@@ -84,4 +89,152 @@ class Caja {
             } catch(err) { Dialogos.error("Error: La venta no se pudo registrar", err) }
         }
     }
+
+    static def lanzarCatalogo()
+    {
+        def cat = (new omoikane.formularios.CatalogoCajas())
+        cat.setVisible(true);
+        escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
+        cat.toFront()
+        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de cajas", Herramientas.getStackTraceString(e)) }
+        cat.txtBusqueda.requestFocus()
+        poblarCajas(cat.getTablaCajas(),"")
+    }
+
+    static def lanzarCatalogoDialogo()
+    {
+        def foco=new Object()
+        def cat = (new omoikane.formularios.CatalogoCajas())
+        cat.setVisible(true);
+        escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
+        cat.toFront()
+        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de cajas", Herramientas.getStackTraceString(e)) }
+        cat.txtBusqueda.requestFocus()
+        cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
+        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
+        def retorno
+        cat.btnAceptar.actionPerformed = { def catTab = cat.tablaCajas; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as int; cat.btnCerrar.doClick(); }
+        poblarCajas(cat.getTablaCajas(),"")
+        synchronized(foco){foco.wait()}
+        retorno
+    }
+
+    static def lanzarFormNuevoCaja()
+    {
+        def formCaja = new omoikane.formularios.CajaDetalles()
+        formCaja.setVisible(true)
+        escritorio.getPanelEscritorio().add(formCaja)
+        Herramientas.iconificable(formCaja)
+        formCaja.toFront()
+        try { formCaja.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Caja", Herramientas.getStackTraceString(e)) }
+        formCaja.setEditable(true);
+        formCaja.setModoNuevo();
+        formCaja
+    }
+        static def guardar(formCaja)
+    {
+        Herramientas.verificaCampos {
+        def descripcion = formCaja.getTxtDescripcion()
+        Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+
+        try {
+            def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.addCaja(descripcion))
+        } catch(e) { Dialogos.error("Error al enviar a la base de datos. El grupo no se registró", e) }
+        formCaja.dispose()
+        }
+    }
+
+    static def lanzarDetallesCaja(ID)
+    {
+        def formCaja = new omoikane.formularios.CajaDetalles()
+        formCaja.setVisible(true)
+        escritorio.getPanelEscritorio().add(formCaja)
+        Herramientas.iconificable(formCaja)
+        formCaja.toFront()
+        try { formCaja.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Caja", Herramientas.getStackTraceString(e)) }
+
+        def alm         = Nadesico.conectar().getCaja(ID)
+
+        formCaja.setTxtIDCaja         alm.id_caja       as String
+        formCaja.setTxtDescripcion    alm.descripcion
+        formCaja.setTxtCreado         alm.creado        as String
+        formCaja.setTxtUModificacion  alm.uModificacion as String
+        formCaja.setModoDetalles();
+        formCaja
+    }
+
+    static def poblarCajas(tablaMovs,txtBusqueda)
+    {
+
+        def dataTabMovs = tablaMovs.getModel()
+         try {
+            def movimientos = Nadesico.conectar().getRows(queryCaja =("SELECT * FROM cajas WHERE (descripcion LIKE '%"+txtBusqueda+"%' OR id_caja LIKE '%"+txtBusqueda+"%')") )
+            def filaNva = []
+
+            movimientos.each {
+                SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy");
+                def fecha = sdf.format(it.creado);
+                filaNva = [it.id_caja, it.descripcion,fecha]
+                dataTabMovs.addRow(filaNva.toArray())
+            }
+        } catch(Exception e) {
+            Dialogos.lanzarDialogoError(null, "Error grave. No hay conexion con la base de datos!", omoikane.sistema.Herramientas.getStackTraceString(e))
+        }
+    }
+
+    static def lanzarModificarCaja(ID)
+    {
+        def formCaja = new omoikane.formularios.CajaDetalles()
+        formCaja.setVisible(true)
+        escritorio.getPanelEscritorio().add(formCaja)
+        Herramientas.iconificable(formCaja)
+        formCaja.toFront()
+        try { formCaja.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Caja", Herramientas.getStackTraceString(e)) }
+
+        def alm         = Nadesico.conectar().getCaja(ID)
+
+        formCaja.setTxtIDCaja           alm.id_caja    as String
+        formCaja.setTxtDescripcion      alm.descripcion
+        formCaja.setTxtCreado           alm.creado as String
+        formCaja.setTxtUModificacion    alm.uModificacion as String
+        formCaja.setModoModificar();
+        formCaja
+    }
+    static def modificar(formCaja)
+    {
+        Herramientas.verificaCampos {
+        Herramientas.verificaCampo(formCaja.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+        def serv = Nadesico.conectar()
+            Dialogos.lanzarAlerta(serv.modCaja(formCaja.getTxtIDCaja(),formCaja.getTxtDescripcion()))
+        }
+    }
+
+    static def eliminarCaja(ID)
+    {
+        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        db.execute("DELETE FROM cajas WHERE id_caja = " + ID)
+        db.close()
+        Dialogos.lanzarAlerta("Caja " + ID + " supuestamente eliminado")
+    }
+
+    static def lanzarImprimir()
+  {
+        def reporte = new Reporte('omoikane/reportes/ReporteCajas.jasper', [QueryTxt:queryCaja]);
+        reporte.lanzarPreview()
+  }
 }

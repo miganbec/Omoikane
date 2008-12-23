@@ -60,7 +60,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         Calendar calendario = Calendar.getInstance();
         txtFechaHasta.setDate(calendario.getTime());
         calendario.add(Calendar.DAY_OF_MONTH, -30);
-         txtFechaDesde.setDate(calendario.getTime());
+        txtFechaDesde.setDate(calendario.getTime());
 
         String[]  columnas = { "Fecha","Venta", "Caja", "Almacen", "Cliente","Total"};
         ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
@@ -124,9 +124,11 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         btnDetalles = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        setTitle("Catálogo de Ventas");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Catalogo Ventas");
+        jLabel2.setText("Catálogo de Ventas");
 
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -233,7 +235,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
                                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)

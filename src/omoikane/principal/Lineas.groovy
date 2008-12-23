@@ -11,6 +11,9 @@ import groovy.sql.*;
 import groovy.swing.*;
 import javax.swing.*;
 import java.awt.*;
+import omoikane.sistema.*;
+import javax.swing.event.*;
+import java.awt.event.*;
 
 /**
  *
@@ -26,6 +29,15 @@ class Lineas {
         def cat = (new omoikane.formularios.CatalogoLineas())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
+
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de lineas", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
@@ -38,6 +50,13 @@ class Lineas {
         def cat = (new omoikane.formularios.CatalogoLineas())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de grupos", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
@@ -55,6 +74,7 @@ class Lineas {
         def formLinea = new omoikane.formularios.Linea()
         formLinea.setVisible(true)
         escritorio.getPanelEscritorio().add(formLinea)
+        Herramientas.iconificable(formLinea)
         formLinea.toFront()
         try { formLinea.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Linea", Herramientas.getStackTraceString(e)) }
         formLinea.setEditable(true);
@@ -87,6 +107,7 @@ class Lineas {
         def formLinea = new omoikane.formularios.Linea()
         formLinea.setVisible(true)
         escritorio.getPanelEscritorio().add(formLinea)
+        Herramientas.iconificable(formLinea)
         formLinea.toFront()
         try { formLinea.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles linea", Herramientas.getStackTraceString(e)) }
 
@@ -122,6 +143,7 @@ class Lineas {
         def formLinea = new omoikane.formularios.Linea()
         formLinea.setVisible(true)
         escritorio.getPanelEscritorio().add(formLinea)
+        Herramientas.iconificable(formLinea)
         formLinea.toFront()
         try { formLinea.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Linea", Herramientas.getStackTraceString(e)) }
 

@@ -15,9 +15,12 @@ import java.sql.*;
 import java.util.Calendar;
 import groovy.swing.*;
 import java.text.*;
+import omoikane.sistema.*;
+import javax.swing.event.*;
+import java.awt.event.*;
 
 /**
- *
+ *****
  * @author Octavio
  */
 class Almacenes {
@@ -31,10 +34,18 @@ class Almacenes {
         def cat = (new omoikane.formularios.CatalogoAlmacenes())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de almacenes", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
         poblarAlmacenes(cat.getTablaAlmacenes(),"")
+
 
     }
 
@@ -44,6 +55,13 @@ class Almacenes {
         def cat = (new omoikane.formularios.CatalogoAlmacenes())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.iconificable(cat)
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de almacenes", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
@@ -61,6 +79,7 @@ class Almacenes {
         def formAlmacen = new omoikane.formularios.Almacen()
         formAlmacen.setVisible(true)
         escritorio.getPanelEscritorio().add(formAlmacen)
+        Herramientas.iconificable(formAlmacen)
         formAlmacen.toFront()
         try { formAlmacen.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles almacen", Herramientas.getStackTraceString(e)) }
         formAlmacen.setEditable(true);
@@ -87,6 +106,7 @@ class Almacenes {
         def formAlmacen = new omoikane.formularios.Almacen()
         formAlmacen.setVisible(true)
         escritorio.getPanelEscritorio().add(formAlmacen)
+        Herramientas.iconificable(formAlmacen)
         formAlmacen.toFront()
         try { formAlmacen.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles almacen", Herramientas.getStackTraceString(e)) }
 
@@ -121,6 +141,7 @@ class Almacenes {
         def formAlmacen = new omoikane.formularios.Almacen()
         formAlmacen.setVisible(true)
         escritorio.getPanelEscritorio().add(formAlmacen)
+        Herramientas.iconificable(formAlmacen)
         formAlmacen.toFront()
         try { formAlmacen.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Almacen", Herramientas.getStackTraceString(e)) }
 
@@ -149,7 +170,7 @@ class Almacenes {
         Dialogos.lanzarAlerta("Almacen " + ID + " supuestamente eliminado")
     }
 
-    static def lanzarImprimir(ID)
+    static def lanzarImprimir()
   {
         def reporte = new Reporte('omoikane/reportes/ReporteAlmacenes.jasper', [QueryTxt:queryAlmacen]);
         reporte.lanzarPreview()
@@ -161,6 +182,14 @@ class Almacenes {
         def cat = (new omoikane.formularios.MovimientosAlmacen())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscarFocus" ) { cat.txtBusqueda.requestFocus() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.In2ActionX(cat, KeyEvent.VK_ENTER , "filtrar" ) { cat.btnFiltrar.doClick() }
+        Herramientas.iconificable(cat)
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario movimientos de almacén", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
@@ -218,6 +247,12 @@ class Almacenes {
         def nvo = (new omoikane.formularios.MovimientoAlmacen())
         nvo.cellCodigo.component.keyPressed = { def src = it; if(it.getKeyCode()==it.VK_F2) { Thread.start { src.getSource().setText(Articulos.lanzarDialogoCatalogo()); src.getSource().requestFocus() } } }
         nvo.setVisible(true);
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F12   , "eliminar" ) { cat.btnEliminarRenglon.doClick() }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F2    , "catalogo" ) { cat.btnCatalogo.doClick() }
+        Herramientas.iconificable(nvo)
         escritorio.getPanelEscritorio().add(nvo)
         nvo.setModoNuevo()
         nvo.toFront()
@@ -297,6 +332,10 @@ class Almacenes {
         def form = (new omoikane.formularios.MovimientoAlmacen())
         form.setVisible(true);
         escritorio.getPanelEscritorio().add(form)
+        Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F2    , "catalogo" ) { cat.btnCatalogo.doClick() }
+        Herramientas.iconificable(form)
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
 

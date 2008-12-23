@@ -4,7 +4,7 @@
  */
 
 /*
- * CatalogoAlmacenes.java
+ * CatalogoCajas.java
  *
  * Created on 11/10/2008, 07:56:04 PM
  */
@@ -20,22 +20,26 @@ import javax.swing.*;
 import javax.swing.event.*;
 import omoikane.sistema.*;
 
+
+
+
+
 /**
  *
  * @author Adan
  */
+public class CatalogoCajas extends javax.swing.JInternalFrame {
 
-public class CatalogoLineas extends javax.swing.JInternalFrame {
-
-        BufferedImage     fondo;
-        TimerBusqueda     timerBusqueda;
+    BufferedImage     fondo;
+    TimerBusqueda     timerBusqueda;
+    public    int ID;
 
     class TimerBusqueda extends Thread
     {
-        CatalogoLineas ca;
+        CatalogoCajas ca;
         boolean busquedaActiva = true;
 
-        TimerBusqueda(CatalogoLineas ca) { this.ca = ca; }
+        TimerBusqueda(CatalogoCajas ca) { this.ca = ca; }
         public void run()
         {
             synchronized(this)
@@ -57,8 +61,8 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
         System.out.println("acción");
     }
 
-    /** Creates new form CatalogoAlmacenes */
-    public CatalogoLineas() {
+    /** Creates new form CatalogoCajas */
+    public CatalogoCajas() {
         initComponents();
 
         this.setOpaque(false);
@@ -79,7 +83,11 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
         newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
         newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0));
         setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
-   }
+    }
+
+
+
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -94,23 +102,18 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaLineas = new javax.swing.JTable();
+        tablaCajas = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
-        btnDetalles = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnImprimir = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
+        btnDetalles = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
 
-        setTitle("Catálogo de Lineas");
+        setTitle("Catálogo Cajas");
 
-        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBusquedaActionPerformed(evt);
-            }
-        });
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyPressed(evt);
@@ -126,26 +129,26 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Catálogo de Lineas");
+        jLabel2.setText("Catálogo Cajas");
 
-        tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCajas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Linea", "Descripcion"
+                "ID Caja", "Descripcion", "Creado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tablaLineas.setShowHorizontalLines(false);
-        jScrollPane1.setViewportView(tablaLineas);
+        tablaCajas.setShowHorizontalLines(false);
+        jScrollPane1.setViewportView(tablaCajas);
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -162,19 +165,11 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
-        btnDetalles.setText("Detalles [F4]");
-        btnDetalles.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/printer.png"))); // NOI18N
+        btnImprimir.setText("Imprimir [F7]");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetallesActionPerformed(evt);
-            }
-        });
-
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_add.png"))); // NOI18N
-        btnNuevo.setText("Nuevo [F5]");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
 
@@ -186,7 +181,7 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_remove.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/blog_post_delete.png"))); // NOI18N
         btnEliminar.setText("Eliminar [Supr]");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,16 +189,24 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/printer.png"))); // NOI18N
-        btnImprimir.setText("Imprimir [F7]");
-        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_add.png"))); // NOI18N
+        btnNuevo.setText("Nuevo [F5]");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimirActionPerformed(evt);
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
+        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
+        btnDetalles.setText("Detalles [F4]");
+        btnDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetallesActionPerformed(evt);
             }
         });
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/48x48/back.png"))); // NOI18N
-        btnCerrar.setText("Cerrar[ESC]");
+        btnCerrar.setText("Cerrar [Esc]");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
@@ -214,32 +217,33 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDetalles)
+                        .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -249,33 +253,29 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(14, 14, 14))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCerrar, 0, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAceptar))
+                    .addComponent(btnAceptar)
+                    .addComponent(btnImprimir)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnNuevo)
+                    .addComponent(btnDetalles)
+                    .addComponent(btnModificar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
-        // TODO add your handling code here:       
-    }//GEN-LAST:event_txtBusquedaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -289,48 +289,48 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_btnAceptarActionPerformed
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_DOWN)
+           if(evt.getKeyCode() == evt.VK_DOWN)
         {
-            int sigFila = tablaLineas.getSelectedRow()+1;
-            if(sigFila < tablaLineas.getRowCount())
+            int sigFila = tablaCajas.getSelectedRow()+1;
+            if(sigFila < tablaCajas.getRowCount())
             {
-                this.tablaLineas.setRowSelectionInterval(sigFila, sigFila);
-                this.tablaLineas.scrollRectToVisible(tablaLineas.getCellRect(sigFila, 1, true));
+                this.tablaCajas.setRowSelectionInterval(sigFila, sigFila);
+                this.tablaCajas.scrollRectToVisible(tablaCajas.getCellRect(sigFila, 1, true));
             }
         }
         if(evt.getKeyCode() == evt.VK_UP)
         {
-            int antFila = tablaLineas.getSelectedRow()-1;
+            int antFila = tablaCajas.getSelectedRow()-1;
             if(antFila >= 0) {
-                this.tablaLineas.setRowSelectionInterval(antFila, antFila);
-                this.tablaLineas.scrollRectToVisible(tablaLineas.getCellRect(antFila, 1, true));
+                this.tablaCajas.setRowSelectionInterval(antFila, antFila);
+                this.tablaCajas.scrollRectToVisible(tablaCajas.getCellRect(antFila, 1, true));
             }
         }
         if(evt.getKeyCode() == evt.VK_PAGE_DOWN)
         {
-            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / tablaLineas.getRowHeight();
-            int sigFila = tablaLineas.getSelectedRow()+nFilas;
-            if(sigFila > tablaLineas.getRowCount()) {
-                sigFila = tablaLineas.getRowCount()-1;
+            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / tablaCajas.getRowHeight();
+            int sigFila = tablaCajas.getSelectedRow()+nFilas;
+            if(sigFila > tablaCajas.getRowCount()) {
+                sigFila = tablaCajas.getRowCount()-1;
             }
-            if(sigFila < tablaLineas.getRowCount()) {
-                this.tablaLineas.setRowSelectionInterval(sigFila, sigFila);
-                this.tablaLineas.scrollRectToVisible(tablaLineas.getCellRect(sigFila, 1, true));
+            if(sigFila < tablaCajas.getRowCount()) {
+                this.tablaCajas.setRowSelectionInterval(sigFila, sigFila);
+                this.tablaCajas.scrollRectToVisible(tablaCajas.getCellRect(sigFila, 1, true));
             }
         }
         if(evt.getKeyCode() == evt.VK_PAGE_UP)
         {
-            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / tablaLineas.getRowHeight();
-            int antFila = tablaLineas.getSelectedRow()-nFilas;
+            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / tablaCajas.getRowHeight();
+            int antFila = tablaCajas.getSelectedRow()-nFilas;
             if(antFila < 0) {
                 antFila = 0;
             }
-            this.tablaLineas.setRowSelectionInterval(antFila, antFila);
-            this.tablaLineas.scrollRectToVisible(tablaLineas.getCellRect(antFila, 1, true));
+            this.tablaCajas.setRowSelectionInterval(antFila, antFila);
+            this.tablaCajas.scrollRectToVisible(tablaCajas.getCellRect(antFila, 1, true));
         }
         if(evt.getKeyCode() == evt.VK_DELETE)
         {
@@ -339,45 +339,30 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
-    private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-        int sel = this.tablaLineas.getSelectedRow();
-        int id;
-        if(sel == -1)
-        {
-            Dialogos.lanzarAlerta("Ninguna fila ha sido seleccionada.");
-        } else {
-            id = (Integer)this.tablaLineas.getValueAt(sel, 0);
-            //Lanzar ventana y agregarle un listener
-            omoikane.principal.Lineas.lanzarDetallesLinea(id);
-               }
-}//GEN-LAST:event_btnDetallesActionPerformed
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
-         JInternalFrame wnd = (JInternalFrame) omoikane.principal.Lineas.lanzarFormNuevoLinea();
-        wnd.addInternalFrameListener(iframeAdapter);
-}//GEN-LAST:event_btnNuevoActionPerformed
+        omoikane.principal.Caja.lanzarImprimir();
+}//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-                 int sel = this.tablaLineas.getSelectedRow();
+        int sel = this.tablaCajas.getSelectedRow();
         int id;
 
         if(sel == -1)
         {
             Dialogos.lanzarAlerta("Ninguna fila ha sido seleccionada.");
         } else {
-            id = (Integer)this.tablaLineas.getValueAt(sel, 0);
+            id = (Integer)this.tablaCajas.getValueAt(sel, 0);
             //Lanzar ventana y agregarle un listener
-            JInternalFrame wnd = (JInternalFrame) omoikane.principal.Lineas.lanzarModificarLinea(id);
+            JInternalFrame wnd = (JInternalFrame) omoikane.principal.Caja.lanzarModificarCaja(id);
             wnd.addInternalFrameListener(iframeAdapter);
         }
 }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        int sel = this.tablaLineas.getSelectedRow();
+                 int sel = this.tablaCajas.getSelectedRow();
         int id;
 
         if(sel == -1)
@@ -385,26 +370,44 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
             Dialogos.lanzarAlerta("Ninguna fila ha sido seleccionada.");
         }
         else {
-            id = (Integer)this.tablaLineas.getValueAt(sel, 0);
-            String descripcion = String.valueOf(((DefaultTableModel)tablaLineas.getModel()).getValueAt(tablaLineas.getSelectedRow(),1));
-            if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar éste linea: \""+descripcion+"\"?", "lalajiji", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            omoikane.principal.Lineas.eliminarLinea(id);
+            id = (Integer)this.tablaCajas.getValueAt(sel, 0);
+            String descripcion = String.valueOf(((DefaultTableModel)tablaCajas.getModel()).getValueAt(tablaCajas.getSelectedRow(),1));
+            if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar ésta caja: \""+descripcion+"\"?", "lala", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+            omoikane.principal.Caja.eliminarCaja(id);
             resetTable();
             }
              }
 }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Lineas.lanzarImprimir();
-}//GEN-LAST:event_btnImprimirActionPerformed
+        JInternalFrame wnd = (JInternalFrame) omoikane.principal.Caja.lanzarFormNuevoCaja();
+        wnd.addInternalFrameListener(iframeAdapter);
+}//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
+        // TODO add your handling code here:
+         int sel = this.tablaCajas.getSelectedRow();
+        int id;
+
+        if(sel == -1)
+        {
+            Dialogos.lanzarAlerta("Ninguna fila ha sido seleccionada.");
+        } else {
+            id = (Integer)this.tablaCajas.getValueAt(sel, 0);
+            //Lanzar ventana y agregarle un listener
+            omoikane.principal.Caja.lanzarDetallesCaja(id);
+               }
+}//GEN-LAST:event_btnDetallesActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         this.dispose();
 }//GEN-LAST:event_btnCerrarActionPerformed
 
-        public void preBuscar()
+
+
+    public void preBuscar()
     {
         if(timerBusqueda != null && timerBusqueda.isAlive()) { timerBusqueda.cancelar(); }
         this.timerBusqueda = new TimerBusqueda(this);
@@ -417,17 +420,19 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
        resetTable();
     }
 
-    public JTable getTablaLineas()
+
+
+    public JTable getTablaCajas()
     {
-        return tablaLineas;
+        return tablaCajas;
     }
 
     public void resetTable()
     {
-        String[] columnas = {"ID Linea", "Descripcion"};
-        this.tablaLineas.setModel(new DefaultTableModel());
-        ((DefaultTableModel)this.tablaLineas.getModel()).setColumnIdentifiers(columnas);
-        omoikane.principal.Lineas.poblarLineas(this.tablaLineas,txtBusqueda.getText());
+        String[] columnas = {"ID Caja", "Descripcion","Creado"};
+        this.tablaCajas.setModel(new DefaultTableModel());
+        ((DefaultTableModel)this.tablaCajas.getModel()).setColumnIdentifiers(columnas);
+        omoikane.principal.Caja.poblarCajas(this.tablaCajas,txtBusqueda.getText());
     }
 
     public void paintComponent(Graphics g)
@@ -462,8 +467,8 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaLineas;
-    private javax.swing.JTextField txtBusqueda;
+    public javax.swing.JTable tablaCajas;
+    public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 
     public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()

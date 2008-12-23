@@ -50,36 +50,6 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         txtFechaHasta.setDate(calendario.getTime());
         calendario.add(Calendar.DAY_OF_MONTH, -30);
         txtFechaDesde.setDate(calendario.getTime());
-
-        Action cerrar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnCerrar.doClick();
-        } };
-        Action buscarFocus = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            txtBusqueda.requestFocus();
-        } };
-        Action detalles = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnDetalles.doClick();
-        } };
-        Action nuevo = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnNuevo.doClick();
-        } };
-        Action modificar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnModificar.doClick();
-        } };
-        Action imprimir = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnImprimir.doClick();
-        } };
-        Action filtrar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnFiltrar.doClick();
-        } };
-
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_ESCAPE, "cerrar", cerrar);
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_F3, "buscarFocus", buscarFocus);
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_F4, "detalles", detalles);
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_F5, "nuevo", nuevo);
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_F6, "modificar", modificar);
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_F7, "imprimir", imprimir);
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_ENTER, "filtrar", filtrar);
     }
 
     public void resetTable()
@@ -135,9 +105,10 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         txtFechaDesde = new org.jdesktop.swingx.JXDatePicker();
         txtFechaHasta = new org.jdesktop.swingx.JXDatePicker();
 
+        setTitle("Movimientos del almacén");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Movimientos del almacén");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));

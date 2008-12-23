@@ -51,23 +51,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
 
         this.fecha.setDate(new java.util.Date());
         //tablaPrincipal.setDefaultEditor(Object.class, new Celda());
-        Action cerrar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnCerrar.doClick();
-        } };
-        Action nuevo = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnNuevo.doClick();
-        } };
-        Action imprimir = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnImprimir.doClick();
-        } };
-        Action eliminar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            btnEliminarRenglon.doClick();
-        } };
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_ESCAPE, "cerrar"   , cerrar  );
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_F5    , "nuevo"    , nuevo   );
-        Herramientas.Input2Action(this.getRootPane(), KeyEvent.VK_F8    , "imprimir" , imprimir);
-        Herramientas.Input2Action(tablaPrincipal, KeyEvent.VK_F12, "eliminar" , eliminar);
-
+        
     }
 
 
@@ -101,8 +85,9 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         btnEliminarRenglon = new javax.swing.JButton();
         fecha = new org.jdesktop.swingx.JXDatePicker();
-        jButton1 = new javax.swing.JButton();
+        btnCatalogo = new javax.swing.JButton();
 
+        setTitle("Movimiento de almacén");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 36));
@@ -215,7 +200,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, 20));
 
         btnEliminarRenglon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/remove.png"))); // NOI18N
-        btnEliminarRenglon.setText("Eliminar renglón seleccionado [Supr]");
+        btnEliminarRenglon.setText("Eliminar renglón seleccionado [F12]");
         btnEliminarRenglon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarRenglonActionPerformed(evt);
@@ -231,9 +216,9 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 160, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
-        jButton1.setText("Catálogo de artículos [F2]");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 200, -1));
+        btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
+        btnCatalogo.setText("Catálogo de artículos [F2]");
+        getContentPane().add(btnCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -364,6 +349,7 @@ public void setModoDetalles()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField almacen;
+    private javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEliminarRenglon;
     private javax.swing.JButton btnImprimir;
@@ -371,7 +357,6 @@ public void setModoDetalles()
     public javax.swing.JTextField descripcion;
     private org.jdesktop.swingx.JXDatePicker fecha;
     private javax.swing.JTextField folio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
