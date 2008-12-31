@@ -7,6 +7,9 @@ package omoikane.sistema
 
 import java.io.*;
 import groovy.text.GStringTemplateEngine
+import java.text.SimpleDateFormat
+import omoikane.sistema.*
+import groovy.inspect.swingui.*
 
 /**
  *
@@ -21,21 +24,26 @@ class Ticket {
     def Ticket(IDAlmacen, IDVenta) {
         this.IDVenta = IDVenta
         def serv = new Nadesico().conectar()
-        data = serv.getVenta(IDVenta, IDAlmacen)
-        serv.desconectar()
+        try {
+            data         = serv.getVenta(IDVenta, IDAlmacen)
+            data.caja    = serv.getCaja(data.id_caja)
+            data.usuario = serv.getUsuario(data.id_usuario)
+        } catch(e) {
+            serv.desconectar()
+            throw e
+        }
     }
     def generarTxt() {
         def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoTicket.txt").getText('UTF-8') as String
-        /*
-        plantilla = plantilla.replace('[%fecha%]'    , data.fecha_hora   )
-        plantilla = plantilla.replace('[%folio%]'    , folio   )
-        plantilla = plantilla.replace('[%contenido%]', data.tabMatriz.toString())
-        plantilla = plantilla.replace('[%subtotal%]' , data.subtotal as String)
-        plantilla = plantilla.replace('[%descuento%]', data.descuento as String)
-        plantilla = plantilla.replace('[%impuestos%]', data.impuestos as String)
-        plantilla = plantilla.replace('[%total%]'    , data.total as String)
-        */
-        def binding = ["fecha":data.fecha_hora, "lastname":"Pullara", "city":"San Francisco", "month":"December", "signed":"Groovy-Dev"]
+
+        def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
+        def sdfHora  = new SimpleDateFormat("hh:mm a")
+        def binding = data
+
+        binding.fecha = sdfFecha.format(data.date)
+        binding.hora  = sdfHora.format(data.date)
+        binding.folio = "${data.id_almacen}-${data.id_caja}-${data.id_venta}"
+        binding.cajero= data.usuario.nombre
 
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)

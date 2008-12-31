@@ -1,19 +1,21 @@
-****************************************
-*             SFM Tlapacoyan           *
-****************************************
-Nahum Medina García
-Valdez
-RFC: MEGN560328MQ0
-Fecha: [%fecha%] - Folio: [%folio%]
-<% 3.times { %> ${fecha} <% } %>
+  *  * SUPER  FARMACIA  MEDINA  *  *
 
-[%contenido%]
-[%cantidad%]@[%descripcion%] = [%subtotal%]
-[%/contenido%]
+NAHUM MEDINA GARCIA        MEGN560328MQ0
+  HEROES DE TLAPACOYAN 207 COL CENTRO
+       TLAPACOYAN, VER. CP 93650
+ - - - - - - - - - - - - - - - - - - -
 
-Subtotal: [%subtotal%]
-Descuento: [%descuento%]
-Impuestos: [%impuestos%]
+${caja.descripcion}  ${cajero}
+${fecha}  ${hora}   Folio: ${folio}
 
-Total: [%total%]
-Gracias por su compra!
+<% detalles.each { d -> %>${String.format("%4.4s @ %24.24s%9.02f", d.cantidad, d.descripcion, d.total)}
+<% } %>
+                        Total: ${String.format("%9.02f", total)}
+           Descuento incluído: ${String.format("%9.02f", descuento)}
+                 IVA incluído: ${String.format("%9.02f", impuestos)}
+
+         Gracias por su compra!
+
+   SUCURSAL VALDEZ No.601 COL.CENTRO
+      C.P. 93650 TLAPACOYAN, VER.
+ TELS: 01 (225) 315 42 03 Y 315 42 02

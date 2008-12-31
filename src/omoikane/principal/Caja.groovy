@@ -6,11 +6,16 @@
 package omoikane.principal
 
 import omoikane.sistema.*
+
+import javax.swing.table.*
+import groovy.inspect.swingui.*
+
 import java.text.*;
 import groovy.sql.*;
 import omoikane.sistema.*;
 import javax.swing.event.*;
 import java.awt.event.*;
+
 /**
  *
  * @author Usuario
@@ -19,16 +24,25 @@ class Caja {
     static def IDCaja    = 1
     static def IDAlmacen = 1
     static def IDCliente = 0
+    static def IDUsuario = 0
     static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
 
 	static def lanzar() {
         def form = new omoikane.formularios.Caja()
+        def modelo = new CajaTableModel()
+        form.tablaVenta.setModel(modelo)
+        form.modelo = modelo
         escritorio.getPanelEscritorio().add(form)
         Herramientas.centrarVentana(form);
         form.setVisible(true);
         Herramientas.iconificable(form)
-        Herramientas.setColumnsWidth(form.tablaVenta, [0.03,0.48,0.12,0.12,0.12,0.13]);
+        Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
+
+        Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick()      }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar" ) { form.btnCancelacion.doClick()   }
+        Herramientas.In2ActionX(form.btnCerrar, KeyEvent.VK_ESCAPE, "cerrar2") { form.btnCerrar.doClick()        }
 
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario caja", Herramientas.getStackTraceString(e)) }
@@ -41,15 +55,16 @@ class Caja {
         def cifra = { cant -> return String.format("\$%,.2f", cant) }
         def aDoble= { cant -> return cant.replace("\$", '').replace(",", '') as Double }
         def sumarTodo = {
-            def dat   = form.modelo.getDataVector()
-            def sumas = [0.0,0.0,0.0]
+            def dat   = form.modelo.getDataMap()
+            def sumas = [0.0,0.0,0.0,0.0]
             dat.each { linea ->
-                sumas[0] += linea[2] as Double; sumas[1] += linea[4] as Double; sumas[2] += aDoble(linea[5])
+                sumas[0] += linea['Precio'] as Double; sumas[1] += linea['Descuento'] as Double; sumas[2] += aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double
             }
             form.txtNArticulos.text = sumas[0]
             form.txtSubtotal.text   = cifra (sumas[2])
             form.txtTotal.text      = cifra (sumas[2])
             form.txtDescuento.text  = cifra (sumas[1])
+            form.impuestos          = sumas[3]
         }
         def addArtic = { codigo ->
             try {
@@ -60,14 +75,17 @@ class Caja {
                     def precio  = serv.getPrecio(art.id_articulo, IDAlmacen, IDCliente)
                     def total   = cifra(cantidad * precio.total)
                     form.txtCaptura.text = ""
-                    form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,precio.total,precio['descuento$'],total].toArray())
+                    //form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,precio.total,precio['descuento$'],total].toArray())
+                    form.modelo.addRowMap(["ID Artículo":art.id_articulo, "Concepto" :     art.descripcion, "Cantidad" :            cantidad,
+                                           "Precio"     :   precio.total, "Descuento":precio['descuento$'], "Impuestos": precio['impuestos'],
+                                           "Total"      :          total])
                     sumarTodo()
                     form.repaint()
                 }
             } catch(e) { Dialogos.error("Error al obtener información de nadesico!", e) }
         }
         form.txtCaptura.keyPressed = {   e ->
-            if(e.keyCode==e.VK_ENTER) addArtic(form.txtCaptura.text)
+            if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.btnTerminar.doClick() }
             //Al presionar   F2: (lanzarCatalogoDialogo)
             if(e.keyCode == e.VK_F2) { form.btnCatalogo.doClick() }
 
@@ -76,16 +94,17 @@ class Caja {
         form.btnCatalogo.actionPerformed = { e -> Thread.start { form.txtCaptura.text = form.txtCaptura.text + catArticulos(); form.txtCaptura.requestFocus() } }
         form.btnTerminar.actionPerformed = { e ->
             try {
-            def detalles = []
-            form.modelo.getDataVector().each {
-                detalles << [IDArticulo:it[0], cantidad:it[2], precio:it[3], descuento:it[4], total:aDoble(it[5])]
-            }
-            def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), 0, aDoble(form.txtTotal.text), detalles)
-            serv.desconectar()
-            (new Ticket(IDAlmacen, salida.ID)).probar()
-            Dialogos.lanzarAlerta(salida.mensaje)
-            form.dispose()
-            lanzar()
+                if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
+                def detalles = []
+                form.modelo.getDataMap().each {
+                    detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:aDoble(it['Total'])]
+                }
+                def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, IDUsuario, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), form.impuestos, aDoble(form.txtTotal.text), detalles)
+                serv.desconectar()
+                (new Ticket(IDAlmacen, salida.ID)).probar()
+                Dialogos.lanzarAlerta(salida.mensaje)
+                form.dispose()
+                lanzar()
             } catch(err) { Dialogos.error("Error: La venta no se pudo registrar", err) }
         }
     }
@@ -238,3 +257,14 @@ class Caja {
         reporte.lanzarPreview()
   }
 }
+class CajaTableModel extends DefaultTableModel {
+
+    def data = []
+    CajaTableModel() { 
+        super(new Vector(), new Vector(["Concepto", "Cantidad", "Precio", "Descuento", "Total"]))  }
+
+    public void addRowMap(rowData) { data << rowData; addRow(rowData.values()) }
+    public Object getValueAt(int row, int col) { return data[row][getColumnName(col)] /*super.getValueAt(row,col)*/ }
+    public def getDataMap() { return data }
+}
+

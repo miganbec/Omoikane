@@ -24,6 +24,7 @@ public class Caja extends javax.swing.JInternalFrame {
 
     BufferedImage          fondo;
     DefaultTableModel      modelo;
+    Double                 impuestos = 0.0;
     /** Creates new form Caja */
     public Caja() {
         initComponents();
@@ -70,7 +71,7 @@ public class Caja extends javax.swing.JInternalFrame {
         btnTerminar = new javax.swing.JButton();
         btnCatalogo = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnCancelacion = new javax.swing.JButton();
         txtCaptura = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -136,11 +137,11 @@ public class Caja extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_remove.png"))); // NOI18N
-        btnEliminar.setText("Cancelación [F12]");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_remove.png"))); // NOI18N
+        btnCancelacion.setText("Cancelación [F12]");
+        btnCancelacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnCancelacionActionPerformed(evt);
             }
         });
 
@@ -328,7 +329,7 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCatalogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
+                        .addComponent(btnCancelacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnImprimir))
                     .addComponent(txtCaptura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -352,7 +353,7 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnImprimir)
-                            .addComponent(btnEliminar)
+                            .addComponent(btnCancelacion)
                             .addComponent(btnCatalogo)
                             .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -380,10 +381,10 @@ public class Caja extends javax.swing.JInternalFrame {
         
 }//GEN-LAST:event_btnImprimirActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnCancelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelacionActionPerformed
         // TODO add your handling code here:
         
-}//GEN-LAST:event_btnEliminarActionPerformed
+}//GEN-LAST:event_btnCancelacionActionPerformed
 
     private void txtCapturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCapturaActionPerformed
         // TODO add your handling code here:
@@ -391,9 +392,9 @@ public class Caja extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelacion;
     public javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnImprimir;
     public javax.swing.JButton btnTerminar;
     private javax.swing.JLabel jLabel10;

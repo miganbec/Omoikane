@@ -47,7 +47,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCatalogo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCancelacion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnImprimir" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -77,7 +77,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnImprimir" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCatalogo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnTerminar" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
@@ -179,7 +179,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImprimirActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnEliminar">
+    <Component class="javax.swing.JButton" name="btnCancelacion">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/omoikane/media/32x32/page_remove.png"/>
@@ -187,7 +187,7 @@
         <Property name="text" type="java.lang.String" value="Cancelaci&#xf3;n [F12]"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelacionActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCaptura">
