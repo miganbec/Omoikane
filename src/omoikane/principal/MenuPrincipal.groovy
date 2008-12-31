@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Octavio
+ * @author Octaviosssssss
  */
 class MenuPrincipal {
     def menuPrincipal = new omoikane.formularios.MenuPrincipal()
