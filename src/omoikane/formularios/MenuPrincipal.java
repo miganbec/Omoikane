@@ -77,7 +77,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
@@ -89,6 +88,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
 
         setIconifiable(true);
         setTitle("Menú Principal");
@@ -144,15 +144,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 720, 10));
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/vcard-128x128.png"))); // NOI18N
-        jButton8.setText("Clientes");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 230, 60));
-
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/server-128x128.png"))); // NOI18N
         jButton9.setText("Almacenes");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +168,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/proxy-128x128.png"))); // NOI18N
         jButton12.setText("Usuarios     ");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 230, 60));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 720, 10));
 
@@ -236,6 +232,15 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 230, 60));
 
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/vcard-128x128.png"))); // NOI18N
+        jButton16.setText("Clientes");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 230, 60));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -245,11 +250,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         ((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio().dispose();
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        omoikane.principal.Clientes.lanzarCatalogo();
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -287,7 +287,18 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
+        omoikane.principal.Articulos.lanzarCatalogo();
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        omoikane.principal.Clientes.lanzarCatalogo();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        omoikane.principal.Usuarios.lanzarCatalogo();
+    }//GEN-LAST:event_jButton12ActionPerformed
 
 
 
@@ -320,10 +331,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

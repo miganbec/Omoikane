@@ -24,7 +24,7 @@ import omoikane.sistema.*;
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  * @author Octavio
  */
-public class CatalogoClientes extends javax.swing.JInternalFrame {
+public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
     TimerBusqueda          timerBusqueda;
     BufferedImage          fondo;
@@ -36,10 +36,10 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     
     class TimerBusqueda extends Thread
     {
-        CatalogoClientes ca;
+        CatalogoUsuarios ca;
         boolean busquedaActiva = true;
 
-        TimerBusqueda(CatalogoClientes ca) { this.ca = ca; }
+        TimerBusqueda(CatalogoUsuarios ca) { this.ca = ca; }
         public void run()
         {
             synchronized(this)
@@ -57,14 +57,14 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     }
 
     /** Creates new form CatalogoArticulos */
-    public CatalogoClientes() {
+    public CatalogoUsuarios() {
         //Conectar a MySQL
 
         initComponents();
 
-        String[]  columnas = {"RFC", "Razon Social", "Direccion", "Telefono", "Descuento", "Saldo"};
+        String[]  columnas = {"Fecha de Alta", "Id Usuario", "Nombre"};
         ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-        Class[]   clases   = {String.class, String.class, String.class, String.class, Double.class, Double.class};
+        Class[]   clases   = {String.class, String.class, String.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
         NadesicoTableModel modeloTabla = new NadesicoTableModel(cols, cls);
@@ -72,7 +72,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
         
-        setQueryTable("SELECT id_cliente,RFC,razonSocial,direccion,telefono,descuento,saldo FROM clientes");
+        setQueryTable("SELECT id_usuario,fecha_hora_alta,id_usuario,nombre FROM usuarios");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -98,7 +98,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     {
         this.btnAceptar.setVisible(true);
         Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-            ((CatalogoClientes)e.getSource()).btnAceptar.doClick();
+            ((CatalogoUsuarios)e.getSource()).btnAceptar.doClick();
         } };
         getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "aceptar");
         getActionMap().put("aceptar"                 , aceptar  );
@@ -133,7 +133,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
 
         setIconifiable(true);
-        setTitle("Catálogo de clientes");
+        setTitle("Catálogo de usuarios");
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -176,7 +176,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Catálogo de Clientes");
+        jLabel2.setText("Catálogo de Usuarios");
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/back.png"))); // NOI18N
         btnCerrar.setText("Cerrar [Esc]");
@@ -247,7 +247,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 399, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptar)
@@ -308,34 +308,34 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        int IDCliente = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
-        if(IDCliente != -1) {
+        int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        if(IDUsuario != -1) {
             String descripcion = ((NadesicoTableModel)jTable1.getModel()).getDescripcion(jTable1.getSelectedRow());
-            if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar éste Cliente: \""+descripcion+"\"?", "lala", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-                omoikane.principal.Clientes.eliminarCliente(IDCliente);
+            if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar éste Usuario: \""+descripcion+"\"?", "lala", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                omoikane.principal.Usuarios.eliminarUsuario(IDUsuario);
             }
         }
 }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        int IDCliente = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
 
         //Lanzar la ventana de detalles:
-        if(IDCliente != -1) { omoikane.principal.Clientes.lanzarModificarCliente(IDCliente); }
+        if(IDUsuario != -1) { omoikane.principal.Usuarios.lanzarModificarUsuario(IDUsuario); }
 }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Clientes.lanzarFormNuevoCliente();
+        omoikane.principal.Usuarios.lanzarFormNuevoUsuario();
 }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
         // TODO add your handling code here:
-        int IDCliente = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         
         //Lanzar la ventana de detalles:
-        if(IDCliente != -1) { omoikane.principal.Clientes.lanzarDetallesClientes(IDCliente); }
+        if(IDUsuario != -1) { omoikane.principal.Usuarios.lanzarDetallesUsuario(IDUsuario); }
 }//GEN-LAST:event_btnDetallesActionPerformed
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
@@ -400,16 +400,16 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Clientes.lanzarImprimir(txtQuery);
+        omoikane.principal.Usuarios.lanzarImprimir(txtQuery);
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         NadesicoTableModel stm = ((NadesicoTableModel)jTable1.getModel());
-        int IDCliente = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDUsuario = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
 
-        if(IDCliente != -1) {
-            IDSeleccionado = IDCliente; codigoSeleccionado = (String)stm.getValueAt(this.jTable1.getSelectedRow(), 0);
+        if(IDUsuario != -1) {
+            IDSeleccionado = IDUsuario; codigoSeleccionado = (String)stm.getValueAt(this.jTable1.getSelectedRow(), 0);
             this.btnCerrar.doClick();
         }
 }//GEN-LAST:event_btnAceptarActionPerformed
@@ -426,7 +426,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     public void buscar()
     {
        String busqueda = this.txtBusqueda.getText();
-       String query    = "select id_cliente,RFC,razonSocial,direccion,telefono,descuento,saldo FROM clientes WHERE razonSocial like '%"+busqueda+"%'";
+       String query    = "SELECT id_usuario,fecha_hora_alta,id_usuario,nombre FROM usuarios WHERE nombre like '%"+busqueda+"%'";
        setQueryTable(query);
     }
 

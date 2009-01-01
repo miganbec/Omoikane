@@ -33,7 +33,7 @@ class Clientes {
         Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
         Herramientas.iconificable(cat)
         cat.toFront()
-        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de artículos", Herramientas.getStackTraceString(e)) }
+        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de clientes", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
         cat
     }
@@ -51,9 +51,9 @@ class Clientes {
         retorno
     }
 
-    static def lanzarImprimir(form)
+    static def lanzarImprimir(txtQuery)
     {
-        def reporte = new Reporte('omoikane/reportes/ReporteClientes.jasper',[txtQuery:form.txtQuery]);
+        def reporte = new Reporte('omoikane/reportes/ReporteClientes.jasper',[txtQuery:txtQuery]);
         reporte.lanzarPreview()
     }
 
