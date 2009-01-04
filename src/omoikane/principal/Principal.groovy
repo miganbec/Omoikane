@@ -7,7 +7,7 @@ package omoikane.principal
 
 import omoikane.sistema.*
 /**
- *
+ * ////////////////////////////////
  * @author Octavio
  */
 public class Principal {

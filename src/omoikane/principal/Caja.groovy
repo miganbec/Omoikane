@@ -15,6 +15,7 @@ import groovy.sql.*;
 import omoikane.sistema.*;
 import javax.swing.event.*;
 import java.awt.event.*;
+import groovy.swing.*
 
 /**
  *
@@ -28,7 +29,70 @@ class Caja {
     static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
 
-	static def lanzar() {
+    static def abrirCaja(ID = -1) {
+        if(ID == -1) {
+            def retorna = false
+            def foco = new Object()
+            def form = new omoikane.formularios.AbrirCaja()
+            form.visible = true
+            escritorio.getPanelEscritorio().add(form)
+            Herramientas.centrarAbsoluto(form);
+            Herramientas.iconificable(form)
+            Herramientas.In2ActionX(form          , KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
+            Herramientas.In2ActionX(form.txtIDCaja, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
+            Herramientas.In2ActionX(form          , KeyEvent.VK_F2    , "buscar"   ) { form.btnBuscar.doClick()        }
+            Herramientas.In2ActionX(form          , KeyEvent.VK_ENTER , "aceptar"  ) { form.btnAceptar.doClick()       }
+            
+            form.txtIDCaja.keyPressed = { e -> if(e.keyCode==e.VK_ENTER) { form.btnAceptar.doClick() } }
+
+            def catArticulos = { def retorno = Caja.lanzarCatalogoDialogo() as String; return retorno==null?"":retorno }
+            form.btnBuscar.actionPerformed = { e -> Thread.start { form.txtIDCaja.text = form.txtIDCaja.text + catArticulos(); form.txtIDCaja.requestFocus() } }
+
+            form.btnAceptar.actionPerformed= { e ->
+                def serv = Nadesico.conectar();
+                def txtID= form.txtIDCaja.text
+                def res  = serv.getCaja(txtID);
+                if(res == 0) { 
+                        Dialogos.lanzarAlerta("No exíste esa caja")
+                    } else {
+
+                        if(serv.cajaAbierta(txtID) != false) { Dialogos.lanzarAlerta("La caja ya estaba abierta!!!")  } else {
+                            def caja = serv.getCaja(txtID)
+                            SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            def hAbierta = sdf.format(caja.horaAbierta)
+                            def hCerrada = sdf.format(caja.horaCerrada)
+                            if(serv.getCorteWhere("id_caja = $txtID AND desde = '$hAbierta' AND hasta = '$hCerrada'") == 0 && hAbierta != "1970-01-01 00:00:00") {
+                                Dialogos.lanzarAlerta("Se debe realizar el corte de caja para ésta caja antes de volver a abrirla")
+                            } else {
+                                serv.abrirCaja(txtID)
+                                retorna = true
+                                Dialogos.lanzarAlerta("Se inició la sesión de la caja correctamente")
+                                form.dispose()
+                            }
+                        }
+                    }
+                serv.desconectar() }
+
+            form.toFront()
+            try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario abrir caja", Herramientas.getStackTraceString(e)) }
+            form.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
+            form.txtIDCaja.requestFocus()
+            
+            synchronized(foco){foco.wait()}
+            return retorna
+        }
+    }
+    static def lanzar() {
+        def serv = Nadesico.conectar()
+        def cajaAbierta = serv.cajaAbierta(IDCaja)
+        serv.desconectar()
+
+        Thread.start {
+            cajaAbierta = cajaAbierta?true:abrirCaja()
+            if(cajaAbierta) { lanzarCaja() }
+        }
+    }
+	static def lanzarCaja() {
         def form = new omoikane.formularios.Caja()
         def modelo = new CajaTableModel()
         form.tablaVenta.setModel(modelo)
@@ -143,7 +207,7 @@ class Caja {
         cat.toFront()
         try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de cajas", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
-        cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
+        cat.internalFrameClosed = { synchronized(foco){ foco.notifyAll()} }
         cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
         def retorno
         cat.btnAceptar.actionPerformed = { def catTab = cat.tablaCajas; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as int; cat.btnCerrar.doClick(); }

@@ -65,6 +65,17 @@ public class Herramientas
         ventana.setLocation(posX,posY+compensaY);
         [x:posX,y:posY]
     }
+    def static centrarAbsoluto(ventana) {
+        def compensaY = 0
+
+        Dimension screenSize = omoikane.principal.Principal.escritorio.escritorioFrame.getSize();
+        Dimension ventanSize = ventana.getPreferredSize();
+
+        def posX = screenSize.width/2 - (ventanSize.width/2) as int
+        def posY = screenSize.height/2 - (ventanSize.height/2) as int
+        ventana.setLocation(posX,posY+compensaY);
+        [x:posX,y:posY]
+    }
     def static centrarVentanaAPantalla(ventana) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension ventanSize = ventana.getPreferredSize();
