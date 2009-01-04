@@ -23,7 +23,7 @@ import java.text.*;
 import java.util.Calendar;
 
 
-public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
+public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
 
     //TimerBusqueda          timerBusqueda;
     TimerBusqueda          timerBusqueda;
@@ -56,16 +56,16 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
         }
     }
     /** Creates new form CatalogoVentas */
-    public CatalogoVentas_1() {
+    public CatalogoCortesCaja() {
         initComponents();
         Calendar calendario = Calendar.getInstance();
         txtFechaHasta.setDate(calendario.getTime());
         calendario.add(Calendar.DAY_OF_MONTH, -30);
         txtFechaDesde.setDate(calendario.getTime());
 
-        String[]  columnas = { "Fecha","Venta", "Caja", "Almacen", "Cliente","Total"};
+        String[]  columnas = { "Fecha","Caja", "Desde","Hasta","Impuesto","Total"};
         ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-        Class[]   clases   = {String.class, Integer.class, Integer.class, String.class, String.class, Double.class};
+        Class[]   clases   = {String.class, String.class, String.class, String.class, Double.class, Double.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
         VentasTableModel modeloTabla = new VentasTableModel(cols, cls);
@@ -73,7 +73,7 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
 
-        setQueryTable("SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente");
+        setQueryTable("SELECT corte.id_corte,cortes.fecha_hora,cajas.descripcion,corte.desde,corte.hasta,corte.impuesto,corte.total WHERE cortes.id_almacen="+IDAlmacen+" AND cortes.id_caja=cajas.id_caja");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -118,9 +118,6 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
         btnCerrar = new javax.swing.JButton();
         txtFechaDesde = new org.jdesktop.swingx.JXDatePicker();
         txtFechaHasta = new org.jdesktop.swingx.JXDatePicker();
-        chkCajero = new javax.swing.JCheckBox();
-        chkCliente = new javax.swing.JCheckBox();
-        chkCaja = new javax.swing.JCheckBox();
         btnAceptar = new javax.swing.JButton();
         btnDetalles = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
@@ -140,7 +137,7 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar [F3]:");
 
@@ -186,18 +183,6 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
 
         txtFechaHasta.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
 
-        chkCajero.setText("Cajero");
-        chkCajero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCajeroActionPerformed(evt);
-            }
-        });
-
-        chkCliente.setSelected(true);
-        chkCliente.setText("Cliente");
-
-        chkCaja.setText("Caja");
-
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar [Enter]");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -242,26 +227,17 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addGap(8, 8, 8)
                                 .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(16, 16, 16)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(chkCliente)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(chkCaja)))))
+                                .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(chkCajero)
-                        .addGap(317, 317, 317))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,26 +253,17 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(txtFechaHasta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFechaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkCajero)
-                            .addComponent(chkCliente)
-                            .addComponent(chkCaja)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(txtFechaHasta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtFechaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -320,10 +287,6 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
         this.dispose();
 }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void chkCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCajeroActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_chkCajeroActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         
@@ -341,7 +304,7 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
             //++++++++++++++++++++++++++++
             id = (Integer)this.jTable1.getValueAt(sel, -1);
             //Lanzar ventana y agregarle un listener
-            omoikane.principal.Ventas.lanzarDetalles(id);
+            omoikane.principal.Cortes.lanzarDetalles(id);
         }
 
 
@@ -349,7 +312,7 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Ventas.lanzarImprimir(txtQuery);
+        omoikane.principal.Cortes.lanzarImprimir(txtQuery);
        
 }//GEN-LAST:event_btnImprimirActionPerformed
 
@@ -404,23 +367,11 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
-    public boolean getBuscarCliente()
-    {
-        return this.chkCliente.getModel().isSelected();
-    }
-    public boolean getBuscarCaja() {
-        return this.chkCaja.getModel().isSelected();
-    }
-    public boolean getBuscarCajero() {
-        return this.chkCajero.getModel().isSelected();
-    }
+
 
     public void buscar()
     {
      
-        boolean xCliente = getBuscarCliente();
-        boolean xCaja = getBuscarCaja();
-        boolean xCajero= getBuscarCajero();
         String whereFecha = "" ;
         String fechaDesde     = "";
         String fechaHasta     = "";
@@ -430,26 +381,13 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
             try {
                 fechaDesde = sdf.format(this.txtFechaDesde.getDate());
                 fechaHasta = sdf.format(this.txtFechaHasta.getDate());
-                whereFecha = " AND ventas.fecha_hora >= '"+fechaDesde+"' AND ventas.fecha_hora <= '"+fechaHasta+"'  ";
+                whereFecha = " AND cortes.fecha_hora >= '"+fechaDesde+"' AND cortes.fecha_hora <= '"+fechaHasta+"'  ";
 
             } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
         }
  
         String busqueda = this.txtBusqueda.getText();
-        String query    = "SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente "+whereFecha;
-        if(xCliente || xCaja || xCajero) { query += "AND ("; }
-        if(xCliente) {
-                query += "(clientes.razonSocial like '%"+busqueda+"%') ";
-        }
-        if(xCliente && (xCaja || xCajero)) { query += "OR "; }
-        if(xCaja) {
-                query += "(id_caja like '%"+busqueda+"%') ";
-        }
-        if((xCaja||xCliente) && xCajero) { query += "OR "; }
-        if(xCajero) {
-                query += "(id_caja like '%"+busqueda+"%') ";
-        }
-        if(xCliente || xCaja || xCajero) { query += ")"; }
+        String query    = "SELECT corte.id_corte,cortes.fecha_hora,cajas.descripcion,corte.desde,corte.hasta,corte.impuesto,corte.total WHERE cortes.id_almacen="+IDAlmacen+" AND cortes.id_caja=cajas.id_caja "+whereFecha;
         setQueryTable(query);
 
     }
@@ -479,9 +417,6 @@ public class CatalogoVentas_1 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnImprimir;
-    private javax.swing.JCheckBox chkCaja;
-    private javax.swing.JCheckBox chkCajero;
-    private javax.swing.JCheckBox chkCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

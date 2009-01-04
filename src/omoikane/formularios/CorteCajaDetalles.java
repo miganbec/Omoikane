@@ -58,20 +58,20 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtImpuestos = new javax.swing.JTextField();
-        txtUModificacion = new javax.swing.JTextField();
+        txtNumeroVenta = new javax.swing.JTextField();
+        txtHasta = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtIDAlmacen = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtCosto = new javax.swing.JTextField();
+        txtImpuestos = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtExistencias = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtUtilidad = new javax.swing.JTextField();
         txtDescuento = new javax.swing.JTextField();
+        txtDesde = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtImpuestos1 = new javax.swing.JTextField();
+        txtSubtotal = new javax.swing.JTextField();
 
         setTitle("Corte de Caja");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,11 +122,11 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         jLabel7.setText("Hasta:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
 
-        txtImpuestos.setEditable(false);
-        getContentPane().add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 260, -1));
+        txtNumeroVenta.setEditable(false);
+        getContentPane().add(txtNumeroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 260, -1));
 
-        txtUModificacion.setEditable(false);
-        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 260, 20));
+        txtHasta.setEditable(false);
+        getContentPane().add(txtHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 260, 20));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ID Almacen:");
@@ -144,33 +144,33 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         jLabel9.setText("Impuesto:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 20));
 
-        txtCosto.setEditable(false);
-        getContentPane().add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 260, -1));
+        txtImpuestos.setEditable(false);
+        getContentPane().add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 260, -1));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("total");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, 20));
 
-        txtExistencias.setEditable(false);
-        getContentPane().add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 260, -1));
+        txtTotal.setEditable(false);
+        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 260, -1));
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Descuento:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, 20));
 
-        txtUtilidad.setEditable(false);
-        getContentPane().add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 260, -1));
-
         txtDescuento.setEditable(false);
-        getContentPane().add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 260, -1));
+        getContentPane().add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 260, -1));
+
+        txtDesde.setEditable(false);
+        getContentPane().add(txtDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 260, -1));
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Desde:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, 20));
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 10, 10));
 
-        txtImpuestos1.setEditable(false);
-        getContentPane().add(txtImpuestos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 260, -1));
+        txtSubtotal.setEditable(false);
+        getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 260, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,37 +183,6 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
     private void txtIDAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDAlmacenActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_txtIDAlmacenActionPerformed
-
-    public void setEditable(boolean editable)
-    {
-        this.txtIDCaja.setEditable(editable);
-        this.txtIDAlmacen.setEditable(editable);
-        this.txtFecha.setEditable(editable);
-        this.txtImpuestos.setEditable(editable);
-        this.txtUnidad.setEnabled(editable);
-        this.txtCosto.setEditable(editable);
-        this.txtUtilidad.setEditable(editable);
-        this.txtDescuento.setEditable(editable);
-    }
-    public void setModoDetalles()
-    {
-        setEditable(false);
-        this.btnGuardar.setVisible(false);
-        this.btnModificar.setVisible(false);
-
-    }
-    public void setModoModificar()
-    {
-        setEditable(true);
-        this.btnGuardar.setVisible(false);
-        this.btnModificar.setVisible(true);
-    }
-    public void setModoNuevo()
-    {
-        setEditable(true);
-        this.txtExistencias.setEditable(true);
-        this.btnModificar.setVisible(false);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
@@ -230,116 +199,44 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDescuento;
-    private javax.swing.JTextField txtExistencias;
+    private javax.swing.JTextField txtDesde;
     private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHasta;
     public javax.swing.JTextField txtIDAlmacen;
     private javax.swing.JTextField txtIDCaja;
     private javax.swing.JTextField txtIDCorte;
     private javax.swing.JTextField txtImpuestos;
-    private javax.swing.JTextField txtImpuestos1;
-    private javax.swing.JTextField txtUModificacion;
-    private javax.swing.JTextField txtUtilidad;
+    private javax.swing.JTextField txtNumeroVenta;
+    private javax.swing.JTextField txtSubtotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the txtCodigo
-     */
-    public String getTxtCodigo() {
-        return txtIDCaja.getText();
-    }
-
-    /**
-     * @param txtCodigo the txtCodigo to set
-     */
-    public void setTxtCodigo(String txtCodigo) {
-        this.txtIDCaja.setText(txtCodigo);
-    }
-    public Component getIDLinea() { return this.txtIDAlmacen; }
-
-    /**
-     * @return the txtDescripcion
-     */
-    public String getTxtDescripcion() {
-        return txtFecha.getText();
-    }
-
-    /**
-     * @param txtDescripcion the txtDescripcion to set
-     */
-    public void setTxtDescripcion(String txtDescripcion) {
-        this.txtFecha.setText(txtDescripcion);
-    }
-
-    /**
-     * @return the txtIDArticulo
-     */
-    public String getTxtIDArticulo() {
-        return txtIDCorte.getText();
-    }
-
-    /**
-     * @param txtIDArticulo the txtIDArticulo to set
-     */
-    public void setTxtIDArticulo(String txtIDArticulo) {
-        this.txtIDCorte.setText(txtIDArticulo);
-    }
-
-    public String getTxtUnidad()
-    {
-        return String.valueOf(txtUnidad.getSelectedItem());
-    }
-
-    public void setTxtUnidad(String txt)
-    {
-        this.txtUnidad.setSelectedItem(txt);
-    }
-
-    public String getTxtImpuestos()
-    {
-        return this.txtImpuestos.getText();
-    }
-
-    public void setTxtImpuestos(String txt)
-    {
-        this.txtImpuestos.setText(txt);
-    }
-
-    public String getTxtUModificacion()
-    {
-        return this.txtUModificacion.getText();
-    }
-
-    public void setTxtUModificacion(String txt)
-    {
-        txtUModificacion.setText(txt);
-    }
-
-    public String getTxtIDLinea()
-    {
-        return txtIDAlmacen.getText();
-    }
-
-    public void setTxtIDLinea(String IDLinea)
-    {
-
-        txtIDAlmacen.setText(IDLinea);
-    }
-
-    public JTextField getCampoID() {
-        return txtIDAlmacen;
-    }
 
     public String getTxtDescuento()   { return this.txtDescuento.getText(); }
-    public String getTxtCosto()       { return this.txtCosto.getText(); }
-    public String getTxtUtilidad()    { return this.txtUtilidad.getText(); }
-    public String getTxtExistencias() { return this.txtExistencias.getText(); }
+    public String getTxtDesde()   { return this.txtDesde.getText(); }
+    public String getTxtFecha()   { return this.txtFecha.getText(); }
+    public String getTxthasta()   { return this.txtHasta.getText(); }
+    public String getTxtIDAlmacen()   { return this.txtIDAlmacen.getText(); }
+    public String getTxtIDCaja()   { return this.txtIDCaja.getText(); }
+    public String getTxtIDCorte()   { return this.txtIDCorte.getText(); }
+    public String getTxtImpuesto()   { return this.txtImpuestos.getText(); }
+    public String getTxtNumeroVenta()   { return this.txtNumeroVenta.getText(); }
+    public String getTxtSubtotal()   { return this.txtSubtotal.getText(); }
+    public String getTxtTotal()   { return this.txtTotal.getText(); }
 
-    public void setTxtDescuento(String descuento)     { txtDescuento.setText(descuento); }
-    public void setTxtCosto(String costo)             { txtCosto.setText(costo); }
-    public void setTxtUtilidad(String utilidad)       { txtUtilidad.setText(utilidad); }
-    public void setTxtExistencias(String existencias) { txtExistencias.setText(existencias); }
+    public void setTxtDescuento     (String txt)     { txtDescuento.setText(txt); }
+    public void setTxtDesde         (String txt)     { txtDesde.setText(txt); }
+    public void setTxtFecha         (String txt)     { txtFecha.setText(txt); }
+    public void setTxtHasta         (String txt)     { txtHasta.setText(txt); }
+    public void setTxtIDAlmacen     (String txt)     { txtIDAlmacen.setText(txt); }
+    public void setTxtIDCaja        (String txt)     { txtIDCaja.setText(txt); }
+    public void setTxtIDCorte       (String txt)     { txtIDCorte.setText(txt); }
+    public void setTxtImpuesto      (String txt)     { txtImpuestos.setText(txt); }
+    public void setTxtNumeroVenta   (String txt)     { txtNumeroVenta.setText(txt); }
+    public void setTxtSubtotal      (String txt)     { txtSubtotal.setText(txt); }
+    public void setTxtTotal         (String txt)     { txtTotal.setText(txt); }
+
     public void paintComponent(Graphics g)
     {
       Graphics2D g2d = (Graphics2D) g;

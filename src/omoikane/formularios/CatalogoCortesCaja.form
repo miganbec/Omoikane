@@ -38,34 +38,21 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="8" pref="8" max="8" attributes="0"/>
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Component id="txtBusqueda" min="-2" pref="330" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtFechaDesde" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtFechaHasta" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="btnFiltrar" min="-2" pref="120" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="chkCliente" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Component id="chkCaja" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="txtFechaHasta" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="btnFiltrar" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="chkCajero" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
@@ -87,32 +74,19 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCerrar" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel3" alignment="0" pref="30" max="32767" attributes="1"/>
-                          <Component id="jLabel4" alignment="0" pref="30" max="32767" attributes="1"/>
-                          <Component id="btnFiltrar" alignment="0" pref="30" max="32767" attributes="1"/>
-                          <Component id="txtFechaHasta" alignment="0" max="32767" attributes="1"/>
-                          <Component id="txtFechaDesde" alignment="0" max="32767" attributes="1"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chkCajero" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkCaja" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel1" alignment="0" pref="30" max="32767" attributes="1"/>
-                          <Component id="txtBusqueda" alignment="0" pref="30" max="32767" attributes="1"/>
-                      </Group>
-                  </Group>
-              </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" pref="30" max="32767" attributes="1"/>
+                      <Component id="txtBusqueda" alignment="3" pref="30" max="32767" attributes="1"/>
+                      <Component id="jLabel1" alignment="3" min="-2" pref="30" max="-2" attributes="1"/>
+                  </Group>
+                  <Component id="jLabel4" alignment="0" pref="30" max="32767" attributes="1"/>
+                  <Component id="btnFiltrar" alignment="0" pref="30" max="32767" attributes="1"/>
+                  <Component id="txtFechaHasta" alignment="0" max="32767" attributes="1"/>
+                  <Component id="txtFechaDesde" alignment="0" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="307" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -235,25 +209,6 @@
         <Property name="formats" type="[Ljava.text.DateFormat;" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM)" type="code"/>
         </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="chkCajero">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cajero"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkCajeroActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="chkCliente">
-      <Properties>
-        <Property name="selected" type="boolean" value="true"/>
-        <Property name="text" type="java.lang.String" value="Cliente"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="chkCaja">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Caja"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAceptar">

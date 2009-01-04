@@ -21,7 +21,7 @@ import groovy.swing.*
  *
  * @author Adan
  */
-class Ventas {
+class Cortes {
 
     static def lastMovID  = -1
     static def IDAlmacen = 1
@@ -61,15 +61,19 @@ class Ventas {
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
 
         def mov         = Nadesico.conectar().getVenta(ID,IDAlmacen)
-        form.setCliente(mov.nombreCliente as String)
-        form.setDescuento(mov.descuento as String)
-        form.setImpuesto(mov.impuestos as String)
-        //form.setTipoSalida(mov.tabMatriz as String)
-        form.setSubtotal(mov.subtotal as String)
-        form.setTotal(mov.total as String)
-        form.setAlmacen(mov.nombreAlmacen as String)
-        form.setFecha(mov.fecha_hora as String)
-        form.setTablaPrincipal(mov.tabMatriz as List)
+        form.setTxtDescuento     (mov.descuento as String)
+        form.setTxtDesde         (mov.desde as String)
+        form.setTxtFecha         (mov.fecha_hora as String)
+        form.setTxtHasta         (mov.hasta as String)
+        form.setTxtIDAlmacen     (mov.id_almacen as String)
+        form.setTxtIDCaja        (mov.id_caja as String)
+        form.setTxtIDCorte       (mov.id_corte as String)
+        form.setTxtImpuesto      (mov.impuesto as String)
+        form.setTxtNumeroVenta   (mov.n_ventas as String)
+        form.setTxtSubtotal      (mov.subtotal as String)
+        form.setTxtTotal         (mov.total as String)
+
+
         form
     }
 

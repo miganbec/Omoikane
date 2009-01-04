@@ -161,7 +161,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtImpuestos">
+    <Component class="javax.swing.JTextField" name="txtNumeroVenta">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -171,7 +171,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtUModificacion">
+    <Component class="javax.swing.JTextField" name="txtHasta">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -223,7 +223,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCosto">
+    <Component class="javax.swing.JTextField" name="txtImpuestos">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -246,7 +246,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtExistencias">
+    <Component class="javax.swing.JTextField" name="txtTotal">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -269,7 +269,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtUtilidad">
+    <Component class="javax.swing.JTextField" name="txtDescuento">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -279,7 +279,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDescuento">
+    <Component class="javax.swing.JTextField" name="txtDesde">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -309,7 +309,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtImpuestos1">
+    <Component class="javax.swing.JTextField" name="txtSubtotal">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
