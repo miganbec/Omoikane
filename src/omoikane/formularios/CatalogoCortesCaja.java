@@ -429,12 +429,3 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-class VentasTableModel extends NadesicoTableModel{
-VentasTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
-public Object getValueAt(int row,int col){    if(col==0)
-    {
-    SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");
-    return sdf.format((java.util.Date) super.getValueAt(row, col));}
-    else
-    {return super.getValueAt(row,col);}
-}}
