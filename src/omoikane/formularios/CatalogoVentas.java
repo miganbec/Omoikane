@@ -151,7 +151,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Hasta:");
 
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
         btnFiltrar.setText("Filtrar [F2]");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +172,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/back.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +197,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
         chkCaja.setText("Caja");
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/accept.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar [Enter]");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +205,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
+        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnDetalles.setText("Detalles [F4]");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +213,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/printer.png"))); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F8]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

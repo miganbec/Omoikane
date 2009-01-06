@@ -104,7 +104,7 @@ public class Error extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        mensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/bug-128x128.png"))); // NOI18N
+        mensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bug-128x128.png"))); // NOI18N
         mensaje.setText("Mensaje de error...");
         jPanel2.add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
 

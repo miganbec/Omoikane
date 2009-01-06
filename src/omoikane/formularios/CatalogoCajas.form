@@ -23,36 +23,42 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="828" max="32767" attributes="1"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtBusqueda" min="-2" pref="585" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtBusqueda" min="-2" pref="585" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jButton1" pref="161" max="32767" attributes="0"/>
+                                  <Component id="btnCerrar" alignment="0" pref="161" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnModificar" alignment="0" pref="174" max="32767" attributes="1"/>
+                                  <Component id="btnNuevo" alignment="1" pref="174" max="32767" attributes="1"/>
+                                  <Component id="btnDetalles" alignment="0" pref="174" max="32767" attributes="1"/>
+                                  <Component id="btnEliminar" alignment="0" pref="174" max="32767" attributes="0"/>
+                                  <Component id="btnImprimir" alignment="0" pref="174" max="32767" attributes="0"/>
+                                  <Component id="btnCorte" alignment="0" pref="174" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="648" max="-2" attributes="1"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnCerrar" pref="161" max="32767" attributes="0"/>
-                          <Component id="jButton1" alignment="0" pref="161" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDetalles" min="-2" pref="129" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnNuevo" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="btnModificar" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnEliminar" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnImprimir" pref="131" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="664" max="-2" attributes="0"/>
+                      <Component id="btnAceptar" pref="174" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -63,33 +69,36 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="1"/>
-                          <Component id="txtBusqueda" alignment="3" min="-2" max="-2" attributes="1"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnCerrar" pref="65" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnCerrar" alignment="1" min="0" pref="0" max="32767" attributes="1"/>
+                  <Component id="jLabel2" alignment="1" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="1"/>
+                  <Component id="txtBusqueda" alignment="3" min="-2" max="-2" attributes="1"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="303" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnImprimir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDetalles" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="1">
+                      <Component id="btnDetalles" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnModificar" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnCorte" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnImprimir" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane1" min="-2" pref="303" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -161,7 +170,7 @@
     <Component class="javax.swing.JButton" name="btnAceptar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/accept.png"/>
+          <Image iconType="3" name="/32x32/accept.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Aceptar [Enter]"/>
       </Properties>
@@ -175,7 +184,7 @@
     <Component class="javax.swing.JButton" name="btnImprimir">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/printer.png"/>
+          <Image iconType="3" name="/32x32/printer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Imprimir [F7]"/>
       </Properties>
@@ -186,7 +195,7 @@
     <Component class="javax.swing.JButton" name="btnModificar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/blog_post_edit.png"/>
+          <Image iconType="3" name="/32x32/blog_post_edit.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Modificar [F6]"/>
       </Properties>
@@ -197,7 +206,7 @@
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/blog_post_delete.png"/>
+          <Image iconType="3" name="/32x32/blog_post_delete.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar [Supr]"/>
       </Properties>
@@ -208,7 +217,7 @@
     <Component class="javax.swing.JButton" name="btnNuevo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/page_add.png"/>
+          <Image iconType="3" name="/32x32/page_add.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nuevo [F5]"/>
       </Properties>
@@ -219,7 +228,7 @@
     <Component class="javax.swing.JButton" name="btnDetalles">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/page_search.png"/>
+          <Image iconType="3" name="/32x32/page_search.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Detalles [F4]"/>
       </Properties>
@@ -230,12 +239,23 @@
     <Component class="javax.swing.JButton" name="btnCerrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/48x48/back.png"/>
+          <Image iconType="3" name="/64x64/back.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cerrar [Esc]"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCorte">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/32x32/blog_post_delete.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Corte de caja [F12]"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCorteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

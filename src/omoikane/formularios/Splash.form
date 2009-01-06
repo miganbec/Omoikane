@@ -71,7 +71,7 @@
               <Color blue="ff" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/omoikane/media/splash_os.jpg"/>
+              <Image iconType="3" name="/splash_os.jpg"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>

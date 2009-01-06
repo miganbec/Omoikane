@@ -99,7 +99,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jLabel1.setText("Principal");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/file-manager-128x128.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file-manager-128x128.png"))); // NOI18N
         jButton1.setText("Cerrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +109,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 230, 60));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 720, 10));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/package-toys-128x128.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/package-toys-128x128.png"))); // NOI18N
         jButton3.setText("Vender");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +123,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jLabel2.setText("Artículos");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/download-manager-128x128.png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/download-manager-128x128.png"))); // NOI18N
         jButton7.setText("Cajas");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +144,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 720, 10));
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/server-128x128.png"))); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/server-128x128.png"))); // NOI18N
         jButton9.setText("Almacenes");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +153,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 230, 60));
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/k-black-box-128x128.png"))); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-black-box-128x128.png"))); // NOI18N
         jButton10.setText("<html>Movimientos<br>Almacén</html>");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,11 +162,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 230, 60));
 
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/k-sysguard-128x128.png"))); // NOI18N
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-sysguard-128x128.png"))); // NOI18N
         jButton11.setText("Preferencias");
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 230, 60));
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/proxy-128x128.png"))); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxy-128x128.png"))); // NOI18N
         jButton12.setText("Usuarios     ");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +196,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 470, 30, 40));
 
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/usb-128x128.png"))); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usb-128x128.png"))); // NOI18N
         jButton13.setText("Líneas");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +205,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 230, 60));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/remote-128x128.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remote-128x128.png"))); // NOI18N
         jButton2.setText("<html>Detalles<br>de Ventas</html>");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +214,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 60));
 
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/folder-blue-128x128.png"))); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
         jButton14.setText("Grupos");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +223,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 230, 60));
 
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/x-mag-128x128.png"))); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/x-mag-128x128.png"))); // NOI18N
         jButton15.setText("Catálogo");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,14 +232,14 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 230, 60));
 
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/vcard-128x128.png"))); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vcard-128x128.png"))); // NOI18N
         jButton16.setText("Clientes");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 230, 60));
+        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 230, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

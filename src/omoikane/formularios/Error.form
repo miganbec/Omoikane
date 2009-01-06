@@ -77,7 +77,7 @@
             <Component class="javax.swing.JLabel" name="mensaje">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/omoikane/media/bug-128x128.png"/>
+                  <Image iconType="3" name="/bug-128x128.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Mensaje de error..."/>
               </Properties>

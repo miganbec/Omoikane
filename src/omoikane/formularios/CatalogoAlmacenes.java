@@ -157,7 +157,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/accept.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar [Enter]");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +165,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
+        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnDetalles.setText("Detalles [F4]");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +173,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_add.png"))); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_add.png"))); // NOI18N
         btnNuevo.setText("Nuevo [F5]");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +181,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/blog_post_edit.png"))); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/blog_post_edit.png"))); // NOI18N
         btnModificar.setText("Modificar [F6]");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_remove.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
         btnEliminar.setText("Eliminar [Supr]");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +197,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/printer.png"))); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
         btnImprimir.setText("Imprimir [F7]");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +205,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/48x48/back.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/back.png"))); // NOI18N
         btnCerrar.setText("Cerrar [Esc]");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

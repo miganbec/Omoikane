@@ -44,7 +44,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/file-manager-128x128.png"/>
+          <Image iconType="3" name="/file-manager-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cerrar"/>
       </Properties>
@@ -67,7 +67,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/package-toys-128x128.png"/>
+          <Image iconType="3" name="/package-toys-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Vender"/>
       </Properties>
@@ -99,7 +99,7 @@
     <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/download-manager-128x128.png"/>
+          <Image iconType="3" name="/download-manager-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cajas"/>
       </Properties>
@@ -161,7 +161,7 @@
     <Component class="javax.swing.JButton" name="jButton9">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/server-128x128.png"/>
+          <Image iconType="3" name="/server-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Almacenes"/>
       </Properties>
@@ -177,7 +177,7 @@
     <Component class="javax.swing.JButton" name="jButton10">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/k-black-box-128x128.png"/>
+          <Image iconType="3" name="/k-black-box-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;Movimientos&lt;br&gt;Almac&#xe9;n&lt;/html&gt;"/>
       </Properties>
@@ -193,7 +193,7 @@
     <Component class="javax.swing.JButton" name="jButton11">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/k-sysguard-128x128.png"/>
+          <Image iconType="3" name="/k-sysguard-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Preferencias"/>
       </Properties>
@@ -206,7 +206,7 @@
     <Component class="javax.swing.JButton" name="jButton12">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/proxy-128x128.png"/>
+          <Image iconType="3" name="/proxy-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Usuarios     "/>
       </Properties>
@@ -268,7 +268,7 @@
     <Component class="javax.swing.JButton" name="jButton13">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/usb-128x128.png"/>
+          <Image iconType="3" name="/usb-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="L&#xed;neas"/>
       </Properties>
@@ -284,7 +284,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/remote-128x128.png"/>
+          <Image iconType="3" name="/remote-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;Detalles&lt;br&gt;de Ventas&lt;/html&gt;"/>
       </Properties>
@@ -300,7 +300,7 @@
     <Component class="javax.swing.JButton" name="jButton14">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/folder-blue-128x128.png"/>
+          <Image iconType="3" name="/folder-blue-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Grupos"/>
       </Properties>
@@ -316,7 +316,7 @@
     <Component class="javax.swing.JButton" name="jButton15">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/x-mag-128x128.png"/>
+          <Image iconType="3" name="/x-mag-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cat&#xe1;logo"/>
       </Properties>
@@ -332,7 +332,7 @@
     <Component class="javax.swing.JButton" name="jButton16">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/vcard-128x128.png"/>
+          <Image iconType="3" name="/vcard-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Clientes"/>
       </Properties>
@@ -341,7 +341,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="540" y="420" width="230" height="60"/>
+          <AbsoluteConstraints x="530" y="420" width="230" height="60"/>
         </Constraint>
       </Constraints>
     </Component>

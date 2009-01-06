@@ -92,17 +92,17 @@ public class AbrirCaja extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel1.setText("ID Caja:"); // NOI18N
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
         btnBuscar.setText("[F2] Buscar Caja..."); // NOI18N
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/accept.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
         btnAceptar.setText("[Enter] Aceptar"); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Abrir Caja"); // NOI18N
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/back.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("Cancelar [Esc]"); // NOI18N
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

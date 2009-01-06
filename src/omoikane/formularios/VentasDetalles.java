@@ -100,7 +100,7 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ventas Detalles");
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/back.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
             }
         });
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/printer.png"))); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F8]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,7 +195,7 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
         txtFecha.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
         txtFecha.setEditable(false);
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/accept.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.setRequestFocusEnabled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {

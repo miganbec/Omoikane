@@ -99,7 +99,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Caja 1");
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/back.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("Cerrar [Esc]");
         btnCerrar.setRequestFocusEnabled(false);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,10 +118,10 @@ public class Caja extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tablaVenta);
 
-        btnTerminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/accept.png"))); // NOI18N
+        btnTerminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
         btnTerminar.setText("Terminar Venta[Enter]");
 
-        btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_search.png"))); // NOI18N
+        btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnCatalogo.setText("Buscar Artículo [F2]");
         btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class Caja extends javax.swing.JInternalFrame {
             }
         });
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/printer.png"))); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F8]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +137,7 @@ public class Caja extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/32x32/page_remove.png"))); // NOI18N
+        btnCancelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
         btnCancelacion.setText("Cancelación [F12]");
         btnCancelacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

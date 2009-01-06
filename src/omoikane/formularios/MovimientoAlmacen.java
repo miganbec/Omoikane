@@ -133,7 +133,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 820, 280));
 
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/page_add.png"))); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_add.png"))); // NOI18N
         btnNuevo.setText("<html><center>Agregar éste movimiento [F5]</center></html>");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +142,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, 190, 60));
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/printer.png"))); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F8]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +164,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, 30, 30));
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/back.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a almacén [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +199,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         jLabel8.setText("Total:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, 20));
 
-        btnEliminarRenglon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/remove.png"))); // NOI18N
+        btnEliminarRenglon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/remove.png"))); // NOI18N
         btnEliminarRenglon.setText("Eliminar renglón seleccionado [F12]");
         btnEliminarRenglon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,7 +216,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 160, -1));
 
-        btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
+        btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
         btnCatalogo.setText("Catálogo de artículos [F2]");
         getContentPane().add(btnCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 200, -1));
 

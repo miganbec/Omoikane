@@ -215,7 +215,21 @@ class Caja {
         synchronized(foco){foco.wait()}
         retorno
     }
+    static def corte(IDCaja) {
+        def serv = Nadesico.conectar()
+        def res  = serv.getCaja(IDCaja);
 
+        if(res == 0) {
+            Dialogos.lanzarAlerta("No exíste esa caja")
+        } else {
+            if(serv.cajaAbierta(IDCaja)) {
+                def horas      = serv.getCaja(IDCaja)
+                SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Dialogos.lanzarAlerta("++++"+serv.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), sdf.format(horas.horaCerrada)))
+            }
+        }
+        serv.desconectar()
+    }
     static def lanzarFormNuevoCaja()
     {
         def formCaja = new omoikane.formularios.CajaDetalles()
@@ -228,7 +242,7 @@ class Caja {
         formCaja.setModoNuevo();
         formCaja
     }
-        static def guardar(formCaja)
+    static def guardar(formCaja)
     {
         Herramientas.verificaCampos {
         def descripcion = formCaja.getTxtDescripcion()

@@ -53,7 +53,7 @@ public class Splash extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/splash_os.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/splash_os.jpg"))); // NOI18N
         jLabel1.setOpaque(true);
 
         jProgressBar1.setIndeterminate(true);

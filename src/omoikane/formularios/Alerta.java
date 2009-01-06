@@ -86,7 +86,7 @@ public class Alerta extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alerta");
 
-        txtAlerta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/package-toys-128x128.png"))); // NOI18N
+        txtAlerta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/package-toys-128x128.png"))); // NOI18N
         txtAlerta.setText("Alerta");
 
         btnAlerta.setText("Aceptar");

@@ -176,7 +176,7 @@
     <Component class="javax.swing.JButton" name="btnCerrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/64x64/back.png"/>
+          <Image iconType="3" name="/64x64/back.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cerrar [Esc]"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -191,7 +191,7 @@
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/page_remove.png"/>
+          <Image iconType="3" name="/32x32/page_remove.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar [Supr]"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -205,7 +205,7 @@
     <Component class="javax.swing.JButton" name="btnModificar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/page_edit.png"/>
+          <Image iconType="3" name="/32x32/page_edit.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Modificar [F6]"/>
       </Properties>
@@ -216,7 +216,7 @@
     <Component class="javax.swing.JButton" name="btnNuevo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/page_add.png"/>
+          <Image iconType="3" name="/32x32/page_add.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nuevo [F5]"/>
       </Properties>
@@ -227,7 +227,7 @@
     <Component class="javax.swing.JButton" name="btnDetalles">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/page_search.png"/>
+          <Image iconType="3" name="/32x32/page_search.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Detalles [F4]"/>
       </Properties>
@@ -238,7 +238,7 @@
     <Component class="javax.swing.JButton" name="btnImprimir">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/printer.png"/>
+          <Image iconType="3" name="/32x32/printer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Imprimir [F8]&lt;/center&gt;&lt;/html&gt;"/>
       </Properties>
@@ -249,7 +249,7 @@
     <Component class="javax.swing.JButton" name="btnAceptar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/32x32/accept.png"/>
+          <Image iconType="3" name="/32x32/accept.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Aceptar [Enter]"/>
       </Properties>

@@ -89,7 +89,7 @@
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/16x16/search.png"/>
+          <Image iconType="3" name="/16x16/search.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="[F2] Buscar Caja..." noResource="true"/>
       </Properties>
@@ -100,7 +100,7 @@
     <Component class="javax.swing.JButton" name="btnAceptar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/16x16/accept.png"/>
+          <Image iconType="3" name="/16x16/accept.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="[Enter] Aceptar" noResource="true"/>
       </Properties>
@@ -122,7 +122,7 @@
     <Component class="javax.swing.JButton" name="btnCerrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/64x64/back.png"/>
+          <Image iconType="3" name="/64x64/back.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar [Esc]" noResource="true"/>
       </Properties>

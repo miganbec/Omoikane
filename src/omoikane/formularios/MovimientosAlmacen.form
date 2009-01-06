@@ -101,7 +101,7 @@
     <Component class="javax.swing.JButton" name="btnFiltrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/16x16/search.png"/>
+          <Image iconType="3" name="/16x16/search.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Filtrar [Enter]"/>
       </Properties>
@@ -174,7 +174,7 @@
     <Component class="javax.swing.JButton" name="btnDetalles">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/64x64/page_search.png"/>
+          <Image iconType="3" name="/64x64/page_search.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Detalles [F4]&lt;/center&gt;&lt;/html&gt;"/>
       </Properties>
@@ -190,7 +190,7 @@
     <Component class="javax.swing.JButton" name="btnNuevo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/64x64/page_add.png"/>
+          <Image iconType="3" name="/64x64/page_add.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Nuevo &lt;br&gt;Movimiento[F5]&lt;/center&gt;&lt;/html&gt;"/>
       </Properties>
@@ -206,7 +206,7 @@
     <Component class="javax.swing.JButton" name="btnModificar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/64x64/page_edit.png"/>
+          <Image iconType="3" name="/64x64/page_edit.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Modificar o eliminar [F6]&lt;/center&gt;&lt;/html&gt;"/>
       </Properties>
@@ -222,7 +222,7 @@
     <Component class="javax.swing.JButton" name="btnImprimir">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/64x64/printer.png"/>
+          <Image iconType="3" name="/64x64/printer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Imprimir [F7]&lt;/center&gt;&lt;/html&gt;"/>
       </Properties>
@@ -261,7 +261,7 @@
     <Component class="javax.swing.JButton" name="btnCerrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/omoikane/media/64x64/back.png"/>
+          <Image iconType="3" name="/64x64/back.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;HTML&gt;Regresar a men&#xfa; [Esc]&lt;/HTML&gt;"/>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>

@@ -129,7 +129,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         jLabel4.setText("Hasta:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, 30));
 
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/16x16/search.png"))); // NOI18N
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
         btnFiltrar.setText("Filtrar [Enter]");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +159,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 880, 280));
 
-        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/page_search.png"))); // NOI18N
+        btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_search.png"))); // NOI18N
         btnDetalles.setText("<html><center>Detalles [F4]</center></html>");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +168,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 180, 60));
 
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/page_add.png"))); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_add.png"))); // NOI18N
         btnNuevo.setText("<html><center>Nuevo <br>Movimiento[F5]</center></html>");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +177,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 190, 60));
 
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/page_edit.png"))); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_edit.png"))); // NOI18N
         btnModificar.setText("<html><center>Modificar o eliminar [F6]</center></html>");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +186,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 190, 60));
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/printer.png"))); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F7]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +210,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 30, 30));
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/media/64x64/back.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
