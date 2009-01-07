@@ -89,6 +89,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
 
         setIconifiable(true);
         setTitle("Menú Principal");
@@ -214,14 +215,14 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 60));
 
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
-        jButton14.setText("Grupos");
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/super-karamba-128x128.png"))); // NOI18N
+        jButton14.setText("Cortes");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 230, 60));
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 230, 60));
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/x-mag-128x128.png"))); // NOI18N
         jButton15.setText("Catálogo");
@@ -240,6 +241,15 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 230, 60));
+
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
+        jButton17.setText("Grupos");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 230, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -282,7 +292,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Grupos.lanzarCatalogo();
+        omoikane.principal.Cortes.lanzarCatalogo();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -299,6 +309,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         omoikane.principal.Usuarios.lanzarCatalogo();
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
 
 
 
@@ -332,6 +346,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;

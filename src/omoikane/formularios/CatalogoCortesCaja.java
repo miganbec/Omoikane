@@ -32,7 +32,7 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
     public int             IDSeleccionado;
     public String          codigoSeleccionado;
     public String          txtQuery;
-    VentasTableModel modelo;
+    CortesTableModel modelo;
 
     class TimerBusqueda extends Thread
     {
@@ -55,7 +55,7 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
             try { this.notify(); } catch(Exception e) {}
         }
     }
-    /** Creates new form CatalogoVentas */
+    /** Creates new form Catalogocortes */
     public CatalogoCortesCaja() {
         initComponents();
         Calendar calendario = Calendar.getInstance();
@@ -68,12 +68,12 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
         Class[]   clases   = {String.class, String.class, String.class, String.class, Double.class, Double.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
-        VentasTableModel modeloTabla = new VentasTableModel(cols, cls);
+        CortesTableModel modeloTabla = new CortesTableModel(cols, cls);
         //jTable1.enableInputMethods(false);
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
 
-        setQueryTable("SELECT corte.id_corte,cortes.fecha_hora,cajas.descripcion,corte.desde,corte.hasta,corte.impuesto,corte.total WHERE cortes.id_almacen="+IDAlmacen+" AND cortes.id_caja=cajas.id_caja");
+        setQueryTable("SELECT cortes.id_corte,cortes.fecha_hora,cajas.descripcion,cortes.desde,cortes.hasta,cortes.impuestos,cortes.total FROM cortes,cajas WHERE cortes.id_almacen=1 AND cortes.id_caja=cajas.id_caja");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -387,7 +387,7 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
         }
  
         String busqueda = this.txtBusqueda.getText();
-        String query    = "SELECT corte.id_corte,cortes.fecha_hora,cajas.descripcion,corte.desde,corte.hasta,corte.impuesto,corte.total WHERE cortes.id_almacen="+IDAlmacen+" AND cortes.id_caja=cajas.id_caja "+whereFecha;
+        String query    = "SELECT cortes.id_corte,cortes.fecha_hora,cajas.descripcion,cortes.desde,cortes.hasta,cortes.impuestos,cortes.total FROM cortes,cajas WHERE cortes.id_almacen=1 AND cortes.id_caja=cajas.id_caja "+whereFecha;
         setQueryTable(query);
 
     }
@@ -429,3 +429,13 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+class CortesTableModel extends NadesicoTableModel{
+CortesTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
+public Object getValueAt(int row,int col){    if(col==0 || col==2 || col==3)
+    {
+    SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");
+    return sdf.format((java.util.Date) super.getValueAt(row, col));}
+    else
+    {return super.getValueAt(row,col);}
+}}

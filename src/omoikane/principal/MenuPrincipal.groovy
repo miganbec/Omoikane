@@ -10,8 +10,8 @@ import omoikane.sistema.*
 import javax.swing.JFrame;
 
 /**
- *
- * @author Octaviosssssss
+ *asdasdqw
+ * @author Octaviosssssssssssssssss
  */
 class MenuPrincipal {
     def menuPrincipal = new omoikane.formularios.MenuPrincipal()

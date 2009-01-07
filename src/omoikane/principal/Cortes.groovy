@@ -34,7 +34,7 @@ class Cortes {
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
 
-        Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.1,0.25,0.25,0.1]);
+        Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.25,0.25,0.1,0.1]);
         Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
@@ -52,23 +52,20 @@ class Cortes {
         def form = (new omoikane.formularios.CorteCajaDetalles())
         form.setVisible(true);
         escritorio.getPanelEscritorio().add(form)
-        Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
-        Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
-        Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
         Herramientas.iconificable(form)
 
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
 
-        def mov         = Nadesico.conectar().getVenta(ID,IDAlmacen)
-        form.setTxtDescuento     (mov.descuento as String)
+        def mov         = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$ID")
+        form.setTxtDescuento     (mov.descuentos as String)
         form.setTxtDesde         (mov.desde as String)
         form.setTxtFecha         (mov.fecha_hora as String)
         form.setTxtHasta         (mov.hasta as String)
         form.setTxtIDAlmacen     (mov.id_almacen as String)
         form.setTxtIDCaja        (mov.id_caja as String)
         form.setTxtIDCorte       (mov.id_corte as String)
-        form.setTxtImpuesto      (mov.impuesto as String)
+        form.setTxtImpuesto      (mov.impuestos as String)
         form.setTxtNumeroVenta   (mov.n_ventas as String)
         form.setTxtSubtotal      (mov.subtotal as String)
         form.setTxtTotal         (mov.total as String)
