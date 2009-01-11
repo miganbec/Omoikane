@@ -44,12 +44,12 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnModificar" alignment="0" pref="174" max="32767" attributes="1"/>
+                                  <Component id="btnModificar" pref="174" max="32767" attributes="1"/>
                                   <Component id="btnNuevo" alignment="1" pref="174" max="32767" attributes="1"/>
                                   <Component id="btnDetalles" alignment="0" pref="174" max="32767" attributes="1"/>
-                                  <Component id="btnEliminar" alignment="0" pref="174" max="32767" attributes="0"/>
                                   <Component id="btnImprimir" alignment="0" pref="174" max="32767" attributes="0"/>
                                   <Component id="btnCorte" alignment="0" pref="174" max="32767" attributes="0"/>
+                                  <Component id="btnEliminar" alignment="0" pref="174" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="648" max="-2" attributes="1"/>
@@ -86,7 +86,7 @@
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnModificar" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>

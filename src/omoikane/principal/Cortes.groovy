@@ -46,9 +46,7 @@ class Cortes {
         cat.txtBusqueda.requestFocus()
     }
 
-    static def lanzarDetalles(ID)
-    {
-        lastMovID = ID
+    static def lanzarVentanaDetalles() {
         def form = (new omoikane.formularios.CorteCajaDetalles())
         form.setVisible(true);
         escritorio.getPanelEscritorio().add(form)
@@ -56,8 +54,14 @@ class Cortes {
 
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
+        form
+    }
+    static def lanzarDetalles(ID)
+    {
+        lastMovID = ID
+        def form  = lanzarVentanaDetalles()
+        def mov   = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$ID")
 
-        def mov         = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$ID")
         form.setTxtDescuento     (mov.descuentos as String)
         form.setTxtDesde         (mov.desde as String)
         form.setTxtFecha         (mov.fecha_hora as String)
@@ -69,7 +73,6 @@ class Cortes {
         form.setTxtNumeroVenta   (mov.n_ventas as String)
         form.setTxtSubtotal      (mov.subtotal as String)
         form.setTxtTotal         (mov.total as String)
-
 
         form
     }

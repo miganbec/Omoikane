@@ -16,15 +16,16 @@ import omoikane.sistema.*;
 import javax.swing.event.*;
 import java.awt.event.*;
 import groovy.swing.*
+import java.util.Calendar;
 
-/**
+/** rrrr
  *
  * @author Usuario
  */
 class Caja {
     static def IDCaja    = 1
     static def IDAlmacen = 1
-    static def IDCliente = 0
+    static def IDCliente = 1
     static def IDUsuario = 0
     static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
@@ -92,7 +93,7 @@ class Caja {
             if(cajaAbierta) { lanzarCaja() }
         }
     }
-	static def lanzarCaja() {
+    static def lanzarCaja() {
         def form = new omoikane.formularios.Caja()
         def modelo = new CajaTableModel()
         form.tablaVenta.setModel(modelo)
@@ -135,7 +136,7 @@ class Caja {
                 def captura = form.txtCaptura.text.split("\\*")
                 def cantidad= captura.size()==1?1:captura[0..captura.size()-2].inject(1) { acum, i -> acum*(i as Double) }
                 def art     = serv.codigo2Articulo(IDAlmacen, captura[captura.size()-1])
-                if(art == null || art == 0) { Dialogos.lanzarAlerta("Artículo no encontrado!!"); } else {
+                if(art == null || art == 0) { Dialogos.lanzarAlerta("Articulo no encontrado!!"); } else {
                     def precio  = serv.getPrecio(art.id_articulo, IDAlmacen, IDCliente)
                     def total   = cifra(cantidad * precio.total)
                     form.txtCaptura.text = ""
@@ -205,7 +206,7 @@ class Caja {
         Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
         Herramientas.iconificable(cat)
         cat.toFront()
-        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de cajas", Herramientas.getStackTraceString(e)) }
+        try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de cajas", Herramientas.getStackTraceString(e)) }
         cat.txtBusqueda.requestFocus()
         cat.internalFrameClosed = { synchronized(foco){ foco.notifyAll()} }
         cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
@@ -215,21 +216,53 @@ class Caja {
         synchronized(foco){foco.wait()}
         retorno
     }
-    static def corte(IDCaja) {
+    
+    static def lanzarTotalVentasDia(IDCaja, cortar=false) {
         def serv = Nadesico.conectar()
         def res  = serv.getCaja(IDCaja);
 
         if(res == 0) {
             Dialogos.lanzarAlerta("No exíste esa caja")
         } else {
-            if(serv.cajaAbierta(IDCaja)) {
-                def horas      = serv.getCaja(IDCaja)
-                SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Dialogos.lanzarAlerta("++++"+serv.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), sdf.format(horas.horaCerrada)))
+            if(!serv.cajaAbierta(IDCaja)) {
+                Dialogos.lanzarAlerta("La caja ya estaba cerrada")
+            }
+            def horas      = serv.getCaja(IDCaja)
+            SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy @ hh:mm:ss a ");
+            Calendar         fecha= Calendar.getInstance()
+
+            if(serv.getCorteWhere("id_caja = $IDCaja AND desde = '${sdf.format(horas.horaAbierta)}' AND hasta = '${sdf.format(horas.horaCerrada)}'")!=0) {
+                Dialogos.lanzarAlerta("Ya se realizó corte de Caja y no se han hecho ventas desde el último corte de caja")
+            } else {
+                if(cortar) { serv.cerrarCaja(IDCaja) }
+                horas = serv.getCaja(IDCaja)
+
+                def ventas= serv.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), sdf.format(horas.horaCerrada))
+
+                def form  = Cortes.lanzarVentanaDetalles()
+                def caja  = serv.getCaja(IDCaja)
+
+                def desde = horas.horaAbierta
+                def hasta = horas.horaCerrada
+
+                form.setTxtDescuento     (ventas.descuento as String)
+                form.setTxtDesde         (sdf2.format(desde) as String)
+                form.setTxtFecha         sdf2.format(fecha.getTime()) as String
+                form.setTxtHasta         (sdf2.format(hasta) as String)
+                form.setTxtIDAlmacen     (caja.id_almacen as String)
+                form.setTxtIDCaja        (IDCaja as String)
+                //form.setTxtIDCorte       (ventas.id_corte as String)
+                form.setTxtImpuesto      (ventas.impuestos as String)
+                form.setTxtNumeroVenta   (ventas.nVentas as String)
+                form.setTxtSubtotal      (ventas.subtotal as String)
+                form.setTxtTotal         (ventas.total as String)
+                if(cortar) { Dialogos.lanzarAlerta(serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.descuento, ventas.impuestos, ventas.total, ventas.nVentas, desde, hasta)) }
             }
         }
         serv.desconectar()
     }
+
     static def lanzarFormNuevoCaja()
     {
         def formCaja = new omoikane.formularios.CajaDetalles()
@@ -246,7 +279,7 @@ class Caja {
     {
         Herramientas.verificaCampos {
         def descripcion = formCaja.getTxtDescripcion()
-        Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+        Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9\_\-\s\ñ\Ñ\*\+áéíóú]+)$/,"Descripcion sólo puede incluír nímeros, letras, espacios, _, -, * y +.")
 
         try {
             def serv = Nadesico.conectar()
@@ -315,7 +348,7 @@ class Caja {
     static def modificar(formCaja)
     {
         Herramientas.verificaCampos {
-        Herramientas.verificaCampo(formCaja.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+        Herramientas.verificaCampo(formCaja.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\�\�\*\+áéíóúñÑ]+)$/,"Descripcion sólo puede incluír números, letras, espacios, _, -, * y +.")
         def serv = Nadesico.conectar()
             Dialogos.lanzarAlerta(serv.modCaja(formCaja.getTxtIDCaja(),formCaja.getTxtDescripcion()))
         }
@@ -326,7 +359,7 @@ class Caja {
         def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
         db.execute("DELETE FROM cajas WHERE id_caja = " + ID)
         db.close()
-        Dialogos.lanzarAlerta("Caja " + ID + " supuestamente eliminado")
+        Dialogos.lanzarAlerta("Caja " + ID + " supuestamente eliminada")
     }
 
     static def lanzarImprimir()
@@ -345,4 +378,3 @@ class CajaTableModel extends DefaultTableModel {
     public Object getValueAt(int row, int col) { return data[row][getColumnName(col)] /*super.getValueAt(row,col)*/ }
     public def getDataMap() { return data }
 }
-
