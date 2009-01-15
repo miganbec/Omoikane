@@ -23,6 +23,9 @@ class Escritorio {
         escritorioFrame.setVisible(true);
         reloj.start()
     }
+    void setNombreUsuario(nombre) {
+        escritorioFrame.usuario.setText(nombre)
+    }
     javax.swing.JDesktopPane getPanelEscritorio()
     {
         return escritorioFrame.PanelEscritorio

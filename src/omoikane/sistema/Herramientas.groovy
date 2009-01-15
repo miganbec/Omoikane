@@ -10,6 +10,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import groovy.inspect.swingui.*
 import groovy.swing.SwingBuilder;
+import com.griaule.grfingerjava.*;
+
 
 public class Herramientas
 {
@@ -100,6 +102,79 @@ public class Herramientas
     def static iconificable(cat) {
         cat.setIconifiable(true);
         SwingBuilder.build { cat.internalFrameIconified = { e -> omoikane.principal.Principal.escritorio.escritorioFrame.fondoToBack() } }
+    }
+    public static String bytes2HexString(byte[] huellaBytes)
+    {
+        String huellaString = "";
+        String hexChar;
+        int byteCompleto;
+        int byteA;
+        int byteB;
+
+        for(int i = 0; i < huellaBytes.length; i++)
+        {
+            byteCompleto = ((Byte)huellaBytes[i]).intValue() + 128;
+            hexChar = Integer.toHexString(byteCompleto);
+            hexChar = (hexChar.length() < 2) ? hexChar = "0" + hexChar : hexChar;
+            //System.out.println("Int: " + ((Byte)huellaBytes[i]).intValue() +  " Hex: " + hexChar);
+            huellaString += hexChar;
+        }
+        //System.out.println("---Fin byte2hex---------------------------------------");
+        return huellaString;
+    }
+    public static byte[] hexString2Bytes(String hexString)
+    {
+        byte[] hB = new byte[(int)Math.floor(hexString.length()/2)];
+        String hexChar;
+        int    intByte;
+        int subA, elByte, j;
+
+        for(int i = 0; i < hB.length; i++)
+        {
+            j = i * 2;
+            hexChar = String.valueOf(hexString.charAt(j)) + String.valueOf(hexString.charAt(j+1));
+            intByte = Integer.parseInt(hexChar, 16) - 128;
+            //System.out.println("int: " + intByte + " hex: " + hexChar);
+            hB[i] = Byte.valueOf(String.valueOf(intByte));
+        }
+        //System.out.println("---Fin hex2byte---------------------------------------");
+        return hB;
+    }
+
+    public static boolean compararBytes(byte[] a, byte[] b)
+    {
+        if(a.length == b.length)
+        {
+            for(int i = 0; i < a.length; i++)
+            {
+                if(a[i] == b[i]) { continue; }
+                return false;
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    public static int  FingerMatch(String huellaA, String huellaB)
+    {
+        System.out.println("Verificando zero...");
+        Template  ref1, ref2;
+        ref1 = new Template();
+        ref2 = new Template();
+        boolean autorizado = false;
+
+        ref1.setData(Herramientas.hexString2Bytes(huellaA));
+        ref2.setData(Herramientas.hexString2Bytes(huellaB));
+
+        try {
+            System.out.println("Verificando...");
+            autorizado = (new MatchingContext()).verify(ref2, ref1);
+        } catch(GrFingerJavaException grje)
+        {
+            grje.printStackTrace();
+        }
+        return (autorizado?1:0);
     }
 
 }

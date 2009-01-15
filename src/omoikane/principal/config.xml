@@ -12,4 +12,5 @@
     <resolucionPantalla ancho='1024' alto='768'/>
     <idAlmacen>1</idAlmacen>
     <URLServidor>http://localhost:5542</URLServidor>
+    <fondoBlur>false</fondoBlur>
 </document>
