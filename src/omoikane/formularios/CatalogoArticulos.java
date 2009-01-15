@@ -462,7 +462,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
         // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
+        
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed

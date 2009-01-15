@@ -20,14 +20,11 @@ import javax.swing.*;
 import javax.swing.event.*;
 import omoikane.sistema.*;
 
-
-
-
-
 /**
  *
  * @author Adan
  */
+
 public class CatalogoCajas extends javax.swing.JInternalFrame {
 
     BufferedImage     fondo;

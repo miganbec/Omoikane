@@ -105,6 +105,7 @@ class Caja {
         Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
 
         Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
+        Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
         Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick()      }
         Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar" ) { form.btnCancelacion.doClick()   }
         Herramientas.In2ActionX(form.btnCerrar, KeyEvent.VK_ESCAPE, "cerrar2") { form.btnCerrar.doClick()        }
@@ -180,6 +181,7 @@ class Caja {
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
         Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
@@ -199,6 +201,7 @@ class Caja {
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
         Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+        cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
         Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
@@ -248,7 +251,7 @@ class Caja {
 
                 form.setTxtDescuento     (ventas.descuento as String)
                 form.setTxtDesde         (sdf2.format(desde) as String)
-                form.setTxtFecha         sdf2.format(fecha.getTime()) as String
+                form.setTxtFecha         (sdf2.format(fecha.getTime()) as String)
                 form.setTxtHasta         (sdf2.format(hasta) as String)
                 form.setTxtIDAlmacen     (caja.id_almacen as String)
                 form.setTxtIDCaja        (IDCaja as String)
