@@ -41,8 +41,8 @@ public class Principal {
             menuPrincipal = new MenuPrincipal()
             splash.detener()
 
-            while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
-            escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
+           while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
+           escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
             menuPrincipal.iniciar()
 
             } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar aplicaciòn", Herramientas.getStackTraceString(e)) }

@@ -19,9 +19,11 @@ import javax.swing.*;
  */
 class Usuarios {
     static def escritorio = omoikane.principal.Principal.escritorio
+    static def Almacen = 1
 
     static def lanzarCatalogo()
     {
+
         def cat = (new omoikane.formularios.CatalogoUsuarios())
         cat.setVisible(true);
         escritorio.getPanelEscritorio().add(cat)
@@ -77,16 +79,22 @@ class Usuarios {
         formUsuario.toFront()
         try { formUsuario.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Usuario", Herramientas.getStackTraceString(e)) }
 
-        def art         = Nadesico.conectar().getUsuario(ID)
+        def art         = Nadesico.conectar().getUsuario(ID,Almacen)
 
         formUsuario.setTxtIDUSR          art.id_usuario     as String
         formUsuario.setTxtFecha          art.fecha_hora_alta  as String
         formUsuario.setTxtNombre         art.nombre     as String
-        formUsuario.setTxtH1             art.huella1    as String
-        formUsuario.setTxtH2             art.huella2    as String
-        formUsuario.setTxtH3             art.huella3    as String
         formUsuario.setTxtUModificacion  art.uModificacion as String
         formUsuario.setTxtNIP            art.nip        as String
+        switch(art.perfil) {
+	case 0:formUsuario.setTxtPerfil( "Cajero"      ) ; break;
+    case 1:formUsuario.setTxtPerfil("Supervisor"   ); break;
+    case 2:formUsuario.setTxtPerfil( "Gerente"      ); break;
+    case 3:formUsuario.setTxtPerfil( "Administrador"); break;
+    case 4:formUsuario.setTxtPerfil( "Propietario")  ; break;
+    default: break;
+	}
+
         formUsuario.ID                   = ID
         formUsuario.setModoDetalles();
         formUsuario
@@ -103,6 +111,8 @@ class Usuarios {
         def H2                = formUsuario.getTxtH2()
         def H3                = formUsuario.getTxtH3()
         def NIP               = formUsuario.getTxtNIP()
+        def Perfil            = formUsuario.getTxtPerfil()
+     
 
         Herramientas.verificaCampo(Nombre,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Nombre sólo puede incluír números, letras, espacios, *, -,_ y +.")
         Herramientas.verificaCampo(H1,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Huella 1 sólo puede incluír números, letras, espacios, *, -,_ y +.")
@@ -110,10 +120,18 @@ class Usuarios {
         Herramientas.verificaCampo(H3,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"huella 3 sólo puede incluír números, letras, espacios, *, -,_ y +.")
         Herramientas.verificaCampo(NIP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"NIP sólo puede incluír números, letras, espacios, *, -,_ y +.")
 
+    switch(Perfil) {
+	case "Cajero"       :Perfil=0; break;
+    case "Supervisor"   :Perfil=1; break;
+    case "Gerente"      :Perfil=2; break;
+    case "Administrador":Perfil=3; break;
+    case "Propietario"  :Perfil=4; break;
+    default: break;
+	}
        
         try {
             def serv = Nadesico.conectar()
-            Dialogos.lanzarAlerta(serv.addUsuario(Nombre,H1,H2,H3,NIP))
+            Dialogos.lanzarAlerta(serv.addUsuario(Nombre,H1,H2,H3,NIP,Perfil,Almacen))
             serv.desconectar()
         } catch(e) { Dialogos.error("Error al enviar a la base de datos. El Usuario no se registró", e) }
 
@@ -145,6 +163,8 @@ class Usuarios {
         def H2                = formUsuario.getTxtH2()
         def H3                = formUsuario.getTxtH3()
         def NIP               = formUsuario.getTxtNIP()
+        def Tem               = formUsuario.getTxtPerfil()
+        def Perfil
 
         Herramientas.verificaCampo(Nombre,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Nombre sólo puede incluír números, letras, espacios, *, -,_ y +.")
         Herramientas.verificaCampo(H1,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Huella 1 sólo puede incluír números, letras, espacios, *, -,_ y +.")
@@ -152,8 +172,17 @@ class Usuarios {
         Herramientas.verificaCampo(H3,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"huella 3 sólo puede incluír números, letras, espacios, *, -,_ y +.")
         Herramientas.verificaCampo(NIP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"NIP sólo puede incluír números, letras, espacios, *, -,_ y +.")
 
+        switch(Tem) {
+	case "Cajero"       :Perfil=0; break;
+    case "Supervisor"   :Perfil=1; break;
+    case "Gerente"      :Perfil=2; break;
+    case "Administrador":Perfil=3; break;
+    case "Propietario"  :Perfil=4; break;
+    default: break;
+	}
+
             def serv = Nadesico.conectar()
-            Dialogos.lanzarAlerta(serv.modUsuario(Nombre,H1,H2,H3,NIP,USR))
+            Dialogos.lanzarAlerta(serv.modUsuario(Nombre,H1,H2,H3,NIP,Perfil,Almacen,USR))
             }
         }
 

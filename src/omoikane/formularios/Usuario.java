@@ -16,6 +16,7 @@ import java.awt.*;
 import java.awt.image.*;
 import omoikane.sistema.*;
 
+
 /**
  *
  * @author Octavio
@@ -24,6 +25,9 @@ public class Usuario extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
     public int ID;
+    public String huella1;
+    public String huella2;
+    public String huella3;
     /** Creates new form Articulo */
     public Usuario() {
         initComponents();
@@ -33,7 +37,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
-
         Herramientas.centrarVentana(this);
         
     }
@@ -54,10 +57,8 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtIDUSR = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
-        txtH1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtH2 = new javax.swing.JTextField();
         txtUModificacion = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -67,12 +68,16 @@ public class Usuario extends javax.swing.JInternalFrame {
         txtNIP = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtH3 = new javax.swing.JTextField();
+        JH1 = new javax.swing.JToggleButton();
+        JH2 = new javax.swing.JToggleButton();
+        JH3 = new javax.swing.JToggleButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtPerfil = new javax.swing.JComboBox();
 
         setTitle("Usuario");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -83,7 +88,7 @@ public class Usuario extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 80, -1));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 80, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Usuario:");
@@ -103,19 +108,13 @@ public class Usuario extends javax.swing.JInternalFrame {
         txtFecha.setEditable(false);
         getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 260, -1));
 
-        txtH1.setEditable(false);
-        getContentPane().add(txtH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, -1));
-
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Huella 2:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("<html>Última<br>Modificación:</html>");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
-
-        txtH2.setEditable(false);
-        getContentPane().add(txtH2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 260, -1));
+        jLabel7.setText("Perfil:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
         txtUModificacion.setEditable(false);
         getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 260, 30));
@@ -126,7 +125,7 @@ public class Usuario extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 80, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 80, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +133,7 @@ public class Usuario extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 100, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 100, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre:");
@@ -160,8 +159,40 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel10.setText("Huella 3:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
 
-        txtH3.setEditable(false);
-        getContentPane().add(txtH3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, -1));
+        JH1.setText("Huella 1");
+        JH1.setEnabled(false);
+        JH1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JH1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, -1));
+
+        JH2.setText("Huella 2");
+        JH2.setEnabled(false);
+        JH2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JH2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JH2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 260, -1));
+
+        JH3.setText("Huella 3");
+        JH3.setEnabled(false);
+        JH3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JH3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JH3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, -1));
+
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("<html>Última<br>Modificación:</html>");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+
+        txtPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cajero", "Supervisor", "Gerente", "Administrador", "Propietario" }));
+        txtPerfil.setEnabled(false);
+        getContentPane().add(txtPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 250, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,12 +216,28 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_txtNombreActionPerformed
 
+    private void JH1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH1ActionPerformed
+        // TODO add your handling code here:
+        huella1 = (String) omoikane.sistema.Usuarios.leerHuella();
+    }//GEN-LAST:event_JH1ActionPerformed
+
+    private void JH2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH2ActionPerformed
+        // TODO add your handling code here:
+        huella2 = (String) omoikane.sistema.Usuarios.leerHuella();
+    }//GEN-LAST:event_JH2ActionPerformed
+
+    private void JH3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH3ActionPerformed
+        // TODO add your handling code here:
+        huella3 = (String) omoikane.sistema.Usuarios.leerHuella();
+    }//GEN-LAST:event_JH3ActionPerformed
+
     public void setEditable(boolean editable)
     {
         this.txtNombre.setEditable(editable);
-        this.txtH1.setEditable(editable);
-        this.txtH2.setEditable(editable);
-        this.txtH3.setEditable(editable);
+        this.JH1.setEnabled(editable);
+        this.txtPerfil.setEnabled(editable);
+        this.JH2.setEnabled(editable);
+        this.JH3.setEnabled(editable);
         this.txtNIP.setEditable(editable);
     }
 
@@ -214,11 +261,15 @@ public class Usuario extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton JH1;
+    private javax.swing.JToggleButton JH2;
+    private javax.swing.JToggleButton JH3;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -228,32 +279,29 @@ public class Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtH1;
-    private javax.swing.JTextField txtH2;
-    private javax.swing.JTextField txtH3;
     private javax.swing.JTextField txtIDUSR;
     private javax.swing.JTextField txtNIP;
     public javax.swing.JTextField txtNombre;
+    private javax.swing.JComboBox txtPerfil;
     private javax.swing.JTextField txtUModificacion;
     // End of variables declaration//GEN-END:variables
 
-    public String getTxtIDUSR() { return txtIDUSR.getText();}
-    public String getTxtFecha() { return txtFecha.getText(); }
-    public String getTxtH1() { return txtH1.getText();  }
-    public String getTxtH2() { return txtH2.getText();  }
-    public String getTxtH3() { return txtH3.getText();  }
-    public String getTxtNombre()  {return txtNombre.getText();  }
-    public String getTxtNIP()       { return this.txtNIP.getText(); }
-    public String getTxtUModificacion() { return this.txtUModificacion.getText();  }
+    public String getTxtIDUSR()         { return txtIDUSR.getText();                            }
+    public String getTxtFecha()         { return txtFecha.getText();                            }
+    public String getTxtH1()            { return huella1;                                       }
+    public String getTxtH2()            { return huella2;                                       }
+    public String getTxtH3()            { return huella3;                                       }
+    public String getTxtNombre()        { return txtNombre.getText();                           }
+    public String getTxtNIP()           { return txtNIP.getText();                              }
+    public String getTxtUModificacion() { return txtUModificacion.getText();                    }
+    public String getTxtPerfil()        { return String.valueOf(txtPerfil.getSelectedItem());   }
 
-    public void setTxtIDUSR(String txtIDUSR) {this.txtIDUSR.setText(txtIDUSR);  }
-    public void setTxtFecha(String txtFecha) {this.txtFecha.setText(txtFecha);    }
-    public void setTxtH1(String txtH1) {this.txtH1.setText(txtH1);}
-    public void setTxtH2(String txtH2) {this.txtH2.setText(txtH2);}
-    public void setTxtH3(String txtH3) {this.txtH3.setText(txtH3);}
-    public void setTxtNombre(String Nombre)  { txtNombre.setText(Nombre); }
-    public void setTxtNIP(String cp)             { txtNIP.setText(cp); }
-    public void setTxtUModificacion(String txt){ txtUModificacion.setText(txt);  }
+    public void setTxtPerfil(String txt)        { txtPerfil.setSelectedItem(txt);}
+    public void setTxtIDUSR(String txt)         { txtIDUSR.setText(txt);         }
+    public void setTxtFecha(String txt)         { txtFecha.setText(txt);         }
+    public void setTxtNombre(String Nombre)     { txtNombre.setText(Nombre);     }
+    public void setTxtNIP(String cp)            { txtNIP.setText(cp);            }
+    public void setTxtUModificacion(String txt) { txtUModificacion.setText(txt); }
    
 
 
