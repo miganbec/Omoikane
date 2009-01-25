@@ -82,7 +82,15 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
         setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
     }
 
-
+    public void setModoDialogo()
+    {
+        this.btnAceptar.setVisible(true);
+        Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
+            ((CatalogoCajas)e.getSource()).btnAceptar.doClick();
+        } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "aceptar");
+        getActionMap().put("aceptar"                 , aceptar  );
+    }
 
     
 

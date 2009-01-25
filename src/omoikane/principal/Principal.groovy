@@ -15,7 +15,8 @@ public class Principal {
         static def escritorio
         static def menuPrincipal
         static def config
-        public static int     IDAlmacen = 1
+        public static int     IDAlmacen
+        public static int     IDCaja
         public static int     sysAncho 
         public static int     sysAlto  
         public static boolean fondoBlur
@@ -52,5 +53,7 @@ public class Principal {
             sysAncho = Integer.valueOf(config.resolucionPantalla.@ancho[0])
             sysAlto  = Integer.valueOf(config.resolucionPantalla.@alto[0])
             fondoBlur= Boolean.valueOf(config.fondoBlur[0].text())
+            IDAlmacen= Integer.valueOf(config.idAlmacen[0].text())
+            IDCaja   = Integer.valueOf(config.idCaja[0].text())
         }
 }

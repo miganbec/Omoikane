@@ -21,7 +21,6 @@ import java.util.*;
 import java.text.*;
 import omoikane.principal.*;
 import omoikane.sistema.*;
-
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.*;
 
@@ -105,7 +104,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Folio:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, -1, 30));
-        getContentPane().add(folio, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, 80, -1));
+        getContentPane().add(folio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 80, -1));
 
         tablaPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,16 +187,18 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Almacén:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 60, 30));
+
+        almacen.setEditable(false);
         getContentPane().add(almacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 190, -1));
 
         tipoMovimiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Entrada al almacén", "Salida del almacén", "Ajuste" }));
-        getContentPane().add(tipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 210, -1));
-        getContentPane().add(txtSumaTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 410, 120, -1));
+        getContentPane().add(tipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 210, -1));
+        getContentPane().add(txtSumaTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 170, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12));
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Total:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, 20));
 
         btnEliminarRenglon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/remove.png"))); // NOI18N
         btnEliminarRenglon.setText("Eliminar renglón seleccionado [F12]");
@@ -218,23 +219,25 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
 
         btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
         btnCatalogo.setText("Catálogo de artículos [F2]");
-        getContentPane().add(btnCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 200, -1));
+        btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCatalogoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public DateFormat       formatoFecha = DateFormat.getDateInstance(DateFormat.MEDIUM);
     public SimpleDateFormat sdf          = new SimpleDateFormat("yyyy-MM-dd");
-
     public String  getTipoMovimiento()    { return (String)this.tipoMovimiento.getSelectedItem(); }
-    public String getAlmacen()           { return (String)(this.almacen.getText()); }
+    public String getAlmacen()            { return (String)(this.almacen.getText()); }
     public String  getFecha()             { return (String)sdf.format(this.fecha.getDate()); }
     public String  getDescripcion()       { return (String)this.descripcion.getText(); }
     public String  getFolio()             { return (String)this.folio.getText(); }
     public Double  getGranTotal()         { return Double.parseDouble(this.txtSumaTotal.getText()); }
-    public Vector  getTablaPrincipal(){
-        return ((DefaultTableModel)this.tablaPrincipal.getModel()).getDataVector();
-    }
+    public Vector  getTablaPrincipal()    { return ((DefaultTableModel)this.tablaPrincipal.getModel()).getDataVector();}
     public JTextField getFieldAlmacen()   { return this.almacen; }
     public void setTipoMovimiento(String val) { tipoMovimiento.setSelectedItem(val); }
     public void setAlmacen       (String val) { almacen.setText(val); }
@@ -244,9 +247,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
     public void setTablaPrincipal(java.util.List val) {
         DefaultTableModel modelo = ((DefaultTableModel)this.tablaPrincipal.getModel());
         for(int i = 0; i < val.size(); i++)
-        {
-            modelo.addRow(((java.util.ArrayList) val.get(i)).toArray());
-        }
+        {modelo.addRow(((java.util.ArrayList) val.get(i)).toArray());}
         this.calculaSumas();
     }
 
@@ -282,6 +283,7 @@ public void setModoDetalles()
     this.setTitle("Detalles del movimiento de almacén " + ID);
     this.lblTitulo.setText("Detalles del movimiento");
     this.btnEliminarRenglon.setVisible(false);
+    this.btnCatalogo.setVisible(false);
     this.btnNuevo.setVisible(false);
     //this.btnModificar.setVisible(false);
     this.folio.setEditable(false);
@@ -325,6 +327,10 @@ public void setModoDetalles()
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaActionPerformed
+
+    private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCatalogoActionPerformed
 
     public void paintComponent(Graphics g)
     {

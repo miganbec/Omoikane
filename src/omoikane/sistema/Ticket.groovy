@@ -27,8 +27,8 @@ class Ticket {
         try {
             data         = serv.getVenta(IDVenta, IDAlmacen)
             data.caja    = serv.getCaja(data.id_caja)
-            data.usuario = serv.getUsuario(data.id_usuario)
-        } catch(e) {
+            data.usuario = serv.getUsuario(data.id_usuario, IDAlmacen)
+        } catch(e) {data.usuario = serv.getUsuario(data.id_usuario)
             serv.desconectar()
             throw e
         }

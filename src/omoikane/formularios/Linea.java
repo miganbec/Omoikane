@@ -182,6 +182,7 @@ public class Linea extends javax.swing.JInternalFrame {
     {
         setEditable(true);
         this.btnGuardar.setVisible(false);
+        this.btnModificar.setVisible(true);
     }
     public void setModoNuevo()
     {

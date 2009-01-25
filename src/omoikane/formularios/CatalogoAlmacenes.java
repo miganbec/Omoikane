@@ -20,14 +20,11 @@ import javax.swing.*;
 import javax.swing.event.*;
 import omoikane.sistema.*;
 
-
-
-
-
 /**
  *
  * @author Adan
  */
+
 public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
 
     BufferedImage     fondo;
@@ -64,31 +61,32 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
     /** Creates new form CatalogoAlmacenes */
     public CatalogoAlmacenes() {
         initComponents();
-
         this.setOpaque(false);
         ((JPanel)this.getContentPane()).setOpaque(false);
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
-
         this.btnAceptar.setVisible(false);
-
         Herramientas.centrarVentana(this);
-
         //Instrucciones para el funcionamiento de las teclas de navegación
         Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
         newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0));
         setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
-
         newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
         newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0));
         setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
     }
 
-
-
-    
-
+    public void setModoDialogo()
+    {
+        this.btnAceptar.setVisible(true);
+        Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
+            ((CatalogoAlmacenes)e.getSource()).btnAceptar.doClick();
+        } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "aceptar");
+        getActionMap().put("aceptar"                 , aceptar  );
+    }
+  
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -114,6 +112,11 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
 
         setTitle("Catálogo de Almacenes");
 
+        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaActionPerformed(evt);
+            }
+        });
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyPressed(evt);
@@ -261,7 +264,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(11, 11, 11)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -403,6 +406,10 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
       
     }//GEN-LAST:event_txtBusquedaKeyReleased
+
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusquedaActionPerformed
 
 
 

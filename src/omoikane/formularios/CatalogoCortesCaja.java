@@ -96,6 +96,16 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
 
     }
 
+    public void setModoDialogo()
+    {
+        this.btnAceptar.setVisible(true);
+        Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
+            ((CatalogoCortesCaja)e.getSource()).btnAceptar.doClick();
+        } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "aceptar");
+        getActionMap().put("aceptar"                 , aceptar  );
+    }
+
     public void setQueryTable(String query) {
         txtQuery = query;
 

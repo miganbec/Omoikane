@@ -81,6 +81,16 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
         setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
    }
 
+    public void setModoDialogo()
+    {
+        this.btnAceptar.setVisible(true);
+        Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
+            ((CatalogoLineas)e.getSource()).btnAceptar.doClick();
+        } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "aceptar");
+        getActionMap().put("aceptar"                 , aceptar  );
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
