@@ -59,7 +59,6 @@ class Ventas {
             escritorio.getPanelEscritorio().add(form)
             Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
-            form.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) form.btnCerrar.doClick() }
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
             Herramientas.iconificable(form)
             form.toFront()

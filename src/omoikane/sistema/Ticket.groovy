@@ -17,12 +17,10 @@ import groovy.inspect.swingui.*
  */
 class Ticket {
     def protocolo = "LPT1"
-    def folio = "", fecha = "", cajero = "", caja = "", cliente = "", detalles = [], subtotal = 0.0, impuestos = 0.0, descuentos = 0.0, total = 0.0
     def data
-    def IDVenta
+    def tick
 
     def Ticket(IDAlmacen, IDVenta) {
-        this.IDVenta = IDVenta
         def serv = new Nadesico().conectar()
         try {
             data         = serv.getVenta(IDVenta, IDAlmacen)
@@ -33,6 +31,7 @@ class Ticket {
             throw e
         }
     }
+
     def generarTxt() {
         def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoTicket.txt").getText('UTF-8') as String
 
@@ -50,6 +49,7 @@ class Ticket {
 
         template.toString()
     }
+
     def imprimir() {
         try {
             FileOutputStream os = new FileOutputStream("$protocolo:");
@@ -59,8 +59,42 @@ class Ticket {
             ps.close();
         } catch (FileNotFoundException fnf) { consola.out.echo("Error al imprimir al puerto lpt1"); }
     }
+
     def probar() {
         println generarTxt()
+    }
+
+    def Corte(IDCorte) {
+        def serv = new Nadesico().conectar()
+        try {
+            tick         = serv.getCorte(IDCorte)
+            tick.caja    = serv.getCaja(IDCorte)
+        } catch(e) {
+            serv.desconectar()
+            throw e
+        }
+    }
+
+    def generarCorte() {
+        def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoCorte.txt").getText('UTF-8') as String
+        Corte(1)
+        def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
+        def sdfHora  = new SimpleDateFormat("hh:mm a")
+        def binding = tick
+
+        binding.fecha = sdfFecha.format(tick.fecha_hora)
+        binding.desde  = sdfHora.format(tick.desde)
+        binding.hasta  = sdfHora.format(tick.hasta)
+        binding.folio = "${tick.id_almacen}-${tick.id_caja}-${tick.nventas}"
+        
+        def engine = new GStringTemplateEngine()
+        def template = engine.createTemplate(plantilla).make(binding)
+
+        template.toString()
+    }
+
+    def prueba() {
+        println generarCorte()
     }
 }
 

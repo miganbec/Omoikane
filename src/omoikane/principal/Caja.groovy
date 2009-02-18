@@ -213,6 +213,7 @@ class Caja {
         if(cerrojo(PMA_TOTALVENTA)){
             def serv = Nadesico.conectar()
             def res  = serv.getCaja(IDCaja);
+            def newCorte
             if(res == 0) {Dialogos.lanzarAlerta("No exíste esa caja")} else {
                 if(!serv.cajaAbierta(IDCaja)) {Dialogos.lanzarAlerta("La caja ya estaba cerrada")}
                 def horas      = serv.getCaja(IDCaja)
@@ -240,7 +241,11 @@ class Caja {
                     form.setTxtNumeroVenta   (ventas.nVentas as String)
                     form.setTxtSubtotal      (ventas.subtotal as String)
                     form.setTxtTotal         (ventas.total as String)
-                    if(cortar) { Dialogos.lanzarAlerta(serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.descuento, ventas.impuestos, ventas.total, ventas.nVentas, desde, hasta)) }
+                    if(cortar) { 
+                        newCorte=serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.descuento, ventas.impuestos, ventas.total, ventas.nVentas, desde, hasta)
+                        Dialogos.lanzarAlerta(newCorte.mensaje)
+                        (new Corte(newCorte.IDCorte).prueba())
+                    }
                 }
             }
             serv.desconectar()
