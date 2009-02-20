@@ -13,5 +13,5 @@
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
     <URLServidor>http://localhost:5542</URLServidor>
-    <fondoBlur>false</fondoBlur>
+    <fondoBlur>true</fondoBlur>
 </document>

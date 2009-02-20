@@ -60,7 +60,7 @@ public class Huellas extends MiniLeerHuella implements com.griaule.grfingerjava.
         //this.btnCancelar.getActionMap().put("cerrar", new adminAcciones(this, adminAcciones.CERRAR));
         
         try {
-            //System.out.println(System.getProperty("user.dir"));
+            System.out.println(System.getProperty("user.dir"));
             //com.griaule.grfingerjava.GrFingerJava.setNativeLibrariesDirectory();
             com.griaule.grfingerjava.GrFingerJava.initializeCapture(this);
 

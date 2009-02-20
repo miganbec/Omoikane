@@ -186,7 +186,7 @@ public class JInternalDialog extends javax.swing.JInternalFrame {
       public void paintComponent(Graphics g)
       {
 
-          if(Principal.fondoBlur) {
+          if(!Principal.fondoBlur) {
             if (isVisible() && blurBuffer != null) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -211,7 +211,7 @@ public class JInternalDialog extends javax.swing.JInternalFrame {
           BufferedImage         tmp;
           GraphicsConfiguration gc           = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
           
-          if(Principal.fondoBlur) { dibujarFondo = true; }
+          if(!Principal.fondoBlur) { dibujarFondo = true; }
           if(dibujarFondo)
           {
               JRootPane root = SwingUtilities.getRootPane(this);
@@ -227,7 +227,7 @@ public class JInternalDialog extends javax.swing.JInternalFrame {
           } else {
               tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
               Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-              g2d.setColor(new Color(55,55,255,155));
+              g2d.setColor(new Color(55,55,255,145));
               g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
               fondo = tmp;
           }
@@ -250,7 +250,7 @@ class BlurGlass extends JPanel {
       private float alpha  = 0.0f;
       private boolean listo= false;
 
-      public void setVisible(boolean val) { if(val) { fadeIn(); } else { super.setVisible(val); } }
+      public void setVisible(boolean val) { if(val) { fadeIn(); } else { fadeOut(); } }
       public void generarFondo(Component componente)
       {
           boolean               dibujarFondo = false;
@@ -259,7 +259,7 @@ class BlurGlass extends JPanel {
           BufferedImage         tmp;
           GraphicsConfiguration gc           = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
           
-          if(!Principal.fondoBlur) { dibujarFondo = true; }
+          if(Principal.fondoBlur) { dibujarFondo = true; }
           if(dibujarFondo)
           {
               JRootPane root = SwingUtilities.getRootPane(this);
@@ -270,16 +270,19 @@ class BlurGlass extends JPanel {
               ((Escritorio)Principal.getEscritorio()).getFrameEscritorio().paint(g2);
               g2.dispose();
               backBuffer = blurBuffer;
-              blurBuffer = toGrayScale(blurBuffer);
+              //blurBuffer = toGrayScale(blurBuffer);
               blurBuffer = GraphicsUtilities.createThumbnailFast(blurBuffer, getWidth() / 2);
-              blurBuffer = new GaussianBlurFilter(5).filter(blurBuffer, null);
+              blurBuffer = new GaussianBlurFilter(4).filter(blurBuffer, null);
+              g2 = (Graphics2D)blurBuffer.getGraphics();
+              g2.setColor(new Color(0,0,0,195));
+              g2.fillRect(0,0,Principal.sysAncho,Principal.sysAlto);
               listo = true;
           } 
       }
       public void paintComponent(Graphics g)
       {
 
-          if(!Principal.fondoBlur) {
+          if(Principal.fondoBlur) {
             if (isVisible() && blurBuffer != null && listo) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -300,16 +303,40 @@ class BlurGlass extends JPanel {
       public void fadeIn() {
           generarFondo(this);
           super.setVisible(true);
-          SwingUtilities.invokeLater(new Runnable() {
-              public void run() {
-                  Animator animator = PropertySetter.createAnimator(400, BlurGlass.this, "alpha", 1.0f);
-                  animator.setAcceleration(0.2f);
-                  animator.setDeceleration(0.3f);
-                  //animator.addTarget(new PropertySetter(DetailsView.this, "alpha", 1.0f));
-                  animator.start();
+
+          try {
+              final float acel = 0.1f;
+              while(BlurGlass.this.getAlpha()+acel<=1.0f) {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            BlurGlass.this.setAlpha(BlurGlass.this.getAlpha()+acel);
+                        }
+                    });
+                    Thread.sleep(100);
               }
-          });
+          } catch(Exception e) { Dialogos.error("Error en fadein", e); }
+
       }
+    public void fadeOut() {
+        super.setVisible(true);
+
+        try {
+          final float desacel = 0.1f;
+          while(BlurGlass.this.getAlpha()-desacel>=0.0f) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        BlurGlass.this.setAlpha(BlurGlass.this.getAlpha()-desacel);
+                    }
+                });
+                Thread.sleep(100);
+          }
+          BlurGlass.this.setAlpha(0.0f);
+        } catch(Exception e) { Dialogos.error("Error en fadeout", e); }
+        //super.setVisible(false);
+        //BlurGlass.this.setAlpha(0.2f);
+        //setAlpha(0.2f);
+        super.setVisible(false);
+    }
     public static BufferedImage toGrayScale(BufferedImage image)
     {
         BufferedImage result = new BufferedImage(
@@ -319,7 +346,7 @@ class BlurGlass extends JPanel {
         int height = raster.getHeight();
         int sample = 0;
 
-        for( int x=0; x<raster.getWidth(); ++x)
+        for(int x=0; x<raster.getWidth(); ++x)
         {
             for( int y=0; y<height; ++y)
             {

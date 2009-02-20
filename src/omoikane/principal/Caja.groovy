@@ -84,13 +84,22 @@ class Caja {
 
     static def lanzar() 
     {
-            def serv = Nadesico.conectar()
-            def cajaAbierta = serv.cajaAbierta(IDCaja)
-            serv.desconectar()
-            Thread.start {
-                cajaAbierta = cajaAbierta?true:abrirCaja()
-                if(cajaAbierta) { lanzarCaja() }
-            }
+        def abierta = Sucursales.abierta(Principal.IDAlmacen)
+        switch(abierta) {
+            
+            case -1: Dialogos.lanzarAlerta("Configuración de sucursal-almacen errónea."); break;
+            case  0: abierta = Sucursales.abrirSucursal(Principal.IDAlmacen);  //Sin break para continuar
+            case  1:
+                    if(abierta!=1) { break; }
+                    def serv = Nadesico.conectar()
+                    def cajaAbierta = serv.cajaAbierta(IDCaja)
+                    serv.desconectar()
+                    Thread.start {
+                    cajaAbierta = cajaAbierta?true:abrirCaja()
+                    if(cajaAbierta) { lanzarCaja() }
+                }
+            break;
+        }
     }
 
     static def lanzarCaja() {

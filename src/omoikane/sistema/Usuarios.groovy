@@ -46,8 +46,8 @@ public class Usuarios {
     public static def autentifica(llave) {
         return identificaPersona().cerrojo(llave)
     }
-    public static def cerrojo(llave) {
-        return usuarioActivo.cerrojo(llave)
+    public static boolean cerrojo(llave) {
+        return usuarioActivo.cerrojo(llave) as boolean
     }
 
     public static def leerHuella(){

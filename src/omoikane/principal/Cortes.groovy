@@ -15,6 +15,7 @@ import javax.swing.event.*;
 import groovy.inspect.swingui.*;
 import javax.swing.table.TableColumn
 import java.awt.event.*;
+import java.text.SimpleDateFormat
 import groovy.swing.*
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*;
@@ -88,6 +89,61 @@ class Cortes {
         def reporte = new Reporte('omoikane/reportes/ReporteCortesCaja.jasper', [QueryTxt:queryMovs]);
         reporte.lanzarPreview()
     }
+    static def lanzarCorteSucursal(IDAlmacen, cortar=false)
+    {
+        if(cerrojo(PMA_TOTALVENTASUCURSAL)) {
+            def paso = 1
+            switch(paso) {
+                case 1:
+                    if(Sucursales.existe(IDAlmacen)) { paso = 2 } else { Dialogos.lanzarAlerta("Sucursal inválida, probablemente sea error de configuración!"); break; }
+                    //break;
+                case 2:
+                    def abierta = Sucursales.abierta(IDAlmacen)
+                    if(abierta==0) { paso = 3 } else { Dialogos.lanzarAlerta("No se puede continuar. La sucursal ya estaba inhabilitada para vender, ésto quiere decir que hay otro corte pendiente."); break }
+                case 3:
+                    //Checar que todas las cajas estén cerradas
+                    // 1. Sacar ids de las cajas de ésta sucursal (a través de id_almacen en cajas)
+                    
+                    println "pas3"+Sucursales.cajasSucursalCerradas(IDAlmacen)
+                break
+            }
+            /*
+            def serv = Nadesico.conectar()
+            def res  = serv.getCaja(IDCaja);
+            if(res == 0) {Dialogos.lanzarAlerta("No exíste esa caja")} else {
+                if(!serv.cajaAbierta(IDCaja)) {Dialogos.lanzarAlerta("La caja ya estaba cerrada")}
+                def horas      = serv.getCaja(IDCaja)
+                SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy @ hh:mm:ss a ");
+                Calendar         fecha= Calendar.getInstance()
+                if(serv.getCorteWhere("id_caja = $IDCaja AND desde = '${sdf.format(horas.horaAbierta)}' AND hasta = '${sdf.format(horas.horaCerrada)}'")!=0) {
+                    Dialogos.lanzarAlerta("Ya se realizó corte de Caja y no se han hecho ventas desde el último corte de caja")
+                } else {
+                    if(cortar) { serv.cerrarCaja(IDCaja) }
+                    horas = serv.getCaja(IDCaja)
+                    def ventas= serv.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), sdf.format(horas.horaCerrada))
+                    def form  = Cortes.lanzarVentanaDetalles()
+                    def caja  = serv.getCaja(IDCaja)
+                    def desde = horas.horaAbierta
+                    def hasta = horas.horaCerrada
+                    form.setTxtDescuento     (ventas.descuento as String)
+                    form.setTxtDesde         (sdf2.format(desde) as String)
+                    form.setTxtFecha         (sdf2.format(fecha.getTime()) as String)
+                    form.setTxtHasta         (sdf2.format(hasta) as String)
+                    form.setTxtIDAlmacen     (caja.id_almacen as String)
+                    form.setTxtIDCaja        (IDCaja as String)
+                    //form.setTxtIDCorte       (ventas.id_corte as String)
+                    form.setTxtImpuesto      (ventas.impuestos as String)
+                    form.setTxtNumeroVenta   (ventas.nVentas as String)
+                    form.setTxtSubtotal      (ventas.subtotal as String)
+                    form.setTxtTotal         (ventas.total as String)
+                    if(cortar) { Dialogos.lanzarAlerta(serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.descuento, ventas.impuestos, ventas.total, ventas.nVentas, desde, hasta)) }
+                }
+            }
+            serv.desconectar() */
+        }else{Dialogos.lanzarAlerta("Acceso Denegado")}
+    }
+
 
 }
 
