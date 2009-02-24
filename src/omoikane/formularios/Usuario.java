@@ -145,6 +145,11 @@ public class Usuario extends javax.swing.JInternalFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 260, -1));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,18 +223,37 @@ public class Usuario extends javax.swing.JInternalFrame {
 
     private void JH1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH1ActionPerformed
         // TODO add your handling code here:
-        huella1 = (String) omoikane.sistema.Usuarios.leerHuella();
+        (new Thread() {
+            public void run() {
+                huella1 = (String) omoikane.sistema.Usuarios.leerHuella();
+            }
+        }
+        ).start();
     }//GEN-LAST:event_JH1ActionPerformed
 
     private void JH2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH2ActionPerformed
         // TODO add your handling code here:
-        huella2 = (String) omoikane.sistema.Usuarios.leerHuella();
+        (new Thread() {
+            public void run() {
+                huella2 = (String) omoikane.sistema.Usuarios.leerHuella();
+            }
+        }
+        ).start();
     }//GEN-LAST:event_JH2ActionPerformed
 
     private void JH3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH3ActionPerformed
         // TODO add your handling code here:
-        huella3 = (String) omoikane.sistema.Usuarios.leerHuella();
+        (new Thread() {
+            public void run() {
+                huella3 = (String) omoikane.sistema.Usuarios.leerHuella();
+            }
+        }
+        ).start();
     }//GEN-LAST:event_JH3ActionPerformed
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreKeyPressed
 
     public void setEditable(boolean editable)
     {

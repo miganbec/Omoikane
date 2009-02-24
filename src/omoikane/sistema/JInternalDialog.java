@@ -95,10 +95,9 @@ public class JInternalDialog extends javax.swing.JInternalFrame {
           
     }
     public void setActivo(boolean val)
-
-    {                         
+    {
         glass.setVisible(val);
-        setVisible(val);        
+        setVisible(val);
         JLayeredPane.getLayeredPaneAbove(glass).moveToFront(glass);
         
         if(val) {
@@ -301,21 +300,20 @@ class BlurGlass extends JPanel {
           repaint();
       }
       public void fadeIn() {
+          final float acel = 0.1f;
           generarFondo(this);
           super.setVisible(true);
 
           try {
-              final float acel = 0.1f;
               while(BlurGlass.this.getAlpha()+acel<=1.0f) {
-                    SwingUtilities.invokeLater(new Runnable() {
+                    SwingUtilities.invokeAndWait(new Runnable() {
                         public void run() {
                             BlurGlass.this.setAlpha(BlurGlass.this.getAlpha()+acel);
                         }
                     });
-                    Thread.sleep(100);
+                    Thread.sleep(50);
               }
           } catch(Exception e) { Dialogos.error("Error en fadein", e); }
-
       }
     public void fadeOut() {
         super.setVisible(true);
@@ -328,7 +326,7 @@ class BlurGlass extends JPanel {
                         BlurGlass.this.setAlpha(BlurGlass.this.getAlpha()-desacel);
                     }
                 });
-                Thread.sleep(100);
+                Thread.sleep(50);
           }
           BlurGlass.this.setAlpha(0.0f);
         } catch(Exception e) { Dialogos.error("Error en fadeout", e); }
