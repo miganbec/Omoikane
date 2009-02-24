@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 
 /**
  *asdasdqw
- * @author Octaviosssssssssssssssss
+ * @author ssssss
  */
 class MenuPrincipal {
     def menuPrincipal = new omoikane.formularios.MenuPrincipal()

@@ -54,47 +54,15 @@ class Ticket {
         try {
             FileOutputStream os = new FileOutputStream("$protocolo:");
             PrintStream ps = new PrintStream(os);
-            ps.println(generarTxt);
+            ps.println(generarTxt());
             //for(int i = 0; i < 4; i++) { ps.println("\n"); }
             ps.close();
         } catch (FileNotFoundException fnf) { consola.out.echo("Error al imprimir al puerto lpt1"); }
     }
 
     def probar() {
-        println generarTxt()
-    }
-
-    def Corte(IDCorte) {
-        def serv = new Nadesico().conectar()
-        try {
-            tick         = serv.getCorte(IDCorte)
-            tick.caja    = serv.getCaja(IDCorte)
-        } catch(e) {
-            serv.desconectar()
-            throw e
-        }
-    }
-
-    def generarCorte() {
-        def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoCorte.txt").getText('UTF-8') as String
-        Corte(1)
-        def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
-        def sdfHora  = new SimpleDateFormat("hh:mm a")
-        def binding = tick
-
-        binding.fecha = sdfFecha.format(tick.fecha_hora)
-        binding.desde  = sdfHora.format(tick.desde)
-        binding.hasta  = sdfHora.format(tick.hasta)
-        binding.folio = "${tick.id_almacen}-${tick.id_caja}-${tick.nventas}"
-        
-        def engine = new GStringTemplateEngine()
-        def template = engine.createTemplate(plantilla).make(binding)
-
-        template.toString()
-    }
-
-    def prueba() {
-        println generarCorte()
+        //println generarTxt()
+        imprimir()
     }
 }
-
+  

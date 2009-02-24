@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<parameter name="IDMov" class="java.lang.String">
-		<defaultValueExpression><![CDATA["163"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["108"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -57,91 +57,45 @@ WHERE
 	<pageHeader>
 		<band/>
 	</pageHeader>
-	<columnHeader>
-		<band height="18">
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="61" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Codigo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="61" y="0" width="201" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Descripcion]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="262" y="0" width="83" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Linea]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="345" y="0" width="69" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Precio]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="414" y="0" width="61" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Cantidad]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="475" y="0" width="64" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Total]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
 	<detail>
 		<band height="23">
 			<textField hyperlinkType="None">
-				<reportElement x="0" y="0" width="61" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_codigo}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="61" y="0" width="201" height="20"/>
+				<reportElement x="78" y="0" width="201" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="262" y="0" width="83" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{lineas_descripcion}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="345" y="0" width="69" height="20"/>
+				<reportElement x="293" y="0" width="69" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_precio}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="414" y="0" width="61" height="20"/>
+				<reportElement x="0" y="0" width="61" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_cantidad}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="475" y="0" width="64" height="20"/>
+				<reportElement x="531" y="0" width="64" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="373" y="0" width="64" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="451" y="0" width="64" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>

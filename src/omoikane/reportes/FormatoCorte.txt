@@ -1,0 +1,41 @@
+    * SUPER  FARMACIA  MEDINA *        .
+        NAHUM MEDINA GARCIA
+RFC:MEGN560328MQ0 CURPMEGN560328HPLDRH00
+MATRIZ: HEROES DE TLAPACOYAN # 207
+COLONIA CENTRO C.P.93650 TLAPACOYAN VER.
+ - - - - - - - - - - - - - - - - - - - -
+EXPIDE SUCURSAL: VALDEZ # 601
+COL CENTRO TLAPACOYAN VER.
+TEL. 01 225 3154202 Y 3154203
+ - - - - - - - - - - - - - - - - - - - -
+
+${fecha}
+
+          NAHUM MEDINA GARCIA
+       C O R T E   D E   C A J A
+
+Caja  : ${descripcion}
+
+${dia} de  ${desde} hrs a
+                          ${hasta} hrs
+
+                       Importe
+   Subtotal          ${String.format("%9.02f", subtotal)}
+ - Descuento         ${String.format("%9.02f", descuentos)}
+                     ---------
+                     ${String.format("%9.02f", subtotal+descuentos)}
+ + Impuestos         ${String.format("%9.02f", impuestos)}
+ - Devoluciones      ${String.format("%9.02f", devoluciones)}
+                     ---------
+                     ${String.format("%9.02f", impuestos+devoluciones+subtotal+descuentos)}
+ - Retiros           ${String.format("%9.02f", retiros)}
+ + Ingresos          ${String.format("%9.02f", ingresos)}
+                     ---------
+                     ${String.format("%9.02f", total)}
+
+           Folios
+Ventas    ${n_ventas}  ${folio}
+
+
+${""+ (27 as char)+(100 as char)+(8 as char)}
+${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}

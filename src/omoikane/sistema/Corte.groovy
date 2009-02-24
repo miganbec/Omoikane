@@ -23,7 +23,7 @@ class Corte {
         try {
             FileOutputStream os = new FileOutputStream("$protocolo:");
             PrintStream ps = new PrintStream(os);
-            ps.println(generarTxt);
+            ps.println(generarCorte());
             //for(int i = 0; i < 4; i++) { ps.println("\n"); }
             ps.close();
         } catch (FileNotFoundException fnf) { consola.out.echo("Error al imprimir al puerto lpt1"); }
@@ -66,7 +66,8 @@ class Corte {
     }
 
     def prueba() {
-        println generarCorte()
+        //println generarCorte()
+        imprimir()
     }
 }
 
