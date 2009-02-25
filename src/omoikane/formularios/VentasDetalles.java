@@ -364,7 +364,9 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
 
     private void btnFacturadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturadoActionPerformed
         // TODO add your handling code here:
+        omoikane.principal.Ventas.lanzarImprimirFactura(this);
         this.chkFacturado.setSelected(true);
+
 }//GEN-LAST:event_btnFacturadoActionPerformed
 
    public SimpleDateFormat sdf          = new SimpleDateFormat("yyyy-MM-dd");

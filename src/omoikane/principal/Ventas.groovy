@@ -89,5 +89,11 @@ class Ventas {
         reporte.lanzarPreview()
     }
 
+    static def lanzarImprimirFactura(form)
+    {
+        def reporte = new Reporte('omoikane/reportes/FacturaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",IDVenta:lastMovID as String]);
+        reporte.lanzarPreview()
+    }
+
 }
 

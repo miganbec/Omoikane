@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<parameter name="IDMov" class="java.lang.String">
-		<defaultValueExpression><![CDATA["164"]]></defaultValueExpression>
+	<parameter name="IDVenta" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\netbeans\\Omoikane\\src\\omoikane\\reportes\\"]]></defaultValueExpression>
@@ -13,28 +13,20 @@
      ventas.`id_almacen` AS ventas_id_almacen,
      ventas.`id_cliente` AS ventas_id_cliente,
      ventas.`fecha_hora` AS ventas_fecha_hora,
-     ventas.`uModificacion` AS ventas_uModificacion,
-     ventas.`facturada` AS ventas_facturada,
-     ventas.`completada` AS ventas_completada,
-     ventas.`eliminar` AS ventas_eliminar,
      ventas.`subtotal` AS ventas_subtotal,
      ventas.`descuento` AS ventas_descuento,
      ventas.`impuestos` AS ventas_impuestos,
      ventas.`total` AS ventas_total,
-     ventas.`id_usuario` AS ventas_id_usuario,
      clientes.`id_cliente` AS clientes_id_cliente,
      clientes.`RFC` AS clientes_RFC,
      clientes.`razonSocial` AS clientes_razonSocial,
      clientes.`direccion` AS clientes_direccion,
      clientes.`telefono` AS clientes_telefono,
-     clientes.`cp` AS clientes_cp,
-     clientes.`descuento` AS clientes_descuento,
-     clientes.`saldo` AS clientes_saldo,
-     clientes.`uModificacion` AS clientes_uModificacion
+     clientes.`cp` AS clientes_cp
 FROM
-     `clientes` clientes INNER JOIN `ventas` ventas ON clientes.`id_cliente` = ventas.`id_cliente`
+     `ventas` ventas INNER JOIN `clientes` clientes ON ventas.`id_cliente` = clientes.`id_cliente`
 WHERE
-     id_venta = $P{IDMov}]]>
+     id_venta = $P{IDVenta}]]>
 	</queryString>
 	<field name="ventas_id_venta" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -51,18 +43,6 @@ WHERE
 	<field name="ventas_fecha_hora" class="java.sql.Timestamp">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="ventas_uModificacion" class="java.sql.Timestamp">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_facturada" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_completada" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_eliminar" class="java.lang.Object">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="ventas_subtotal" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -73,9 +53,6 @@ WHERE
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ventas_total" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_id_usuario" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="clientes_id_cliente" class="java.lang.Integer">
@@ -96,121 +73,111 @@ WHERE
 	<field name="clientes_cp" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="clientes_descuento" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="clientes_saldo" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="clientes_uModificacion" class="java.sql.Timestamp">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<background>
 		<band/>
 	</background>
 	<title>
-		<band height="100"/>
-	</title>
-	<pageHeader>
-		<band/>
-	</pageHeader>
-	<columnHeader>
-		<band/>
-	</columnHeader>
-	<detail>
-		<band height="321">
+		<band height="87">
 			<textField hyperlinkType="None">
-				<reportElement x="411" y="227" width="131" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_subtotal}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="411" y="176" width="131" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_descuento}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="411" y="247" width="131" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_impuestos}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="411" y="267" width="131" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_total}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="411" y="-33" width="131" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_RFC}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="13" y="-89" width="330" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_razonSocial}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="13" y="-69" width="330" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_direccion}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="13" y="-49" width="330" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_telefono}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="13" y="-29" width="330" height="20"/>
+				<reportElement x="0" y="60" width="152" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_cp}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="411" y="-49" width="131" height="20"/>
+				<reportElement x="0" y="40" width="152" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_telefono}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="423" y="40" width="118" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_RFC}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="423" y="20" width="118" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{ventas_fecha_hora}]]></textFieldExpression>
 			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="0" y="0" width="152" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="0" y="20" width="152" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="135">
 			<subreport>
-				<reportElement x="0" y="0" width="555" height="164"/>
+				<reportElement x="0" y="0" width="555" height="135"/>
 				<subreportParameter name="IDMov">
-					<subreportParameterExpression><![CDATA[$F{ventas_id_venta}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{IDVenta}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "Factura.jasper"]]></subreportExpression>
 			</subreport>
-			<staticText>
-				<reportElement x="299" y="176" width="76" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Descuento :]]></text>
-			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band/>
+		<band height="117">
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="14" width="189" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[* * * * * D E S C U E N T O * * * * *]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="494" y="54" width="37" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="494" y="14" width="37" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_descuento}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="494" y="74" width="37" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_impuestos}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="494" y="94" width="37" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_total}]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band/>
+		<band height="25"/>
 	</pageFooter>
 	<summary>
 		<band/>
