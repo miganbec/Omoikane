@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="505" pageHeight="252" columnWidth="505" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<parameter name="IDMov" class="java.lang.String">
 		<defaultValueExpression><![CDATA["108"]]></defaultValueExpression>
 	</parameter>
@@ -60,44 +60,44 @@ WHERE
 	<detail>
 		<band height="23">
 			<textField hyperlinkType="None">
-				<reportElement x="78" y="0" width="201" height="20"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="45" y="0" width="207" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="293" y="0" width="69" height="20"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="252" y="0" width="57" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_precio}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="0" y="0" width="61" height="20"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="0" y="0" width="35" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_cantidad}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="531" y="0" width="64" height="20"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="422" y="0" width="83" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="373" y="0" width="64" height="20"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="309" y="0" width="64" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="451" y="0" width="64" height="20"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="373" y="0" width="49" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
 			</textField>
