@@ -89,6 +89,30 @@ class Cortes {
         def reporte = new Reporte('omoikane/reportes/ReporteCortesCaja.jasper', [QueryTxt:queryMovs]);
         reporte.lanzarPreview()
     }
+    static def lanzarVentanaCorteSucursal(resultadoCorte) {
+        if(cerrojo(PMA_TOTALVENTASUCURSAL)) {
+            
+            def form = (new omoikane.formularios.CorteSucursalDetalles())
+            def rc   = resultadoCorte
+
+            form.setVisible(true);
+            escritorio.getPanelEscritorio().add(form)
+            Herramientas.iconificable(form)
+            form.toFront()
+            try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
+            form.txtNVentas.text   = rc.n_ventas
+            form.txtImpuestos.text = rc.impuestos
+            form.txtDescuentos.text= rc.descuentos
+            form.txtSubtotal.text  = rc.subtotal
+            form.txtTotal.text     = rc.total
+            form.btnAceptar.actionPerformed  = { form.dispose() }
+            form.btnImprimir.actionPerformed = { /* Aqui tambien mandar a imprimir*/ }
+            
+            return form
+            
+        } else { Dialogos.lanzarAlerta("Acceso Denegado") }
+
+    }
     static def lanzarCorteSucursal(IDAlmacen, cortar=false)
     {
         if(cerrojo(PMA_TOTALVENTASUCURSAL)) {
@@ -99,12 +123,16 @@ class Cortes {
                     //break;
                 case 2:
                     def abierta = Sucursales.abierta(IDAlmacen)
-                    if(abierta==0) { paso = 3 } else { Dialogos.lanzarAlerta("No se puede continuar. La sucursal ya estaba inhabilitada para vender, ésto quiere decir que hay otro corte pendiente."); break }
+                    if(abierta==1) { paso = 3 } else { Dialogos.lanzarAlerta("Sucursal inhabilitada, no se han iniciado ventas o hay un corte pendiente."); break }
                 case 3:
-                    //Checar que todas las cajas estén cerradas
-                    // 1. Sacar ids de las cajas de ésta sucursal (a través de id_almacen en cajas)
-                    
-                    println "pas3"+Sucursales.cajasSucursalCerradas(IDAlmacen)
+                    def cajasCerradas = Sucursales.cajasSucursalCerradas(IDAlmacen)
+                    if(cajasCerradas) { paso = 4 } else { Dialogos.lanzarAlerta("No se puede continuar. Hay cajas abiertas, debe cerrarlas para continuar."); break }
+                case 4:
+                    Sucursales.cerrar(IDAlmacen)
+                    def IDCorte        = Sucursales.corte(IDAlmacen)
+                    def resultadoCorte = Sucursales.sumaCorte(IDAlmacen, IDCorte)
+                    lanzarVentanaCorteSucursal(resultadoCorte)
+                    // Aquí mandar a imprimir resultadoCorte (también agregar imprimir en la función anterior (lanzarVentanaCorteSucursal))
                 break
             }
             /*

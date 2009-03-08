@@ -71,4 +71,16 @@ class Sucursales {
         serv.desconectar()
         salida
     }
+    static def corte(IDAlmacen) {
+        def serv  = Nadesico.conectar()
+        def salida= serv.corteSucursal(IDAlmacen)
+        serv.desconectar()
+        salida
+    }
+    static def sumaCorte(IDAlmacen, IDCorte) {
+        def serv  = Nadesico.conectar()
+        def salida= serv.getSumaCorteSucursal(IDAlmacen, IDCorte)
+        serv.desconectar()
+        salida
+    }
 }

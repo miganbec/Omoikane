@@ -46,7 +46,9 @@ class Caja {
                 Herramientas.In2ActionX(form.txtIDCaja, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
                 Herramientas.In2ActionX(form          , KeyEvent.VK_F2    , "buscar"   ) { form.btnBuscar.doClick()        }
                 Herramientas.In2ActionX(form          , KeyEvent.VK_ENTER , "aceptar"  ) { form.btnAceptar.doClick()       }
-                form.txtIDCaja.keyPressed = { e -> if(e.keyCode==e.VK_ENTER) { form.btnAceptar.doClick() } }
+                form.txtIDCaja.keyPressed = { e ->
+                    if(e.keyCode==e.VK_ENTER) { form.btnAceptar.doClick() }
+                }
                 def catArticulos = { def retorno = Caja.lanzarCatalogoDialogo() as String; return retorno==null?"":retorno }
                 form.btnBuscar.actionPerformed = { e -> Thread.start { form.txtIDCaja.text = form.txtIDCaja.text + catArticulos(); form.txtIDCaja.requestFocus() } }
                 form.btnAceptar.actionPerformed= { e ->
@@ -133,7 +135,7 @@ class Caja {
                 dat.each { linea ->
                 sumas[0] += linea['Precio'] as Double; sumas[1] += linea['Descuento'] as Double; sumas[2] += aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double
                 }
-                form.txtNArticulos.text = sumas[0]
+                form.txtNArticulos.text = dat.size()
                 form.txtSubtotal.text   = cifra (sumas[2])
                 form.txtTotal.text      = cifra (sumas[2])
                 form.txtDescuento.text  = cifra (sumas[1])
@@ -161,6 +163,24 @@ class Caja {
                 if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.btnTerminar.doClick() }
                 //Al presionar   F2: (lanzarCatalogoDialogo)
                 if(e.keyCode == e.VK_F2) { form.btnCatalogo.doClick() }
+                if(e.getKeyCode() == e.VK_DOWN)
+                {
+                    int sigFila = form.tablaVenta.getSelectedRow()+1;
+                    if(sigFila < form.tablaVenta.getRowCount())
+                    {
+                        form.tablaVenta.setRowSelectionInterval(sigFila, sigFila);
+                        form.tablaVenta.scrollRectToVisible(form.tablaVenta.getCellRect(sigFila, 1, true));
+                    }
+                }
+                if(e.getKeyCode() == e.VK_UP)
+                {
+                    int antFila = form.tablaVenta.getSelectedRow()-1;
+                    if(antFila >= 0) {
+                        form.tablaVenta.setRowSelectionInterval(antFila, antFila);
+                        form.tablaVenta.scrollRectToVisible(form.tablaVenta.getCellRect(antFila, 1, true));
+                    }
+                }
+
             }
             def catArticulos = { def retorno = Articulos.lanzarDialogoCatalogo() as String; return retorno==null?"":retorno }
             form.btnCatalogo.actionPerformed = { e -> Thread.start { form.txtCaptura.text = form.txtCaptura.text + catArticulos(); form.txtCaptura.requestFocus() } }
