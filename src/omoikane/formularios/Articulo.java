@@ -71,6 +71,8 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txtUModificacion = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        txtIDGrupo = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -195,6 +197,18 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, 30));
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, -1, 20));
 
+        txtIDGrupo.setEditable(false);
+        txtIDGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDGrupoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtIDGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 240, -1));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("ID Grupo:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, 20));
+
         jTabbedPane1.addTab("General", jPanel1);
 
         jPanel2.setOpaque(false);
@@ -243,7 +257,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 20));
 
         txtCosto.setEditable(false);
-        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 240, 20));
+        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 240, 20));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Utilidad (%):");
@@ -327,10 +341,15 @@ public class Articulo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDLineaActionPerformed
 
+    private void txtIDGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDGrupoActionPerformed
+        // TODO add your handling code here:
+}//GEN-LAST:event_txtIDGrupoActionPerformed
+
     public void setEditable(boolean editable)
     {
         this.txtCodigo.setEditable(editable);
         this.txtIDLinea.setEditable(editable);
+        this.txtIDGrupo.setEditable(editable);
         this.txtDescripcion.setEditable(editable);
         this.txtImpuestos.setEditable(editable);
         this.txtUnidad.setEnabled(editable);
@@ -383,6 +402,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -402,6 +422,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtExistencias;
     private javax.swing.JTextField txtIDArticulo;
+    public javax.swing.JTextField txtIDGrupo;
     public javax.swing.JTextField txtIDLinea;
     private javax.swing.JTextField txtImpuestos;
     private javax.swing.JTextField txtUModificacion;
@@ -491,6 +512,17 @@ public class Articulo extends javax.swing.JInternalFrame {
     {
 
         txtIDLinea.setText(IDLinea);
+    }
+
+    public String getTxtIDGrupo()
+    {
+        return txtIDGrupo.getText();
+    }
+
+    public void setTxtIDGrupo(String IDGrupo)
+    {
+
+        txtIDGrupo.setText(IDGrupo);
     }
 
     public JTextField getCampoID() {

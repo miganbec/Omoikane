@@ -314,6 +314,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
         // TODO add your handling code here:
+        omoikane.principal.Grupos.lanzarCatalogo();
 }//GEN-LAST:event_btnGruposActionPerformed
 
 

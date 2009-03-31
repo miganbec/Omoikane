@@ -1,6 +1,6 @@
 /*
  * To change this template, choose Tools | Templates
- * and open the template in the editor.uuuuuuuuuuuuuuuuuuuuuuuu
+ * and open the template in the editor.
  */
 
 package omoikane.principal
@@ -20,6 +20,7 @@ public class Principal {
         public static int     sysAncho 
         public static int     sysAlto  
         public static boolean fondoBlur
+        public static String  puertoImpresion
 
 	static void main(String[] args)
         {
@@ -50,10 +51,11 @@ public class Principal {
             ///////////////////////  
         }
         static def defineAtributos() {
-            sysAncho = Integer.valueOf(config.resolucionPantalla.@ancho[0])
-            sysAlto  = Integer.valueOf(config.resolucionPantalla.@alto[0])
-            fondoBlur= Boolean.valueOf(config.fondoBlur[0].text())
-            IDAlmacen= Integer.valueOf(config.idAlmacen[0].text())
-            IDCaja   = Integer.valueOf(config.idCaja[0].text())
+            sysAncho        = Integer.valueOf(config.resolucionPantalla.@ancho[0])
+            sysAlto         = Integer.valueOf(config.resolucionPantalla.@alto[0])
+            fondoBlur       = Boolean.valueOf(config.fondoBlur[0].text())
+            IDAlmacen       = Integer.valueOf(config.idAlmacen[0].text())
+            IDCaja          = Integer.valueOf(config.idCaja[0].text())
+            puertoImpresion = String.valueOf(config.puertoImpresion[0].text())
         }
 }

@@ -193,7 +193,9 @@ class Caja {
                     }
                     def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, IDUsuario, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), form.impuestos, aDoble(form.txtTotal.text), detalles)
                     serv.desconectar()
-                    (new Ticket(IDAlmacen, salida.ID)).probar()
+                    def comprobante = new Comprobantes()
+                    comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
+                    comprobante.probar()//imprimir ticket
                     Dialogos.lanzarAlerta(salida.mensaje)
                     form.dispose()
                     lanzar()
@@ -273,7 +275,9 @@ class Caja {
                     if(cortar) { 
                         newCorte=serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.descuento, ventas.impuestos, ventas.total, ventas.nVentas, desde, hasta)
                         Dialogos.lanzarAlerta(newCorte.mensaje)
-                        (new Corte(newCorte.IDCorte).prueba())
+                        def comprobante = new Comprobantes()
+                        comprobante.Corte(newCorte.IDCorte)//imprimir ticket
+                        comprobante.probar()//imprimir ticket
                     }
                 }
             }

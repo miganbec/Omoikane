@@ -32,7 +32,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public String          codigoSeleccionado;
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     public String          txtQuery;
-    omoikane.sistema.NadesicoTableModel modelo;
+    ArticulosTableModel modelo;
     
     class TimerBusqueda extends Thread
     {
@@ -66,20 +66,20 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         initComponents();
 
-        String[]  columnas = {"Código", "Línea", "Concepto", "Unidad", "Precio", "Existencias"};
+        String[]  columnas = {"Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"};
         ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-        Class[]   clases   = {String.class, String.class, String.class, String.class, Double.class, Double.class};
+        Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, Double.class, Double.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
-        NadesicoTableModel modeloTabla = new NadesicoTableModel(cols, cls);
+        ArticulosTableModel modeloTabla = new ArticulosTableModel(cols, cls);
         //jTable1.enableInputMethods(false);
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
         
-        setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,precios.costo as xCosto,existencias.cantidad as xExistencias " +
-                "from articulos, precios, existencias, lineas " +
+        setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
+                "from articulos, precios, existencias, lineas , grupos " +
                 "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
-                "AND lineas.id_linea = articulos.id_linea");
+                "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -145,11 +145,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         setIconifiable(true);
         setTitle("Catálogo de artículos");
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
 
         jScrollPane1.setAutoscrolls(true);
 
@@ -172,9 +167,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyTyped(evt);
@@ -255,11 +247,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         chkCodigo.setSelected(true);
         chkCodigo.setText("Cód, Desc");
         chkCodigo.setOpaque(false);
-        chkCodigo.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                chkCodigoStateChanged(evt);
-            }
-        });
         chkCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkCodigoActionPerformed(evt);
@@ -269,20 +256,15 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         chkLineas.setForeground(new java.awt.Color(255, 255, 255));
         chkLineas.setText("Líneas");
         chkLineas.setOpaque(false);
-        chkLineas.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                chkLineasStateChanged(evt);
+        chkLineas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLineasActionPerformed(evt);
             }
         });
 
         chkGrupos.setForeground(new java.awt.Color(255, 255, 255));
         chkGrupos.setText("Grupos");
         chkGrupos.setOpaque(false);
-        chkGrupos.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                chkGruposStateChanged(evt);
-            }
-        });
         chkGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkGruposActionPerformed(evt);
@@ -455,16 +437,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_formKeyPressed
-
-    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtBusquedaKeyReleased
-
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
         omoikane.principal.Articulos.lanzarImprimir(this);
@@ -483,26 +455,18 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void chkCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCodigoActionPerformed
         // TODO add your handling code here:
+        buscar();
 }//GEN-LAST:event_chkCodigoActionPerformed
-
-    private void chkCodigoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkCodigoStateChanged
-        // TODO add your handling code here:
-        buscar();
-    }//GEN-LAST:event_chkCodigoStateChanged
-
-    private void chkLineasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkLineasStateChanged
-        // TODO add your handling code here:
-        buscar();
-    }//GEN-LAST:event_chkLineasStateChanged
-
-    private void chkGruposStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkGruposStateChanged
-        // TODO add your handling code here:
-        omoikane.sistema.Dialogos.lanzarAlerta("Grupos aún no implementados!!");
-    }//GEN-LAST:event_chkGruposStateChanged
 
     private void chkGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkGruposActionPerformed
         // TODO add your handling code here:
+        buscar();
     }//GEN-LAST:event_chkGruposActionPerformed
+
+    private void chkLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLineasActionPerformed
+        // TODO add your handling code here:
+        buscar();
+    }//GEN-LAST:event_chkLineasActionPerformed
 
     public boolean getBuscarCodigoDescripcion()
     {
@@ -512,7 +476,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         return this.chkLineas.getModel().isSelected();
     }
     public boolean getBuscarGrupos() {
-        return false;
+        return this.chkGrupos.getModel().isSelected();
     }
     public void preBuscar()
     {
@@ -528,9 +492,9 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         boolean xLineas = getBuscarLineas();
         boolean xGrupos = getBuscarGrupos();
         String busqueda = this.txtBusqueda.getText();
-        String query    = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,precios.costo as xCosto,existencias.cantidad as xExistencias " +
-                "from articulos, precios, existencias, lineas " +
-                "WHERE precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_articulo = precios.id_articulo ";
+        String query    = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
+                "from articulos, precios, existencias, lineas, grupos " +
+                "WHERE precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
         if(xCodDes || xLineas || xGrupos) { query += "AND ("; }
         if(xCodDes) {
                 query += "(articulos.descripcion like '%"+busqueda+"%' or articulos.codigo like '%"+busqueda+"%') ";
@@ -585,8 +549,22 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 
+}
+
+class ArticulosTableModel extends NadesicoTableModel {
+    ArticulosTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
+    public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
+
+    public Object getValueAt(int row,int col){
+        if(col==5) {
+            return (omoikane.sistema.Articulo.precio((super.getValueAt(row, col)),IDAlmacen));
+
+        } else {
+            return super.getValueAt(row,col);
+        }
+    }
 }

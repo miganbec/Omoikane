@@ -12,6 +12,7 @@
     <resolucionPantalla ancho='1024' alto='768'/>
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
+    <puertoImpresion>LPT1</puertoImpresion>
     <URLServidor>http://localhost:5542</URLServidor>
     <fondoBlur>true</fondoBlur>
 </document>

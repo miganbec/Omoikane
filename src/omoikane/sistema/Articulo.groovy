@@ -36,5 +36,12 @@ class Articulo
         articulo
     }
 
+    static double precio(id,IDAlmacen){
+            def serv = Nadesico.conectar();
+            def a = serv.getPrecio(id,IDAlmacen,1);
+            serv.desconectar();
+            return a.total
+        }
+
 }
 

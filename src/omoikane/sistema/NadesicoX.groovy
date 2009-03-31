@@ -10,7 +10,7 @@ package omoikane.sistema
  * @author Usuario Ruiz
  */
 class NadesicoX {
-    def server;
+    public def server;
     def UIDConn
     def UID
     def UIDRS

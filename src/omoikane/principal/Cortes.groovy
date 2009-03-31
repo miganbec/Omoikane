@@ -89,7 +89,7 @@ class Cortes {
         def reporte = new Reporte('omoikane/reportes/ReporteCortesCaja.jasper', [QueryTxt:queryMovs]);
         reporte.lanzarPreview()
     }
-    static def lanzarVentanaCorteSucursal(resultadoCorte) {
+    static def lanzarVentanaCorteSucursal(resultadoCorte,IDAlmacen, IDCorte) {
         if(cerrojo(PMA_TOTALVENTASUCURSAL)) {
             
             def form = (new omoikane.formularios.CorteSucursalDetalles())
@@ -106,7 +106,11 @@ class Cortes {
             form.txtSubtotal.text  = rc.subtotal
             form.txtTotal.text     = rc.total
             form.btnAceptar.actionPerformed  = { form.dispose() }
-            form.btnImprimir.actionPerformed = { /* Aqui tambien mandar a imprimir*/ }
+            form.btnImprimir.actionPerformed = {
+                def comprobante = new Comprobantes()
+                (comprobante.CorteSucursal(IDAlmacen, IDCorte))//imprimir ticket
+                (comprobante.probar())//* Aqui tambien mandar a imprimir*/
+                }
             
             return form
             
@@ -131,7 +135,7 @@ class Cortes {
                     Sucursales.cerrar(IDAlmacen)
                     def IDCorte        = Sucursales.corte(IDAlmacen)
                     def resultadoCorte = Sucursales.sumaCorte(IDAlmacen, IDCorte)
-                    lanzarVentanaCorteSucursal(resultadoCorte)
+                    lanzarVentanaCorteSucursal(resultadoCorte,IDAlmacen, IDCorte)
                     // Aquí mandar a imprimir resultadoCorte (también agregar imprimir en la función anterior (lanzarVentanaCorteSucursal))
                 break
             }

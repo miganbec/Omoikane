@@ -22,7 +22,7 @@ public class NadesicoTableModel extends AbstractTableModel {
 	java.util.List	colNames	= null;
 	int             rowCount        = -1;
 	java.util.List  colClasses      = null;
-    NadesicoX       port = null;
+    public NadesicoX       port = null;
     java.util.Hashtable<String,java.util.List> cacheFila = new Hashtable();
 
     public NadesicoTableModel(java.util.List colNames, ArrayList colClases) {
