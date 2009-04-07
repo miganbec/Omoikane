@@ -25,9 +25,9 @@ public class Usuario extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
     public int ID;
-    public String huella1;
-    public String huella2;
-    public String huella3;
+    public byte[] huella1;
+    public byte[] huella2;
+    public byte[] huella3;
     /** Creates new form Articulo */
     public Usuario() {
         initComponents();
@@ -65,7 +65,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtNIP = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         JH1 = new javax.swing.JToggleButton();
@@ -73,6 +72,8 @@ public class Usuario extends javax.swing.JInternalFrame {
         JH3 = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
         txtPerfil = new javax.swing.JComboBox();
+        txtNIP = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
 
         setTitle("Usuario");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -155,9 +156,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("N.I.P.:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 20));
-
-        txtNIP.setEditable(false);
-        getContentPane().add(txtNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, -1));
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 10, 10));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,6 +197,10 @@ public class Usuario extends javax.swing.JInternalFrame {
         txtPerfil.setEnabled(false);
         getContentPane().add(txtPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 250, -1));
 
+        txtNIP.setEditable(false);
+        getContentPane().add(txtNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 10, 10));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -225,7 +227,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         (new Thread() {
             public void run() {
-                huella1 = (String) omoikane.sistema.Usuarios.leerHuella();
+                huella1 = (byte[]) omoikane.sistema.Usuarios.leerHuella() ;
             }
         }
         ).start();
@@ -235,7 +237,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         (new Thread() {
             public void run() {
-                huella2 = (String) omoikane.sistema.Usuarios.leerHuella();
+                huella2 = (byte[]) omoikane.sistema.Usuarios.leerHuella();
             }
         }
         ).start();
@@ -245,7 +247,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         (new Thread() {
             public void run() {
-                huella3 = (String) omoikane.sistema.Usuarios.leerHuella();
+                huella3 = (byte[]) omoikane.sistema.Usuarios.leerHuella();
             }
         }
         ).start();
@@ -298,13 +300,14 @@ public class Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtIDUSR;
-    private javax.swing.JTextField txtNIP;
+    private javax.swing.JPasswordField txtNIP;
     public javax.swing.JTextField txtNombre;
     private javax.swing.JComboBox txtPerfil;
     private javax.swing.JTextField txtUModificacion;
@@ -312,9 +315,9 @@ public class Usuario extends javax.swing.JInternalFrame {
 
     public String getTxtIDUSR()         { return txtIDUSR.getText();                            }
     public String getTxtFecha()         { return txtFecha.getText();                            }
-    public String getTxtH1()            { return huella1;                                       }
-    public String getTxtH2()            { return huella2;                                       }
-    public String getTxtH3()            { return huella3;                                       }
+    public byte[] getTxtH1()            { return huella1;                                       }
+    public byte[] getTxtH2()            { return huella2;                                       }
+    public byte[] getTxtH3()            { return huella3;                                       }
     public String getTxtNombre()        { return txtNombre.getText();                           }
     public String getTxtNIP()           { return txtNIP.getText();                              }
     public String getTxtUModificacion() { return txtUModificacion.getText();                    }

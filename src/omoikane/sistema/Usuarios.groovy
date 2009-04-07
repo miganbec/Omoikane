@@ -30,9 +30,10 @@ public class Usuarios {
     public static def identificaPersona() {
             def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
             def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
-            fingerPrint      = Herramientas.bytes2HexString(fingerPrint)
+            //fingerPrint      = Herramientas.bytes2HexString(fingerPrint)
             def serv         = Nadesico.conectar()
             def respuesta    = serv.checkFingerPrint(fingerPrint)
+            //def respuesta = [ID:15,huella:"",nombre:"lo que quieras",sucursales:["1":4]]
             if(respuesta != 0) {
                 respuesta.cerrojo= { llave -> return llave<=respuesta.sucursales[Principal.IDAlmacen as String] }
             } else {
@@ -53,7 +54,7 @@ public class Usuarios {
     public static def leerHuella(){
         def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
         def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
-        fingerPrint      = Herramientas.bytes2HexString(fingerPrint)
+        //fingerPrint      = Herramientas.bytes2HexString(fingerPrint)
         return fingerPrint
     }
         

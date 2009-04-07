@@ -116,10 +116,7 @@ class Usuarios {
                 def NIP               = formUsuario.getTxtNIP()
                 def Perfil            = formUsuario.getTxtPerfil()
                 Herramientas.verificaCampo(Nombre,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Nombre sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(H1,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Huella 1 sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(H2,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"huella 2 sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(H3,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"huella 3 sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(NIP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"NIP sólo puede incluír números, letras, espacios, *, -,_ y +.")
+                Herramientas.verificaCampo(NIP,/^([0-9]+)$/,"NIP sólo puede incluír números.")
                 switch(Perfil) {
                     case "Cajero"       :Perfil=0; break;
                     case "Supervisor"   :Perfil=1; break;
@@ -127,12 +124,19 @@ class Usuarios {
                     case "Administrador":if(cerrojo(PROPIETARIO)){Perfil=3}else{Dialogos.lanzarAlerta("Acceso Denegado solo un propietario puede agregar un nuevo administrador")}; break;
                     case "Propietario"  :if(cerrojo(PROPIETARIO))  {Perfil=4}else{Dialogos.lanzarAlerta("Acceso Denegado no es un propietario")}; break;
                     default: break;}
+                if (Perfil instanceof String ){
+                    Perfil = -1
+                }
                 try {
-                    def serv = Nadesico.conectar()
-                    Dialogos.lanzarAlerta(serv.addUsuario(Nombre,H1,H2,H3,NIP,Perfil,Almacen))
-                    serv.desconectar()
+                    if(Perfil>=0)
+                    {
+                        def serv = Nadesico.conectar()
+                        Dialogos.lanzarAlerta(serv.addUsuario(Nombre,H1,H2,H3,NIP,Perfil,Almacen))
+                        serv.desconectar()
+                        formUsuario.dispose()
+                    }
                 }catch(e) { Dialogos.error("Error al enviar a la base de datos. El Usuario no se registró", e) }
-                formUsuario.dispose()}
+                }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
@@ -159,16 +163,10 @@ class Usuarios {
             Herramientas.verificaCampos {
                 def USR               = formUsuario.getTxtIDUSR()
                 def Nombre            = formUsuario.getTxtNombre()
-                def H1                = formUsuario.getTxtH1()
-                def H2                = formUsuario.getTxtH2()
-                def H3                = formUsuario.getTxtH3()
                 def NIP               = formUsuario.getTxtNIP()
                 def Perfil            = formUsuario.getTxtPerfil()
                 Herramientas.verificaCampo(Nombre,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Nombre sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(H1,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Huella 1 sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(H2,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"huella 2 sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(H3,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"huella 3 sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(NIP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"NIP sólo puede incluír números, letras, espacios, *, -,_ y +.")
+                Herramientas.verificaCampo(NIP,/^([0-9]+)$/,"NIP sólo puede incluír números.")
                 switch(Perfil) {
                     case "Cajero"       :Perfil=0; break;
                     case "Supervisor"   :Perfil=1; break;
@@ -178,7 +176,7 @@ class Usuarios {
                 default: break;}
                 Herramientas.verificaCampo(Perfil,/^([0-9]{1,1})$/,"Solo puede agregar usuario con menor privilegio que el suyo")
                 def serv = Nadesico.conectar()
-                Dialogos.lanzarAlerta(serv.modUsuario(Nombre,H1,H2,H3,NIP,Perfil,Almacen,USR))}
+                Dialogos.lanzarAlerta(serv.modUsuario(Nombre,NIP,Perfil,Almacen,USR))}
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 }
