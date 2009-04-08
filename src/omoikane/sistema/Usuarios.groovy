@@ -32,7 +32,9 @@ public class Usuarios {
             def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
             //fingerPrint      = Herramientas.bytes2HexString(fingerPrint)
             def serv         = Nadesico.conectar()
-            def respuesta    = serv.checkFingerPrint(fingerPrint)
+//            def respuesta    = serv.checkFingerPrint(fingerPrint)
+            Dialogos.lanzarAlerta("Sistema de usuarios ináctivo")
+            def respuesta = [ID:15, huella:"", nombre:"Octavio Ruiz", sucursales:["1":3]]
             //def respuesta = [ID:15,huella:"",nombre:"lo que quieras",sucursales:["1":4]]
             if(respuesta != 0) {
                 respuesta.cerrojo= { llave -> return llave<=respuesta.sucursales[Principal.IDAlmacen as String] }

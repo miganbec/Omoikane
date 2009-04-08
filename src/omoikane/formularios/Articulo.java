@@ -66,30 +66,44 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtUnidad = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         txtExistencias = new javax.swing.JTextField();
-        txtDescuento = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtUModificacion = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        txtDescuento = new javax.swing.JTextField();
         txtIDGrupo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tblCodigos = new javax.swing.JTable();
+        btnAddCode = new javax.swing.JButton();
+        btnDelCode = new javax.swing.JButton();
+        btnModCode = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        txtImpuestos = new javax.swing.JTextField();
+        txtPrecio2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txtCosto = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        txtUtilidad = new javax.swing.JTextField();
+        txtUtilidadPorc = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jLabel20 = new javax.swing.JLabel();
+        txtDesctoPorcentaje = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        txtImpuestosPorc = new javax.swing.JTextField();
+        txtImpuestos = new javax.swing.JTextField();
+        txtUtilidad = new javax.swing.JTextField();
+        txtDescuento2 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -165,7 +179,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
 
         txtDescripcion.setEditable(false);
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 240, 20));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 240, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Unidad:");
@@ -180,22 +194,32 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
 
         txtExistencias.setEditable(false);
-        jPanel1.add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, 20));
+        jPanel1.add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, -1));
 
-        txtDescuento.setEditable(false);
-        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 240, 20));
+        txtPrecio.setEditable(false);
+        txtPrecio.setFont(new java.awt.Font("Tahoma", 1, 18));
+        txtPrecio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, 30));
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Descuento (%):");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
+        jLabel12.setText("Precio:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 30));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("<html>Última<br>Modificación:</html>");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         txtUModificacion.setEditable(false);
-        jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, 30));
+        jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 240, 30));
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, -1, 20));
+
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Descuento:");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
+
+        txtDescuento.setEditable(false);
+        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 240, -1));
 
         txtIDGrupo.setEditable(false);
         txtIDGrupo.addActionListener(new java.awt.event.ActionListener() {
@@ -214,26 +238,26 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCodigos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null}
+
             },
             new String [] {
                 "Código"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCodigos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 320));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
 
-        jButton1.setText("+");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 40, 20));
+        btnAddCode.setText("+");
+        jPanel2.add(btnAddCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 40, 20));
 
-        jButton2.setText("-");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, 20));
+        btnDelCode.setText("-");
+        jPanel2.add(btnDelCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, 20));
 
-        jButton3.setText("Mod");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 60, 20));
+        btnModCode.setText("Mod");
+        jPanel2.add(btnModCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 60, 20));
 
         jTabbedPane1.addTab("Códigos", jPanel2);
 
@@ -243,28 +267,32 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Ventas");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Impuestos (%):");
         jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 20));
 
-        txtImpuestos.setEditable(false);
-        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 240, -1));
+        txtPrecio2.setEditable(false);
+        txtPrecio2.setFont(new java.awt.Font("Tahoma", 1, 11));
+        txtPrecio2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, -1));
 
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Costo:");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 20));
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
 
         txtCosto.setEditable(false);
-        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 240, 20));
+        txtCosto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 110, -1));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Utilidad (%):");
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
 
-        txtUtilidad.setEditable(false);
-        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 240, 20));
+        txtUtilidadPorc.setEditable(false);
+        txtUtilidadPorc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 110, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,7 +312,55 @@ public class Articulo extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 340, 180));
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 340, 110));
+
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Precio:");
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
+
+        txtDesctoPorcentaje.setEditable(false);
+        txtDesctoPorcentaje.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 110, -1));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("$:");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, 20));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("$:");
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, 20));
+
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("$:");
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, 20));
+
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("$:");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, 20));
+
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Descuento (%):");
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("$:");
+        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, 20));
+
+        txtImpuestosPorc.setEditable(false);
+        txtImpuestosPorc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 110, -1));
+
+        txtImpuestos.setEditable(false);
+        txtImpuestos.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 110, -1));
+
+        txtUtilidad.setEditable(false);
+        txtUtilidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 110, -1));
+
+        txtDescuento2.setEditable(false);
+        txtDescuento2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 110, -1));
 
         jTabbedPane1.addTab("Detalles", jPanel5);
 
@@ -301,16 +377,16 @@ public class Articulo extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 320));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
 
         jButton4.setText("+");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 40, 20));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 40, 20));
 
         jButton5.setText("-");
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, 20));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, 20));
 
         jButton6.setText("Mod");
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 60, 20));
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 60, 20));
 
         jTabbedPane1.addTab("Componentes", jPanel3);
 
@@ -351,11 +427,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         this.txtIDLinea.setEditable(editable);
         this.txtIDGrupo.setEditable(editable);
         this.txtDescripcion.setEditable(editable);
-        this.txtImpuestos.setEditable(editable);
+        this.getTxtPrecio2().setEditable(editable);
         this.txtUnidad.setEnabled(editable);
         this.txtCosto.setEditable(editable);
-        this.txtUtilidad.setEditable(editable);
-        this.txtDescuento.setEditable(editable);
+        this.getTxtUtilidadPorc().setEditable(editable);
+        this.txtPrecio.setEditable(editable);
     }
     public void setModoDetalles()
     {
@@ -378,17 +454,18 @@ public class Articulo extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddCode;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnDelCode;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModCode;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -396,10 +473,16 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -413,21 +496,27 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable tblCodigos;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtDesctoPorcentaje;
     private javax.swing.JTextField txtDescuento;
+    private javax.swing.JTextField txtDescuento2;
     private javax.swing.JTextField txtExistencias;
     private javax.swing.JTextField txtIDArticulo;
     public javax.swing.JTextField txtIDGrupo;
     public javax.swing.JTextField txtIDLinea;
     private javax.swing.JTextField txtImpuestos;
+    private javax.swing.JTextField txtImpuestosPorc;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtPrecio2;
     private javax.swing.JTextField txtUModificacion;
     private javax.swing.JComboBox txtUnidad;
     private javax.swing.JTextField txtUtilidad;
+    private javax.swing.JTextField txtUtilidadPorc;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -483,14 +572,14 @@ public class Articulo extends javax.swing.JInternalFrame {
         this.txtUnidad.setSelectedItem(txt);
     }
 
-    public String getTxtImpuestos()
+    public JTextField getTxtImpuestos()
     {
-        return this.txtImpuestos.getText();
+        return this.txtImpuestos;
     }
 
     public void setTxtImpuestos(String txt)
     {
-        this.txtImpuestos.setText(txt);
+        this.getTxtPrecio2().setText(txt);
     }
 
     public String getTxtUModificacion()
@@ -531,12 +620,11 @@ public class Articulo extends javax.swing.JInternalFrame {
 
     public String getTxtDescuento()   { return this.txtDescuento.getText(); }
     public String getTxtCosto()       { return this.txtCosto.getText(); }
-    public String getTxtUtilidad()    { return this.txtUtilidad.getText(); }
     public String getTxtExistencias() { return this.txtExistencias.getText(); }
 
     public void setTxtDescuento(String descuento)     { txtDescuento.setText(descuento); }
     public void setTxtCosto(String costo)             { txtCosto.setText(costo); }
-    public void setTxtUtilidad(String utilidad)       { txtUtilidad.setText(utilidad); }
+    public void setTxtUtilidadPorc(String utilidad)       { getTxtUtilidadPorc().setText(utilidad); }
     public void setTxtExistencias(String existencias) { txtExistencias.setText(existencias); }
     public void paintComponent(Graphics g)
     {
@@ -555,5 +643,117 @@ public class Articulo extends javax.swing.JInternalFrame {
       g2d.setColor(new Color(55,55,255,225));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
+    }
+
+    /**
+     * @return the txtPrecio
+     */
+    public String getTxtPrecio() {
+        return txtPrecio.getText();
+    }
+
+    /**
+     * @param txtPrecio the txtPrecio to set
+     */
+    public void setTxtPrecio(String txtPrecio) {
+        this.txtPrecio.setText(txtPrecio);
+    }
+
+    /**
+     * @return the txtDestoPorcentaje
+     */
+    public javax.swing.JTextField getTxtDesctoPorcentaje() {
+        return txtDesctoPorcentaje;
+    }
+
+    /**
+     * @param txtDestoPorcentaje the txtDestoPorcentaje to set
+     */
+    public void setTxtDesctoPorcentaje(javax.swing.JTextField txtDestoPorcentaje) {
+        this.txtDesctoPorcentaje = txtDestoPorcentaje;
+    }
+
+    /**
+     * @return the txtDescuento2
+     */
+    public javax.swing.JTextField getTxtDescuento2() {
+        return txtDescuento2;
+    }
+
+    /**
+     * @param txtDescuento2 the txtDescuento2 to set
+     */
+    public void setTxtDescuento2(javax.swing.JTextField txtDescuento2) {
+        this.txtDescuento2 = txtDescuento2;
+    }
+
+    /**
+     * @return the txtImpuestos3
+     */
+    public javax.swing.JTextField getTxtImpuestos3() {
+        return txtImpuestos;
+    }
+
+    /**
+     * @param txtImpuestos3 the txtImpuestos3 to set
+     */
+    public void setTxtImpuestos3(javax.swing.JTextField txtImpuestos3) {
+        this.txtImpuestos = txtImpuestos3;
+    }
+
+    /**
+     * @return the txtImpuestosPorc
+     */
+    public javax.swing.JTextField getTxtImpuestosPorc() {
+        return txtImpuestosPorc;
+    }
+
+    /**
+     * @param txtImpuestosPorc the txtImpuestosPorc to set
+     */
+    public void setTxtImpuestosPorc(javax.swing.JTextField txtImpuestosPorc) {
+        this.txtImpuestosPorc = txtImpuestosPorc;
+    }
+
+    /**
+     * @return the txtPrecio2
+     */
+    public javax.swing.JTextField getTxtPrecio2() {
+        return txtPrecio2;
+    }
+
+    /**
+     * @param txtPrecio2 the txtPrecio2 to set
+     */
+    public void setTxtPrecio2(javax.swing.JTextField txtPrecio2) {
+        this.txtPrecio2 = txtPrecio2;
+    }
+
+    /**
+     * @return the txtUtilidadPorc
+     */
+    public javax.swing.JTextField getTxtUtilidadPorc() {
+        return txtUtilidadPorc;
+    }
+
+    /**
+     * @param txtUtilidadPorc the txtUtilidadPorc to set
+     */
+    public void setTxtUtilidadPorc(javax.swing.JTextField txtUtilidadPorc) {
+        this.txtUtilidadPorc = txtUtilidadPorc;
+    }
+
+    /**
+     * @return the txtUtilidad
+     */
+    public javax.swing.JTextField getTxtUtilidad() {
+        return txtUtilidad;
+    }
+
+    /**
+     * @param txtUtilidad the txtUtilidad to set
+     */
+    public void setTxtUtilidad(javax.swing.JTextField txtUtilidad) {
+        this.txtUtilidad = txtUtilidad;
     }
 }

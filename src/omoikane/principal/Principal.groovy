@@ -9,7 +9,13 @@ import omoikane.sistema.*
 import omoikane.sistema.Usuarios as SisUsuarios
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
- * @author Octavio
+ * ////////////////////////////////////////////////////////////////////////////////////////////
+ * ////////////////////////////////////////////////////////////////////////////////////////////
+ * ////////////////////////////////////////////////////////////////////////////////////////////
+ * ////////////////////////////////////////////////////////////////////////////////////////////
+ * ////////////////////////////////////////////////////////////////////////////////////////////
+ * 
+ *  * @author Octavio
  */
 public class Principal {
         static def escritorio
@@ -22,7 +28,7 @@ public class Principal {
         public static boolean fondoBlur
         public static String  puertoImpresion
 
-	static void main(String[] args)
+	public static void main(args)
         {
             iniciar()
         }
@@ -43,12 +49,31 @@ public class Principal {
             menuPrincipal = new MenuPrincipal()
             splash.detener()
 
-           while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
-           escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
-            menuPrincipal.iniciar()
+            while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
+            escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
 
+            menuPrincipal.iniciar()
+            //new SimpleForm() {
+            //        it.form.visible = true
+            //}
+            /*
+            def puerto = new PuertoNadesico()
+            println puerto.dump()
+            
+            def objPrueba = puerto.ObjPrueba.newInstance()
+            objPrueba.metodo1()
+            objPrueba.metodo2("hola desde invocación rara")
+            println "resultado metodo 3: "+objPrueba.metodo3()
+            println "resultado de la propiedad1 : " +objPrueba.prop1
+            println "resultado de la propiedad2 : " +objPrueba.prop2
+            println puerto.Articulos.get(145594).descripcion
+            //puerto.(new Articulos(descripcion:"último objeto8")).addToCodigos(new CodigosArticulo(codigo:"lalalauiiuiui")).save()
+            def art = (puerto.Articulos.newInstance(descripcion:"otro más")).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:"él código")).save()
+            //art.save()
+            */
             } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar aplicaciòn", Herramientas.getStackTraceString(e)) }
-            ///////////////////////  
+            ///////////////////////
+
         }
         static def defineAtributos() {
             sysAncho        = Integer.valueOf(config.resolucionPantalla.@ancho[0])

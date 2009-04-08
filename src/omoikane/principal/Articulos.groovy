@@ -78,7 +78,19 @@ public class Articulos
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
         */
     }
+    static def rellenarCodigosAlternos(ID, form) {
 
+        PuertoNadesico.workIn() {
+            def artGorm = it.Articulos.get(ID)
+
+            form.tblCodigos.setModel(new javax.swing.table.DefaultTableModel(0,1))
+            form.tblCodigos.getModel().setColumnIdentifiers("Código")
+            artGorm.get(ID).codigos.each {
+                form.tblCodigos.getModel().addRow(it.codigo)
+            }
+
+        }
+    }
     static def lanzarDetallesArticulo(ID)
     {
         if(cerrojo(PMA_DETALLESARTICULO)){
@@ -86,23 +98,48 @@ public class Articulos
             formArticulo.setVisible(true)
             escritorio.getPanelEscritorio().add(formArticulo)
             formArticulo.toFront()
-            try { formArticulo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
+            try { formArticulo.setSelected(true) 
             def art         = Nadesico.conectar().getArticulo(ID,IDAlmacen)
-            formArticulo.setTxtIDArticulo    art.id_articulo   as String
+            formArticulo.setTxtIDArticulo    art.id_articulo           as String
             formArticulo.setTxtCodigo        art.codigo
-            formArticulo.setTxtIDLinea       art.id_linea      as String
+            formArticulo.setTxtIDLinea       art.id_linea              as String
             formArticulo.setTxtIDGrupo       art.id_grupo      as String
             formArticulo.setTxtDescripcion   art.descripcion
             formArticulo.setTxtUnidad        art.unidad
-            formArticulo.setTxtImpuestos     art.impuestos     as String
-            formArticulo.setTxtUModificacion art.uModificacion as String
-            formArticulo.setTxtDescuento     art.descuento     as String
-            formArticulo.setTxtCosto         art.costo         as String
-            formArticulo.setTxtUtilidad      art.utilidad      as String
-            formArticulo.setTxtExistencias   art.cantidad      as String
+            formArticulo.setTxtImpuestos     art.impuestos             as String
+            formArticulo.setTxtUModificacion art.uModificacion         as String
+            formArticulo.setTxtDescuento     art.precio['descuento$']  as String
+            formArticulo.setTxtCosto         art.costo                 as String
+            formArticulo.setTxtUtilidadPorc  art.utilidad              as String
+            formArticulo.setTxtExistencias   art.cantidad              as String
+            formArticulo.setTxtPrecio        art.precio.total          as String
+
+            formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuento%'] as String
+            formArticulo.getTxtDescuento2().text       = art.precio['descuento$'] as String
+            formArticulo.getTxtPrecio2().text          = art.precio.total         as String
+            formArticulo.getTxtImpuestosPorc().text    = art.impuestos            as String
+            formArticulo.getTxtImpuestos().text        = art.precio['impuestos']  as String
+            formArticulo.getTxtUtilidad().text         = art.precio['utilidad']   as String
             formArticulo.ID                   = ID
             formArticulo.setModoDetalles();
-            formArticulo
+            formArticulo.btnAddCode.actionPerformed    = {
+                new SimpleForm("omoikane.formularios.CodigoArticulo") {
+                    def form = it.form
+                    form.visible = true
+                    form.btnCancelar.actionPerformed = { form.dispose() }
+                    form.btnAceptar.actionPerformed  = {
+                        PuertoNadesico.workIn() { puerto ->
+                            (puerto.Articulos.get(ID)).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:form.txtCodigo.text)).save()
+                            rellenarCodigosAlternos(ID, formArticulo)
+                            Dialogos.lanzarAlerta("Código agregado")
+                            form.dispose()
+                        }
+                    }
+                }
+            }
+            rellenarCodigosAlternos(ID, formArticulo)
+
+            } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
