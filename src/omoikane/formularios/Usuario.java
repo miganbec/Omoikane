@@ -67,13 +67,16 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        JH1 = new javax.swing.JToggleButton();
-        JH2 = new javax.swing.JToggleButton();
-        JH3 = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
         txtPerfil = new javax.swing.JComboBox();
         txtNIP = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
+        JH3 = new javax.swing.JButton();
+        JH1 = new javax.swing.JButton();
+        JH2 = new javax.swing.JButton();
+        HA1 = new javax.swing.JLabel();
+        HA2 = new javax.swing.JLabel();
+        HA3 = new javax.swing.JLabel();
 
         setTitle("Usuario");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,33 +165,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel10.setText("Huella 3:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
 
-        JH1.setText("Huella 1");
-        JH1.setEnabled(false);
-        JH1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JH1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(JH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, -1));
-
-        JH2.setText("Huella 2");
-        JH2.setEnabled(false);
-        JH2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JH2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(JH2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 260, -1));
-
-        JH3.setText("Huella 3");
-        JH3.setEnabled(false);
-        JH3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JH3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(JH3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, -1));
-
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("<html>Última<br>Modificación:</html>");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
@@ -200,6 +176,48 @@ public class Usuario extends javax.swing.JInternalFrame {
         txtNIP.setEditable(false);
         getContentPane().add(txtNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, -1));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 10, 10));
+
+        JH3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/record.png"))); // NOI18N
+        JH3.setText("Capturar Huella");
+        JH3.setEnabled(false);
+        JH3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JH3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JH3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
+
+        JH1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/record.png"))); // NOI18N
+        JH1.setText("Capturar Huella");
+        JH1.setEnabled(false);
+        JH1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JH1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+
+        JH2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/record.png"))); // NOI18N
+        JH2.setText("Capturar Huella");
+        JH2.setEnabled(false);
+        JH2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JH2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JH2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+
+        HA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
+        HA1.setEnabled(false);
+        getContentPane().add(HA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, 20));
+
+        HA2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
+        HA2.setEnabled(false);
+        getContentPane().add(HA2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, 20));
+
+        HA3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
+        HA3.setEnabled(false);
+        getContentPane().add(HA3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,21 +241,31 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_txtNombreActionPerformed
 
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreKeyPressed
+
     private void JH1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH1ActionPerformed
         // TODO add your handling code here:
         (new Thread() {
             public void run() {
                 huella1 = (byte[]) omoikane.sistema.Usuarios.leerHuella() ;
+                System.out.println(huella1);
+                if(huella1!=null)
+                {HA1.setEnabled(true);}
             }
         }
         ).start();
-    }//GEN-LAST:event_JH1ActionPerformed
+}//GEN-LAST:event_JH1ActionPerformed
 
     private void JH2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH2ActionPerformed
         // TODO add your handling code here:
         (new Thread() {
             public void run() {
-                huella2 = (byte[]) omoikane.sistema.Usuarios.leerHuella();
+                huella2 = (byte[]) omoikane.sistema.Usuarios.leerHuella() ;
+                System.out.println(huella2);
+                if(huella2!=null)
+                {HA2.setEnabled(true);}
             }
         }
         ).start();
@@ -247,23 +275,19 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         (new Thread() {
             public void run() {
-                huella3 = (byte[]) omoikane.sistema.Usuarios.leerHuella();
+                huella3 = (byte[]) omoikane.sistema.Usuarios.leerHuella() ;
+                System.out.println(huella3);
+                if(huella3!=null)
+                {HA3.setEnabled(true);}
             }
         }
         ).start();
     }//GEN-LAST:event_JH3ActionPerformed
 
-    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreKeyPressed
-
     public void setEditable(boolean editable)
     {
         this.txtNombre.setEditable(editable);
-        this.JH1.setEnabled(editable);
         this.txtPerfil.setEnabled(editable);
-        this.JH2.setEnabled(editable);
-        this.JH3.setEnabled(editable);
         this.txtNIP.setEditable(editable);
     }
 
@@ -272,6 +296,9 @@ public class Usuario extends javax.swing.JInternalFrame {
         setEditable(false);
         this.btnGuardar.setVisible(false);
         this.btnModificar.setVisible(false);
+        this.HA1.setEnabled(true);
+        this.HA2.setEnabled(true);
+        this.HA3.setEnabled(true);
 
     }
     public void setModoModificar()
@@ -279,17 +306,26 @@ public class Usuario extends javax.swing.JInternalFrame {
         setEditable(true);
         this.btnGuardar.setVisible(false);
         this.btnModificar.setVisible(true);
+        this.HA1.setEnabled(true);
+        this.HA2.setEnabled(true);
+        this.HA3.setEnabled(true);
     }
     public void setModoNuevo()
     {
         setEditable(true);
         this.btnModificar.setVisible(false);
+        this.JH1.setEnabled(true);
+        this.JH2.setEnabled(true);
+        this.JH3.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton JH1;
-    private javax.swing.JToggleButton JH2;
-    private javax.swing.JToggleButton JH3;
+    private javax.swing.JLabel HA1;
+    private javax.swing.JLabel HA2;
+    private javax.swing.JLabel HA3;
+    private javax.swing.JButton JH1;
+    private javax.swing.JButton JH2;
+    private javax.swing.JButton JH3;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
