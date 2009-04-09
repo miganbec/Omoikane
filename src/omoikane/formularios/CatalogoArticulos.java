@@ -22,6 +22,10 @@ import omoikane.sistema.*;
 
 /** ////////////////////////////////////////////////////////////////////////////////////////////////
  * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *  * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *  * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *  * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *  * /////////////////////////////////////////////////////////////////////////////////////////////////
  * @author Octavio
  */
 public class CatalogoArticulos extends javax.swing.JInternalFrame {
@@ -492,7 +496,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         boolean xLineas = getBuscarLineas();
         boolean xGrupos = getBuscarGrupos();
         String busqueda = this.txtBusqueda.getText();
-        String query    = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
+        String query    = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
                 "from articulos, precios, existencias, lineas, grupos " +
                 "WHERE precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
         if(xCodDes || xLineas || xGrupos) { query += "AND ("; }

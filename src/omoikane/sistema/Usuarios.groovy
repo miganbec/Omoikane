@@ -29,7 +29,7 @@ public class Usuarios {
     }
     public static def identificaPersona() {
             def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
-            def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
+            //def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
             //fingerPrint      = Herramientas.bytes2HexString(fingerPrint)
             def serv         = Nadesico.conectar()
 //            def respuesta    = serv.checkFingerPrint(fingerPrint)

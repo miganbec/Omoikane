@@ -104,6 +104,14 @@ class Caja {
         }
     }
 
+    static def filtroEAN13(codigo) {
+        if(codigo[0..1] == "26") {
+            //Código de barras de báscula electrónica 26[xxxxx=codigo][yyyyy=cantidad][codigo seguridad] (13 dígitos)
+            def cant = (codigo[7..11] as Double)/1000
+            codigo   = cant+"*"+codigo[2..6]
+        }
+        codigo
+    }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
             def form = new omoikane.formularios.Caja()
@@ -143,7 +151,11 @@ class Caja {
             }
             def addArtic = { codigo ->
                 try {
-                    def captura = form.txtCaptura.text.split("\\*")
+                    def captura = form.txtCaptura.text
+
+                    if(captura.size()==13) { captura = Caja.filtroEAN13(captura) }
+                    println "Captura: $captura"
+                    captura     = captura.split("\\*")
                     def cantidad= captura.size()==1?1:captura[0..captura.size()-2].inject(1) { acum, i -> acum*(i as Double) }
                     def art     = serv.codigo2Articulo(IDAlmacen, captura[captura.size()-1])
                     if(art == null || art == 0) { Dialogos.lanzarAlerta("Articulo no encontrado!!"); } else {

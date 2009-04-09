@@ -39,6 +39,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         this.generarFondo(this);
         
         //Instrucciones para el funcionamiento de las teclas de navegación
+        /*
         Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.DOWN_CYCLE_TRAVERSAL_KEYS));
         newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
         setFocusTraversalKeys(KeyboardFocusManager.DOWN_CYCLE_TRAVERSAL_KEYS, newKeys);
@@ -46,8 +47,8 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.UP_CYCLE_TRAVERSAL_KEYS));
         newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
         setFocusTraversalKeys(KeyboardFocusManager.UP_CYCLE_TRAVERSAL_KEYS, newKeys);
-
-        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+        */
+        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
         newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0));
         setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
 
@@ -117,6 +118,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVenderActionPerformed(evt);
+            }
+        });
+        btnVender.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnVenderKeyReleased(evt);
             }
         });
         getContentPane().add(btnVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 230, 60));
@@ -316,6 +322,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         omoikane.principal.Grupos.lanzarCatalogo();
 }//GEN-LAST:event_btnGruposActionPerformed
+
+    private void btnVenderKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnVenderKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVenderKeyReleased
 
 
 
