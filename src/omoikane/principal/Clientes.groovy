@@ -110,12 +110,12 @@ class Clientes {
                 def Saldo           = formCliente.getTxtSaldo()
                 def descuento       = formCliente.getTxtDescuento()
                 def CP              = formCliente.getTxtCP()
-                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"RFC sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Direccion sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Telefono sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"RazonSocial sólo puede incluír números, letras, espacios, *, -,_ y +.")
+                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"RFC sólo puede incluír números, letras, espacios, - , _ y puntos ")
+                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Direccion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
+                Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Telefono puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
+                Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Razon Social puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
                 Herramientas.verificaCampo(Saldo,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Saldo sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(CP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"CP sólo puede incluír números, letras, espacios, *, -,_ y +.")
+                Herramientas.verificaCampo(CP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"CP sólo puede incluír números, letras, espacios , - , _ y .")
                 Herramientas.verificaCampo(descuento,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
                 descuento     = descuento as Double
                 Saldo         = Saldo as Double
@@ -139,6 +139,7 @@ class Clientes {
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Cliente", Herramientas.getStackTraceString(e)) }
             form.setEditable(true);
             form.setModoNuevo();
+            return form
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
@@ -146,6 +147,7 @@ class Clientes {
     {
         def formCliente = lanzarDetallesClientes(ID)
         formCliente.setModoModificar();
+        formCliente
     }
 
     static def modificar(formCliente)
@@ -160,18 +162,18 @@ class Clientes {
                 def Saldo           = formCliente.getTxtSaldo()
                 def descuento       = formCliente.getTxtDescuento()
                 def CP              = formCliente.getTxtCP()
-                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"RFC sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Direccion sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Telefono sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"RazonSocial sólo puede incluír números, letras, espacios, *, -,_ y +.")
+                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"RFC sólo puede incluír números, letras, espacios, - , _ y puntos ")
+                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Direccion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
+                Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Telefono puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
+                Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Razon Social puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
                 Herramientas.verificaCampo(Saldo,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Saldo sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(CP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"CP sólo puede incluír números, letras, espacios, *, -,_ y +.")
+                Herramientas.verificaCampo(CP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"CP sólo puede incluír números, letras, espacios , - , _ y .")
                 Herramientas.verificaCampo(descuento,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
                 descuento     = descuento as Double
                 Saldo         = Saldo as Double
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modCliente(RFC,direccion,telefono,RazonSocial,Saldo,CP,descuento,IDCliente))
-            }
+             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 

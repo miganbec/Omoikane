@@ -37,6 +37,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     public String          txtQuery;
     ArticulosTableModel modelo;
+    public boolean modal = false;
     
     class TimerBusqueda extends Thread
     {
@@ -107,6 +108,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     }
     public void setModoDialogo()
     {
+        modal=true;
         this.btnAceptar.setVisible(true);
         Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
             ((CatalogoArticulos)e.getSource()).btnAceptar.doClick();
@@ -357,7 +359,9 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
+        }
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -566,6 +570,7 @@ class ArticulosTableModel extends NadesicoTableModel {
 
     public Object getValueAt(int row,int col){
         if(col==5) {
+
             return (omoikane.sistema.Articulo.precio((super.getValueAt(row, col)),IDAlmacen));
 
         } else {

@@ -360,9 +360,9 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        ((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio().dispose();
-        System.exit(0);
+//        this.dispose();
+//        ((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio().dispose();
+//        System.exit(0);
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnAlmacenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlmacenesActionPerformed

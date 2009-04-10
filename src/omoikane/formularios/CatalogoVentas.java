@@ -26,6 +26,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
     //TimerBusqueda          timerBusqueda;
     TimerBusqueda          timerBusqueda;
+    public boolean modal = false;
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     BufferedImage          fondo;
     public int             IDSeleccionado;
@@ -97,6 +98,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
     public void setModoDialogo()
     {
+        modal=true;
         this.btnAceptar.setVisible(true);
         Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
             ((CatalogoVentas)e.getSource()).btnAceptar.doClick();
@@ -327,7 +329,9 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
+        }
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void chkCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCajeroActionPerformed

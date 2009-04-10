@@ -13,11 +13,12 @@ package omoikane.formularios;
 
 import java.sql.*;
 import java.util.*;
-import javax.swing.table.*;
-import javax.swing.*;
+
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.table.*;
 import omoikane.sistema.*;
 
 /** /////////////////////////////////////////////////////////////
@@ -33,6 +34,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     public String          txtQuery;
     omoikane.sistema.NadesicoTableModel modelo;
+    public boolean modal = false;
     
     class TimerBusqueda extends Thread
     {
@@ -96,6 +98,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     }
     public void setModoDialogo()
     {
+        modal=true;
         this.btnAceptar.setVisible(true);
         Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
             ((CatalogoClientes)e.getSource()).btnAceptar.doClick();
@@ -294,8 +297,6 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-
     private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
         // TODO add your handling code here:
         preBuscar();
@@ -304,7 +305,9 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
+        }
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -321,7 +324,6 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         int IDCliente = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
-
         //Lanzar la ventana de detalles:
         if(IDCliente != -1) { omoikane.principal.Clientes.lanzarModificarCliente(IDCliente); }
 }//GEN-LAST:event_btnModificarActionPerformed

@@ -48,11 +48,9 @@ public class Principal {
             splash.setText("Inicializando menú principal...")
             menuPrincipal = new MenuPrincipal()
             splash.detener()
-
-            while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
-            escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
-
+            iniciarSesion()
             menuPrincipal.iniciar()
+            //
             //new SimpleForm() {
             //        it.form.visible = true
             //}
@@ -83,4 +81,18 @@ public class Principal {
             IDCaja          = Integer.valueOf(config.idCaja[0].text())
             puertoImpresion = String.valueOf(config.puertoImpresion[0].text())
         }
+
+    static def iniciarSesion(){
+        while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
+        escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
+    }
+
+    static def cerrarSesion(){
+                SisUsuarios.logout()
+                Principal.menuPrincipal = new MenuPrincipal()
+                Thread.start(){
+                Principal.iniciarSesion()
+                Principal.menuPrincipal.iniciar()
+                }
+    }
 }
