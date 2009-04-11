@@ -204,15 +204,32 @@ class Caja {
 
             }
             form.btnCancelaArt.actionPerformed = {
+                Thread.start {
+                    def sisUsers = omoikane.sistema.Usuarios
 
-                def sisUsers = omoikane.sistema.Usuarios
-
-                if(sisUsers.autentifica(sisUsers.SUPERVISOR)) {
-                    Caja.cancelarArt(form);
-                    sumarTodo()
+                    if(sisUsers.autentifica(sisUsers.SUPERVISOR)) {
+                        Caja.cancelarArt(form);
+                        sumarTodo()
+                    }
                 }
             }
+            form.btnCerrar.actionPerformed = {
+                Thread.start {
+                    def sisUsers = omoikane.sistema.Usuarios
 
+                    if(omoikane.sistema.Usuarios.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR) || sisUsers.autentifica(sisUsers.SUPERVISOR)) {
+                        if(!omoikane.sistema.Usuarios.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
+                            form.dispose();
+                            omoikane.principal.Principal.cerrarSesion();
+                        }else{
+                            form.dispose();
+                            ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
+                        }
+                    } else {
+                        form.requestFocusInWindow()
+                    }
+                }
+            }
             def catArticulos = { def retorno = Articulos.lanzarDialogoCatalogo() as String; return retorno==null?"":retorno }
             form.btnCatalogo.actionPerformed = { e -> Thread.start { form.txtCaptura.text = form.txtCaptura.text + catArticulos(); form.txtCaptura.requestFocus() } }
             form.btnTerminar.actionPerformed = { e ->

@@ -81,11 +81,17 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
         
-        setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
+        /*setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
                 "from articulos, precios, existencias, lineas , grupos " +
                 "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
                 "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
-
+        */
+        setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
+                ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
+                "from articulos, precios, existencias, lineas, clientes, grupos " +
+                "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
+                "AND clientes.id_cliente = 1 " +
+                "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
         ((JPanel)this.getContentPane()).setOpaque(false);
@@ -501,9 +507,15 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         boolean xLineas = getBuscarLineas();
         boolean xGrupos = getBuscarGrupos();
         String busqueda = this.txtBusqueda.getText();
+        /*
         String query    = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
                 "from articulos, precios, existencias, lineas, grupos " +
                 "WHERE precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
+         * */
+        String query = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
+                ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
+                "from articulos, precios, existencias, lineas, clientes, grupos " +
+                "WHERE clientes.id_cliente=1 AND precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
         if(xCodDes || xLineas || xGrupos) { query += "AND ("; }
         if(xCodDes) {
                 query += "(articulos.descripcion like '%"+busqueda+"%' or articulos.codigo like '%"+busqueda+"%') ";
@@ -568,6 +580,7 @@ class ArticulosTableModel extends NadesicoTableModel {
     ArticulosTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
 
+    /*
     public Object getValueAt(int row,int col){
         if(col==5) {
 
@@ -577,4 +590,5 @@ class ArticulosTableModel extends NadesicoTableModel {
             return super.getValueAt(row,col);
         }
     }
+     * */
 }
