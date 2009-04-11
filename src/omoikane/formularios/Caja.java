@@ -93,7 +93,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JLabel();
-        btnCancelacion1 = new javax.swing.JButton();
+        btnCancelaArt = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -294,11 +294,11 @@ public class Caja extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnCancelacion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
-        btnCancelacion1.setText("Cancelar Artículo [Supr]");
-        btnCancelacion1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelaArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
+        btnCancelaArt.setText("Cancelar Artículo [Supr]");
+        btnCancelaArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelacion1ActionPerformed(evt);
+                btnCancelaArtActionPerformed(evt);
             }
         });
 
@@ -332,7 +332,7 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCatalogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelacion1)
+                        .addComponent(btnCancelaArt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelacion)))
                 .addContainerGap())
@@ -357,7 +357,7 @@ public class Caja extends javax.swing.JInternalFrame {
                             .addComponent(btnCancelacion)
                             .addComponent(btnCatalogo)
                             .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelacion1)))
+                            .addComponent(btnCancelaArt)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -392,14 +392,14 @@ public class Caja extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_txtCapturaActionPerformed
 
-    private void btnCancelacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelacion1ActionPerformed
+    private void btnCancelaArtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelaArtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelacion1ActionPerformed
+    }//GEN-LAST:event_btnCancelaArtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelaArt;
     private javax.swing.JButton btnCancelacion;
-    private javax.swing.JButton btnCancelacion1;
     public javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnTerminar;

@@ -30,7 +30,6 @@ class Caja {
     static def IDUsuario = 0
     static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
-
     static def abrirCaja(ID = -1)
     {
         if(cerrojo(PMA_ABRIRCAJAS)){
@@ -112,6 +111,16 @@ class Caja {
         }
         codigo
     }
+    static def cancelarArt(form) {
+
+        def tabla     = form.tablaVenta
+        def modelo    = tabla.getModel()
+        def seleccion = tabla.getSelectedRows()
+        for(int i=0; i <= seleccion.size()-1; i++) {
+            modelo.eliminar(seleccion[i])
+        }
+    }
+
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
             def form = new omoikane.formularios.Caja()
@@ -120,9 +129,10 @@ class Caja {
             form.modelo = modelo
             escritorio.getPanelEscritorio().add(form)
             Herramientas.centrarVentana(form);
+            Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
             form.setVisible(true);
             Herramientas.iconificable(form)
-            Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
+
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick()      }
@@ -154,7 +164,6 @@ class Caja {
                     def captura = form.txtCaptura.text
 
                     if(captura.size()==13) { captura = Caja.filtroEAN13(captura) }
-                    println "Captura: $captura"
                     captura     = captura.split("\\*")
                     def cantidad= captura.size()==1?1:captura[0..captura.size()-2].inject(1) { acum, i -> acum*(i as Double) }
                     def art     = serv.codigo2Articulo(IDAlmacen, captura[captura.size()-1])
@@ -194,6 +203,16 @@ class Caja {
                 }
 
             }
+            form.btnCancelaArt.actionPerformed = {
+
+                def sisUsers = omoikane.sistema.Usuarios
+
+                if(sisUsers.autentifica(sisUsers.SUPERVISOR)) {
+                    Caja.cancelarArt(form);
+                    sumarTodo()
+                }
+            }
+
             def catArticulos = { def retorno = Articulos.lanzarDialogoCatalogo() as String; return retorno==null?"":retorno }
             form.btnCatalogo.actionPerformed = { e -> Thread.start { form.txtCaptura.text = form.txtCaptura.text + catArticulos(); form.txtCaptura.requestFocus() } }
             form.btnTerminar.actionPerformed = { e ->
@@ -406,4 +425,5 @@ class CajaTableModel extends DefaultTableModel {
     public void addRowMap(rowData) { data << rowData; addRow(rowData.values()) }
     public Object getValueAt(int row, int col) { return data[row][getColumnName(col)] /*super.getValueAt(row,col)*/ }
     public def getDataMap() { return data }
+    public def eliminar(i) { data.remove(i); super.removeRow(i); }
 }

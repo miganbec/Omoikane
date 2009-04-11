@@ -52,7 +52,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCatalogo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCancelacion1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCancelaArt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCancelacion" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -83,7 +83,7 @@
                           <Component id="btnCancelacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCatalogo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnTerminar" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="btnCancelacion1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelaArt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -563,7 +563,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnCancelacion1">
+    <Component class="javax.swing.JButton" name="btnCancelaArt">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/32x32/page_remove.png"/>
@@ -571,7 +571,7 @@
         <Property name="text" type="java.lang.String" value="Cancelar Art&#xed;culo [Supr]"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelacion1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelaArtActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

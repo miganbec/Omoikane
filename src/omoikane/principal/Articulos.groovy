@@ -138,7 +138,8 @@ public class Articulos
                 }
             }
             rellenarCodigosAlternos(ID, formArticulo)
-
+            return formArticulo
+            
             } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -152,7 +153,7 @@ public class Articulos
                 def IDGrupo       = formArticulo.getTxtIDGrupo()
                 def descripcion   = formArticulo.getTxtDescripcion()
                 def unidad        = formArticulo.getTxtUnidad()
-                def impuestos     = formArticulo.getTxtImpuestos()
+                def impuestos     = formArticulo.getTxtImpuestosPorc()
                 def costo         = formArticulo.getTxtCosto()
                 def descuento     = formArticulo.getTxtDescuento()
                 def utilidad      = formArticulo.getTxtUtilidad()
@@ -192,7 +193,8 @@ public class Articulos
             form.toFront()
             SwingBuilder.build {
                 //Al presionar F2: (lanzarCatalogoDialogo)
-                form.getCampoID().keyPressed = { if(it.keyCode == it.VK_F2) Thread.start {form.txtIDLinea = Lineas.lanzarCatalogoDialogo() as String; form.getIDLinea().requestFocus()}  }
+                form.getCampoID()   .keyPressed = { if(it.keyCode == it.VK_F2) Thread.start {form.txtIDLinea      = Lineas.lanzarCatalogoDialogo() as String; form.getIDLinea()   .requestFocus()}  }
+                form.getCampoGrupo().keyPressed = { if(it.keyCode == it.VK_F2) Thread.start {form.txtIDGrupo      = Grupos.lanzarCatalogoDialogo() as String; form.getCampoGrupo().requestFocus()}  }
             }
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
             form.setEditable(true);
