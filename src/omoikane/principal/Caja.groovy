@@ -41,10 +41,11 @@ class Caja {
                 escritorio.getPanelEscritorio().add(form)
                 Herramientas.centrarAbsoluto(form);
                 Herramientas.iconificable(form)
-                Herramientas.In2ActionX(form          , KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
-                Herramientas.In2ActionX(form.txtIDCaja, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
-                Herramientas.In2ActionX(form          , KeyEvent.VK_F2    , "buscar"   ) { form.btnBuscar.doClick()        }
-                Herramientas.In2ActionX(form          , KeyEvent.VK_ENTER , "aceptar"  ) { form.btnAceptar.doClick()       }
+                Herramientas.In2ActionX(form          , KeyEvent.VK_ESCAPE, "cerrar"      ) { form.btnCerrar.doClick()        }
+                Herramientas.In2ActionX(form.txtIDCaja, KeyEvent.VK_ESCAPE, "cerrar"      ) { form.btnCerrar.doClick()        }
+                Herramientas.In2ActionX(form          , KeyEvent.VK_F2    , "buscar"      ) { form.btnBuscar.doClick()        }
+                Herramientas.In2ActionX(form          , KeyEvent.VK_ENTER , "aceptar"     ) { form.btnAceptar.doClick()       }
+
                 form.txtIDCaja.keyPressed = { e ->
                     if(e.keyCode==e.VK_ENTER) { form.btnAceptar.doClick() }
                 }
@@ -138,6 +139,8 @@ class Caja {
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick()      }
             Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar" ) { form.btnCancelacion.doClick()   }
             Herramientas.In2ActionX(form.btnCerrar, KeyEvent.VK_ESCAPE, "cerrar2") { form.btnCerrar.doClick()        }
+            Herramientas.In2ActionX(form          , KeyEvent.VK_F7, "cancelaArt" ) { form.btnCancelaArt.doClick()       }
+
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario caja", Herramientas.getStackTraceString(e)) }
             form.txtCaptura.requestFocus()

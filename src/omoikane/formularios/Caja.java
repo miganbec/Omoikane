@@ -228,7 +228,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel6.setBackground(new Color(55,55,255,160));
         jPanel6.setLayout(null);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Fecha");
@@ -236,7 +236,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel14.setBounds(0, 0, 60, 15);
 
         txtFecha.setBackground(new java.awt.Color(153, 51, 0));
-        txtFecha.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtFecha.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(255, 255, 255));
         txtFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtFecha.setText("09-12-2008");
@@ -295,7 +295,7 @@ public class Caja extends javax.swing.JInternalFrame {
         );
 
         btnCancelaArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
-        btnCancelaArt.setText("Cancelar Artículo [Supr]");
+        btnCancelaArt.setText("Cancelar Artículo [F7]");
         btnCancelaArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelaArtActionPerformed(evt);
@@ -340,7 +340,7 @@ public class Caja extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
