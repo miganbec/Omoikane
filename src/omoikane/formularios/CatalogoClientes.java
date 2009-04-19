@@ -13,7 +13,6 @@ package omoikane.formularios;
 
 import java.sql.*;
 import java.util.*;
-
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;

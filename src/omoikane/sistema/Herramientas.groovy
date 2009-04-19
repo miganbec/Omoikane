@@ -177,4 +177,26 @@ public class Herramientas
         return (autorizado?1:0);
     }
 
+    public static funcionesObjetos(component){
+        for(Component child: component.getContentPane().getComponents()){
+            child.focusGained={evt->
+                evt.getComponent().setBackground(new Color(182,182,255));
+            }
+            child.focusLost={evt->
+                evt.getComponent().setBackground(null);
+            }
+            if(child instanceof JTextField){
+                child.keyReleased = {evt ->
+                    if(evt.getKeyCode() == evt.VK_ESCAPE){component.dispose();}
+                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().transferFocus();}
+                }
+            }
+            if(child instanceof JButton){
+                child.keyReleased = {evt ->
+                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}
+                }
+            }
+        }
+    }
+
 }

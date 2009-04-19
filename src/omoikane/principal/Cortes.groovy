@@ -55,6 +55,7 @@ class Cortes {
         if(cerrojo(PMA_DETALLESVENTAS)){
             def form = (new omoikane.formularios.CorteCajaDetalles())
             form.setVisible(true);
+            Herramientas.funcionesObjetos(form)
             escritorio.getPanelEscritorio().add(form)
             Herramientas.iconificable(form)
             form.toFront()
@@ -94,7 +95,7 @@ class Cortes {
             
             def form = (new omoikane.formularios.CorteSucursalDetalles())
             def rc   = resultadoCorte
-
+            Herramientas.funcionesObjetos(form)
             form.setVisible(true);
             escritorio.getPanelEscritorio().add(form)
             Herramientas.iconificable(form)

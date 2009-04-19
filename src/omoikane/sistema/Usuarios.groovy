@@ -53,7 +53,6 @@ public class Usuarios {
     public static def leerHuella(){
         def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
         def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
-        //fingerPrint      = Herramientas.bytes2HexString(fingerPrint)
         return fingerPrint
     }
         

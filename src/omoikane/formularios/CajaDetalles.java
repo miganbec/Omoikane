@@ -11,10 +11,12 @@
 
 package omoikane.formularios;
 
-import javax.swing.*;
-import java.awt.*;
+import java.util.*;
 import java.awt.image.*;
+import java.awt.*;
+import javax.swing.*;
 import omoikane.sistema.*;
+import java.awt.event.*;
 
 /**
  *
@@ -34,8 +36,18 @@ public class CajaDetalles extends javax.swing.JInternalFrame {
         this.generarFondo(this);
 
         Herramientas.centrarVentana(this);
+
+        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
+
+        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
        
     }
+
+        
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -55,7 +67,7 @@ public class CajaDetalles extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        btncerrar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtCreado = new javax.swing.JTextField();
@@ -80,60 +92,45 @@ public class CajaDetalles extends javax.swing.JInternalFrame {
         getContentPane().add(txtIdCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 280, -1));
 
         txtDescripcion.setEditable(false);
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 280, -1));
 
         txtUModificacion.setEditable(false);
-        txtUModificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUModificacionActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 280, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("<html>Última<br>Modificación:</html>");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        btnModificar.setText("Modificar");
+        btnModificar.setText("Modificar [F6]");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setText("Guardar [F6]");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
 
-        btncerrar.setText("Cerrar");
-        btncerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setText("Cerrar [ESC]");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncerrarActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btncerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 10, 10));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 10, 0));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Creacion:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         txtCreado.setEditable(false);
-        txtCreado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCreadoActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtCreado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 280, -1));
 
         pack();
@@ -144,28 +141,15 @@ public class CajaDetalles extends javax.swing.JInternalFrame {
         omoikane.principal.Caja.guardar(this);
 }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-}//GEN-LAST:event_btncerrarActionPerformed
+}//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         omoikane.principal.Caja.modificar(this);
 }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void txtUModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUModificacionActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_txtUModificacionActionPerformed
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtDescripcionActionPerformed
-
-    private void txtCreadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreadoActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_txtCreadoActionPerformed
 
 
    public void setEditable(boolean editable)
@@ -190,13 +174,14 @@ public class CajaDetalles extends javax.swing.JInternalFrame {
     public void setModoModificar()
     {
         setEditable(true);
+        this.btnModificar.setVisible(true);
         this.btnGuardar.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btncerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

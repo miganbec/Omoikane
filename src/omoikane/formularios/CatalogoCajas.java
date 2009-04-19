@@ -47,6 +47,7 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
                 if(busquedaActiva) { ca.buscar(); }
             }
         }
+
         void cancelar()
         {
             busquedaActiva = false;
@@ -68,9 +69,7 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
-
         this.btnAceptar.setVisible(false);
-
         Herramientas.centrarVentana(this);
 
         //Instrucciones para el funcionamiento de las teclas de navegación
@@ -121,6 +120,11 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
         btnCorte = new javax.swing.JButton();
 
         setTitle("Catálogo Cajas");
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -445,6 +449,11 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
         }
 }//GEN-LAST:event_btnCorteActionPerformed
 
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        this.txtBusqueda.requestFocusInWindow();
+    }//GEN-LAST:event_formFocusGained
+
 
 
     public void preBuscar()
@@ -492,7 +501,6 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
       g2d.setColor(new Color(55,55,255,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -514,7 +522,7 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
 
     public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()
     {
-        public void internalFrameClosed(InternalFrameEvent e) { resetTable(); }
+        public void internalFrameClosed(InternalFrameEvent e) { resetTable();requestFocusInWindow(); }
 
     };
 }

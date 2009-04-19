@@ -120,7 +120,7 @@ class Comprobantes {
         template.toString()
     }
 
-    def probar() {
+    def imprimir() {
         try {
             FileOutputStream os = new FileOutputStream("$protocolo:");
             PrintStream ps = new PrintStream(os);
@@ -129,7 +129,7 @@ class Comprobantes {
         } catch (FileNotFoundException fnf) { consola.out.echo("Error al imprimir al puerto lpt1"); }
     }
     
-    def imprimir(){
+    def probar(){
         try {
             println generado
         } catch (e) { consola.out.echo("Error al mandar a al consola"); }

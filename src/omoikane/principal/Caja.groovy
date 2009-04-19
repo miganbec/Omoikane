@@ -13,6 +13,7 @@ import java.text.*;
 import groovy.sql.*;
 import omoikane.sistema.*;
 import javax.swing.event.*;
+import java.awt.*;
 import java.awt.event.*;
 import groovy.swing.*
 import java.util.Calendar;
@@ -26,10 +27,10 @@ import static omoikane.sistema.Permisos.*;
 class Caja {
     static def IDCaja    = Principal.IDCaja
     static def IDAlmacen = Principal.IDAlmacen
-    static def IDCliente = 1
-    static def IDUsuario = 0
+    static def IDCliente = 1 //cambiar cuando se mejore el modulo cliente
     static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
+
     static def abrirCaja(ID = -1)
     {
         if(cerrojo(PMA_ABRIRCAJAS)){
@@ -133,19 +134,18 @@ class Caja {
             Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
             form.setVisible(true);
             Herramientas.iconificable(form)
-
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick()      }
             Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar" ) { form.btnCancelacion.doClick()   }
             Herramientas.In2ActionX(form.btnCerrar, KeyEvent.VK_ESCAPE, "cerrar2") { form.btnCerrar.doClick()        }
-            Herramientas.In2ActionX(form          , KeyEvent.VK_F7, "cancelaArt" ) { form.btnCancelaArt.doClick()       }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F7, "cancelaArt" ) { form.btnCancelaArt.doClick()       }
 
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario caja", Herramientas.getStackTraceString(e)) }
             form.txtCaptura.requestFocus()
             def date = Calendar.getInstance()
             form.txtFecha.text = date.get(date.DAY_OF_MONTH) + "-" + (date.get(date.MONTH)+1) + "-" + date.get(date.YEAR)
+            form.txtCaja.text= "Caja "+IDCaja
             def serv = Nadesico.conectar()
             def round = { cant -> return (Math.round(cant*100)/100) }
             def cifra = { cant -> return String.format("\$%,.2f", cant) }
@@ -242,7 +242,7 @@ class Caja {
                     form.modelo.getDataMap().each {
                         detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:aDoble(it['Total'])]
                     }
-                    def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, IDUsuario, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), form.impuestos, aDoble(form.txtTotal.text), detalles)
+                    def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), form.impuestos, aDoble(form.txtTotal.text), detalles)
                     serv.desconectar()
                     def comprobante = new Comprobantes()
                     comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
@@ -254,6 +254,7 @@ class Caja {
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
+//reaparando catalogo cajas
 
     static def lanzarCatalogo()
     {
@@ -261,13 +262,15 @@ class Caja {
             def cat = (new omoikane.formularios.CatalogoCajas())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
+            Herramientas.iconificable(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
-            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
+            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick()    }
             Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "corte"    ) { cat.btnCorte.doClick()    }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
-            Herramientas.iconificable(cat)
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir") { cat.btnImprimir.doClick() }
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de cajas", Herramientas.getStackTraceString(e)) }
             cat.txtBusqueda.requestFocus()
@@ -282,7 +285,7 @@ class Caja {
             def cat = lanzarCatalogo()
             cat.setModoDialogo()
             cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-            cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
+            cat.txtBusqueda.keyRealese = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
             def retorno
             cat.btnAceptar.actionPerformed = { def catTab = cat.tablaCajas; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick(); }
             synchronized(foco){foco.wait()}
@@ -342,6 +345,8 @@ class Caja {
             formCaja.setVisible(true)
             escritorio.getPanelEscritorio().add(formCaja)
             Herramientas.iconificable(formCaja)
+            Herramientas.In2ActionX(formCaja, KeyEvent.VK_F6    , "guardar"  ) { formCaja.btnGuardar.doClick()  }
+            Herramientas.funcionesObjetos(formCaja)
             formCaja.toFront()
             try { formCaja.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Caja", Herramientas.getStackTraceString(e)) }
             formCaja.setEditable(true);
@@ -357,7 +362,7 @@ class Caja {
                 Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9\_\-\s\ñ\Ñ\*\+áéíóú]+)$/,"Descripcion sólo puede incluír nímeros, letras, espacios, _, -, * y +.")
                 try {
                     def serv = Nadesico.conectar()
-                    Dialogos.lanzarAlerta(serv.addCaja(descripcion))
+                    Dialogos.lanzarAlerta(serv.addCaja(IDAlmacen,descripcion))
                 } catch(e) { Dialogos.error("Error al enviar a la base de datos. El grupo no se registró", e) }
                 formCaja.dispose()
             }
@@ -371,6 +376,7 @@ class Caja {
             formCaja.setVisible(true)
             escritorio.getPanelEscritorio().add(formCaja)
             Herramientas.iconificable(formCaja)
+            Herramientas.funcionesObjetos(formCaja)
             formCaja.toFront()
             try { formCaja.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Caja", Herramientas.getStackTraceString(e)) }
             def alm         = Nadesico.conectar().getCaja(ID)
@@ -379,6 +385,7 @@ class Caja {
             formCaja.setTxtCreado         alm.creado        as String
             formCaja.setTxtUModificacion  alm.uModificacion as String
             formCaja.setModoDetalles();
+
             return formCaja
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -404,6 +411,7 @@ class Caja {
     {
         def formCaja = lanzarDetallesCaja(ID)
         formCaja.setModoModificar();
+        Herramientas.In2ActionX(formCaja, KeyEvent.VK_F6    , "modificar"  ) { formCaja.btnModificar.doClick()  }
         formCaja
     }
 
@@ -413,7 +421,7 @@ class Caja {
             Herramientas.verificaCampos {
                 Herramientas.verificaCampo(formCaja.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\�\�\*\+áéíóúñÑ]+)$/,"Descripcion sólo puede incluír números, letras, espacios, _, -, * y +.")
                 def serv = Nadesico.conectar()
-                Dialogos.lanzarAlerta(serv.modCaja(formCaja.getTxtIDCaja(),formCaja.getTxtDescripcion()))
+                Dialogos.lanzarAlerta(serv.modCaja(formCaja.getTxtIDCaja(),IDAlmacen,formCaja.getTxtDescripcion()))
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -421,10 +429,11 @@ class Caja {
     static def eliminarCaja(ID)
     {
         if(cerrojo(PMA_ELIMINARCAJA)){
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-            db.execute("DELETE FROM cajas WHERE id_caja = " + ID)
-            db.close()
-            Dialogos.lanzarAlerta("Caja " + ID + " supuestamente eliminada")
+            Dialogos.lanzarAlerta("Función desactivada!")
+            //def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            //db.execute("DELETE FROM cajas WHERE id_caja = " + ID)
+            //db.close()
+            //Dialogos.lanzarAlerta("Caja " + ID + " supuestamente eliminada")
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
@@ -440,7 +449,6 @@ class CajaTableModel extends DefaultTableModel {
     def data = []
     CajaTableModel() { 
         super(new Vector(), new Vector(["Concepto", "Cantidad", "Precio", "Descuento", "Total"]))  }
-
     public void addRowMap(rowData) { data << rowData; addRow(rowData.values()) }
     public Object getValueAt(int row, int col) { return data[row][getColumnName(col)] /*super.getValueAt(row,col)*/ }
     public def getDataMap() { return data }
