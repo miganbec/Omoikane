@@ -10,11 +10,21 @@
 package omoikane.sistema;
 
 import java.awt.*;
-import com.griaule.grfingerjava.*;
+
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
 import omoikane.formularios.*;
+
+import com.griaule.grfingerjava.FingerprintImage;
+import com.griaule.grfingerjava.GrFingerJava;
+import com.griaule.grfingerjava.GrFingerJavaException;
+import com.griaule.grfingerjava.IFingerEventListener;
+import com.griaule.grfingerjava.IImageEventListener;
+import com.griaule.grfingerjava.IStatusEventListener;
+import com.griaule.grfingerjava.MatchingContext;
+import com.griaule.grfingerjava.Template;
 
 /**
  *
@@ -22,7 +32,7 @@ import omoikane.formularios.*;
  */
 
 
-public class Huellas extends MiniLeerHuella implements com.griaule.grfingerjava.IFingerEventListener, com.griaule.grfingerjava.IImageEventListener, com.griaule.grfingerjava.IStatusEventListener 
+public class Huellas extends MiniLeerHuella implements IFingerEventListener, IImageEventListener, IStatusEventListener 
 {
     public Template template;
     public MatchingContext matchContext;
@@ -61,11 +71,22 @@ public class Huellas extends MiniLeerHuella implements com.griaule.grfingerjava.
         
         try {
             System.out.println(System.getProperty("user.dir"));
-            //com.griaule.grfingerjava.GrFingerJava.setNativeLibrariesDirectory();
-            com.griaule.grfingerjava.GrFingerJava.initializeCapture(this);
+            String grFingerNativeDirectory = (new File(".")).getAbsolutePath();
 
-        } catch(com.griaule.grfingerjava.GrFingerJavaException GrEx)
+            File directory = new File(grFingerNativeDirectory);
+       
+            GrFingerJava.setNativeLibrariesDirectory(directory);
+            GrFingerJava.setLicenseDirectory(directory);
+            //com.griaule.grfingerjava.GrFingerJava.setNativeLibrariesDirectory();
+            System.out.println("Carpeta dependencias griaule: "+grFingerNativeDirectory);
+
+            matchContext = new MatchingContext();
+            GrFingerJava.initializeCapture(this);
+            System.out.println ("Lector Huella inicializada");
+
+        } catch(Exception GrEx)
         {
+            System.out.println ("Error griaule: "+GrEx.getMessage());
             Dialogos.error("Error al inicializar SDK lector", GrEx);
         }
         HiloParaCerrar HPC = new HiloParaCerrar(this);
@@ -187,4 +208,17 @@ public class Huellas extends MiniLeerHuella implements com.griaule.grfingerjava.
     {
         //consola.out.echo("Se puso una huella en el lector");
     }
+    public void setParameters(int identifyThreshold, int identifyRotationTolerance, int verifyThreshold, int verifyRotationTolorance) {
+       try {
+           matchContext.setIdentificationThreshold(identifyThreshold);
+           matchContext.setIdentificationRotationTolerance(identifyRotationTolerance);
+           matchContext.setVerificationRotationTolerance(verifyRotationTolorance);
+           matchContext.setVerificationThreshold(verifyThreshold);
+
+       } catch (Exception e) {
+           //write error to log
+           Dialogos.error("Error al establecer parámetros del SDK de huellas", e);
+       }
+    }
+
 }

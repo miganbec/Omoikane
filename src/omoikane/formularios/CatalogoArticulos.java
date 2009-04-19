@@ -15,6 +15,7 @@ import java.sql.*;
 import java.util.*;
 import javax.swing.table.*;
 import javax.swing.*;
+import javax.swing.event.*;
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -25,7 +26,13 @@ import omoikane.sistema.*;
  *  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *  * /////////////////////////////////////////////////////////////////////////////////////////////////
- *  * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *  *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  * @author Octavio
  */
 public class CatalogoArticulos extends javax.swing.JInternalFrame {
@@ -50,7 +57,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             synchronized(this)
             {
                 busquedaActiva = true;
-                try { this.wait(1000); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
+                try { this.wait(500); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
                 if(busquedaActiva) { ca.buscar(); }
             }
         }
@@ -86,12 +93,17 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                 "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
                 "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
         */
+        /*
         setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
                 ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
                 "from articulos, precios, existencias, lineas, clientes, grupos " +
                 "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
                 "AND clientes.id_cliente = 1 " +
                 "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
+         * */
+        setQueryTable("select id_articulo as xID, codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias " +
+                "from ramcachearticulos");
+
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
         ((JPanel)this.getContentPane()).setOpaque(false);
@@ -386,8 +398,15 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         int IDArticulo = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
 
         //Lanzar la ventana de detalles:
-        if(IDArticulo != -1) { omoikane.principal.Articulos.lanzarModificarArticulo(IDArticulo); }
+        if(IDArticulo != -1) {
+            JInternalFrame wnd = (JInternalFrame)omoikane.principal.Articulos.lanzarModificarArticulo(IDArticulo);
+            wnd.addInternalFrameListener(iframeAdapter);
+        }
 }//GEN-LAST:event_btnModificarActionPerformed
+
+    public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter() {
+        public void internalFrameClosed(InternalFrameEvent e) { ((NadesicoTableModel)jTable1.getModel()).refrescar(); }
+    };
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
@@ -512,23 +531,34 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                 "from articulos, precios, existencias, lineas, grupos " +
                 "WHERE precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
          * */
+        /*
         String query = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
                 ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
                 "from articulos, precios, existencias, lineas, clientes, grupos " +
                 "WHERE clientes.id_cliente=1 AND precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
-        if(xCodDes || xLineas || xGrupos) { query += "AND ("; }
+         */
+        if(busqueda=="") { xCodDes = xLineas = xGrupos = false; }
+        String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias" +
+                " from ramcachearticulos as a ";
         if(xCodDes) {
-                query += "(articulos.descripcion like '%"+busqueda+"%' or articulos.codigo like '%"+busqueda+"%') ";
+            query += ", ramcachecodigos as b ";
+        }
+        
+        if(xCodDes || xLineas || xGrupos) { query += "WHERE "; }
+        if(xCodDes) {
+                query += "(a.descripcion like '%"+busqueda+"%' or " +
+                        "b.codigo like '%"+busqueda+"%') and (a.id_articulo = b.id_articulo) ";
+                //query += "(descripcion like '%"+busqueda+"%' or id_articulo in (select id_articulo from ramcachecodigos where codigo like '%"+busqueda+"%')) ";
         }
         if(xCodDes && (xLineas || xGrupos)) { query += "OR "; }
         if(xLineas) {
-                query += "(lineas.descripcion like '%"+busqueda+"%' or lineas.id_linea like '%"+busqueda+"%') ";
+                query += "(linea like '%"+busqueda+"%' or id_linea like '%"+busqueda+"%') ";
         }
         if((xLineas||xCodDes) && xGrupos) { query += "OR "; }
         if(xGrupos) {
-                query += "(grupos.descripcion like '%"+busqueda+"%' or grupos.id_grupo like '%"+busqueda+"%') ";
+                query += "(grupo like '%"+busqueda+"%' or id_grupo like '%"+busqueda+"%') ";
         }
-        if(xCodDes || xLineas || xGrupos) { query += ")"; }
+        //if(xCodDes || xLineas || xGrupos) { query += ")"; }
 
         
         setQueryTable(query);

@@ -126,13 +126,13 @@ class Comprobantes {
             PrintStream ps = new PrintStream(os);
             ps.println(generado);
             ps.close();
-        } catch (FileNotFoundException fnf) { consola.out.echo("Error al imprimir al puerto lpt1"); }
+        } catch (FileNotFoundException fnf) { Dialogos.lanzarAlerta("Error al imprimir al puerto lpt1"); }
     }
     
     def probar(){
         try {
             println generado
-        } catch (e) { consola.out.echo("Error al mandar a al consola"); }
+        } catch (e) { Dialogos.lanzarAlerta("Error al mandar a al consola"); }
     }
 
 

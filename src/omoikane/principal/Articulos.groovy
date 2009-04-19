@@ -25,7 +25,11 @@ public class Articulos
     static def escritorio = omoikane.principal.Principal.escritorio
 
     static def getArticulo(where) { new Articulo(where) }
-
+    static def findByCodigo(busqueda) {
+        def res
+        PuertoNadesico.workIn() { res = it.RAMCacheCodigos.executeQuery("select id_articulo from nadesicoi.RAMCacheCodigos as rca WHERE rca like '%"+busqueda+"%'") /*it.RAMCacheCodigos.findAllByCodigoLike("%"+busqueda+"%");*/ }
+        //println "resu:"+res.dump()
+    }
     static def lanzarCatalogo()
     {
         if(cerrojo(PMA_ABRIRARTICULO)){
@@ -153,10 +157,10 @@ public class Articulos
                 def IDGrupo       = formArticulo.getTxtIDGrupo()
                 def descripcion   = formArticulo.getTxtDescripcion()
                 def unidad        = formArticulo.getTxtUnidad()
-                def impuestos     = formArticulo.getTxtImpuestosPorc()
+                def impuestos     = formArticulo.getTxtImpuestosPorc().text
                 def costo         = formArticulo.getTxtCosto()
-                def descuento     = formArticulo.getTxtDescuento()
-                def utilidad      = formArticulo.getTxtUtilidad()
+                def descuento     = formArticulo.getTxtDesctoPorcentaje().text
+                def utilidad      = formArticulo.getTxtUtilidadPorc().text
                 def existencias   = formArticulo.getTxtExistencias()
                 Herramientas.verificaCampo(codigo,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Codigo sólo puede incluír números, letras, espacios, *, -,_ y +.")
                 Herramientas.verificaCampo(IDLinea,/^([0-9]+)$/,"IDLinea sólo puede incluír números enteros.")
@@ -175,9 +179,11 @@ public class Articulos
                 utilidad      = utilidad as Double
                 existencias   = existencias as Double
                 try {
-                    def serv = Nadesico.conectar()
-                    Dialogos.lanzarAlerta(serv.addArticulo(IDAlmacen, IDLinea, IDGrupo, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias))
+                    def serv   = Nadesico.conectar()
+                    def datAdd = serv.addArticulo(IDAlmacen, IDLinea, IDGrupo, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias)
+                    Dialogos.lanzarAlerta(datAdd.mensaje)
                     serv.desconectar()
+                    PuertoNadesico.workIn() { it.CacheArticulos.actualizar(datAdd.ID) }
                 } catch(e) { Dialogos.error("Error al enviar a la base de datos. El artículo no se registró", e) }
                 formArticulo.dispose()
             }
@@ -205,16 +211,17 @@ public class Articulos
     static def lanzarModificarArticulo(ID)
     {
         def formArticulo = lanzarDetallesArticulo(ID)
-        Dialogos.lanzarAlerta("Eliminar codigo viejo de lanzarModificarArticulo")
+        //Dialogos.lanzarAlerta("Eliminar codigo viejo de lanzarModificarArticulo")
         formArticulo.setModoModificar();
+        formArticulo
     }
 
     static def modificar(formArticulo)
     {
         if(cerrojo(PMA_MODIFICARARTICULO)){
             def f = formArticulo
-            def c = [cod:f.getTxtCodigo(), lin:f.getTxtIDLinea(),gru:f.getTxtIDGrupo(), des:f.getTxtDescripcion(), imp:f.getTxtImpuestos(), cos:f.getTxtCosto(),
-            dto:f.getTxtDescuento(), uti:f.getTxtUtilidad(), art:f.getTxtIDArticulo(), uni:f.getTxtUnidad()]
+            def c = [cod:f.getTxtCodigo(), lin:f.getTxtIDLinea(),gru:f.getTxtIDGrupo(), des:f.getTxtDescripcion(), imp:f.getTxtImpuestosPorc().text, cos:f.getTxtCosto(),
+            dto:f.getTxtDesctoPorcentaje(), uti:f.getTxtUtilidadPorc().text, art:f.getTxtIDArticulo(), uni:f.getTxtUnidad()]
             Herramientas.verificaCampos {
                 Herramientas.verificaCampo(c.cod, /^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Codigo sólo puede incluír números, letras, espacios, *, -,_ y +.")
                 Herramientas.verificaCampo(c.lin, /^([0-9]+)$/,"ID Linea sólo puede incluír números enteros.")
@@ -224,8 +231,10 @@ public class Articulos
                 Herramientas.verificaCampo(c.cos, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Costo sólo puede incluír números reales positivos")
                 Herramientas.verificaCampo(c.dto, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
                 Herramientas.verificaCampo(c.uti, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Utilidad sólo puede incluír números reales positivos")
-                def serv = Nadesico.conectar()
+                def serv = Nadesico.conectar() 
                 Dialogos.lanzarAlerta(serv.modArticulo(IDAlmacen, c.art, c.cod, c.lin,c.gru, c.des, c.uni, c.imp, c.cos, c.uti, c.dto))
+                serv.desconectar()
+                PuertoNadesico.workIn() { it.CacheArticulos.actualizar(c.art) }
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }

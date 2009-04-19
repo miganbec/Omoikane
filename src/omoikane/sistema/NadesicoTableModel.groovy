@@ -21,6 +21,8 @@ import java.awt.event.*;
  * ///////////////////////////////////// //////////////////////////////
  * ///////////////////////////////////// //////////////////////////////
  * ///////////////////////////////////// //////////////////////////////
+ * 
+ * 
  * @author Usuario //
  */
 
@@ -28,6 +30,7 @@ public class NadesicoTableModel extends AbstractTableModel {
 	java.util.List	colNames	= null;
 	int             rowCount        = -1;
 	java.util.List  colClasses      = null;
+        String          queryAct        = null;
     public NadesicoX       port = null;
     java.util.Hashtable<String,java.util.List> cacheFila = new Hashtable();
 
@@ -37,9 +40,14 @@ public class NadesicoTableModel extends AbstractTableModel {
         this.colNames   = new ArrayList(colNames);
         this.colClasses = colClases;
 	}
+    public void refrescar() {
+        setQuery(queryAct)
+    }
     public void setQuery(String query) {
         try
         {
+            queryAct = query
+            cacheFila = new Hashtable()
             port.setQuery(query);
             resetData();
             fireTableDataChanged();
