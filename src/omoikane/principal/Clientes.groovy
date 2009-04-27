@@ -28,7 +28,7 @@ class Clientes {
             def cat = (new omoikane.formularios.CatalogoClientes())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.setColumnsWidth(cat.jTable1, [0.15,0.15,0.31,0.13,0.13,0.13]);
+            Herramientas.setColumnsWidth(cat.jTable1, [0.15,0.15,0.31,0.12,0.12,0.12]);
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
@@ -80,8 +80,10 @@ class Clientes {
         if(cerrojo(PMA_DETALLESCLIENTE)){
             def formCliente = new omoikane.formularios.Cliente()
             formCliente.setVisible(true)
+            Herramientas.funcionesObjetos(formCliente)
             escritorio.getPanelEscritorio().add(formCliente)
             formCliente.toFront()
+            Herramientas.funcionesObjetos(formCliente)
             try { formCliente.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles clientes", Herramientas.getStackTraceString(e)) }
             def art         = Nadesico.conectar().getCliente(ID)
             formCliente.setTxtIDCliente     art.id_cliente    as String
@@ -111,7 +113,7 @@ class Clientes {
                 def descuento       = formCliente.getTxtDescuento()
                 def CP              = formCliente.getTxtCP()
                 Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"RFC sólo puede incluír números, letras, espacios, - , _ y puntos ")
-                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Direccion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
+                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+áéíóú)$$/,"Direccion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - , acentos y diagonales")
                 Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Telefono puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
                 Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Razon Social puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
                 Herramientas.verificaCampo(Saldo,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Saldo sólo puede incluír números reales positivos")
@@ -134,6 +136,8 @@ class Clientes {
         if(cerrojo(PMA_MODIFICARCLIENTE)){
             def form = new omoikane.formularios.Cliente()
             form.setVisible(true)
+            Herramientas.funcionesObjetos(form)
+            Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "guardar"  ) { form.btnGuardar.doClick()  }
             escritorio.getPanelEscritorio().add(form)
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Cliente", Herramientas.getStackTraceString(e)) }
@@ -146,6 +150,7 @@ class Clientes {
     static def lanzarModificarCliente(ID)
     {
         def formCliente = lanzarDetallesClientes(ID)
+        Herramientas.In2ActionX(formCliente, KeyEvent.VK_F6    , "modificar"  ) { formCliente.btnModificar.doClick()  }
         formCliente.setModoModificar();
         formCliente
     }
@@ -173,6 +178,7 @@ class Clientes {
                 Saldo         = Saldo as Double
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modCliente(RFC,direccion,telefono,RazonSocial,Saldo,CP,descuento,IDCliente))
+                return formCliente
              }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }

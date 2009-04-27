@@ -15,6 +15,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import omoikane.sistema.*;
+import java.awt.event.*;
+import java.util.*;
 
 /**
  *
@@ -35,6 +37,15 @@ public class Cliente extends javax.swing.JInternalFrame {
         this.generarFondo(this);
 
         Herramientas.centrarVentana(this);
+
+        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
+
+        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
+
         
     }
 

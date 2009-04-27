@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<parameter name="QueryTxt" class="java.lang.String">
-		<defaultValueExpression><![CDATA["select * from cajas"]]></defaultValueExpression>
+	<defaultValueExpression><![CDATA[select * from almacenes,cajas where almacenes.id_almacen = cajas.id_almacen]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[$P!{QueryTxt}]]>
 	</queryString>
-	<field name="id_caja" class="java.lang.Long">
+	<field name="cajas_id_caja" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="descripcion" class="java.lang.String">
+	<field name="almacenes_descripcion" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="creado" class="java.sql.Timestamp">
+	<field name="cajas_descripcion" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="uModificado" class="java.sql.Timestamp">
+	<field name="cajas_horaAbierta" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cajas_horaCerrada" class="java.sql.Timestamp">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -34,7 +37,7 @@
 				<textElement textAlignment="Center">
 					<font size="26" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Cajas]]></text>
+				<text><![CDATA[Catalogo Cajas]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -44,64 +47,78 @@
 	<columnHeader>
 		<band height="18">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="138" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[id_caja]]></text>
+				<text><![CDATA[cajas_id_caja]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="138" y="0" width="138" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[descripcion]]></text>
+				<text><![CDATA[almacenes_descripcion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="276" y="0" width="138" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[creado]]></text>
+				<text><![CDATA[cajas_descripcion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="414" y="0" width="138" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[uModificado]]></text>
+				<text><![CDATA[cajas_horaAbierta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[cajas_horaCerrada]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20">
 			<textField hyperlinkType="None">
-				<reportElement x="0" y="0" width="138" height="20"/>
+				<reportElement x="0" y="0" width="111" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{id_caja}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{cajas_id_caja}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="138" y="0" width="138" height="20"/>
+				<reportElement x="111" y="0" width="111" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{almacenes_descripcion}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="276" y="0" width="138" height="20"/>
+				<reportElement x="222" y="0" width="111" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{creado}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cajas_descripcion}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="414" y="0" width="138" height="20"/>
+				<reportElement x="333" y="0" width="111" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{uModificado}]]></textFieldExpression>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{cajas_horaAbierta}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="444" y="0" width="111" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{cajas_horaCerrada}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -124,7 +141,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false" hyperlinkType="None">
-				<reportElement key="textField" x="329" y="6" width="187" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="textField" x="342" y="6" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -134,7 +151,7 @@
 				<textElement textAlignment="Right">
 					<font size="10"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Pagina " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pagina " + $V{PAGE_NUMBER} + "de "]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false" hyperlinkType="None">
 				<reportElement key="textField" x="1" y="6" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF"/>

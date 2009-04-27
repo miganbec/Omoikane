@@ -19,6 +19,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import omoikane.sistema.*;
+import javax.swing.event.*;
 
 /** /////////////////////////////////////////////////////////////
  * ///
@@ -136,9 +137,9 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
 
         setIconifiable(true);
         setTitle("Catálogo de clientes");
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
             }
         });
 
@@ -324,12 +325,17 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int IDCliente = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         //Lanzar la ventana de detalles:
-        if(IDCliente != -1) { omoikane.principal.Clientes.lanzarModificarCliente(IDCliente); }
+        if(IDCliente != -1) { 
+            JInternalFrame wnd = (JInternalFrame) omoikane.principal.Clientes.lanzarModificarCliente(IDCliente);
+            wnd.addInternalFrameListener(iframeAdapter);
+        }
+
 }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Clientes.lanzarFormNuevoCliente();
+        JInternalFrame wnd = (JInternalFrame) omoikane.principal.Clientes.lanzarFormNuevoCliente();
+        wnd.addInternalFrameListener(iframeAdapter);
 }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
@@ -337,7 +343,9 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
         int IDCliente = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         
         //Lanzar la ventana de detalles:
-        if(IDCliente != -1) { omoikane.principal.Clientes.lanzarDetallesClientes(IDCliente); }
+        if(IDCliente != -1) { 
+        JInternalFrame wnd = (JInternalFrame) omoikane.principal.Clientes.lanzarDetallesClientes(IDCliente);
+        wnd.addInternalFrameListener(iframeAdapter);}
 }//GEN-LAST:event_btnDetallesActionPerformed
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
@@ -390,11 +398,6 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_formKeyPressed
-
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
         // TODO add your handling code here:
         if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
@@ -415,6 +418,11 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
             this.btnCerrar.doClick();
         }
 }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        this.txtBusqueda.requestFocusInWindow();
+    }//GEN-LAST:event_formFocusGained
 
     
     public void preBuscar()
@@ -468,4 +476,9 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 
+    public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()
+    {
+        public void internalFrameClosed(InternalFrameEvent e) { buscar();requestFocusInWindow(); }
+
+    };
 }

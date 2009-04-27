@@ -127,6 +127,7 @@ class Caja {
         if(cerrojo(PMA_LANZARCAJA)){
             def form = new omoikane.formularios.Caja()
             def modelo = new CajaTableModel()
+            Herramientas.objetosAll(form)
             form.tablaVenta.setModel(modelo)
             form.modelo = modelo
             escritorio.getPanelEscritorio().add(form)
@@ -359,7 +360,7 @@ class Caja {
         if(cerrojo(PMA_MODIFICARCAJA)){
             Herramientas.verificaCampos {
                 def descripcion = formCaja.getTxtDescripcion()
-                Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9\_\-\s\ñ\Ñ\*\+áéíóú]+)$/,"Descripcion sólo puede incluír nímeros, letras, espacios, _, -, * y +.")
+                Herramientas.verificaCampo(descripcion,,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+áéíóú)$$/,"Descripcion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - , acentos y diagonales")
                 try {
                     def serv = Nadesico.conectar()
                     Dialogos.lanzarAlerta(serv.addCaja(IDAlmacen,descripcion))
@@ -419,7 +420,7 @@ class Caja {
     {
         if(cerrojo(PMA_MODIFICARCAJA)){
             Herramientas.verificaCampos {
-                Herramientas.verificaCampo(formCaja.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\�\�\*\+áéíóúñÑ]+)$/,"Descripcion sólo puede incluír números, letras, espacios, _, -, * y +.")
+                Herramientas.verificaCampo(formCaja.getTxtDescripcion(),,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+áéíóú)$$/,"Descripcion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - , acentos y diagonales")
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modCaja(formCaja.getTxtIDCaja(),IDAlmacen,formCaja.getTxtDescripcion()))
             }

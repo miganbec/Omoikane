@@ -179,7 +179,7 @@ public class Herramientas
 
     public static funcionesObjetos(component){
         for(Component child: component.getContentPane().getComponents()){
-            child.focusGained={evt->
+           child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(182,182,255));
             }
             child.focusLost={evt->
@@ -192,7 +192,23 @@ public class Herramientas
                 }
             }
             if(child instanceof JButton){
-                child.keyReleased = {evt ->
+                child.keyPressed = {evt ->
+                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}
+                }
+            }
+        }
+    }
+
+    public static objetosAll(component){
+            for(Component child: component.getContentPane().getComponents()){
+           child.focusGained={evt->
+                evt.getComponent().setBackground(new Color(182,182,255));
+            }
+            child.focusLost={evt->
+                evt.getComponent().setBackground(null);
+            }
+            if(child instanceof JButton){
+                child.keyPressed = {evt ->
                     if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}
                 }
             }
