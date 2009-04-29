@@ -221,7 +221,7 @@ public class Articulos
         if(cerrojo(PMA_MODIFICARARTICULO)){
             def f = formArticulo
             def c = [cod:f.getTxtCodigo(), lin:f.getTxtIDLinea(),gru:f.getTxtIDGrupo(), des:f.getTxtDescripcion(), imp:f.getTxtImpuestosPorc().text, cos:f.getTxtCosto(),
-            dto:f.getTxtDesctoPorcentaje(), uti:f.getTxtUtilidadPorc().text, art:f.getTxtIDArticulo(), uni:f.getTxtUnidad()]
+            dto:f.getTxtDesctoPorcentaje().text, uti:f.getTxtUtilidadPorc().text, art:f.getTxtIDArticulo(), uni:f.getTxtUnidad()]
             Herramientas.verificaCampos {
                 Herramientas.verificaCampo(c.cod, /^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Codigo sólo puede incluír números, letras, espacios, *, -,_ y +.")
                 Herramientas.verificaCampo(c.lin, /^([0-9]+)$/,"ID Linea sólo puede incluír números enteros.")

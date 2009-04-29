@@ -13,6 +13,6 @@
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
     <puertoImpresion>LPT1</puertoImpresion>
-    <URLServidor>http://localhost:5542</URLServidor>
+    <URLServidor>http://nadesico:5542</URLServidor>
     <fondoBlur>true</fondoBlur>
 </document>

@@ -64,7 +64,7 @@ class Caja {
                             SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                             def hAbierta = sdf.format(caja.horaAbierta)
                             def hCerrada = sdf.format(caja.horaCerrada)
-                            if(serv.getCorteWhere("id_caja = $txtID AND desde = '$hAbierta' AND hasta = '$hCerrada'") == 0 && hAbierta != "1970-01-01 00:00:00") {
+                            if(serv.getCorteWhere("id_caja = $txtID AND desde = '$hAbierta' AND hasta = '$hCerrada'") == 0 && hAbierta != "2000-01-01 00:00:00") {
                                 Dialogos.lanzarAlerta("Se debe realizar el corte de caja para ésta caja antes de volver a abrirla")
                             }else{
                                 serv.abrirCaja(txtID)
