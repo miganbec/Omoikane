@@ -27,6 +27,7 @@ public class Principal {
         public static int     sysAlto  
         public static boolean fondoBlur
         public static String  puertoImpresion
+        public static boolean impresoraActiva
 
 	public static void main(args)
         {
@@ -80,6 +81,7 @@ public class Principal {
             IDAlmacen       = Integer.valueOf(config.idAlmacen[0].text())
             IDCaja          = Integer.valueOf(config.idCaja[0].text())
             puertoImpresion = String.valueOf(config.puertoImpresion[0].text())
+            impresoraActiva = Boolean.valueOf(config.impresoraActiva[0].text())
         }
 
     static def iniciarSesion(){

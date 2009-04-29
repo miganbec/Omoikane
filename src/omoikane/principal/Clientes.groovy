@@ -28,6 +28,7 @@ class Clientes {
             def cat = (new omoikane.formularios.CatalogoClientes())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
+            Herramientas.objetosAll(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.15,0.15,0.31,0.12,0.12,0.12]);
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
@@ -112,7 +113,7 @@ class Clientes {
                 def Saldo           = formCliente.getTxtSaldo()
                 def descuento       = formCliente.getTxtDescuento()
                 def CP              = formCliente.getTxtCP()
-                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"RFC sólo puede incluír números, letras, espacios, - , _ y puntos ")
+                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.\´]+)$/,"RFC sólo puede incluír números, letras, espacios, - , _ y puntos ")
                 Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+áéíóú)$$/,"Direccion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - , acentos y diagonales")
                 Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Telefono puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
                 Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Razon Social puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")

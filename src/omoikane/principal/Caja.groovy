@@ -215,6 +215,7 @@ class Caja {
                         Caja.cancelarArt(form);
                         sumarTodo()
                     }
+                    form.txtCaptura.requestFocusInWindow();
                 }
             }
             form.btnCerrar.actionPerformed = {

@@ -14,5 +14,6 @@
     <idCaja>1</idCaja>
     <puertoImpresion>LPT1</puertoImpresion>
     <URLServidor>http://nadesico:5542</URLServidor>
-    <fondoBlur>true</fondoBlur>
+    <fondoBlur>false</fondoBlur>
+    <impresoraActiva>false</impresoraActiva>
 </document>

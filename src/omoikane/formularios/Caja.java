@@ -96,7 +96,7 @@ public class Caja extends javax.swing.JInternalFrame {
         txtSubtotal = new javax.swing.JLabel();
         btnCancelaArt = new javax.swing.JButton();
 
-        txtCaja.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        txtCaja.setFont(new java.awt.Font("Arial", 1, 36));
         txtCaja.setForeground(new java.awt.Color(255, 255, 255));
         txtCaja.setText("Caja 1");
 
@@ -120,6 +120,7 @@ public class Caja extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaVenta.setFocusable(false);
         jScrollPane1.setViewportView(tablaVenta);
 
         btnTerminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
@@ -130,12 +131,17 @@ public class Caja extends javax.swing.JInternalFrame {
 
         btnCancelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
         btnCancelacion.setText("Cancelar Venta [F12]");
+        btnCancelacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelacionActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Captura");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new Color(255,255,255,165));
@@ -321,7 +327,7 @@ public class Caja extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -348,6 +354,11 @@ public class Caja extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelacionActionPerformed
+        // TODO add your handling code here:
+        this.btnCerrar.doClick();
+    }//GEN-LAST:event_btnCancelacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

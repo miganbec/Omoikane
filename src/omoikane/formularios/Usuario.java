@@ -15,7 +15,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import omoikane.sistema.*;
-
+import java.util.*;
+import java.awt.event.*;
 
 /**
  *
@@ -38,6 +39,15 @@ public class Usuario extends javax.swing.JInternalFrame {
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
         Herramientas.centrarVentana(this);
+
+
+        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
+
+        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
         
     }
 
@@ -144,16 +154,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
 
         txtNombre.setEditable(false);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNombreKeyPressed(evt);
-            }
-        });
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 260, -1));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -236,14 +236,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         omoikane.principal.Usuarios.modificar(this);
     }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreKeyPressed
 
     private void JH1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JH1ActionPerformed
         // TODO add your handling code here:

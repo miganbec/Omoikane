@@ -32,6 +32,7 @@ class Usuarios {
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.4,0.3,0.3]);
+            Herramientas.objetosAll(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
@@ -85,6 +86,7 @@ class Usuarios {
             formUsuario.setVisible(true)
             escritorio.getPanelEscritorio().add(formUsuario)
             formUsuario.toFront()
+            Herramientas.funcionesObjetos(formUsuario)
             try { formUsuario.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Usuario", Herramientas.getStackTraceString(e)) }
             def art         = Nadesico.conectar().getUsuario(ID,Almacen)
             formUsuario.setTxtIDUSR          art.id_usuario          as String
@@ -134,6 +136,7 @@ class Usuarios {
                         Dialogos.lanzarAlerta(serv.addUsuario(Nombre,H1,H2,H3,NIP,Perfil,Almacen))
                         serv.desconectar()
                         formUsuario.dispose()
+                        return formUsuario
                     }
                 }catch(e) { Dialogos.error("Error al enviar a la base de datos. El Usuario no se registró", e) }
                 }
@@ -145,16 +148,21 @@ class Usuarios {
         def form = new omoikane.formularios.Usuario()
         form.setVisible(true)
         escritorio.getPanelEscritorio().add(form)
+        Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "modificar") { form.btnGuardar.doClick()}
+        Herramientas.funcionesObjetos(form)
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Usuarios", Herramientas.getStackTraceString(e)) }
         form.setEditable(true);
         form.setModoNuevo();
+        return form
     }
 
     static def lanzarModificarUsuario(ID)
     {
         def formUsuario = lanzarDetallesUsuario(ID)
         formUsuario.setModoModificar();
+        Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F6    , "modificar") { formUsuario.btnModificar.doClick()}
+        return formUsuario
     }
 
     static def modificar(formUsuario)

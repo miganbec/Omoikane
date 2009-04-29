@@ -15,6 +15,7 @@ class Comprobantes {
 
     def protocolo = omoikane.principal.Principal.puertoImpresion
     def data
+    def impresora = omoikane.principal.Principal.impresoraActiva
     def generado
 
     def ticket(IDAlmacen, IDVenta) {
@@ -88,10 +89,9 @@ class Comprobantes {
         binding.dia    = sdfDia.format(data.desde)
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
-        binding.folio  = "${data.id_almacen}-${data.id_caja}-${data.n_ventas}"
-        binding.devoluciones= 4.5
-        binding.ingresos=4.5
-        binding.retiros=4.5
+        binding.devoluciones = 0.0f
+        binding.ingresos = 0.0f
+        binding.retiros = 0.0f
 
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
@@ -110,30 +110,32 @@ class Comprobantes {
         binding.dia    = sdfDia.format(data.desde)
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
-        binding.folio  = "${data.id_almacen}-${data.n_ventas}"
-        binding.devoluciones = 10.0
-        binding.ingresos = 10.0
-        binding.retiros= 10.0
+        binding.devoluciones = 0.0f
+        binding.ingresos = 0.0f
+        binding.retiros = 0.0f
 
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
         template.toString()
     }
 
-    def imprimir() {
+    def probar() {
+        if (impresora)
+        {
         try {
             FileOutputStream os = new FileOutputStream("$protocolo:");
             PrintStream ps = new PrintStream(os);
             ps.println(generado);
             ps.close();
         } catch (FileNotFoundException fnf) { Dialogos.lanzarAlerta("Error al imprimir al puerto lpt1"); }
-    }
-    
-    def probar(){
-        try {
+        }
+        else
+        {
+            try {
             println generado
-        } catch (e) { Dialogos.lanzarAlerta("Error al mandar a al consola"); }
+            } catch (e) { Dialogos.lanzarAlerta("Error al mandar a al consola"); }
+        }
     }
-
 
 }
+  

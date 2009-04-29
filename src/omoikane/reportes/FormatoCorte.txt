@@ -16,8 +16,9 @@ ${fecha}
 
 Caja  : ${descripcion}
 
-${dia} de  ${desde} hrs a
-                          ${hasta} hrs
+${dia} de
+${desde} a ${hasta}
+${n_ventas} Tickets
 
                        Importe
    Subtotal          ${String.format("%9.02f", subtotal)}
@@ -32,10 +33,5 @@ ${dia} de  ${desde} hrs a
  + Ingresos          ${String.format("%9.02f", ingresos)}
                      ---------
                      ${String.format("%9.02f", total)}
-
-           Folios
-Ventas    ${n_ventas}  ${folio}
-
-
 ${""+ (27 as char)+(100 as char)+(8 as char)}
 ${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}

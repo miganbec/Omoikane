@@ -180,7 +180,7 @@ public class Herramientas
     public static funcionesObjetos(component){
         for(Component child: component.getContentPane().getComponents()){
            child.focusGained={evt->
-                evt.getComponent().setBackground(new Color(182,182,255));
+                evt.getComponent().setBackground(new Color(150,150,255));
             }
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);
@@ -201,8 +201,8 @@ public class Herramientas
 
     public static objetosAll(component){
             for(Component child: component.getContentPane().getComponents()){
-           child.focusGained={evt->
-                evt.getComponent().setBackground(new Color(182,182,255));
+            child.focusGained={evt->
+                evt.getComponent().setBackground(new Color(150,150,255));
             }
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);

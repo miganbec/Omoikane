@@ -133,12 +133,8 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setFocusable(false);
         jTable1.setShowHorizontalLines(false);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -174,11 +170,6 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
         jLabel9.setText("Fecha :");
 
         txtCliente.setEditable(false);
-        txtCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClienteActionPerformed(evt);
-            }
-        });
 
         txtTipoSalida.setEditable(false);
 
@@ -204,15 +195,10 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
             }
         });
 
-        chkFacturado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        chkFacturado.setFont(new java.awt.Font("Tahoma", 1, 12));
         chkFacturado.setForeground(new java.awt.Color(255, 255, 255));
         chkFacturado.setText("Facturado");
         chkFacturado.setEnabled(false);
-        chkFacturado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkFacturadoActionPerformed(evt);
-            }
-        });
 
         btnFacturado.setText("Facturar");
         btnFacturado.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +315,7 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir)
                     .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -345,22 +331,10 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
        omoikane.principal.Ventas.lanzarImprimirVenta(this);
 }//GEN-LAST:event_btnImprimirActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-}//GEN-LAST:event_jTable1MouseClicked
-
-    private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtClienteActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         this.dispose();
 }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void chkFacturadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFacturadoActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_chkFacturadoActionPerformed
 
     private void btnFacturadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturadoActionPerformed
         // TODO add your handling code here:

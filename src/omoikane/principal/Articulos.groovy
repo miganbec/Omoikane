@@ -36,6 +36,7 @@ public class Articulos
             def cat = (new omoikane.formularios.CatalogoArticulos())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
+            Herramientas.objetosAll(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.14,0.1,0.1,0.4,0.06,0.1,0.1]);
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
@@ -101,6 +102,7 @@ public class Articulos
             def formArticulo = new omoikane.formularios.Articulo()
             formArticulo.setVisible(true)
             escritorio.getPanelEscritorio().add(formArticulo)
+            Herramientas.funcionesObjetos(formArticulo)
             formArticulo.toFront()
             try { formArticulo.setSelected(true) 
             def art         = Nadesico.conectar().getArticulo(ID,IDAlmacen)
@@ -195,6 +197,7 @@ public class Articulos
         if(cerrojo(PMA_MODIFICARARTICULO)){
             def form = new omoikane.formularios.Articulo()
             form.setVisible(true)
+            Herramientas.funcionesObjetos(form)
             escritorio.getPanelEscritorio().add(form)
             form.toFront()
             SwingBuilder.build {
