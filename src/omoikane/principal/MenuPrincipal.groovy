@@ -74,7 +74,12 @@ class MenuPrincipal {
             menuPrincipal.btnPreferencias.keyReleased = {
                 if(it.keyCode==it.VK_UP)   { menuPrincipal.btnMovAlmacen.requestFocusInWindow() }
                 if(it.keyCode==it.VK_DOWN) { menuPrincipal.btnDetallesVentas.requestFocusInWindow() }
-                if(it.keyCode == it.VK_ENTER){menuPrincipal.btnPreferencias.doClick() }
+                if(it.keyCode == it.VK_ENTER){
+                    menuPrincipal.btnPreferencias.doClick()
+                    def comMan     = new ComMan()
+                    def miniDriver = [port: "COM1", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
+                    Dialogos.alerta("Báscula: "+comMan.readWeight("k", miniDriver))
+                }
             }
             menuPrincipal.btnCerrar.keyReleased = {
                 if(it.keyCode==it.VK_UP)   { menuPrincipal.btnClientes.requestFocusInWindow() }
