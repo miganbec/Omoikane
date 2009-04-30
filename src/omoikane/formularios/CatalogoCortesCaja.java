@@ -181,6 +181,7 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setFocusable(false);
         jScrollPane1.setViewportView(jTable1);
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N

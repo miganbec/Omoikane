@@ -17,6 +17,7 @@ class Comprobantes {
     def data
     def impresora = omoikane.principal.Principal.impresoraActiva
     def generado
+    def cajon = omoikane.principal.Principal.cajon
 
     def ticket(IDAlmacen, IDVenta) {
         def serv = new Nadesico().conectar()
@@ -65,7 +66,7 @@ class Comprobantes {
         def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def binding = data
-
+        binding.cajon = cajon
         binding.fecha = sdfFecha.format(data.date)
         binding.hora  = sdfHora.format(data.date)
         binding.folio = "${data.id_almacen}-${data.id_caja}-${data.id_venta}"
@@ -83,7 +84,7 @@ class Comprobantes {
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def sdfDia  = new SimpleDateFormat("EEEEEEEEEE dd-MMM-yyyy  ")
         def binding = data
-
+        binding.cajon = cajon
         binding.fecha  = sdfFecha.format(data.fecha_hora)
         binding.descripcion=data.caja.descripcion
         binding.dia    = sdfDia.format(data.desde)
@@ -105,7 +106,7 @@ class Comprobantes {
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def sdfDia  = new SimpleDateFormat("EEEEEEEEEE dd-MMM-yyyy  ")
         def binding = data
-
+        binding.cajon = cajon
         binding.fecha  = sdfFecha.format(new Date())
         binding.dia    = sdfDia.format(data.desde)
         binding.desde  = sdfHora.format(data.desde)

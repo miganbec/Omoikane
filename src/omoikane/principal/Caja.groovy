@@ -187,7 +187,7 @@ class Caja {
             form.txtCaptura.keyPressed = {   e ->
                 if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.btnTerminar.doClick() }
                 //Al presionar   F2: (lanzarCatalogoDialogo)
-                if(e.keyCode == e.VK_F2) { form.btnCatalogo.doClick() }
+                if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
                 if(e.getKeyCode() == e.VK_DOWN)
                 {
                     int sigFila = form.tablaVenta.getSelectedRow()+1;
@@ -235,8 +235,19 @@ class Caja {
                     }
                 }
             }
-            def catArticulos = { def retorno = Articulos.lanzarDialogoCatalogo() as String; return retorno==null?"":retorno }
-            form.btnCatalogo.actionPerformed = { e -> Thread.start { form.txtCaptura.text = form.txtCaptura.text + catArticulos(); form.txtCaptura.requestFocus() } }
+            def catArticulos = {
+                    def retorno = Articulos.lanzarDialogoCatalogo() as String
+                    //return retorno==null?"":retorno
+                    retorno = (retorno==null)?"":retorno
+                    form.txtCaptura.text = form.txtCaptura.text + retorno
+                    form.txtCaptura.requestFocus()
+                    form.btnCatalogo.setEnabled(true)
+            }
+            form.btnCatalogo.actionPerformed = { e ->
+                synchronized(this) {
+                    form.btnCatalogo.setEnabled(false); Thread.start { catArticulos() }
+                }
+            }
             form.btnTerminar.actionPerformed = { e ->
                 try {
                 if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }

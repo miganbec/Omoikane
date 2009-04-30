@@ -16,4 +16,5 @@
     <URLServidor>http://nadesico:5542</URLServidor>
     <fondoBlur>false</fondoBlur>
     <impresoraActiva>false</impresoraActiva>
+    <cajon>0</cajon>
 </document>

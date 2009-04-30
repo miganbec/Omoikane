@@ -39,9 +39,11 @@ class Cortes {
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.25,0.25,0.1,0.1]);
+            Herramientas.objetosAll(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "corte" ) { cat.btnCorteDia.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F2    , "filtrar" ) { cat.btnFiltrar.doClick() }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.iconificable(cat)
@@ -70,6 +72,7 @@ class Cortes {
         if(cerrojo(PMA_DETALLESCORTES)){
             lastMovID = ID
             def form  = lanzarVentanaDetalles()
+            Herramientas.FuncionesObjetos(form)
             def mov   = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$ID")
             form.setTxtDescuento     (mov.descuentos as String)
             form.setTxtDesde         (mov.desde as String)
