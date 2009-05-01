@@ -185,6 +185,7 @@ class Caja {
                         //println "impuestos->"+art.impuestos
                         Caja.sumarTodo(form)
                         form.repaint()
+                        form.tablaVenta.scrollRectToVisible(form.tablaVenta.getCellRect(form.tablaVenta.getRowCount()-1, 1, true));
                     }
                 } catch(e) { Dialogos.error("Error al obtener información de nadesico!", e) }
             }
