@@ -175,6 +175,7 @@ class ComMan implements SerialPortEventListener {
                         }
                     }
                     m_in.read()
+                    buffer = tempBuffer
                 } catch (IOException eIO) { Dialogos.error("Excepción al pesar${eIO.getMessage()}", eIO) }
                 break;
         }
