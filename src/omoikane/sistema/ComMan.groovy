@@ -63,6 +63,7 @@ class ComMan implements SerialPortEventListener {
             }
 
             if (m_iStatusScale == SCALE_READY) {
+                buffer = (buffer ==~ /[ ].*?([0-9]*?.[0-9]*?)[ ]([A-Z0-9]*)/)
                 return buffer
             } else {
                 m_iStatusScale = SCALE_READY;
@@ -147,9 +148,7 @@ class ComMan implements SerialPortEventListener {
                 try {
                     tempBuffer = ""
                     for (int i = 0; i < 13 && m_in.available() > 0; i++) {
-                        println "Dat Disponible"
                         int b = m_in.read();
-                        println "leído [$i] -> $b "
                         /*
                         if (b == ((miniDriver.stopChar[0] as int) as char)) { // CR ASCII
                             // Fin de lectura
@@ -172,8 +171,6 @@ class ComMan implements SerialPortEventListener {
                         }
                     }
                     m_in.read()
-                    buffer = tempBuffer
-                    println "bufffff -> "+buffer
                 } catch (IOException eIO) { Dialogos.error("Excepción al pesar${eIO.getMessage()}", eIO) }
                 break;
         }
