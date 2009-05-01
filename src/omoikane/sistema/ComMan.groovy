@@ -64,7 +64,7 @@ class ComMan implements SerialPortEventListener {
 
             if (m_iStatusScale == SCALE_READY) {
                 buffer = (buffer =~ /[ ].*?([0-9]*?.[0-9]*?)[ ]([A-Z0-9]*)/)
-                return buffer
+                return buffer[0][1]
             } else {
                 m_iStatusScale = SCALE_READY;
                 return "0.0"
