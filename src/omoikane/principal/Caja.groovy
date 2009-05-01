@@ -182,7 +182,7 @@ class Caja {
                         form.modelo.addRowMap(["ID Artículo":art.id_articulo, "Concepto" :     art.descripcion, "Cantidad" :            cantidad,
                                                "Precio"     :   precio.total, "Descuento":precio['descuento$'], "Impuestos": precio['impuestos'],
                                                "Total"      :          total])
-                        println "impuestos->"+art.impuestos
+                        //println "impuestos->"+art.impuestos
                         Caja.sumarTodo(form)
                         form.repaint()
                     }
@@ -264,14 +264,22 @@ class Caja {
             form.btnTerminar.actionPerformed = { e ->
                 try {
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
-
+                    /*
                     new SimpleForm("omoikane.formularios.DialogoCambio") {
                         def sform = it.form
-                        sform.total.text = it.total
+                        Herramientas.funcionesObjetos(sform)
+                        sform.total.text = form.txtTotal.text
                         sform.visible = true
+                        sform.txtEfectivo.focusLost = {
+                            def sefe  = sform.txtEfectivo.text.replace('$', '').replace(',', '')
+                            sefe      = sefe as double
+                            def stot  = sform.total.text.replace('$', '').replace(',', '')
+                            stot      = stot as double
+                            sform.cambio.text = sefe - (stot as double)
+                        }
                         sform.btnContinuar.actionPerformed = { sform.dispose() }
                     }
-
+                    */
                     def detalles = []
                     form.modelo.getDataMap().each {
                         detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]

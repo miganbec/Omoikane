@@ -107,7 +107,7 @@ public class DialogoCambio extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 327, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
@@ -120,7 +120,7 @@ public class DialogoCambio extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cambio, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
+                .addComponent(cambio, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
