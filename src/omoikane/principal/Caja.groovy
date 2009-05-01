@@ -191,9 +191,10 @@ class Caja {
             form.txtCaptura.keyTyped = { e ->
                 if(e.keyChar == '+') {
                     def peso = comMan.readWeight("K", miniDriver)
-                    form.txtCaptura.text = peso
-                    Dialogos.lanzarAlerta("Báscula: "+peso)
-                    println "--"+peso
+                    form.txtCaptura.text = peso + "*"
+                    e.consume()
+                    //Dialogos.lanzarAlerta("Báscula: "+peso)
+                    //println "--"+peso
                 }
                 }
             form.txtCaptura.keyPressed = {   e ->

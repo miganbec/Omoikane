@@ -11,12 +11,21 @@
 
 package omoikane.formularios;
 
+import java.awt.image.BufferedImage;
+import java.awt.*;
+
 /**
  *
  * @author SYSTEM
  */
 public class DialogoCambio extends javax.swing.JInternalFrame {
 
+    public BufferedImage fondo;
+
+    public void paintComponent(java.awt.Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(fondo, 0, 0, null);
+    }
     /** Creates new form DialogoCambio */
     public DialogoCambio() {
         initComponents();
