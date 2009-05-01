@@ -266,34 +266,36 @@ class Caja {
             form.btnTerminar.actionPerformed = { e ->
                 try {
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
-                    /*
-                    new SimpleForm("omoikane.formularios.DialogoCambio") {
-                        def sform = it.form
-                        Herramientas.funcionesObjetos(sform)
-                        sform.total.text = form.txtTotal.text
-                        sform.visible = true
-                        sform.txtEfectivo.focusLost = {
-                            def sefe  = sform.txtEfectivo.text.replace('$', '').replace(',', '')
-                            sefe      = sefe as double
-                            def stot  = sform.total.text.replace('$', '').replace(',', '')
-                            stot      = stot as double
-                            sform.cambio.text = sefe - (stot as double)
+                    def foco = new Object()
+                    Thread.start {
+                        new SimpleForm("omoikane.formularios.DialogoCambio") {
+                            def sform = it.form
+                            Herramientas.funcionesObjetos(sform)
+                            sform.total.text = form.txtTotal.text
+                            sform.visible = true
+                            sform.txtEfectivo.focusLost = {
+                                def sefe  = sform.txtEfectivo.text.replace('$', '').replace(',', '')
+                                sefe      = sefe as double
+                                def stot  = sform.total.text.replace('$', '').replace(',', '')
+                                stot      = stot as double
+                                sform.cambio.text = sefe - (stot as double)
+                            }
+                            sform.btnContinuar.actionPerformed = { sform.dispose(); synchronized(foco) { foco.notifyAll() } }
                         }
-                        sform.btnContinuar.actionPerformed = { sform.dispose() }
+                        synchronized(foco) { foco.wait() }
+                        def detalles = []
+                        form.modelo.getDataMap().each {
+                            detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
+                        }
+                        def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), form.impuestos, Caja.aDoble(form.txtTotal.text), detalles)
+                        serv.desconectar()
+                        def comprobante = new Comprobantes()
+                        comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
+                        comprobante.probar()//imprimir ticket
+                        //Dialogos.lanzarAlerta(salida.mensaje)
+                        form.dispose()
+                        lanzar()
                     }
-                    */
-                    def detalles = []
-                    form.modelo.getDataMap().each {
-                        detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
-                    }
-                    def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), form.impuestos, Caja.aDoble(form.txtTotal.text), detalles)
-                    serv.desconectar()
-                    def comprobante = new Comprobantes()
-                    comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
-                    comprobante.probar()//imprimir ticket
-                    Dialogos.lanzarAlerta(salida.mensaje)
-                    form.dispose()
-                    lanzar()
                 } catch(err) { if(err.getMessage()!="Venta vacía"){Dialogos.error("Error: La venta no se pudo registrar", err)} }
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
