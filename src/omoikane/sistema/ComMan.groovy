@@ -146,10 +146,11 @@ class ComMan implements SerialPortEventListener {
             case SerialPortEvent.DATA_AVAILABLE:
                 try {
                     tempBuffer = ""
-                    while (m_in.available() > 0) {
+                    for (int i = 0; i < 13 && m_in.available() > 0; i++) {
                         println "Dat Disponible"
                         int b = m_in.read();
                         println "leído -> $b "
+                        /*
                         if (b == ((miniDriver.stopChar[0] as int) as char)) { // CR ASCII
                             // Fin de lectura
                             synchronized (this) {
@@ -164,8 +165,14 @@ class ComMan implements SerialPortEventListener {
                             tempBuffer += (b as char)
                             
                             }
+                        }
+                        */
+                        synchronized(this) {
+                            tempBuffer += (b as char)
+                        }
                     }
-                    }
+                    buffer = tempBuffer
+                    println "buf -> "+buffer
                 } catch (IOException eIO) { Dialogos.error("Excepción al pesar${eIO.getMessage()}", eIO) }
                 break;
         }
