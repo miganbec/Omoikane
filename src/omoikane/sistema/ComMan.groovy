@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package nadeisoci
+package omoikane.sistema
 
 import gnu.io.*
 /**
@@ -40,6 +40,7 @@ class ComMan implements SerialPortEventListener {
 
     public def readWeight(command, miniDriver) {
 
+        try {
         this.miniDriver = miniDriver
         synchronized(this) {
 
@@ -53,7 +54,7 @@ class ComMan implements SerialPortEventListener {
                 }
             }
 
-            write(command); // $
+            write(command.getBytes()); // $
             flush();
 
             try {
@@ -68,6 +69,7 @@ class ComMan implements SerialPortEventListener {
                 return "0.0"
             }
         }
+        } catch(e) { Dialogos.error("Error al leer peso desde báscula", e) }
     }
 
     private void flush() {
@@ -115,15 +117,15 @@ class ComMan implements SerialPortEventListener {
             }
             m_out.write(data);
         } catch (NoSuchPortException e) {
-            e.printStackTrace();
+            Dialogos.lanzarAlerta("Puerto de báscula inválido")
         } catch (PortInUseException e) {
-            e.printStackTrace();
+            Dialogos.lanzarAlerta("Puerto de báscula en uso por otra aplicación o proceso")
         } catch (UnsupportedCommOperationException e) {
-            e.printStackTrace();
+            Dialogos.error("Excepción al leer báscula ${e.getMessage()}", e);
         } catch (TooManyListenersException e) {
-            e.printStackTrace();
+            Dialogos.error("Excepción al leer báscula ${e.getMessage()}", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            Dialogos.error("Excepción al leer báscula ${e.getMessage()}", e);
         }
     }
 

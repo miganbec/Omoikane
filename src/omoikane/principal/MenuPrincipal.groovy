@@ -16,6 +16,8 @@ import javax.swing.JFrame;
  */
 class MenuPrincipal {
     def menuPrincipal = new omoikane.formularios.MenuPrincipal()
+    def comMan     = new ComMan()
+    def miniDriver = [port: "COM1", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
 
     void iniciar()
     { if(!SisUsuarios.cerrojo(SisUsuarios.CAJERO+1)) {
@@ -76,9 +78,9 @@ class MenuPrincipal {
                 if(it.keyCode==it.VK_DOWN) { menuPrincipal.btnDetallesVentas.requestFocusInWindow() }
                 if(it.keyCode == it.VK_ENTER){
                     menuPrincipal.btnPreferencias.doClick()
-                    def comMan     = new ComMan()
-                    def miniDriver = [port: "COM1", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
-                    Dialogos.alerta("Báscula: "+comMan.readWeight("k", miniDriver))
+                    def peso = comMan.readWeight("K", miniDriver)
+                    Dialogos.lanzarAlerta("Báscula: "+peso)
+                    println peso
                 }
             }
             menuPrincipal.btnCerrar.keyReleased = {

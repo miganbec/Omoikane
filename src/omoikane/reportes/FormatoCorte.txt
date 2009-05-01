@@ -1,4 +1,4 @@
-${""+ (27 as char)+(112 as char)+(0 as char)+(1 as char)+(15 as char)}
+${""+ (27 as char)+(112 as char)+(0 as char)+(25 as char)+(250 as char)}
     * SUPER  FARMACIA  MEDINA *        .
         NAHUM MEDINA GARCIA
 RFC:MEGN560328MQ0 CURPMEGN560328HPLDRH00

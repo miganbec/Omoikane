@@ -1,4 +1,4 @@
-${""+ (27 as char)+(112 as char)+(0 as char)+(1 as char)+(15 as char)}
+${""+ (27 as char)+(112 as char)+(0 as char)+(25 as char)+(250 as char)}
   *  * SUPER  FARMACIA  MEDINA  *  *
 
 NAHUM MEDINA GARCIA        MEGN560328MQ0
@@ -22,4 +22,4 @@ ${fecha}  ${hora}   Folio: ${folio}
  TELS: 01 (225) 315 42 03 Y 315 42 02
 
 ${""+ (27 as char)+(100 as char)+(8 as char)}
-${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}ppp
+${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}
