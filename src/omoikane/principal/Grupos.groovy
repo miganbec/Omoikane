@@ -123,7 +123,7 @@ class Grupos {
             def filaNva = []
 
             movimientos.each {
-                filaNva = [it.id_grupo, it.descripcion]
+                filaNva = [it.id_grupo, it.descripcion,it.descuento]
                 dataTabMovs.addRow(filaNva.toArray())
             }
         } catch(Exception e) {

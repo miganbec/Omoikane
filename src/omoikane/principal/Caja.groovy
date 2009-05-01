@@ -82,7 +82,7 @@ class Caja {
                 synchronized(foco){foco.wait()}
                 return retorna
             }
-        }else{Dialogos.lanzarAlerta("Acceso Denegado")}
+        }else{Dialogos.lanzarAlerta("Caja Cerrada..... Habilitar para continuar ¨: )");omoikane.principal.Principal.cerrarSesion();}
     }
 
     static def lanzar() 
@@ -260,7 +260,7 @@ class Caja {
             }
             form.btnTerminar.actionPerformed = { e ->
                 try {
-                if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
+                    if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
                     def detalles = []
                     form.modelo.getDataMap().each {
                         detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
@@ -273,7 +273,7 @@ class Caja {
                     Dialogos.lanzarAlerta(salida.mensaje)
                     form.dispose()
                     lanzar()
-                } catch(err) { Dialogos.error("Error: La venta no se pudo registrar", err) }
+                } catch(err) { if(err.getMessage()!="Venta vacía"){Dialogos.error("Error: La venta no se pudo registrar", err)} }
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }

@@ -121,7 +121,7 @@ class Lineas {
             def movimientos = Nadesico.conectar().getRows(queryLineas =("SELECT * FROM lineas WHERE (descripcion LIKE '%"+txtBusqueda+"%' OR id_linea LIKE '%"+txtBusqueda+"%')") )
             def filaNva = []
             movimientos.each {
-                filaNva = [it.id_linea, it.descripcion]
+                filaNva = [it.id_linea, it.descripcion,it.descuento]
                 dataTabMovs.addRow(filaNva.toArray())
             }
         } catch(Exception e) {

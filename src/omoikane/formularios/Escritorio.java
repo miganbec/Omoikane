@@ -62,7 +62,7 @@ public class Escritorio extends javax.swing.JFrame {
         PanelEscritorio.add(reloj, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         usuario.setFont(new java.awt.Font("Tahoma", 1, 18));
-        usuario.setText("Usuario");
+        usuario.setText("Sin Sesión");
         usuario.setBounds(260, 180, 180, 20);
         PanelEscritorio.add(usuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

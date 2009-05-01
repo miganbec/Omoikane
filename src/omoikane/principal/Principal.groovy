@@ -93,6 +93,7 @@ public class Principal {
 
     static def cerrarSesion(){
                 SisUsuarios.logout()
+                escritorio.setNombreUsuario("Sin Sesión")
                 Principal.menuPrincipal = new MenuPrincipal()
                 Thread.start(){
                 Principal.iniciarSesion()

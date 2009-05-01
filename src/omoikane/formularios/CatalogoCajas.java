@@ -159,6 +159,7 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaCajas.setFocusable(false);
         tablaCajas.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(tablaCajas);
 

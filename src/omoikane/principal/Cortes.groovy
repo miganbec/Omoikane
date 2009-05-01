@@ -72,7 +72,6 @@ class Cortes {
         if(cerrojo(PMA_DETALLESCORTES)){
             lastMovID = ID
             def form  = lanzarVentanaDetalles()
-            Herramientas.FuncionesObjetos(form)
             def mov   = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$ID")
             form.setTxtDescuento     (mov.descuentos as String)
             form.setTxtDesde         (mov.desde as String)

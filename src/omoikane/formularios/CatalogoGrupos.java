@@ -142,7 +142,7 @@ public class CatalogoGrupos extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar [F3]:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Catálogo de Grupos");
         jLabel2.setToolTipText("");
@@ -152,11 +152,11 @@ public class CatalogoGrupos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID Grupo", "Descripcion"
+                "ID Grupo", "Descripcion", "Descuento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -278,7 +278,7 @@ public class CatalogoGrupos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -448,7 +448,7 @@ public class CatalogoGrupos extends javax.swing.JInternalFrame {
 
     public void resetTable()
     {
-        String[] columnas = {"ID Grupo", "Descripcion"};
+        String[] columnas = {"ID Grupo", "Descripcion","Descuento"};
         this.tablaGrupos.setModel(new DefaultTableModel());
         ((DefaultTableModel)this.tablaGrupos.getModel()).setColumnIdentifiers(columnas);
         omoikane.principal.Grupos.poblarGrupos(this.tablaGrupos,txtBusqueda.getText());

@@ -154,6 +154,7 @@
                 <Column editable="false" title="Creado" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="focusable" type="boolean" value="false"/>
             <Property name="showHorizontalLines" type="boolean" value="false"/>
           </Properties>
           <AuxValues>

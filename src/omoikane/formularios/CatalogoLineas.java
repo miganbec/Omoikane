@@ -145,11 +145,11 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID Linea", "Descripcion"
+                "ID Linea", "Descripcion", "Descuento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -257,7 +257,7 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -269,9 +269,9 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jButton1)
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,7 +279,7 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAceptar))
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -439,7 +439,7 @@ public class CatalogoLineas extends javax.swing.JInternalFrame {
 
     public void resetTable()
     {
-        String[] columnas = {"ID Linea", "Descripcion"};
+        String[] columnas = {"ID Linea", "Descripcion","Descuento"};
         this.tablaLineas.setModel(new DefaultTableModel());
         ((DefaultTableModel)this.tablaLineas.getModel()).setColumnIdentifiers(columnas);
         omoikane.principal.Lineas.poblarLineas(this.tablaLineas,txtBusqueda.getText());
