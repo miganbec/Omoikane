@@ -263,6 +263,14 @@ class Caja {
             form.btnTerminar.actionPerformed = { e ->
                 try {
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
+
+                    new SimpleForm("omoikane.formularios.DialogoCambio") {
+                        def form = it.form
+                        form.total.text = it.total
+                        form.visible = true
+                        form.btnContinuar.actionPerformed = { form.dispose() }
+                    }
+
                     def detalles = []
                     form.modelo.getDataMap().each {
                         detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
