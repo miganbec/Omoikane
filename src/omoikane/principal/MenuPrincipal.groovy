@@ -80,7 +80,7 @@ class MenuPrincipal {
                     menuPrincipal.btnPreferencias.doClick()
                     def peso = comMan.readWeight("K", miniDriver)
                     Dialogos.lanzarAlerta("Báscula: "+peso)
-                    println peso
+                    println "--"+peso
                 }
             }
             menuPrincipal.btnCerrar.keyReleased = {

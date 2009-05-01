@@ -122,7 +122,21 @@ class Caja {
             modelo.eliminar(seleccion[i])
         }
     }
-
+    static def round = { cant -> return (Math.round(cant*100)/100) }
+    static def cifra = { cant -> return String.format("\$%,.2f", cant) }
+    static def aDoble= { cant -> return cant.replace("\$", '').replace(",", '') as Double }
+    static def sumarTodo(form) {
+        def dat   = form.modelo.getDataMap()
+        def sumas = [0.0,0.0,0.0,0.0]
+        dat.each { linea ->
+        sumas[0] += linea['Precio'] as Double; sumas[1] += linea['Descuento'] as Double; sumas[2] += Caja.aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double
+        }
+        form.txtNArticulos.text = dat.size()
+        form.txtSubtotal.text   = Caja.cifra (sumas[2] - sumas[1] - sumas[3])
+        form.txtTotal.text      = Caja.cifra (sumas[2])
+        form.txtDescuento.text  = Caja.cifra (sumas[1])
+        form.impuestos          = sumas[3]
+    }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
             def form = new omoikane.formularios.Caja()
@@ -148,21 +162,7 @@ class Caja {
             form.txtFecha.text = date.get(date.DAY_OF_MONTH) + "-" + (date.get(date.MONTH)+1) + "-" + date.get(date.YEAR)
             form.txtCaja.text= "Caja "+IDCaja
             def serv = Nadesico.conectar()
-            def round = { cant -> return (Math.round(cant*100)/100) }
-            def cifra = { cant -> return String.format("\$%,.2f", cant) }
-            def aDoble= { cant -> return cant.replace("\$", '').replace(",", '') as Double }
-            def sumarTodo = {
-                def dat   = form.modelo.getDataMap()
-                def sumas = [0.0,0.0,0.0,0.0]
-                dat.each { linea ->
-                sumas[0] += linea['Precio'] as Double; sumas[1] += linea['Descuento'] as Double; sumas[2] += aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double
-                }
-                form.txtNArticulos.text = dat.size()
-                form.txtSubtotal.text   = cifra (sumas[2])
-                form.txtTotal.text      = cifra (sumas[2])
-                form.txtDescuento.text  = cifra (sumas[1])
-                form.impuestos          = sumas[3]
-            }
+
             def addArtic = { codigo ->
                 try {
                     def captura = form.txtCaptura.text
@@ -173,13 +173,14 @@ class Caja {
                     def art     = serv.codigo2Articulo(IDAlmacen, captura[captura.size()-1])
                     if(art == null || art == 0) { Dialogos.lanzarAlerta("Articulo no encontrado!!"); } else {
                         def precio  = serv.getPrecio(art.id_articulo, IDAlmacen, IDCliente)
-                        def total   = cifra(cantidad * precio.total)
+                        def total   = Caja.cifra(cantidad * precio.total)
                         form.txtCaptura.text = ""
                         //form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,precio.total,precio['descuento$'],total].toArray())
                         form.modelo.addRowMap(["ID Artículo":art.id_articulo, "Concepto" :     art.descripcion, "Cantidad" :            cantidad,
                                                "Precio"     :   precio.total, "Descuento":precio['descuento$'], "Impuestos": precio['impuestos'],
                                                "Total"      :          total])
-                        sumarTodo()
+                        println "impuestos->"+art.impuestos
+                        Caja.sumarTodo(form)
                         form.repaint()
                     }
                 } catch(e) { Dialogos.error("Error al obtener información de nadesico!", e) }
@@ -253,9 +254,9 @@ class Caja {
                 if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
                     def detalles = []
                     form.modelo.getDataMap().each {
-                        detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:aDoble(it['Total'])]
+                        detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
                     }
-                    def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, aDoble(form.txtSubtotal.text), aDoble(form.txtDescuento.text), form.impuestos, aDoble(form.txtTotal.text), detalles)
+                    def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), form.impuestos, Caja.aDoble(form.txtTotal.text), detalles)
                     serv.desconectar()
                     def comprobante = new Comprobantes()
                     comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
@@ -304,7 +305,9 @@ class Caja {
             synchronized(foco){foco.wait()}
             retorno
     }
-    
+    static def lanzarCorteCaja(IDCaja, cortar=false) {
+            omoikane.principal.Caja.lanzarTotalVentasDia(IDCaja, cortar)
+    }
     static def lanzarTotalVentasDia(IDCaja, cortar=false) 
     {
         if(cerrojo(PMA_TOTALVENTA)){
