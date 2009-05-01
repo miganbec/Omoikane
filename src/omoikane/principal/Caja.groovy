@@ -188,16 +188,18 @@ class Caja {
                     }
                 } catch(e) { Dialogos.error("Error al obtener información de nadesico!", e) }
             }
-            form.txtCaptura.keyPressed = {   e ->
-                if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.btnTerminar.doClick() }
-                //Al presionar   F2: (lanzarCatalogoDialogo)
-                if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
-                if(e.keyCode == e.VK_PLUS) {
+            form.txtCaptura.keyTyped = { e ->
+                if(e.keyChar == '+') {
                     def peso = comMan.readWeight("K", miniDriver)
                     form.txtCaptura.text = peso
                     Dialogos.lanzarAlerta("Báscula: "+peso)
                     println "--"+peso
                 }
+                }
+            form.txtCaptura.keyPressed = {   e ->
+                if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.btnTerminar.doClick() }
+                //Al presionar   F2: (lanzarCatalogoDialogo)
+                if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
                 if(e.getKeyCode() == e.VK_DOWN)
                 {
                     int sigFila = form.tablaVenta.getSelectedRow()+1;
