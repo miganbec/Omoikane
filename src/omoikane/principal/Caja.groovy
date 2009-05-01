@@ -139,6 +139,9 @@ class Caja {
     }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
+            def comMan     = new ComMan()
+            def miniDriver = [port: "COM1", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
+
             def form = new omoikane.formularios.Caja()
             def modelo = new CajaTableModel()
             Herramientas.objetosAll(form)
@@ -189,6 +192,12 @@ class Caja {
                 if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.btnTerminar.doClick() }
                 //Al presionar   F2: (lanzarCatalogoDialogo)
                 if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
+                if(e.keyCode == e.VK_PLUS) {
+                    def peso = comMan.readWeight("K", miniDriver)
+                    form.txtCaptura.text = peso
+                    Dialogos.lanzarAlerta("Báscula: "+peso)
+                    println "--"+peso
+                }
                 if(e.getKeyCode() == e.VK_DOWN)
                 {
                     int sigFila = form.tablaVenta.getSelectedRow()+1;

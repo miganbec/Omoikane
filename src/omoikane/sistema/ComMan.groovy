@@ -63,10 +63,10 @@ class ComMan implements SerialPortEventListener {
             }
 
             if (m_iStatusScale == SCALE_READY) {
-                println "buffer->"+buffer
+                //println "buffer->"+buffer
                 def retorno = (buffer =~ /[ ]{0,6}([0-9]*?.[0-9]*?)[ ]([A-Z0-9]*)/)
-                println "2->"+retorno[0]
-                return retorno[0][1]
+                //println "2->"+retorno[0]
+                //return retorno[0][1]
             } else {
                 m_iStatusScale = SCALE_READY;
                 return "0.0"
@@ -150,9 +150,9 @@ class ComMan implements SerialPortEventListener {
                 try {
                     tempBuffer = ""
                     for (int i = 0; i < 13 && m_in.available() > 0; i++) {
-                        println "Dat Disponible"
+                        //println "Dat Disponible"
                         int b = m_in.read();
-                        println "leído [$i] -> $b "
+                        //println "leído [$i] -> $b "
                         /*
                         if (b == ((miniDriver.stopChar[0] as int) as char)) { // CR ASCII
                             // Fin de lectura
