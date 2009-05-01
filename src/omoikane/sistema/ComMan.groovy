@@ -63,8 +63,10 @@ class ComMan implements SerialPortEventListener {
             }
 
             if (m_iStatusScale == SCALE_READY) {
-                buffer = (buffer =~ /[ ]{0,6}([0-9]*?.[0-9]*?)[ ]([A-Z0-9]*)/)
-                return buffer[0][1]
+                println "buffer->"+buffer
+                def retorno = (buffer =~ /[ ]{0,6}([0-9]*?.[0-9]*?)[ ]([A-Z0-9]*)/)
+                println "2->"+retorno[0]
+                return retorno[0][1]
             } else {
                 m_iStatusScale = SCALE_READY;
                 return "0.0"
