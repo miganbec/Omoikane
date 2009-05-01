@@ -30,6 +30,8 @@ class Caja {
     static def IDCliente = 1 //cambiar cuando se mejore el modulo cliente
     static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
+    static def comMan     = new ComMan()
+    static def miniDriver = [port: "COM1", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
 
     static def abrirCaja(ID = -1)
     {
@@ -139,8 +141,6 @@ class Caja {
     }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
-            def comMan     = new ComMan()
-            def miniDriver = [port: "COM1", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
 
             def form = new omoikane.formularios.Caja()
             def modelo = new CajaTableModel()
@@ -191,7 +191,7 @@ class Caja {
             }
             form.txtCaptura.keyTyped = { e ->
                 if(e.keyChar == '+') {
-                    def peso = comMan.readWeight("K", miniDriver)
+                    def peso = Caja.comMan.readWeight("K", miniDriver)
                     form.txtCaptura.text = peso + "*"
                     e.consume()
                     //Dialogos.lanzarAlerta("Báscula: "+peso)
