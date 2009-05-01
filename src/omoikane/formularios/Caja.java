@@ -95,6 +95,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JLabel();
         btnCancelaArt = new javax.swing.JButton();
+        btnRetencion = new javax.swing.JButton();
 
         txtCaja.setFont(new java.awt.Font("Arial", 1, 36));
         txtCaja.setForeground(new java.awt.Color(255, 255, 255));
@@ -289,14 +290,21 @@ public class Caja extends javax.swing.JInternalFrame {
         btnCancelaArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
         btnCancelaArt.setText("Cancelar Artículo [F7]");
 
+        btnRetencion.setText("Retencion");
+        btnRetencion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetencionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCaja)
@@ -315,6 +323,9 @@ public class Caja extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtCaptura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btnRetencion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                         .addComponent(btnTerminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCatalogo)
@@ -327,7 +338,7 @@ public class Caja extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -344,7 +355,8 @@ public class Caja extends javax.swing.JInternalFrame {
                             .addComponent(btnCancelacion)
                             .addComponent(btnCatalogo)
                             .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelaArt)))
+                            .addComponent(btnCancelaArt)
+                            .addComponent(btnRetencion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtCaja)
                         .addGap(18, 18, 18)
@@ -360,12 +372,18 @@ public class Caja extends javax.swing.JInternalFrame {
         this.btnCerrar.doClick();
     }//GEN-LAST:event_btnCancelacionActionPerformed
 
+    private void btnRetencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetencionActionPerformed
+        // TODO add your handling code here:
+                omoikane.principal.Caja.lanzar();
+    }//GEN-LAST:event_btnRetencionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelaArt;
     private javax.swing.JButton btnCancelacion;
     public javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnRetencion;
     public javax.swing.JButton btnTerminar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

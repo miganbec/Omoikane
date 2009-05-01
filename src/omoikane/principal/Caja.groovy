@@ -154,6 +154,7 @@ class Caja {
             Herramientas.iconificable(form)
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F1   , "retener" ) { form.btnRetencion.doClick()   }
             Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar" ) { form.btnCancelacion.doClick()   }
             Herramientas.In2ActionX(form.btnCerrar, KeyEvent.VK_ESCAPE, "cerrar2") { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form, KeyEvent.VK_F7, "cancelaArt" ) { form.btnCancelaArt.doClick()       }
@@ -227,7 +228,7 @@ class Caja {
 
                     if(sisUsers.autentifica(sisUsers.SUPERVISOR)) {
                         Caja.cancelarArt(form);
-                        sumarTodo()
+                        sumarTodo(form)
                     }
                     form.txtCaptura.requestFocusInWindow();
                 }
@@ -328,7 +329,7 @@ class Caja {
             def cat = lanzarCatalogo()
             cat.setModoDialogo()
             cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-            cat.txtBusqueda.keyRealese = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
+            cat.txtBusqueda.keyRelease = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
             def retorno
             cat.btnAceptar.actionPerformed = { def catTab = cat.tablaCajas; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick(); }
             synchronized(foco){foco.wait()}
