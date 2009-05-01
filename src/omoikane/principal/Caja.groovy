@@ -342,7 +342,7 @@ class Caja {
                     form.setTxtSubtotal      (ventas.subtotal as String)
                     form.setTxtTotal         (ventas.total as String)
                     if(cortar) { 
-                        newCorte=serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.descuento, ventas.impuestos, ventas.total, ventas.nVentas, desde, hasta)
+                        newCorte=serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.impuestos, ventas.descuento, ventas.total, ventas.nVentas, desde, hasta)
                         Dialogos.lanzarAlerta(newCorte.mensaje)
                         def comprobante = new Comprobantes()
                         comprobante.Corte(newCorte.IDCorte)//imprimir ticket
