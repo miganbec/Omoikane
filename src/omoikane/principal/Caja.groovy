@@ -265,10 +265,10 @@ class Caja {
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
 
                     new SimpleForm("omoikane.formularios.DialogoCambio") {
-                        def form = it.form
-                        form.total.text = it.total
-                        form.visible = true
-                        form.btnContinuar.actionPerformed = { form.dispose() }
+                        def sform = it.form
+                        sform.total.text = it.total
+                        sform.visible = true
+                        sform.btnContinuar.actionPerformed = { sform.dispose() }
                     }
 
                     def detalles = []
