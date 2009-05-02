@@ -275,10 +275,12 @@ class Caja {
                             sform.visible = true
                             sform.txtEfectivo.focusLost = {
                                 def sefe  = sform.txtEfectivo.text.replace('$', '').replace(',', '')
+                                if(sefe == "") { sefe = "0.0" }
                                 sefe      = sefe as double
                                 def stot  = sform.total.text.replace('$', '').replace(',', '')
+                                if(stot == "") { stot = "0.0" }
                                 stot      = stot as double
-                                sform.cambio.text = sefe - (stot as double)
+                                sform.cambio.text = Caja.cifra(Caja.round(sefe - (stot as double)))
                             }
                             sform.btnContinuar.actionPerformed = { sform.dispose(); synchronized(foco) { foco.notifyAll() } }
                         }
