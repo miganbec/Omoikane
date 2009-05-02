@@ -61,11 +61,11 @@ public class Huellas extends MiniLeerHuella implements IFingerEventListener, IIm
         this.setBounds(0,0,500,500);
         this.parent = parent;
         
-        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
-        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "cerrar");
-        getActionMap().put("cerrar" , new adminAcciones(this, adminAcciones.CERRAR));
-        this.btnCancelar.getActionMap().put("cerrar", new adminAcciones(this, adminAcciones.CERRAR));
-        this.btnCancelar.addActionListener(new adminAcciones(this, adminAcciones.CERRAR));
+        //getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
+        //getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "cerrar");
+        //getActionMap().put("cerrar" , new adminAcciones(this, adminAcciones.CERRAR));
+        //this.btnCancelar.getActionMap().put("cerrar", new adminAcciones(this, adminAcciones.CERRAR));
+        //this.btnCancelar.addActionListener(new adminAcciones(this, adminAcciones.CERRAR));
         
         //this.btnCancelar.getActionMap().put("cerrar", new adminAcciones(this, adminAcciones.CERRAR));
         

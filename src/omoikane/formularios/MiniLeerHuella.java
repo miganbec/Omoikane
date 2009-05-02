@@ -62,6 +62,7 @@ public class MiniLeerHuella extends javax.swing.JPanel {
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setActionCommand("cerrar");
+        btnCancelar.setEnabled(false);
 
         lblOK.setForeground(new java.awt.Color(255, 255, 255));
         lblOK.setText("Esperando huella...");

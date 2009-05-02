@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <Properties>
+    <Property name="focusable" type="boolean" value="false"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -20,19 +23,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="txtCaja" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jPanel3" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtCaja" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="363" pref="363" max="363" attributes="0"/>
@@ -40,17 +38,23 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnCerrar" min="-2" pref="209" max="-2" attributes="1"/>
                           </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="659" max="-2" attributes="1"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="603" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txtCaptura" alignment="1" min="-2" pref="598" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="676" max="-2" attributes="1"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="1">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="btnRetencion" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="148" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPausar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnTerminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCatalogo" min="-2" max="-2" attributes="0"/>
@@ -67,9 +71,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCerrar" alignment="3" pref="43" max="32767" attributes="1"/>
                           <Component id="jLabel5" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
@@ -82,19 +86,21 @@
                           <Component id="jLabel4" alignment="3" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnCancelacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCatalogo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTerminar" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="btnCancelaArt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnRetencion" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="txtCaja" min="-2" max="-2" attributes="1"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
+              </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnCancelacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCatalogo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTerminar" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="btnCancelaArt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRetencion" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnPausar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -131,6 +137,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tablaVenta">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
                 <Column editable="false" title="ID Art&#xed;culo" type="java.lang.Object"/>
@@ -258,12 +267,12 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel6" alignment="0" pref="256" max="32767" attributes="0"/>
-                      <Component id="jPanel5" alignment="0" pref="256" max="32767" attributes="0"/>
-                      <Component id="jPanel4" alignment="0" pref="256" max="32767" attributes="0"/>
-                      <Component id="jPanel7" alignment="0" pref="256" max="32767" attributes="0"/>
-                      <Component id="jPanel2" alignment="0" pref="256" max="32767" attributes="0"/>
-                      <Component id="jPanel1" alignment="0" pref="256" max="32767" attributes="0"/>
+                      <Component id="jPanel6" alignment="0" pref="235" max="32767" attributes="0"/>
+                      <Component id="jPanel5" alignment="0" pref="235" max="32767" attributes="0"/>
+                      <Component id="jPanel4" alignment="0" pref="235" max="32767" attributes="0"/>
+                      <Component id="jPanel7" alignment="0" pref="235" max="32767" attributes="0"/>
+                      <Component id="jPanel2" alignment="0" pref="235" max="32767" attributes="0"/>
+                      <Component id="jPanel1" alignment="0" pref="235" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -334,7 +343,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="10" width="250" height="60"/>
+                  <AbsoluteConstraints x="0" y="10" width="230" height="60"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -384,7 +393,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="10" width="250" height="30"/>
+                  <AbsoluteConstraints x="0" y="10" width="230" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -434,7 +443,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="10" width="250" height="30"/>
+                  <AbsoluteConstraints x="0" y="10" width="240" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -484,7 +493,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="10" width="250" height="30"/>
+                  <AbsoluteConstraints x="0" y="10" width="240" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -536,7 +545,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="10" width="250" height="30"/>
+                  <AbsoluteConstraints x="0" y="10" width="240" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -586,7 +595,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="10" width="250" height="30"/>
+                  <AbsoluteConstraints x="0" y="10" width="230" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -608,6 +617,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRetencionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPausar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pausar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPausarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

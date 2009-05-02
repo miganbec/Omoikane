@@ -155,6 +155,7 @@ class Caja {
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form, KeyEvent.VK_F1   , "retener" ) { form.btnRetencion.doClick()   }
+            Herramientas.In2ActionX(form, KeyEvent.VK_PAUSE   , "pausar" ) { form.btnPausar.doClick()   }
             Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar" ) { form.btnCancelacion.doClick()   }
             Herramientas.In2ActionX(form.btnCerrar, KeyEvent.VK_ESCAPE, "cerrar2") { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form, KeyEvent.VK_F7, "cancelaArt" ) { form.btnCancelaArt.doClick()       }
@@ -246,10 +247,26 @@ class Caja {
                             ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
                         }
                     } else {
-                        form.requestFocusInWindow()
+                        form.txtCaptura.requestFocusInWindow()
                     }
                 }
             }
+
+            form.btnPausar.actionPerformed = {
+                Thread.start {
+                    def sisUsers = omoikane.sistema.Usuarios
+                    def idUsuario= omoikane.sistema.Usuarios.usuarioActivo.ID
+                    while(true) {
+                        def usuario = sisUsers.identificaPersona()
+                        if(idUsuario==usuario.ID||usuario.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR))
+                        {break}
+  
+                    }
+                    form.txtCaptura.requestFocusInWindow()
+
+                }
+            }
+
             def catArticulos = {
                     def retorno = Articulos.lanzarDialogoCatalogo() as String
                     //return retorno==null?"":retorno

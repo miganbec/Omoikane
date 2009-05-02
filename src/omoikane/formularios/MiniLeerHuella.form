@@ -88,6 +88,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
             <Property name="actionCommand" type="java.lang.String" value="cerrar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
