@@ -328,7 +328,7 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-       omoikane.principal.Ventas.lanzarImprimirVenta(this);
+        omoikane.principal.Ventas.reimprimirTicket(IDSeleccionado);
 }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -368,6 +368,7 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
       g2d.drawImage(fondo, 0, 0, null);
 
     }
+
     public void generarFondo(Component componente)
     {
       Rectangle areaDibujo = this.getBounds();

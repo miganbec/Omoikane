@@ -59,6 +59,7 @@ class Cortes {
             def form = (new omoikane.formularios.CorteCajaDetalles())
             form.setVisible(true);
             Herramientas.funcionesObjetos(form)
+            form.btnImprimir.actionPerformed = {lanzarImprimirCorte(form)}
             escritorio.getPanelEscritorio().add(form)
             Herramientas.iconificable(form)
             form.toFront()
@@ -93,6 +94,16 @@ class Cortes {
         def reporte = new Reporte('omoikane/reportes/ReporteCortesCaja.jasper', [QueryTxt:queryMovs]);
         reporte.lanzarPreview()
     }
+
+    static def lanzarImprimirCorte(form)
+    {
+        def comprobante = new Comprobantes()
+        comprobante.Corte(form.txtIDCorte)//imprimir ticket
+        comprobante.probar()//imprimir ticket
+    }
+
+
+
     static def lanzarVentanaCorteSucursal(resultadoCorte,IDAlmacen, IDCorte) {
         if(cerrojo(PMA_TOTALVENTASUCURSAL)) {
             

@@ -62,6 +62,7 @@ class Ventas {
             Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
+            form.IDSeleccionado=ID
             Herramientas.iconificable(form)
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
@@ -96,6 +97,14 @@ class Ventas {
         def reporte = new Reporte('omoikane/reportes/FacturaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",IDVenta:lastMovID as String]);
         reporte.lanzarPreview()
     }
+
+    static def reimprimirTicket(form)
+    {
+        def comprobante = new Comprobantes()
+        comprobante.ticket(IDAlmacen, form)//imprimir ticket
+        comprobante.probar()//imprimir ticket
+    }
+
 
 }
 

@@ -72,11 +72,12 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JTextField();
+        btnImprimir = new javax.swing.JButton();
 
         setTitle("Corte de Caja");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Corte de Caja");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -172,6 +173,14 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         txtSubtotal.setEditable(false);
         getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 260, -1));
 
+        btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -184,8 +193,13 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_txtIDAlmacenActionPerformed
 
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

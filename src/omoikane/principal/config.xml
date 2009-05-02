@@ -13,8 +13,8 @@
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
     <puertoImpresion>LPT1</puertoImpresion>
-    <URLServidor>http://phesusacer:5542</URLServidor>
+    <URLServidor>http://nadesico:5542</URLServidor>
     <fondoBlur>false</fondoBlur>
-    <impresoraActiva>false</impresoraActiva>
+    <impresoraActiva>true</impresoraActiva>
     <cajon>0</cajon>
 </document>
