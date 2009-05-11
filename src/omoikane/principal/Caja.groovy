@@ -201,7 +201,7 @@ class Caja {
                 }
                 }
             form.txtCaptura.keyPressed = {   e ->
-                if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.btnTerminar.doClick() }
+                if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.txtEfectivo.requestFocusInWindow() }
                 //Al presionar   F2: (lanzarCatalogoDialogo)
                 if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
                 if(e.getKeyCode() == e.VK_DOWN)
@@ -222,6 +222,35 @@ class Caja {
                     }
                 }
 
+            }
+            form.txtCambio.keyPressed = { e->
+                if(e.getKeyCode() == e.VK_ENTER) {
+                    form.btnTerminar.doClick()
+                }
+            }
+            /*form.txtEfectivo.keyPressed = { e ->
+                if(e.getKeyCode() == e.VK_ENTER) {
+                    def sefe  = form.txtEfectivo.text.replace('$', '').replace(',', '')
+                    if(sefe == "") { sefe = "0.0" }
+                    sefe      = sefe as double
+                    def stot  = form.txtTotal.text.replace('$', '').replace(',', '')
+                    if(stot == "") { stot = "0.0" }
+                    stot      = stot as double
+                    form.txtCambio.text = Caja.cifra(Caja.round(sefe - (stot as double)))
+                    form.btnTerminar.doClick()
+                }
+            }*/
+            form.txtEfectivo.keyPressed = { e ->
+                if(e.getKeyCode() == e.VK_ENTER) {
+                    def sefe  = form.txtEfectivo.text.replace('$', '').replace(',', '')
+                    if(sefe == "") { sefe = "0.0" }
+                    sefe      = sefe as double
+                    def stot  = form.txtTotal.text.replace('$', '').replace(',', '')
+                    if(stot == "") { stot = "0.0" }
+                    stot      = stot as double
+                    form.txtCambio.text = Caja.cifra(Caja.round(sefe - (stot as double)))
+                    form.txtCambio.requestFocusInWindow()
+                }
             }
             form.btnCancelaArt.actionPerformed = {
                 Thread.start {
@@ -283,25 +312,26 @@ class Caja {
             form.btnTerminar.actionPerformed = { e ->
                 try {
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
-                    def foco = new Object()
-                    Thread.start {
-                        new SimpleForm("omoikane.formularios.DialogoCambio") {
-                            def sform = it.form
-                            Herramientas.funcionesObjetos(sform)
-                            sform.total.text = form.txtTotal.text
-                            sform.visible = true
-                            sform.txtEfectivo.focusLost = {
-                                def sefe  = sform.txtEfectivo.text.replace('$', '').replace(',', '')
-                                if(sefe == "") { sefe = "0.0" }
-                                sefe      = sefe as double
-                                def stot  = sform.total.text.replace('$', '').replace(',', '')
-                                if(stot == "") { stot = "0.0" }
-                                stot      = stot as double
-                                sform.cambio.text = Caja.cifra(Caja.round(sefe - (stot as double)))
-                            }
-                            sform.btnContinuar.actionPerformed = { sform.dispose(); synchronized(foco) { foco.notifyAll() } }
-                        }
-                        synchronized(foco) { foco.wait() }
+                        //def foco = new Object()
+                        //Thread.start {
+//                            def aaa= new SimpleForm("omoikane.formularios.DialogoCambio") {
+//                                def sform = it.form
+//                                Herramientas.funcionesObjetos(sform)
+//                                sform.total.text = form.txtTotal.text
+//                                sform.visible = true
+//                                sform.txtEfectivo.focusLost = {
+//                                    def sefe  = sform.txtEfectivo.text.replace('$', '').replace(',', '')
+//                                    if(sefe == "") { sefe = "0.0" }
+//                                    sefe      = sefe as double
+//                                    def stot  = sform.total.text.replace('$', '').replace(',', '')
+//                                    if(stot == "") { stot = "0.0" }
+//                                    stot      = stot as double
+//                                    sform.cambio.text = Caja.cifra(Caja.round(sefe - (stot as double)))
+//                                }
+//                                sform.btnContinuar.actionPerformed = { sform.dispose(); synchronized(foco) { foco.notifyAll() } }
+//                            }
+//                            aaa.sform.setBounds(100,100,100,100)
+//                            synchronized(foco) { foco.wait() }
                         def detalles = []
                         form.modelo.getDataMap().each {
                             detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
@@ -311,10 +341,10 @@ class Caja {
                         def comprobante = new Comprobantes()
                         comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
                         comprobante.probar()//imprimir ticket
-                        //Dialogos.lanzarAlerta(salida.mensaje)
+                        Dialogos.lanzarAlerta(salida.mensaje)
                         form.dispose()
                         lanzar()
-                    }
+                    
                 } catch(err) { if(err.getMessage()!="Venta vacía"){Dialogos.error("Error: La venta no se pudo registrar", err)} }
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}

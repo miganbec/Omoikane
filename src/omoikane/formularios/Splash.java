@@ -102,6 +102,7 @@ public class Splash extends javax.swing.JFrame {
     /**
      * @return the jProgressBar1
      */
+
     public javax.swing.JProgressBar getJProgressBar1() {
         return jProgressBar1;
     }

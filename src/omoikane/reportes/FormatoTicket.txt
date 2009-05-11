@@ -22,4 +22,4 @@ ${fecha}  ${hora}   Folio: ${folio}
  TELS: 01 (225) 315 42 03 Y 315 42 02
 
 ${""+ (27 as char)+(100 as char)+(8 as char)}
-${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}
+<% /* ${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)} */ %>
