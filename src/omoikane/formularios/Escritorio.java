@@ -70,6 +70,7 @@ public class Escritorio extends javax.swing.JFrame {
         lblImagenFondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo.png"))); // NOI18N
         lblImagenFondo.setAlignmentY(0.0F);
+        lblImagenFondo.setFocusable(false);
         lblImagenFondo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblImagenFondo.setIconTextGap(0);
         lblImagenFondo.setInheritsPopupMenu(false);

@@ -88,6 +88,7 @@
               <Image iconType="3" name="/fondo.png"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="iconTextGap" type="int" value="0"/>
             <Property name="inheritsPopupMenu" type="boolean" value="false"/>

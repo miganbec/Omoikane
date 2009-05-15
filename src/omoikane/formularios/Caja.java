@@ -24,6 +24,7 @@ public class Caja extends javax.swing.JInternalFrame {
     BufferedImage          fondo;
     DefaultTableModel      modelo;
     Double                 impuestos = 0.0;
+    Double                 totalOriginal = 0.0;
     /** Creates new form Caja */
 
     public Caja() {

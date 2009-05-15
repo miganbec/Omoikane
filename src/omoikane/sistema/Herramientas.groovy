@@ -30,6 +30,7 @@ public class Herramientas
           column.setPreferredWidth(ancho as int)
         }
     }
+
     def static void verificaCampo(txt,expresion,error)
     {
         if(!(txt==~ expresion))
@@ -53,6 +54,7 @@ public class Herramientas
         }
         return salida;
     }
+
     def static centrarVentana(ventana)
     {
         def compensaY = 0
@@ -67,6 +69,7 @@ public class Herramientas
         ventana.setLocation(posX,posY+compensaY);
         [x:posX,y:posY]
     }
+
     def static centrarAbsoluto(ventana) {
         def compensaY = 0
 
@@ -78,6 +81,7 @@ public class Herramientas
         ventana.setLocation(posX,posY+compensaY);
         [x:posX,y:posY]
     }
+
     def static centrarVentanaAPantalla(ventana) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension ventanSize = ventana.getPreferredSize();
@@ -87,6 +91,7 @@ public class Herramientas
         ventana.setLocation(posX,posY);
         [x:posX,y:posY]
     }
+
     def static Input2Action(JComponent componente, int tecla, String nombre, Action claseAccion)
     {
         componente.getInputMap(JInternalFrame.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(tecla, 0), nombre);
@@ -94,15 +99,18 @@ public class Herramientas
         componente.getInputMap(JInternalFrame.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(tecla, 0), nombre);
         componente.getActionMap().put(nombre, claseAccion);
     }
+
     def static In2ActionX(componente, tecla, nombre, Closure cls) {
         def ax = ProxyGenerator.instantiateAggregateFromBaseClass([actionPerformed:{e -> cls()}], AbstractAction.class)
         componente.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(tecla, 0), nombre);
         componente.getActionMap().put(nombre, ax);
     }
+
     def static iconificable(cat) {
         cat.setIconifiable(true);
         SwingBuilder.build { cat.internalFrameIconified = { e -> omoikane.principal.Principal.escritorio.escritorioFrame.fondoToBack() } }
     }
+
     public static String bytes2HexString(byte[] huellaBytes)
     {
         String huellaString = "";
@@ -202,11 +210,17 @@ public class Herramientas
     public static objetosAll(component){
             for(Component child: component.getContentPane().getComponents()){
             child.focusGained={evt->
-                evt.getComponent().setBackground(new Color(150,150,255));
+                evt.getComponent().setBackground(new Color(110,110,255));
+                evt.getComponent().setForeground(new Color(255,255,255));
+                evt.getComponent().setFont(new Font("Tahoma",Font.BOLD,12));
             }
+
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);
+                evt.getComponent().setForeground(new Color(0,0,0));
+                evt.getComponent().setFont(new Font("Tahoma",Font.PLAIN,12));
             }
+
             if(child instanceof JButton){
                 child.keyPressed = {evt ->
                     if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}

@@ -8,10 +8,11 @@ package omoikane.principal
 import omoikane.sistema.Reloj;
 import groovy.swing.*
 import groovy.inspect.swingui.*
+
 /**
- *
  * @author Octavio
  */
+
 class Escritorio {
     def escritorioFrame = new omoikane.formularios.Escritorio()
     def reloj = new Reloj(escritorioFrame.reloj)
@@ -23,17 +24,21 @@ class Escritorio {
         escritorioFrame.setVisible(true);
         reloj.start()
     }
+
     void setNombreUsuario(nombre) {
         escritorioFrame.usuario.setText(nombre)
     }
+
     javax.swing.JDesktopPane getPanelEscritorio()
     {
         return escritorioFrame.PanelEscritorio
     }
+
     javax.swing.JFrame getFrameEscritorio()
     {
         return escritorioFrame
     }
+
     def ajustarTam() {
         def ancho = Principal.config.resolucionPantalla.@ancho[0]
         def alto  = Principal.config.resolucionPantalla.@alto [0]

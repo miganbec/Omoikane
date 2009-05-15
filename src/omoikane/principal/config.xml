@@ -15,6 +15,6 @@
     <puertoImpresion>LPT1</puertoImpresion>
     <URLServidor>http://localhost:5542</URLServidor>
     <fondoBlur>false</fondoBlur>
-    <impresoraActiva>true</impresoraActiva>
+    <impresoraActiva>false</impresoraActiva>
     <cajon>0</cajon>
 </document>

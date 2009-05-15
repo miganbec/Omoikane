@@ -125,6 +125,7 @@ class Caja {
         }
     }
     static def round = { cant -> return (Math.round(cant*100)/100) }
+    static def round10 = { cant -> return (Math.round(cant*10)/10) }
     static def cifra = { cant -> return String.format("\$%,.2f", cant) }
     static def aDoble= { cant -> return cant.replace("\$", '').replace(",", '') as Double }
     static def sumarTodo(form) {
@@ -135,13 +136,14 @@ class Caja {
         }
         form.txtNArticulos.text = dat.size()
         form.txtSubtotal.text   = Caja.cifra (sumas[2] - sumas[1] - sumas[3])
-        form.txtTotal.text      = Caja.cifra (sumas[2])
+        form.totalOriginal      =(Caja.round10 (sumas[2]))-sumas[2]
+        form.txtTotal.text      = Caja.cifra (Caja.round10 (sumas[2]))
         form.txtDescuento.text  = Caja.cifra (sumas[1])
         form.impuestos          = sumas[3]
     }
+
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
-
             def form = new omoikane.formularios.Caja()
             def modelo = new CajaTableModel()
             Herramientas.objetosAll(form)
@@ -336,7 +338,11 @@ class Caja {
                         form.modelo.getDataMap().each {
                             detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
                         }
-                        def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), form.impuestos, Caja.aDoble(form.txtTotal.text), detalles)
+                        def dinero
+                        def cambio
+                        if(form.txtEfectivo.text == "") { dinero =  Caja.aDoble(form.txtTotal.text) ;cambio = "0.0"}
+                        else{dinero = Caja.aDoble(form.txtEfectivo.text);cambio = Caja.aDoble(form.txtCambio.text)}
+                        def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), form.impuestos, Caja.aDoble(form.txtTotal.text), detalles,dinero,cambio,form.totalOriginal)
                         serv.desconectar()
                         def comprobante = new Comprobantes()
                         comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket

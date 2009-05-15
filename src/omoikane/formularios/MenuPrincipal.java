@@ -107,14 +107,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        btnCerrar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnCerrarFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnCerrarFocusLost(evt);
-            }
-        });
         getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 230, 60));
 
         btnVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/package-toys-128x128.png"))); // NOI18N
@@ -122,14 +114,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVenderActionPerformed(evt);
-            }
-        });
-        btnVender.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnVenderFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnVenderFocusLost(evt);
             }
         });
         getContentPane().add(btnVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 230, 60));
@@ -144,14 +128,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnCajas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCajasActionPerformed(evt);
-            }
-        });
-        btnCajas.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnCajasFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnCajasFocusLost(evt);
             }
         });
         getContentPane().add(btnCajas, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 230, 60));
@@ -175,14 +151,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnAlmacenesActionPerformed(evt);
             }
         });
-        btnAlmacenes.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnAlmacenesFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnAlmacenesFocusLost(evt);
-            }
-        });
         getContentPane().add(btnAlmacenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 230, 60));
 
         btnMovAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-black-box-128x128.png"))); // NOI18N
@@ -192,26 +160,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnMovAlmacenActionPerformed(evt);
             }
         });
-        btnMovAlmacen.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnMovAlmacenFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnMovAlmacenFocusLost(evt);
-            }
-        });
         getContentPane().add(btnMovAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 230, 60));
 
         btnPreferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-sysguard-128x128.png"))); // NOI18N
         btnPreferencias.setText("Preferencias");
-        btnPreferencias.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnPreferenciasFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnPreferenciasFocusLost(evt);
-            }
-        });
         getContentPane().add(btnPreferencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 230, 60));
 
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxy-128x128.png"))); // NOI18N
@@ -219,14 +171,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
-            }
-        });
-        btnUsuarios.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnUsuariosFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnUsuariosFocusLost(evt);
             }
         });
         getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 230, 60));
@@ -259,14 +203,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnLineasActionPerformed(evt);
             }
         });
-        btnLineas.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnLineasFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnLineasFocusLost(evt);
-            }
-        });
         getContentPane().add(btnLineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 230, 60));
 
         btnDetallesVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remote-128x128.png"))); // NOI18N
@@ -274,14 +210,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnDetallesVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetallesVentasActionPerformed(evt);
-            }
-        });
-        btnDetallesVentas.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnDetallesVentasFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnDetallesVentasFocusLost(evt);
             }
         });
         getContentPane().add(btnDetallesVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 60));
@@ -293,14 +221,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnCortesActionPerformed(evt);
             }
         });
-        btnCortes.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnCortesFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnCortesFocusLost(evt);
-            }
-        });
         getContentPane().add(btnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 230, 60));
 
         btnArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/x-mag-128x128.png"))); // NOI18N
@@ -308,14 +228,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnArticulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArticulosActionPerformed(evt);
-            }
-        });
-        btnArticulos.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnArticulosFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnArticulosFocusLost(evt);
             }
         });
         getContentPane().add(btnArticulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 230, 60));
@@ -327,14 +239,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnClientesActionPerformed(evt);
             }
         });
-        btnClientes.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnClientesFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnClientesFocusLost(evt);
-            }
-        });
         getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 230, 60));
 
         btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
@@ -342,14 +246,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGruposActionPerformed(evt);
-            }
-        });
-        btnGrupos.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnGruposFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnGruposFocusLost(evt);
             }
         });
         getContentPane().add(btnGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 230, 60));
@@ -419,140 +315,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         omoikane.principal.Grupos.lanzarCatalogo();
 }//GEN-LAST:event_btnGruposActionPerformed
 
-    private void btnCerrarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCerrarFocusGained
-        // TODO add your handling code here:
-        btnCerrar.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnCerrarFocusGained
-
-    private void btnCerrarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCerrarFocusLost
-        // TODO add your handling code here:
-        btnCerrar.setBackground(null);
-    }//GEN-LAST:event_btnCerrarFocusLost
-
-    private void btnVenderFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnVenderFocusGained
-        // TODO add your handling code here:
-        btnVender.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnVenderFocusGained
-
-    private void btnVenderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnVenderFocusLost
-        // TODO add your handling code here:
-        btnVender.setBackground(null);
-    }//GEN-LAST:event_btnVenderFocusLost
-
-    private void btnDetallesVentasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnDetallesVentasFocusGained
-        // TODO add your handling code here:
-        btnDetallesVentas.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnDetallesVentasFocusGained
-
-    private void btnDetallesVentasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnDetallesVentasFocusLost
-        // TODO add your handling code here:
-        btnDetallesVentas.setBackground(null);
-    }//GEN-LAST:event_btnDetallesVentasFocusLost
-
-    private void btnCortesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCortesFocusGained
-        // TODO add your handling code here:
-        btnCortes.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnCortesFocusGained
-
-    private void btnCortesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCortesFocusLost
-        // TODO add your handling code here:
-        btnCortes.setBackground(null);
-    }//GEN-LAST:event_btnCortesFocusLost
-
-    private void btnArticulosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnArticulosFocusGained
-        // TODO add your handling code here:
-        btnArticulos.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnArticulosFocusGained
-
-    private void btnArticulosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnArticulosFocusLost
-        // TODO add your handling code here:
-        btnArticulos.setBackground(null);
-    }//GEN-LAST:event_btnArticulosFocusLost
-
-    private void btnLineasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnLineasFocusGained
-        // TODO add your handling code here:
-        btnLineas.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnLineasFocusGained
-
-    private void btnLineasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnLineasFocusLost
-        // TODO add your handling code here:
-        btnLineas.setBackground(null);
-    }//GEN-LAST:event_btnLineasFocusLost
-
-    private void btnGruposFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnGruposFocusGained
-        // TODO add your handling code here:
-        btnGrupos.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnGruposFocusGained
-
-    private void btnGruposFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnGruposFocusLost
-        // TODO add your handling code here:
-        btnGrupos.setBackground(null);
-    }//GEN-LAST:event_btnGruposFocusLost
-
-    private void btnAlmacenesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnAlmacenesFocusGained
-        // TODO add your handling code here:
-        btnAlmacenes.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnAlmacenesFocusGained
-
-    private void btnAlmacenesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnAlmacenesFocusLost
-        // TODO add your handling code here:
-        btnAlmacenes.setBackground(null);
-    }//GEN-LAST:event_btnAlmacenesFocusLost
-
-    private void btnMovAlmacenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnMovAlmacenFocusGained
-        // TODO add your handling code here:
-        btnMovAlmacen.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnMovAlmacenFocusGained
-
-    private void btnMovAlmacenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnMovAlmacenFocusLost
-        // TODO add your handling code here:
-        btnMovAlmacen.setBackground(null);
-    }//GEN-LAST:event_btnMovAlmacenFocusLost
-
-    private void btnCajasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCajasFocusGained
-        // TODO add your handling code here:
-        btnCajas.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnCajasFocusGained
-
-    private void btnCajasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCajasFocusLost
-        // TODO add your handling code here:
-        btnCajas.setBackground(null);
-    }//GEN-LAST:event_btnCajasFocusLost
-
-    private void btnUsuariosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnUsuariosFocusGained
-        // TODO add your handling code here:
-        btnUsuarios.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnUsuariosFocusGained
-
-    private void btnUsuariosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnUsuariosFocusLost
-        // TODO add your handling code here:
-        btnUsuarios.setBackground(null);
-    }//GEN-LAST:event_btnUsuariosFocusLost
-
-    private void btnPreferenciasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPreferenciasFocusGained
-        // TODO add your handling code here:
-        btnPreferencias.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnPreferenciasFocusGained
-
-    private void btnPreferenciasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPreferenciasFocusLost
-        // TODO add your handling code here:
-        btnPreferencias.setBackground(null);
-    }//GEN-LAST:event_btnPreferenciasFocusLost
-
-    private void btnClientesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnClientesFocusGained
-        // TODO add your handling code here:
-        btnClientes.setBackground(new Color(102,102,255));
-    }//GEN-LAST:event_btnClientesFocusGained
-
-    private void btnClientesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnClientesFocusLost
-        // TODO add your handling code here:
-        btnClientes.setBackground(null);
-    }//GEN-LAST:event_btnClientesFocusLost
-
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
         this.btnVender.requestFocusInWindow();
-    }//GEN-LAST:event_formFocusGained
+}//GEN-LAST:event_formFocusGained
 
     public void paintComponent(Graphics g)
     {
