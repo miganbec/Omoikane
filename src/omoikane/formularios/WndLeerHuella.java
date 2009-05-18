@@ -15,7 +15,7 @@ import omoikane.sistema.*;
  *
  * @author Octavio
  */
-public class WndLeerHuella extends JInternalDialog {
+public class WndLeerHuella extends JInternalDialog2 {
     
     Huellas pnlHuella;
     /** Creates a new instance of WndLeerHuella */

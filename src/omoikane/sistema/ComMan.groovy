@@ -58,7 +58,7 @@ class ComMan implements SerialPortEventListener {
             flush();
 
             try {
-                wait(1000);
+                wait(500);
             } catch (InterruptedException e) {
             }
 

@@ -36,7 +36,7 @@ public class Huellas extends MiniLeerHuella implements IFingerEventListener, IIm
 {
     public Template template;
     public MatchingContext matchContext;
-    public JInternalDialog parent;
+    public JInternalDialog2 parent;
     public String IDLector;
     public byte[] byteTemplate = new byte[0];
     Object focoCerrar = new Object();
@@ -56,7 +56,7 @@ public class Huellas extends MiniLeerHuella implements IFingerEventListener, IIm
         }
     }
     
-    public Huellas(JInternalDialog parent) {
+    public Huellas(JInternalDialog2 parent) {
         this.setVisible(true);
         this.setBounds(0,0,500,500);
         this.parent = parent;

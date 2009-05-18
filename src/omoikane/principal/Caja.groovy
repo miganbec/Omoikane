@@ -141,7 +141,23 @@ class Caja {
         form.txtDescuento.text  = Caja.cifra (sumas[1])
         form.impuestos          = sumas[3]
     }
-
+    static def doMovimientoCaja(panel, tipo) {
+        def importeCorrecto = false
+        Herramientas.verificaCampos {
+            Herramientas.verificaCampo(panel.txtImporte.text, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Valor inválido para importe")
+            importeCorrecto = true
+            def mov2Serv = Nadesico.conectar()
+            if(tipo=="Retiro") {
+                mov2Serv.doRetiro(IDAlmacen, IDCaja, 0, 0, panel.txtImporte.text)
+            } else if(tipo == "Deposito") {
+                mov2Serv.doDeposito(IDAlmacen, IDCaja, 0, 0, panel.txtImporte.text)
+            } else { throw new Exception("Estado inválido, tipo de movimiento de caja incorrecto") }
+            mov2Serv.desconectar()
+            Dialogos.lanzarAlerta(tipo+" confirmado")
+            panel.btnCerrar.doClick()
+        }
+        if(!importeCorrecto) { panel.txtImporte.requestFocusInWindow() }
+    }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
             def form = new omoikane.formularios.Caja()
@@ -154,13 +170,14 @@ class Caja {
             Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
             form.setVisible(true);
             Herramientas.iconificable(form)
-            Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
-            Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()        }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F1   , "retener" ) { form.btnRetencion.doClick()   }
-            Herramientas.In2ActionX(form, KeyEvent.VK_PAUSE   , "pausar" ) { form.btnPausar.doClick()   }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar" ) { form.btnCancelacion.doClick()   }
-            Herramientas.In2ActionX(form.btnCerrar, KeyEvent.VK_ESCAPE, "cerrar2") { form.btnCerrar.doClick()        }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F7, "cancelaArt" ) { form.btnCancelaArt.doClick()       }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_ESCAPE, "cerrar"    ) { form.btnCerrar.doClick()        }
+            Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"    ) { form.btnCerrar.doClick()        }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_F1    , "retener"   ) { form.btnRetencion.doClick()     }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_PAUSE , "pausar"    ) { form.btnPausar.doClick()        }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_F12   , "cancelar"  ) { form.btnCancelacion.doClick()   }
+            Herramientas.In2ActionX(form.btnCerrar , KeyEvent.VK_ESCAPE, "cerrar2"   ) { form.btnCerrar.doClick()        }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_F7    , "cancelaArt") { form.btnCancelaArt.doClick()    }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_F11   , "movs"      ) { form.btnMovimientos.doClick()   }
 
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario caja", Herramientas.getStackTraceString(e)) }
@@ -205,8 +222,8 @@ class Caja {
             form.txtCaptura.keyPressed = {   e ->
                 if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.txtEfectivo.requestFocusInWindow() }
                 //Al presionar   F2: (lanzarCatalogoDialogo)
-                if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
-                if(e.getKeyCode() == e.VK_DOWN)
+                else if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
+                else if(e.getKeyCode() == e.VK_DOWN)
                 {
                     int sigFila = form.tablaVenta.getSelectedRow()+1;
                     if(sigFila < form.tablaVenta.getRowCount())
@@ -215,7 +232,7 @@ class Caja {
                         form.tablaVenta.scrollRectToVisible(form.tablaVenta.getCellRect(sigFila, 1, true));
                     }
                 }
-                if(e.getKeyCode() == e.VK_UP)
+                else if(e.getKeyCode() == e.VK_UP)
                 {
                     int antFila = form.tablaVenta.getSelectedRow()-1;
                     if(antFila >= 0) {
@@ -252,6 +269,42 @@ class Caja {
                     stot      = stot as double
                     form.txtCambio.text = Caja.cifra(Caja.round(sefe - (stot as double)))
                     form.txtCambio.requestFocusInWindow()
+                }
+            }
+            form.btnMovimientos.actionPerformed = {
+                Thread.start {
+                    
+                    try {
+                        def panel  = new omoikane.formularios.PanelMovimientosCaja()
+                        panel.txtImporte.requestFocusInWindow()
+                        panel.setVisible(true)
+
+                        def movServ = Nadesico.conectar()
+                        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        def horas = serv.getCaja(IDCaja)
+
+                        def ventas= movServ.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), 'CURRENT_TIMESTAMP')
+                        movServ.desconectar()
+
+                        panel.txtNVentas.text   = ventas.nVentas
+                        panel.txtVentas.text    = ventas.total
+                        panel.txtRetiros.text   = ventas.retiros
+                        panel.txtDepositos.text = ventas.depositos
+
+                        panel.btnRetiro.actionPerformed = {
+                            Caja.doMovimientoCaja(panel, "Retiro")
+                        }
+                        panel.btnDeposito.actionPerformed = {
+                            Caja.doMovimientoCaja(panel, "Deposito")
+                        }
+
+                        def dialog = new JInternalDialog2(((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio(), "Movimientos Caja", panel)
+                        panel.btnCerrar.actionPerformed = { Thread.start { dialog.setActivo(false); form.txtCaptura.requestFocusInWindow() } }
+                        dialog.setActivo(true)
+                    } catch(exce) {
+                        Dialogos.error("Error en movimientos caja: ${exce.getMessage()}", exce)
+                    }
+                    
                 }
             }
             form.btnCancelaArt.actionPerformed = {
