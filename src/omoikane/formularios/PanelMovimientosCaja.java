@@ -21,6 +21,7 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
     public PanelMovimientosCaja() {
         initComponents();
         this.setOpaque(false);
+        this.txtImporte.requestFocusInWindow();
     }
 
     /** This method is called from within the constructor to
@@ -54,10 +55,16 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
         jLabel1.setText("jLabel1");
 
         setMinimumSize(new java.awt.Dimension(409, 329));
+        setNextFocusableComponent(txtImporte);
         setOpaque(false);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
         setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Resumen de movimientos");
         add(jLabel2);
@@ -87,39 +94,39 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
         add(jLabel6);
         jLabel6.setBounds(210, 90, 60, 30);
 
-        txtRetiros.setBackground(new java.awt.Color(255, 255, 255));
         txtRetiros.setEditable(false);
-        txtRetiros.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtRetiros.setFont(new java.awt.Font("Tahoma", 0, 16));
+        txtRetiros.setFocusable(false);
         add(txtRetiros);
         txtRetiros.setBounds(270, 90, 120, 30);
 
-        txtVentas.setBackground(new java.awt.Color(255, 255, 255));
         txtVentas.setEditable(false);
-        txtVentas.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtVentas.setFont(new java.awt.Font("Tahoma", 0, 16));
+        txtVentas.setFocusable(false);
         add(txtVentas);
         txtVentas.setBounds(70, 50, 120, 30);
 
-        txtNVentas.setBackground(new java.awt.Color(255, 255, 255));
         txtNVentas.setEditable(false);
-        txtNVentas.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtNVentas.setFont(new java.awt.Font("Tahoma", 0, 16));
+        txtNVentas.setFocusable(false);
         add(txtNVentas);
         txtNVentas.setBounds(70, 90, 120, 30);
 
-        txtDepositos.setBackground(new java.awt.Color(255, 255, 255));
         txtDepositos.setEditable(false);
         txtDepositos.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtDepositos.setFocusable(false);
         add(txtDepositos);
         txtDepositos.setBounds(270, 50, 120, 30);
         add(jSeparator1);
         jSeparator1.setBounds(10, 40, 380, 10);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Depósitos y retiros");
         add(jLabel7);
         jLabel7.setBounds(10, 140, 240, 20);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Importe:");
         add(jLabel8);
@@ -132,13 +139,20 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
         jSeparator2.setBounds(10, 170, 380, 10);
 
         btnRetiro.setText("Retiro [F6]");
+        btnRetiro.setRequestFocusEnabled(false);
         add(btnRetiro);
         btnRetiro.setBounds(230, 223, 130, 30);
 
         btnDeposito.setText("Depósito [F5]");
+        btnDeposito.setRequestFocusEnabled(false);
         add(btnDeposito);
         btnDeposito.setBounds(230, 183, 130, 30);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        this.txtImporte.requestFocusInWindow();
+    }//GEN-LAST:event_formFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

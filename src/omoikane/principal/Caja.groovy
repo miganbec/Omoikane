@@ -276,7 +276,7 @@ class Caja {
                     
                     try {
                         def panel  = new omoikane.formularios.PanelMovimientosCaja()
-                        panel.txtImporte.requestFocusInWindow()
+                        
                         panel.setVisible(true)
 
                         def movServ = Nadesico.conectar()
@@ -300,7 +300,9 @@ class Caja {
 
                         def dialog = new JInternalDialog2(((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio(), "Movimientos Caja", panel)
                         panel.btnCerrar.actionPerformed = { Thread.start { dialog.setActivo(false); form.txtCaptura.requestFocusInWindow() } }
+                        panel.txtImporte.requestFocusInWindow()
                         dialog.setActivo(true)
+                        panel.txtImporte.requestFocusInWindow()
                     } catch(exce) {
                         Dialogos.error("Error en movimientos caja: ${exce.getMessage()}", exce)
                     }
