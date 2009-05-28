@@ -15,13 +15,14 @@ package omoikane.formularios;
  *
  * @author SYSTEM
  */
+import java.awt.*;
+
 public class PanelMovimientosCaja extends javax.swing.JPanel {
 
     /** Creates new form PanelMovimientosCaja */
     public PanelMovimientosCaja() {
         initComponents();
         this.setOpaque(false);
-        this.txtImporte.requestFocusInWindow();
     }
 
     /** This method is called from within the constructor to
@@ -57,11 +58,6 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(409, 329));
         setNextFocusableComponent(txtImporte);
         setOpaque(false);
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
         setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18));
@@ -71,6 +67,7 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
         jLabel2.setBounds(10, 10, 240, 20);
 
         btnCerrar.setText("Cerrar [Enter]");
+        btnCerrar.setFocusable(false);
         add(btnCerrar);
         btnCerrar.setBounds(270, 283, 120, 30);
 
@@ -113,7 +110,7 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
         txtNVentas.setBounds(70, 90, 120, 30);
 
         txtDepositos.setEditable(false);
-        txtDepositos.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtDepositos.setFont(new java.awt.Font("Tahoma", 0, 16));
         txtDepositos.setFocusable(false);
         add(txtDepositos);
         txtDepositos.setBounds(270, 50, 120, 30);
@@ -132,27 +129,40 @@ public class PanelMovimientosCaja extends javax.swing.JPanel {
         add(jLabel8);
         jLabel8.setBounds(40, 180, 60, 30);
 
-        txtImporte.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtImporte.setFont(new java.awt.Font("Tahoma", 0, 16));
+        txtImporte.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtImporteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtImporteFocusLost(evt);
+            }
+        });
         add(txtImporte);
         txtImporte.setBounds(40, 210, 170, 30);
         add(jSeparator2);
         jSeparator2.setBounds(10, 170, 380, 10);
 
         btnRetiro.setText("Retiro [F6]");
-        btnRetiro.setRequestFocusEnabled(false);
+        btnRetiro.setFocusable(false);
         add(btnRetiro);
         btnRetiro.setBounds(230, 223, 130, 30);
 
         btnDeposito.setText("Depósito [F5]");
-        btnDeposito.setRequestFocusEnabled(false);
+        btnDeposito.setFocusable(false);
         add(btnDeposito);
         btnDeposito.setBounds(230, 183, 130, 30);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+    private void txtImporteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtImporteFocusGained
         // TODO add your handling code here:
-        this.txtImporte.requestFocusInWindow();
-    }//GEN-LAST:event_formFocusGained
+        evt.getComponent().setBackground(new Color(150,150,255));
+    }//GEN-LAST:event_txtImporteFocusGained
+
+    private void txtImporteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtImporteFocusLost
+        // TODO add your handling code here:
+        evt.getComponent().setBackground(null);
+    }//GEN-LAST:event_txtImporteFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

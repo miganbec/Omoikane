@@ -141,19 +141,23 @@ class Caja {
         form.txtDescuento.text  = Caja.cifra (sumas[1])
         form.impuestos          = sumas[3]
     }
-    static def doMovimientoCaja(panel, tipo) {
+    static def doMovimientoCaja(panel, tipo,id) {
         def importeCorrecto = false
         Herramientas.verificaCampos {
             Herramientas.verificaCampo(panel.txtImporte.text, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Valor inválido para importe")
             importeCorrecto = true
             def mov2Serv = Nadesico.conectar()
+            def salida
             if(tipo=="Retiro") {
-                mov2Serv.doRetiro(IDAlmacen, IDCaja, 0, 0, panel.txtImporte.text)
+               salida = mov2Serv.doRetiro(IDAlmacen, IDCaja, omoikane.sistema.Usuarios.usuarioActivo.ID, id, panel.txtImporte.text)
             } else if(tipo == "Deposito") {
-                mov2Serv.doDeposito(IDAlmacen, IDCaja, 0, 0, panel.txtImporte.text)
+               salida = mov2Serv.doDeposito(IDAlmacen, IDCaja, omoikane.sistema.Usuarios.usuarioActivo.ID, id, panel.txtImporte.text)
             } else { throw new Exception("Estado inválido, tipo de movimiento de caja incorrecto") }
             mov2Serv.desconectar()
             Dialogos.lanzarAlerta(tipo+" confirmado")
+            def comprobante = new Comprobantes()
+            comprobante.movimiento(salida,tipo)//imprimir ticket
+            comprobante.probar()//imprimir ticket
             panel.btnCerrar.doClick()
         }
         if(!importeCorrecto) { panel.txtImporte.requestFocusInWindow() }
@@ -278,7 +282,9 @@ class Caja {
                         def panel  = new omoikane.formularios.PanelMovimientosCaja()
                         
                         panel.setVisible(true)
-
+                        Herramientas.In2ActionX(panel, KeyEvent.VK_F6, "retiro"   ) { panel.btnRetiro.doClick()     }
+                        Herramientas.In2ActionX(panel, KeyEvent.VK_F5, "deposito"   ) { panel.btnDeposito.doClick()     }
+                        Herramientas.In2ActionX(panel, KeyEvent.VK_ENTER, "cerrar"   ) { panel.btnCerrar.doClick()     }
                         def movServ = Nadesico.conectar()
                         SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         def horas = serv.getCaja(IDCaja)
@@ -292,10 +298,25 @@ class Caja {
                         panel.txtDepositos.text = ventas.depositos
 
                         panel.btnRetiro.actionPerformed = {
-                            Caja.doMovimientoCaja(panel, "Retiro")
+                            Thread.start {
+                                def sisUsers = omoikane.sistema.Usuarios
+                                def usuario = sisUsers.identificaPersona()
+                                if(usuario.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
+                                Caja.doMovimientoCaja(panel, "Retiro",usuario.ID)
+                                }
+                                else{Dialogos.lanzarAlerta("Sin Permiso");panel.txtImporte.requestFocusInWindow()}
+                            }
                         }
+
                         panel.btnDeposito.actionPerformed = {
-                            Caja.doMovimientoCaja(panel, "Deposito")
+                            Thread.start {
+                                def sisUsers = omoikane.sistema.Usuarios
+                                def usuario = sisUsers.identificaPersona()
+                                if(usuario.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
+                                Caja.doMovimientoCaja(panel, "Deposito",usuario.ID)
+                                }
+                                else{Dialogos.lanzarAlerta("Sin Permiso");panel.txtImporte.requestFocusInWindow()}
+                            }
                         }
 
                         def dialog = new JInternalDialog2(((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio(), "Movimientos Caja", panel)

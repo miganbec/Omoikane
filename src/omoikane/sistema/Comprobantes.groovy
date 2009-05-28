@@ -61,6 +61,26 @@ class Comprobantes {
         }
     }
 
+    def movimiento(ID,tipo) {
+        def serv = new Nadesico().conectar()
+        def temp
+        try {
+            data         = serv.getDoMovimiento(ID,tipo)
+            temp         = serv.getCaja(data.id_caja)
+            data.caja    =temp.descripcion
+            temp         = serv.getUsuario(data.id_cajero,data.id_almacen)
+            data.cajero = temp.nombre
+            temp         = serv.getUsuario(data.id_usuario,data.id_almacen)
+            data.usuario = temp.nombre
+            generado = generarMovimiento()
+
+        } catch(e) {
+            throw e
+        }finally {
+        serv.desconectar()
+        }
+    }
+
     def generarTicket() {
         def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoTicket.txt").getText('UTF-8') as String
         def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
@@ -117,6 +137,20 @@ class Comprobantes {
 
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
+        template.toString()
+    }
+
+    def generarMovimiento() {
+        def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoMovimiento.txt").getText('UTF-8') as String
+        def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
+        def sdfHora  = new SimpleDateFormat("hh:mm a")
+        def binding = data
+        binding.fecha = sdfFecha.format(data.momento)
+        binding.hora  = sdfHora.format(data.momento)
+        binding.folio = "${data.id_almacen}-${data.id_caja}-${data.id}"
+        def engine = new GStringTemplateEngine()
+        def template = engine.createTemplate(plantilla).make(binding)
+
         template.toString()
     }
 
