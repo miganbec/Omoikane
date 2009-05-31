@@ -17,6 +17,7 @@ import javax.swing.*;
 import java.io.*;
 import omoikane.formularios.*;
 
+
 import com.griaule.grfingerjava.FingerprintImage;
 import com.griaule.grfingerjava.GrFingerJava;
 import com.griaule.grfingerjava.GrFingerJavaException;
@@ -26,40 +27,32 @@ import com.griaule.grfingerjava.IStatusEventListener;
 import com.griaule.grfingerjava.MatchingContext;
 import com.griaule.grfingerjava.Template;
 
+import omoikane.principal.Principal
+
 /**
  *
  * @author Octavio
  */
 
 
-public class Huellas extends MiniLeerHuella implements IFingerEventListener, IImageEventListener, IStatusEventListener 
+public class Huellas2 extends MiniLeerHuella
 {
     public Template template;
     public MatchingContext matchContext;
     public JInternalDialog2 parent;
     public String IDLector;
     public byte[] byteTemplate = new byte[0];
+    public FingerUtil fingerUtil;
     Object focoCerrar = new Object();
     /** Creates a new instance of Huellas */
 
-        
-    class HiloParaCerrar extends Thread
-    {
-        Huellas hu;
-        HiloParaCerrar(Huellas hu)
-        {
-            this.hu = hu;
-        }
-        public void run()
-        {
-            hu.cerrar();
-        }
-    }
     
-    public Huellas(JInternalDialog2 parent) {
+    public Huellas2(JInternalDialog2 parent) {
         this.setVisible(true);
         this.setBounds(0,0,500,500);
         this.parent = parent;
+        omoikane.principal.Principal.toFinalizeTracker[this] = true
+
         
         //getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
         //getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "cerrar");
@@ -68,32 +61,22 @@ public class Huellas extends MiniLeerHuella implements IFingerEventListener, IIm
         //this.btnCancelar.addActionListener(new adminAcciones(this, adminAcciones.CERRAR));
         
         //this.btnCancelar.getActionMap().put("cerrar", new adminAcciones(this, adminAcciones.CERRAR));
-        
-        try {
-            System.out.println(System.getProperty("user.dir"));
-            String grFingerNativeDirectory = (new File(".")).getAbsolutePath();
 
-            File directory = new File(grFingerNativeDirectory);
-       
-            GrFingerJava.setNativeLibrariesDirectory(directory);
-            GrFingerJava.setLicenseDirectory(directory);
-            //com.griaule.grfingerjava.GrFingerJava.setNativeLibrariesDirectory();
-            System.out.println("Carpeta dependencias griaule: "+grFingerNativeDirectory);
+        fingerUtil = new FingerUtil();
+        fingerUtil.onPlugAction      = { super.setLectorActivo(true);  }
+        fingerUtil.onUnplugAction    = { super.setLectorActivo(false); }
+        fingerUtil.onFingerInAction  = {  }
+        fingerUtil.onFingerOutAction = { synchronized(focoCerrar) { focoCerrar.notifyAll(); } }
+        fingerUtil.onFingerCatch     = { template -> byteTemplate = template.getData() }
+        fingerUtil.iniciar()
 
-            matchContext = new MatchingContext();
-            GrFingerJava.initializeCapture(this);
-            System.out.println ("Lector Huella inicializada");
-
-        } catch(Exception GrEx)
-        {
-            System.out.println ("Error griaule: "+GrEx.getMessage());
-            Dialogos.error("Error al inicializar SDK lector", GrEx);
-        }
         HiloParaCerrar HPC = new HiloParaCerrar(this);
         HPC.start();
         
     }
-    
+    protected void finalize() {
+        fingerUtil.destroy();
+    }
     public void cerrar()
     {
         synchronized(focoCerrar)
@@ -105,52 +88,19 @@ public class Huellas extends MiniLeerHuella implements IFingerEventListener, IIm
             }
             try
             {
-                com.griaule.grfingerjava.GrFingerJava.finalizeCapture();            
-                //com.griaule.grfingerjava.GrFingerJava.stopCapture(IDLector);
+                omoikane.principal.Principal.toFinalizeTracker.remove(this)
+                fingerUtil.destroy();
 
-                if(matchContext != null)
-                {
-                    matchContext.destroy();                
-                }
+                parent.setActivo(false);
 
-                //Main.entornoBase.pantalla.getLayeredPane().grabFocus();
-
-                parent.setActivo(false);        
             }
-            catch(GrFingerJavaException gr)
+            catch(Exception gr)
             {
                 Dialogos.error("Error al finalizar lector de huella.", gr);
             }
         }
     }
     
-    class adminAcciones extends javax.swing.AbstractAction
-    {
-        Huellas HU;
-        JTextField    destino;
-        int           accion;
-        final static int ACEPTAR  = 1;
-        final static int CANCELAR = 2;
-        final static int CERRAR   = 3;
-        
-        adminAcciones(Huellas HU, int accion)
-        {
-            this.HU     = HU;
-            this.accion = accion;
-        }
-        adminAcciones(JTextField campoDestino, int accion)
-        {
-            destino = campoDestino;
-            this.accion = accion;            
-        }
-        public void actionPerformed(ActionEvent ae)
-        {
-            switch(accion)
-            {
-                case CERRAR:  synchronized(HU.focoCerrar) { HU.focoCerrar.notifyAll(); }  break;
-            }
-        }
-    }
 
     public byte[] getResultado()
     {
@@ -219,5 +169,18 @@ public class Huellas extends MiniLeerHuella implements IFingerEventListener, IIm
            //write error to log
            Dialogos.error("Error al establecer parámetros del SDK de huellas", e);
        }
+    }
+}
+
+class HiloParaCerrar extends Thread
+{
+    Huellas2 hu;
+    HiloParaCerrar(Huellas2 hu)
+    {
+        this.hu = hu;
+    }
+    public void run()
+    {
+        hu.cerrar();
     }
 }

@@ -17,7 +17,7 @@ import omoikane.sistema.*;
  */
 public class WndLeerHuella extends JInternalDialog2 {
     
-    Huellas pnlHuella;
+    Huellas2 pnlHuella;
     /** Creates a new instance of WndLeerHuella */
     public WndLeerHuella(Object parent) {
         super(parent, "Leer huella");
@@ -25,7 +25,7 @@ public class WndLeerHuella extends JInternalDialog2 {
     
     public byte[] getHuella()
     {
-        pnlHuella = new Huellas(this);
+        pnlHuella = new Huellas2(this);
         super.setContentPane(pnlHuella);
         super.setActivo(true);
         return pnlHuella.byteTemplate;

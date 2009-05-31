@@ -21,14 +21,16 @@ public class Principal {
         static def escritorio
         static def menuPrincipal
         static def config
-        public static int     IDAlmacen
-        public static int     IDCaja
-        public static int     sysAncho 
-        public static int     sysAlto  
-        public static boolean fondoBlur
-        public static String  puertoImpresion
-        public static boolean impresoraActiva
-        public static int     cajon
+        public static int             IDAlmacen
+        public static int             IDCaja
+        public static int             sysAncho
+        public static int             sysAlto
+        public static boolean         fondoBlur
+        public static String          puertoImpresion
+        public static boolean         impresoraActiva
+        public static int             cajon
+        public static ShutdownHandler shutdownHandler
+        public static def             toFinalizeTracker = [:]
 
 	public static void main(args)
         {
@@ -40,6 +42,10 @@ public class Principal {
             println "iniciando"
             def splash = new Splash()
             splash.iniciar()
+
+            shutdownHandler = new ShutdownHandler()
+            Runtime.getRuntime().addShutdownHook(shutdownHandler);
+
             splash.setText("Cargando configuración...")
             config = new omoikane.sistema.Config()
             defineAtributos()
@@ -52,6 +58,9 @@ public class Principal {
             splash.detener()
             iniciarSesion()
             menuPrincipal.iniciar()
+
+            
+
             //
             //new SimpleForm() {
             //        it.form.visible = true
