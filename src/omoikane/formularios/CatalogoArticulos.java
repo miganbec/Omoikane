@@ -45,7 +45,10 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public String          txtQuery;
     ArticulosTableModel modelo;
     public boolean modal = false;
-    
+
+    public void mostrar() { this.setVisible(true);  }
+    public void ocultar() { this.setVisible(false); }
+
     class TimerBusqueda extends Thread
     {
         CatalogoArticulos ca;
@@ -58,7 +61,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             {
                 busquedaActiva = true;
                 try { this.wait(500); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
-                if(busquedaActiva) { ca.buscar(); }
+                if(busquedaActiva && ca.modelo != null) { ca.buscar(); }
             }
         }
         void cancelar()
@@ -371,12 +374,17 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
         // TODO add your handling code here:
-        preBuscar();
+        //System.out.println("······KeyEvent>"+evt.getKeyChar());
+        //System.out.println("······KeyEvent>"+evt.getKeyCode());
+        preBuscar(); 
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
+        ArticulosTableModel tabModelo = this.modelo;
+        this.modelo = null;
         this.dispose();
+        tabModelo.destroy();
         if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
         }
