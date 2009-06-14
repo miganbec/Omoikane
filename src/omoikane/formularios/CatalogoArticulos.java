@@ -477,6 +477,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         NadesicoTableModel stm = ((NadesicoTableModel)jTable1.getModel());
         int IDArticulo = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
+        System.out.println ("btn aceptar");
 
         if(IDArticulo != -1) { 
             IDSeleccionado = IDArticulo; codigoSeleccionado = (String)stm.getValueAt(this.jTable1.getSelectedRow(), 0);

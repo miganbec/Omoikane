@@ -403,4 +403,10 @@ public class FingerUtil implements IStatusEventListener, IImageEventListener, IF
            e.printStackTrace(); 
        }
    }      
+   public static void inicializar() {
+            System.out.println(System.getProperty("user.dir"));
+            String grFingerNativeDirectory = (new File(".")).getAbsolutePath();
+
+            setFingerprintSDKNativeDirectory(grFingerNativeDirectory)
+   }
 }

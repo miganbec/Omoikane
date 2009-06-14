@@ -17,7 +17,8 @@ class Config {
     Config() { cargar() }
 
     def cargar () {
-        def xmlTxt = getClass().getResourceAsStream("/omoikane/principal/config.xml")
+        //def xmlTxt = getClass().getResourceAsStream("/omoikane/principal/config.xml")
+        def xmlTxt = new File("config.xml")
         def xml    = new groovy.util.XmlParser().parseText(xmlTxt.text)
         prefs = xml
     }

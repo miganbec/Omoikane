@@ -58,9 +58,9 @@ public class Articulos
         def cat = lanzarCatalogo()
         cat.setModoDialogo()
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
+        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) { println "aquí"; cat.btnAceptar.doClick(); println "aquí2";  } }
         def retorno
-        cat.btnAceptar.actionPerformed = { def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick(); }
+        cat.btnAceptar.actionPerformed = { System.out.println ("otro btn aceptar"); def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick(); }
         synchronized(foco){foco.wait()}
         retorno
     }

@@ -137,7 +137,7 @@ class Caja {
         sumas[0] += linea['Precio'] as Double; sumas[1] += linea['Descuento'] as Double; sumas[2] += Caja.aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double
         }
         form.txtNArticulos.text = dat.size()
-        form.txtSubtotal.text   = Caja.cifra (sumas[2] - sumas[1] - sumas[3])
+        form.txtSubtotal.text   = Caja.cifra (sumas[2] + sumas[1] - sumas[3])
         form.totalOriginal      =(Caja.round10 (sumas[2]))-sumas[2]
         form.txtTotal.text      = Caja.cifra (Caja.round10 (sumas[2]))
         form.txtDescuento.text  = Caja.cifra (sumas[1])

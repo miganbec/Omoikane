@@ -46,6 +46,7 @@ public class Principal {
 
             shutdownHandler = new ShutdownHandler()
             Runtime.getRuntime().addShutdownHook(shutdownHandler);
+            FingerUtil.inicializar()
 
             splash.setText("Cargando configuración...")
             config = new omoikane.sistema.Config()
