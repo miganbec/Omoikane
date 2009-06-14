@@ -113,18 +113,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
-
         Herramientas.centrarVentana(this);
         this.btnAceptar.setVisible(false);
-
-        //Instrucciones para el funcionamiento de las teclas de navegación
-        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
-
-        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
 
     }
     public void setModoDialogo()
@@ -186,6 +176,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setFocusable(false);
         jTable1.setRowHeight(12);
         jTable1.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(jTable1);
@@ -210,7 +201,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("Cerrar [Esc]");
-        btnCerrar.setNextFocusableComponent(txtBusqueda);
         btnCerrar.setRequestFocusEnabled(false);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +210,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
         btnEliminar.setText("Eliminar [Supr]");
-        btnEliminar.setNextFocusableComponent(btnCerrar);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -531,8 +520,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public void buscar()
     {
         boolean xCodDes = getBuscarCodigoDescripcion();
-        boolean xLineas = getBuscarLineas();
-        boolean xGrupos = getBuscarGrupos();
+        boolean xLineas = false; /*getBuscarLineas();*/
+        boolean xGrupos = false; /*getBuscarGrupos();*/
         String busqueda = this.txtBusqueda.getText();
         /*
         String query    = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
@@ -545,7 +534,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                 "from articulos, precios, existencias, lineas, clientes, grupos " +
                 "WHERE clientes.id_cliente=1 AND precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
          */
-        if(busqueda=="") { xCodDes = xLineas = xGrupos = false; }
+        if(busqueda==null) { xCodDes = xLineas = xGrupos = false; }
         String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias" +
                 " from ramcachearticulos as a ";
         if(xCodDes) {

@@ -29,6 +29,7 @@ public class Principal {
         public static String          puertoImpresion
         public static boolean         impresoraActiva
         public static int             cajon
+        public static String          url
         public static ShutdownHandler shutdownHandler
         public static def             toFinalizeTracker = [:]
 
@@ -93,6 +94,7 @@ public class Principal {
             puertoImpresion = String.valueOf(config.puertoImpresion[0].text())
             impresoraActiva = Boolean.valueOf(config.impresoraActiva[0].text())
             cajon           = Integer.valueOf(config.cajon[0].text())
+            url             = String.valueOf(config.URL[0].text())
         }
 
     static def iniciarSesion(){

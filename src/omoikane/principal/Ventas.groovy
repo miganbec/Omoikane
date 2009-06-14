@@ -23,6 +23,7 @@ import static omoikane.sistema.Permisos.*;
  *
  * @author Adan
  */
+
 class Ventas {
 
     static def lastMovID  = -1
@@ -37,7 +38,7 @@ class Ventas {
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.1,0.25,0.25,0.1]);
-            Herramientas.objetosAll(cat)
+            Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
@@ -57,7 +58,7 @@ class Ventas {
             lastMovID = ID
             def form = (new omoikane.formularios.VentasDetalles())
             form.setVisible(true);
-            Herramientas.funcionesObjetos(form)
+            Herramientas.panelFormulario(form)
             escritorio.getPanelEscritorio().add(form)
             Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }

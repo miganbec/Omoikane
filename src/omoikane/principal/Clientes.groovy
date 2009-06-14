@@ -28,7 +28,7 @@ class Clientes {
             def cat = (new omoikane.formularios.CatalogoClientes())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.objetosAll(cat)
+            Herramientas.panelCatalogo(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.15,0.15,0.31,0.12,0.12,0.12]);
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
@@ -81,10 +81,10 @@ class Clientes {
         if(cerrojo(PMA_DETALLESCLIENTE)){
             def formCliente = new omoikane.formularios.Cliente()
             formCliente.setVisible(true)
-            Herramientas.funcionesObjetos(formCliente)
+            Herramientas.panelFormulario(formCliente)
             escritorio.getPanelEscritorio().add(formCliente)
             formCliente.toFront()
-            Herramientas.funcionesObjetos(formCliente)
+            Herramientas.panelFormulario(formCliente)
             try { formCliente.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles clientes", Herramientas.getStackTraceString(e)) }
             def art         = Nadesico.conectar().getCliente(ID)
             formCliente.setTxtIDCliente     art.id_cliente    as String
@@ -113,13 +113,13 @@ class Clientes {
                 def Saldo           = formCliente.getTxtSaldo()
                 def descuento       = formCliente.getTxtDescuento()
                 def CP              = formCliente.getTxtCP()
-                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.\´]+)$/,"RFC sólo puede incluír números, letras, espacios, - , _ y puntos ")
-                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+áéíóú)$$/,"Direccion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - , acentos y diagonales")
-                Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Telefono puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
-                Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Razon Social puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
-                Herramientas.verificaCampo(Saldo,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Saldo sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(CP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"CP sólo puede incluír números, letras, espacios , - , _ y .")
-                Herramientas.verificaCampo(descuento,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
+                Herramientas.verificaCampo(RFC,Herramientas.texto,"RFC"+Herramientas.error1)
+                Herramientas.verificaCampo(direccion,Herramientas.texto,"Dirreccion"+Herramientas.error1)
+                Herramientas.verificaCampo(telefono,Herramientas.texto,"Telefono"+Herramientas.error1)
+                Herramientas.verificaCampo(RazonSocial,Herramientas.texto,"Razon Social"+Herramientas.error1)
+                Herramientas.verificaCampo(Saldo,Herramientas.numeroReal,"Saldo"+Herramientas.error3)
+                Herramientas.verificaCampo(CP,Herramientas.numero,"CP"+Herramientas.error2)
+                Herramientas.verificaCampo(descuento,Herramientas.numeroReal,"Descuento"+Herramientas.error3)
                 descuento     = descuento as Double
                 Saldo         = Saldo as Double
                 try {
@@ -137,7 +137,7 @@ class Clientes {
         if(cerrojo(PMA_MODIFICARCLIENTE)){
             def form = new omoikane.formularios.Cliente()
             form.setVisible(true)
-            Herramientas.funcionesObjetos(form)
+            Herramientas.panelFormulario(form)
             Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "guardar"  ) { form.btnGuardar.doClick()  }
             escritorio.getPanelEscritorio().add(form)
             form.toFront()
@@ -168,13 +168,13 @@ class Clientes {
                 def Saldo           = formCliente.getTxtSaldo()
                 def descuento       = formCliente.getTxtDescuento()
                 def CP              = formCliente.getTxtCP()
-                Herramientas.verificaCampo(RFC,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"RFC sólo puede incluír números, letras, espacios, - , _ y puntos ")
-                Herramientas.verificaCampo(direccion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Direccion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
-                Herramientas.verificaCampo(telefono,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Telefono puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
-                Herramientas.verificaCampo(RazonSocial,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+)$/,"Razon Social puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - y diagonales")
-                Herramientas.verificaCampo(Saldo,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Saldo sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(CP,/^([a-zA-Z0-9_\-\s\ñ\Ñ\.]+)$/,"CP sólo puede incluír números, letras, espacios , - , _ y .")
-                Herramientas.verificaCampo(descuento,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
+                Herramientas.verificaCampo(RFC,Herramientas.texto,"RFC"+Herramientas.error1)
+                Herramientas.verificaCampo(direccion,Herramientas.texto,"Dirreccion"+Herramientas.error1)
+                Herramientas.verificaCampo(telefono,Herramientas.texto,"Telefono"+Herramientas.error1)
+                Herramientas.verificaCampo(RazonSocial,Herramientas.texto,"Razon Social"+Herramientas.error1)
+                Herramientas.verificaCampo(Saldo,Herramientas.numeroReal,"Saldo"+Herramientas.error3)
+                Herramientas.verificaCampo(CP,Herramientas.numero,"CP"+Herramientas.error2)
+                Herramientas.verificaCampo(descuento,Herramientas.numeroReal,"Descuento"+Herramientas.error3)
                 descuento     = descuento as Double
                 Saldo         = Saldo as Double
                 def serv = Nadesico.conectar()

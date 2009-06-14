@@ -28,12 +28,11 @@ class Reporte {
     Reporte (String reporteJasper, params = [:])
     {
         try {
-
-            def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane", "root", "", "com.mysql.jdbc.Driver")
+            def db     = Sql.newInstance(omoikane.principal.Principal.url, "Jasper", "gatogato", "com.mysql.jdbc.Driver")
+            //def db     = Sql.newInstance(omoikane.principal.Principal.url, "root", "", "com.mysql.jdbc.Driver")
             def stream = cargarPlantilla(reporteJasper)
-            jp = JasperFillManager.fillReport(stream, params, db.connection);
+            jp         = JasperFillManager.fillReport(stream, params, db.connection);
             db.close()
-
         } catch(Exception e) {
             omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error generando reporte desde base de datos", omoikane.sistema.Herramientas.getStackTraceString(e))
         }

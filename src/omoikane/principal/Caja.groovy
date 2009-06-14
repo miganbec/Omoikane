@@ -104,7 +104,9 @@ class Caja {
                     if(cajaAbierta) { lanzarCaja() }
                 }
             break;
+
         }
+
     }
 
     static def filtroEAN13(codigo) {
@@ -166,7 +168,7 @@ class Caja {
         if(cerrojo(PMA_LANZARCAJA)){
             def form = new omoikane.formularios.Caja()
             def modelo = new CajaTableModel()
-            Herramientas.objetosAll(form)
+            Herramientas.panelCatalogo(form)
             form.tablaVenta.setModel(modelo)
             form.modelo = modelo
             escritorio.getPanelEscritorio().add(form)
@@ -394,7 +396,7 @@ class Caja {
                         //Thread.start {
 //                            def aaa= new SimpleForm("omoikane.formularios.DialogoCambio") {
 //                                def sform = it.form
-//                                Herramientas.funcionesObjetos(sform)
+//                                Herramientas.panelFormulario(sform)
 //                                sform.total.text = form.txtTotal.text
 //                                sform.visible = true
 //                                sform.txtEfectivo.focusLost = {
@@ -439,6 +441,7 @@ class Caja {
             def cat = (new omoikane.formularios.CatalogoCajas())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
+            Herramientas.panelCatalogo(cat)
             Herramientas.iconificable(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick()    }
@@ -479,6 +482,7 @@ class Caja {
             def newCorte
             if(res == 0) {Dialogos.lanzarAlerta("No exíste esa caja")} else {
                 if(!serv.cajaAbierta(IDCaja)) {Dialogos.lanzarAlerta("La caja ya estaba cerrada")}
+                else{
                 def horas      = serv.getCaja(IDCaja)
                 SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy @ hh:mm:ss a ");
@@ -503,16 +507,21 @@ class Caja {
                     form.setTxtImpuesto      (ventas.impuestos as String)
                     form.setTxtNumeroVenta   (ventas.nVentas as String)
                     form.setTxtSubtotal      (ventas.subtotal as String)
+                    form.setTxtDeposito      (ventas.depositos as String)
+                    form.setTxtRetiro        (ventas.retiros as String)
                     form.setTxtTotal         (ventas.total as String)
+                    def dinero = ((ventas.total)-(ventas.retiros)+(ventas.depositos))
+                    form.setTxtEfectivo      (dinero as String)
                     if(cortar) { 
-                        newCorte=serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.impuestos, ventas.descuento, ventas.total, ventas.nVentas, desde, hasta)
+                        newCorte=serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.impuestos, ventas.descuento, ventas.total, ventas.nVentas, desde, hasta,ventas.depositos,ventas.retiros)
                         Dialogos.lanzarAlerta(newCorte.mensaje)
                         def comprobante = new Comprobantes()
                         comprobante.Corte(newCorte.IDCorte)//imprimir ticket
                         comprobante.probar()//imprimir ticket
+                        form.ID=newCorte.IDCorte
                     }
                 }
-            }
+            }}
             serv.desconectar()
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -525,7 +534,7 @@ class Caja {
             escritorio.getPanelEscritorio().add(formCaja)
             Herramientas.iconificable(formCaja)
             Herramientas.In2ActionX(formCaja, KeyEvent.VK_F6    , "guardar"  ) { formCaja.btnGuardar.doClick()  }
-            Herramientas.funcionesObjetos(formCaja)
+            Herramientas.panelFormulario(formCaja)
             formCaja.toFront()
             try { formCaja.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Caja", Herramientas.getStackTraceString(e)) }
             formCaja.setEditable(true);
@@ -538,11 +547,13 @@ class Caja {
         if(cerrojo(PMA_MODIFICARCAJA)){
             Herramientas.verificaCampos {
                 def descripcion = formCaja.getTxtDescripcion()
-                Herramientas.verificaCampo(descripcion,,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+áéíóú)$$/,"Descripcion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - , acentos y diagonales")
+                def serv
+                Herramientas.verificaCampo(descripcion,Herramientas.texto,"Descripcion"+Herramientas.error1)
                 try {
-                    def serv = Nadesico.conectar()
+                    serv = Nadesico.conectar()
                     Dialogos.lanzarAlerta(serv.addCaja(IDAlmacen,descripcion))
                 } catch(e) { Dialogos.error("Error al enviar a la base de datos. El grupo no se registró", e) }
+                serv.desconectar()
                 formCaja.dispose()
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
@@ -555,7 +566,7 @@ class Caja {
             formCaja.setVisible(true)
             escritorio.getPanelEscritorio().add(formCaja)
             Herramientas.iconificable(formCaja)
-            Herramientas.funcionesObjetos(formCaja)
+            Herramientas.panelFormulario(formCaja)
             formCaja.toFront()
             try { formCaja.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Caja", Herramientas.getStackTraceString(e)) }
             def alm         = Nadesico.conectar().getCaja(ID)
@@ -598,9 +609,10 @@ class Caja {
     {
         if(cerrojo(PMA_MODIFICARCAJA)){
             Herramientas.verificaCampos {
-                Herramientas.verificaCampo(formCaja.getTxtDescripcion(),,/^([a-zA-Z0-9_\-\s\ñ\Ñ\(\)\,\.\#\\\/]+áéíóú)$$/,"Descripcion puede incluir numeros, letras, espacios, parentecis, comas, puntos, #, _, - , acentos y diagonales")
+                Herramientas.verificaCampo(formCaja.getTxtDescripcion(),Herramientas.texto,"Descripcion"+Herramientas.error1)
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modCaja(formCaja.getTxtIDCaja(),IDAlmacen,formCaja.getTxtDescripcion()))
+                serv.desconectar()
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }

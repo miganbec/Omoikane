@@ -39,7 +39,7 @@ class Cortes {
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.25,0.25,0.1,0.1]);
-            Herramientas.objetosAll(cat)
+            Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
@@ -58,8 +58,8 @@ class Cortes {
         if(cerrojo(PMA_DETALLESVENTAS)){
             def form = (new omoikane.formularios.CorteCajaDetalles())
             form.setVisible(true);
-            Herramientas.funcionesObjetos(form)
-            form.btnImprimir.actionPerformed = {lanzarImprimirCorte(form)}
+            Herramientas.panelFormulario(form)
+            form.btnImprimir.actionPerformed = {lanzarImprimirCorte(form.ID)}
             escritorio.getPanelEscritorio().add(form)
             Herramientas.iconificable(form)
             form.toFront()
@@ -68,12 +68,13 @@ class Cortes {
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
-    static def lanzarDetalles(ID)
+    static def lanzarDetalles(IDE)
     {
         if(cerrojo(PMA_DETALLESCORTES)){
-            lastMovID = ID
+            lastMovID= IDE
             def form  = lanzarVentanaDetalles()
-            def mov   = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$ID")
+            def mov   = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$IDE")
+            form.ID = IDE
             form.setTxtDescuento     (mov.descuentos as String)
             form.setTxtDesde         (mov.desde as String)
             form.setTxtFecha         (mov.fecha_hora as String)
@@ -95,10 +96,10 @@ class Cortes {
         reporte.lanzarPreview()
     }
 
-    static def lanzarImprimirCorte(form)
+    static def lanzarImprimirCorte(ID)
     {
         def comprobante = new Comprobantes()
-        comprobante.Corte(form.txtIDCorte)//imprimir ticket
+        comprobante.Corte(ID)//imprimir ticket
         comprobante.probar()//imprimir ticket
     }
 
@@ -109,7 +110,7 @@ class Cortes {
             
             def form = (new omoikane.formularios.CorteSucursalDetalles())
             def rc   = resultadoCorte
-            Herramientas.funcionesObjetos(form)
+            Herramientas.panelFormulario(form)
             form.setVisible(true);
             escritorio.getPanelEscritorio().add(form)
             Herramientas.iconificable(form)
@@ -120,6 +121,8 @@ class Cortes {
             form.txtDescuentos.text= rc.descuentos
             form.txtSubtotal.text  = rc.subtotal
             form.txtTotal.text     = rc.total
+            form.txtRetiros.text     = rc.retiros
+            form.txtDepositos.text     = rc.depositos
             form.btnAceptar.actionPerformed  = { form.dispose() }
             form.btnImprimir.actionPerformed = {
                 def comprobante = new Comprobantes()

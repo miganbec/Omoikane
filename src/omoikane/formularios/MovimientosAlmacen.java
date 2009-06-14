@@ -22,9 +22,9 @@ import java.text.*;
 import java.util.Calendar;
 
 /**
- *
  * @author Octavio
  */
+
 public class MovimientosAlmacen extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
@@ -32,20 +32,16 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
     /** Creates new form MovimientosAlmacen */
     public MovimientosAlmacen() {
         initComponents();
-
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
         ((JPanel)this.getContentPane()).setOpaque(false);
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
-
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension labelSize = this.getPreferredSize();
-
         //setLocation(screenSize.width/2 - (labelSize.width/2), screenSize.height/2 - (labelSize.height/2));
         Herramientas.centrarVentana(this);
-
         Calendar calendario = Calendar.getInstance();
         txtFechaHasta.setDate(calendario.getTime());
         calendario.add(Calendar.DAY_OF_MONTH, -30);
@@ -75,10 +71,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
     }
 
     public JTable getTablaMovimientos()
-    {
-        return movimientos;
-    }
-
+    {return movimientos;}
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -106,6 +99,11 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         txtFechaHasta = new org.jdesktop.swingx.JXDatePicker();
 
         setTitle("Movimientos del almacén");
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
@@ -113,31 +111,40 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         jLabel2.setText("Movimientos del almacén");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Buscar [F3]:");
+        jLabel1.setText("Buscar:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 30));
-        getContentPane().add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 330, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12));
+        txtBusqueda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 340, 30));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Desde:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Hasta:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, 30));
 
+        btnFiltrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
-        btnFiltrar.setText("Filtrar [Enter]");
+        btnFiltrar.setText("Filtrar [enter]");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 120, 30));
+        getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 160, 30));
 
+        movimientos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         movimientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -154,11 +161,13 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        movimientos.setFocusable(false);
         movimientos.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(movimientos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 880, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 930, 280));
 
+        btnDetalles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_search.png"))); // NOI18N
         btnDetalles.setText("<html><center>Detalles [F4]</center></html>");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -166,8 +175,9 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
                 btnDetallesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 180, 60));
+        getContentPane().add(btnDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 180, 60));
 
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_add.png"))); // NOI18N
         btnNuevo.setText("<html><center>Nuevo <br>Movimiento[F5]</center></html>");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -175,8 +185,9 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 190, 60));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 200, 60));
 
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_edit.png"))); // NOI18N
         btnModificar.setText("<html><center>Modificar o eliminar [F6]</center></html>");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,8 +195,9 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 190, 60));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 190, 60));
 
+        btnImprimir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F7]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +205,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, 160, 60));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, 160, 60));
 
         jPanel1.setOpaque(false);
 
@@ -201,15 +213,16 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 30, 30));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 450, 10, 10));
 
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
@@ -218,25 +231,15 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 230, 40));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 230, 40));
 
-        txtFechaDesde.setFont(new java.awt.Font("Tahoma", 0, 10));
+        txtFechaDesde.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         txtFechaDesde.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
-        txtFechaDesde.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaDesdeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtFechaDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 110, 30));
+        getContentPane().add(txtFechaDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 120, 30));
 
-        txtFechaHasta.setFont(new java.awt.Font("Tahoma", 0, 10));
+        txtFechaHasta.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         txtFechaHasta.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
-        txtFechaHasta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaHastaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtFechaHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 110, 30));
+        getContentPane().add(txtFechaHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -268,14 +271,9 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnDetallesActionPerformed
 
-    private void txtFechaDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaDesdeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaDesdeActionPerformed
-
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:,
         omoikane.principal.Almacenes.lanzarImprimirMovimientos();
-
 }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -301,16 +299,60 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         this.resetTable();
 }//GEN-LAST:event_btnFiltrarActionPerformed
 
-    private void txtFechaHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaHastaActionPerformed
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaHastaActionPerformed
+        this.txtBusqueda.requestFocusInWindow();
+    }//GEN-LAST:event_formFocusGained
+
+    private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
+        // TODO add your handling code here:
+            if(evt.getKeyCode() == evt.VK_DOWN)
+        {
+            int sigFila = movimientos.getSelectedRow()+1;
+            if(sigFila < movimientos.getRowCount())
+            {
+                this.movimientos.setRowSelectionInterval(sigFila, sigFila);
+                this.movimientos.scrollRectToVisible(movimientos.getCellRect(sigFila, 1, true));
+            }
+        }
+        if(evt.getKeyCode() == evt.VK_UP)
+        {
+            int antFila = movimientos.getSelectedRow()-1;
+            if(antFila >= 0) {
+                this.movimientos.setRowSelectionInterval(antFila, antFila);
+                this.movimientos.scrollRectToVisible(movimientos.getCellRect(antFila, 1, true));
+            }
+        }
+        if(evt.getKeyCode() == evt.VK_PAGE_DOWN)
+        {
+            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / movimientos.getRowHeight();
+            int sigFila = movimientos.getSelectedRow()+nFilas;
+            if(sigFila > movimientos.getRowCount()) {
+                sigFila = movimientos.getRowCount()-1;
+            }
+            if(sigFila < movimientos.getRowCount()) {
+                this.movimientos.setRowSelectionInterval(sigFila, sigFila);
+                this.movimientos.scrollRectToVisible(movimientos.getCellRect(sigFila, 1, true));
+            }
+        }
+        if(evt.getKeyCode() == evt.VK_PAGE_UP)
+        {
+            int nFilas  = (int) this.jScrollPane1.getViewportBorderBounds().getHeight() / movimientos.getRowHeight();
+            int antFila = movimientos.getSelectedRow()-nFilas;
+            if(antFila < 0) {
+                antFila = 0;
+            }
+            this.movimientos.setRowSelectionInterval(antFila, antFila);
+            this.movimientos.scrollRectToVisible(movimientos.getCellRect(antFila, 1, true));
+        }
+    }//GEN-LAST:event_txtBusquedaKeyPressed
 
     public void paintComponent(Graphics g)
     {
       Graphics2D g2d = (Graphics2D) g;
       g2d.drawImage(fondo, 0, 0, null);
-
     }
+
     public void generarFondo(Component componente)
     {
       Rectangle areaDibujo = this.getBounds();
@@ -345,8 +387,5 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()
-    {
-        public void internalFrameClosed(InternalFrameEvent e) { resetTable(); }
-
-    };
+    {public void internalFrameClosed(InternalFrameEvent e) { resetTable();requestFocusInWindow(); }};
 }

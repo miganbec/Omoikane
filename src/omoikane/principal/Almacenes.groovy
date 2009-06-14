@@ -38,16 +38,17 @@ class Almacenes {
            def cat = (new omoikane.formularios.CatalogoAlmacenes())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+            Herramientas.panelCatalogo(cat)
+            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar" ) { cat.btnCerrar.doClick() }
+            Herramientas.In2ActionX(cat.txtBusqueda, KeyEvent.VK_ESCAPE, "cerrar" ) { cat.btnCerrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
-            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.iconificable(cat)
             cat.toFront()
-            try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catÃ¡logo de almacenes", Herramientas.getStackTraceString(e)) }
+            try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de almacenes", Herramientas.getStackTraceString(e)) }
             cat.txtBusqueda.requestFocus()
             poblarAlmacenes(cat.getTablaAlmacenes(),"")
             return cat
@@ -71,9 +72,16 @@ class Almacenes {
     {
         if(cerrojo(PMA_MODIFICARALMACEN)){
             def formAlmacen = new omoikane.formularios.Almacen()
+            formAlmacen.requestFocusInWindow()
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F6    , "guardar") { formAlmacen.btnGuardar.doClick() }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_DELETE, "nada" ) {  }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F4    , "nada" ) { }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F5    , "nada" ) {  }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F7    , "nada" ) {  }
+            Herramientas.panelFormulario(formAlmacen)
+            Herramientas.iconificable(formAlmacen)
             formAlmacen.setVisible(true)
             escritorio.getPanelEscritorio().add(formAlmacen)
-            Herramientas.iconificable(formAlmacen)
             formAlmacen.toFront()
             try { formAlmacen.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles almacen", Herramientas.getStackTraceString(e)) }
             formAlmacen.setEditable(true);
@@ -87,11 +95,11 @@ class Almacenes {
         if(cerrojo(PMA_MODIFICARALMACEN)){
             Herramientas.verificaCampos {
             def descripcion = formAlmacen.getTxtDescripcion()
-            Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+            Herramientas.verificaCampo(descripcion,Herramientas.texto,"Descripcion"+Herramientas.error1)
             try {
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.addAlmacen(descripcion))
-            } catch(e) { Dialogos.error("Error al enviar a la base de datos. El grupo no se registró", e) }
+            } catch(e) { Dialogos.error("Error al enviar a la base de datos. El Almacen no se registró", e) }
             formAlmacen.dispose()}
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -102,11 +110,16 @@ class Almacenes {
             def formAlmacen = new omoikane.formularios.Almacen()
             formAlmacen.setVisible(true)
             escritorio.getPanelEscritorio().add(formAlmacen)
-            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_ESCAPE, "cerrar"   ) { formAlmacen.btnCerrar.doClick()   }
+            Herramientas.panelFormulario(formAlmacen)
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_DELETE, "nada" ) {  }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F4    , "nada" ) { }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F5    , "nada" ) {  }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F6    , "nada") {  }
+            Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F7    , "nada" ) {  }
             Herramientas.iconificable(formAlmacen)
             formAlmacen.toFront()
             try { formAlmacen.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles almacen", Herramientas.getStackTraceString(e)) }
-            def alm         = Nadesico.conectar().getAlmacen(ID)
+            def alm = Nadesico.conectar().getAlmacen(ID)
             formAlmacen.setTxtIDAlmacen      alm.id_almacen    as String
             formAlmacen.setTxtDescripcion    alm.descripcion
             formAlmacen.setTxtUModificacion  alm.uModificacion as String
@@ -131,6 +144,7 @@ class Almacenes {
     static def lanzarModificarAlmacen(ID)
     {
         def formAlmacen = lanzarDetallesAlmacen(ID)
+        Herramientas.In2ActionX(formAlmacen, KeyEvent.VK_F6    , "modificar") { formAlmacen.btnModificar.doClick() }
         formAlmacen.setModoModificar();
         formAlmacen
     }
@@ -139,9 +153,10 @@ class Almacenes {
     {
         if(cerrojo(PMA_MODIFICARALMACEN)){
             Herramientas.verificaCampos {
-                Herramientas.verificaCampo(formAlmacen.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+                Herramientas.verificaCampo(formAlmacen.getTxtDescripcion(),Herramientas.texto,"Descripcion"+Herramientas.error1)
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modAlmacen(formAlmacen.getTxtIDAlmacen(),formAlmacen.getTxtDescripcion()))
+                formAlmacen.dispose()
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -149,10 +164,12 @@ class Almacenes {
     static def eliminarAlmacen(ID)
     {
         if(cerrojo(PMA_ELIMINARALMACEN)){
+            Dialogos.lanzarAlerta("Funcion Deshabilitada")
+            /*
             def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
             db.execute("DELETE FROM almacenes WHERE id_almacen = " + ID)
             db.close()
-            Dialogos.lanzarAlerta("Almacen " + ID + " supuestamente eliminado")
+            Dialogos.lanzarAlerta("Almacen " + ID + " supuestamente eliminado")*/
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
@@ -170,7 +187,10 @@ class Almacenes {
             def cat = (new omoikane.formularios.MovimientosAlmacen())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+            Herramientas.panelCatalogo(cat)
+            Herramientas.setColumnsWidth(cat.movimientos, [0.1,0.1,0.1,0.1,0.38,0.1,0.1]);
+            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar" ) { cat.btnCerrar.doClick() }
+            Herramientas.In2ActionX(cat.txtBusqueda, KeyEvent.VK_ESCAPE, "cerrar" ) { cat.btnCerrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscarFocus" ) { cat.txtBusqueda.requestFocus() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
@@ -178,7 +198,6 @@ class Almacenes {
             Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_ENTER , "filtrar" ) { cat.btnFiltrar.doClick() }
             Herramientas.iconificable(cat)
-            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario movimientos de almacén", Herramientas.getStackTraceString(e)) }
             cat.txtBusqueda.requestFocus()
@@ -195,6 +214,7 @@ class Almacenes {
 
     static def poblarMovimientos(tablaMovs, busqueda, fechaDesde, fechaHasta)
     {
+        Herramientas.setColumnsWidth(tablaMovs, [0.1,0.1,0.1,0.1,0.4,0.1,0.1]);
         def whereFecha = ""
         // Determina si se hará una búsqueda por fecha y de ser asi crea la clausua necesaria
         if(fechaHasta != "" || fechaDesde != ""){
@@ -236,6 +256,12 @@ class Almacenes {
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F5    , "nuevo"    ) { nvo.btnNuevo.doClick() }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F8    , "imprimir" ) { nvo.btnImprimir.doClick() }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F2    , "catalogo" ) { nvo.btnCatalogo.doClick() }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_ENTER   , "nada" ) { }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F3    , "nada" ) {}
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F4    , "nada" ) {}
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F6    , "nada") { }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F7    , "nada" ) { }
+        Herramientas.panelCatalogo(nvo)
         Herramientas.iconificable(nvo)
         escritorio.getPanelEscritorio().add(nvo)
         nvo.setModoNuevo()
@@ -283,9 +309,9 @@ class Almacenes {
     {
         if(cerrojo(PMA_MODIFICARMOVALMACEN)){
             Herramientas.verificaCampos{
-                Herramientas.verificaCampo(formMovimiento.getAlmacen(),/^([0-9]+)$/,"Almacen sólo puede incluír números enteros.")
-                Herramientas.verificaCampo(formMovimiento.getDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripción sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-                Herramientas.verificaCampo(formMovimiento.getFolio(),/^([a-zA-Z0-9_\-\s\ñ\Ñ]*)$/,"Folio sólo puede estar vacío o incluír números, letras, espacios, _ y -.")
+                Herramientas.verificaCampo(formMovimiento.getAlmacen(),Herramientas.numero,"Almacen"+Herramientas.error2)
+                Herramientas.verificaCampo(formMovimiento.getDescripcion(),Herramientas.texto,"Descripcion"+Herramientas.error1)
+                Herramientas.verificaCampo(formMovimiento.getFolio(),Herramientas.numero,"Numero"+Herramientas.error2)
                 try {
                     def tipo              = formMovimiento.getTipoMovimiento()
                     def almacen           = formMovimiento.getAlmacen()
@@ -317,6 +343,14 @@ class Almacenes {
         Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) {form.btnCerrar.doClick()    }
         Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
         Herramientas.In2ActionX(form, KeyEvent.VK_F2    , "catalogo" ) { form.btnCatalogo.doClick() }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "nada" ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_ENTER   , "nada" ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "nada" ) {}
+        Herramientas.In2ActionX(form, KeyEvent.VK_F4    , "nada" ) {}
+        Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "nada") { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F7    , "nada" ) { }
+        Herramientas.panelCatalogo(form)
         Herramientas.iconificable(form)
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }

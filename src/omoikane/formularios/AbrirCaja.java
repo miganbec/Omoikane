@@ -30,11 +30,11 @@ public class AbrirCaja extends javax.swing.JInternalFrame {
         initComponents();
 
         Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
         setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
 
         newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
         setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
 
         this.setOpaque(false);

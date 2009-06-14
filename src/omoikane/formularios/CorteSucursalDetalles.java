@@ -50,7 +50,7 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtRetiros = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtIngresos = new javax.swing.JLabel();
+        txtDepositos = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtImpuestos = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -86,11 +86,11 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Ingresos:");
+        jLabel5.setText("Depositos:");
 
-        txtIngresos.setFont(new java.awt.Font("Tahoma", 1, 18));
-        txtIngresos.setForeground(new java.awt.Color(255, 255, 255));
-        txtIngresos.setText("0.00");
+        txtDepositos.setFont(new java.awt.Font("Tahoma", 1, 18));
+        txtDepositos.setForeground(new java.awt.Color(255, 255, 255));
+        txtDepositos.setText("0.00");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,7 +104,7 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Subtotal:");
 
-        txtSubtotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtSubtotal.setFont(new java.awt.Font("Tahoma", 1, 18));
         txtSubtotal.setForeground(new java.awt.Color(255, 255, 255));
         txtSubtotal.setText("0.00");
 
@@ -159,8 +159,8 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
                         .addComponent(txtRetiros))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
-                        .addComponent(txtIngresos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                        .addComponent(txtDepositos))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
@@ -189,7 +189,7 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtNVentas))
@@ -212,7 +212,7 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtIngresos))
+                    .addComponent(txtDepositos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -244,9 +244,9 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel txtDepositos;
     public javax.swing.JLabel txtDescuentos;
     public javax.swing.JLabel txtImpuestos;
-    public javax.swing.JLabel txtIngresos;
     public javax.swing.JLabel txtNVentas;
     public javax.swing.JLabel txtRetiros;
     public javax.swing.JLabel txtSubtotal;
@@ -316,17 +316,17 @@ public class CorteSucursalDetalles extends javax.swing.JInternalFrame {
     }
 
     /**
-     * @return the txtIngresos
+     * @return the txtDepositos
      */
-    public javax.swing.JLabel getTxtIngresos() {
-        return txtIngresos;
+    public javax.swing.JLabel getTxtDepositos() {
+        return txtDepositos;
     }
 
     /**
-     * @param txtIngresos the txtIngresos to set
+     * @param txtIngresos the txtDepositos to set
      */
-    public void setTxtIngresos(javax.swing.JLabel txtIngresos) {
-        this.txtIngresos = txtIngresos;
+    public void setTxtDepositos(javax.swing.JLabel txtIngresos) {
+        this.txtDepositos = txtIngresos;
     }
 
     /**

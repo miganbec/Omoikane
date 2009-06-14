@@ -32,7 +32,7 @@ class Usuarios {
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.4,0.3,0.3]);
-            Herramientas.objetosAll(cat)
+            Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
@@ -86,7 +86,7 @@ class Usuarios {
             formUsuario.setVisible(true)
             escritorio.getPanelEscritorio().add(formUsuario)
             formUsuario.toFront()
-            Herramientas.funcionesObjetos(formUsuario)
+            Herramientas.panelFormulario(formUsuario)
             try { formUsuario.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Usuario", Herramientas.getStackTraceString(e)) }
             def art         = Nadesico.conectar().getUsuario(ID,Almacen)
             formUsuario.setTxtIDUSR          art.id_usuario          as String
@@ -117,8 +117,8 @@ class Usuarios {
                 def H3                = formUsuario.getTxtH3()
                 def NIP               = formUsuario.getTxtNIP()
                 def Perfil            = formUsuario.getTxtPerfil()
-                Herramientas.verificaCampo(Nombre,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Nombre sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(NIP,/^([0-9]+)$/,"NIP sólo puede incluír números.")
+                Herramientas.verificaCampo(Nombre,Herramientas.texto,"Nombre"+Herramientas.error1)
+                Herramientas.verificaCampo(NIP,Herramientas.numero,"NIP"+Herramientas.error2)
                 switch(Perfil) {
                     case "Cajero"       :Perfil=0; break;
                     case "Supervisor"   :Perfil=1; break;
@@ -149,7 +149,7 @@ class Usuarios {
         form.setVisible(true)
         escritorio.getPanelEscritorio().add(form)
         Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "modificar") { form.btnGuardar.doClick()}
-        Herramientas.funcionesObjetos(form)
+        Herramientas.panelFormulario(form)
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Usuarios", Herramientas.getStackTraceString(e)) }
         form.setEditable(true);
@@ -173,8 +173,8 @@ class Usuarios {
                 def Nombre            = formUsuario.getTxtNombre()
                 def NIP               = formUsuario.getTxtNIP()
                 def Perfil            = formUsuario.getTxtPerfil()
-                Herramientas.verificaCampo(Nombre,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Nombre sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(NIP,/^([0-9]+)$/,"NIP sólo puede incluír números.")
+                Herramientas.verificaCampo(Nombre,Herramientas.texto,"Nombre"+Herramientas.error1)
+                Herramientas.verificaCampo(NIP,Herramientas.numero,"NIP"+Herramientas.error2)
                 switch(Perfil) {
                     case "Cajero"       :Perfil=0; break;
                     case "Supervisor"   :Perfil=1; break;

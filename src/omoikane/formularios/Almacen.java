@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import omoikane.sistema.*;
+import java.util.*;
+import java.awt.event.*;
+
 
 /*
  * @author Octavio
@@ -26,6 +29,13 @@ public class Almacen extends javax.swing.JInternalFrame {
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
         Herramientas.centrarVentana(this);
+
+        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
+        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
+        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
     }
 
     /** This method is called from within the constructor to
@@ -53,66 +63,72 @@ public class Almacen extends javax.swing.JInternalFrame {
         setTitle("Almacen");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 52)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Almacen");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 50));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Id Almacen:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 84, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 124, -1, -1));
 
         txtIdAlmacen.setEditable(false);
-        getContentPane().add(txtIdAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 280, -1));
+        txtIdAlmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtIdAlmacen.setFocusable(false);
+        getContentPane().add(txtIdAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 280, 26));
 
         txtDescripcion.setEditable(false);
+        txtDescripcion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 280, -1));
+        getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 280, 26));
 
         txtUModificacion.setEditable(false);
-        txtUModificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUModificacionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 280, -1));
+        txtUModificacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtUModificacion.setFocusable(false);
+        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 380, 26));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("<html>Última<br>Modificación:</html>");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jLabel4.setText("Última Modificación: ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        btnModificar.setText("Modificar");
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnModificar.setText("Modificar [F6]");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 25));
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnGuardar.setText("Guardar [F6]");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, 25));
 
-        cerrar.setText("Cerrar");
+        cerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cerrar.setText("Cerrar [ESC]");
         cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 10, 10));
+        getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, 25));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 10, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,10 +147,6 @@ public class Almacen extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         omoikane.principal.Almacenes.modificar(this);
 }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void txtUModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUModificacionActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_txtUModificacionActionPerformed
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:

@@ -83,8 +83,8 @@ class Lineas {
             Herramientas.verificaCampos{
                 def descripcion = formLinea.getTxtDescripcion()
                 def descuento   = formLinea.getTxtDescuento()
-                Herramientas.verificaCampo(formLinea.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-                Herramientas.verificaCampo(formLinea.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
+                Herramientas.verificaCampo(formLinea.getTxtDescripcion(),Herramientas.texto,"Descripcion"+Herramientas.error1)
+                Herramientas.verificaCampo(formLinea.getTxtDescuento(),Herramientas.numeroReal,"Descuento"+Herramientas.error3)
                 descuento = descuento as Double
                 try {
                     def serv = Nadesico.conectar()
@@ -141,7 +141,7 @@ class Lineas {
     {
         if(cerrojo(PMA_MODIFICARLINEA)){
             Herramientas.verificaCampos{
-                Herramientas.verificaCampo(formLinea.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
+                Herramientas.verificaCampo(formLinea.getTxtDescripcion(),/^([a-zA-Z0-9_\-\s\&\ñ\Ñ\+áéíóúüàèìòùÁÉÍÓÚÀÈÌÒÙÜ\\\%\.\/\"\'\,\;\.\:\#\@]+)$/,"Descripcion solo puede incluir numeros, letras, espacios, acentos, diagonales, coma, comillas y los siguientes caracteres . _ - + % ; : # @ & ")
                 Herramientas.verificaCampo(formLinea.getTxtDescuento(),/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modLinea(formLinea.getTxtIDLinea(),formLinea.getTxtDescripcion(),formLinea.getTxtDescuento()))

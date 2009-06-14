@@ -13,7 +13,7 @@ TEL. 01 225 3154202 Y 3154203
 ${fecha}
 
           NAHUM MEDINA GARCIA
-       C O R T E   D E   C A J A
+       ${leyenda}
 
 Caja  : ${descripcion}
 
@@ -31,8 +31,9 @@ ${n_ventas} Tickets
                      ---------
                      ${String.format("%9.02f", impuestos+devoluciones+subtotal+descuentos)}
  - Retiros           ${String.format("%9.02f", retiros)}
- + Ingresos          ${String.format("%9.02f", ingresos)}
+ + Depositos         ${String.format("%9.02f", depositos)}
                      ---------
                      ${String.format("%9.02f", total)}
+
 ${""+ (27 as char)+(100 as char)+(8 as char)}
 ${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}

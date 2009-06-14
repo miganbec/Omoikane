@@ -147,6 +147,7 @@
                 </Column>
               </TableColumnModel>
             </Property>
+            <Property name="focusable" type="boolean" value="false"/>
             <Property name="rowHeight" type="int" value="12"/>
             <Property name="showHorizontalLines" type="boolean" value="false"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -202,9 +203,6 @@
           <Image iconType="3" name="/64x64/back.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cerrar [Esc]"/>
-        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="txtBusqueda"/>
-        </Property>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -217,9 +215,6 @@
           <Image iconType="3" name="/32x32/page_remove.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar [Supr]"/>
-        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="btnCerrar"/>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>

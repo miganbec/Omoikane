@@ -22,7 +22,6 @@ import omoikane.sistema.*;
 
 
 /**
- *
  * @author Adan
  */
 
@@ -56,9 +55,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
     }
 
         public void actionPerformed(ActionEvent ae)
-    {
-        System.out.println("acción");
-    }
+    {System.out.println("acción");}
 
     /** Creates new form CatalogoAlmacenes */
     public CatalogoAlmacenes() {
@@ -70,13 +67,6 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         this.generarFondo(this);
         this.btnAceptar.setVisible(false);
         Herramientas.centrarVentana(this);
-        //Instrucciones para el funcionamiento de las teclas de navegación
-        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
-        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
     }
 
     public void setModoDialogo()
@@ -104,7 +94,6 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaAlmacenes = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         btnDetalles = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
@@ -114,32 +103,31 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         btnCerrar = new javax.swing.JButton();
 
         setTitle("Catálogo de Almacenes");
-
-        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBusquedaActionPerformed(evt);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
             }
         });
+
+        txtBusqueda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyTyped(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Buscar [F3]:");
+        jLabel1.setText("Buscar :");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 52)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Catálogo de Almacenes");
 
+        tablaAlmacenes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tablaAlmacenes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -156,24 +144,15 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaAlmacenes.setFocusable(false);
         tablaAlmacenes.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(tablaAlmacenes);
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
+        btnAceptar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar [Enter]");
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
-            }
-        });
 
+        btnDetalles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnDetalles.setText("Detalles [F4]");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +161,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_add.png"))); // NOI18N
         btnNuevo.setText("Nuevo [F5]");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -190,6 +170,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/blog_post_edit.png"))); // NOI18N
         btnModificar.setText("Modificar [F6]");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +179,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
         btnEliminar.setText("Eliminar [Supr]");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,6 +188,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
+        btnImprimir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
         btnImprimir.setText("Imprimir [F7]");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +197,7 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/back.png"))); // NOI18N
         btnCerrar.setText("Cerrar [Esc]");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -229,13 +213,11 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -243,14 +225,14 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -264,10 +246,9 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -282,19 +263,10 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        resetTable();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
         // TODO add your handling code here:
         preBuscar();
     }//GEN-LAST:event_txtBusquedaKeyTyped
-
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
         // TODO add your handling code here:
@@ -337,10 +309,9 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
             this.tablaAlmacenes.setRowSelectionInterval(antFila, antFila);
             this.tablaAlmacenes.scrollRectToVisible(tablaAlmacenes.getCellRect(antFila, 1, true));
         }
+
         if(evt.getKeyCode() == evt.VK_DELETE)
-        {
-            this.btnEliminar.doClick();
-        }
+        {this.btnEliminar.doClick();}
 
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
@@ -353,7 +324,8 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         } else {
             id = (Integer)this.tablaAlmacenes.getValueAt(sel, 0);
             //Lanzar ventana y agregarle un listener
-            omoikane.principal.Almacenes.lanzarDetallesAlmacen(id);
+            JInternalFrame wnd = (JInternalFrame) omoikane.principal.Almacenes.lanzarDetallesAlmacen(id);
+            wnd.addInternalFrameListener(iframeAdapter);
         }
 }//GEN-LAST:event_btnDetallesActionPerformed
 
@@ -408,14 +380,10 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         }
 }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
-      
-    }//GEN-LAST:event_txtBusquedaKeyReleased
-
-    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBusquedaActionPerformed
+        this.txtBusqueda.requestFocusInWindow();
+    }//GEN-LAST:event_formFocusGained
 
 
 
@@ -424,20 +392,13 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
         if(timerBusqueda != null && timerBusqueda.isAlive()) { timerBusqueda.cancelar(); }
         this.timerBusqueda = new TimerBusqueda(this);
         timerBusqueda.start();
-
     }
 
     public void buscar()
-    {
-       resetTable();
-    }
-
-
+    {resetTable();}
 
     public JTable getTablaAlmacenes()
-    {
-        return tablaAlmacenes;
-    }
+    {return tablaAlmacenes;}
 
     public void resetTable()
     {
@@ -451,20 +412,18 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
     {
       Graphics2D g2d = (Graphics2D) g;
       g2d.drawImage(fondo, 0, 0, null);
-
     }
+
     public void generarFondo(Component componente)
     {
       Rectangle areaDibujo = this.getBounds();
       BufferedImage tmp;
       GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
       g2d.setColor(new Color(55,55,255,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -475,7 +434,6 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -484,8 +442,5 @@ public class CatalogoAlmacenes extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()
-    {
-        public void internalFrameClosed(InternalFrameEvent e) { resetTable(); }
-
-    };
+    {public void internalFrameClosed(InternalFrameEvent e) { resetTable();requestFocusInWindow(); }};
 }

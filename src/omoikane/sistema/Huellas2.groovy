@@ -74,9 +74,9 @@ public class Huellas2 extends MiniLeerHuella
         HPC.start();
         
     }
-    protected void finalize() {
-        fingerUtil.destroy();
-    }
+    //protected void finalize() {
+    //    fingerUtil.destroy();
+    //}
     public void cerrar()
     {
         synchronized(focoCerrar)

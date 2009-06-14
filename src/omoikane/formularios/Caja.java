@@ -436,7 +436,7 @@ public class Caja extends javax.swing.JInternalFrame {
 
     private void btnRetencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetencionActionPerformed
         // TODO add your handling code here:
-                omoikane.principal.Caja.lanzar();
+                //omoikane.principal.Caja.lanzar();
     }//GEN-LAST:event_btnRetencionActionPerformed
 
     private void btnPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPausarActionPerformed

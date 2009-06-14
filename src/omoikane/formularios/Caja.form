@@ -310,8 +310,8 @@
                   <Component id="jPanel6" min="-2" pref="58" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnRetencion" pref="33" max="32767" attributes="1"/>
-                      <Component id="btnPausar" alignment="0" max="32767" attributes="1"/>
+                      <Component id="btnRetencion" pref="35" max="32767" attributes="1"/>
+                      <Component id="btnPausar" alignment="0" pref="35" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               </Group>

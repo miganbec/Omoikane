@@ -73,6 +73,12 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        txtRetiro = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtDeposito = new javax.swing.JTextField();
+        txtEfectivo = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
 
         setTitle("Corte de Caja");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,7 +94,7 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 80, -1));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 80, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Corte:");
@@ -121,13 +127,13 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Hasta:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
 
         txtNumeroVenta.setEditable(false);
         getContentPane().add(txtNumeroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 260, -1));
 
         txtHasta.setEditable(false);
-        getContentPane().add(txtHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 260, 20));
+        getContentPane().add(txtHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 260, 20));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ID Almacen:");
@@ -150,10 +156,10 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("total");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, 20));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, 20));
 
         txtTotal.setEditable(false);
-        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 260, -1));
+        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 260, -1));
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Descuento:");
@@ -163,12 +169,12 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
         getContentPane().add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 260, -1));
 
         txtDesde.setEditable(false);
-        getContentPane().add(txtDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 260, -1));
+        getContentPane().add(txtDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 260, -1));
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Desde:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, 20));
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 10, 10));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, 20));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 10, 10));
 
         txtSubtotal.setEditable(false);
         getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 260, -1));
@@ -179,7 +185,28 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, -1));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, -1, -1));
+
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Retiro:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, 20));
+
+        txtRetiro.setEditable(false);
+        getContentPane().add(txtRetiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 260, -1));
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Deposito:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, 20));
+
+        txtDeposito.setEditable(false);
+        getContentPane().add(txtDeposito, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 260, -1));
+
+        txtEfectivo.setEditable(false);
+        getContentPane().add(txtEfectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 260, -1));
+
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Efectivo en caja:");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +232,9 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -213,8 +243,10 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtDeposito;
     private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtDesde;
+    private javax.swing.JTextField txtEfectivo;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHasta;
     public javax.swing.JTextField txtIDAlmacen;
@@ -222,6 +254,7 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtIDCorte;
     private javax.swing.JTextField txtImpuestos;
     private javax.swing.JTextField txtNumeroVenta;
+    private javax.swing.JTextField txtRetiro;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
@@ -237,6 +270,9 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
     public String getTxtImpuesto()   { return this.txtImpuestos.getText(); }
     public String getTxtNumeroVenta()   { return this.txtNumeroVenta.getText(); }
     public String getTxtSubtotal()   { return this.txtSubtotal.getText(); }
+    public String getTxtRetiro()   { return this.txtRetiro.getText(); }
+    public String getTxtDeposito()   { return this.txtDeposito.getText(); }
+    public String getTxtEfectivo()   { return this.txtEfectivo.getText(); }
     public String getTxtTotal()   { return this.txtTotal.getText(); }
 
     public void setTxtDescuento     (String txt)     { txtDescuento.setText(txt); }
@@ -249,6 +285,9 @@ public class CorteCajaDetalles extends javax.swing.JInternalFrame {
     public void setTxtImpuesto      (String txt)     { txtImpuestos.setText(txt); }
     public void setTxtNumeroVenta   (String txt)     { txtNumeroVenta.setText(txt); }
     public void setTxtSubtotal      (String txt)     { txtSubtotal.setText(txt); }
+    public void setTxtRetiro        (String txt)     { txtRetiro.setText(txt); }
+    public void setTxtDeposito      (String txt)     { txtDeposito.setText(txt); }
+    public void setTxtEfectivo      (String txt)     { txtEfectivo.setText(txt); }
     public void setTxtTotal         (String txt)     { txtTotal.setText(txt); }
 
     public void paintComponent(Graphics g)

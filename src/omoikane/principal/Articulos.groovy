@@ -36,7 +36,7 @@ public class Articulos
             def cat = (new omoikane.formularios.CatalogoArticulos())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.objetosAll(cat)
+            Herramientas.panelCatalogo(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.14,0.1,0.1,0.4,0.06,0.1,0.1]);
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
@@ -102,7 +102,7 @@ public class Articulos
             def formArticulo = new omoikane.formularios.Articulo()
             formArticulo.setVisible(true)
             escritorio.getPanelEscritorio().add(formArticulo)
-            Herramientas.funcionesObjetos(formArticulo)
+            Herramientas.panelFormulario(formArticulo)
             formArticulo.toFront()
             try { formArticulo.setSelected(true) 
             def art         = Nadesico.conectar().getArticulo(ID,IDAlmacen)
@@ -164,15 +164,15 @@ public class Articulos
                 def descuento     = formArticulo.getTxtDesctoPorcentaje().text
                 def utilidad      = formArticulo.getTxtUtilidadPorc().text
                 def existencias   = formArticulo.getTxtExistencias()
-                Herramientas.verificaCampo(codigo,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Codigo sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(IDLinea,/^([0-9]+)$/,"IDLinea sólo puede incluír números enteros.")
-                Herramientas.verificaCampo(IDGrupo,/^([0-9]+)$/,"IDGrupo sólo puede incluír números enteros.")
-                Herramientas.verificaCampo(descripcion,/^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-                Herramientas.verificaCampo(impuestos,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Impuestos sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(costo,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Costo sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(descuento,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(utilidad,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Utilidad sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(existencias,/^([0-9]*[\.]{0,1}[0-9]+)$/,"Existencias sólo puede incluír números reales positivos")
+                Herramientas.verificaCampo(codigo,Herramientas.texto,"codigo"+Herramientas.error1)
+                Herramientas.verificaCampo(IDLinea,Herramientas.numero,"ID linea"+Herramientas.error2)
+                Herramientas.verificaCampo(IDGrupo,Herramientas.numero,"ID Grupo"+Herramientas.error2)
+                Herramientas.verificaCampo(descripcion,Herramientas.texto,"descripcion"+Herramientas.error1)
+                Herramientas.verificaCampo(impuestos,Herramientas.numeroReal,"impuestos"+Herramientas.error3)
+                Herramientas.verificaCampo(costo,Herramientas.numeroReal,"costos"+Herramientas.error3)
+                Herramientas.verificaCampo(descuento,Herramientas.numeroReal,"descuento"+Herramientas.error3)
+                Herramientas.verificaCampo(utilidad,Herramientas.numeroReal,"utilidad"+Herramientas.error3)
+                Herramientas.verificaCampo(existencias,Herramientas.numeroReal,"existencias"+Herramientas.error3)
                 IDLinea       = java.lang.Integer.valueOf(IDLinea)
                 IDGrupo       = java.lang.Integer.valueOf(IDGrupo)
                 impuestos     = impuestos as Double
@@ -197,7 +197,7 @@ public class Articulos
         if(cerrojo(PMA_MODIFICARARTICULO)){
             def form = new omoikane.formularios.Articulo()
             form.setVisible(true)
-            Herramientas.funcionesObjetos(form)
+            Herramientas.panelFormulario(form)
             escritorio.getPanelEscritorio().add(form)
             form.toFront()
             SwingBuilder.build {
@@ -226,15 +226,15 @@ public class Articulos
             def c = [cod:f.getTxtCodigo(), lin:f.getTxtIDLinea(),gru:f.getTxtIDGrupo(), des:f.getTxtDescripcion(), imp:f.getTxtImpuestosPorc().text, cos:f.getTxtCosto(),
             dto:f.getTxtDesctoPorcentaje().text, uti:f.getTxtUtilidadPorc().text, art:f.getTxtIDArticulo(), uni:f.getTxtUnidad()]
             Herramientas.verificaCampos {
-                Herramientas.verificaCampo(c.cod, /^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+]+)$/,"Codigo sólo puede incluír números, letras, espacios, *, -,_ y +.")
-                Herramientas.verificaCampo(c.lin, /^([0-9]+)$/,"ID Linea sólo puede incluír números enteros.")
-                Herramientas.verificaCampo(c.gru, /^([0-9]+)$/,"ID Grupo sólo puede incluír números enteros.")
-                Herramientas.verificaCampo(c.des, /^([a-zA-Z0-9_\-\s\ñ\Ñ\*\+áéíóúü]+)$/,"Descripcion sólo puede incluír números, letras, espacios, á, é, í, ó, ú, ü, _, -, * y +.")
-                Herramientas.verificaCampo(c.imp, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Impuestos sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(c.cos, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Costo sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(c.dto, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Descuento sólo puede incluír números reales positivos")
-                Herramientas.verificaCampo(c.uti, /^([0-9]*[\.]{0,1}[0-9]+)$/,"Utilidad sólo puede incluír números reales positivos")
-                def serv = Nadesico.conectar() 
+                Herramientas.verificaCampo(c.cod,Herramientas.texto,"codigo"+Herramientas.error1)
+                Herramientas.verificaCampo(c.lin,Herramientas.numero,"ID linea"+Herramientas.error2)
+                Herramientas.verificaCampo(c.gru,Herramientas.numero,"ID Grupo"+Herramientas.error2)
+                Herramientas.verificaCampo(c.des,Herramientas.texto,"descripcion"+Herramientas.error1)
+                Herramientas.verificaCampo(c.imp,Herramientas.numeroReal,"impuestos"+Herramientas.error3)
+                Herramientas.verificaCampo(c.cos,Herramientas.numeroReal,"costos"+Herramientas.error3)
+                Herramientas.verificaCampo(c.dto,Herramientas.numeroReal,"descuento"+Herramientas.error3)
+                Herramientas.verificaCampo(c.uti,Herramientas.numeroReal,"utilidad"+Herramientas.error3)
+                def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modArticulo(IDAlmacen, c.art, c.cod, c.lin,c.gru, c.des, c.uni, c.imp, c.cos, c.uti, c.dto))
                 serv.desconectar()
                 PuertoNadesico.workIn() { it.CacheArticulos.actualizar(c.art) }

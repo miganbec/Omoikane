@@ -39,6 +39,7 @@ class Comprobantes {
         try {
             data         = serv.getCorteWhere(" cortes.id_corte=$ID")
             data.caja    = serv.getCaja(data.id_caja)
+            data.leyenda= "C O R T E   D E   C A J A"
             generado     = generarCorte()
         } catch(e) {
             throw e
@@ -53,6 +54,7 @@ class Comprobantes {
             data   = serv.getSumaCorteSucursal(IDAlmacen, IDCorte)
             data   += serv.getCorteSucursal(IDAlmacen, IDCorte)
             data.descripcion = "CORTE DEL DIA"
+            data.leyenda= "C O R T E   D E   S U C U R S A L"
             generado = generarCorteSucursal()
         } catch(e) {
             throw e
@@ -111,8 +113,6 @@ class Comprobantes {
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
         binding.devoluciones = 0.0f
-        binding.ingresos = 0.0f
-        binding.retiros = 0.0f
 
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
@@ -132,8 +132,6 @@ class Comprobantes {
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
         binding.devoluciones = 0.0f
-        binding.ingresos = 0.0f
-        binding.retiros = 0.0f
 
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
