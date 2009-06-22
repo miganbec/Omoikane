@@ -46,27 +46,30 @@ class ComMan implements SerialPortEventListener {
 
             if (m_iStatusScale != SCALE_READY) {
                 try {
-                    wait(1000);
+                    wait(100);
                 } catch (InterruptedException e) {
                 }
                 if (m_iStatusScale != SCALE_READY) {
                     m_iStatusScale = SCALE_READY;
                 }
             }
-
+            buffer = ""
             write(command.getBytes()); // $
             flush();
 
             try {
-                wait(500);
+                while(buffer.size() < 13) { wait(100); println "esperando en método pesar (${buffer.size()})" }
+                //wait(500)
             } catch (InterruptedException e) {
             }
 
             if (m_iStatusScale == SCALE_READY) {
-                //println "buffer->"+buffer
-                def retorno = (buffer =~ /[ ]{0,6}([0-9]*?.[0-9]*?)[ ]([A-Z0-9]*)/)
+                println "buffer->"+buffer
+                
+                def retorno = (buffer =~ /[ ]{0,6}([0-9]*?.[0-9]*?)[^0-9\.]([A-Z0-9]*)/)
+                
 
-                //println "2->"+retorno[0]
+                println "2->"+retorno
                 return retorno[0][1]
             } else {
                 m_iStatusScale = SCALE_READY;
@@ -148,12 +151,20 @@ class ComMan implements SerialPortEventListener {
             case SerialPortEvent.OUTPUT_BUFFER_EMPTY:
                 break;
             case SerialPortEvent.DATA_AVAILABLE:
+                synchronized(this) {
                 try {
                     tempBuffer = ""
-                    for (int i = 0; i < 13 && m_in.available() > 0; i++) {
+                    println "borrando buffer"
+
+                    for (int i = 0; i < 13; i++) {
+                        for(int j = 0; m_in.available() == 0 && j < 10; j++) {
+                            try { wait(100); println "esperando en el evento..." } catch (InterruptedException exc) { }
+                        }
+                        //println "$i .. "
                         //println "Dat Disponible"
                         int b = m_in.read();
-                        //println "leído [$i] -> $b "
+                        //println "leído: $b"
+                        println "leído [$i] -> $b "
                         /*
                         if (b == ((miniDriver.stopChar[0] as int) as char)) { // CR ASCII
                             // Fin de lectura
@@ -171,14 +182,19 @@ class ComMan implements SerialPortEventListener {
                             }
                         }
                         */
-                        synchronized(this) {
+                        //*******synchronized(this) {
                             tempBuffer += (b as char)
-                        }
+                        //*******}
                     }
+                    println ("dat dispo: ${m_in.available()}")
                     m_in.read()
+                    println "asignando tempbuffer a buffer"
                     buffer = tempBuffer
+
                 } catch (IOException eIO) { Dialogos.error("Excepción al pesar${eIO.getMessage()}", eIO) }
+                }
                 break;
+
         }
     }
 
