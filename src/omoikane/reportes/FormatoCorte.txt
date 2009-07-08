@@ -17,7 +17,7 @@ ${fecha}
 
 Caja  : ${descripcion}
 
-${dia} de
+${String.format("%s", dia[0].toUpperCase()+dia[1..-1])} de
 ${desde} a ${hasta}
 ${n_ventas} Tickets
 

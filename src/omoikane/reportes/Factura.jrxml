@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="505" pageHeight="252" columnWidth="505" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="501" pageHeight="283" columnWidth="501" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<subDataset name="dataset1"/>
 	<parameter name="IDMov" class="java.lang.String">
-		<defaultValueExpression><![CDATA["108"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -14,7 +14,8 @@
      ventas_detalles.`id_caja` AS ventas_detalles_id_caja,
      ventas_detalles.`precio` AS ventas_detalles_precio,
      ventas_detalles.`cantidad` AS ventas_detalles_cantidad,
-     ventas_detalles.`total` AS ventas_detalles_total
+     ventas_detalles.`total` AS ventas_detalles_total,
+     articulos.`impuestos` AS articulos_impuestos
 FROM
      `ventas_detalles` ventas_detalles INNER JOIN `articulos` articulos ON ventas_detalles.`id_articulo` = articulos.`id_articulo`
      INNER JOIN `lineas` lineas ON articulos.`id_linea` = lineas.`id_linea`
@@ -49,6 +50,15 @@ WHERE
 	<field name="ventas_detalles_total" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="articulos_impuestos" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="suma iva" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[( $F{articulos_impuestos}.doubleValue() == 0.0d ? $F{ventas_detalles_total} : 0.0 )]]></variableExpression>
+	</variable>
+	<variable name="suma no iva" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[( $F{articulos_impuestos}.doubleValue() == 0.0d ? 0.0 : $F{ventas_detalles_total} )]]></variableExpression>
+	</variable>
 	<background>
 		<band/>
 	</background>
@@ -59,48 +69,50 @@ WHERE
 		<band/>
 	</pageHeader>
 	<detail>
-		<band height="23">
-			<textField hyperlinkType="None">
-				<reportElement x="45" y="0" width="207" height="20"/>
+		<band height="12">
+			<textField>
+				<reportElement x="45" y="0" width="207" height="12">
+					<propertyExpression name="net.sf.jasperreports.print.keep.full.text"><![CDATA[$F{almacenes_descripcion}]]></propertyExpression>
+				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font size="10"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="252" y="0" width="57" height="20"/>
+			<textField pattern="">
+				<reportElement x="252" y="0" width="57" height="12"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="10"/>
+					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_precio}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="0" y="0" width="35" height="20"/>
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="35" height="12"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="10"/>
+					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_cantidad}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="422" y="0" width="83" height="20"/>
+			<textField>
+				<reportElement x="422" y="0" width="72" height="12"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="10"/>
+					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="309" y="0" width="64" height="20"/>
+			<textField>
+				<reportElement x="309" y="0" width="54" height="12"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="10"/>
+					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{articulos_impuestos}.doubleValue() == 0.0d ? $F{ventas_detalles_total}.toString() : "0.00" )]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="373" y="0" width="49" height="20"/>
+			<textField pattern="">
+				<reportElement positionType="Float" x="363" y="0" width="59" height="12"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="10"/>
+					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{articulos_impuestos}.doubleValue() == 0.0d ? "0.00" : $F{ventas_detalles_total}.toString() )]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -108,9 +120,6 @@ WHERE
 		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band height="2"/>
-	</pageFooter>
-	<summary>
 		<band/>
-	</summary>
+	</pageFooter>
 </jasperReport>

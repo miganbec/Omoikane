@@ -18,6 +18,7 @@ import java.awt.event.*;
 import groovy.swing.*
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*;
+import omoikane.sistema.n2t.*;
 
 /**
  *
@@ -63,6 +64,7 @@ class Ventas {
             Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F2    , "nada" ) {}
             form.IDSeleccionado=ID
             Herramientas.iconificable(form)
             form.toFront()
@@ -77,6 +79,13 @@ class Ventas {
             form.setAlmacen(mov.nombreAlmacen as String)
             form.setFecha(mov.fecha_hora as String)
             form.setTablaPrincipal(mov.tabMatriz as List)
+            def n = new omoikane.sistema.n2t()
+            form.letra = n.aCifra(mov.total)
+            SwingBuilder.build {
+            //Al presionar F2: (lanzarCatalogoDialogo) de cliente
+            form.getFactura().keyPressed = { if(it.keyCode == it.VK_F2) Thread.start { form.getFactura().setText(Clientes.lanzarDialogoCatalogo()); form.getFactura().requestFocus() } }
+        }
+
             return form
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -93,9 +102,9 @@ class Ventas {
         reporte.lanzarPreview()
     }
 
-    static def lanzarImprimirFactura(form)
+    static def lanzarImprimirFactura(form,numeroletra)
     {
-        def reporte = new Reporte('omoikane/reportes/FacturaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",IDVenta:lastMovID as String]);
+        def reporte = new Reporte('omoikane/reportes/FacturaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",IDVenta:lastMovID as String,NumLetra:numeroletra,cliente:form.getCliente()]);
         reporte.lanzarPreview()
     }
 

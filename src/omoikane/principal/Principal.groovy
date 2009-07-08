@@ -28,7 +28,7 @@ public class Principal {
         public static boolean         fondoBlur
         public static String          puertoImpresion
         public static boolean         impresoraActiva
-        public static int             cajon
+        public static String          puertoBascula
         public static String          url
         public static ShutdownHandler shutdownHandler
         public static def             toFinalizeTracker = [:]
@@ -94,7 +94,7 @@ public class Principal {
             IDCaja          = Integer.valueOf(config.idCaja[0].text())
             puertoImpresion = String.valueOf(config.puertoImpresion[0].text())
             impresoraActiva = Boolean.valueOf(config.impresoraActiva[0].text())
-            cajon           = Integer.valueOf(config.cajon[0].text())
+            puertoBascula   = String.valueOf(config.puertoBascula[0].text())
             url             = String.valueOf(config.URL[0].text())
         }
 

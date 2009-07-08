@@ -31,7 +31,7 @@ class Caja {
     static def queryCaja  = ""
     static def escritorio = omoikane.principal.Principal.escritorio
     static def comMan     = new ComMan()
-    static def miniDriver = [port: "COM1", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
+    static def miniDriver = [port:omoikane.principal.Principal.puertoBascula, baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
 
     static def abrirCaja(ID = -1)
     {

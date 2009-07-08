@@ -9,11 +9,15 @@ NAHUM MEDINA GARCIA        MEGN560328MQ0
 ${caja.descripcion}  ${cajero}
 ${fecha}  ${hora}   Folio: ${folio}
 
-<% detalles.each { d -> %>${String.format("%4.4s @ %24.24s%9.02f", d.cantidad, d.descripcion, d.total)}
+<% detalles.each { d -> %>${String.format("%4.4s @ %24.24s%,9.02f", d.cantidad, d.descripcion, d.total)}
 <% } %>
-                        Total: ${String.format("%9.02f", total)}
-           Descuento incluído: ${String.format("%9.02f", descuento)}
-                 IVA incluído: ${String.format("%9.02f", impuestos)}
+                       
+           Descuento incluído: ${String.format("%,9.02f", descuento)}
+                 IVA incluído: ${String.format("%,9.02f", impuestos)}
+                     Efectivo: ${String.format("%,9.02f", efectivo)}
+                        Total: ${String.format("%,9.02f", total)}
+
+                       Cambio: ${String.format("%,9.02f", cambio)}
 
          Gracias por su compra!
 

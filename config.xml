@@ -5,17 +5,18 @@
     Created on : 15 de noviembre de 2008, 07:29 PM
     Author     : Usuario.. no. Octavio Ruiz
     Description:
+	puerto serial y paralelo  linux : /dev/ttyS0 COM1   /dev/lp0 LPT1:
         Purpose of the document follows. Itself explained
 -->
 
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <idAlmacen>1</idAlmacen>
-    <idCaja>1</idCaja>
-    <puertoImpresion>LPT1</puertoImpresion>
-    <URLServidor>http://nadesico:5542</URLServidor>
-    <URL>jdbc:mysql://nadesico/omoikane</URL>
+    <idCaja>0</idCaja>
+    <puertoImpresion>LPT1:</puertoImpresion>
+    <URLServidor>http://New-eden:5542</URLServidor>
+    <URL>jdbc:mysql://New-eden/omoikane</URL>
     <fondoBlur>false</fondoBlur>
-    <impresoraActiva>true</impresoraActiva>
-    <cajon>0</cajon>
+    <impresoraActiva>false</impresoraActiva>
+    <puertoBascula>COM1</puertoBascula>
 </document>

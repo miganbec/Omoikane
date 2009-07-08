@@ -5,13 +5,13 @@ NAHUM MEDINA GARCIA        MEGN560328MQ0
   HEROES DE TLAPACOYAN 207 COL CENTRO
        TLAPACOYAN, VER. CP 93650
  - - - - - - - - - - - - - - - - - - -
-${tipo}                         ${caja}
+${String.format("%s", tipo[0].toUpperCase()+tipo[1..-1])}  ${caja}
 Cajero       : ${cajero}
 Autorizacion : ${usuario}
 
 ${fecha}  ${hora}   Folio: ${folio}
 
-Total: ${String.format("%9.02f", importe)}
+Total: ${String.format("%,9.02f", importe)}
 
 ${""+ (27 as char)+(100 as char)+(8 as char)}
 ${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}

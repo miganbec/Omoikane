@@ -16,11 +16,13 @@ import com.griaule.grfingerjava.*;
 public class Herramientas
 {
         static def texto      = /^([a-zA-Z0-9_\-\s\&\ñ\Ñ\+áéíóúüàèìòùÁÉÍÓÚÀÈÌÒÙÜ\\\%\.\/\"\'\,\;\.\:\#\@]+)$/
+        static def textoVacio = /^([a-zA-Z0-9_\-\s\&\ñ\Ñ\+áéíóúüàèìòùÁÉÍÓÚÀÈÌÒÙÜ\\\%\.\/\"\'\,\;\.\:\#\@]*)$/
         static def numero     = /^([0-9]+)$/
         static def numeroReal = /^([0-9]*[\.]{0,1}[0-9]+)$/
-        static def error1         = " sólo puede incluir numeros, letras, espacios, acentos, diagonales, coma, comillas y los siguientes caracteres . _ - + % ; : # @ & "
-        static def error2         = " sólo puede incluír números."
-        static def error3         = " sólo puede incluír números reales positivos"
+        static def error1         = " No puede estar vacio y sólo puede incluir numeros, letras, espacios, acentos, diagonales, coma, comillas y los siguientes caracteres . _ - + % ; : # @ & "
+        static def error2         = " No puede estar vacio y sólo puede incluír números."
+        static def error3         = " No puede estar vacio y sólo puede incluír números reales positivos"
+        static def error4         = " sólo puede incluir numeros, letras, espacios, acentos, diagonales, coma, comillas y los siguientes caracteres . _ - + % ; : # @ & "
 
     def static void setColumnsWidth(tabla, anchos) {
         tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -197,13 +199,13 @@ public class Herramientas
            child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(110,110,255));
                 evt.getComponent().setForeground(new Color(255,255,255));
-                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,15));//arial 15
+                evt.getComponent().setFont(new Font("TAHOMA",Font.BOLD,12));//arial 15
             }
 
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);
                 evt.getComponent().setForeground(new Color(0,0,0));
-                evt.getComponent().setFont(new Font("ARIAL",Font.PLAIN,14));//arial 14
+                evt.getComponent().setFont(new Font("TAHOMA",Font.PLAIN,11));//arial 14
             }
 
             if(child instanceof JTextField){
@@ -226,13 +228,13 @@ public class Herramientas
             child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(110,110,255));
                 evt.getComponent().setForeground(new Color(255,255,255));
-                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,15));
+                evt.getComponent().setFont(new Font("TAHOMA",Font.BOLD,12));
             }
 
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);
                 evt.getComponent().setForeground(new Color(0,0,0));
-                evt.getComponent().setFont(new Font("ARIAL",Font.PLAIN,14));
+                evt.getComponent().setFont(new Font("TAHOMA",Font.PLAIN,11));
             }
 
             if(child instanceof JButton){

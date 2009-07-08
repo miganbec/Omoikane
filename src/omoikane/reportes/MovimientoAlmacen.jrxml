@@ -77,31 +77,33 @@ WHERE
 	</columnHeader>
 	<detail>
 		<band height="51">
-			<textField hyperlinkType="None">
+			<textField>
 				<reportElement x="214" y="0" width="241" height="50"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
+			<textField>
 				<reportElement x="455" y="0" width="78" height="50"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{movimientos_almacen_detalles_cantidad}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
+			<textField>
 				<reportElement x="533" y="0" width="62" height="50"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{movimientos_almacen_detalles_costo}]]></textFieldExpression>
 			</textField>
-			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle" hyperlinkType="None">
-				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="214" height="50"/>
-				<imageExpression class="net.sf.jasperreports.engine.JRRenderable"><![CDATA[new net.sf.jasperreports.barcode.BarbecueRenderer(net.sourceforge.barbecue.BarcodeFactory.createCode128($F{articulos_codigo}))]]></imageExpression>
-			</image>
+			<componentElement>
+				<reportElement x="56" y="1" width="110" height="50"/>
+				<jr:EAN13 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{articulos_codigo}]]></jr:codeExpression>
+				</jr:EAN13>
+			</componentElement>
 		</band>
 	</detail>
 	<columnFooter>

@@ -324,6 +324,7 @@ public class n2t {
 		num_letras = decmillon(numero);
 		return num_letras;
 	}
+
         public String aCifra(double numero) {
             Integer enteros   = (int) Math.floor(numero);
             

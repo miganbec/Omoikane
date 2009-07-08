@@ -52,7 +52,7 @@ class Clientes {
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
         cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
         def retorno
-        cat.btnAceptar.actionPerformed = { def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick(); }
+        cat.btnAceptar.actionPerformed = { def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), -1 ) as String; cat.btnCerrar.doClick(); }
         synchronized(foco){foco.wait()}
         retorno
     }
@@ -86,7 +86,7 @@ class Clientes {
             formCliente.toFront()
             Herramientas.panelFormulario(formCliente)
             try { formCliente.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles clientes", Herramientas.getStackTraceString(e)) }
-            def art         = Nadesico.conectar().getCliente(ID)
+            def art = Nadesico.conectar().getCliente(ID)
             formCliente.setTxtIDCliente     art.id_cliente    as String
             formCliente.setTxtRFC           art.RFC           as String
             formCliente.setTxtDireccion     art.direccion     as String
@@ -115,10 +115,10 @@ class Clientes {
                 def CP              = formCliente.getTxtCP()
                 Herramientas.verificaCampo(RFC,Herramientas.texto,"RFC"+Herramientas.error1)
                 Herramientas.verificaCampo(direccion,Herramientas.texto,"Dirreccion"+Herramientas.error1)
-                Herramientas.verificaCampo(telefono,Herramientas.texto,"Telefono"+Herramientas.error1)
+                Herramientas.verificaCampo(telefono,Herramientas.textoVacio,"Telefono"+Herramientas.error4)
                 Herramientas.verificaCampo(RazonSocial,Herramientas.texto,"Razon Social"+Herramientas.error1)
                 Herramientas.verificaCampo(Saldo,Herramientas.numeroReal,"Saldo"+Herramientas.error3)
-                Herramientas.verificaCampo(CP,Herramientas.numero,"CP"+Herramientas.error2)
+                Herramientas.verificaCampo(CP,Herramientas.textoVacio,"CP"+Herramientas.error4)
                 Herramientas.verificaCampo(descuento,Herramientas.numeroReal,"Descuento"+Herramientas.error3)
                 descuento     = descuento as Double
                 Saldo         = Saldo as Double
@@ -170,10 +170,10 @@ class Clientes {
                 def CP              = formCliente.getTxtCP()
                 Herramientas.verificaCampo(RFC,Herramientas.texto,"RFC"+Herramientas.error1)
                 Herramientas.verificaCampo(direccion,Herramientas.texto,"Dirreccion"+Herramientas.error1)
-                Herramientas.verificaCampo(telefono,Herramientas.texto,"Telefono"+Herramientas.error1)
+                Herramientas.verificaCampo(telefono,Herramientas.textoVacio,"Telefono"+Herramientas.error4)
                 Herramientas.verificaCampo(RazonSocial,Herramientas.texto,"Razon Social"+Herramientas.error1)
                 Herramientas.verificaCampo(Saldo,Herramientas.numeroReal,"Saldo"+Herramientas.error3)
-                Herramientas.verificaCampo(CP,Herramientas.numero,"CP"+Herramientas.error2)
+                Herramientas.verificaCampo(CP,Herramientas.textoVacio,"CP"+Herramientas.error4)
                 Herramientas.verificaCampo(descuento,Herramientas.numeroReal,"Descuento"+Herramientas.error3)
                 descuento     = descuento as Double
                 Saldo         = Saldo as Double
