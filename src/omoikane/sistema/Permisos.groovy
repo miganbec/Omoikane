@@ -39,6 +39,7 @@ class Permisos {
     static def PMA_DETALLESLINEA    = CAJERO
     static def PMA_MODIFICARLINEA   = SUPERVISOR
     static def PMA_ELIMINARLINEA    = PROPIETARIO
+    static def PMA_DUAL             = PROPIETARIO
 
     static def PMA_ABRIRGRUPO       = CAJERO
     static def PMA_DETALLESGRUPO    = CAJERO

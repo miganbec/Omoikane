@@ -164,6 +164,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
         btnPreferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-sysguard-128x128.png"))); // NOI18N
         btnPreferencias.setText("Preferencias");
+        btnPreferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreferenciasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPreferencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 230, 60));
 
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxy-128x128.png"))); // NOI18N
@@ -319,6 +324,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.btnVender.requestFocusInWindow();
 }//GEN-LAST:event_formFocusGained
+
+    private void btnPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreferenciasActionPerformed
+        // TODO Cambiar esto por preferencias
+        omoikane.principal.LineasDuales.lanzarCatalogo();
+    }//GEN-LAST:event_btnPreferenciasActionPerformed
 
     public void paintComponent(Graphics g)
     {
