@@ -185,6 +185,7 @@ class Caja {
             Herramientas.In2ActionX(form           , KeyEvent.VK_F7    , "cancelaArt") { form.btnCancelaArt.doClick()    }
             Herramientas.In2ActionX(form           , KeyEvent.VK_F11   , "movs"      ) { form.btnMovimientos.doClick()   }
 
+
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario caja", Herramientas.getStackTraceString(e)) }
             form.txtCaptura.requestFocus()
@@ -192,6 +193,9 @@ class Caja {
             form.txtFecha.text = date.get(date.DAY_OF_MONTH) + "-" + (date.get(date.MONTH)+1) + "-" + date.get(date.YEAR)
             form.txtCaja.text= "Caja "+IDCaja
             def serv = Nadesico.conectar()
+
+            def barcodeScan = new BarCodeScanner()
+            barcodeScan.setHandler = { form.txtCaptura.text += it }
 
             def addArtic = { codigo ->
                 try {

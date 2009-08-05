@@ -14,7 +14,7 @@
     <idAlmacen>1</idAlmacen>
     <idCaja>0</idCaja>
     <puertoImpresion>LPT1:</puertoImpresion>
-    <URLServidor>http://New-eden:5542</URLServidor>
+    <URLServidor>http://phesusacer:5542</URLServidor>
     <URL>jdbc:mysql://New-eden/omoikane</URL>
     <fondoBlur>false</fondoBlur>
     <impresoraActiva>false</impresoraActiva>
