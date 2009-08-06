@@ -16,6 +16,8 @@
     <puertoImpresion>LPT1:</puertoImpresion>
     <URLServidor>http://phesusacer:5542</URLServidor>
     <URL>jdbc:mysql://New-eden/omoikane</URL>
+    <ScannerBaudRate>9600</ScannerBaudRate>
+    <ScannerPort>COM1</ScannerPort>
     <fondoBlur>false</fondoBlur>
     <impresoraActiva>false</impresoraActiva>
     <puertoBascula>COM1</puertoBascula>

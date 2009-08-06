@@ -194,8 +194,11 @@ class Caja {
             form.txtCaja.text= "Caja "+IDCaja
             def serv = Nadesico.conectar()
 
-            def barcodeScan = new BarCodeScanner()
-            barcodeScan.setHandler = { form.txtCaptura.text += it }
+            def scanMan = new ScanMan()
+            try {
+                scanMan.connect(Principal.scannerPort, Principal.scannerBaudRate)
+            } catch(Exception ex2) { Dialogos.error(ex2.getMessage(), ex2) }
+            scanMan.setHandler { form.txtCaptura.text += it; (new java.awt.Robot()).keyPress(KeyEvent.VK_ENTER) }
 
             def addArtic = { codigo ->
                 try {
@@ -354,11 +357,13 @@ class Caja {
                     if(omoikane.sistema.Usuarios.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR) || sisUsers.autentifica(sisUsers.SUPERVISOR)) {
                         if(!omoikane.sistema.Usuarios.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
                             form.dispose();
+                            
                             omoikane.principal.Principal.cerrarSesion();
                         }else{
                             form.dispose();
                             ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
                         }
+                        scanMan.disconnect()
                     } else {
                         form.txtCaptura.requestFocusInWindow()
                     }

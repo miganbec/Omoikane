@@ -30,6 +30,8 @@ public class Principal {
         public static boolean         impresoraActiva
         public static String          puertoBascula
         public static String          url
+        public static int             scannerBaudRate
+        public static String          scannerPort
         public static ShutdownHandler shutdownHandler
         public static def             toFinalizeTracker = [:]
 
@@ -96,6 +98,8 @@ public class Principal {
             impresoraActiva = Boolean.valueOf(config.impresoraActiva[0].text())
             puertoBascula   = String.valueOf(config.puertoBascula[0].text())
             url             = String.valueOf(config.URL[0].text())
+            scannerBaudRate = Integer.valueOf(config.ScannerBaudRate[0].text())
+            scannerPort     = String.valueOf(config.ScannerPort[0].text())
         }
 
     static def iniciarSesion(){

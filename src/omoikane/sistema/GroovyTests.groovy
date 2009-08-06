@@ -21,7 +21,9 @@ class GroovyTests {
                 }
             */
             //}
-            def comPort2 = new BarCodeScanner(0)
+        def scanMan = new ScanMan()
+        scanMan.connect("COM1")
+        scanMan.setHandler = { println "Valor recibido: " + it }
 
         }
 }
