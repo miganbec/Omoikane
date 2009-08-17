@@ -1,15 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
 import gnu.io.*
-/**
- *
- * @author SYSTEM
- */
+
 class ComMan implements SerialPortEventListener {
 
     private CommPortIdentifier m_PortIdPrinter;
@@ -138,6 +137,7 @@ class ComMan implements SerialPortEventListener {
 
     public void serialEvent(SerialPortEvent e) {
 
+        /*
         // Determine type of event.
         switch (e.getEventType()) {
             case SerialPortEvent.BI:
@@ -165,27 +165,28 @@ class ComMan implements SerialPortEventListener {
                         int b = m_in.read();
                         //println "leído: $b"
                         println "leído [$i] -> $b "
-                        /*
-                        if (b == ((miniDriver.stopChar[0] as int) as char)) { // CR ASCII
-                            // Fin de lectura
-                            synchronized (this) {
-                                m_iStatusScale = SCALE_READY;
-                                println "scale ready"
-                                buffer = tempBuffer
-                                notifyAll();
-                            }
-                            
-                        } else {
-                            synchronized(this) {
-                            tempBuffer += (b as char)
-                            
-                            }
-                        }
-                        */
+                        
+                        //if (b == ((miniDriver.stopChar[0] as int) as char)) { // CR ASCII
+                        //    // Fin de lectura
+                        //    synchronized (this) {
+                        //        m_iStatusScale = SCALE_READY;
+                        //        println "scale ready"
+                        //        buffer = tempBuffer
+                        //        notifyAll();
+                        //    }
+                        //
+                        //} else {
+                        //    synchronized(this) {
+                        //    tempBuffer += (b as char)
+                        //
+                        //    }
+                        //}
+                        
                         //*******synchronized(this) {
                             tempBuffer += (b as char)
                         //*******}
                     }
+
                     println ("dat dispo: ${m_in.available()}")
                     m_in.read()
                     println "asignando tempbuffer a buffer"
@@ -193,8 +194,40 @@ class ComMan implements SerialPortEventListener {
 
                 } catch (IOException eIO) { Dialogos.error("Excepción al pesar${eIO.getMessage()}", eIO) }
                 }
+
                 break;
 
+        } 
+        */
+        int data;
+        def in7 = m_in
+
+        try
+        {
+            println "comienza try de recopilar letras de escáner"
+            int len = 0;
+            while ( ( data = in7.read()) > -1 )
+            {
+                println "comienza while de recopilar letras de escáner"
+                //println "a "+data
+                if ( data == (13 as char) ) {
+                    println "salto de líneo, termina la recolección de letras del escáner"
+                    break;
+                }
+                println "se va a agregar una letra a la recolección"
+                buffer += data as char;
+                println "se agregó una letra a la recolección"
+            }
+            println "se llamará al handler de la cadena completa del escáner"
+            println new String(buffer,0,len)
+            println "terminó la llamada al handler"
+        }
+        catch ( Exception ex2 )
+        {
+            println "se econtró una excepción"
+            e.printStackTrace();
+            Dialogos.error("Error al leer desde el escáner de códigos de barras", e)
+            //System.exit(-1);
         }
     }
 

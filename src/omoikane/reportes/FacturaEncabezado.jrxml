@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="540" pageHeight="496" columnWidth="510" leftMargin="10" rightMargin="20" topMargin="59" bottomMargin="17">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="539" pageHeight="504" columnWidth="509" leftMargin="10" rightMargin="20" topMargin="59" bottomMargin="17">
 	<parameter name="IDVenta" class="java.lang.String">
 		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
@@ -202,22 +202,22 @@ WHERE
 	<lastPageFooter>
 		<band height="105">
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="456" y="91" width="37" height="10"/>
-				<textElement>
+				<reportElement x="440" y="91" width="60" height="10"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_total}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="456" y="63" width="37" height="10"/>
-				<textElement>
+				<reportElement x="440" y="63" width="60" height="10"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_subtotal}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="456" y="77" width="37" height="10"/>
-				<textElement>
+				<reportElement x="440" y="77" width="60" height="10"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_impuestos}]]></textFieldExpression>
@@ -230,15 +230,15 @@ WHERE
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{NumLetra}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="456" y="35" width="37" height="10"/>
-				<textElement>
+				<reportElement x="440" y="35" width="60" height="10"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$V{suma1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="456" y="49" width="37" height="10"/>
-				<textElement>
+				<reportElement x="440" y="49" width="60" height="10"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($V{suma2}.doubleValue() - $F{ventas_impuestos}.doubleValue())]]></textFieldExpression>
@@ -251,8 +251,8 @@ WHERE
 				<text><![CDATA[* * * * * D E S C U E N T O * * * * *]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="456" y="5" width="37" height="15"/>
-				<textElement>
+				<reportElement x="440" y="5" width="60" height="15"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_descuento}]]></textFieldExpression>

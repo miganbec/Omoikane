@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<parameter name="QueryTxt" class="java.lang.String">
-		<defaultValueExpression><![CDATA["select * from clientes"]]></defaultValueExpression>
+	<parameter name="txtQuery" class="java.lang.String">
+		<defaultValueExpression><![CDATA["SELECT clientes.`RFC` AS RFC, "+
+                "clientes.razonSocial AS razonSocial,"+
+                "clientes.direccion AS direccion,"+
+                "clientes.telefono AS telefono,"+
+                "clientes.descuento AS descuento,"+
+                "clientes.saldo AS saldo "+
+                "FROM clientes"]]></defaultValueExpression>
 	</parameter>
-	<queryString language="SQL">
-		<![CDATA[$P!{QueryTxt}]]>
+	<queryString>
+		<![CDATA[$P!{txtQuery}]]>
 	</queryString>
 	<field name="RFC" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -37,7 +43,7 @@
 				<textElement textAlignment="Center">
 					<font size="26" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Classic template]]></text>
+				<text><![CDATA[Reporte de Clientes]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -47,75 +53,75 @@
 	<columnHeader>
 		<band height="18">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement mode="Opaque" x="0" y="0" width="121" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RFC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="111" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement mode="Opaque" x="121" y="0" width="191" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[direccion]]></text>
+				<text><![CDATA[Direccion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="222" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement mode="Opaque" x="312" y="0" width="87" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[telefono]]></text>
+				<text><![CDATA[Telefono]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="333" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement mode="Opaque" x="399" y="0" width="79" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[descuento]]></text>
+				<text><![CDATA[Descuento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="444" y="0" width="111" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement mode="Opaque" x="478" y="0" width="77" height="18" forecolor="#FFFFFF" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[saldo]]></text>
+				<text><![CDATA[Saldo]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20">
-			<textField hyperlinkType="None">
-				<reportElement x="0" y="0" width="111" height="20"/>
-				<textElement>
+			<textField>
+				<reportElement x="0" y="0" width="121" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{RFC}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="111" y="0" width="111" height="20"/>
-				<textElement>
+			<textField>
+				<reportElement x="121" y="0" width="191" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{direccion}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="222" y="0" width="111" height="20"/>
-				<textElement>
+			<textField>
+				<reportElement x="312" y="0" width="87" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="333" y="0" width="111" height="20"/>
-				<textElement>
+			<textField>
+				<reportElement x="399" y="0" width="79" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{descuento}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="444" y="0" width="111" height="20"/>
-				<textElement>
+			<textField>
+				<reportElement x="478" y="0" width="77" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{saldo}]]></textFieldExpression>
@@ -127,7 +133,7 @@
 	</columnFooter>
 	<pageFooter>
 		<band height="26">
-			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false" hyperlinkType="None">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="516" y="6" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -140,7 +146,7 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false" hyperlinkType="None">
+			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="342" y="6" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -151,9 +157,9 @@
 				<textElement textAlignment="Right">
 					<font size="10"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pagina " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false" hyperlinkType="None">
+			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="1" y="6" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>

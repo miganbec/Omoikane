@@ -1,7 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
@@ -13,10 +16,10 @@ import groovy.inspect.swingui.*
 
 class Comprobantes {
 
-    def protocolo = omoikane.principal.Principal.puertoImpresion
     def data
-    def impresora = omoikane.principal.Principal.impresoraActiva
     def generado
+    def impresora = omoikane.principal.Principal.impresoraActiva
+    def protocolo = omoikane.principal.Principal.puertoImpresion
 
     def ticket(IDAlmacen, IDVenta) {
         def serv = new Nadesico().conectar()
@@ -26,10 +29,9 @@ class Comprobantes {
             data.usuario = serv.getUsuario(data.id_usuario, IDAlmacen)
             generado     = generarTicket()
         } catch(e) {
-            //data.usuario = serv.getUsuario(data.id_usuario)
             throw e
         } finally {
-        serv.desconectar()
+            serv.desconectar()
         }
     }
 
@@ -74,7 +76,6 @@ class Comprobantes {
             temp         = serv.getUsuario(data.id_usuario,data.id_almacen)
             data.usuario = temp.nombre
             generado = generarMovimiento()
-
         } catch(e) {
             throw e
         }finally {
@@ -91,10 +92,8 @@ class Comprobantes {
         binding.hora  = sdfHora.format(data.date)
         binding.folio = "${data.id_almacen}-${data.id_caja}-${data.id_venta}"
         binding.cajero= data.usuario.nombre
-
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
-
         template.toString()
     }
 
@@ -110,10 +109,8 @@ class Comprobantes {
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
         binding.devoluciones = 0.0f
-
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
-
         template.toString()
     }
 
@@ -128,7 +125,6 @@ class Comprobantes {
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
         binding.devoluciones = 0.0f
-
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
         template.toString()
@@ -144,7 +140,6 @@ class Comprobantes {
         binding.folio = "${data.id_almacen}-${data.id_caja}-${data.id}"
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
-
         template.toString()
     }
 

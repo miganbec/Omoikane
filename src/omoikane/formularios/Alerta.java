@@ -25,16 +25,16 @@ public class Alerta extends javax.swing.JDialog {
     public Alerta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        omoikane.sistema.Herramientas.panelAviso(this);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension labelSize = this.getPreferredSize();
 
         setLocation(screenSize.width/2 - (labelSize.width/2), screenSize.height/2 - (labelSize.height/2));
-
-        this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER , 0), "cerrar");
+    }
+    
+        /*this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER , 0), "cerrar");
         this.getRootPane().getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
         this.getRootPane().getActionMap().put("cerrar" , new adminAcciones(this));
-
     }
 
     class adminAcciones extends javax.swing.AbstractAction
@@ -48,7 +48,7 @@ public class Alerta extends javax.swing.JDialog {
         {
             this.dialogo.dispose();
         }
-    }
+    }*/
 
 
     public void setMensaje(String mensaje)

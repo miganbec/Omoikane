@@ -1,14 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
-/**
- *
- * @author Usuario Ruiz
- */
 class NadesicoX {
     public def server;
     def UIDConn

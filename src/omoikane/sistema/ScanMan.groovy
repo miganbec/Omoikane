@@ -6,7 +6,6 @@
 package omoikane.sistema
 
 /**
- *
  * @author SYSTEM
  */
 
@@ -40,7 +39,7 @@ public class ScanMan implements SerialPortEventListener
     public setHandler(claus) {
         this.handlerScan = claus
     }
-
+    public void finalize() { disconnect() }
     public void disconnect() {
        
         commPort.close()
@@ -95,29 +94,35 @@ public class ScanMan implements SerialPortEventListener
         private byte[] buffer = new byte[1024];
 
         public void serialEvent(SerialPortEvent arg0) {
+            println "en scanman evento"
             int data;
 
             try
             {
+                println "comienza try de recopilar letras de escáner"
                 int len = 0;
                 while ( ( data = in7.read()) > -1 )
                 {
-                    if ( data == '\n' ) {
+                    println "comienza while de recopilar letras de escáner"
+                    //println "a "+data
+                    if ( data == (13 as char) ) {
+                        println "salto de líneo, termina la recolección de letras del escáner"
                         break;
                     }
+                    println "se va a agregar una letra a la recolección"
                     buffer[len++] = (byte) data;
+                    println "se agregó una letra a la recolección"
                 }
-                System.out.print(new String(buffer,0,len));
+                println "se llamará al handler de la cadena completa del escáner"
                 handlerScan(new String(buffer,0,len))
+                println "terminó la llamada al handler"
             }
-            catch ( IOException e )
+            catch ( Exception e )
             {
+                println "se econtró una excepción"
                 e.printStackTrace();
-                System.exit(-1);
+                Dialogos.error("Error al leer desde el escáner de códigos de barras", e)
+                //System.exit(-1);
             }
         }
-
-    
-
-
 }

@@ -1,17 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema;
 
 import javax.swing.JLabel;
 import java.util.Calendar;
 
-/**
- *
- * @author Octavio
- */
   class Reloj extends Thread
   {
         JLabel objetivo;

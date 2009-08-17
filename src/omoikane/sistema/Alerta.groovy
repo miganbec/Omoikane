@@ -1,17 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
-/**
- *
- * @author Adan
- */
 class Alerta extends Exception{
-	
-    Alerta(txt)
-    {super(txt)}
+
+    Alerta(txt){super(txt)}
+    
 }
 

@@ -1,7 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
@@ -22,7 +25,7 @@ public class Herramientas
         static def error1         = " No puede estar vacio y sólo puede incluir numeros, letras, espacios, acentos, diagonales, coma, comillas y los siguientes caracteres . _ - + % ; : # @ & "
         static def error2         = " No puede estar vacio y sólo puede incluír números."
         static def error3         = " No puede estar vacio y sólo puede incluír números reales positivos"
-        static def error4         = " sólo puede incluir numeros, letras, espacios, acentos, diagonales, coma, comillas y los siguientes caracteres . _ - + % ; : # @ & "
+        static def error4         = " Sólo puede incluir numeros, letras, espacios, acentos, diagonales, coma, comillas y los siguientes caracteres . _ - + % ; : # @ & "
 
     def static void setColumnsWidth(tabla, anchos) {
         tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -199,27 +202,44 @@ public class Herramientas
            child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(110,110,255));
                 evt.getComponent().setForeground(new Color(255,255,255));
-                evt.getComponent().setFont(new Font("TAHOMA",Font.BOLD,12));//arial 15
+                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,14));//arial 15
             }
 
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);
                 evt.getComponent().setForeground(new Color(0,0,0));
-                evt.getComponent().setFont(new Font("TAHOMA",Font.PLAIN,11));//arial 14
+                evt.getComponent().setFont(new Font("ARIAL",Font.PLAIN,12));//arial 14
             }
 
             if(child instanceof JTextField){
                 child.keyReleased = {evt ->
                     if(evt.getKeyCode() == evt.VK_ESCAPE){component.dispose();}
-                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().transferFocus();}
+                    if(evt.getKeyCode() == evt.VK_ENTER ){evt.getComponent().transferFocus();}
+                    if(evt.getKeyCode() == evt.VK_UP    ){evt.getComponent().transferFocusBackward();}
+                    if(evt.getKeyCode() == evt.VK_DOWN  ){evt.getComponent().transferFocus();}
                 }
             }
             if(child instanceof JButton){
                 child.keyReleased = {evt ->
                     if(evt.getKeyCode() == evt.VK_ESCAPE){component.dispose();}
-                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}
+                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick();}
+                    if(evt.getKeyCode() == evt.VK_UP    ){evt.getComponent().transferFocusBackward();}
+                    if(evt.getKeyCode() == evt.VK_DOWN  ){evt.getComponent().transferFocus();}
                 }
             }
+
+            if(child instanceof JComboBox){
+                child.focusGained={evt->
+                evt.getComponent().showPopup();
+                }
+                child.keyReleased = {evt ->
+                    if(evt.getKeyCode() == evt.VK_ESCAPE){component.dispose();}
+                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().transferFocus();}
+                    if(evt.getKeyCode() == evt.VK_BACK_SPACE){evt.getComponent().transferFocusBackward();}
+                }
+            }
+
+
         }
     }
 
@@ -228,17 +248,40 @@ public class Herramientas
             child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(110,110,255));
                 evt.getComponent().setForeground(new Color(255,255,255));
-                evt.getComponent().setFont(new Font("TAHOMA",Font.BOLD,12));
+                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,14));
             }
 
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);
                 evt.getComponent().setForeground(new Color(0,0,0));
-                evt.getComponent().setFont(new Font("TAHOMA",Font.PLAIN,11));
+                evt.getComponent().setFont(new Font("ARIAL",Font.PLAIN,12));
             }
 
             if(child instanceof JButton){
                 child.keyReleased = {evt ->
+                    if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}
+                }
+            }
+        }
+    }
+
+    public static panelAviso(component){
+            for(Component child: component.getContentPane().getComponents()){
+            child.focusGained={evt->
+                evt.getComponent().setBackground(new Color(110,110,255));
+                evt.getComponent().setForeground(new Color(255,255,255));
+                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,14));
+            }
+
+            child.focusLost={evt->
+                evt.getComponent().setBackground(null);
+                evt.getComponent().setForeground(new Color(0,0,0));
+                evt.getComponent().setFont(new Font("ARIAL",Font.PLAIN,12));
+            }
+
+            if(child instanceof JButton){
+                child.keyReleased = {evt ->
+                    if(evt.getKeyCode() == evt.VK_ESCAPE){component.dispose();}
                     if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}
                 }
             }

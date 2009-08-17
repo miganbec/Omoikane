@@ -39,8 +39,9 @@ class Sucursales {
                     return 1
                 }
             } else { return 0 }
-        }
+        }else{Dialogos.lanzarAlerta("La Sucursal esta cerrada y no tiene aun permiso de entrar espere a habilitar para continuar ¨: )");omoikane.principal.Principal.cerrarSesion();}
     }
+
     static def cajasSucursalCerradas(IDAlmacen) {
         def serv = Nadesico.conectar()
         def res  = serv.getCajasSucursalCerradas(IDAlmacen)

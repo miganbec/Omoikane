@@ -1,19 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.principal
 
-import omoikane.sistema.Reloj;
 import groovy.swing.*
+import omoikane.sistema.Reloj;
 import groovy.inspect.swingui.*
 
-/**
- * @author Octavio
- */
-
 class Escritorio {
+
     def escritorioFrame = new omoikane.formularios.Escritorio()
     def reloj = new Reloj(escritorioFrame.reloj)
 
@@ -25,7 +25,8 @@ class Escritorio {
         reloj.start()
     }
 
-    void setNombreUsuario(nombre) {
+    void setNombreUsuario(nombre)
+    {
         escritorioFrame.usuario.setText(nombre)
     }
 
@@ -40,6 +41,7 @@ class Escritorio {
     }
 
     def ajustarTam() {
+
         def ancho = Principal.config.resolucionPantalla.@ancho[0]
         def alto  = Principal.config.resolucionPantalla.@alto [0]
         ancho = Integer.valueOf (ancho)

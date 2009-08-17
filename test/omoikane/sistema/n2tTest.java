@@ -35,7 +35,7 @@ public class n2tTest {
         System.out.println(n.convertirLetras(100));
         System.out.println(n.convertirLetras(13296));
 
-        System.out.println(n.aCifra(48223.87));
+        System.out.println(n.aCifra(212.4));
     }
 
 }

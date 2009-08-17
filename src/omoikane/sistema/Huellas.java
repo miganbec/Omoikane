@@ -1,11 +1,10 @@
-/*
- * Huellas.java
- *
- * Created on 17 de septiembre de 2007, 10:27 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema;
 

@@ -1,14 +1,14 @@
 ${""+ (27 as char)+(112 as char)+(0 as char)+(25 as char)+(250 as char)}
     * SUPER  FARMACIA  MEDINA *        .
         NAHUM MEDINA GARCIA
-RFC:MEGN560328MQ0 CURPMEGN560328HPLDRH00
+RFC:MEGN560328MQ0 CURP:MEGN560328HPLDRH00
 MATRIZ: HEROES DE TLAPACOYAN # 207
 COLONIA CENTRO C.P.93650 TLAPACOYAN VER.
- - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - - - - - - - -
 EXPIDE SUCURSAL: VALDEZ # 601
 COL CENTRO TLAPACOYAN VER.
 TEL. 01 225 3154202 Y 3154203
- - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - - - - - - - -
 
 ${fecha}
 
@@ -22,18 +22,17 @@ ${desde} a ${hasta}
 ${n_ventas} Tickets
 
                        Importe
-   Subtotal          ${String.format("%9.02f", subtotal)}
- - Descuento         ${String.format("%9.02f", descuentos)}
+   Subtotal          ${String.format("%,9.02f", subtotal)}
+ - Descuento         ${String.format("%,9.02f", descuentos)}
                      ---------
-                     ${String.format("%9.02f", subtotal+descuentos)}
- + Impuestos         ${String.format("%9.02f", impuestos)}
- - Devoluciones      ${String.format("%9.02f", devoluciones)}
+                     ${String.format("%,9.02f", subtotal-descuentos)}
+ + Impuestos         ${String.format("%,9.02f", impuestos)}
+ - Devoluciones      ${String.format("%,9.02f", devoluciones)}
                      ---------
-                     ${String.format("%9.02f", impuestos+devoluciones+subtotal+descuentos)}
- - Retiros           ${String.format("%9.02f", retiros)}
- + Depositos         ${String.format("%9.02f", depositos)}
+                     ${String.format("%,9.02f", total)}
+ - Retiros           ${String.format("%,9.02f", retiros)}
+ + Depositos         ${String.format("%,9.02f", depositos)}
                      ---------
-                     ${String.format("%9.02f", total)}
+                     ${String.format("%,9.02f", total+depositos-retiros)}
 
 ${""+ (27 as char)+(100 as char)+(8 as char)}
-${""+ (27 as char)+(60 as char)+(27 as char)+(105 as char)}

@@ -1,11 +1,10 @@
-/*
- * JInternalDialog.java
- *
- * Created on 15 de abril de 2007, 02:43 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema;
 
@@ -24,7 +23,6 @@ import org.jdesktop.animation.timing.interpolation.*;
  * Al crearse es invisible, se puede mostrar con setActivo para mostrarlo modalmente
  * o con setVisible para mostrarlo pero no de manera modal (algunos m�todos aplican su propio
  * algoritmo para volverlo modal)
- * @author Octavio
  */
 public class JInternalDialog extends javax.swing.JInternalFrame {
     

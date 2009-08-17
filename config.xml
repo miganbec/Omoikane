@@ -12,13 +12,14 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <idAlmacen>1</idAlmacen>
-    <idCaja>0</idCaja>
+    <idCaja>1</idCaja>
     <puertoImpresion>LPT1:</puertoImpresion>
-    <URLServidor>http://phesusacer:5542</URLServidor>
-    <URL>jdbc:mysql://New-eden/omoikane</URL>
+    <URLServidor>http://new-eden:5542</URLServidor>
+    <URL>jdbc:mysql://new-eden/omoikane</URL>
     <ScannerBaudRate>9600</ScannerBaudRate>
-    <ScannerPort>COM1</ScannerPort>
+    <ScannerPort>COM4</ScannerPort>
     <fondoBlur>false</fondoBlur>
     <impresoraActiva>false</impresoraActiva>
-    <puertoBascula>COM1</puertoBascula>
+    <scannerActivo>true</scannerActivo>
+    <puertoBascula>COM7</puertoBascula>
 </document>

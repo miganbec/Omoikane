@@ -7,6 +7,8 @@ package omoikane.principal
 
 import omoikane.sistema.*
 import omoikane.sistema.Usuarios as SisUsuarios
+import java.awt.event.*;
+
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
  * ////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,12 +30,14 @@ public class Principal {
         public static boolean         fondoBlur
         public static String          puertoImpresion
         public static boolean         impresoraActiva
+        public static boolean         scannerActivo
         public static String          puertoBascula
         public static String          url
         public static int             scannerBaudRate
         public static String          scannerPort
         public static ShutdownHandler shutdownHandler
         public static def             toFinalizeTracker = [:]
+        public static def             scanMan
 
 	public static void main(args)
         {
@@ -62,9 +66,37 @@ public class Principal {
             splash.detener()
             iniciarSesion()
             menuPrincipal.iniciar()
+            if(scannerActivo){
+                scanMan = new ScanMan()
+                try {
+                    println "comienza intento de conexión"
+                    scanMan.connect(Principal.scannerPort, Principal.scannerBaudRate)
+                    println "fin intento de conexión"
+                } catch(Exception ex2) { Dialogos.error(ex2.getMessage(), ex2) }
 
-            
 
+                def robot = new java.awt.Robot()
+                scanMan.setHandler {
+                    println "iniciando handler antes de each"
+                    it.each {
+                        if((it as int)==13) { return null }
+                        println "caracter:"+it
+                        robot.keyPress(it as int);
+                    }
+                    println "después de each"
+
+                    try {
+                        println "supuesto enter"
+                        robot.keyPress(KeyEvent.VK_ENTER)
+                        robot.keyRelease(KeyEvent.VK_ENTER)
+                        println "fin supuesto enter"
+                    } catch(Exception exc) { Dialogos.error("Error capturar desde escáner de códigos de barras", exc) }
+
+                }
+                toFinalizeTracker.put("scanMan", "")
+                
+            }
+           
             //
             //new SimpleForm() {
             //        it.form.visible = true
@@ -100,6 +132,7 @@ public class Principal {
             url             = String.valueOf(config.URL[0].text())
             scannerBaudRate = Integer.valueOf(config.ScannerBaudRate[0].text())
             scannerPort     = String.valueOf(config.ScannerPort[0].text())
+            scannerActivo   = Boolean.valueOf(config.scannerActivo[0].text())
         }
 
     static def iniciarSesion(){

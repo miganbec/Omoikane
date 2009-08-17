@@ -1,29 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * CatalogoArticulos.java
- *
- * Created on 17/08/2008, 05:43:22 PM
- */
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.formularios;
 
-import java.sql.*;
 import java.util.*;
-import javax.swing.table.*;
-import javax.swing.*;
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import omoikane.sistema.*;
+import javax.swing.event.*;
 
-/** ////////////////////////////////////////////////////////////////////////////////////////////////
- * /////////////////////////////////////////////////////////////////////////////////////////////////
- * @author Octavio
- */
 public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
     TimerBusqueda          timerBusqueda;
@@ -136,14 +128,15 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
         setIconifiable(true);
         setTitle("Catálogo de usuarios");
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
             }
         });
 
         jScrollPane1.setAutoscrolls(true);
 
+        jTable1.setFont(new java.awt.Font("Arial", 1, 12));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -165,7 +158,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                 txtBusquedaKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyReleased(evt);
+                salir(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyTyped(evt);
@@ -176,10 +169,11 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar [F3]:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Catálogo de Usuarios");
 
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 12));
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("Cerrar [Esc]");
         btnCerrar.setRequestFocusEnabled(false);
@@ -188,7 +182,13 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
+        btnCerrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
+        btnEliminar.setFont(new java.awt.Font("Arial", 0, 12));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
         btnEliminar.setText("Eliminar [Supr]");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +196,13 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
+        btnEliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 12));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_edit.png"))); // NOI18N
         btnModificar.setText("Modificar [F6]");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +210,13 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+        btnModificar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 12));
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_add.png"))); // NOI18N
         btnNuevo.setText("Nuevo [F5]");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +224,13 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
+        btnNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
+        btnDetalles.setFont(new java.awt.Font("Arial", 0, 12));
         btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnDetalles.setText("Detalles [F4]");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +238,13 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                 btnDetallesActionPerformed(evt);
             }
         });
+        btnDetalles.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
+        btnImprimir.setFont(new java.awt.Font("Arial", 0, 12));
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F8]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -228,12 +252,23 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                 btnImprimirActionPerformed(evt);
             }
         });
+        btnImprimir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
+        btnAceptar.setFont(new java.awt.Font("Arial", 0, 12));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar [Enter]");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
+            }
+        });
+        btnAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
             }
         });
 
@@ -247,8 +282,8 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -260,7 +295,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,8 +307,8 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(btnCerrar, 0, 0, Short.MAX_VALUE))
+                    .addComponent(btnCerrar, 0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -325,12 +360,16 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
         int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
 
         //Lanzar la ventana de detalles:
-        if(IDUsuario != -1) { omoikane.principal.Usuarios.lanzarModificarUsuario(IDUsuario); }
+        if(IDUsuario != -1) { 
+            JInternalFrame wnd = (JInternalFrame) omoikane.principal.Usuarios.lanzarModificarUsuario(IDUsuario);
+            wnd.addInternalFrameListener(iframeAdapter);
+        }
 }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Usuarios.lanzarFormNuevoUsuario();
+        JInternalFrame wnd = (JInternalFrame) omoikane.principal.Usuarios.lanzarFormNuevoUsuario();
+        wnd.addInternalFrameListener(iframeAdapter);
 }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
@@ -338,7 +377,10 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
         int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         
         //Lanzar la ventana de detalles:
-        if(IDUsuario != -1) { omoikane.principal.Usuarios.lanzarDetallesUsuario(IDUsuario); }
+        if(IDUsuario != -1) {
+            JInternalFrame wnd = (JInternalFrame) omoikane.principal.Usuarios.lanzarDetallesUsuario(IDUsuario);
+            wnd.addInternalFrameListener(iframeAdapter);
+        }
 }//GEN-LAST:event_btnDetallesActionPerformed
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
@@ -391,16 +433,6 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_formKeyPressed
-
-    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
-    }//GEN-LAST:event_txtBusquedaKeyReleased
-
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
         omoikane.principal.Usuarios.lanzarImprimir(txtQuery);
@@ -416,6 +448,16 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
             this.btnCerrar.doClick();
         }
 }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void salir(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salir
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
+    }//GEN-LAST:event_salir
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        this.txtBusqueda.requestFocusInWindow();
+    }//GEN-LAST:event_formFocusGained
 
     
     public void preBuscar()
@@ -469,4 +511,10 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
     public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 
+public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()
+    {
+        public void internalFrameClosed(InternalFrameEvent e) { buscar();requestFocusInWindow(); }
+
+    };
 }
+

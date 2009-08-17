@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * Articulo.java
- *
- * Created on 22/08/2008, 07:40:21 PM
- */
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.formularios;
 
@@ -15,13 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import omoikane.sistema.*;
-import java.awt.event.*;
-import java.util.*;
 
-/**
- *
- * @author Octavio
- */
 public class Cliente extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
@@ -35,18 +26,7 @@ public class Cliente extends javax.swing.JInternalFrame {
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
-
         Herramientas.centrarVentana(this);
-
-        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
-
-        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
-
-        
     }
 
     /** This method is called from within the constructor to
@@ -90,98 +70,123 @@ public class Cliente extends javax.swing.JInternalFrame {
         jLabel2.setText("Cliente");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        btnCerrar.setText("Cerrar");
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnCerrar.setText("Cerrar [ESC]");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 80, -1));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 107, 30));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Cliente:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 20));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("RFC:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, 20));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Direccion:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
         txtIDCliente.setEditable(false);
-        getContentPane().add(txtIDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 260, -1));
+        txtIDCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        txtIDCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtIDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 260, 25));
 
         txtRFC.setEditable(false);
-        getContentPane().add(txtRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 260, -1));
+        txtRFC.setFont(new java.awt.Font("Arial", 0, 12));
+        txtRFC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 260, 25));
 
         txtDireccion.setEditable(false);
-        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, -1));
+        txtDireccion.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 260, 25));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Telefono:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 20));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("<html>Última<br>Modificación:</html>");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         txtTelefono.setEditable(false);
-        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 260, -1));
+        txtTelefono.setFont(new java.awt.Font("Arial", 0, 12));
+        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 260, 25));
 
         txtUModificacion.setEditable(false);
-        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 260, 30));
+        txtUModificacion.setFont(new java.awt.Font("Arial", 0, 12));
+        txtUModificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 260, 25));
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnGuardar.setText("Guardar [F6]");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 80, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 107, 30));
 
-        btnModificar.setText("Modificar");
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnModificar.setText("Modificar [F6]");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 100, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 107, 30));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Razon Social:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
 
         txtRazonSocial.setEditable(false);
-        txtRazonSocial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRazonSocialActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 260, -1));
+        txtRazonSocial.setFont(new java.awt.Font("Arial", 0, 12));
+        txtRazonSocial.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 260, 25));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("C.P.:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
 
         txtCP.setEditable(false);
-        getContentPane().add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, -1));
+        txtCP.setFont(new java.awt.Font("Arial", 0, 12));
+        txtCP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 260, 25));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Saldo:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, 20));
 
         txtSaldo.setEditable(false);
-        getContentPane().add(txtSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 260, -1));
+        txtSaldo.setFont(new java.awt.Font("Arial", 0, 12));
+        txtSaldo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 260, 25));
 
         txtDescuento.setEditable(false);
-        getContentPane().add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, -1));
+        txtDescuento.setFont(new java.awt.Font("Arial", 0, 12));
+        txtDescuento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 260, 25));
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Descuento (%):");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 20));
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 10, 10));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 10, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,10 +206,6 @@ public class Cliente extends javax.swing.JInternalFrame {
         omoikane.principal.Clientes.modificar(this);
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void txtRazonSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonSocialActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_txtRazonSocialActionPerformed
-
     public void setEditable(boolean editable)
     {
         this.txtRFC.setEditable(editable);
@@ -215,6 +216,7 @@ public class Cliente extends javax.swing.JInternalFrame {
         this.txtSaldo.setEditable(editable);
         this.txtDescuento.setEditable(editable);
     }
+
     public void setModoDetalles()
     {
         setEditable(false);
@@ -222,12 +224,14 @@ public class Cliente extends javax.swing.JInternalFrame {
         this.btnModificar.setVisible(false);
 
     }
+
     public void setModoModificar()
     {
         setEditable(true);
         this.btnGuardar.setVisible(false);
         this.btnModificar.setVisible(true);
     }
+
     public void setModoNuevo()
     {
         setEditable(true);
@@ -270,7 +274,6 @@ public class Cliente extends javax.swing.JInternalFrame {
     public String getTxtTelefono(){return this.txtTelefono.getText();}
     public String getTxtUModificacion() { return this.txtUModificacion.getText();  }
 
-
     public void setTxtRFC(String txtRFC) {this.txtRFC.setText(txtRFC);    }
     public void setTxtDireccion(String txtDireccion) {this.txtDireccion.setText(txtDireccion);}
     public void setTxtIDCliente(String txtIDCliente) {this.txtIDCliente.setText(txtIDCliente);  }
@@ -281,14 +284,12 @@ public class Cliente extends javax.swing.JInternalFrame {
     public void setTxtCP(String cp)             { txtCP.setText(cp); }
     public void setTxtSaldo(String saldo) { txtSaldo.setText(saldo); }
 
-
-
     public void paintComponent(Graphics g)
     {
       Graphics2D g2d = (Graphics2D) g;
       g2d.drawImage(fondo, 0, 0, null);
-
     }
+
     public void generarFondo(Component componente)
     {
       Rectangle areaDibujo = this.getBounds();

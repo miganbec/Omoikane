@@ -1,7 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.principal
 
@@ -10,16 +13,12 @@ import omoikane.sistema.*
 import omoikane.sistema.Usuarios as SisUsuarios
 import javax.swing.JFrame;
 
-/**
- * @author
- */
-
 class MenuPrincipal {
     def menuPrincipal = new omoikane.formularios.MenuPrincipal()
 
     void iniciar()
-    { if(!SisUsuarios.cerrojo(SisUsuarios.CAJERO+1)) {
-      //Si es cajero no se lanza el menú, se va directo a caja
+    { if(!SisUsuarios.cerrojo(SisUsuarios.SUPERVISOR)) {
+      //Si es cajero no se lanza el menú, ingresa directo a caja
        Caja.lanzar()
     } else {
             Herramientas.panelCatalogo(menuPrincipal);

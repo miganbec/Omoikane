@@ -25,6 +25,7 @@ import static omoikane.sistema.Permisos.*;
  */
 
 class Caja {
+
     static def IDCaja    = Principal.IDCaja
     static def IDAlmacen = Principal.IDAlmacen
     static def IDCliente = 1 //cambiar cuando se mejore el modulo cliente
@@ -49,7 +50,7 @@ class Caja {
                 Herramientas.In2ActionX(form          , KeyEvent.VK_F2    , "buscar"      ) { form.btnBuscar.doClick()        }
                 Herramientas.In2ActionX(form          , KeyEvent.VK_ENTER , "aceptar"     ) { form.btnAceptar.doClick()       }
 
-                form.txtIDCaja.keyPressed = { e ->
+                form.txtIDCaja.keyReleased = { e ->
                     if(e.keyCode==e.VK_ENTER) { form.btnAceptar.doClick() }
                 }
                 def catArticulos = { def retorno = Caja.lanzarCatalogoDialogo() as String; return retorno==null?"":retorno }
@@ -91,7 +92,6 @@ class Caja {
     {
         def abierta = Sucursales.abierta(Principal.IDAlmacen)
         switch(abierta) {
-            
             case -1: Dialogos.lanzarAlerta("Configuración de sucursal-almacen errónea."); break;
             case  0: abierta = Sucursales.abrirSucursal(Principal.IDAlmacen);  //Sin break para continuar
             case  1:
@@ -104,9 +104,7 @@ class Caja {
                     if(cajaAbierta) { lanzarCaja() }
                 }
             break;
-
         }
-
     }
 
     static def filtroEAN13(codigo) {
@@ -194,11 +192,22 @@ class Caja {
             form.txtCaja.text= "Caja "+IDCaja
             def serv = Nadesico.conectar()
 
-            def scanMan = new ScanMan()
+            /*def scanMan = new ScanMan()
             try {
                 scanMan.connect(Principal.scannerPort, Principal.scannerBaudRate)
             } catch(Exception ex2) { Dialogos.error(ex2.getMessage(), ex2) }
-            scanMan.setHandler { form.txtCaptura.text += it; (new java.awt.Robot()).keyPress(KeyEvent.VK_ENTER) }
+            Principal.scanMan.setHandler { /*form.txtCaptura.text += it;
+                    def robot = new java.awt.Robot()
+                    it.each { 
+                        
+                        if((it as int)==13) { return null }
+                        robot.keyPress(it as int);
+                    }
+                    //robot.keyPress(10)
+                    robot.keyPress(KeyEvent.VK_ENTER)
+                    
+                }*/
+                    
 
             def addArtic = { codigo ->
                 try {
@@ -232,7 +241,7 @@ class Caja {
                     //println "--"+peso
                 }
                 }
-            form.txtCaptura.keyPressed = {   e ->
+            form.txtCaptura.keyReleased = {   e ->
                 if(e.keyCode==e.VK_ENTER) if(form.txtCaptura.text != "") { addArtic(form.txtCaptura.text) } else { form.txtEfectivo.requestFocusInWindow() }
                 //Al presionar   F2: (lanzarCatalogoDialogo)
                 else if(e.keyCode == e.VK_F2) { if(form.btnCatalogo.isEnabled()) { form.btnCatalogo.doClick(); } }
@@ -255,7 +264,7 @@ class Caja {
                 }
 
             }
-            form.txtCambio.keyPressed = { e->
+            form.txtCambio.keyReleased = { e->
                 if(e.getKeyCode() == e.VK_ENTER) {
                     form.btnTerminar.doClick()
                 }
@@ -272,7 +281,7 @@ class Caja {
                     form.btnTerminar.doClick()
                 }
             }*/
-            form.txtEfectivo.keyPressed = { e ->
+            form.txtEfectivo.keyReleased = { e ->
                 if(e.getKeyCode() == e.VK_ENTER) {
                     def sefe  = form.txtEfectivo.text.replace('$', '').replace(',', '')
                     if(sefe == "") { sefe = "0.0" }
@@ -363,7 +372,7 @@ class Caja {
                             form.dispose();
                             ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
                         }
-                        scanMan.disconnect()
+                        //scanMan.disconnect()
                     } else {
                         form.txtCaptura.requestFocusInWindow()
                     }

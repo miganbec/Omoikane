@@ -1,4 +1,11 @@
 
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
+
 package omoikane.sistema;
 
 import java.sql.SQLException;
@@ -8,7 +15,6 @@ import java.util.Enumeration;
 import com.griaule.grfingerjava.*;
 import groovy.sql.*;
 import omoikane.principal.*;
-
 
 public class Usuarios {
     //public Usuario usrActivo = new Usuario();

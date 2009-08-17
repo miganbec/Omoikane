@@ -1,7 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
@@ -26,10 +29,8 @@ class VerificadorDeCampo extends InputVerifier
     {
         boolean resultado = (((JTextField) input).getText() ==~ patron);
         if(!resultado) {
-
             Dialogos.lanzarAlerta(msg);
             input.grabFocus();
-
         }
         return resultado;
     }

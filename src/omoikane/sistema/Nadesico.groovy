@@ -1,7 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
@@ -9,10 +12,6 @@ import groovy.net.xmlrpc.*
 import java.net.ServerSocket
 import omoikane.principal.*
 
-/**
- *
- * @author Usuario
- */
 class Nadesico {
     def conn = null
     def sesion = null

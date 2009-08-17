@@ -1,17 +1,26 @@
+
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
+
 package omoikane.sistema;
 
 public class n2t {
-	private int flag;
-	public int numero;
-	public String importe_parcial;
-	public String num;
-	public String num_letra;
-	public String num_letras;
-	public String num_letram;
-	public String num_letradm;
-	public String num_letracm;
-	public String num_letramm;
-	public String num_letradmm;
+
+    private int     flag;
+    public int      numero;
+    public String   importe_parcial;
+    public String   num;
+    public String   num_letra;
+    public String   num_letras;
+    public String   num_letram;
+    public String   num_letradm;
+    public String   num_letracm;
+    public String   num_letramm;
+    public String   num_letradmm;
 	
 	public n2t(){
 		numero = 0;
@@ -21,7 +30,6 @@ public class n2t {
 		numero = n;
 		flag=0;
 	}
-
 	
 	private String unidad(int numero){
 		
@@ -327,7 +335,6 @@ public class n2t {
 
         public String aCifra(double numero) {
             Integer enteros   = (int) Math.floor(numero);
-            
             Integer decimales = (int)Math.floor((numero - enteros) * 100);
             String cifra = decmillon(enteros);
             return (cifra + " pesos " + decimales + "/100 MN").toUpperCase();

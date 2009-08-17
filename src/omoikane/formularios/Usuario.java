@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * Articulo.java
- *
- * Created on 22/08/2008, 07:40:21 PM
- */
+/* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.formularios;
 
@@ -15,13 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import omoikane.sistema.*;
-import java.util.*;
-import java.awt.event.*;
 
-/**
- *
- * @author Octavio
- */
 public class Usuario extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
@@ -39,18 +30,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         this.getRootPane().setOpaque(false);
         this.generarFondo(this);
         Herramientas.centrarVentana(this);
-
-
-        Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, newKeys);
-
-        newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
-        newKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0));
-        setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newKeys);
-        
     }
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -75,7 +55,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtPerfil = new javax.swing.JComboBox();
@@ -89,94 +68,130 @@ public class Usuario extends javax.swing.JInternalFrame {
         HA3 = new javax.swing.JLabel();
 
         setTitle("Usuario");
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 48));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        btnCerrar.setText("Cerrar");
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 12));
+        btnCerrar.setText("Cerrar [ESC]");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 80, -1));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 107, 30));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Usuario:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha de Alta:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 20));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Huella 1:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 20));
 
         txtIDUSR.setEditable(false);
-        getContentPane().add(txtIDUSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 260, -1));
+        txtIDUSR.setFont(new java.awt.Font("Arial", 0, 12));
+        txtIDUSR.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtIDUSR.setFocusable(false);
+        getContentPane().add(txtIDUSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 70, 260, 25));
 
         txtFecha.setEditable(false);
-        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 260, -1));
+        txtFecha.setFont(new java.awt.Font("Arial", 0, 12));
+        txtFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFecha.setFocusable(false);
+        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 100, 260, 25));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Huella 2:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Perfil:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         txtUModificacion.setEditable(false);
-        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 260, 30));
+        txtUModificacion.setFont(new java.awt.Font("Arial", 0, 12));
+        txtUModificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUModificacion.setFocusable(false);
+        getContentPane().add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 320, 260, 25));
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 12));
+        btnGuardar.setText("Guardar [F6]");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 80, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 107, 30));
 
-        btnModificar.setText("Modificar");
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 12));
+        btnModificar.setText("Modificar [F6]");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 100, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 107, 30));
 
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 20));
 
         txtNombre.setEditable(false);
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 260, -1));
+        txtNombre.setFont(new java.awt.Font("Arial", 0, 12));
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 130, 260, 25));
 
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("N.I.P.:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 20));
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 10, 10));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 20));
 
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Huella 3:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
 
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("<html>Última<br>Modificación:</html>");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
+        txtPerfil.setFont(new java.awt.Font("Arial", 0, 12));
         txtPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cajero", "Supervisor", "Gerente", "Administrador", "Propietario" }));
         txtPerfil.setEnabled(false);
-        getContentPane().add(txtPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 250, -1));
+        txtPerfil.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        txtPerfil.setMinimumSize(new java.awt.Dimension(6, 21));
+        txtPerfil.setPreferredSize(new java.awt.Dimension(6, 21));
+        getContentPane().add(txtPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 280, 260, 25));
 
         txtNIP.setEditable(false);
-        getContentPane().add(txtNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, -1));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 10, 10));
+        txtNIP.setFont(new java.awt.Font("Arial", 0, 12));
+        txtNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 250, 260, 25));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 10, 10));
+
+        JH3.setFont(new java.awt.Font("Arial", 0, 12));
         JH3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/record.png"))); // NOI18N
         JH3.setText("Capturar Huella");
         JH3.setEnabled(false);
@@ -185,8 +200,9 @@ public class Usuario extends javax.swing.JInternalFrame {
                 JH3ActionPerformed(evt);
             }
         });
-        getContentPane().add(JH3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
+        getContentPane().add(JH3, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 220, 210, 25));
 
+        JH1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         JH1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/record.png"))); // NOI18N
         JH1.setText("Capturar Huella");
         JH1.setEnabled(false);
@@ -195,8 +211,9 @@ public class Usuario extends javax.swing.JInternalFrame {
                 JH1ActionPerformed(evt);
             }
         });
-        getContentPane().add(JH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        getContentPane().add(JH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 160, 210, 25));
 
+        JH2.setFont(new java.awt.Font("Arial", 0, 12));
         JH2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/record.png"))); // NOI18N
         JH2.setText("Capturar Huella");
         JH2.setEnabled(false);
@@ -205,19 +222,19 @@ public class Usuario extends javax.swing.JInternalFrame {
                 JH2ActionPerformed(evt);
             }
         });
-        getContentPane().add(JH2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+        getContentPane().add(JH2, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 190, 210, 25));
 
         HA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
         HA1.setEnabled(false);
-        getContentPane().add(HA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, 20));
+        getContentPane().add(HA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, 20));
 
         HA2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
         HA2.setEnabled(false);
-        getContentPane().add(HA2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, 20));
+        getContentPane().add(HA2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, 20));
 
         HA3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
         HA3.setEnabled(false);
-        getContentPane().add(HA3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, 20));
+        getContentPane().add(HA3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -242,9 +259,9 @@ public class Usuario extends javax.swing.JInternalFrame {
         (new Thread() {
             public void run() {
                 huella1 = (byte[]) omoikane.sistema.Usuarios.leerHuella() ;
-                System.out.println(huella1);
                 if(huella1!=null)
-                {HA1.setEnabled(true);}
+                {HA1.setEnabled(true);
+                JH1.requestFocusInWindow();}
             }
         }
         ).start();
@@ -255,9 +272,9 @@ public class Usuario extends javax.swing.JInternalFrame {
         (new Thread() {
             public void run() {
                 huella2 = (byte[]) omoikane.sistema.Usuarios.leerHuella() ;
-                System.out.println(huella2);
                 if(huella2!=null)
-                {HA2.setEnabled(true);}
+                {HA2.setEnabled(true);
+                JH2.requestFocusInWindow();}
             }
         }
         ).start();
@@ -268,13 +285,18 @@ public class Usuario extends javax.swing.JInternalFrame {
         (new Thread() {
             public void run() {
                 huella3 = (byte[]) omoikane.sistema.Usuarios.leerHuella() ;
-                System.out.println(huella3);
                 if(huella3!=null)
-                {HA3.setEnabled(true);}
+                {HA3.setEnabled(true);
+                JH3.requestFocusInWindow();}
             }
         }
         ).start();
     }//GEN-LAST:event_JH3ActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        this.JH1.requestFocusInWindow();
+    }//GEN-LAST:event_formFocusGained
 
     public void setEditable(boolean editable)
     {
@@ -293,6 +315,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         this.HA3.setEnabled(true);
 
     }
+
     public void setModoModificar()
     {
         setEditable(true);
@@ -302,6 +325,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         this.HA2.setEnabled(true);
         this.HA3.setEnabled(true);
     }
+
     public void setModoNuevo()
     {
         setEditable(true);
@@ -324,7 +348,6 @@ public class Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -357,9 +380,6 @@ public class Usuario extends javax.swing.JInternalFrame {
     public void setTxtNombre(String Nombre)     { txtNombre.setText(Nombre);     }
     public void setTxtNIP(String cp)            { txtNIP.setText(cp);            }
     public void setTxtUModificacion(String txt) { txtUModificacion.setText(txt); }
-   
-
-
 
     public void paintComponent(Graphics g)
     {
