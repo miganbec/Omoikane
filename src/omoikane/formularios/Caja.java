@@ -96,7 +96,6 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         txtCambio = new javax.swing.JTextField();
-        btnRetencion = new javax.swing.JButton();
         btnPausar = new javax.swing.JButton();
         btnCancelaArt = new javax.swing.JButton();
         txtFecha = new javax.swing.JLabel();
@@ -106,7 +105,7 @@ public class Caja extends javax.swing.JInternalFrame {
         setFocusable(false);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/shopping_cart.png"))); // NOI18N
 
-        txtCaja.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        txtCaja.setFont(new java.awt.Font("Arial", 1, 36));
         txtCaja.setForeground(new java.awt.Color(255, 255, 255));
         txtCaja.setText("Caja 1");
         txtCaja.setFocusable(false);
@@ -183,7 +182,7 @@ public class Caja extends javax.swing.JInternalFrame {
         txtTotal.setText("$ 0.00");
         txtTotal.setFocusable(false);
         jPanel1.add(txtTotal);
-        txtTotal.setBounds(0, 10, 230, 60);
+        txtTotal.setBounds(0, 10, 220, 60);
 
         jPanel2.setBackground(new Color(0,255,0,220));
         jPanel2.setLayout(null);
@@ -195,7 +194,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel9);
         jLabel9.setBounds(0, 0, 50, 15);
         jPanel2.add(txtEfectivo);
-        txtEfectivo.setBounds(10, 20, 220, 30);
+        txtEfectivo.setBounds(10, 20, 195, 30);
 
         jPanel4.setBackground(new Color(55,55,255,160));
         jPanel4.setFocusable(false);
@@ -209,13 +208,13 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel10.setBounds(0, 0, 60, 15);
 
         txtNArticulos.setBackground(new java.awt.Color(153, 51, 0));
-        txtNArticulos.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtNArticulos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         txtNArticulos.setForeground(new java.awt.Color(255, 255, 255));
         txtNArticulos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtNArticulos.setText("0");
         txtNArticulos.setFocusable(false);
         jPanel4.add(txtNArticulos);
-        txtNArticulos.setBounds(0, 10, 240, 30);
+        txtNArticulos.setBounds(0, 10, 220, 30);
 
         jPanel5.setBackground(new Color(55,55,255,160));
         jPanel5.setFocusable(false);
@@ -229,13 +228,13 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel12.setBounds(0, 0, 60, 15);
 
         jLabel13.setBackground(new java.awt.Color(153, 51, 0));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Público en general");
         jLabel13.setFocusable(false);
         jPanel5.add(jLabel13);
-        jLabel13.setBounds(0, 10, 230, 30);
+        jLabel13.setBounds(0, 10, 220, 30);
 
         jPanel7.setBackground(new Color(55,55,255,160));
         jPanel7.setFocusable(false);
@@ -255,7 +254,7 @@ public class Caja extends javax.swing.JInternalFrame {
         txtSubtotal.setText("0");
         txtSubtotal.setFocusable(false);
         jPanel7.add(txtSubtotal);
-        txtSubtotal.setBounds(0, 10, 230, 30);
+        txtSubtotal.setBounds(0, 10, 220, 30);
 
         jPanel6.setBackground(new Color(55,55,255,160));
         jPanel6.setLayout(null);
@@ -273,14 +272,7 @@ public class Caja extends javax.swing.JInternalFrame {
         txtCambio.setText("$ 0.00");
         txtCambio.setBorder(null);
         jPanel6.add(txtCambio);
-        txtCambio.setBounds(10, 20, 220, 30);
-
-        btnRetencion.setText("Retencion");
-        btnRetencion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRetencionActionPerformed(evt);
-            }
-        });
+        txtCambio.setBounds(10, 20, 195, 30);
 
         btnPausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24x24/pause.png"))); // NOI18N
         btnPausar.setText("Pausar [Pause]");
@@ -297,17 +289,18 @@ public class Caja extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnRetencion, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPausar)))
-                .addContainerGap())
+                        .addComponent(btnPausar)
+                        .addGap(47, 47, 47))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,10 +318,8 @@ public class Caja extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRetencion, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(btnPausar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(37, 37, 37))
+                .addComponent(btnPausar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(38, 38, 38))
         );
 
         btnCancelaArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
@@ -340,13 +331,13 @@ public class Caja extends javax.swing.JInternalFrame {
         });
 
         txtFecha.setBackground(new java.awt.Color(153, 51, 0));
-        txtFecha.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtFecha.setFont(new java.awt.Font("Tahoma", 1, 24));
         txtFecha.setForeground(new java.awt.Color(255, 255, 255));
         txtFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtFecha.setFocusable(false);
 
         txtDescuento.setBackground(new java.awt.Color(153, 51, 0));
-        txtDescuento.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtDescuento.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         txtDescuento.setForeground(new java.awt.Color(255, 255, 255));
         txtDescuento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtDescuento.setText("$ 0.00");
@@ -374,26 +365,26 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTerminar))
+                            .addComponent(btnTerminar)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel4)
+                                .addGap(21, 21, 21)
+                                .addComponent(txtCaptura, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(21, 21, 21)
-                                        .addComponent(txtCaptura, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnMovimientos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCatalogo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelaArt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(btnMovimientos)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnCatalogo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnCancelaArt)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnCancelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -413,16 +404,19 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCaptura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(14, 14, 14))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnTerminar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(btnTerminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnCancelaArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCancelaArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelacion)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -433,11 +427,6 @@ public class Caja extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.btnCerrar.doClick();
     }//GEN-LAST:event_btnCancelacionActionPerformed
-
-    private void btnRetencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetencionActionPerformed
-        // TODO add your handling code here:
-                //omoikane.principal.Caja.lanzar();
-    }//GEN-LAST:event_btnRetencionActionPerformed
 
     private void btnPausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPausarActionPerformed
         // TODO add your handling code here:
@@ -459,7 +448,6 @@ public class Caja extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnMovimientos;
     private javax.swing.JButton btnPausar;
-    private javax.swing.JButton btnRetencion;
     public javax.swing.JButton btnTerminar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

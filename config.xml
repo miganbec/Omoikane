@@ -14,12 +14,12 @@
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
     <puertoImpresion>LPT1:</puertoImpresion>
-    <URLServidor>http://new-eden:5542</URLServidor>
-    <URL>jdbc:mysql://new-eden/omoikane</URL>
+    <URLServidor>http://gogo-00:5542</URLServidor>
+    <URL>jdbc:mysql://gogo-00/omoikane</URL>
     <ScannerBaudRate>9600</ScannerBaudRate>
     <ScannerPort>COM4</ScannerPort>
     <fondoBlur>false</fondoBlur>
     <impresoraActiva>false</impresoraActiva>
-    <scannerActivo>true</scannerActivo>
+    <scannerActivo>false</scannerActivo>
     <puertoBascula>COM7</puertoBascula>
 </document>

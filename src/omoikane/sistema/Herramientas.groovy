@@ -248,7 +248,7 @@ public class Herramientas
             child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(110,110,255));
                 evt.getComponent().setForeground(new Color(255,255,255));
-                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,14));
+                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,12));
             }
 
             child.focusLost={evt->

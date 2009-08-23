@@ -136,11 +136,14 @@ public class Principal {
         }
 
     static def iniciarSesion(){
+        try{
         while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
         escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
+        } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar secion ciclo de huella", Herramientas.getStackTraceString(e)) }
     }
 
     static def cerrarSesion(){
+        try{
                 SisUsuarios.logout()
                 escritorio.setNombreUsuario("Sin Sesión")
                 Principal.menuPrincipal = new MenuPrincipal()
@@ -148,5 +151,6 @@ public class Principal {
                 Principal.iniciarSesion()
                 Principal.menuPrincipal.iniciar()
                 }
+        } catch(e) { Dialogos.lanzarDialogoError(null, "Error al cerrar secion ciclo de huella", Herramientas.getStackTraceString(e)) }
     }
 }
