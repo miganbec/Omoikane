@@ -61,7 +61,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnCancelaArt" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnCancelacion" min="-2" pref="171" max="-2" attributes="0"/>
+                                      <Component id="btnCancelacion" pref="187" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane1" alignment="0" pref="722" max="32767" attributes="2"/>
                               </Group>
@@ -95,22 +95,21 @@
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jPanel3" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnTerminar" min="-2" max="-2" attributes="1"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnMovimientos" alignment="0" pref="41" max="32767" attributes="1"/>
-                      <Component id="btnCancelaArt" alignment="0" max="32767" attributes="1"/>
-                      <Component id="btnCatalogo" alignment="0" max="32767" attributes="1"/>
-                      <Component id="btnCancelacion" alignment="0" min="-2" max="-2" attributes="3"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnTerminar" min="-2" max="-2" attributes="1"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnMovimientos" alignment="0" pref="41" max="32767" attributes="1"/>
+                          <Component id="btnCancelaArt" alignment="0" max="32767" attributes="1"/>
+                          <Component id="btnCatalogo" alignment="0" max="32767" attributes="1"/>
+                      </Group>
                   </Group>
+                  <Component id="btnCancelacion" min="-2" max="-2" attributes="3"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -136,7 +136,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
         jScrollPane1.setAutoscrolls(true);
 
-        jTable1.setFont(new java.awt.Font("Arial", 1, 12));
+        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -169,7 +169,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar [F3]:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Catálogo de Usuarios");
 

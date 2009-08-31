@@ -36,8 +36,8 @@ public class Articulos
             def cat = (new omoikane.formularios.CatalogoArticulos())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.panelCatalogo(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.14,0.1,0.1,0.4,0.06,0.1,0.1]);
+            Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }

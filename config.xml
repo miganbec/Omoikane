@@ -12,10 +12,10 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <idAlmacen>1</idAlmacen>
-    <idCaja>1</idCaja>
+    <idCaja>4</idCaja>
     <puertoImpresion>LPT1:</puertoImpresion>
-    <URLServidor>http://gogo-00:5542</URLServidor>
-    <URL>jdbc:mysql://gogo-00/omoikane</URL>
+    <URLServidor>http://nadesico:5542</URLServidor>
+    <URL>jdbc:mysql://nadesico/omoikane</URL>
     <ScannerBaudRate>9600</ScannerBaudRate>
     <ScannerPort>COM4</ScannerPort>
     <fondoBlur>false</fondoBlur>

@@ -138,7 +138,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
 
         jScrollPane1.setAutoscrolls(true);
 
-        jTable1.setFont(new java.awt.Font("Arial", 1, 12));
+        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -455,7 +455,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
 
     private void salir(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salir
         // TODO add your handling code here:
-        this.btnCerrar.doClick();
+        if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
     }//GEN-LAST:event_salir
 
     

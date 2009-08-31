@@ -114,7 +114,7 @@ public class Caja extends javax.swing.JInternalFrame {
         btnCerrar.setText("Cerrar [Esc]");
         btnCerrar.setRequestFocusEnabled(false);
 
-        tablaVenta.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaVenta.setFont(new java.awt.Font("Tahoma", 1, 18));
         tablaVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -153,7 +153,7 @@ public class Caja extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Captura");
         jLabel4.setFocusable(false);
@@ -208,7 +208,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel10.setBounds(0, 0, 60, 15);
 
         txtNArticulos.setBackground(new java.awt.Color(153, 51, 0));
-        txtNArticulos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtNArticulos.setFont(new java.awt.Font("Tahoma", 1, 24));
         txtNArticulos.setForeground(new java.awt.Color(255, 255, 255));
         txtNArticulos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtNArticulos.setText("0");
@@ -228,7 +228,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel12.setBounds(0, 0, 60, 15);
 
         jLabel13.setBackground(new java.awt.Color(153, 51, 0));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20));
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Público en general");
@@ -266,7 +266,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jPanel6.add(jLabel14);
         jLabel14.setBounds(0, 0, 60, 15);
 
-        txtCambio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtCambio.setFont(new java.awt.Font("Tahoma", 1, 24));
         txtCambio.setForeground(new java.awt.Color(0, 102, 204));
         txtCambio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCambio.setText("$ 0.00");
@@ -337,7 +337,7 @@ public class Caja extends javax.swing.JInternalFrame {
         txtFecha.setFocusable(false);
 
         txtDescuento.setBackground(new java.awt.Color(153, 51, 0));
-        txtDescuento.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtDescuento.setFont(new java.awt.Font("Tahoma", 1, 24));
         txtDescuento.setForeground(new java.awt.Color(255, 255, 255));
         txtDescuento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtDescuento.setText("$ 0.00");
@@ -383,7 +383,7 @@ public class Caja extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnCancelaArt)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnCancelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnCancelacion, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
@@ -406,18 +406,17 @@ public class Caja extends javax.swing.JInternalFrame {
                             .addComponent(txtCaptura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(14, 14, 14))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnTerminar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(btnCancelaArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelacion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnTerminar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                            .addComponent(btnCancelaArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnCancelacion))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();

@@ -370,6 +370,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
+try{
         ArticulosTableModel tabModelo = this.modelo;
         this.modelo = null;
         this.dispose();
@@ -377,6 +378,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
         }
+}catch(Exception ex2) { Dialogos.error(ex2.getMessage(), ex2); }
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
