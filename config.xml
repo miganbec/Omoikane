@@ -14,8 +14,8 @@
     <idAlmacen>1</idAlmacen>
     <idCaja>4</idCaja>
     <puertoImpresion>LPT1:</puertoImpresion>
-    <URLServidor>http://nadesico:5542</URLServidor>
-    <URL>jdbc:mysql://nadesico/omoikane</URL>
+    <URLServidor>http://new-eden:5542</URLServidor>
+    <URL>jdbc:mysql://new-eden/omoikane</URL>
     <ScannerBaudRate>9600</ScannerBaudRate>
     <ScannerPort>COM4</ScannerPort>
     <fondoBlur>false</fondoBlur>

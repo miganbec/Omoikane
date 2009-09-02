@@ -175,8 +175,8 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel11.setText("<html>Última<br>Modificación:</html>");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
-        txtPerfil.setFont(new java.awt.Font("Arial", 0, 12));
-        txtPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cajero", "Supervisor", "Gerente", "Administrador", "Propietario" }));
+        txtPerfil.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cajero", "Capturista", "Supervisor", "Gerente", "Administrador", "Propietario" }));
         txtPerfil.setEnabled(false);
         txtPerfil.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         txtPerfil.setMinimumSize(new java.awt.Dimension(6, 21));
@@ -202,7 +202,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         });
         getContentPane().add(JH3, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 220, 210, 25));
 
-        JH1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        JH1.setFont(new java.awt.Font("Arial", 0, 12));
         JH1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/record.png"))); // NOI18N
         JH1.setText("Capturar Huella");
         JH1.setEnabled(false);

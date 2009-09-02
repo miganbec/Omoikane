@@ -303,12 +303,13 @@
           <Font name="Arial" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="6">
             <StringItem index="0" value="Cajero"/>
-            <StringItem index="1" value="Supervisor"/>
-            <StringItem index="2" value="Gerente"/>
-            <StringItem index="3" value="Administrador"/>
-            <StringItem index="4" value="Propietario"/>
+            <StringItem index="1" value="Capturista"/>
+            <StringItem index="2" value="Supervisor"/>
+            <StringItem index="3" value="Gerente"/>
+            <StringItem index="4" value="Administrador"/>
+            <StringItem index="5" value="Propietario"/>
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>

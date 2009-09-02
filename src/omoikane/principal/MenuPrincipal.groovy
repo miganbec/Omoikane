@@ -17,7 +17,7 @@ class MenuPrincipal {
     def menuPrincipal = new omoikane.formularios.MenuPrincipal()
 
     void iniciar()
-    { if(!SisUsuarios.cerrojo(SisUsuarios.SUPERVISOR)) {
+    { if(!SisUsuarios.cerrojo(SisUsuarios.CAPTURISTA)) {
       //Si es cajero no se lanza el menú, ingresa directo a caja
        Caja.lanzar()
     } else {

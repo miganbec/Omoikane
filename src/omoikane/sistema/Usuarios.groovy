@@ -21,6 +21,7 @@ public class Usuarios {
     private static boolean autorizado = false;
     public static def usuarioActivo = null
     public static def CAJERO        = 0
+    public static def CAPTURISTA    = 0.5
     public static def SUPERVISOR    = 1
     public static def GERENTE       = 2
     public static def ADMINISTRADOR = 3

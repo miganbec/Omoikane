@@ -108,6 +108,7 @@ class Usuarios {
             formUsuario.setTxtNIP            art.nip                 as String
             switch(art.perfil){
                 case 0:formUsuario.setTxtPerfil( "Cajero"      ) ; break;
+                case 0.5:formUsuario.setTxtPerfil( "Capturista"      ) ; break;
                 case 1:formUsuario.setTxtPerfil("Supervisor"   ); break;
                 case 2:formUsuario.setTxtPerfil( "Gerente"      ); break;
                 case 3:formUsuario.setTxtPerfil( "Administrador"); break;
@@ -135,6 +136,7 @@ class Usuarios {
                 Herramientas.verificaCampo(NIP,Herramientas.numero,"NIP"+Herramientas.error2)
                 switch(Perfil) {
                     case "Cajero"       :Perfil=0; break;
+                    case "Capturista"   :Perfil=0.5; break;
                     case "Supervisor"   :Perfil=1; break;
                     case "Gerente"      :if(cerrojo(ADMINISTRADOR)){Perfil=2}else{Dialogos.lanzarAlerta("Acceso Denegado solo el administrador puede agregar un nuevo gerente")}; break;
                     case "Administrador":if(cerrojo(PROPIETARIO)){Perfil=3}else{Dialogos.lanzarAlerta("Acceso Denegado solo un propietario puede agregar un nuevo administrador")}; break;
@@ -202,6 +204,7 @@ class Usuarios {
                 Herramientas.verificaCampo(NIP,Herramientas.numero,"NIP"+Herramientas.error2)
                 switch(Perfil) {
                     case "Cajero"       :Perfil=0; break;
+                    case "Capturista"   :Perfil=0.5; break;
                     case "Supervisor"   :Perfil=1; break;
                     case "Gerente"      :if(cerrojo(ADMINISTRADOR)){Perfil=2}else{Dialogos.lanzarAlerta("Acceso Denegado solo el administrador puede agregar un nuevo gerente")}; break;
                     case "Administrador":if(cerrojo(PROPIETARIO)){Perfil=3}else{Dialogos.lanzarAlerta("Acceso Denegado solo un propietario puede agregar un nuevo administrador")}; break;
