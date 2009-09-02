@@ -33,13 +33,10 @@ class Articulo
     }
 
     def cargarConQuery(query) {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
-        def art  = db.rows(query)
-
-        db.close()
-        articulo = art[0]
-        if(articulo==null) { cargado = false; } else { cargado = true; }
-        articulo
+        def serv = Nadesico.conectar();
+        def a = serv.getArticuloAlmacen(query);
+        serv.desconectar();
+        return a
     }
 
     static double precio(id,IDAlmacen){

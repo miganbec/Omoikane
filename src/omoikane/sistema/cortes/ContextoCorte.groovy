@@ -4,7 +4,6 @@
  */
 
 package omoikane.sistema.cortes
-
 /**
  *
  * @author SYSTEM
