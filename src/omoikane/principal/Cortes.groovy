@@ -18,6 +18,8 @@ import javax.swing.table.TableColumn
 import java.awt.event.*;
 import java.text.SimpleDateFormat
 import groovy.swing.*
+import omoikane.sistema.cortes.*;
+
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*;
 
@@ -64,7 +66,7 @@ class Cortes {
             Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-           Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "corte" ) { cat.btnCorteDia.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "corte" ) { cat.btnCorteDia.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F2    , "caja" ) { cat.btnCortesCaja.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "filtrar" ) { cat.btnFiltrar.doClick() }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
@@ -167,9 +169,13 @@ class Cortes {
             form.txtDepositos.text     = rc.depositos
             form.btnAceptar.actionPerformed  = { form.dispose() }
             form.btnImprimir.actionPerformed = {
-                def comprobante = new Comprobantes()
-                (comprobante.CorteSucursal(IDAlmacen, IDCorte))//imprimir ticket
-                (comprobante.probar())//* Aqui tambien mandar a imprimir*/
+
+                //def comprobante = new Comprobantes()
+                //(comprobante.CorteSucursal(IDAlmacen, IDCorte))//imprimir ticket
+                //(comprobante.probar())//* Aqui tambien mandar a imprimir*/
+
+                def cortes = ContextoCorte.instanciar();
+                cortes.imprimirCorteSucursal(IDAlmacen, IDCorte)
                 }
             
             return form
@@ -193,8 +199,10 @@ class Cortes {
                     if(cajasCerradas) { paso = 4 } else { Dialogos.lanzarAlerta("No se puede continuar. Hay cajas abiertas, debe cerrarlas para continuar."); break }
                 case 4:
                     Sucursales.cerrar(IDAlmacen)
-                    def IDCorte        = Sucursales.corte(IDAlmacen)
-                    def resultadoCorte = Sucursales.sumaCorte(IDAlmacen, IDCorte)
+
+                    def cortes = ContextoCorte.instanciar()
+                    def IDCorte        = cortes.hacerCorteSucursal(IDAlmacen)
+                    def resultadoCorte = cortes.obtenerSumaSucursal(IDAlmacen, IDCorte)
                     lanzarVentanaCorteSucursal(resultadoCorte,IDAlmacen, IDCorte)
                     // Aquí mandar a imprimir resultadoCorte (también agregar imprimir en la función anterior (lanzarVentanaCorteSucursal))
                 break

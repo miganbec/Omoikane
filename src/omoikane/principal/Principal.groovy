@@ -8,6 +8,7 @@ package omoikane.principal
 import omoikane.sistema.*
 import omoikane.sistema.Usuarios as SisUsuarios
 import java.awt.event.*;
+import omoikane.sistema.cortes.ContextoCorte;
 
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +39,7 @@ public class Principal {
         public static ShutdownHandler shutdownHandler
         public static def             toFinalizeTracker = [:]
         public static def             scanMan
+        public static def             tipoCorte         = ContextoCorte.TIPO_DUAL
 
 	public static void main(args)
         {

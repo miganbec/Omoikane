@@ -72,6 +72,7 @@ class Sucursales {
         serv.desconectar()
         salida
     }
+    /*
     static def corte(IDAlmacen) {
         def serv  = Nadesico.conectar()
         def salida= serv.corteSucursal(IDAlmacen)
@@ -84,4 +85,5 @@ class Sucursales {
         serv.desconectar()
         salida
     }
+    */
 }

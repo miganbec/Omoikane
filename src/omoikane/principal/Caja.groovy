@@ -19,6 +19,7 @@ import groovy.swing.*
 import java.util.Calendar;
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*;
+import omoikane.sistema.cortes.*;
 
 /** 
  * @author Usuario
@@ -132,7 +133,8 @@ class Caja {
         def dat   = form.modelo.getDataMap()
         def sumas = [0.0,0.0,0.0,0.0]
         dat.each { linea ->
-        sumas[0] += linea['Precio'] as Double; sumas[1] += linea['Descuento'] as Double; sumas[2] += Caja.aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double
+            
+            sumas[0] += linea['Precio'] as Double; sumas[1] += linea['Descuento'] as Double; sumas[2] += Caja.aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double
         }
         form.txtNArticulos.text = dat.size()
         form.txtSubtotal.text   = Caja.cifra (sumas[2] + sumas[1] - sumas[3])
@@ -164,8 +166,9 @@ class Caja {
     }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
-            def form = new omoikane.formularios.Caja()
-            def modelo = new CajaTableModel()
+            def form                     = new omoikane.formularios.Caja()
+            def modelo                   = new CajaTableModel(form)
+            def autorizadorVentaEspecial = null
             Herramientas.panelCatalogo(form)
             form.tablaVenta.setModel(modelo)
             form.modelo = modelo
@@ -177,6 +180,7 @@ class Caja {
             Herramientas.In2ActionX(form           , KeyEvent.VK_ESCAPE, "cerrar"    ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"    ) { form.btnCerrar.doClick()        }
             Herramientas.In2ActionX(form           , KeyEvent.VK_F1    , "retener"   ) { form.btnRetencion.doClick()     }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_F4    , "ventaEsp"  ) { form.btnVentaEspecial.doClick() }
             Herramientas.In2ActionX(form           , KeyEvent.VK_PAUSE , "pausar"    ) { form.btnPausar.doClick()        }
             Herramientas.In2ActionX(form           , KeyEvent.VK_F12   , "cancelar"  ) { form.btnCancelacion.doClick()   }
             Herramientas.In2ActionX(form.btnCerrar , KeyEvent.VK_ESCAPE, "cerrar2"   ) { form.btnCerrar.doClick()        }
@@ -222,9 +226,10 @@ class Caja {
                         def total   = Caja.cifra(cantidad * precio.total)
                         form.txtCaptura.text = ""
                         //form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,precio.total,precio['descuento$'],total].toArray())
+                        
                         form.modelo.addRowMap(["ID Artículo":art.id_articulo, "Concepto" :     art.descripcion, "Cantidad" :            cantidad,
                                                "Precio"     :   precio.total, "Descuento":precio['descuento$'], "Impuestos": precio['impuestos'],
-                                               "Total"      :          total])
+                                               "Total"      :          total, "Impuestos%": precio['impuestos%']])
                         //println "impuestos->"+art.impuestos
                         Caja.sumarTodo(form)
                         form.repaint()
@@ -292,6 +297,15 @@ class Caja {
                     form.txtCambio.text = Caja.cifra(Caja.round(sefe - (stot as double)))
                     form.txtCambio.requestFocusInWindow()
                 }
+            }
+            form.btnVentaEspecial.actionPerformed = {
+                def sisUsers = omoikane.sistema.Usuarios
+                def usuario = sisUsers.identificaPersona()
+                if(usuario.cerrojo(omoikane.sistema.Permisos.PMA_VENTAESPECIAL)) {
+                    autorizadorVentaEspecial = usuario
+                    form.tablaVenta.getModel().ventaAbierta = true
+                }
+                
             }
             form.btnMovimientos.actionPerformed = {
                 Thread.start {
@@ -430,15 +444,22 @@ class Caja {
 //                            }
 //                            aaa.sform.setBounds(100,100,100,100)
 //                            synchronized(foco) { foco.wait() }
-                        def detalles = []
+                        def detalles = [], cantTemp
                         form.modelo.getDataMap().each {
-                            detalles << [IDArticulo:it['ID Artículo'], cantidad:it['Cantidad'], precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
+                            cantTemp = it['Cantidad']
+                            if(cantTemp instanceof String) { cantTemp = Caja.aDoble(cantTemp) }
+                            detalles << [IDArticulo:it['ID Artículo'], cantidad:cantTemp, precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
                         }
                         def dinero
                         def cambio
                         if(form.txtEfectivo.text == "") { dinero =  Caja.aDoble(form.txtTotal.text) ;cambio = "0.0"}
                         else{dinero = Caja.aDoble(form.txtEfectivo.text);cambio = Caja.aDoble(form.txtCambio.text)}
                         def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), form.impuestos, Caja.aDoble(form.txtTotal.text), detalles,dinero,cambio,form.totalOriginal)
+
+                            if(autorizadorVentaEspecial != null) {
+                                serv.addVentaEspecial(salida.ID, autorizadorVentaEspecial.ID)
+                            }
+
                         serv.desconectar()
                         def comprobante = new Comprobantes()
                         comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
@@ -510,7 +531,9 @@ class Caja {
                 } else {
                     if(cortar) { serv.cerrarCaja(IDCaja) }
                     horas = serv.getCaja(IDCaja)
-                    def ventas= serv.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), sdf.format(horas.horaCerrada))
+                    //def ventas= serv.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), sdf.format(horas.horaCerrada))
+                    def instanciaCortes = ContextoCorte.instanciar()
+                    def ventas= instanciaCortes.obtenerSumaCaja(IDCaja, sdf.format(horas.horaAbierta), sdf.format(horas.horaCerrada))
                     def form  = Cortes.lanzarVentanaDetalles()
                     def caja  = serv.getCaja(IDCaja)
                     def desde = horas.horaAbierta
@@ -530,12 +553,11 @@ class Caja {
                     form.setTxtTotal         (ventas.total as String)
                     def dinero = ((ventas.total)-(ventas.retiros)+(ventas.depositos))
                     form.setTxtEfectivo      (dinero as String)
-                    if(cortar) { 
-                        newCorte=serv.addCorte(IDCaja, caja.id_almacen, ventas.subtotal, ventas.impuestos, ventas.descuento, ventas.total, ventas.nVentas, desde, hasta,ventas.depositos,ventas.retiros)
-                        Dialogos.lanzarAlerta(newCorte.mensaje)
-                        def comprobante = new Comprobantes()
-                        comprobante.Corte(newCorte.IDCorte)//imprimir ticket
-                        comprobante.probar()//imprimir ticket
+
+                    if(cortar) {
+ 
+                        newCorte     = instanciaCortes.hacerCorteCaja(IDCaja, caja.id_almacen, ventas.subtotal, ventas.impuestos, ventas.descuento, ventas.total, ventas.nVentas, desde, hasta,ventas.depositos,ventas.retiros)
+
                         form.ID=newCorte.IDCorte
                     }
                 }
@@ -656,10 +678,57 @@ class Caja {
 class CajaTableModel extends DefaultTableModel {
 
     def data = []
-    CajaTableModel() { 
-        super(new Vector(), new Vector(["Concepto", "Cantidad", "Precio", "Descuento", "Total"]))  }
-    public void addRowMap(rowData) { data << rowData; addRow(rowData.values()) }
+    def parent
+    def ventaAbierta = false
+    CajaTableModel(parent) { 
+        super(new Vector(), new Vector(["Concepto", "Cantidad", "Precio", "Descuento", "Total"]))  
+        this.parent = parent
+    }
+    public void addRowMap(rowData) {
+
+        data << rowData;
+        addRow(rowData.values())
+        actualizarSumas()
+    }
     public Object getValueAt(int row, int col) { return data[row][getColumnName(col)] /*super.getValueAt(row,col)*/ }
     public def getDataMap() { return data }
     public def eliminar(i) { data.remove(i); super.removeRow(i); }
+    public void setValueAt(Object val, int row, int col) {
+        try {
+        data[row][getColumnName(col)] = val
+        def totalTemp
+        def descTemp, factImp
+        
+        if(col == 1 || col == 2) {
+            
+            descTemp  =  Caja.aDoble(data[row].Cantidad.toString()) * Caja.aDoble("0"+data[row].Descuento.toString())
+            totalTemp = (Caja.aDoble(data[row].Cantidad.toString()) * Caja.aDoble("0"+data[row].Precio.toString())) - descTemp
+            setValueAt( descTemp , row, 3)
+
+            factImp = data[row]['Impuestos%']/100
+            data[row].Impuestos = (totalTemp/(1 + factImp)) * factImp
+            totalTemp = Caja.cifra(totalTemp)
+            setValueAt( totalTemp, row, 4)
+            
+            super.fireTableCellUpdated(row, 3)
+            super.fireTableCellUpdated(row, 4)
+            
+            Caja.sumarTodo(parent)
+        }
+       // super.setValueAt(val, row, col)
+        } catch (Exception e) {
+          omoikane.sistema.Dialogos.error("Error al aplicar cambio", e)
+        }
+    }
+    public boolean isCellEditable(int row, int col) {
+        if((col==1||col==2)&&ventaAbierta) { return true }
+        return false
+    }
+    public def actualizarSumas() {
+        /* Disponible para actualizaciones
+        data.each { rowData ->
+           
+        }
+        */
+    }
 }

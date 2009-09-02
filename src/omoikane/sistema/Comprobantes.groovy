@@ -36,15 +36,18 @@ class Comprobantes {
     }
 
     def Corte(ID) {
+        return Corte(ID, "cortes")
+    }
+    def Corte(ID, tabla) {
         def serv = new Nadesico().conectar()
         try {
-            data         = serv.getCorteWhere(" cortes.id_corte=$ID")
+            data         = serv.getCorteWhereFrom(" cortes.id_corte=$ID", tabla)
             data.caja    = serv.getCaja(data.id_caja)
             data.leyenda= "C O R T E   D E   C A J A"
             generado     = generarCorte()
         } catch(e) {
             throw e
-        }finally {
+        } finally {
         serv.desconectar()
         }
     }
@@ -54,13 +57,24 @@ class Comprobantes {
         try {
             data   = serv.getSumaCorteSucursal(IDAlmacen, IDCorte)
             data   += serv.getCorteSucursal(IDAlmacen, IDCorte)
+            return CorteSucursalAvanzado(data)
+        } catch(e) {
+            omoikane.sistema.Dialogos.error("Ha ocurrido un error al realizar comprobante de corte de sucursal", e)
+        }finally {
+            serv.desconectar()
+        }
+    }
+
+    def CorteSucursalAvanzado(data) {
+        try {
             data.descripcion = "CORTE DEL DIA"
             data.leyenda= "C O R T E   D E   S U C U R S A L"
+            this.data = data
+            
             generado = generarCorteSucursal()
-        } catch(e) {
-            throw e
-        }finally {
-        serv.desconectar()
+
+        } catch(Exception e) {
+            omoikane.sistema.Dialogos.error("Ha ocurrido un error al realizar comprobante de corte de sucursal", e)
         }
     }
 
