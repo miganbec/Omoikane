@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : config.xml
-    Created on : 15 de noviembre de 2008, 07:29 PM
-    Author     : Usuario.. no. Octavio Ruiz
-    Description:
-	puerto serial y paralelo  linux : /dev/ttyS0 COM1   /dev/lp0 LPT1:
-        Purpose of the document follows. Itself explained
+    Document    : config.xml
+    Creado      : 15 de noviembre de 2008, 07:29 PM
+    Author      :
+        /* Author Phesus        //////////////////////////////
+        *  ORC,ACR             /////////////
+        *                     /////////////
+        *                    /////////////
+        *                   /////////////
+        * //////////////////////////////                   */
+    Description :
+        puerto serial        linux : /dev/ttySX     windows: COMX
+        puerto paralelo      linux : /dev/lpX       windows: LPTX:
+        puerto serial a usb  linux : /dev/ttyUSBX   windows: COMX
+        X es el valor del puerto en el que se encuentra
 -->
 
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
+    <URLServidor>http://nadesico:5542</URLServidor>
+    <URL>jdbc:mysql://nadesico/omoikane</URL>
+    <impresoraActiva>false</impresoraActiva>
+    <puertoImpresion>LPT1:</puertoImpresion>
+    <scannerActivo>false</scannerActivo>
+    <ScannerPort>COM1</ScannerPort>
+    <ScannerBaudRate>9600</ScannerBaudRate>
+    <basculaActiva>false</basculaActiva>
+    <puertoBascula>COM2</puertoBascula>
+    <fondoBlur>false</fondoBlur>
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
-    <puertoImpresion>LPT1:</puertoImpresion>
-    <URLServidor>http://new-eden:5542</URLServidor>
-    <URL>jdbc:mysql://new-eden/omoikane</URL>
-    <ScannerBaudRate>9600</ScannerBaudRate>
-    <ScannerPort>COM1</ScannerPort>
-    <fondoBlur>false</fondoBlur>
-    <impresoraActiva>false</impresoraActiva>
-    <scannerActivo>false</scannerActivo>
-    <puertoBascula>COM2</puertoBascula>
 </document>

@@ -327,7 +327,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void btnPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreferenciasActionPerformed
         // TODO Cambiar esto por preferencias
-        //omoikane.principal.LineasDuales.lanzarCatalogo();
+       omoikane.principal.LineasDuales.lanzarCatalogo();
     }//GEN-LAST:event_btnPreferenciasActionPerformed
 
     public void paintComponent(Graphics g)
