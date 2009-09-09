@@ -10,6 +10,9 @@
 package omoikane.formularios;
 
 import omoikane.sistema.*;
+import javax.swing.AbstractAction;
+import javax.swing.KeyStroke;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -21,6 +24,14 @@ public class WndLeerHuella extends JInternalDialog2 {
     /** Creates a new instance of WndLeerHuella */
     public WndLeerHuella(Object parent) {
         super(parent, "Leer huella");
+
+        this.getActionMap().put("apagado", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Apagado.apagar();
+            }
+        });
+        this.getInputMap(this.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("F10"), "apagado");
     }
     
     public byte[] getHuella()

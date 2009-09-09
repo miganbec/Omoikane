@@ -10,12 +10,23 @@
  */
 
 package omoikane.formularios;
+import java.awt.Component;
+import javax.swing.AbstractAction;
+import javax.swing.KeyStroke;
+import java.awt.event.ActionEvent;
+
+import omoikane.sistema.Apagado;
+import omoikane.principal.Calendario;
+import omoikane.principal.Calculadora;
+import java.awt.datatransfer.Clipboard;
 
 /**
  *
  * @author Octavio
  */
 public class Escritorio extends javax.swing.JFrame {
+
+    private Clipboard clipboard = getToolkit().getSystemClipboard();
 
     /** Creates new form Escritorio */
     public Escritorio() {
@@ -25,6 +36,33 @@ public class Escritorio extends javax.swing.JFrame {
 
         this.transferFocus();
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+
+        this.PanelEscritorio.getActionMap().put("apagado", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Apagado.apagar();
+            }
+        });
+        this.PanelEscritorio.getInputMap(this.PanelEscritorio.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("F10"), "apagado");
+
+        this.PanelEscritorio.getActionMap().put("calculadora", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Component invocador = getFocusOwner();
+                Calculadora.lanzarCalculadora(clipboard, invocador);
+            }
+        });
+        this.PanelEscritorio.getInputMap(this.PanelEscritorio.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("F2"), "calculadora");
+
+        this.PanelEscritorio.getActionMap().put("calendario", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Component invocador = getFocusOwner();
+                Calendario.lanzarCalendario(invocador);
+            }
+        });
+        this.PanelEscritorio.getInputMap(this.PanelEscritorio.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("F9"), "calendario");
+
     }
     public void fondoToBack() {
         PanelEscritorio.moveToBack(this.lblImagenFondo);
