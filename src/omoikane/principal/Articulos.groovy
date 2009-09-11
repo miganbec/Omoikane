@@ -243,4 +243,40 @@ public class Articulos
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
+
+    static def recalcularCampos(formArticulo) {
+        def f = formArticulo
+        def c = [ imp:Double.parseDouble(f.getTxtImpuestosPorc().text), cos:Double.parseDouble(f.getTxtCosto()),
+                dto:Double.parseDouble(f.getTxtDesctoPorcentaje().text), uti:Double.parseDouble(f.getTxtUtilidadPorc().text)]
+
+        def utilidad = c.uti * c.cos * 0.01;
+        def descuento = (utilidad + c.cos) * c.dto * 0.01;
+        def impuesto = ( c.cos + utilidad - descuento ) * c.imp * 0.01;
+        def precio = (c.cos + utilidad - descuento + impuesto);
+        def formateador = new java.text.DecimalFormat("#.00");
+
+        f.setTxtImpuestos4(formateador.format(impuesto));
+        f.setTxtDescuento3(formateador.format(descuento));
+        f.setTxtDescuento(formateador.format(c.dto));
+        f.setTxtUtilidad2(formateador.format(utilidad));
+        f.setTxtPrecio3(formateador.format(precio));
+        f.setTxtPrecio(formateador.format(precio));
+
+    }
+
+    static def recalcularUtilidad(formArticulo, txtPrecio) {
+        def f = formArticulo
+        def c = [ imp:Double.parseDouble(f.getTxtImpuestos3().text), cos:Double.parseDouble(f.getTxtCosto()),
+                dto:Double.parseDouble(f.getTxtDescuento2().text), pre:Double.parseDouble(txtPrecio.getText())]
+         def formateador = new java.text.DecimalFormat("#.00");
+
+        def utilidad = c.pre - c.imp + c.dto - c.cos
+        def porcentaje = (utilidad / c.cos) * 100
+
+        f.setTxtUtilidad2(formateador.format(utilidad))
+        f.setTxtUtilidadPorcText(formateador.format(porcentaje))
+        f.setTxtPrecio3(txtPrecio.getText())
+        f.setTxtPrecio(txtPrecio.getText())
+
+    }
 }

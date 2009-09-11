@@ -199,6 +199,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtPrecio.setEditable(false);
         txtPrecio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtPrecio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecioFocusLost(evt);
+            }
+        });
         jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, 30));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18));
@@ -276,6 +281,16 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtPrecio2.setEditable(false);
         txtPrecio2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtPrecio2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPrecio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecio2ActionPerformed(evt);
+            }
+        });
+        txtPrecio2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecio2FocusLost(evt);
+            }
+        });
         jPanel5.add(txtPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, -1));
 
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,6 +298,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
 
         txtCosto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtCosto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCostoFocusLost(evt);
+            }
+        });
         jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 110, -1));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,6 +310,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
 
         txtUtilidadPorc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtUtilidadPorc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUtilidadPorcFocusLost(evt);
+            }
+        });
         jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 110, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18));
@@ -317,6 +342,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
 
         txtDesctoPorcentaje.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtDesctoPorcentaje.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDesctoPorcentajeFocusLost(evt);
+            }
+        });
         jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 110, -1));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -344,10 +374,20 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, 20));
 
         txtImpuestosPorc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtImpuestosPorc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtImpuestosPorcFocusLost(evt);
+            }
+        });
         jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 110, -1));
 
         txtImpuestos.setEditable(false);
         txtImpuestos.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtImpuestos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtImpuestosActionPerformed(evt);
+            }
+        });
         jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 110, -1));
 
         txtUtilidad.setEditable(false);
@@ -417,17 +457,49 @@ public class Articulo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_txtIDGrupoActionPerformed
 
+    private void txtImpuestosPorcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtImpuestosPorcFocusLost
+        omoikane.principal.Articulos.recalcularCampos(this);
+    }//GEN-LAST:event_txtImpuestosPorcFocusLost
+
+    private void txtCostoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCostoFocusLost
+        omoikane.principal.Articulos.recalcularCampos(this);
+    }//GEN-LAST:event_txtCostoFocusLost
+
+    private void txtUtilidadPorcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUtilidadPorcFocusLost
+        omoikane.principal.Articulos.recalcularCampos(this);
+    }//GEN-LAST:event_txtUtilidadPorcFocusLost
+
+    private void txtDesctoPorcentajeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDesctoPorcentajeFocusLost
+        omoikane.principal.Articulos.recalcularCampos(this);
+    }//GEN-LAST:event_txtDesctoPorcentajeFocusLost
+
+    private void txtImpuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImpuestosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtImpuestosActionPerformed
+
+    private void txtPrecio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecio2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecio2ActionPerformed
+
+    private void txtPrecio2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecio2FocusLost
+        omoikane.principal.Articulos.recalcularUtilidad(this, txtPrecio2);
+    }//GEN-LAST:event_txtPrecio2FocusLost
+
+    private void txtPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioFocusLost
+         omoikane.principal.Articulos.recalcularUtilidad(this, txtPrecio);
+    }//GEN-LAST:event_txtPrecioFocusLost
+
     public void setEditable(boolean editable)
     {
         this.txtCodigo.setEditable(editable);
         this.txtIDLinea.setEditable(editable);
         this.txtIDGrupo.setEditable(editable);
         this.txtDescripcion.setEditable(editable);
-        //this.getTxtPrecio2().setEditable(editable);
+        this.getTxtPrecio2().setEditable(editable);
         this.txtUnidad.setEnabled(editable);
         this.txtCosto.setEditable(editable);
         this.getTxtUtilidadPorc().setEditable(editable);
-        //this.txtPrecio.setEditable(editable);
+        this.txtPrecio.setEditable(editable);
     }
     public void setModoDetalles()
     {
@@ -652,8 +724,8 @@ public class Articulo extends javax.swing.JInternalFrame {
     /**
      * @param txtPrecio the txtPrecio to set
      */
-    public void setTxtPrecio(String txtPrecio) {
-        this.txtPrecio.setText(txtPrecio);
+    public void setTxtPrecio(String precio) {
+        this.txtPrecio.setText(precio);
     }
 
     /**
@@ -684,6 +756,10 @@ public class Articulo extends javax.swing.JInternalFrame {
         this.txtDescuento2 = txtDescuento2;
     }
 
+    public void setTxtDescuento3(String descuento) {
+        this.txtDescuento2.setText(descuento);
+    }
+
     /**
      * @return the txtImpuestos3
      */
@@ -696,6 +772,10 @@ public class Articulo extends javax.swing.JInternalFrame {
      */
     public void setTxtImpuestos3(javax.swing.JTextField txtImpuestos3) {
         this.txtImpuestos = txtImpuestos3;
+    }
+
+    public void setTxtImpuestos4(String txtImpuestos3) {
+        this.txtImpuestos.setText(txtImpuestos3);
     }
 
     /**
@@ -727,6 +807,13 @@ public class Articulo extends javax.swing.JInternalFrame {
     }
 
     /**
+     * @param txtPrecio2 the txtPrecio2 to set
+     */
+    public void setTxtPrecio3(String precio) {
+        this.txtPrecio2.setText(precio) ;
+    }
+
+    /**
      * @return the txtUtilidadPorc
      */
     public javax.swing.JTextField getTxtUtilidadPorc() {
@@ -738,6 +825,10 @@ public class Articulo extends javax.swing.JInternalFrame {
      */
     public void setTxtUtilidadPorc(javax.swing.JTextField txtUtilidadPorc) {
         this.txtUtilidadPorc = txtUtilidadPorc;
+    }
+
+    public void setTxtUtilidadPorcText(String txt) {
+        txtUtilidadPorc.setText(txt);
     }
 
     /**
@@ -755,5 +846,9 @@ public class Articulo extends javax.swing.JInternalFrame {
      */
     public void setTxtUtilidad(javax.swing.JTextField txtUtilidad) {
         this.txtUtilidad = txtUtilidad;
+    }
+
+    public void setTxtUtilidad2(String utilidad) {
+        this.txtUtilidad.setText(utilidad);
     }
 }
