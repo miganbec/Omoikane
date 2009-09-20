@@ -26,14 +26,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane1" pref="886" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="890" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="322" max="32767" attributes="0"/>
+                              <EmptySpace pref="326" max="32767" attributes="0"/>
                               <Component id="btnCerrar" min="-2" pref="230" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -72,7 +72,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDetalles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="419" pref="419" max="419" attributes="0"/>
-                      <Component id="btnImprimir" pref="189" max="32767" attributes="0"/>
+                      <Component id="btnImprimir" pref="193" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -184,7 +184,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/16x16/search.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Filtrar [F2]"/>
+        <Property name="text" type="java.lang.String" value="Filtrar [F1]"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFiltrarActionPerformed"/>
@@ -249,7 +249,7 @@
     <Component class="javax.swing.JCheckBox" name="chkCliente">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
-        <Property name="text" type="java.lang.String" value="Cliente"/>
+        <Property name="text" type="java.lang.String" value="Id Venta"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkCaja">

@@ -73,7 +73,24 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
 
-        setQueryTable("SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente");
+        String whereFecha = "" ;
+        String fechaDesde     = "";
+        String fechaHasta     = "";
+        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+        calendario.setTime(this.txtFechaHasta.getDate());
+        calendario.add(Calendar.DAY_OF_MONTH, 1);
+
+        if(this.txtFechaDesde.getDate() != null || this.txtFechaHasta.getDate() != null)
+        {
+            try {
+                fechaDesde = sdf.format(this.txtFechaDesde.getDate());
+                fechaHasta = sdf.format(calendario.getTime());
+                whereFecha = " AND ventas.fecha_hora >= '"+fechaDesde+"' AND ventas.fecha_hora <= '"+fechaHasta+"'  ";
+
+            } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
+        }
+
+        setQueryTable("SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente"+whereFecha);
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -164,7 +181,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         jLabel4.setText("Hasta:");
 
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
-        btnFiltrar.setText("Filtrar [F2]");
+        btnFiltrar.setText("Filtrar [F1]");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
@@ -206,7 +223,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         });
 
         chkCliente.setSelected(true);
-        chkCliente.setText("Cliente");
+        chkCliente.setText("Id Venta");
 
         chkCaja.setText("Caja");
 
@@ -242,13 +259,13 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 886, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
                                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -279,7 +296,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDetalles)
                         .addGap(419, 419, 419)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -332,7 +349,6 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         VentasTableModel tabModelo = this.modelo;
         this.modelo = null;
         tabModelo.destroy();
-        this.dispose();
         this.dispose();
         if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
@@ -444,11 +460,14 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         String fechaDesde     = "";
         String fechaHasta     = "";
         SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(this.txtFechaHasta.getDate());
+        calendario.add(Calendar.DAY_OF_MONTH, 1);
         if(this.txtFechaDesde.getDate() != null || this.txtFechaHasta.getDate() != null)
         {
             try {
                 fechaDesde = sdf.format(this.txtFechaDesde.getDate());
-                fechaHasta = sdf.format(this.txtFechaHasta.getDate());
+                fechaHasta = sdf.format(calendario.getTime());
                 whereFecha = " AND ventas.fecha_hora >= '"+fechaDesde+"' AND ventas.fecha_hora <= '"+fechaHasta+"'  ";
 
             } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
@@ -458,7 +477,8 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         String query    = "SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente "+whereFecha;
         if(xCliente || xCaja || xCajero) { query += "AND ("; }
         if(xCliente) {
-                query += "(clientes.razonSocial like '%"+busqueda+"%') ";
+                //query += "(clientes.razonSocial like '%"+busqueda+"%') ";
+                query += "(ventas.id_venta like '%"+busqueda+"%') ";
         }
         if(xCliente && (xCaja || xCajero)) { query += "OR "; }
         if(xCaja) {
