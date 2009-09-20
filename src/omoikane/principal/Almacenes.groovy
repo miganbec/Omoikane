@@ -1,7 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.principal
 
@@ -20,10 +22,6 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*;
-
-/*
- *  @author Octavio
- */
 
 class Almacenes {
     static def IDAlmacen      = Principal.IDAlmacen
@@ -61,7 +59,7 @@ class Almacenes {
         def cat = lanzarCatalogo()
         cat.setModoDialogo()
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
+        cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
         def retorno
         cat.btnAceptar.actionPerformed = { def catTab = cat.tablaAlmacenes; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick(); }
         synchronized(foco){foco.wait()}
@@ -248,14 +246,14 @@ class Almacenes {
     {
         if(cerrojo(PMA_MODIFICARMOVALMACEN)){
         def nvo = (new omoikane.formularios.MovimientoAlmacen())
-        nvo.cellCodigo.component.keyPressed = { def src = it; if(it.getKeyCode()==it.VK_F2) { Thread.start { src.getSource().setText(Articulos.lanzarDialogoCatalogo()); src.getSource().requestFocus() } } }
+        nvo.cellCodigo.component.keyReleased = { def src = it; if(it.getKeyCode()==it.VK_F1) { Thread.start { src.getSource().setText(Articulos.lanzarDialogoCatalogo()); src.getSource().requestFocus() } } }
         nvo.setVisible(true);
         nvo.setAlmacen(IDAlmacen as String)
         Herramientas.In2ActionX(nvo, KeyEvent.VK_ESCAPE, "cerrar"   ) { nvo.btnCerrar.doClick()   }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F12   , "eliminar" ) { nvo.btnEliminarRenglon.doClick() }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F5    , "nuevo"    ) { nvo.btnNuevo.doClick() }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F8    , "imprimir" ) { nvo.btnImprimir.doClick() }
-        Herramientas.In2ActionX(nvo, KeyEvent.VK_F2    , "catalogo" ) { nvo.btnCatalogo.doClick() }
+        Herramientas.In2ActionX(nvo, KeyEvent.VK_F1    , "catalogo" ) { nvo.btnCatalogo.doClick() }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_ENTER   , "nada" ) { }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F3    , "nada" ) {}
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F4    , "nada" ) {}
@@ -267,8 +265,8 @@ class Almacenes {
         nvo.setModoNuevo()
         nvo.toFront()
         SwingBuilder.build {
-            //Al presionar F2: (lanzarCatalogoDialogo) de almacen
-            nvo.getFieldAlmacen().keyPressed = { if(it.keyCode == it.VK_F2) Thread.start { nvo.almacen = Almacenes.lanzarCatalogoDialogo() as String; nvo.getFieldAlmacen().requestFocus() } }
+            //Al presionar F1: (lanzarCatalogoDialogo) de almacen
+            nvo.getFieldAlmacen().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start { nvo.almacen = Almacenes.lanzarCatalogoDialogo() as String; nvo.getFieldAlmacen().requestFocus() } }
         }
         try { nvo.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
         return nvo
@@ -342,7 +340,7 @@ class Almacenes {
         escritorio.getPanelEscritorio().add(form)
         Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) {form.btnCerrar.doClick()    }
         Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
-        Herramientas.In2ActionX(form, KeyEvent.VK_F2    , "catalogo" ) { form.btnCatalogo.doClick() }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F1    , "catalogo" ) { form.btnCatalogo.doClick() }
         Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "nada" ) { }
         Herramientas.In2ActionX(form, KeyEvent.VK_ENTER   , "nada" ) { }
         Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "nada"    ) { }

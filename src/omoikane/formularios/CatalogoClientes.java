@@ -338,6 +338,9 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
+        NadesicoTableModel tabModelo = this.modelo;
+        this.modelo = null;
+        tabModelo.destroy();
         this.dispose();
         if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();

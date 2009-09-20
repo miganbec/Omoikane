@@ -148,6 +148,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Artículo:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
@@ -155,16 +156,18 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtIDArticulo.setEditable(false);
         jPanel1.add(txtIDArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 240, -1));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Código principal:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 20));
+        jLabel3.setText("<html>Código <br>principal:<html>");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 30));
 
         txtCodigo.setEditable(false);
         jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 240, -1));
 
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("ID Línea:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
+        jLabel8.setText("ID Línea [F1]:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, 20));
 
         txtIDLinea.setEditable(false);
         txtIDLinea.addActionListener(new java.awt.event.ActionListener() {
@@ -174,43 +177,47 @@ public class Articulo extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtIDLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 240, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Descripción:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
 
         txtDescripcion.setEditable(false);
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 240, -1));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 240, -1));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Unidad:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
 
         txtUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pza", "Kg", "Lt" }));
         txtUnidad.setEnabled(false);
-        jPanel1.add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 240, -1));
+        jPanel1.add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, -1));
 
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Existencias:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
 
         txtExistencias.setEditable(false);
-        jPanel1.add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, -1));
+        jPanel1.add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 240, -1));
 
         txtPrecio.setEditable(false);
-        txtPrecio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtPrecio.setFont(new java.awt.Font("Tahoma", 1, 18));
         txtPrecio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPrecioFocusLost(evt);
             }
         });
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, 30));
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 240, 30));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Precio:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 30));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("<html>Última<br>Modificación:</html>");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
@@ -219,12 +226,13 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 240, 30));
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, -1, 20));
 
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Descuento:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 20));
 
         txtDescuento.setEditable(false);
-        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 240, -1));
+        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, -1));
 
         txtIDGrupo.setEditable(false);
         txtIDGrupo.addActionListener(new java.awt.event.ActionListener() {
@@ -232,11 +240,12 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtIDGrupoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtIDGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 240, -1));
+        jPanel1.add(txtIDGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 240, -1));
 
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("ID Grupo:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, 20));
+        jLabel9.setText("ID Grupo [F1] :");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, 20));
 
         jTabbedPane1.addTab("General", jPanel1);
 
@@ -279,7 +288,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 20));
 
         txtPrecio2.setEditable(false);
-        txtPrecio2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtPrecio2.setFont(new java.awt.Font("Tahoma", 1, 11));
         txtPrecio2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPrecio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -588,113 +597,55 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtUtilidadPorc;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the txtCodigo
-     */
-    public String getTxtCodigo() {
-        return txtCodigo.getText();
-    }
-
-    /**
-     * @param txtCodigo the txtCodigo to set
-     */
-    public void setTxtCodigo(String txtCodigo) {
-        this.txtCodigo.setText(txtCodigo);
-    }
-    public Component getIDLinea() { return this.txtIDLinea; }
-
-    /**
-     * @return the txtDescripcion
-     */
-    public String getTxtDescripcion() {
-        return txtDescripcion.getText();
-    }
-
-    /**
-     * @param txtDescripcion the txtDescripcion to set
-     */
-    public void setTxtDescripcion(String txtDescripcion) {
-        this.txtDescripcion.setText(txtDescripcion);
-    }
-
-    /**
-     * @return the txtIDArticulo
-     */
-    public String getTxtIDArticulo() {
-        return txtIDArticulo.getText();
-    }
-
-    /**
-     * @param txtIDArticulo the txtIDArticulo to set
-     */
-    public void setTxtIDArticulo(String txtIDArticulo) {
-        this.txtIDArticulo.setText(txtIDArticulo);
-    }
-
-    public String getTxtUnidad()
-    {
-        return String.valueOf(txtUnidad.getSelectedItem());
-    }
-
-    public void setTxtUnidad(String txt)
-    {
-        this.txtUnidad.setSelectedItem(txt);
-    }
-
-    public JTextField getTxtImpuestos()
-    {
-        return this.txtImpuestos;
-    }
-
-    public void setTxtImpuestos(String txt)
-    {
-        this.getTxtPrecio2().setText(txt);
-    }
-
-    public String getTxtUModificacion()
-    {
-        return this.txtUModificacion.getText();
-    }
-
-    public void setTxtUModificacion(String txt)
-    {
-        txtUModificacion.setText(txt);
-    }
-
-    public String getTxtIDLinea()
-    {
-        return txtIDLinea.getText();
-    }
-
-    public void setTxtIDLinea(String IDLinea)
-    {
-
-        txtIDLinea.setText(IDLinea);
-    }
-
-    public String getTxtIDGrupo()
-    {
-        return txtIDGrupo.getText();
-    }
-
-    public void setTxtIDGrupo(String IDGrupo)
-    {
-
-        txtIDGrupo.setText(IDGrupo);
-    }
-
-    public JTextField getCampoID() {
-        return txtIDLinea;
-    }
-
+    public String getTxtCodigo() {return txtCodigo.getText();}
+    public String getTxtDescripcion() {return txtDescripcion.getText();}
+    public String getTxtIDArticulo() {return txtIDArticulo.getText();}
+    public String getTxtUnidad(){return String.valueOf(txtUnidad.getSelectedItem());}
+    public String getTxtUModificacion(){return this.txtUModificacion.getText();}
+    public String getTxtIDLinea(){return txtIDLinea.getText();}
+    public String getTxtIDGrupo(){return txtIDGrupo.getText();}
     public String getTxtDescuento()   { return this.txtDescuento.getText(); }
     public String getTxtCosto()       { return this.txtCosto.getText(); }
     public String getTxtExistencias() { return this.txtExistencias.getText(); }
-
+    public String getTxtPrecio() {return txtPrecio.getText();}
+    public void setTxtCodigo(String txtCodigo) {this.txtCodigo.setText(txtCodigo);}
+    public void setTxtDescripcion(String txtDescripcion) {this.txtDescripcion.setText(txtDescripcion);}
+    public void setTxtIDArticulo(String txtIDArticulo) {this.txtIDArticulo.setText(txtIDArticulo);}
+    public void setTxtUnidad(String txt){this.txtUnidad.setSelectedItem(txt);}
+    public void setTxtUModificacion(String txt){txtUModificacion.setText(txt);}
+    public void setTxtIDLinea(String IDLinea){txtIDLinea.setText(IDLinea);}
+    public void setTxtIDGrupo(String IDGrupo){txtIDGrupo.setText(IDGrupo);}
     public void setTxtDescuento(String descuento)     { txtDescuento.setText(descuento); }
     public void setTxtCosto(String costo)             { txtCosto.setText(costo); }
-    public void setTxtUtilidadPorc(String utilidad)       { getTxtUtilidadPorc().setText(utilidad); }
     public void setTxtExistencias(String existencias) { txtExistencias.setText(existencias); }
+    public void setTxtPrecio(String precio) {this.txtPrecio.setText(precio);}
+    public Component getIDLinea() { return this.txtIDLinea; }
+    public Component getIDGrupo() { return this.txtIDGrupo; }
+    public JTextField getTxtImpuestos(){return this.txtImpuestos;}
+    public JTextField getCampoID() {return txtIDLinea;}
+    public JTextField getCampoGrupo() {return txtIDGrupo;}
+    public JTextField getTxtDesctoPorcentaje() {return txtDesctoPorcentaje;}
+    public JTextField getTxtDescuento2() {return txtDescuento2;}
+    public JTextField getTxtImpuestos3() {return txtImpuestos;}
+    public JTextField getTxtImpuestosPorc() {return txtImpuestosPorc;}
+    public JTextField getTxtPrecio2() {return txtPrecio2;}
+    public JTextField getTxtUtilidadPorc() {return txtUtilidadPorc;}
+    public JTextField getTxtUtilidad() {return txtUtilidad;}
+    public void setTxtImpuestos(String txt){this.getTxtPrecio2().setText(txt);}
+    public void setTxtUtilidadPorc(String utilidad)       { getTxtUtilidadPorc().setText(utilidad); }
+    public void setTxtDesctoPorcentaje(javax.swing.JTextField txtDestoPorcentaje) {this.txtDesctoPorcentaje = txtDestoPorcentaje;}
+    public void setTxtDescuento2(javax.swing.JTextField txtDescuento2) {this.txtDescuento2 = txtDescuento2;}
+    public void setTxtDescuento3(String descuento) {this.txtDescuento2.setText(descuento);}
+    public void setTxtImpuestos3(javax.swing.JTextField txtImpuestos3) {this.txtImpuestos = txtImpuestos3;}
+    public void setTxtImpuestos4(String txtImpuestos3) {this.txtImpuestos.setText(txtImpuestos3);}
+    public void setTxtImpuestosPorc(javax.swing.JTextField txtImpuestosPorc) {this.txtImpuestosPorc = txtImpuestosPorc;}
+    public void setTxtPrecio2(javax.swing.JTextField txtPrecio2) {this.txtPrecio2 = txtPrecio2;}
+    public void setTxtPrecio3(String precio) {this.txtPrecio2.setText(precio) ;}
+    public void setTxtUtilidadPorc(javax.swing.JTextField txtUtilidadPorc) {this.txtUtilidadPorc = txtUtilidadPorc;}
+    public void setTxtUtilidadPorcText(String txt) {txtUtilidadPorc.setText(txt);}
+    public void setTxtUtilidad(javax.swing.JTextField txtUtilidad) {this.txtUtilidad = txtUtilidad;}
+    public void setTxtUtilidad2(String utilidad) {this.txtUtilidad.setText(utilidad);}
+
     public void paintComponent(Graphics g)
     {
       Graphics2D g2d = (Graphics2D) g;
@@ -713,142 +664,5 @@ public class Articulo extends javax.swing.JInternalFrame {
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
     }
-
-    /**
-     * @return the txtPrecio
-     */
-    public String getTxtPrecio() {
-        return txtPrecio.getText();
-    }
-
-    /**
-     * @param txtPrecio the txtPrecio to set
-     */
-    public void setTxtPrecio(String precio) {
-        this.txtPrecio.setText(precio);
-    }
-
-    /**
-     * @return the txtDestoPorcentaje
-     */
-    public javax.swing.JTextField getTxtDesctoPorcentaje() {
-        return txtDesctoPorcentaje;
-    }
-
-    /**
-     * @param txtDestoPorcentaje the txtDestoPorcentaje to set
-     */
-    public void setTxtDesctoPorcentaje(javax.swing.JTextField txtDestoPorcentaje) {
-        this.txtDesctoPorcentaje = txtDestoPorcentaje;
-    }
-
-    /**
-     * @return the txtDescuento2
-     */
-    public javax.swing.JTextField getTxtDescuento2() {
-        return txtDescuento2;
-    }
-
-    /**
-     * @param txtDescuento2 the txtDescuento2 to set
-     */
-    public void setTxtDescuento2(javax.swing.JTextField txtDescuento2) {
-        this.txtDescuento2 = txtDescuento2;
-    }
-
-    public void setTxtDescuento3(String descuento) {
-        this.txtDescuento2.setText(descuento);
-    }
-
-    /**
-     * @return the txtImpuestos3
-     */
-    public javax.swing.JTextField getTxtImpuestos3() {
-        return txtImpuestos;
-    }
-
-    /**
-     * @param txtImpuestos3 the txtImpuestos3 to set
-     */
-    public void setTxtImpuestos3(javax.swing.JTextField txtImpuestos3) {
-        this.txtImpuestos = txtImpuestos3;
-    }
-
-    public void setTxtImpuestos4(String txtImpuestos3) {
-        this.txtImpuestos.setText(txtImpuestos3);
-    }
-
-    /**
-     * @return the txtImpuestosPorc
-     */
-    public javax.swing.JTextField getTxtImpuestosPorc() {
-        return txtImpuestosPorc;
-    }
-
-    /**
-     * @param txtImpuestosPorc the txtImpuestosPorc to set
-     */
-    public void setTxtImpuestosPorc(javax.swing.JTextField txtImpuestosPorc) {
-        this.txtImpuestosPorc = txtImpuestosPorc;
-    }
-
-    /**
-     * @return the txtPrecio2
-     */
-    public javax.swing.JTextField getTxtPrecio2() {
-        return txtPrecio2;
-    }
-
-    /**
-     * @param txtPrecio2 the txtPrecio2 to set
-     */
-    public void setTxtPrecio2(javax.swing.JTextField txtPrecio2) {
-        this.txtPrecio2 = txtPrecio2;
-    }
-
-    /**
-     * @param txtPrecio2 the txtPrecio2 to set
-     */
-    public void setTxtPrecio3(String precio) {
-        this.txtPrecio2.setText(precio) ;
-    }
-
-    /**
-     * @return the txtUtilidadPorc
-     */
-    public javax.swing.JTextField getTxtUtilidadPorc() {
-        return txtUtilidadPorc;
-    }
-
-    /**
-     * @param txtUtilidadPorc the txtUtilidadPorc to set
-     */
-    public void setTxtUtilidadPorc(javax.swing.JTextField txtUtilidadPorc) {
-        this.txtUtilidadPorc = txtUtilidadPorc;
-    }
-
-    public void setTxtUtilidadPorcText(String txt) {
-        txtUtilidadPorc.setText(txt);
-    }
-
-    /**
-     * @return the txtUtilidad
-     */
-    public javax.swing.JTextField getTxtUtilidad() {
-        return txtUtilidad;
-    }
-
-    public javax.swing.JTextField getCampoGrupo() {
-        return this.txtIDGrupo;
-    }
-    /**
-     * @param txtUtilidad the txtUtilidad to set
-     */
-    public void setTxtUtilidad(javax.swing.JTextField txtUtilidad) {
-        this.txtUtilidad = txtUtilidad;
-    }
-
-    public void setTxtUtilidad2(String utilidad) {
-        this.txtUtilidad.setText(utilidad);
-    }
+    
 }

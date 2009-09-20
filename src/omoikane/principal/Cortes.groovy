@@ -46,7 +46,7 @@ class Cortes {
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "corte" ) { cat.btnCorteDia.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F2    , "filtrar" ) { cat.btnFiltrar.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar" ) { cat.btnFiltrar.doClick() }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.iconificable(cat)
             cat.toFront()
@@ -67,7 +67,7 @@ class Cortes {
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "corte" ) { cat.btnCorteDia.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F2    , "caja" ) { cat.btnCortesCaja.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "caja" ) { cat.btnCortesCaja.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "filtrar" ) { cat.btnFiltrar.doClick() }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.iconificable(cat)
@@ -247,7 +247,8 @@ class Cortes {
     static def lanzarDetallesCorteSucursal(IDAlmacen, id)
     {
         if(cerrojo(PMA_TOTALVENTASUCURSAL)) {
-                    def resultadoCorte = Sucursales.sumaCorte(IDAlmacen, id)
+                    def cortes = ContextoCorte.instanciar()
+                    def resultadoCorte = cortes.obtenerSumaSucursal(IDAlmacen, id)
                     lanzarVentanaCorteSucursal(resultadoCorte,IDAlmacen, id)
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }

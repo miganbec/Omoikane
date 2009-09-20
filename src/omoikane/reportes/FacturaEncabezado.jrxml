@@ -213,7 +213,7 @@ WHERE
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_subtotal}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($F{ventas_total}.doubleValue() - $F{ventas_impuestos}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="440" y="77" width="60" height="10"/>

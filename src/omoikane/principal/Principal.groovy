@@ -32,6 +32,7 @@ public class Principal {
         public static String          puertoImpresion
         public static boolean         impresoraActiva
         public static boolean         scannerActivo
+        public static boolean         basculaActiva
         public static String          puertoBascula
         public static String          url
         public static int             scannerBaudRate
@@ -135,6 +136,7 @@ public class Principal {
             scannerBaudRate = Integer.valueOf(config.ScannerBaudRate[0].text())
             scannerPort     = String.valueOf(config.ScannerPort[0].text())
             scannerActivo   = Boolean.valueOf(config.scannerActivo[0].text())
+            basculaActiva   = Boolean.valueOf(config.basculaActiva[0].text())
         }
 
     static def iniciarSesion(){

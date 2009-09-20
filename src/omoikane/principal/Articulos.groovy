@@ -39,6 +39,7 @@ public class Articulos
             Herramientas.setColumnsWidth(cat.jTable1, [0.14,0.1,0.1,0.4,0.06,0.1,0.1]);
             Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()  }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
@@ -58,10 +59,10 @@ public class Articulos
         def cat = lanzarCatalogo()
         cat.setModoDialogo()
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) { println "aquí"; cat.btnAceptar.doClick(); println "aquí2";  } }
+        cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) {cat.btnAceptar.doClick()} }
         def retorno
         cat.btnAceptar.actionPerformed = { 
-            System.out.println ("otro btn aceptar"); def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick();
+            def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick();
         }
         synchronized(foco){foco.wait()}
         retorno
@@ -197,28 +198,35 @@ public class Articulos
     static def lanzarFormNuevoArticulo()
     {
         if(cerrojo(PMA_MODIFICARARTICULO)){
+            try{
             def form = new omoikane.formularios.Articulo()
             form.setVisible(true)
             Herramientas.panelFormulario(form)
             escritorio.getPanelEscritorio().add(form)
             form.toFront()
             SwingBuilder.build {
-                //Al presionar F2: (lanzarCatalogoDialogo)
-                form.getCampoID()   .keyPressed = { if(it.keyCode == it.VK_F2) Thread.start {form.txtIDLinea      = Lineas.lanzarCatalogoDialogo() as String; form.getIDLinea()   .requestFocus()}  }
-                form.getCampoGrupo().keyPressed = { if(it.keyCode == it.VK_F2) Thread.start {form.txtIDGrupo      = Grupos.lanzarCatalogoDialogo() as String; form.getCampoGrupo().requestFocus()}  }
+                //Al presionar F1: (lanzarCatalogoDialogo)
+                form.getCampoID()   .keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDLinea      = Lineas.lanzarCatalogoDialogo() as String; form.getIDLinea().requestFocus()}  }
+                form.getCampoGrupo().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDGrupo      = Grupos.lanzarCatalogoDialogo() as String; form.getIDGrupo().requestFocus()}  }
             }
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
             form.setEditable(true);
             form.setModoNuevo();
+            } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo artículo", Herramientas.getStackTraceString(e)) }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
     static def lanzarModificarArticulo(ID)
     {
-        def formArticulo = lanzarDetallesArticulo(ID)
+        def form = lanzarDetallesArticulo(ID)
         //Dialogos.lanzarAlerta("Eliminar codigo viejo de lanzarModificarArticulo")
-        formArticulo.setModoModificar();
-        formArticulo
+        SwingBuilder.build {
+                //Al presionar F1: (lanzarCatalogoDialogo)
+                form.getCampoID()   .keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDLinea      = Lineas.lanzarCatalogoDialogo() as String; form.getIDLinea().requestFocus()}  }
+                form.getCampoGrupo().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDGrupo      = Grupos.lanzarCatalogoDialogo() as String; form.getIDGrupo().requestFocus()}  }
+            }
+        form.setModoModificar();
+        form
     }
 
     static def modificar(formArticulo)

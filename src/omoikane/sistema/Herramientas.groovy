@@ -219,6 +219,7 @@ public class Herramientas
                     if(evt.getKeyCode() == evt.VK_DOWN  ){evt.getComponent().transferFocus();}
                 }
             }
+
             if(child instanceof JButton){
                 child.keyReleased = {evt ->
                     if(evt.getKeyCode() == evt.VK_ESCAPE){component.dispose();}
@@ -239,7 +240,11 @@ public class Herramientas
                 }
             }
 
-
+            if(child instanceof JTabbedPane){
+                child.keyReleased = {evt ->
+                    if(evt.getKeyCode() == evt.VK_ESCAPE){component.dispose();}
+                }
+            }
         }
     }
 
@@ -248,13 +253,11 @@ public class Herramientas
             child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(110,110,255));
                 evt.getComponent().setForeground(new Color(255,255,255));
-                evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,12));
             }
 
             child.focusLost={evt->
                 evt.getComponent().setBackground(null);
                 evt.getComponent().setForeground(new Color(0,0,0));
-                evt.getComponent().setFont(new Font("ARIAL",Font.PLAIN,12));
             }
 
             if(child instanceof JButton){
@@ -285,6 +288,8 @@ public class Herramientas
                     if(evt.getKeyCode() == evt.VK_ENTER){evt.getComponent().doClick()}
                 }
             }
+
+            
         }
     }
 

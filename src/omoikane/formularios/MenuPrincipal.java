@@ -100,8 +100,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jLabel1.setText("Principal");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file-manager-128x128.png"))); // NOI18N
         btnCerrar.setText("Cerrar");
+        btnCerrar.setIconTextGap(-5);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
@@ -109,8 +111,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 230, 60));
 
+        btnVender.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/package-toys-128x128.png"))); // NOI18N
         btnVender.setText("Vender");
+        btnVender.setIconTextGap(-5);
         btnVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVenderActionPerformed(evt);
@@ -123,8 +127,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jLabel2.setText("Artículos");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
+        btnCajas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCajas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/download-manager-128x128.png"))); // NOI18N
         btnCajas.setText("Cajas");
+        btnCajas.setIconTextGap(-5);
         btnCajas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCajasActionPerformed(evt);
@@ -144,8 +150,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 720, 10));
 
+        btnAlmacenes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAlmacenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/server-128x128.png"))); // NOI18N
         btnAlmacenes.setText("Almacenes");
+        btnAlmacenes.setIconTextGap(-5);
         btnAlmacenes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlmacenesActionPerformed(evt);
@@ -153,8 +161,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnAlmacenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 230, 60));
 
+        btnMovAlmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnMovAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-black-box-128x128.png"))); // NOI18N
         btnMovAlmacen.setText("<html>Movimientos<br>Almacén</html>");
+        btnMovAlmacen.setIconTextGap(-5);
         btnMovAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMovAlmacenActionPerformed(evt);
@@ -162,8 +172,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnMovAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 230, 60));
 
+        btnPreferencias.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnPreferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-sysguard-128x128.png"))); // NOI18N
         btnPreferencias.setText("Preferencias");
+        btnPreferencias.setIconTextGap(-12);
         btnPreferencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPreferenciasActionPerformed(evt);
@@ -171,8 +183,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnPreferencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 230, 60));
 
+        btnUsuarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxy-128x128.png"))); // NOI18N
         btnUsuarios.setText("Usuarios     ");
+        btnUsuarios.setIconTextGap(-5);
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
@@ -201,8 +215,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 470, 30, 40));
 
+        btnLineas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnLineas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usb-128x128.png"))); // NOI18N
         btnLineas.setText("Líneas");
+        btnLineas.setIconTextGap(-5);
         btnLineas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLineasActionPerformed(evt);
@@ -210,8 +226,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnLineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 230, 60));
 
+        btnDetallesVentas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDetallesVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remote-128x128.png"))); // NOI18N
         btnDetallesVentas.setText("<html>Detalles<br>de Ventas</html>");
+        btnDetallesVentas.setIconTextGap(-5);
         btnDetallesVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetallesVentasActionPerformed(evt);
@@ -219,8 +237,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnDetallesVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 60));
 
+        btnCortes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCortes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/super-karamba-128x128.png"))); // NOI18N
         btnCortes.setText("Cortes");
+        btnCortes.setIconTextGap(-5);
         btnCortes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCortesActionPerformed(evt);
@@ -228,8 +248,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 230, 60));
 
+        btnArticulos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/x-mag-128x128.png"))); // NOI18N
         btnArticulos.setText("Catálogo");
+        btnArticulos.setIconTextGap(-5);
         btnArticulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArticulosActionPerformed(evt);
@@ -237,8 +259,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnArticulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 230, 60));
 
+        btnClientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vcard-128x128.png"))); // NOI18N
         btnClientes.setText("Clientes");
+        btnClientes.setIconTextGap(-5);
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesActionPerformed(evt);
@@ -246,8 +270,10 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 230, 60));
 
+        btnGrupos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
         btnGrupos.setText("Grupos");
+        btnGrupos.setIconTextGap(-5);
         btnGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGruposActionPerformed(evt);
@@ -297,7 +323,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void btnCortesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCortesActionPerformed
         // TODO add your handling code here:
-        omoikane.principal.Cortes.lanzarCatalogo();
+        omoikane.principal.Cortes.lanzarCatalogoSuc();
 }//GEN-LAST:event_btnCortesActionPerformed
 
     private void btnArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticulosActionPerformed

@@ -10,12 +10,13 @@ ${fecha}  ${hora}   Folio: ${folio}
 
 <% detalles.each { d -> %>${String.format("%4.4s @ %24.24s%,9.02f", d.cantidad, d.descripcion, d.total)}
 <% } %>
-                       
-           Descuento incluído: ${String.format("%,9.02f", descuento)}
-                 IVA incluído: ${String.format("%,9.02f", impuestos)}
-                     Efectivo: ${String.format("%,9.02f", efectivo)}
+
+                     Subtotal: ${String.format("%,9.02f", subtotal)}
+                  - Descuento: ${String.format("%,9.02f", descuento)}
+                        + IVA: ${String.format("%,9.02f", impuestos)}
                         Total: ${String.format("%,9.02f", total)}
 
+                     Efectivo: ${String.format("%,9.02f", efectivo)}
                        Cambio: ${String.format("%,9.02f", cambio)}
 
          Gracias por su compra!

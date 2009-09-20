@@ -19,8 +19,8 @@
 
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
-    <URLServidor>http://nadesico:5542</URLServidor>
-    <URL>jdbc:mysql://nadesico/omoikane</URL>
+    <URLServidor>http://New-Eden:5542</URLServidor>
+    <URL>jdbc:mysql://New-Eden/omoikane</URL>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
     <scannerActivo>false</scannerActivo>

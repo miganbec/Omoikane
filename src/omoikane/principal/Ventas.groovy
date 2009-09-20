@@ -44,7 +44,7 @@ class Ventas {
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F2    , "filtrar" ) { cat.btnFiltrar.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar" ) { cat.btnFiltrar.doClick() }
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo ventas", Herramientas.getStackTraceString(e)) }
@@ -64,7 +64,7 @@ class Ventas {
             Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F2    , "nada" ) {}
+            Herramientas.In2ActionX(form, KeyEvent.VK_F1    , "nada" ) {}
             form.IDSeleccionado=ID
             Herramientas.iconificable(form)
             form.toFront()
@@ -82,8 +82,8 @@ class Ventas {
             def n = new omoikane.sistema.n2t()
             form.letra = n.aCifra(mov.total)
             SwingBuilder.build {
-            //Al presionar F2: (lanzarCatalogoDialogo) de cliente
-            form.getFactura().keyPressed = { if(it.keyCode == it.VK_F2) Thread.start { form.getFactura().setText(Clientes.lanzarDialogoCatalogo()); form.getFactura().requestFocus() } }
+            //Al presionar F1: (lanzarCatalogoDialogo) de cliente
+            form.getFactura().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start { form.getFactura().setText(Clientes.lanzarDialogoCatalogo()); form.getFactura().requestFocus() } }
         }
 
             return form

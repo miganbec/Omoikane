@@ -47,10 +47,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCerrar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/file-manager-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cerrar"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarActionPerformed"/>
@@ -63,10 +67,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVender">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/package-toys-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Vender"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVenderActionPerformed"/>
@@ -95,10 +103,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCajas">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/download-manager-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cajas"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCajasActionPerformed"/>
@@ -157,10 +169,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAlmacenes">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/server-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Almacenes"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlmacenesActionPerformed"/>
@@ -173,10 +189,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnMovAlmacen">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/k-black-box-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;Movimientos&lt;br&gt;Almac&#xe9;n&lt;/html&gt;"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMovAlmacenActionPerformed"/>
@@ -189,10 +209,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPreferencias">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/k-sysguard-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Preferencias"/>
+        <Property name="iconTextGap" type="int" value="-12"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreferenciasActionPerformed"/>
@@ -205,10 +229,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUsuarios">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/proxy-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Usuarios     "/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuariosActionPerformed"/>
@@ -267,10 +295,14 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnLineas">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/usb-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="L&#xed;neas"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLineasActionPerformed"/>
@@ -283,10 +315,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDetallesVentas">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/remote-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;Detalles&lt;br&gt;de Ventas&lt;/html&gt;"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDetallesVentasActionPerformed"/>
@@ -299,10 +335,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCortes">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/super-karamba-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cortes"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCortesActionPerformed"/>
@@ -315,10 +355,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnArticulos">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/x-mag-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cat&#xe1;logo"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArticulosActionPerformed"/>
@@ -331,10 +375,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnClientes">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/vcard-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Clientes"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClientesActionPerformed"/>
@@ -347,10 +395,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnGrupos">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/folder-blue-128x128.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Grupos"/>
+        <Property name="iconTextGap" type="int" value="-5"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGruposActionPerformed"/>

@@ -16,11 +16,11 @@ public class ShutdownHandler extends Thread {
     }
 
     public void run() {
-        println "lalalala cerrando"
+        println "El Sistema esta cerrando buen dia ..."
         def aCerrar = Principal.toFinalizeTracker
         aCerrar.each { clv, val ->
             clv.finalize()
-            println "1"
+            println ".."
         }
     }
 }
