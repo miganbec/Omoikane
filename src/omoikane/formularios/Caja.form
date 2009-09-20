@@ -38,22 +38,22 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnTerminar" alignment="0" max="32767" attributes="1"/>
+                  <Component id="btnTerminar" alignment="0" pref="243" max="32767" attributes="1"/>
                   <Component id="txtCaja" alignment="0" min="-2" max="-2" attributes="1"/>
                   <Component id="jLabel10" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="jLabel16" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtSubtotal" alignment="0" pref="200" max="32767" attributes="1"/>
+                  <Component id="txtSubtotal" alignment="0" pref="243" max="32767" attributes="1"/>
                   <Component id="jLabel18" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtDescuento" alignment="0" pref="200" max="32767" attributes="1"/>
+                  <Component id="txtDescuento" alignment="0" pref="243" max="32767" attributes="1"/>
                   <Component id="jLabel17" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtImpuesto" alignment="0" pref="200" max="32767" attributes="1"/>
-                  <Component id="txtNArticulos" alignment="0" pref="200" max="32767" attributes="1"/>
+                  <Component id="txtImpuesto" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="txtNArticulos" alignment="0" pref="243" max="32767" attributes="1"/>
                   <Component id="jLabel8" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtTotal" alignment="0" pref="200" max="32767" attributes="1"/>
+                  <Component id="txtTotal" alignment="0" pref="243" max="32767" attributes="1"/>
                   <Component id="jLabel9" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtEfectivo" alignment="0" pref="200" max="32767" attributes="1"/>
+                  <Component id="txtEfectivo" alignment="0" pref="243" max="32767" attributes="1"/>
                   <Component id="jLabel14" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtCambio" alignment="0" pref="200" max="32767" attributes="1"/>
+                  <Component id="txtCambio" alignment="0" pref="243" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -64,29 +64,29 @@
                           <Component id="jLabel13" min="-2" max="-2" attributes="1"/>
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                       <Component id="btnCerrar" min="-2" pref="237" max="-2" attributes="1"/>
                   </Group>
-                  <Component id="jScrollPane1" alignment="0" pref="679" max="32767" attributes="2"/>
+                  <Component id="jScrollPane1" alignment="0" pref="721" max="32767" attributes="2"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtCaptura" pref="577" max="32767" attributes="0"/>
+                      <Component id="txtCaptura" pref="619" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnMovimientos" pref="220" max="32767" attributes="1"/>
-                          <Component id="btnCatalogo" alignment="1" pref="220" max="32767" attributes="1"/>
+                          <Component id="btnMovimientos" pref="234" max="32767" attributes="1"/>
+                          <Component id="btnCatalogo" alignment="1" pref="234" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnPausar" pref="220" max="32767" attributes="1"/>
-                          <Component id="btnVentaEspecial" alignment="1" pref="220" max="32767" attributes="1"/>
+                          <Component id="btnPausar" pref="234" max="32767" attributes="1"/>
+                          <Component id="btnVentaEspecial" alignment="1" pref="234" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnCancelacion" pref="220" max="32767" attributes="1"/>
-                          <Component id="btnCancelaArt" alignment="0" pref="220" max="32767" attributes="1"/>
+                          <Component id="btnCancelacion" pref="234" max="32767" attributes="1"/>
+                          <Component id="btnCancelaArt" alignment="0" pref="234" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
@@ -658,6 +658,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtEfectivo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="24" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>

@@ -158,7 +158,7 @@ public class Caja extends javax.swing.JInternalFrame {
         btnCatalogo.setMinimumSize(new java.awt.Dimension(200, 30));
         btnCatalogo.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        btnCancelacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCancelacion.setFont(new java.awt.Font("Arial", 0, 14));
         btnCancelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/shopping_cart_remove.png"))); // NOI18N
         btnCancelacion.setText("Cancelar Venta [F12]");
         btnCancelacion.setMargin(new java.awt.Insets(2, 9, 2, 9));
@@ -176,7 +176,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel4.setText("Captura [F3] :");
         jLabel4.setFocusable(false);
 
-        btnCancelaArt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCancelaArt.setFont(new java.awt.Font("Arial", 0, 14));
         btnCancelaArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/remove.png"))); // NOI18N
         btnCancelaArt.setText("Cancelar Artículo [F7]");
         btnCancelaArt.setMargin(new java.awt.Insets(2, 9, 2, 9));
@@ -212,7 +212,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel12.setPreferredSize(new java.awt.Dimension(80, 10));
 
         jLabel13.setBackground(new java.awt.Color(153, 51, 0));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20));
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Público en general");
@@ -279,6 +279,8 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel9.setMinimumSize(new java.awt.Dimension(80, 10));
         jLabel9.setPreferredSize(new java.awt.Dimension(80, 10));
 
+        txtEfectivo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtEfectivo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEfectivo.setBorder(null);
         txtEfectivo.setMaximumSize(new java.awt.Dimension(220, 25));
         txtEfectivo.setMinimumSize(new java.awt.Dimension(190, 25));
@@ -292,7 +294,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel14.setPreferredSize(new java.awt.Dimension(80, 10));
 
         txtCambio.setEditable(false);
-        txtCambio.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtCambio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         txtCambio.setForeground(new java.awt.Color(0, 102, 204));
         txtCambio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCambio.setText("$ 0.00");
@@ -325,7 +327,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel17.setPreferredSize(new java.awt.Dimension(80, 10));
 
         txtImpuesto.setBackground(new java.awt.Color(153, 51, 0));
-        txtImpuesto.setFont(new java.awt.Font("Tahoma", 1, 24));
+        txtImpuesto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         txtImpuesto.setForeground(new java.awt.Color(255, 255, 255));
         txtImpuesto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtImpuesto.setText("$ 0.00");
@@ -348,22 +350,22 @@ public class Caja extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTerminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTerminar, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                     .addComponent(txtCaja)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescuento, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtDescuento, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtImpuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(txtNArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtImpuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(txtNArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEfectivo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtEfectivo, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                    .addComponent(txtCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -372,25 +374,25 @@ public class Caja extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCaptura, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+                        .addComponent(txtCaptura, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(btnCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                            .addComponent(btnMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                            .addComponent(btnCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnPausar, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(btnVentaEspecial, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                            .addComponent(btnPausar, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                            .addComponent(btnVentaEspecial, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCancelacion, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(btnCancelaArt, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))))
+                            .addComponent(btnCancelacion, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                            .addComponent(btnCancelaArt, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
