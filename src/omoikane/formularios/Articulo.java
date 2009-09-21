@@ -82,7 +82,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         btnDelCode = new javax.swing.JButton();
         btnModCode = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtPrecio2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -90,8 +89,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         txtUtilidadPorc = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         txtDesctoPorcentaje = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -148,7 +145,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Artículo:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
@@ -156,7 +153,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtIDArticulo.setEditable(false);
         jPanel1.add(txtIDArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 240, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("<html>Código <br>principal:<html>");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 30));
@@ -164,7 +161,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtCodigo.setEditable(false);
         jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 240, -1));
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ID Línea [F1]:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, 20));
@@ -177,7 +174,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtIDLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 240, -1));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Descripción:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
@@ -185,7 +182,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtDescripcion.setEditable(false);
         jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 240, -1));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Unidad:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
@@ -194,7 +191,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtUnidad.setEnabled(false);
         jPanel1.add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, -1));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Existencias:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
@@ -212,12 +209,12 @@ public class Articulo extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 240, 30));
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 18));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Precio:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 30));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("<html>Última<br>Modificación:</html>");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
@@ -226,7 +223,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 240, 30));
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, -1, 20));
 
-        jLabel19.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Descuento:");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 20));
@@ -242,7 +239,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtIDGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 240, -1));
 
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("ID Grupo [F1] :");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, 20));
@@ -278,18 +275,13 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel5.setOpaque(false);
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18));
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Ventas");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
-
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Impuestos (%):");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 20));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
 
         txtPrecio2.setEditable(false);
-        txtPrecio2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        txtPrecio2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPrecio2.setFont(new java.awt.Font("Arial", 0, 24));
+        txtPrecio2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPrecio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecio2ActionPerformed(evt);
@@ -300,112 +292,108 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtPrecio2FocusLost(evt);
             }
         });
-        jPanel5.add(txtPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, -1));
+        jPanel5.add(txtPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 130, 30));
 
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Costo:");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
 
-        txtCosto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtCosto.setFont(new java.awt.Font("Arial", 0, 24));
+        txtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCosto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCostoFocusLost(evt);
             }
         });
-        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 110, -1));
+        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 130, 30));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Utilidad (%):");
-        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
 
-        txtUtilidadPorc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtUtilidadPorc.setFont(new java.awt.Font("Arial", 0, 14));
+        txtUtilidadPorc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUtilidadPorc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUtilidadPorcFocusLost(evt);
             }
         });
-        jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 110, -1));
+        jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Detalles del precio y costo");
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 340, 110));
-
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Precio:");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 20));
 
-        txtDesctoPorcentaje.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtDesctoPorcentaje.setFont(new java.awt.Font("Arial", 0, 14));
+        txtDesctoPorcentaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDesctoPorcentaje.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtDesctoPorcentajeFocusLost(evt);
             }
         });
-        jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 110, -1));
+        jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("$:");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, 20));
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, 20));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("$:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, 20));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, 20));
 
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("$:");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, 20));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, 20));
 
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("$:");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, 20));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, 20));
 
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Descuento (%):");
-        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
 
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("$:");
-        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, 20));
+        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, 20));
 
-        txtImpuestosPorc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtImpuestosPorc.setFont(new java.awt.Font("Arial", 0, 14));
+        txtImpuestosPorc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtImpuestosPorc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtImpuestosPorcFocusLost(evt);
             }
         });
-        jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 110, -1));
+        jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, -1));
 
         txtImpuestos.setEditable(false);
-        txtImpuestos.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtImpuestos.setFont(new java.awt.Font("Arial", 0, 14));
+        txtImpuestos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtImpuestos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtImpuestosActionPerformed(evt);
             }
         });
-        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 110, -1));
+        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, -1));
 
         txtUtilidad.setEditable(false);
-        txtUtilidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 110, -1));
+        txtUtilidad.setFont(new java.awt.Font("Arial", 0, 14));
+        txtUtilidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 110, -1));
 
         txtDescuento2.setEditable(false);
-        txtDescuento2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 110, -1));
+        txtDescuento2.setFont(new java.awt.Font("Arial", 0, 14));
+        txtDescuento2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 110, -1));
 
         jTabbedPane1.addTab("Detalles", jPanel5);
 
@@ -545,7 +533,6 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -572,10 +559,8 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable tblCodigos;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCosto;

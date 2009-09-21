@@ -45,8 +45,8 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             synchronized(this)
             {
                 busquedaActiva = true;
-                try { this.wait(1000); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
-                if(busquedaActiva) { ca.buscar(); }
+                try { this.wait(500); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
+                if(busquedaActiva && ca.modelo != null) { ca.buscar(); }
             }
         }
         void cancelar()
@@ -60,7 +60,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         initComponents();
         Calendar calendario = Calendar.getInstance();
         txtFechaHasta.setDate(calendario.getTime());
-        calendario.add(Calendar.DAY_OF_MONTH, -30);
+        calendario.add(Calendar.DAY_OF_MONTH, -2);
         txtFechaDesde.setDate(calendario.getTime());
 
         String[]  columnas = { "Fecha","Venta", "Caja", "Almacen", "Cliente","Total"};
@@ -390,7 +390,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
     private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
         // TODO add your handling code here:
-        buscar();
+        preBuscar();
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
@@ -448,6 +448,14 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
     }
     public boolean getBuscarCajero() {
         return this.chkCajero.getModel().isSelected();
+    }
+
+    public void preBuscar()
+    {
+        if(timerBusqueda != null && timerBusqueda.isAlive()) { timerBusqueda.cancelar(); }
+        this.timerBusqueda = new TimerBusqueda(this);
+        timerBusqueda.start();
+
     }
 
     public void buscar()
