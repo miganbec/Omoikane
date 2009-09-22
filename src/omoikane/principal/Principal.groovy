@@ -36,7 +36,7 @@ public class Principal {
         public static boolean         scannerActivo
         public static boolean         basculaActiva
         public static String          puertoBascula
-        public static String          url
+        public static String          URLMySQL
         public static int             scannerBaudRate
         public static String          scannerPort
         public static ShutdownHandler shutdownHandler
@@ -137,7 +137,7 @@ public class Principal {
             puertoImpresion     = String.valueOf(config.puertoImpresion[0].text())
             impresoraActiva     = Boolean.valueOf(config.impresoraActiva[0].text())
             puertoBascula       = String.valueOf(config.puertoBascula[0].text())
-            url                 = String.valueOf(config.URL[0].text())
+            URLMySQL            = String.valueOf(config.URLMySQL[0].text())
             scannerBaudRate     = Integer.valueOf(config.ScannerBaudRate[0].text())
             scannerPort         = String.valueOf(config.ScannerPort[0].text())
             scannerActivo       = Boolean.valueOf(config.scannerActivo[0].text())
