@@ -28,6 +28,8 @@ public class Principal {
         public static int             IDCaja
         public static int             sysAncho
         public static int             sysAlto
+        public static int             CacheSTableAtras
+        public static int             CacheSTableAdelante
         public static boolean         fondoBlur
         public static String          puertoImpresion
         public static boolean         impresoraActiva
@@ -69,6 +71,7 @@ public class Principal {
             splash.detener()
             iniciarSesion()
             menuPrincipal.iniciar()
+
             if(scannerActivo){
                 scanMan = new ScanMan()
                 try {
@@ -97,7 +100,7 @@ public class Principal {
 
                 }
                 toFinalizeTracker.put("scanMan", "")
-                
+
             }
            
             //
@@ -124,19 +127,21 @@ public class Principal {
 
         }
         static def defineAtributos() {
-            sysAncho        = Integer.valueOf(config.resolucionPantalla.@ancho[0])
-            sysAlto         = Integer.valueOf(config.resolucionPantalla.@alto[0])
-            fondoBlur       = Boolean.valueOf(config.fondoBlur[0].text())
-            IDAlmacen       = Integer.valueOf(config.idAlmacen[0].text())
-            IDCaja          = Integer.valueOf(config.idCaja[0].text())
-            puertoImpresion = String.valueOf(config.puertoImpresion[0].text())
-            impresoraActiva = Boolean.valueOf(config.impresoraActiva[0].text())
-            puertoBascula   = String.valueOf(config.puertoBascula[0].text())
-            url             = String.valueOf(config.URL[0].text())
-            scannerBaudRate = Integer.valueOf(config.ScannerBaudRate[0].text())
-            scannerPort     = String.valueOf(config.ScannerPort[0].text())
-            scannerActivo   = Boolean.valueOf(config.scannerActivo[0].text())
-            basculaActiva   = Boolean.valueOf(config.basculaActiva[0].text())
+            sysAncho            = Integer.valueOf(config.resolucionPantalla.@ancho[0])
+            sysAlto             = Integer.valueOf(config.resolucionPantalla.@alto[0])
+            CacheSTableAtras    = Integer.valueOf(config.cacheSTable.@atras[0])
+            CacheSTableAdelante = Integer.valueOf(config.cacheSTable.@adelante[0])
+            fondoBlur           = Boolean.valueOf(config.fondoBlur[0].text())
+            IDAlmacen           = Integer.valueOf(config.idAlmacen[0].text())
+            IDCaja              = Integer.valueOf(config.idCaja[0].text())
+            puertoImpresion     = String.valueOf(config.puertoImpresion[0].text())
+            impresoraActiva     = Boolean.valueOf(config.impresoraActiva[0].text())
+            puertoBascula       = String.valueOf(config.puertoBascula[0].text())
+            url                 = String.valueOf(config.URL[0].text())
+            scannerBaudRate     = Integer.valueOf(config.ScannerBaudRate[0].text())
+            scannerPort         = String.valueOf(config.ScannerPort[0].text())
+            scannerActivo       = Boolean.valueOf(config.scannerActivo[0].text())
+            basculaActiva       = Boolean.valueOf(config.basculaActiva[0].text())
         }
 
     static def iniciarSesion(){

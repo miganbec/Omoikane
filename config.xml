@@ -19,6 +19,7 @@
 
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
+    <cacheSTable atras='3' adelante='5'/>
     <URLServidor>http://new-eden:5542</URLServidor>
     <URL>jdbc:mysql://new-eden/omoikane</URL>
     <impresoraActiva>false</impresoraActiva>

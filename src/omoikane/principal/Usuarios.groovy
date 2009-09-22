@@ -36,12 +36,11 @@ class Usuarios {
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
             Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F11   , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
             Herramientas.iconificable(cat)
-            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de Usuarios", Herramientas.getStackTraceString(e)) }
             cat.txtBusqueda.requestFocus()

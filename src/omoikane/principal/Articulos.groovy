@@ -279,10 +279,11 @@ public class Articulos
         def formateador = new java.text.DecimalFormat("#.00");
         c.poi=c.poi/100
         c.pod=c.pod/100
+
         def porcentajeUtilidad  =   (c.pre/(c.cos*(1+c.poi)*(1-c.pod)))-1
         def utilidad            =   c.cos*porcentajeUtilidad
-        def impuesto            =   (c.cos+utilidad)*c.poi
-        def descuento           =   (c.cos+utilidad+impuesto)*c.pod
+        def descuento           =   (c.cos+utilidad)*c.pod
+        def impuesto            =   (c.cos+utilidad-descuento)*c.poi
         porcentajeUtilidad      =   porcentajeUtilidad*100
 
         f.setTxtDescuento3(formateador.format(descuento));
