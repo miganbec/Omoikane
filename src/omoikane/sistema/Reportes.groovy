@@ -27,7 +27,7 @@ class Reporte {
     Reporte (String reporteJasper, params = [:])
     {
         try {
-            def db     = Sql.newInstance(omoikane.principal.Principal.url, "Jasper", "gatogato", "com.mysql.jdbc.Driver")
+            def db     = Sql.newInstance(omoikane.principal.Principal.URLMySQL, "Jasper", "gatogato", "com.mysql.jdbc.Driver")
             //def db     = Sql.newInstance(omoikane.principal.Principal.url, "root", "", "com.mysql.jdbc.Driver")
             def stream = cargarPlantilla(reporteJasper)
             jp         = JasperFillManager.fillReport(stream, params, db.connection);
