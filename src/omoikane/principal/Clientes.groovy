@@ -21,21 +21,24 @@ class Clientes {
     static def escritorio = omoikane.principal.Principal.escritorio
 
     static def lanzarCatalogo()
-    {
-        
+    {        
         try{
         if(cerrojo(PMA_ABRIRCLIENTE)){
             def cat = (new omoikane.formularios.CatalogoClientes())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.panelCatalogo(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.15,0.15,0.34,0.12,0.12,0.12]);
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick()}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
+            Herramientas.panelCatalogo(cat)
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1     , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F3     , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F4     , "detalles" ) { cat.btnDetalles.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F5     , "nuevo"    ) { cat.btnNuevo.doClick()    }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F6     , "modificar") { cat.btnModificar.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7     , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F8     , "imprimir" ) { cat.btnImprimir.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F11    , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F12    , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE , "eliminar" ) { cat.btnEliminar.doClick() }
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de clientes", Herramientas.getStackTraceString(e)) }
@@ -93,12 +96,16 @@ class Clientes {
             escritorio.getPanelEscritorio().add(formCliente)
             formCliente.toFront()
             Herramientas.panelFormulario(formCliente)
-            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F3    , "nada") { }
-            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F4    , "nada") { }
-            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F5    , "nada") { }
-            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F6    , "nada") { }
-            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F8    , "nada") { }
-            Herramientas.In2ActionX(formCliente, KeyEvent.VK_DELETE, "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F1     , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F3     , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F4     , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F5     , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F6     , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F7     , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F8     , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F11    , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F12    , "nada") { }
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_DELETE , "nada") { }
             try { formCliente.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles clientes", Herramientas.getStackTraceString(e)) }
             def art = Nadesico.conectar().getCliente(ID)
             formCliente.setTxtIDCliente     art.id_cliente    as String
@@ -156,12 +163,17 @@ class Clientes {
             def form = new omoikane.formularios.Cliente()
             form.setVisible(true)
             Herramientas.panelFormulario(form)
-            Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "nada") { }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F4    , "nada") { }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "nada") { }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "nada") { }
-            Herramientas.In2ActionX(form, KeyEvent.VK_DELETE, "nada") { }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "guardar"  ) { form.btnGuardar.doClick()  }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F1    , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F4    , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "guardar" ) { form.btnGuardar.doClick()  }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F7    , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F11   , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "nada"    ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_DELETE, "nada"    ) { }
+            
             escritorio.getPanelEscritorio().add(form)
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Cliente", Herramientas.getStackTraceString(e)) }

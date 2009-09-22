@@ -23,19 +23,17 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     public String                       txtQuery;
     public String                       codigoSeleccionado;
     public int                          IDSeleccionado;
-    public int                          IDAlmacen = omoikane.principal.Principal.IDAlmacen;
-    public boolean                      modal = false;
+    public int                          IDAlmacen           = omoikane.principal.Principal.IDAlmacen;
+    public boolean                      modal               = false;
 
     //funcion de busqueda automatica
+
     class TimerBusqueda extends Thread
     {
         CatalogoClientes    ca;
         boolean             busquedaActiva = true;
-
         TimerBusqueda(CatalogoClientes ca) { this.ca = ca; }
-
-        public void run()
-        {
+        public void run(){
             synchronized(this)
             {
                 busquedaActiva = true;
@@ -43,12 +41,7 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
                 if(busquedaActiva) { ca.buscar(); }
             }
         }
-
-        void cancelar()
-        {
-            busquedaActiva = false;
-            try { this.notify(); } catch(Exception e) {}
-        }
+        void cancelar(){busquedaActiva = false;try { this.notify(); } catch(Exception e) {}}
     }
 
     /** Creates new form CatalogoArticulos */
@@ -366,7 +359,6 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
             JInternalFrame wnd = (JInternalFrame) omoikane.principal.Clientes.lanzarModificarCliente(IDCliente);
             wnd.addInternalFrameListener(iframeAdapter);
         }
-
 }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -460,14 +452,12 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
     }//GEN-LAST:event_salir
-
     
     public void preBuscar()
     {
         if(timerBusqueda != null && timerBusqueda.isAlive()) { timerBusqueda.cancelar(); }
         this.timerBusqueda = new TimerBusqueda(this);
         timerBusqueda.start();
-       
     }
 
     public void buscar()
@@ -477,13 +467,12 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
        setQueryTable(query);
     }
 
-
     public void paintComponent(Graphics g)
     {
       Graphics2D g2d = (Graphics2D) g;
       g2d.drawImage(fondo, 0, 0, null);
-
     }
+
     public void generarFondo(Component componente)
     {
       Rectangle areaDibujo = this.getBounds();
@@ -496,7 +485,6 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
@@ -516,6 +504,5 @@ public class CatalogoClientes extends javax.swing.JInternalFrame {
     public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()
     {
         public void internalFrameClosed(InternalFrameEvent e) { buscar();requestFocusInWindow(); }
-
     };
 }

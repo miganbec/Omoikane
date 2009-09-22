@@ -1,7 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.sistema
 
@@ -12,17 +14,6 @@ import javax.swing.*;
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;
-
-/**
- * ///////////////////////////////////// //////////////////////////////
- * ///////////////////////////////////// //////////////////////////////
- * ///////////////////////////////////// //////////////////////////////
- *
- * 
- * 
- * 
- * @author Usuario //
- */
 
 public class NadesicoTableModel extends AbstractTableModel {
 	java.util.List	colNames	= null;

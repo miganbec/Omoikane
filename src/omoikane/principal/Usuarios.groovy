@@ -30,11 +30,15 @@ class Usuarios {
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.4,0.3,0.3]);
             Herramientas.panelCatalogo(cat)
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F11   , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
             Herramientas.iconificable(cat)
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
@@ -93,11 +97,15 @@ class Usuarios {
             escritorio.getPanelEscritorio().add(formUsuario)
             formUsuario.toFront()
             Herramientas.panelFormulario(formUsuario)
+            Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F1    , "nada") { }
             Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F3    , "nada") { }
             Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F4    , "nada") { }
             Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F5    , "nada") { }
             Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F6    , "nada") { }
+            Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F7    , "nada") { }
             Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F8    , "nada") { }
+            Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F11   , "nada") { }
+            Herramientas.In2ActionX(formUsuario, KeyEvent.VK_F12   , "nada") { }
             Herramientas.In2ActionX(formUsuario, KeyEvent.VK_DELETE, "nada") { }
             try { formUsuario.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Usuario", Herramientas.getStackTraceString(e)) }
             def art         = Nadesico.conectar().getUsuario(ID,Almacen)
@@ -166,12 +174,16 @@ class Usuarios {
         def form = new omoikane.formularios.Usuario()
         form.setVisible(true)
         escritorio.getPanelEscritorio().add(form)
-        Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "nada") { }
-        Herramientas.In2ActionX(form, KeyEvent.VK_F4    , "nada") { }
-        Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "nada") { }
-        Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "nada") { }
-        Herramientas.In2ActionX(form, KeyEvent.VK_DELETE, "nada") { }
-        Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "guardar") { form.btnGuardar.doClick()}
+        Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F4    , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "guardar" ) { form.btnGuardar.doClick()}
+        Herramientas.In2ActionX(form, KeyEvent.VK_F7    , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F11   , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "nada"    ) { }
+        Herramientas.In2ActionX(form, KeyEvent.VK_DELETE, "nada"    ) { }
         Herramientas.panelFormulario(form)
         form.toFront()
         try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Usuarios", Herramientas.getStackTraceString(e)) }

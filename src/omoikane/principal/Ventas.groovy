@@ -1,7 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.ppppzzzzpp
- */
+ /* Author Phesus        //////////////////////////////
+ *  ORC,ACR             /////////////
+ *                     /////////////
+ *                    /////////////
+ *                   /////////////
+ * //////////////////////////////                   */
 
 package omoikane.principal
 
@@ -20,11 +22,6 @@ import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*;
 import omoikane.sistema.n2t.*;
 
-/**
- *
- * @author Adan
- */
-
 class Ventas {
 
     static def lastMovID  = -1
@@ -32,7 +29,7 @@ class Ventas {
     static def escritorio = omoikane.principal.Principal.escritorio
     //static def getVenta(where) { new Venta(where)}
 
-    static def lanzarCatalogo()
+    static def lanzarCatalogo() //lanza el catalogo de ventas
     {
         if(cerrojo(PMA_ABRIRVENTAS)){
             def cat = (new omoikane.formularios.CatalogoVentas())
@@ -42,9 +39,9 @@ class Ventas {
             Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar" ) { cat.btnFiltrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar" ) { cat.btnFiltrar.doClick() }
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo ventas", Herramientas.getStackTraceString(e)) }
@@ -59,9 +56,9 @@ class Ventas {
             lastMovID = ID
             def form = (new omoikane.formularios.VentasDetalles())
             form.setVisible(true);
-            Herramientas.panelFormulario(form)
             escritorio.getPanelEscritorio().add(form)
             Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
+            Herramientas.panelFormulario(form)
             Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
             Herramientas.In2ActionX(form, KeyEvent.VK_F1    , "nada" ) {}

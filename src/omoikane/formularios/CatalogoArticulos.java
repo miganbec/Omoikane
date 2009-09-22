@@ -524,24 +524,25 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
          */
         if(busqueda==null) { xCodDes = xLineas = xGrupos = false; }
         String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias" +
-                " from ramcachearticulos as a ";
-        if(xCodDes) {
-            query += ", ramcachecodigos as b ";
-        }
+                " from ramcachearticulos as a , ramcachecodigos as b ";
+
+        //if(xCodDes) {
+        //    query += ", ramcachecodigos as b ";
+        //}
         
         if(xCodDes || xLineas || xGrupos) { query += "WHERE "; }
         if(xCodDes) {
-                query += "(a.descripcion like '%"+busqueda+"%' or " +
+                query += " (a.descripcion like '%"+busqueda+"%' or " +
                         "b.codigo like '%"+busqueda+"%') and (a.id_articulo = b.id_articulo) ";
                 //query += "(descripcion like '%"+busqueda+"%' or id_articulo in (select id_articulo from ramcachecodigos where codigo like '%"+busqueda+"%')) ";
         }
         if(xCodDes && (xLineas || xGrupos)) { query += "OR "; }
         if(xLineas) {
-                query += "(linea like '%"+busqueda+"%' or id_linea like '%"+busqueda+"%') ";
+                query += "(linea like '%"+busqueda+"%' ) ";
         }
         if((xLineas||xCodDes) && xGrupos) { query += "OR "; }
         if(xGrupos) {
-                query += "(grupo like '%"+busqueda+"%' or id_grupo like '%"+busqueda+"%') ";
+                query += "(grupo like '%"+busqueda+"%' ) ";
         }
         //if(xCodDes || xLineas || xGrupos) { query += ")"; }
 

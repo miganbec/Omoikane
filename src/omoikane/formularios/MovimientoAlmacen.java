@@ -89,10 +89,10 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         setTitle("Movimiento de almacén");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitulo.setFont(new java.awt.Font("Arial", 1, 36));
+        lblTitulo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("Movimiento de almacén");
-        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,16 +183,16 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         jLabel6.setText("Fecha:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 40, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Almacén:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 60, 30));
+        jLabel7.setText("Almacén [F1]:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 90, 30));
 
         almacen.setEditable(false);
         getContentPane().add(almacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 190, -1));
 
         tipoMovimiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Entrada al almacén", "Salida del almacén", "Ajuste" }));
-        getContentPane().add(tipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 210, -1));
+        getContentPane().add(tipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 140, -1));
         getContentPane().add(txtSumaTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 170, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -224,7 +224,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
                 btnCatalogoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 200, -1));
+        getContentPane().add(btnCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -274,15 +274,21 @@ public class Articulos
 
     static def recalcularUtilidad(formArticulo, txtPrecio) {
         def f = formArticulo
-        def c = [ imp:Double.parseDouble(f.getTxtImpuestos3().text), cos:Double.parseDouble(f.getTxtCosto()),
-                dto:Double.parseDouble(f.getTxtDescuento2().text), pre:Double.parseDouble(txtPrecio.getText())]
-         def formateador = new java.text.DecimalFormat("#.00");
+        def c = [cos:(f.getTxtCosto()) as Double                  ,pre:(f.getTxtPrecio2().text) as Double,
+                 poi:(f.getTxtImpuestosPorc().text) as Double     ,pod:(f.getTxtDesctoPorcentaje().text) as Double]
+        def formateador = new java.text.DecimalFormat("#.00");
+        c.poi=c.poi/100
+        c.pod=c.pod/100
+        def porcentajeUtilidad  =   (c.pre/(c.cos*(1+c.poi)*(1-c.pod)))-1
+        def utilidad            =   c.cos*porcentajeUtilidad
+        def impuesto            =   (c.cos+utilidad)*c.poi
+        def descuento           =   (c.cos+utilidad+impuesto)*c.pod
+        porcentajeUtilidad      =   porcentajeUtilidad*100
 
-        def utilidad = c.pre - c.imp + c.dto - c.cos
-        def porcentaje = (utilidad / c.cos) * 100
-
+        f.setTxtDescuento3(formateador.format(descuento));
+        f.setTxtImpuestos4(formateador.format(impuesto));
         f.setTxtUtilidad2(formateador.format(utilidad))
-        f.setTxtUtilidadPorcText(formateador.format(porcentaje))
+        f.setTxtUtilidadPorcText(formateador.format(porcentajeUtilidad))
         f.setTxtPrecio3(txtPrecio.getText())
         f.setTxtPrecio(txtPrecio.getText())
 
