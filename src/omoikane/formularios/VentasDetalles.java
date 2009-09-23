@@ -36,6 +36,8 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
     public Boolean         hacer = true;
     omoikane.sistema.NadesicoTableModel modelo;
 
+    
+
 
     /** Creates new form CatalogoVentas */
     public VentasDetalles() {
@@ -214,7 +216,7 @@ public class VentasDetalles extends javax.swing.JInternalFrame {
         aFacturar.setEditable(false);
         aFacturar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         aFacturar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        aFacturar.setFocusable(false);
+        aFacturar.setFocusable(true);
 
         txtIDVenta.setBackground(new java.awt.Color(153, 51, 0));
         txtIDVenta.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N

@@ -200,23 +200,23 @@ WHERE
 		</band>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="105">
+		<band height="110">
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="440" y="91" width="60" height="10"/>
+				<reportElement x="440" y="76" width="60" height="10"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_total}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="440" y="63" width="60" height="10"/>
+				<reportElement x="440" y="56" width="60" height="10"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($F{ventas_total}.doubleValue() - $F{ventas_impuestos}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="440" y="77" width="60" height="10"/>
+				<reportElement x="440" y="66" width="60" height="10"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
@@ -230,14 +230,14 @@ WHERE
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{NumLetra}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="440" y="35" width="60" height="10"/>
+				<reportElement x="440" y="36" width="60" height="10"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$V{suma1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="440" y="49" width="60" height="10"/>
+				<reportElement x="440" y="46" width="60" height="10"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
