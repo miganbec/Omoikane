@@ -82,6 +82,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         btnDelCode = new javax.swing.JButton();
         btnModCode = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtPrecio2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -108,6 +109,9 @@ public class Articulo extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txaComentarios = new javax.swing.JTextArea();
 
         setTitle("Artículos");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -426,6 +430,14 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel6.setOpaque(false);
         jTabbedPane1.addTab("Movimientos", jPanel6);
 
+        txaComentarios.setColumns(25);
+        txaComentarios.setRows(20);
+        jScrollPane4.setViewportView(txaComentarios);
+
+        jPanel7.add(jScrollPane4);
+
+        jTabbedPane1.addTab("Notas", jPanel7);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 370, 400));
 
         pack();
@@ -557,11 +569,14 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable tblCodigos;
+    private javax.swing.JTextArea txaComentarios;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
@@ -650,4 +665,12 @@ public class Articulo extends javax.swing.JInternalFrame {
       fondo = tmp;
     }
     
+
+    public String getTxtComentarios() {
+        return txaComentarios.getText();
+    }
+
+    public void setTxtComentarios(String text) {
+        txaComentarios.setText(text);
+    }
 }
