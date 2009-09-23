@@ -30,6 +30,7 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
     private Clipboard clipboard;
     private Component invocador;
     BufferedImage fondo;
+    private boolean enterOnce = false;
 
     @Override
     public void lostOwnership(Clipboard clp, Transferable transf) {}
@@ -101,6 +102,12 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
         btnCerrar = new javax.swing.JButton();
         jcalCalculadora = new com.nieto.jcalc.JCalc();
 
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
+
         etiquetaCalculadora.setFont(new java.awt.Font("Arial", 1, 36));
         etiquetaCalculadora.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaCalculadora.setText("Calculadora");
@@ -113,7 +120,7 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
             }
         });
 
-        jcalCalculadora.setButtonFont(new java.awt.Font("Arial", 0, 14));
+        jcalCalculadora.setButtonFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jcalCalculadora.setDisplayBackground(new java.awt.Color(0, 0, 102));
         jcalCalculadora.setDisplayForeground(new java.awt.Color(255, 255, 255));
 
@@ -149,8 +156,26 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        cerrar();
+}//GEN-LAST:event_btnCerrarActionPerformed
 
-        clipboard = getToolkit().getSystemClipboard();
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            if(!enterOnce)
+            enterOnce = true;
+            else {
+                copiar();
+                cerrar();
+            }
+    }//GEN-LAST:event_formKeyReleased
+
+private void cerrar() {
+    invocador.requestFocusInWindow();
+    this.dispose();
+}
+
+private void copiar() {
+    clipboard = getToolkit().getSystemClipboard();
         StringSelection strResult = new StringSelection(jcalCalculadora.getDisplay());
         clipboard.setContents(strResult,this);
 
@@ -161,18 +186,10 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
             if(JTextComponent.class.isInstance(invocador)) {
                 ((JTextComponent) invocador).setText( ((JTextComponent) invocador).getText() + strPaste);
             }
-            else
-                invocador.requestFocusInWindow();
-            
         } catch(Exception e) {
             e.printStackTrace();
         }
-        
-        this.dispose();
-
-}//GEN-LAST:event_btnCerrarActionPerformed
-
-
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;

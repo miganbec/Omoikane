@@ -82,7 +82,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         btnDelCode = new javax.swing.JButton();
         btnModCode = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtPrecio2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();

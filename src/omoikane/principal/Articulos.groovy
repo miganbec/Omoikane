@@ -63,8 +63,10 @@ public class Articulos
         cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) {cat.btnAceptar.doClick()} }
         def retorno
         cat.btnAceptar.actionPerformed = { 
-            System.out.println ("otro btn aceptar"); def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick();
-            def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick();
+            System.out.println ("otro btn aceptar");
+            def catTab = cat.jTable1;
+            retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String;
+            cat.btnCerrar.doClick();
         }
         synchronized(foco){foco.wait()}
         retorno
@@ -125,8 +127,7 @@ public class Articulos
             formArticulo.setTxtUtilidadPorc  art.utilidad              as String
             formArticulo.setTxtExistencias   art.cantidad              as String
             formArticulo.setTxtPrecio        art.precio.total          as String
-
-            formArticulo.setTxtComentarios   notas           as String
+            formArticulo.setTxtComentarios   notas                     as String
 
             formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuento%'] as String
             formArticulo.getTxtDescuento2().text       = art.precio['descuento$'] as String
@@ -192,7 +193,6 @@ public class Articulos
                 try {
                     def serv   = Nadesico.conectar()
                     def datAdd = serv.addArticulo(IDAlmacen, IDLinea, IDGrupo, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias)
-
                     def notasAdd = serv.addAnotacion(IDAlmacen, codigo, notas )
 
                     Dialogos.lanzarAlerta(datAdd.mensaje)
@@ -284,17 +284,12 @@ public class Articulos
 
     static def recalcularUtilidad(formArticulo, txtPrecio) {
         def f = formArticulo
-        def c = [ imp:Double.parseDouble(f.getTxtImpuestos3().text), cos:Double.parseDouble(f.getTxtCosto()),
-                dto:Double.parseDouble(f.getTxtDescuento2().text), pre:Double.parseDouble(txtPrecio.getText())]
-         def formateador = new java.text.DecimalFormat("#.00");
         def c = [cos:(f.getTxtCosto()) as Double                  ,pre:(f.getTxtPrecio2().text) as Double,
                  poi:(f.getTxtImpuestosPorc().text) as Double     ,pod:(f.getTxtDesctoPorcentaje().text) as Double]
         def formateador = new java.text.DecimalFormat("#.00");
         c.poi=c.poi/100
         c.pod=c.pod/100
 
-        def utilidad = c.pre - c.imp + c.dto - c.cos
-        def porcentaje = (utilidad / c.cos) * 100
         def porcentajeUtilidad  =   (c.pre/(c.cos*(1+c.poi)*(1-c.pod)))-1
         def utilidad            =   c.cos*porcentajeUtilidad
         def descuento           =   (c.cos+utilidad)*c.pod
@@ -304,7 +299,6 @@ public class Articulos
         f.setTxtDescuento3(formateador.format(descuento));
         f.setTxtImpuestos4(formateador.format(impuesto));
         f.setTxtUtilidad2(formateador.format(utilidad))
-        f.setTxtUtilidadPorcText(formateador.format(porcentaje))
         f.setTxtUtilidadPorcText(formateador.format(porcentajeUtilidad))
         f.setTxtPrecio3(txtPrecio.getText())
         f.setTxtPrecio(txtPrecio.getText())
