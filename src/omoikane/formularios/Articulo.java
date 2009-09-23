@@ -577,7 +577,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     public Component    getIDLinea()                {return txtIDLinea; }
     public Component    getIDGrupo()                {return txtIDGrupo; }
     public JTextField   getTxtImpuestos()           {return txtImpuestos;}
-    public JTextField   getCampoID()                {return txtIDGrupoDes;}
+    public JTextField   getCampoID()                {return txtIDLinea;}
     public JTextField   getCampoGrupo()             {return txtIDGrupo;}
     public JTextField   getTxtDesctoPorcentaje()    {return txtDesctoPorcentaje;}
     public JTextField   getTxtDescuento2()          {return txtDescuento2;}

@@ -117,7 +117,7 @@ public class Articulos
             def art         = serv.getArticulo(ID,IDAlmacen)
             def lin         = serv.getLinea(art.id_linea)
             def gru         = serv.getGrupo(art.id_grupo)
-            def notas       = serv.conectar().getAnotacion(IDAlmacen,ID)
+            def notas       = serv.getAnotacion(IDAlmacen,ID)
             serv.desconectar()
             formArticulo.setTxtIDArticulo    art.id_articulo           as String
             formArticulo.setTxtCodigo        art.codigo
@@ -199,7 +199,7 @@ public class Articulos
                 try {
                     def serv   = Nadesico.conectar()
                     def datAdd = serv.addArticulo(IDAlmacen, IDLinea, IDGrupo, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias)
-                    def notasAdd = serv.addAnotacion(IDAlmacen, codigo, notas )
+                    def notasAdd = serv.addAnotacion(IDAlmacen, datAdd.ID, notas )
 
                     Dialogos.lanzarAlerta(datAdd.mensaje)
                     serv.desconectar()
