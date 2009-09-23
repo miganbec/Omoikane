@@ -59,9 +59,11 @@ public class Articulos
         def cat = lanzarCatalogo()
         cat.setModoDialogo()
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
+        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) { println "aquí"; cat.btnAceptar.doClick(); println "aquí2";  } }
         cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) {cat.btnAceptar.doClick()} }
         def retorno
         cat.btnAceptar.actionPerformed = { 
+            System.out.println ("otro btn aceptar"); def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick();
             def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String; cat.btnCerrar.doClick();
         }
         synchronized(foco){foco.wait()}
@@ -109,6 +111,7 @@ public class Articulos
             formArticulo.toFront()
             try { formArticulo.setSelected(true) 
             def art         = Nadesico.conectar().getArticulo(ID,IDAlmacen)
+            def notas       = Nadesico.conectar().getAnotacion(IDAlmacen,ID)
             formArticulo.setTxtIDArticulo    art.id_articulo           as String
             formArticulo.setTxtCodigo        art.codigo
             formArticulo.setTxtIDLinea       art.id_linea              as String
@@ -122,6 +125,8 @@ public class Articulos
             formArticulo.setTxtUtilidadPorc  art.utilidad              as String
             formArticulo.setTxtExistencias   art.cantidad              as String
             formArticulo.setTxtPrecio        art.precio.total          as String
+
+            formArticulo.setTxtComentarios   notas           as String
 
             formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuento%'] as String
             formArticulo.getTxtDescuento2().text       = art.precio['descuento$'] as String
@@ -167,6 +172,7 @@ public class Articulos
                 def descuento     = formArticulo.getTxtDesctoPorcentaje().text
                 def utilidad      = formArticulo.getTxtUtilidadPorc().text
                 def existencias   = formArticulo.getTxtExistencias()
+                def notas   = formArticulo.getTxtComentarios()
                 Herramientas.verificaCampo(codigo,Herramientas.texto,"codigo"+Herramientas.error1)
                 Herramientas.verificaCampo(IDLinea,Herramientas.numero,"ID linea"+Herramientas.error2)
                 Herramientas.verificaCampo(IDGrupo,Herramientas.numero,"ID Grupo"+Herramientas.error2)
@@ -186,6 +192,9 @@ public class Articulos
                 try {
                     def serv   = Nadesico.conectar()
                     def datAdd = serv.addArticulo(IDAlmacen, IDLinea, IDGrupo, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias)
+
+                    def notasAdd = serv.addAnotacion(IDAlmacen, codigo, notas )
+
                     Dialogos.lanzarAlerta(datAdd.mensaje)
                     serv.desconectar()
                     PuertoNadesico.workIn() { it.CacheArticulos.actualizar(datAdd.ID) }
@@ -234,7 +243,7 @@ public class Articulos
         if(cerrojo(PMA_MODIFICARARTICULO)){
             def f = formArticulo
             def c = [cod:f.getTxtCodigo(), lin:f.getTxtIDLinea(),gru:f.getTxtIDGrupo(), des:f.getTxtDescripcion(), imp:f.getTxtImpuestosPorc().text, cos:f.getTxtCosto(),
-            dto:f.getTxtDesctoPorcentaje().text, uti:f.getTxtUtilidadPorc().text, art:f.getTxtIDArticulo(), uni:f.getTxtUnidad()]
+            dto:f.getTxtDesctoPorcentaje().text, uti:f.getTxtUtilidadPorc().text, art:f.getTxtIDArticulo(), uni:f.getTxtUnidad(), notas:f.getTxtComentarios()]
             Herramientas.verificaCampos {
                 Herramientas.verificaCampo(c.cod,Herramientas.texto,"codigo"+Herramientas.error1)
                 Herramientas.verificaCampo(c.lin,Herramientas.numero,"ID linea"+Herramientas.error2)
@@ -246,6 +255,7 @@ public class Articulos
                 Herramientas.verificaCampo(c.uti,Herramientas.numeroReal,"utilidad"+Herramientas.error3)
                 def serv = Nadesico.conectar()
                 Dialogos.lanzarAlerta(serv.modArticulo(IDAlmacen, c.art, c.cod, c.lin,c.gru, c.des, c.uni, c.imp, c.cos, c.uti, c.dto))
+                serv.modAnotacion(IDAlmacen, c.art, c.notas)
                 serv.desconectar()
                 PuertoNadesico.workIn() { it.CacheArticulos.actualizar(c.art) }
             }
@@ -274,12 +284,17 @@ public class Articulos
 
     static def recalcularUtilidad(formArticulo, txtPrecio) {
         def f = formArticulo
+        def c = [ imp:Double.parseDouble(f.getTxtImpuestos3().text), cos:Double.parseDouble(f.getTxtCosto()),
+                dto:Double.parseDouble(f.getTxtDescuento2().text), pre:Double.parseDouble(txtPrecio.getText())]
+         def formateador = new java.text.DecimalFormat("#.00");
         def c = [cos:(f.getTxtCosto()) as Double                  ,pre:(f.getTxtPrecio2().text) as Double,
                  poi:(f.getTxtImpuestosPorc().text) as Double     ,pod:(f.getTxtDesctoPorcentaje().text) as Double]
         def formateador = new java.text.DecimalFormat("#.00");
         c.poi=c.poi/100
         c.pod=c.pod/100
 
+        def utilidad = c.pre - c.imp + c.dto - c.cos
+        def porcentaje = (utilidad / c.cos) * 100
         def porcentajeUtilidad  =   (c.pre/(c.cos*(1+c.poi)*(1-c.pod)))-1
         def utilidad            =   c.cos*porcentajeUtilidad
         def descuento           =   (c.cos+utilidad)*c.pod
@@ -289,6 +304,7 @@ public class Articulos
         f.setTxtDescuento3(formateador.format(descuento));
         f.setTxtImpuestos4(formateador.format(impuesto));
         f.setTxtUtilidad2(formateador.format(utilidad))
+        f.setTxtUtilidadPorcText(formateador.format(porcentaje))
         f.setTxtUtilidadPorcText(formateador.format(porcentajeUtilidad))
         f.setTxtPrecio3(txtPrecio.getText())
         f.setTxtPrecio(txtPrecio.getText())
