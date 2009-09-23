@@ -36,10 +36,13 @@ public class Usuarios {
     }
     public static def identificaPersona() {
             def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
+            
             //def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
             //def serv         = Nadesico.conectar()
             //def respuesta    = serv.checkFingerPrint(fingerPrint)
             def respuesta = [ID:20,huella:"",nombre:"YOooooooO",sucursales:["1":4]]
+
+            
             if(respuesta != 0) {
                 respuesta.cerrojo= { llave -> return llave<=respuesta.sucursales[Principal.IDAlmacen as String] }
             } else {

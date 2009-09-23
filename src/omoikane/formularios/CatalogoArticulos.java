@@ -68,43 +68,47 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     /** Creates new form CatalogoArticulos */
     public CatalogoArticulos() {
         //Conectar a MySQL
+        try {
+            initComponents();
 
-        initComponents();
+            String[]  columnas = {"Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"};
+            ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
+            Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, Double.class, Double.class};
+            ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
-        String[]  columnas = {"Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"};
-        ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-        Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, Double.class, Double.class};
-        ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
+            ArticulosTableModel modeloTabla = new ArticulosTableModel(cols, cls);
+            //jTable1.enableInputMethods(false);
+            this.modelo = modeloTabla;
+            this.jTable1.setModel(modeloTabla);
 
-        ArticulosTableModel modeloTabla = new ArticulosTableModel(cols, cls);
-        //jTable1.enableInputMethods(false);
-        this.modelo = modeloTabla;
-        this.jTable1.setModel(modeloTabla);
-        
-        /*setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
-                "from articulos, precios, existencias, lineas , grupos " +
-                "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
-                "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
-        */
-        /*
-        setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
-                ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
-                "from articulos, precios, existencias, lineas, clientes, grupos " +
-                "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
-                "AND clientes.id_cliente = 1 " +
-                "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
-         * */
-        setQueryTable("select id_articulo as xID, codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias " +
-                "from ramcachearticulos");
+            /*setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
+                    "from articulos, precios, existencias, lineas , grupos " +
+                    "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
+                    "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
+            */
+            /*
+            setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
+                    ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
+                    "from articulos, precios, existencias, lineas, clientes, grupos " +
+                    "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
+                    "AND clientes.id_cliente = 1 " +
+                    "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
+             * */
+            setQueryTable("select id_articulo as xID, codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias " +
+                    "from ramcachearticulos");
 
-        //Instrucciones para el funcionamiento del fondo semistransparente
-        this.setOpaque(false);
-        ((JPanel)this.getContentPane()).setOpaque(false);
-        this.getLayeredPane().setOpaque(false);
-        this.getRootPane().setOpaque(false);
-        this.generarFondo(this);
-        Herramientas.centrarVentana(this);
-        this.btnAceptar.setVisible(false);
+            //Instrucciones para el funcionamiento del fondo semistransparente
+            this.setOpaque(false);
+            ((JPanel)this.getContentPane()).setOpaque(false);
+            this.getLayeredPane().setOpaque(false);
+            this.getRootPane().setOpaque(false);
+            this.generarFondo(this);
+            Herramientas.centrarVentana(this);
+            this.btnAceptar.setVisible(false);
+       } catch(Exception e) {
+           Dialogos.error("Error al iniciar catálogo", e);
+           this.dispose();
+       }
 
     }
     public void setModoDialogo()
@@ -369,9 +373,9 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        int IDArticulo = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDArticulo = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         if(IDArticulo != -1) {
-            String descripcion = ((NadesicoTableModel)jTable1.getModel()).getDescripcion(jTable1.getSelectedRow());
+            String descripcion = ((ScrollableTableModel)jTable1.getModel()).getDescripcion(jTable1.getSelectedRow());
             if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar éste artículo: \""+descripcion+"\"?", "lala", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 omoikane.principal.Articulos.eliminarArticulo(IDArticulo);
             }
@@ -380,7 +384,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        int IDArticulo = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDArticulo = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
 
         //Lanzar la ventana de detalles:
         if(IDArticulo != -1) {
@@ -390,7 +394,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_btnModificarActionPerformed
 
     public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter() {
-        public void internalFrameClosed(InternalFrameEvent e) { ((NadesicoTableModel)jTable1.getModel()).refrescar(); }
+        public void internalFrameClosed(InternalFrameEvent e) { ((ScrollableTableModel)jTable1.getModel()).refrescar(); }
     };
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -400,7 +404,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
         // TODO add your handling code here:
-        int IDArticulo = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDArticulo = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         
         //Lanzar la ventana de detalles:
         if(IDArticulo != -1) { omoikane.principal.Articulos.lanzarDetallesArticulo(IDArticulo); }
@@ -463,7 +467,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        NadesicoTableModel stm = ((NadesicoTableModel)jTable1.getModel());
+        ScrollableTableModel stm = ((ScrollableTableModel)jTable1.getModel());
         int IDArticulo = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
         System.out.println ("btn aceptar");
 
@@ -593,7 +597,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
 }
 
-class ArticulosTableModel extends NadesicoTableModel {
+class ArticulosTableModel extends ScrollableTableModel {
     ArticulosTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
 

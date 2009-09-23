@@ -138,6 +138,7 @@ class Caja {
         def sumas = [0.0,0.0,0.0,0.0,0.0]
         dat.each { linea ->
             sumas[0] += ((linea['Precio']as Double)*(linea['Cantidad'] as Double)) as Double; sumas[1] += ((linea['Descuento']as Double)*(linea['Cantidad'] as Double)); sumas[2] += Caja.aDoble(linea['Total']); sumas[3] += linea['Impuestos'] as Double ; sumas[4] += linea['Cantidad'] as Double
+
         }
         form.txtNArticulos.text = Caja.aDoble(Caja.cifra(sumas[4])) //dat.size()
         form.txtSubtotal.text   = Caja.cifra(sumas[0]-sumas[3])//Caja.cifra (sumas[2] + sumas[1] - sumas[3])

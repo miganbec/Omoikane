@@ -35,8 +35,10 @@ class Articulo
     def cargarConQuery(query) {
         def serv = Nadesico.conectar();
         def a = serv.getArticuloAlmacen(query);
+        cargado  = a[1]
+        articulo = a[0]
         serv.desconectar();
-        return a
+        return a[0]
     }
 
     static double precio(id,IDAlmacen){

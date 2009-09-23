@@ -542,7 +542,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
 }
 
-class VentasTableModel extends NadesicoTableModel{
+class VentasTableModel extends ScrollableTableModel{
 VentasTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
 public Object getValueAt(int row,int col){    if(col==0)
     {
