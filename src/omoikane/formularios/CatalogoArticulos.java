@@ -156,10 +156,11 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         setIconifiable(true);
         setTitle("Catálogo de artículos");
-        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setPreferredSize(new java.awt.Dimension(1000, 590));
 
         jScrollPane1.setAutoscrolls(true);
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -172,7 +173,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             }
         ));
         jTable1.setFocusable(false);
-        jTable1.setRowHeight(12);
+        jTable1.setRowHeight(20);
         jTable1.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(jTable1);
 
@@ -289,7 +290,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
@@ -305,7 +306,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -336,7 +337,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                     .addComponent(chkLineas)
                     .addComponent(chkGrupos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDetalles)
@@ -529,11 +530,11 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
          */
         if(busqueda==null) { xCodDes = xLineas = xGrupos = false; }
         String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias" +
-                " from ramcachearticulos as a , ramcachecodigos as b ";
+                " from ramcachearticulos as a ";
 
-        //if(xCodDes) {
-        //    query += ", ramcachecodigos as b ";
-        //}
+        if(xCodDes) {
+            query += ", ramcachecodigos as b ";
+        }
         
         if(xCodDes || xLineas || xGrupos) { query += "WHERE "; }
         if(xCodDes) {

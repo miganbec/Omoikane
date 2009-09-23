@@ -51,23 +51,23 @@ class Clientes {
     public static String lanzarDialogoCatalogo()
     {
         try{
-        def foco=new Object()
-        def cat = lanzarCatalogo()
-        cat.setModoDialogo()
-        cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-        cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
-        def retorno
-        cat.btnAceptar.actionPerformed = { def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), -1 ) as String; cat.btnCerrar.doClick(); }
-        synchronized(foco){foco.wait()}
-        return retorno
+            def retorno
+            def foco=new Object()
+            def cat = lanzarCatalogo()
+            cat.setModoDialogo()
+            cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
+            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) cat.btnAceptar.doClick() }
+            cat.btnAceptar.actionPerformed = { def catTab = cat.jTable1; retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), -1 ) as String; cat.btnCerrar.doClick(); }
+            synchronized(foco){foco.wait()}
+            return retorno
         } catch(e) { Dialogos.error("Error al lanzar el modo dialogo del catalogo de clientes", e) }
     }
 
     static def lanzarImprimir(txtQuery)
     {
         try{
-        def reporte = new Reporte('omoikane/reportes/ReporteClientes.jasper',[txtQuery:txtQuery]);
-        reporte.lanzarPreview()
+            def reporte = new Reporte('omoikane/reportes/ReporteClientes.jasper',[txtQuery:txtQuery]);
+            reporte.lanzarPreview()
         } catch(e) { Dialogos.error("Error al crear el Reporte de clientes", e) }
     }
 
@@ -107,7 +107,9 @@ class Clientes {
             Herramientas.In2ActionX(formCliente, KeyEvent.VK_F12    , "nada") { }
             Herramientas.In2ActionX(formCliente, KeyEvent.VK_DELETE , "nada") { }
             try { formCliente.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles clientes", Herramientas.getStackTraceString(e)) }
-            def art = Nadesico.conectar().getCliente(ID)
+            def serv = Nadesico.conectar()
+            def art  = serv.getCliente(ID)
+            serv.desconectar()
             formCliente.setTxtIDCliente     art.id_cliente    as String
             formCliente.setTxtRFC           art.RFC           as String
             formCliente.setTxtDireccion     art.direccion     as String
@@ -173,7 +175,6 @@ class Clientes {
             Herramientas.In2ActionX(form, KeyEvent.VK_F11   , "nada"    ) { }
             Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "nada"    ) { }
             Herramientas.In2ActionX(form, KeyEvent.VK_DELETE, "nada"    ) { }
-            
             escritorio.getPanelEscritorio().add(form)
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles Cliente", Herramientas.getStackTraceString(e)) }
@@ -187,10 +188,10 @@ class Clientes {
     static def lanzarModificarCliente(ID)
     {
         try{
-        def formCliente = lanzarDetallesClientes(ID)
-        Herramientas.In2ActionX(formCliente, KeyEvent.VK_F6    , "modificar"  ) { formCliente.btnModificar.doClick()  }
-        formCliente.setModoModificar();
-        return formCliente
+            def formCliente = lanzarDetallesClientes(ID)
+            Herramientas.In2ActionX(formCliente, KeyEvent.VK_F6,"modificar") {formCliente.btnModificar.doClick()}
+            formCliente.setModoModificar();
+            return formCliente
         } catch(e) { Dialogos.error("Error al lanzar modificar Cliente", e) }
     }
 
@@ -217,9 +218,9 @@ class Clientes {
                 descuento     = descuento as Double
                 Saldo         = Saldo as Double
                 try{
-                def serv = Nadesico.conectar()
-                Dialogos.lanzarAlerta(serv.modCliente(RFC,direccion,telefono,RazonSocial,Saldo,CP,descuento,IDCliente))
-                serv.desconectar()
+                    def serv = Nadesico.conectar()
+                    Dialogos.lanzarAlerta(serv.modCliente(RFC,direccion,telefono,RazonSocial,Saldo,CP,descuento,IDCliente))
+                    serv.desconectar()
                 } catch(e) { Dialogos.error("Error al enviar a la base de datos. El Cliente no se modifico", e) }
                 return formCliente
              }

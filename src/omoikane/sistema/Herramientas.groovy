@@ -14,6 +14,8 @@ import javax.swing.*;
 import groovy.inspect.swingui.*
 import groovy.swing.SwingBuilder;
 import com.griaule.grfingerjava.*;
+import javax.swing.JComponent;
+import org.jdesktop.swingx.JXDatePicker;
 
 
 public class Herramientas
@@ -199,7 +201,8 @@ public class Herramientas
 
     public static panelFormulario(component){
         for(Component child: component.getContentPane().getComponents()){
-           child.focusGained={evt->
+
+            child.focusGained={evt->
                 evt.getComponent().setBackground(new Color(110,110,255));
                 evt.getComponent().setForeground(new Color(255,255,255));
                 evt.getComponent().setFont(new Font("ARIAL",Font.BOLD,14));//arial 15

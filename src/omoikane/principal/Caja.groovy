@@ -469,7 +469,7 @@ class Caja {
                         def cambio
                         if(form.txtEfectivo.text == "") { dinero =  Caja.aDoble(form.txtTotal.text) ;cambio = "0.0"}
                         else{dinero = Caja.aDoble(form.txtEfectivo.text);cambio = Caja.aDoble(form.txtCambio.text)}
-                        def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), form.impuestos, Caja.aDoble(form.txtTotal.text), detalles,dinero,cambio,form.totalOriginal)
+                        def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), Caja.aDoble(form.txtImpuesto.text), Caja.aDoble(form.txtTotal.text), detalles,dinero,cambio,form.totalOriginal)
 
                             if(autorizadorVentaEspecial != null) {
                                 serv.addVentaEspecial(salida.ID, autorizadorVentaEspecial.ID)

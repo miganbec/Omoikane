@@ -27,7 +27,6 @@ class Ventas {
     static def lastMovID  = -1
     static def IDAlmacen = Principal.IDAlmacen
     static def escritorio = omoikane.principal.Principal.escritorio
-    //static def getVenta(where) { new Venta(where)}
 
     static def lanzarCatalogo() //lanza el catalogo de ventas
     {
@@ -37,11 +36,16 @@ class Ventas {
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.1,0.25,0.25,0.1]);
             Herramientas.panelCatalogo(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
-            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar" ) { cat.btnFiltrar.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F11   , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "nada"     ) { }
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo ventas", Herramientas.getStackTraceString(e)) }
@@ -59,18 +63,33 @@ class Ventas {
             escritorio.getPanelEscritorio().add(form)
             Herramientas.setColumnsWidth(form.jTable1, [0.2,0.5,0.1,0.1,0.1])
             Herramientas.panelFormulario(form)
-            Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"   ) { form.btnCerrar.doClick()   }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F1    , "nada"     ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "nada"     ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F4    , "nada"     ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "nada"     ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F6    , "facturar" ) { form.btnFacturado.doClick()}
+            Herramientas.In2ActionX(form, KeyEvent.VK_F7    , "nada"     ) { }
             Herramientas.In2ActionX(form, KeyEvent.VK_F8    , "imprimir" ) { form.btnImprimir.doClick() }
-            Herramientas.In2ActionX(form, KeyEvent.VK_F1    , "nada" ) {}
+            Herramientas.In2ActionX(form, KeyEvent.VK_F11   , "nada"     ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "nada"     ) { }
+            Herramientas.In2ActionX(form, KeyEvent.VK_DELETE, "nada"     ) { }
+            SwingBuilder.build {
+            //Al presionar F1: (lanzarCatalogoDialogo) de cliente
+            form.getFactura().keyReleased = {
+                if(it.keyCode == it.VK_F1)
+                Thread.start { form.getFactura().setText(Clientes.lanzarDialogoCatalogo());form.getFactura().requestFocus() } }
             form.IDSeleccionado=ID
             Herramientas.iconificable(form)
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario nuevo movimiento de almacén", Herramientas.getStackTraceString(e)) }
-            def mov         = Nadesico.conectar().getVenta(ID,IDAlmacen)
+            def serv    = Nadesico.conectar()
+            def mov     = serv.getVenta(ID,IDAlmacen)
+            serv.desconectar()
+            form.setIDVenta(mov.id_venta as String)
             form.setCliente(mov.nombreCliente as String)
             form.setDescuento(mov.descuento as String)
             form.setImpuesto(mov.impuestos as String)
-            //form.setTipoSalida(mov.tabMatriz as String)
+            if (mov.facturada as Boolean){form.setFacturar(mov.id_cliente as String)}
             form.setSubtotal(mov.subtotal as String)
             form.setTotal(mov.total as String)
             form.setAlmacen(mov.nombreAlmacen as String)
@@ -78,9 +97,6 @@ class Ventas {
             form.setTablaPrincipal(mov.tabMatriz as List)
             def n = new omoikane.sistema.n2t()
             form.letra = n.aCifra(mov.total)
-            SwingBuilder.build {
-            //Al presionar F1: (lanzarCatalogoDialogo) de cliente
-            form.getFactura().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start { form.getFactura().setText(Clientes.lanzarDialogoCatalogo()); form.getFactura().requestFocus() } }
         }
 
             return form
@@ -110,6 +126,13 @@ class Ventas {
         def comprobante = new Comprobantes()
         comprobante.ticket(IDAlmacen, form)//imprimir ticket
         comprobante.probar()//imprimir ticket
+    }
+
+    static def actualizar(id,cliente)
+    {
+        def serv    = Nadesico.conectar()
+        def mov     = serv.modVenta(id,cliente)
+        serv.desconectar()
     }
 
 

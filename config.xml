@@ -20,8 +20,8 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <cacheSTable atras='3' adelante='5'/>
-    <URLServidor>http://new-eden:5542</URLServidor>
-    <URLMySQL>jdbc:mysql://new-eden/omoikane</URLMySQL>
+    <URLServidor>http://nadesico:5542</URLServidor>
+    <URLMySQL>jdbc:mysql://nadesico/omoikane</URLMySQL>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
     <scannerActivo>false</scannerActivo>
@@ -31,5 +31,5 @@
     <puertoBascula>COM2</puertoBascula>
     <fondoBlur>false</fondoBlur>
     <idAlmacen>1</idAlmacen>
-    <idCaja>1</idCaja>
+    <idCaja>-1</idCaja>
 </document>

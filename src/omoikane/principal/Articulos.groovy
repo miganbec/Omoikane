@@ -36,7 +36,7 @@ public class Articulos
             def cat = (new omoikane.formularios.CatalogoArticulos())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.setColumnsWidth(cat.jTable1, [0.14,0.1,0.1,0.4,0.06,0.1,0.1]);
+            Herramientas.setColumnsWidth(cat.jTable1, [0.16,0.16,0.05,0.4,0.07,0.08,0.08]);
             Herramientas.panelCatalogo(cat)
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()  }
@@ -107,17 +107,24 @@ public class Articulos
     {
         if(cerrojo(PMA_DETALLESARTICULO)){
             def formArticulo = new omoikane.formularios.Articulo()
+            def formateador = new java.text.DecimalFormat("#.00");
             formArticulo.setVisible(true)
             escritorio.getPanelEscritorio().add(formArticulo)
             Herramientas.panelFormulario(formArticulo)
             formArticulo.toFront()
-            try { formArticulo.setSelected(true) 
-            def art         = Nadesico.conectar().getArticulo(ID,IDAlmacen)
-            def notas       = Nadesico.conectar().getAnotacion(IDAlmacen,ID)
+            try { formArticulo.setSelected(true)
+            def serv        = Nadesico.conectar()
+            def art         = serv.getArticulo(ID,IDAlmacen)
+            def lin         = serv.getLinea(art.id_linea)
+            def gru         = serv.getGrupo(art.id_grupo)
+            def notas       = serv.conectar().getAnotacion(IDAlmacen,ID)
+            serv.desconectar()
             formArticulo.setTxtIDArticulo    art.id_articulo           as String
             formArticulo.setTxtCodigo        art.codigo
             formArticulo.setTxtIDLinea       art.id_linea              as String
-            formArticulo.setTxtIDGrupo       art.id_grupo      as String
+            formArticulo.setTxtIDGrupo       art.id_grupo              as String
+            formArticulo.setTxtIDLineaDes    lin.descripcion           as String
+            formArticulo.setTxtIDGrupoDes    gru.descripcion           as String
             formArticulo.setTxtDescripcion   art.descripcion
             formArticulo.setTxtUnidad        art.unidad
             formArticulo.setTxtImpuestos     art.impuestos             as String
@@ -128,7 +135,6 @@ public class Articulos
             formArticulo.setTxtExistencias   art.cantidad              as String
             formArticulo.setTxtPrecio        art.precio.total          as String
             formArticulo.setTxtComentarios   notas                     as String
-
             formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuento%'] as String
             formArticulo.getTxtDescuento2().text       = art.precio['descuento$'] as String
             formArticulo.getTxtPrecio2().text          = art.precio.total         as String
