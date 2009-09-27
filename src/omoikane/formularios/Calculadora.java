@@ -102,6 +102,23 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
         btnCerrar = new javax.swing.JButton();
         jcalCalculadora = new com.nieto.jcalc.JCalc();
 
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 formKeyReleased(evt);
@@ -120,7 +137,7 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
             }
         });
 
-        jcalCalculadora.setButtonFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jcalCalculadora.setButtonFont(new java.awt.Font("Arial", 0, 14));
         jcalCalculadora.setDisplayBackground(new java.awt.Color(0, 0, 102));
         jcalCalculadora.setDisplayForeground(new java.awt.Color(255, 255, 255));
 
@@ -156,7 +173,7 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        cerrar();
+        this.dispose();
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
@@ -165,14 +182,15 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
             enterOnce = true;
             else {
                 copiar();
-                cerrar();
+                this.dispose();
             }
+        else
+            enterOnce = false;
     }//GEN-LAST:event_formKeyReleased
 
-private void cerrar() {
-    invocador.requestFocusInWindow();
-    this.dispose();
-}
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // NOTA: Función manejada en principal.Calculadora (groovy)
+    }//GEN-LAST:event_formInternalFrameClosed
 
 private void copiar() {
     clipboard = getToolkit().getSystemClipboard();

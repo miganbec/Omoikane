@@ -59,6 +59,24 @@ public class Calendario extends javax.swing.JInternalFrame {
         btnCerrar = new javax.swing.JButton();
         jxmvCalendario = new org.jdesktop.swingx.JXMonthView();
 
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
         etiquetaCalendario.setFont(new java.awt.Font("Arial", 1, 36));
         etiquetaCalendario.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaCalendario.setText("Calendario");
@@ -111,10 +129,12 @@ public class Calendario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
- 
         this.dispose();
-
 }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // NOTA: Función manejada en principal.Calendario (groovy)
+    }//GEN-LAST:event_formInternalFrameClosed
 
     public void paintComponent(Graphics g)
     {

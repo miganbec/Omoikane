@@ -27,6 +27,8 @@ import java.awt.datatransfer.Clipboard;
 public class Escritorio extends javax.swing.JFrame {
 
     private Clipboard clipboard = getToolkit().getSystemClipboard();
+    private boolean calculadoraAbierta = false;
+    private boolean calendarioAbierto = false;
 
     /** Creates new form Escritorio */
     public Escritorio() {
@@ -48,8 +50,10 @@ public class Escritorio extends javax.swing.JFrame {
         this.PanelEscritorio.getActionMap().put("calculadora", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Component invocador = getFocusOwner();
-                Calculadora.lanzarCalculadora(clipboard, invocador);
+                if(!calculadoraAbierta) {
+                    Component invocador = getFocusOwner();
+                    Calculadora.lanzarCalculadora(clipboard, invocador);
+                }
             }
         });
         this.PanelEscritorio.getInputMap(this.PanelEscritorio.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("F2"), "calculadora");
@@ -57,13 +61,24 @@ public class Escritorio extends javax.swing.JFrame {
         this.PanelEscritorio.getActionMap().put("calendario", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Component invocador = getFocusOwner();
-                Calendario.lanzarCalendario(invocador);
+                if(!calendarioAbierto) {
+                    Component invocador = getFocusOwner();
+                    Calendario.lanzarCalendario(invocador);
+                }
             }
         });
         this.PanelEscritorio.getInputMap(this.PanelEscritorio.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("F9"), "calendario");
 
     }
+
+    public void setCalculadoraAbierta(boolean b) {
+        calculadoraAbierta = b;
+    }
+
+    public void setCalendarioAbierto(boolean b) {
+        calendarioAbierto = b;
+    }
+
     public void fondoToBack() {
         PanelEscritorio.moveToBack(this.lblImagenFondo);
     }

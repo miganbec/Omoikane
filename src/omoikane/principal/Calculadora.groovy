@@ -24,15 +24,23 @@ class Calculadora {
 
     static def lanzarCalculadora( clipboard, invocador ) {
             cal = (new omoikane.formularios.Calculadora(clipboard, invocador))
-            cal.setVisible(true);
+            cal.setVisible(true)
             escritorio.getPanelEscritorio().add(cal)
-            // Herramientas.In2ActionX(cal, KeyEvent.VK_ESCAPE, "cerrar"   ) { cal.btnCerrar.doClick()   }
-            Herramientas.In2ActionX(cal.jcalCalculadora, KeyEvent.VK_ESCAPE, "cierre"   ) { cal.btnCerrar.doClick()   }
+            escritorio.getFrameEscritorio().setCalculadoraAbierta(true)
+
+            Herramientas.In2ActionX(cal.jcalCalculadora, KeyEvent.VK_ESCAPE, "cierre"   ) {
+                cal.btnCerrar.doClick()
+            }
+            cal.internalFrameClosed = {
+                escritorio.getFrameEscritorio().setCalculadoraAbierta(false);
+                invocador.requestFocus();
+                invocador.requestFocusInWindow();
+            }
+            
             cal.toFront()
             cal.setSelected(true)
             cal.requestFocus()
             Herramientas.iconificable(cal)
-            // cal.jcalCalculadora.requestFocus()
             return cal
     }
 }

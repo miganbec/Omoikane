@@ -8,14 +8,16 @@ import java.io.IOException;
 
 /**
  *
- * @author DP Roberts
+ * @author Rubén
  */
 public class Apagado {
         public static void apagar() {
             if(isWindows())
                 ejecComando("shutdown.exe -s -t 01");
-            else if(isUnix())
-               ejecComando("shutdown now");
+            else if(isUnix()) {
+               ejecComando("poweroff");
+               ejecComando("shutdown -h now");
+            }
         }
 
         public static void ejecComando( String comando ){

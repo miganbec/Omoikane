@@ -27,13 +27,22 @@ class Calendario {
             cal = (new omoikane.formularios.Calendario(invocador))
             cal.setVisible(true);
             escritorio.getPanelEscritorio().add(cal)
-            Herramientas.In2ActionX(cal.jxmvCalendario, KeyEvent.VK_ESCAPE, "cierre"   ) { cal.btnCerrar.doClick()   }
+            escritorio.getFrameEscritorio().setCalendarioAbierto(true)
+
+            Herramientas.In2ActionX(cal.jxmvCalendario, KeyEvent.VK_ESCAPE, "cierre"   ) {
+                cal.btnCerrar.doClick()
+            }
+            cal.internalFrameClosed = {
+                escritorio.getFrameEscritorio().setCalendarioAbierto(false);
+                invocador.requestFocus();
+                invocador.requestFocusInWindow();
+            }
+
             cal.toFront()
             cal.setSelected(true);
             cal.requestFocus()
             Herramientas.iconificable(cal)
             cal.jxmvCalendario.requestFocus()
-
             return cal
     }
 }
