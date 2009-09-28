@@ -15,7 +15,6 @@ public class Apagado {
             if(isWindows())
                 ejecComando("shutdown.exe -s -t 01");
             else if(isUnix()) {
-               ejecComando("poweroff");
                ejecComando("shutdown -h now");
             }
         }
