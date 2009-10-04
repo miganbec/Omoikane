@@ -497,14 +497,16 @@ class Caja {
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.panelCatalogo(cat)
             Herramientas.iconificable(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
-            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick()    }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "corte"    ) { cat.btnCorte.doClick()    }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "buscar"   ) { cat.btnBuscar.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "busqueda" ) { cat.txtBusqueda.requestFocusInWindow() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir") { cat.btnImprimir.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F11   , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "corte"    ) { cat.btnCorte.doClick()    }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catalogo de cajas", Herramientas.getStackTraceString(e)) }
             cat.txtBusqueda.requestFocus()

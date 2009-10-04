@@ -31,5 +31,5 @@
     <puertoBascula>COM2</puertoBascula>
     <fondoBlur>false</fondoBlur>
     <idAlmacen>1</idAlmacen>
-    <idCaja>-1</idCaja>
+    <idCaja>1</idCaja>
 </document>

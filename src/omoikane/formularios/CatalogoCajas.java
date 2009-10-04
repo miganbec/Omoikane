@@ -128,6 +128,9 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyTyped(evt);
             }
@@ -161,21 +164,36 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
         tablaCajas.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(tablaCajas);
 
-        btnBuscar.setText("Buscar");
+        btnBuscar.setText("Buscar [F1]");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
+        btnBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar [Enter]");
+        btnAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
-        btnImprimir.setText("Imprimir [F7]");
+        btnImprimir.setText("Imprimir [F8]");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImprimirActionPerformed(evt);
+            }
+        });
+        btnImprimir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
             }
         });
 
@@ -186,12 +204,22 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+        btnModificar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/blog_post_delete.png"))); // NOI18N
         btnEliminar.setText("Eliminar [Supr]");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
+            }
+        });
+        btnEliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
             }
         });
 
@@ -202,12 +230,22 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
+        btnNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
         btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnDetalles.setText("Detalles [F4]");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetallesActionPerformed(evt);
+            }
+        });
+        btnDetalles.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
             }
         });
 
@@ -218,12 +256,22 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
+        btnCerrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
+            }
+        });
 
         btnCorte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/blog_post_delete.png"))); // NOI18N
         btnCorte.setText("Corte de caja [F12]");
         btnCorte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCorteActionPerformed(evt);
+            }
+        });
+        btnCorte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salir(evt);
             }
         });
 
@@ -443,6 +491,11 @@ public class CatalogoCajas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.txtBusqueda.requestFocusInWindow();
     }//GEN-LAST:event_formFocusGained
+
+    private void salir(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salir
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
+    }//GEN-LAST:event_salir
 
 
 

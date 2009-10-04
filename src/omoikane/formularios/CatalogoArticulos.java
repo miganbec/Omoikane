@@ -364,8 +364,9 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         ArticulosTableModel tabModelo = this.modelo;
+        
+        if(tabModelo != null) { tabModelo.destroy(); }
         this.modelo = null;
-        tabModelo.destroy();
         this.dispose();
         if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();

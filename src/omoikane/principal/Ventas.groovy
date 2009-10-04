@@ -36,12 +36,12 @@ class Ventas {
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.1,0.25,0.25,0.1]);
             Herramientas.panelCatalogo(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar" ) { cat.btnFiltrar.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar"  ) { cat.btnFiltrar.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()}
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "nada"     ) { }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "cambiar"  ) { if(cat.getBuscarCajero()){cat.activarCajero(false)}else{cat.activarCajero(true)}}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "cambiar1" ) { if(cat.getBuscarCliente()){cat.activarCliente(false)}else{cat.activarCliente(true)}}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "cambiar2" ) { if(cat.getBuscarCaja()){cat.activarCaja(false)}else{cat.activarCaja(true)}}
             Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F11   , "nada"     ) { }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "nada"     ) { }
