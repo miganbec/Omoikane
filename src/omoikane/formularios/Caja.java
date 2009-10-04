@@ -198,7 +198,7 @@ public class Caja extends javax.swing.JInternalFrame {
 
         btnMovimientos.setFont(new java.awt.Font("Arial", 0, 14));
         btnMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/attachment.png"))); // NOI18N
-        btnMovimientos.setText("Movimientos Caja [F11]");
+        btnMovimientos.setText("Movimientos Caja [F5]");
         btnMovimientos.setMargin(new java.awt.Insets(2, 9, 2, 9));
         btnMovimientos.setMaximumSize(new java.awt.Dimension(250, 35));
         btnMovimientos.setMinimumSize(new java.awt.Dimension(200, 30));
@@ -279,7 +279,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel9.setMinimumSize(new java.awt.Dimension(80, 10));
         jLabel9.setPreferredSize(new java.awt.Dimension(80, 10));
 
-        txtEfectivo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtEfectivo.setFont(new java.awt.Font("Tahoma", 1, 24));
         txtEfectivo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEfectivo.setBorder(null);
         txtEfectivo.setMaximumSize(new java.awt.Dimension(220, 25));
@@ -294,7 +294,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel14.setPreferredSize(new java.awt.Dimension(80, 10));
 
         txtCambio.setEditable(false);
-        txtCambio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtCambio.setFont(new java.awt.Font("Tahoma", 1, 24));
         txtCambio.setForeground(new java.awt.Color(0, 102, 204));
         txtCambio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCambio.setText("$ 0.00");
@@ -327,7 +327,7 @@ public class Caja extends javax.swing.JInternalFrame {
         jLabel17.setPreferredSize(new java.awt.Dimension(80, 10));
 
         txtImpuesto.setBackground(new java.awt.Color(153, 51, 0));
-        txtImpuesto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtImpuesto.setFont(new java.awt.Font("Tahoma", 1, 24));
         txtImpuesto.setForeground(new java.awt.Color(255, 255, 255));
         txtImpuesto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtImpuesto.setText("$ 0.00");

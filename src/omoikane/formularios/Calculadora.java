@@ -177,7 +177,7 @@ public class Calculadora extends javax.swing.JInternalFrame implements java.awt.
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
-        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_F3) {
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_F11) {
              copiar();
              this.dispose();
         }

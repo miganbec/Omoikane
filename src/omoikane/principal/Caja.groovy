@@ -192,7 +192,7 @@ class Caja {
             Herramientas.In2ActionX(form           , KeyEvent.VK_F12   , "cancelar"  ) { form.btnCancelacion.doClick()           }
             Herramientas.In2ActionX(form.btnCerrar , KeyEvent.VK_ESCAPE, "cerrar2"   ) { form.btnCerrar.doClick()                }
             Herramientas.In2ActionX(form           , KeyEvent.VK_F7    , "cancelaArt") { form.btnCancelaArt.doClick()            }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_F11   , "movs"      ) { form.btnMovimientos.doClick()           }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_F5   , "movs"      ) { form.btnMovimientos.doClick()           }
 
 
             form.toFront()

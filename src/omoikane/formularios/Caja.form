@@ -438,7 +438,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/32x32/attachment.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Movimientos Caja [F11]"/>
+        <Property name="text" type="java.lang.String" value="Movimientos Caja [F5]"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[2, 9, 2, 9]"/>
         </Property>
