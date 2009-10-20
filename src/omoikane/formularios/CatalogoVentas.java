@@ -152,6 +152,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         btnDetalles = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
+        btnVentasXLinea = new javax.swing.JButton();
 
         setTitle("Catálogo de Ventas");
 
@@ -295,6 +296,14 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
+        btnVentasXLinea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
+        btnVentasXLinea.setText("<html><center>Ventas x Línea</center></html>");
+        btnVentasXLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasXLineaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -331,6 +340,30 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< .mine
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(chkCliente)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(chkCaja)))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(chkCajero)
+                        .addGap(317, 317, 317))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDetalles)
+                        .addGap(220, 220, 220)
+                        .addComponent(btnVentasXLinea, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                        .addContainerGap())))
+=======
                                 .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -340,6 +373,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                                 .addComponent(chkCaja)
                                 .addGap(301, 301, 301)))))
                 .addContainerGap())
+>>>>>>> .r172
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,6 +395,12 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                         .addComponent(btnFiltrar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< .mine
+                    .addComponent(btnDetalles)
+                    .addComponent(btnAceptar)
+                    .addComponent(btnImprimir)
+                    .addComponent(btnVentasXLinea))
+=======
                     .addComponent(chkCajero)
                     .addComponent(chkCaja)
                     .addComponent(chkCliente))
@@ -372,6 +412,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                         .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> .r172
                 .addContainerGap())
         );
 
@@ -470,11 +511,18 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
+<<<<<<< .mine
+    private void btnVentasXLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasXLineaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVentasXLineaActionPerformed
+
+=======
     private void salir(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salir
         // TODO add your handling code here:
         if(evt.getKeyCode() == evt.VK_ESCAPE) { this.btnCerrar.doClick(); }
     }//GEN-LAST:event_salir
 
+>>>>>>> .r172
     public boolean getBuscarCliente()
     {
         return this.chkCliente.getModel().isSelected();
@@ -575,6 +623,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnImprimir;
+    private javax.swing.JButton btnVentasXLinea;
     private javax.swing.JCheckBox chkCaja;
     private javax.swing.JCheckBox chkCajero;
     private javax.swing.JCheckBox chkCliente;
