@@ -31,9 +31,11 @@ class VentasXLinea {
         }
 
         def lanzarReporte() {
-
-            def reporte = new Reporte('omoikane/reportes/VentasXLinea3.jasper', [desde:"sdsada2222"]);
-
+            def list
+            list = (String) (form.getLineas()*.id)
+            list=list.replace('[','')
+            list=list.replace(']','')
+            def reporte = new Reporte('omoikane/reportes/VentasXLinea.jasper', [FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
             reporte.lanzarPreview()
         }
 
@@ -49,12 +51,22 @@ class VentasXLinea {
                     def serv = Nadesico.conectar()
                     def filasTabNormal = serv.getRows(queryLineas =("SELECT lineas.id_linea, lineas.descripcion FROM lineas WHERE lineas.id_linea NOT IN (SELECT lineas_dual.id_linea FROM lineas_dual)"))
                     filasTabNormal.each {
-                        dataListNormal.addElement(it.descripcion)
+                        dataListNormal.addElement(new ElementoListaLineas(id:it.id_linea,nombre:it.descripcion))
                     }
 
                 } catch(Exception e) {
                     Dialogos.lanzarDialogoError(null, "Error grave. No hay conexion con la base de datos!", omoikane.sistema.Herramientas.getStackTraceString(e))
                 }
             }
+
+
+}
+
+class ElementoListaLineas{
+    def id
+    def nombre
+    String toString(){
+        return String.valueOf(nombre)
+    }
 }
 

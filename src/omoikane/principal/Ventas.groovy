@@ -36,15 +36,11 @@ class Ventas {
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.1,0.25,0.25,0.1]);
             Herramientas.panelCatalogo(cat)
-<<<<<<< .mine
             Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             cat.btnVentasXLinea.actionPerformed = { lanzarVentasXLinea(); }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar" ) { cat.btnFiltrar.doClick() }
-=======
             Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar"  ) { cat.btnFiltrar.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()}
->>>>>>> .r172
             Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
             Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "cambiar"  ) { if(cat.getBuscarCajero()){cat.activarCajero(false)}else{cat.activarCajero(true)}}
             Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "cambiar1" ) { if(cat.getBuscarCliente()){cat.activarCliente(false)}else{cat.activarCliente(true)}}
@@ -111,6 +107,7 @@ class Ventas {
     }
 
     static def lanzarVentasXLinea() {
+        
         new VentasXLinea(new omoikane.formularios.VentasXLineaReporte())
     }
     static def lanzarImprimir(queryMovs)

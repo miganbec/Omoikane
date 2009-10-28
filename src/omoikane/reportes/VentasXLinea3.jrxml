@@ -14,7 +14,7 @@ FROM
      `ventas_detalles` ventas_detalles INNER JOIN `ventas` ventas ON ventas_detalles.`id_venta` = ventas.`id_venta`
      INNER JOIN `lineas` lineas ON ventas_detalles.`id_linea` = lineas.`id_linea`
 WHERE
-     ventas.fecha_hora >= '2009-10-18 00:00:00'
+     ventas.fecha_hora >= '2009-09-18 00:00:00'
  AND ventas.fecha_hora <= '2009-10-18 23:59:59'
 GROUP BY
      lineas_id_linea]]>

@@ -26,11 +26,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" pref="924" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="btnAceptar" min="-2" pref="207" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDetalles" min="-2" pref="187" max="-2" attributes="0"/>
-                      <EmptySpace pref="282" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnVentasXLinea" min="-2" pref="198" max="-2" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                       <Component id="btnImprimir" min="-2" pref="242" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -54,7 +56,7 @@
                           <Component id="btnCerrar" min="-2" pref="230" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                               <Component id="txtFechaDesde" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -71,23 +73,6 @@
                           </Group>
                       </Group>
                   </Group>
-<<<<<<< .mine
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="chkCajero" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDetalles" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
-                      <Component id="btnVentasXLinea" pref="193" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnImprimir" pref="193" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-=======
->>>>>>> .r172
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -120,17 +105,15 @@
                   <Component id="chkCajero" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="chkCaja" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="chkCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnVentasXLinea" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="293" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnDetalles" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btnAceptar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="btnImprimir" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnImprimir" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="btnDetalles" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="btnAceptar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btnVentasXLinea" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -354,14 +337,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVentasXLinea">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/32x32/printer.png"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Ventas x L&#xed;nea&lt;/center&gt;&lt;/html&gt;"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/32x32/page_search.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ventas X Linea"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentasXLineaActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

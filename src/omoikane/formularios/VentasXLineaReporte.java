@@ -11,15 +11,31 @@
 
 package omoikane.formularios;
 
+import javax.swing.*;
+import java.awt.image.*;
+import java.awt.*;
+import java.text.*;
+import omoikane.sistema.*;
+
 /**
  *
  * @author Octavio
  */
 public class VentasXLineaReporte extends javax.swing.JInternalFrame {
+    BufferedImage          fondo;
 
     /** Creates new form VentasXLineaReporte */
     public VentasXLineaReporte() {
         initComponents();
+
+        //Instrucciones para el funcionamiento del fondo semistransparente
+        this.setOpaque(false);
+        ((JPanel)this.getContentPane()).setOpaque(false);
+        this.getLayeredPane().setOpaque(false);
+        this.getRootPane().setOpaque(false);
+        this.generarFondo(this);
+
+        Herramientas.centrarVentana(this);
     }
 
     /** This method is called from within the constructor to
@@ -42,15 +58,19 @@ public class VentasXLineaReporte extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Reporte Ventas por Línea");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Desde:");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Hasta:");
 
         jScrollPane1.setViewportView(listaLineas);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Líneas:");
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
@@ -86,7 +106,7 @@ public class VentasXLineaReporte extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -137,4 +157,52 @@ public class VentasXLineaReporte extends javax.swing.JInternalFrame {
     private javax.swing.JList listaLineas;
     // End of variables declaration//GEN-END:variables
 
+    public Object[] getLineas(){
+        return this.listaLineas.getSelectedValues();
+    }
+
+    public String getFechaDesde(){
+        String fechaDesde     = "";
+        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+        if(this.dateDesde.getDate() != null)
+        {
+            try {
+                fechaDesde = sdf.format(this.dateDesde.getDate());
+            } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
+        }
+        return fechaDesde ;
+    }
+
+    public String getFechaHasta(){
+        String fechaHasta     = "";
+        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+        if(this.dateDesde.getDate() != null)
+        {
+            try {
+                fechaHasta = sdf.format(this.dateHasta.getDate());
+            } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
+        }
+        return fechaHasta ;
+    }
+
+
+    public void paintComponent(Graphics g)
+    {
+      Graphics2D g2d = (Graphics2D) g;
+      g2d.drawImage(fondo, 0, 0, null);
+
+    }
+
+    public void generarFondo(Component componente)
+    {
+      Rectangle areaDibujo = this.getBounds();
+      BufferedImage tmp;
+      GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+
+      tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
+      Graphics2D g2d = (Graphics2D) tmp.getGraphics();
+      g2d.setColor(new Color(55,55,255,165));
+      g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
+      fondo = tmp;
+    }
 }
