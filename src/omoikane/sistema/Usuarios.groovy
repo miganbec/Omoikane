@@ -1,4 +1,3 @@
-
  /* Author Phesus        //////////////////////////////
  *  ORC,ACR             /////////////
  *                     /////////////
@@ -36,7 +35,6 @@ public class Usuarios {
     }
     public static def identificaPersona() {
             def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
-            
             def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
             def serv         = Nadesico.conectar()
             def respuesta    = serv.checkFingerPrint(fingerPrint)
@@ -64,6 +62,5 @@ public class Usuarios {
         def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
         def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
         return fingerPrint
-    }
-        
+    }       
 }

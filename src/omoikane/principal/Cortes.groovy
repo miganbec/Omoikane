@@ -19,6 +19,7 @@ import java.awt.event.*;
 import java.text.SimpleDateFormat
 import groovy.swing.*
 import omoikane.sistema.cortes.*;
+import java.util.Calendar
 
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*;
@@ -30,6 +31,7 @@ import static omoikane.sistema.Permisos.*;
 class Cortes {
 
     static def lastMovID  = -1
+    static def lastMovID2  = -1
     static def IDAlmacen = Principal.IDAlmacen
     static def escritorio = omoikane.principal.Principal.escritorio
     //static def getVenta(where) { new Venta(where)}
@@ -117,12 +119,18 @@ class Cortes {
         if(cerrojo(PMA_DETALLESCORTES)){
             lastMovID= IDE
             def form  = lanzarVentanaDetalles()
-            def mov   = Nadesico.conectar().getCorteWhere(" cortes.id_corte=$IDE")
+            def puerto = Nadesico.conectar()
+            def mov  = puerto.getCorteWhere(" cortes.id_corte=$IDE")
+            SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            def fecha = sdf.format(mov.fecha_hora)
+            fecha= " fecha_hora = '$fecha' "
+            def mov2  = puerto.getCorteWhereFrom(fecha," cortes_dual ")
+            lastMovID2=mov2.id_corte
             form.ID = IDE
             form.setTxtDescuento     (mov.descuentos as String)
-            form.setTxtDesde         (mov.desde as String)
-            form.setTxtFecha         (mov.fecha_hora as String)
-            form.setTxtHasta         (mov.hasta as String)
+            form.setTxtDesde         (sdf.format(mov.desde) as String)
+            form.setTxtFecha         (sdf.format(mov.fecha_hora) as String)
+            form.setTxtHasta         (sdf.format(mov.hasta) as String)
             form.setTxtIDAlmacen     (mov.id_almacen as String)
             form.setTxtIDCaja        (mov.id_caja as String)
             form.setTxtIDCorte       (mov.id_corte as String)
@@ -130,6 +138,9 @@ class Cortes {
             form.setTxtNumeroVenta   (mov.n_ventas as String)
             form.setTxtSubtotal      (mov.subtotal as String)
             form.setTxtTotal         (mov.total as String)
+            form.setTxtDeposito     (mov.depositos as String)
+            form.setTxtRetiro       (mov.retiros as String)
+            form.setTxtEfectivo     ("0")
             return form
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -144,6 +155,8 @@ class Cortes {
     {
         def comprobante = new Comprobantes()
         comprobante.Corte(ID)//imprimir ticket
+        comprobante.probar()//imprimir ticket
+        comprobante.Corte(lastMovID2, "cortes_dual") //imprimir corte
         comprobante.probar()//imprimir ticket
     }
 

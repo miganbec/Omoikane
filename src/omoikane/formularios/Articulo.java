@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Articulo.java
- *
- * Created on 22/08/2008, 07:40:21 PM
- */
-
 package omoikane.formularios;
 
 import javax.swing.*;
@@ -16,14 +5,14 @@ import java.awt.*;
 import java.awt.image.*;
 import omoikane.sistema.*;
 
-/**
- *
+/*
  * @author Octavio
  */
 public class Articulo extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
     public int ID;
+
     /** Creates new form Articulo */
     public Articulo() {
         initComponents();
@@ -82,7 +71,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         tblCodigos = new javax.swing.JTable();
         btnAddCode = new javax.swing.JButton();
         btnDelCode = new javax.swing.JButton();
-        btnModCode = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         txtPrecio2 = new javax.swing.JTextField();
@@ -105,14 +93,13 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtDescuento2 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        tblPaquetes = new javax.swing.JTable();
+        btnAddComp = new javax.swing.JButton();
+        btnDelComp = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txaComentarios = new javax.swing.JTextArea();
+        txtComentarios = new javax.swing.JTextArea();
 
         setTitle("Artículos");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -188,7 +175,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel5.setText("Unidad:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
 
-        txtUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pza", "Kg", "Lt" }));
+        txtUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PZA", "CAJA", "PAQ", "KG", "LT" }));
         txtUnidad.setEnabled(false);
         jPanel1.add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, -1));
 
@@ -260,13 +247,10 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
 
         btnAddCode.setText("+");
-        jPanel2.add(btnAddCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 40, 20));
+        jPanel2.add(btnAddCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 40, 20));
 
         btnDelCode.setText("-");
-        jPanel2.add(btnDelCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, 20));
-
-        btnModCode.setText("Mod");
-        jPanel2.add(btnModCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 60, 20));
+        jPanel2.add(btnDelCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, 20));
 
         jTabbedPane1.addTab("Códigos", jPanel2);
 
@@ -388,35 +372,32 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblPaquetes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+                {null, null, null}
             },
             new String [] {
-                "Código", "Descripción"
+                "Código", "Descripción", "Cantidad"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblPaquetes);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
 
-        jButton4.setText("+");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 40, 20));
+        btnAddComp.setText("+");
+        jPanel3.add(btnAddComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 40, 20));
 
-        jButton5.setText("-");
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, 20));
-
-        jButton6.setText("Mod");
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 60, 20));
+        btnDelComp.setText("-");
+        jPanel3.add(btnDelComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, 20));
 
         jTabbedPane1.addTab("Componentes", jPanel3);
 
         jPanel6.setOpaque(false);
         jTabbedPane1.addTab("Movimientos", jPanel6);
 
-        txaComentarios.setColumns(25);
-        txaComentarios.setRows(20);
-        jScrollPane4.setViewportView(txaComentarios);
+        txtComentarios.setColumns(25);
+        txtComentarios.setRows(20);
+        jScrollPane4.setViewportView(txtComentarios);
 
         jPanel7.add(jScrollPane4);
 
@@ -496,14 +477,12 @@ public class Articulo extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCode;
+    private javax.swing.JButton btnAddComp;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnDelCode;
+    private javax.swing.JButton btnDelComp;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnModCode;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -538,10 +517,10 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tblCodigos;
-    private javax.swing.JTextArea txaComentarios;
+    private javax.swing.JTable tblPaquetes;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextArea txtComentarios;
     private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtDesctoPorcentaje;
@@ -574,6 +553,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     public String       getTxtCosto()               {return txtCosto.getText(); }
     public String       getTxtExistencias()         {return txtExistencias.getText(); }
     public String       getTxtPrecio()              {return txtPrecio.getText();}
+    public String       getTxtComentarios()         {return txtComentarios.getText();}
     public Component    getIDLinea()                {return txtIDLinea; }
     public Component    getIDGrupo()                {return txtIDGrupo; }
     public JTextField   getTxtImpuestos()           {return txtImpuestos;}
@@ -613,7 +593,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     public void setTxtUtilidadPorcText(String txt) {txtUtilidadPorc.setText(txt);}
     public void setTxtUtilidad(javax.swing.JTextField txtUtilidad) {this.txtUtilidad = txtUtilidad;}
     public void setTxtUtilidad2(String utilidad) {this.txtUtilidad.setText(utilidad);}
-
+    public void setTxtComentarios(String text) {txtComentarios.setText(text);}
 
     public void paintComponent(Graphics g)
     {
@@ -632,14 +612,5 @@ public class Articulo extends javax.swing.JInternalFrame {
       g2d.setColor(new Color(55,55,255,225));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
-    }
-    
-
-    public String getTxtComentarios() {
-        return txaComentarios.getText();
-    }
-
-    public void setTxtComentarios(String text) {
-        txaComentarios.setText(text);
     }
 }
