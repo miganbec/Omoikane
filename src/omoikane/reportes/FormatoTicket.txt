@@ -7,6 +7,7 @@ NAHUM MEDINA GARCIA      MEGN560328MQ0
 
 ${caja.descripcion}  ${cajero}
 ${fecha}  ${hora}   Folio: ${folio}
+ID: ${idFolio}
 
 <% detalles.each { d -> %>${String.format("%4.4s @ %24.24s%,9.02f", d.cantidad, d.descripcion, d.total)}
 <% } %>

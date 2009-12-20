@@ -16,7 +16,7 @@ public class ShutdownHandler extends Thread {
     }
 
     public void run() {
-        println "El Sistema esta cerrando buen dia ..."
+        println "El Sistema esta cerrando buen día ..."
         def aCerrar = Principal.toFinalizeTracker
         aCerrar.each { clv, val ->
             clv.finalize()

@@ -3,7 +3,7 @@
  *                     /////////////
  *                    /////////////
  *                   /////////////
- * //////////////////////////////                   */
+ * //////////////////////////////                    */
 
 package omoikane.principal
 
@@ -21,6 +21,7 @@ import java.util.Calendar
 import static omoikane.sistema.Usuarios.*
 import static omoikane.sistema.Permisos.*
 import omoikane.sistema.cortes.*
+import omoikane.sistema.excepciones.*;
 
 class Caja {
 
@@ -176,6 +177,8 @@ class Caja {
             def form                     = new omoikane.formularios.Caja()
             def modelo                   = new CajaTableModel(form)
             def autorizadorVentaEspecial = null
+			def ventaYaProcesada         = false
+			
             Herramientas.panelCatalogo(form)
             form.tablaVenta.setModel(modelo)
             form.modelo = modelo
@@ -438,6 +441,11 @@ class Caja {
             }
             form.btnTerminar.actionPerformed = { e ->
                 try {
+					if(ventaYaProcesada) {
+						throw new VentaYaProcesadaException();
+					} else {
+						ventaYaProcesada = true
+					}
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
                         //def foco = new Object()
                         //Thread.start {
@@ -478,11 +486,12 @@ class Caja {
                         serv.desconectar()
                         def comprobante = new Comprobantes()
                         comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket
-                        comprobante.probar()//imprimir ticket
+                        comprobante.imprimir() //imprimir ticket
                         Dialogos.lanzarAlerta(salida.mensaje)
                         form.dispose()
                         lanzar()
-                    
+					
+                } catch(VentaYaProcesadaException exc) { println "[Excepción: Intento de repetir venta ya procesada]" 	
                 } catch(err) { if(err.getMessage()!="Venta vacía"){Dialogos.error("Error: La venta no se pudo registrar", err)} }
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
@@ -532,6 +541,9 @@ class Caja {
     static def lanzarCorteCaja(IDCaja, cortar=false) {
             omoikane.principal.Caja.lanzarTotalVentasDia(IDCaja, cortar)
     }
+	/** 
+	 * Corte de caja 
+	 */
     static def lanzarTotalVentasDia(IDCaja, cortar=false) 
     {
         if(cerrojo(PMA_TOTALVENTA)){
@@ -570,7 +582,7 @@ class Caja {
                     form.setTxtDeposito      (ventas.depositos as String)
                     form.setTxtRetiro        (ventas.retiros as String)
                     form.setTxtTotal         (ventas.total as String)
-                    def dinero = ((ventas.total)-(ventas.retiros)+(ventas.depositos))
+                    def dinero = ventas['total']-ventas.retiros+ventas.depositos
                     form.setTxtEfectivo      (dinero as String)
 
                     if(cortar) {

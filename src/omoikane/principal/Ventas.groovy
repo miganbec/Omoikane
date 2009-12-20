@@ -132,7 +132,7 @@ class Ventas {
     {
         def comprobante = new Comprobantes()
         comprobante.ticket(IDAlmacen, form)//imprimir ticket
-        comprobante.probar()//imprimir ticket
+        comprobante.imprimir()//imprimir ticket
     }
 
     static def actualizar(id,cliente)

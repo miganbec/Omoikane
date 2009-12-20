@@ -49,7 +49,7 @@ class VentasXLinea {
 
                  try {
                     def serv = Nadesico.conectar()
-                    def filasTabNormal = serv.getRows(queryLineas =("SELECT lineas.id_linea, lineas.descripcion FROM lineas WHERE lineas.id_linea NOT IN (SELECT lineas_dual.id_linea FROM lineas_dual)"))
+                    def filasTabNormal = serv.getRows(queryLineas =("SELECT lineas.id_linea, lineas.descripcion FROM lineas"))
                     filasTabNormal.each {
                         dataListNormal.addElement(new ElementoListaLineas(id:it.id_linea,nombre:it.descripcion))
                     }

@@ -22,7 +22,11 @@ class SimpleForm {
     def alertas     = true
     def prepararForm= true
     def fondo       = null
-
+	
+	static def getInstance() {
+		
+	}
+	
     SimpleForm(form = "omoikane.formularios.SimpleFormDefault", Closure cls) {
         def serv = null;
 

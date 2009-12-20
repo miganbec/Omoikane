@@ -46,7 +46,7 @@ class Reporte {
         }
     }
 
-    Reporte(String reporteJasper,List matriz)
+    Reporte(String reporteJasper,java.util.List matriz)
     {
         try {
             def stream = cargarPlantilla(reporteJasper)

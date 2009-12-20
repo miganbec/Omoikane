@@ -247,19 +247,21 @@ public class Articulos
             }
         formArticulo.setModoModificar();
         formArticulo.btnAddCode.actionPerformed    = {
-            new SimpleForm("omoikane.formularios.CodigoArticulo") {
-                def form = it.form
-                form.visible = true
-                form.btnCancelar.actionPerformed = { form.dispose() }
-                form.btnAceptar.actionPerformed  = {
-                PuertoNadesico.workIn() { puerto ->
-                        (puerto.Articulos.get(ID)).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:form.txtCodigo.text)).save()
-                        rellenarCodigosAlternos(ID, formArticulo)
-                        Dialogos.lanzarAlerta("Código agregado")
-                        form.dispose()
-                    }
-                }
-            }
+        	def instrucciones = {
+				def form = it.form;
+				form.visible = true;
+				
+				form.btnCancelar.actionPerformed = { form.dispose() }
+				form.btnAceptar.actionPerformed  = {
+					PuertoNadesico.workIn() { puerto ->
+						(puerto.Articulos.get(ID)).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:form.txtCodigo.text)).save()
+						rellenarCodigosAlternos(ID, formArticulo)
+						Dialogos.lanzarAlerta("Código agregado")
+						form.dispose()
+					}
+				}
+			}
+            new SimpleForm("omoikane.formularios.CodigoArticulo", instrucciones) 
         }
 
         formArticulo.btnDelCode.actionPerformed    = {
@@ -276,24 +278,25 @@ public class Articulos
         }
 
         formArticulo.btnAddComp.actionPerformed    = {
-            new SimpleForm("omoikane.formularios.Paquetes") {
-                def form = it.form
-                form.visible = true
-                SwingBuilder.build {
-                //Al presionar F1: (lanzarCatalogoDialogo)
-                form.txtCodigo.keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtCodigo.setText(Articulos.lanzarDialogoCatalogo() as String); form.txtCodigo.requestFocus()}  }
-                }
-                form.btnBuscar.actionPerformed = { form.dispose() }
-                form.btnCancelar.actionPerformed = { form.dispose() }
-                form.btnAceptar.actionPerformed  = {
-                PuertoNadesico.workIn() { puerto ->
-                        (puerto.Articulos.get(ID)).addToPaquetes(puerto.Paquetes.newInstance(id_articulo:ID,codigo:form.txtCodigo.text,cantidad:java.lang.Integer.valueOf(form.txtCantidad.getText()))).save()
-                        rellenarPaquetes(ID, formArticulo)
-                        Dialogos.lanzarAlerta("Código agregado")
-                        form.dispose()
-                    }
-                }
-            }
+			def instruccion = {
+				def form = it.form
+				form.visible = true
+				SwingBuilder.build {
+					//Al presionar F1: (lanzarCatalogoDialogo)
+					form.txtCodigo.keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtCodigo.setText(Articulos.lanzarDialogoCatalogo() as String); form.txtCodigo.requestFocus()}  }
+				}
+				form.btnBuscar.actionPerformed = { form.dispose() }
+				form.btnCancelar.actionPerformed = { form.dispose() }
+				form.btnAceptar.actionPerformed  = {
+					PuertoNadesico.workIn() { puerto ->
+						(puerto.Articulos.get(ID)).addToPaquetes(puerto.Paquetes.newInstance(id_articulo:ID,codigo:form.txtCodigo.text,cantidad:java.lang.Integer.valueOf(form.txtCantidad.getText()))).save()
+						rellenarPaquetes(ID, formArticulo)
+						Dialogos.lanzarAlerta("Código agregado")
+						form.dispose()
+					}
+				}
+			}
+            new SimpleForm("omoikane.formularios.Paquetes", instrucciones) 
         }
 
 

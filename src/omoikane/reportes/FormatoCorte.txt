@@ -35,4 +35,6 @@ ${n_ventas} Tickets
                      ---------
                      ${String.format("%,9.02f", total+depositos-retiros)}
 
+Folios desde ${folioInicial} hasta ${folioFinal} 
+
 ${""+ (27 as char)+(100 as char)+(8 as char)}

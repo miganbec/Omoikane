@@ -98,13 +98,14 @@ class Comprobantes {
     }
 
     def generarTicket() {
-        def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoTicket.txt").getText('UTF-8') as String
-        def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
-        def sdfHora  = new SimpleDateFormat("hh:mm a")
-        def binding = data
-        binding.fecha = sdfFecha.format(data.date)
-        binding.hora  = sdfHora.format(data.date)
-        binding.folio = "${data.id_almacen}-${data.id_caja}-${data.id_venta}"
+        def plantilla   = getClass().getResourceAsStream("/omoikane/reportes/FormatoTicket.txt").getText('UTF-8') as String
+        def sdfFecha    = new SimpleDateFormat("dd-MM-yyyy")
+        def sdfHora     = new SimpleDateFormat("hh:mm a")
+        def binding     = data
+        binding.fecha   = sdfFecha.format(data.date)
+        binding.hora    = sdfHora.format(data.date)
+        binding.folio   = "${data.id_almacen}-${data.id_caja}-${data.folio}"
+		binding.idFolio = "${data.id_almacen}-${data.id_caja}-${data.id_venta}"
         binding.cajero= data.usuario.nombre
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
@@ -117,11 +118,17 @@ class Comprobantes {
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def sdfDia  = new SimpleDateFormat("EEEEEEEEEE dd-MMM-yyyy  ")
         def binding = data
-        binding.fecha  = sdfFecha.format(data.fecha_hora)
-        binding.descripcion=data.caja.descripcion
-        binding.dia    = sdfDia.format(data.desde)
-        binding.desde  = sdfHora.format(data.desde)
-        binding.hasta  = sdfHora.format(data.hasta)
+        binding.fecha        = sdfFecha.format(data.fecha_hora)
+        binding.descripcion  = data.caja.descripcion
+        binding.dia          = sdfDia.format(data.desde)
+        binding.desde        = sdfHora.format(data.desde)
+        binding.hasta        = sdfHora.format(data.hasta)
+		binding.id_caja      = data.id_caja
+		binding.id_almacen  = data.id_almacen
+		binding.prefijoFolio = data.id_almacen+"-"+data.id_caja
+		binding.folioInicial = binding.prefijoFolio + "-" + data.folio_inicial
+		binding.folioFinal   = binding.prefijoFolio + "-" + data.folio_final
+
         binding.devoluciones = 0.0f
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
@@ -156,7 +163,10 @@ class Comprobantes {
         def template = engine.createTemplate(plantilla).make(binding)
         template.toString()
     }
-
+	/* 
+	 * Imprime el comprobante generado, alias de probar() 
+	 */
+    def imprimir() { return probar() }
     def probar() {
         if (impresora)
         {

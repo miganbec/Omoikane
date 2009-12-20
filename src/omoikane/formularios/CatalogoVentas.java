@@ -604,7 +604,8 @@ VentasTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,Co
 public Object getValueAt(int row,int col){    if(col==0)
     {
     SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");
+    
     return sdf.format((java.util.Date) super.getValueAt(row, col));}
     else
     {return super.getValueAt(row,col);}
-}}
+}} 
