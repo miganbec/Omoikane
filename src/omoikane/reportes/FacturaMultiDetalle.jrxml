@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturaMultiDetalle" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<parameter name="idventa" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     articulos.`descripcion` AS articulos_descripcion,
+     ventas_detalles.`precio` AS ventas_detalles_precio,
+     ventas_detalles.`cantidad` AS ventas_detalles_cantidad,
+     ventas_detalles.`total` AS ventas_detalles_total,
+     ventas_detalles.`impuestos` AS ventas_detalles_impuestos,
+     ventas_detalles.`subtotal` AS ventas_detalles_subtotal,
+     ventas_detalles.`descuento` AS ventas_detalles_descuento
+FROM
+     `articulos` articulos,
+     `ventas_detalles` ventas_detalles
+WHERE
+     articulos.id_articulo = ventas_detalles.id_articulo
+ AND ventas_detalles.id_venta = $P{idventa}]]>
+	</queryString>
+	<field name="articulos_descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_precio" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_cantidad" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_impuestos" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_subtotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_descuento" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="41" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{ventas_detalles_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="0" width="271" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="344" y="0" width="59" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_precio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="486" y="0" width="86" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="418" y="0" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_impuestos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

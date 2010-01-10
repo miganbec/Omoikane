@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturaMulti" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<parameter name="idfactura" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\netbeans-workspace\\Omoikane\\src\\omoikane\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ventas.`id_venta` AS ventas_id_venta,
+     ventas.`subtotal` AS ventas_subtotal,
+     ventas.`descuento` AS ventas_descuento,
+     ventas.`impuestos` AS ventas_impuestos,
+     ventas.`total` AS ventas_total
+FROM
+     `ventas` ventas
+WHERE
+     ventas.id_venta IN ( SELECT ventas_facturadas.`id_venta` AS ventas_facturadas_id_venta FROM `ventas_facturadas` ventas_facturadas WHERE ventas_facturadas.id_factura = $P{idfactura} )]]>
+	</queryString>
+	<field name="ventas_id_venta" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_subtotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_descuento" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_impuestos" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="10" y="17" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cant.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="55" y="17" width="119" height="20"/>
+				<textElement/>
+				<text><![CDATA[Artículo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="17" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[P. Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="17" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[Impuestos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="487" y="17" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="35"/>
+				<subreportParameter name="idventa">
+					<subreportParameterExpression><![CDATA[Integer.toString($F{ventas_id_venta})]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "FacturaMultiDetalle.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="57">
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="472" y="30" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="120" y="30" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="236" y="30" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_descuento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="353" y="30" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_impuestos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="120" y="14" width="100" height="16"/>
+				<textElement/>
+				<text><![CDATA[Subtotal venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="14" width="100" height="16"/>
+				<textElement/>
+				<text><![CDATA[Descuento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="353" y="14" width="100" height="16"/>
+				<textElement/>
+				<text><![CDATA[Impuestos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="14" width="100" height="16"/>
+				<textElement/>
+				<text><![CDATA[Total venta]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

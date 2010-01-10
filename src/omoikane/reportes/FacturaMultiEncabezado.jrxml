@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturaMultiEncabezado" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="idfactura" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\netbeans-workspace\\Omoikane\\src\\omoikane\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     almacenes.`descripcion` AS almacenes_descripcion,
+     clientes.`RFC` AS clientes_rfc,
+     clientes.`razonSocial` AS clientes_razonSocial,
+     clientes.`direccion` AS clientes_direccion,
+     clientes.`telefono` AS clientes_telefono,
+     clientes.`cp` AS clientes_cp,
+     facturas.`id_factura` AS facturas_id_factura,
+     facturas.`fecha` AS facturas_fecha,
+     facturas.`subtotal` AS facturas_subtotal,
+     facturas.`impuestos` AS facturas_impuestos,
+     facturas.`total` AS facturas_total
+FROM
+     `almacenes` almacenes,
+     `clientes` clientes,
+     `facturas` facturas
+WHERE
+     clientes.id_cliente = facturas.id_cliente
+ AND id_almacen IN ( SELECT usr_sucursal.`id_almacen` AS usr_sucursal_id_almacen FROM `usr_sucursal` usr_sucursal WHERE usr_sucursal.id_usuario IN (select usuario_expidio from facturas where id_factura = $P{idfactura}) )
+ AND facturas.id_factura = $P{idfactura}]]>
+	</queryString>
+	<field name="almacenes_descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clientes_rfc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clientes_razonSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clientes_direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clientes_telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clientes_cp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="facturas_id_factura" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="facturas_fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="facturas_subtotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="facturas_impuestos" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="facturas_total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="203" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="15" width="203" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="35" width="29" height="20"/>
+				<textElement/>
+				<text><![CDATA[CP:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="29" y="35" width="75" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_cp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="35" width="29" height="20"/>
+				<textElement/>
+				<text><![CDATA[Tel:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="35" width="107" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="35" width="114" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_rfc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="441" y="0" width="114" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{facturas_fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="87" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="87"/>
+				<subreportParameter name="idfactura">
+					<subreportParameterExpression><![CDATA[$P{idfactura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "FacturaMulti.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="518" y="32" width="37" height="14"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[*****]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="74" width="37" height="14"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[*****]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="60" width="37" height="14"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[*****]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="46" width="37" height="14"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[*****]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="18" width="37" height="14"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[*****]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="203" y="0" width="169" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[* * CONTINUA * *]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="84">
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="441" y="18" width="114" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{facturas_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="441" y="38" width="114" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{facturas_impuestos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="441" y="58" width="114" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{facturas_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="359" y="18" width="70" height="20"/>
+				<textElement/>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="58" width="70" height="20"/>
+				<textElement/>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="38" width="70" height="20"/>
+				<textElement/>
+				<text><![CDATA[Impuestos:]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>
