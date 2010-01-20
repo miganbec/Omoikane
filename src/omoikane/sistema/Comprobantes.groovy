@@ -147,7 +147,7 @@ class Comprobantes {
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
         binding.devoluciones = 0.0f
-		
+		binding.folios       = ""
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
         template.toString()
