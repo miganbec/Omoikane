@@ -441,11 +441,11 @@ class Caja {
             }
             form.btnTerminar.actionPerformed = { e ->
                 try {
-					if(ventaYaProcesada) {
-						throw new VentaYaProcesadaException();
-					} else {
-						ventaYaProcesada = true
-					}
+                    if(ventaYaProcesada) {
+                            throw new VentaYaProcesadaException();
+                    } else {
+                            ventaYaProcesada = true
+                    }
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
                         //def foco = new Object()
                         //Thread.start {
