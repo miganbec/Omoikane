@@ -150,7 +150,7 @@ public class Articulos
             formArticulo.ID                   = ID
             formArticulo.setModoDetalles();
             rellenarCodigosAlternos(ID, formArticulo)
-            rellenarPaquetes(ID, formArticulo)
+            //rellenarPaquetes(ID, formArticulo)
             return formArticulo
             
             } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
