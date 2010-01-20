@@ -24,7 +24,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         this.generarFondo(this);
 
         Herramientas.centrarVentana(this);
-        
     }
 
     /** This method is called from within the constructor to
@@ -92,10 +91,10 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtUtilidad = new javax.swing.JTextField();
         txtDescuento2 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblPaquetes = new javax.swing.JTable();
         btnAddComp = new javax.swing.JButton();
         btnDelComp = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPaquetes = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -372,23 +371,26 @@ public class Articulo extends javax.swing.JInternalFrame {
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblPaquetes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "Código", "Descripción", "Cantidad"
-            }
-        ));
-        jScrollPane2.setViewportView(tblPaquetes);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
-
         btnAddComp.setText("+");
         jPanel3.add(btnAddComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 40, 20));
 
         btnDelComp.setText("-");
         jPanel3.add(btnDelComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, 20));
+
+        tblPaquetes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "codigo", "descripcion", "cantidad"
+            }
+        ));
+        jScrollPane2.setViewportView(tblPaquetes);
+        tblPaquetes.getColumnModel().getColumn(0).setMaxWidth(80);
+        tblPaquetes.getColumnModel().getColumn(1).setMaxWidth(250);
+        tblPaquetes.getColumnModel().getColumn(2).setMaxWidth(60);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
 
         jTabbedPane1.addTab("Componentes", jPanel3);
 

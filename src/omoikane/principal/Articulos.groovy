@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package omoikane.principal
 
 import omoikane.principal.*
@@ -25,11 +20,13 @@ public class Articulos
     static def escritorio = omoikane.principal.Principal.escritorio
 
     static def getArticulo(where) { new Articulo(where) }
+
     static def findByCodigo(busqueda) {
         def res
         PuertoNadesico.workIn() { res = it.RAMCacheCodigos.executeQuery("select id_articulo from nadesicoi.RAMCacheCodigos as rca WHERE rca like '%"+busqueda+"%'") /*it.RAMCacheCodigos.findAllByCodigoLike("%"+busqueda+"%");*/ }
         //println "resu:"+res.dump()
     }
+
     static def lanzarCatalogo()
     {
         if(cerrojo(PMA_ABRIRARTICULO)){
@@ -59,11 +56,9 @@ public class Articulos
         def cat = lanzarCatalogo()
         cat.setModoDialogo()
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-        cat.txtBusqueda.keyPressed = { if(it.keyCode == it.VK_ENTER) { println "aquí"; cat.btnAceptar.doClick(); println "aquí2";  } }
         cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) {cat.btnAceptar.doClick()} }
         def retorno
         cat.btnAceptar.actionPerformed = { 
-            System.out.println ("otro btn aceptar");
             def catTab = cat.jTable1;
             retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String;
             cat.btnCerrar.doClick();
@@ -90,11 +85,10 @@ public class Articulos
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
         */
     }
-    static def rellenarCodigosAlternos(ID, form) {
 
+    static def rellenarCodigosAlternos(ID, form) {
         PuertoNadesico.workIn() {
             def artGorm = it.Articulos.get(ID)
-
             form.tblCodigos.setModel(new ModeloCodigos (0,1))
             form.tblCodigos.getModel().setColumnIdentifiers("Código")
             artGorm.get(ID).codigos.each {
@@ -106,11 +100,10 @@ public class Articulos
     static def rellenarPaquetes(ID, form) {
         PuertoNadesico.workIn() { puerto ->
             def artGorm = puerto.Articulos.get(ID)
-
-            form.tblPaquetes.setModel(new javax.swing.table.DefaultTableModel (0,2))
-            form.tblPaquetes.getModel().setColumnIdentifiers("Código","Cantidad")
+            form.tblPaquetes.setModel(new ModeloPaquetes (0,3))
+            form.tblPaquetes.getModel().setColumnIdentifiers("Código","Descripcion","Cantidad")
             artGorm.get(ID).paquetes.each {
-                form.tblPaquetes.getModel().addRow(it.codigo,a,it.cantidad)
+                form.tblPaquetes.getModel().addRowHash([paquetes:[it.codigo,puerto.Articulos.findByCodigo(it.codigo).asMap().descripcion,it.cantidad],id:it.id])
             }
         }
     }
@@ -220,8 +213,10 @@ public class Articulos
             form.toFront()
             SwingBuilder.build {
                 //Al presionar F1: (lanzarCatalogoDialogo)
-                form.getCampoID()   .keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDLinea      = Lineas.lanzarCatalogoDialogo() as String; form.getIDLinea().requestFocus()}  }
-                form.getCampoGrupo().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDGrupo      = Grupos.lanzarCatalogoDialogo() as String; form.getIDGrupo().requestFocus()}  }
+                def serv        = Nadesico.conectar()
+                form.getCampoID()   .keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDLinea= Lineas.lanzarCatalogoDialogo() as String; form.getIDLinea().requestFocus();form.setTxtIDLineaDes((serv.getLinea(form.getIDLinea().text)).descripcion)}  }
+                form.getCampoGrupo().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtIDGrupo= Grupos.lanzarCatalogoDialogo() as String; form.getIDGrupo().requestFocus();form.setTxtIDGrupoDes((serv.getGrupo(form.getIDGrupo().text)).descripcion)}  }
+                serv.desconectar()
             }
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
             form.setEditable(true);
@@ -242,26 +237,26 @@ public class Articulos
         //Dialogos.lanzarAlerta("Eliminar codigo viejo de lanzarModificarArticulo")
         SwingBuilder.build {
                 //Al presionar F1: (lanzarCatalogoDialogo)
-                formArticulo.getCampoID()   .keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {formArticulo.txtIDLinea      = Lineas.lanzarCatalogoDialogo() as String; formArticulo.getIDLinea().requestFocus()}  }
-                formArticulo.getCampoGrupo().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {formArticulo.txtIDGrupo      = Grupos.lanzarCatalogoDialogo() as String; formArticulo.getIDGrupo().requestFocus()}  }
-            }
+                def serv        = Nadesico.conectar()
+                formArticulo.getCampoID()   .keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {formArticulo.txtIDLinea= Lineas.lanzarCatalogoDialogo() as String; formArticulo.getIDLinea().requestFocus();formArticulo.setTxtIDLineaDes((serv.getLinea(formArticulo.getIDLinea().text)).descripcion)}  }
+                formArticulo.getCampoGrupo().keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {formArticulo.txtIDGrupo= Grupos.lanzarCatalogoDialogo() as String; formArticulo.getIDGrupo().requestFocus();formArticulo.setTxtIDGrupoDes((serv.getGrupo(formArticulo.getIDGrupo().text)).descripcion)}  }
+                serv.desconectar()
+         }
         formArticulo.setModoModificar();
         formArticulo.btnAddCode.actionPerformed    = {
-        	def instrucciones = {
-				def form = it.form;
-				form.visible = true;
-				
-				form.btnCancelar.actionPerformed = { form.dispose() }
-				form.btnAceptar.actionPerformed  = {
-					PuertoNadesico.workIn() { puerto ->
-						(puerto.Articulos.get(ID)).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:form.txtCodigo.text)).save()
-						rellenarCodigosAlternos(ID, formArticulo)
-						Dialogos.lanzarAlerta("Código agregado")
-						form.dispose()
-					}
-				}
-			}
-            new SimpleForm("omoikane.formularios.CodigoArticulo", instrucciones) 
+            new SimpleForm("omoikane.formularios.CodigoArticulo") {
+                def form = it.form
+                form.visible = true
+                form.btnCancelar.actionPerformed = { form.dispose() }
+                form.btnAceptar.actionPerformed  = {
+                PuertoNadesico.workIn() { puerto ->
+                        (puerto.Articulos.get(ID)).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:form.txtCodigo.text)).save()
+                        rellenarCodigosAlternos(ID, formArticulo)
+                        Dialogos.lanzarAlerta("Código agregado")
+                        form.dispose()
+                    }
+                }
+            }
         }
 
         formArticulo.btnDelCode.actionPerformed    = {
@@ -278,25 +273,50 @@ public class Articulos
         }
 
         formArticulo.btnAddComp.actionPerformed    = {
-			def instruccion = {
-				def form = it.form
-				form.visible = true
-				SwingBuilder.build {
-					//Al presionar F1: (lanzarCatalogoDialogo)
-					form.txtCodigo.keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtCodigo.setText(Articulos.lanzarDialogoCatalogo() as String); form.txtCodigo.requestFocus()}  }
-				}
-				form.btnBuscar.actionPerformed = { form.dispose() }
-				form.btnCancelar.actionPerformed = { form.dispose() }
-				form.btnAceptar.actionPerformed  = {
-					PuertoNadesico.workIn() { puerto ->
-						(puerto.Articulos.get(ID)).addToPaquetes(puerto.Paquetes.newInstance(id_articulo:ID,codigo:form.txtCodigo.text,cantidad:java.lang.Integer.valueOf(form.txtCantidad.getText()))).save()
-						rellenarPaquetes(ID, formArticulo)
-						Dialogos.lanzarAlerta("Código agregado")
-						form.dispose()
-					}
-				}
-			}
-            new SimpleForm("omoikane.formularios.Paquetes", instrucciones) 
+            new SimpleForm("omoikane.formularios.Paquetes") {
+                def form = it.form
+                form.visible = true
+                SwingBuilder.build {
+                //Al presionar F1: (lanzarCatalogoDialogo)
+                form.txtCodigo.keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtCodigo.setText(Articulos.lanzarDialogoCatalogo() as String); form.txtCodigo.requestFocus()}  }
+                }
+                form.btnBuscar.actionPerformed = {
+                    try{
+                    PuertoNadesico.workIn() { puerto ->
+                       def au = puerto.Articulos.findByCodigo(form.txtCodigo.text)
+                       form.txtDescripcion.setText(au.asMap().descripcion as String)
+                       form.btnAceptar.setEnabled(true);
+                    }
+                    }catch(Exception e) { Dialogos.lanzarAlerta("Codigo invalido use F1 en codigo para buscar en el catalogo");form.btnAceptar.setEnabled(false);}
+
+
+                }
+                form.btnCancelar.actionPerformed = { form.dispose() }
+                form.btnAceptar.actionPerformed  = {
+                def valor = form.txtCantidad.getText()
+                if(valor == ""){valor=0}else{valor=java.lang.Integer.valueOf(valor)}
+                PuertoNadesico.workIn() { puerto ->
+                        (puerto.Articulos.get(ID)).addToPaquetes(puerto.Paquetes.newInstance(id_articulo:ID,codigo:form.txtCodigo.text,cantidad:valor)).save()
+                        rellenarPaquetes(ID, formArticulo)
+                        Dialogos.lanzarAlerta("Código agregado")
+                        form.dispose()
+                    }
+
+                }
+            }
+        }
+
+        formArticulo.btnDelComp.actionPerformed    = {
+            def IDC = formArticulo.tblPaquetes.getSelectedRow()
+            IDC = formArticulo.tblPaquetes.getModel().getId(IDC)
+            print IDC
+            if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar éste elemento del paquete:?", "eliminado", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                PuertoNadesico.workIn() { puerto ->
+                    (puerto.Paquetes.get(IDC)).delete()
+                    rellenarPaquetes(ID, formArticulo)
+                    Dialogos.lanzarAlerta("Código Eliminado")
+                }
+            }
         }
 
 
@@ -388,6 +408,25 @@ class ModeloCodigos extends javax.swing.table.DefaultTableModel {
     }
 
     ModeloCodigos(int r, int c){
+        super(r,c)
+    }
+    //void addRow(Vector data)
+}
+
+
+class ModeloPaquetes extends javax.swing.table.DefaultTableModel {
+    def paquetes = []
+    Object getValueAt(int row,int col){
+        return dataVector[row].paquetes[col]
+    }
+    def getId(row){
+        return dataVector[row].id
+    }
+    def addRowHash(java.util.LinkedHashMap hash){
+        dataVector << hash
+    }
+
+    ModeloPaquetes(int r, int c){
         super(r,c)
     }
     //void addRow(Vector data)

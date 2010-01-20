@@ -24,8 +24,8 @@
     <URLMySQL>jdbc:mysql://new-eden/omoikane</URLMySQL>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
-    <scannerActivo>false</scannerActivo>
-    <ScannerPort>COM1</ScannerPort>
+    <scannerActivo>true</scannerActivo>
+    <ScannerPort>COM4</ScannerPort>
     <ScannerBaudRate>9600</ScannerBaudRate>
     <basculaActiva>false</basculaActiva>
     <puertoBascula>COM2</puertoBascula>
