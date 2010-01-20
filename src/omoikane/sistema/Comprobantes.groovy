@@ -128,6 +128,7 @@ class Comprobantes {
 		binding.prefijoFolio = data.id_almacen+"-"+data.id_caja
 		binding.folioInicial = binding.prefijoFolio + "-" + data.folio_inicial
 		binding.folioFinal   = binding.prefijoFolio + "-" + data.folio_final
+		binding.folios       = "Folios desde ${binding.folioInicial} hasta ${binding.folioFinal}"
 
         binding.devoluciones = 0.0f
         def engine = new GStringTemplateEngine()
@@ -146,6 +147,7 @@ class Comprobantes {
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
         binding.devoluciones = 0.0f
+		
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
         template.toString()
