@@ -25,9 +25,9 @@
                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                       <Component id="btnBorrar" min="-2" pref="208" max="-2" attributes="3"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCancelar" pref="208" max="32767" attributes="1"/>
+                      <Component id="btnCancelar" pref="210" max="32767" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnImprimir" pref="219" max="32767" attributes="1"/>
+                      <Component id="btnImprimir" pref="221" max="32767" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -88,7 +88,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblIdFactura" min="-2" pref="202" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnCerrar" pref="226" max="32767" attributes="1"/>
+                              <Component id="btnCerrar" pref="230" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                   </Group>
@@ -388,7 +388,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/32x32/page_remove.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Borrar ticket [Supr]"/>
+        <Property name="text" type="java.lang.String" value="Borrar venta [Supr]"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -403,7 +403,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/32x32/remove.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cancelar factura [F9]"/>
+        <Property name="text" type="java.lang.String" value="Cancelar factura [F4]"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -488,7 +488,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Ticket:"/>
+        <Property name="text" type="java.lang.String" value="ID Venta:"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
     </Component>

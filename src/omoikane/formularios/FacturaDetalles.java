@@ -72,7 +72,7 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("Factura Detalles");
 
-        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14));
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setFocusable(false);
@@ -103,11 +103,11 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
         lblCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         txtAlmacen.setEditable(false);
-        txtAlmacen.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtAlmacen.setFont(new java.awt.Font("Arial", 0, 12));
         txtAlmacen.setFocusable(false);
 
         txtCliente.setEditable(false);
-        txtCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCliente.setFont(new java.awt.Font("Arial", 0, 12));
         txtCliente.setFocusable(false);
 
         jxdFecha.setEditable(false);
@@ -180,9 +180,9 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
             }
         });
 
-        btnBorrar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnBorrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_remove.png"))); // NOI18N
-        btnBorrar.setText("Borrar ticket [Supr]");
+        btnBorrar.setText("Borrar venta [Supr]");
         btnBorrar.setFocusable(false);
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,9 +190,9 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/remove.png"))); // NOI18N
-        btnCancelar.setText("Cancelar factura [F9]");
+        btnCancelar.setText("Cancelar factura [F4]");
         btnCancelar.setFocusable(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,10 +237,10 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
             }
         });
 
-        lblTotal1.setFont(new java.awt.Font("Arial", 1, 14));
+        lblTotal1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblTotal1.setForeground(new java.awt.Color(255, 255, 255));
         lblTotal1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblTotal1.setText("Ticket:");
+        lblTotal1.setText("ID Venta:");
         lblTotal1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -253,9 +253,9 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
                         .addGap(127, 127, 127)
                         .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -304,7 +304,7 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblIdFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)))))
+                                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)))))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -389,7 +389,7 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
             btnAgregar.doClick();
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_F8)
             btnImprimir.doClick();
-        else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_F9)
+        else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_F4)
             btnCancelar.doClick();
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_DELETE)
             btnBorrar.doClick();

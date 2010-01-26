@@ -41,6 +41,7 @@ class Facturas {
             escritorio.getPanelEscritorio().add(cat);
             Herramientas.In2ActionX(cat, java.awt.event.KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             Herramientas.iconificable(cat);
+            cat.internalFrameClosed = { cat = null; }
             cat.toFront();
             try {
                 cat.setSelected(true);
@@ -53,6 +54,15 @@ class Facturas {
         }
         else if( !cerrojo(Permisos.PMA_ABRIRFACTURAS))
             Dialogos.lanzarAlerta("Acceso Denegado");
+        else if(cat != null) {
+            try {
+                cat.setSelected(true);
+                cat.requestFocus();
+                cat.txtBusqueda.requestFocus();
+            } catch(Exception e) {
+                Dialogos.lanzarDialogoError(null, "Error al iniciar formulario listado de facturas", Herramientas.getStackTraceString(e));
+            }
+        }
     }
 
     /**
@@ -347,10 +357,14 @@ class Facturas {
      * Realiza el guardado y la impresión de una factura completa
      */
     static def imprimirFactura() {
-        if( !facturaGuardada && validaFactura() )
-            guardarFactura();
-        def reporte = new Reporte('omoikane/reportes/FacturaMultiEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",idfactura:factura.lblIdFactura.getText()]);
-        reporte.lanzarPreview()
+        if( validaFactura() ) {
+            if(!facturaGuardada)
+                guardarFactura();
+            def reporte = new Reporte('omoikane/reportes/FacturaMultiEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",idfactura:factura.lblIdFactura.getText()]);
+            reporte.lanzarPreview()
+        }
+        else
+            Dialogos.lanzarAlerta("No hay ventas en la factura. No se guardará la factura.");
         factura.txtTicket.requestFocus();
     }
 
