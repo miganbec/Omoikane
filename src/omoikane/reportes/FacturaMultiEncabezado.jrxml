@@ -4,7 +4,7 @@
 		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\netbeans-workspace\\Omoikane\\src\\omoikane\\reportes\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C:\\netbeans\\Omoikane\\src\\omoikane\\reportes\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
