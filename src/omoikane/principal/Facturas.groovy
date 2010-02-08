@@ -360,7 +360,10 @@ class Facturas {
         if( validaFactura() ) {
             if(!facturaGuardada)
                 guardarFactura();
-            def reporte = new Reporte('omoikane/reportes/FacturaMultiEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",idfactura:factura.lblIdFactura.getText()]);
+            def n = new omoikane.sistema.n2t()
+            def letra = n.aCifra(Double.parseDouble(factura.txtTotal.getText()))
+            println letra
+            def reporte = new Reporte('omoikane/reportes/FacturaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",NumLetra:letra,IDFactura:factura.lblIdFactura.getText()]);
             reporte.lanzarPreview()
         }
         else

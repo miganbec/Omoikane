@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturaMultiEncabezado" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturaMultiEncabezado" pageWidth="538" pageHeight="504" columnWidth="508" leftMargin="10" rightMargin="20" topMargin="58" bottomMargin="16">
 	<parameter name="idfactura" class="java.lang.String">
 		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
 	</parameter>
@@ -94,12 +94,12 @@ WHERE
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_telefono}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="441" y="35" width="114" height="20"/>
+				<reportElement x="394" y="35" width="114" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{clientes_rfc}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="441" y="0" width="114" height="20"/>
+				<reportElement x="394" y="0" width="114" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{facturas_fecha}]]></textFieldExpression>
 			</textField>
@@ -127,7 +127,7 @@ WHERE
 				<text><![CDATA[*****]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="518" y="74" width="37" height="14"/>
+				<reportElement x="518" y="76" width="37" height="14"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 				</textElement>

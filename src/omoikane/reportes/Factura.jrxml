@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="501" pageHeight="283" columnWidth="501" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<subDataset name="dataset1"/>
-	<parameter name="IDMov" class="java.lang.String">
-		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
-	</parameter>
+	<parameter name="IDMov" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      articulos.`codigo` AS articulos_codigo,
@@ -21,7 +19,7 @@ FROM
      INNER JOIN `lineas` lineas ON articulos.`id_linea` = lineas.`id_linea`
      INNER JOIN `almacenes` almacenes ON ventas_detalles.`id_almacen` = almacenes.`id_almacen`
 WHERE
-     id_venta = $P{IDMov}]]>
+     id_venta IN ( SELECT ventas_facturadas.id_venta FROM ventas_facturadas WHERE ventas_facturadas.id_factura = $P!{IDMov} )]]>
 	</queryString>
 	<field name="articulos_codigo" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

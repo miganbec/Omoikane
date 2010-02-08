@@ -1,59 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="539" pageHeight="504" columnWidth="509" leftMargin="10" rightMargin="20" topMargin="59" bottomMargin="17">
-	<parameter name="IDVenta" class="java.lang.String">
+	<parameter name="IDFactura" class="java.lang.String">
 		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\netbeans\\Omoikane\\src\\omoikane\\reportes\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="NumLetra" class="java.lang.String"/>
-	<parameter name="cliente" class="java.lang.String">
-		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
-	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     ventas.`id_venta` AS ventas_id_venta,
-     ventas.`id_caja` AS ventas_id_caja,
-     ventas.`id_almacen` AS ventas_id_almacen,
-     ventas.`fecha_hora` AS ventas_fecha_hora,
-     ventas.`subtotal` AS ventas_subtotal,
-     ventas.`descuento` AS ventas_descuento,
-     ventas.`impuestos` AS ventas_impuestos,
-     ventas.`total` AS ventas_total,
+     facturas.`id_factura` AS facturas_id_factura,
      clientes.`id_cliente` AS clientes_id_cliente,
      clientes.`RFC` AS clientes_RFC,
      clientes.`razonSocial` AS clientes_razonSocial,
      clientes.`direccion` AS clientes_direccion,
      clientes.`telefono` AS clientes_telefono,
      clientes.`cp` AS clientes_cp,
-     ventas.`id_cliente` AS ventas_id_cliente
+     facturas.`subtotal` AS facturas_subtotal,
+     facturas.`impuestos` AS facturas_impuestos,
+     facturas.`total` AS facturas_total
 FROM
-     `clientes` clientes INNER JOIN `ventas` ventas ON clientes.`id_cliente` = $P{cliente}
+     `facturas` facturas INNER JOIN `clientes` clientes ON facturas.`id_cliente` = clientes.`id_cliente`
 WHERE
-     id_venta = $P{IDVenta}]]>
+     facturas.id_factura = $P{IDFactura}]]>
 	</queryString>
-	<field name="ventas_id_venta" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_id_caja" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_id_almacen" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_fecha_hora" class="java.sql.Timestamp">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_subtotal" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_descuento" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_impuestos" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_total" class="java.lang.Double">
+	<field name="facturas_id_factura" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="clientes_id_cliente" class="java.lang.Integer">
@@ -74,7 +45,13 @@ WHERE
 	<field name="clientes_cp" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="ventas_id_cliente" class="java.lang.Integer">
+	<field name="facturas_subtotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="facturas_impuestos" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="facturas_total" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="suma1" class="java.lang.Double"/>
@@ -144,7 +121,7 @@ WHERE
 			<subreport>
 				<reportElement x="0" y="0" width="510" height="12"/>
 				<subreportParameter name="IDMov">
-					<subreportParameterExpression><![CDATA[$P{IDVenta}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{IDFactura}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<returnValue subreportVariable="suma iva" toVariable="suma1"/>
@@ -206,21 +183,21 @@ WHERE
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_total}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{facturas_total}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="440" y="56" width="60" height="10"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($F{ventas_total}.doubleValue() - $F{ventas_impuestos}.doubleValue())]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($F{facturas_total}.doubleValue() - $F{facturas_impuestos}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="440" y="66" width="60" height="10"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_impuestos}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{facturas_impuestos}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="15" y="20" width="408" height="16"/>
@@ -241,21 +218,21 @@ WHERE
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($V{suma2}.doubleValue() - $F{ventas_impuestos}.doubleValue())]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($V{suma2}.doubleValue() - $F{facturas_impuestos}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="183" y="5" width="189" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Opaque" x="183" y="5" width="189" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[* * * * * D E S C U E N T O * * * * *]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="440" y="5" width="60" height="15"/>
+				<reportElement x="440" y="5" width="60" height="15" forecolor="#FFFFFF"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="6"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_descuento}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{facturas_subtotal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</lastPageFooter>

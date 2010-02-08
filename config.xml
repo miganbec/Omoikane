@@ -20,11 +20,11 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <cacheSTable atras='3' adelante='5'/>
-    <URLServidor>http://new-eden:5542</URLServidor>
-    <URLMySQL>jdbc:mysql://new-eden/omoikane</URLMySQL>
+    <URLServidor>http://5.236.200.140:5542</URLServidor>
+    <URLMySQL>jdbc:mysql://5.236.200.140/omoikane</URLMySQL>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
-    <scannerActivo>true</scannerActivo>
+    <scannerActivo>false</scannerActivo>
     <ScannerPort>COM4</ScannerPort>
     <ScannerBaudRate>9600</ScannerBaudRate>
     <basculaActiva>false</basculaActiva>
