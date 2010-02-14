@@ -220,20 +220,6 @@ WHERE
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[new Double($V{suma2}.doubleValue() - $F{facturas_impuestos}.doubleValue())]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement mode="Opaque" x="183" y="5" width="189" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[* * * * * D E S C U E N T O * * * * *]]></text>
-			</staticText>
-			<textField pattern="¤ #,##0.00">
-				<reportElement x="440" y="5" width="60" height="15" forecolor="#FFFFFF"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Tahoma" size="6"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{facturas_subtotal}]]></textFieldExpression>
-			</textField>
 		</band>
 	</lastPageFooter>
 	<summary>
