@@ -178,6 +178,7 @@ class Caja {
             def modelo                   = new CajaTableModel(form)
             def autorizadorVentaEspecial = null
 			def ventaYaProcesada         = false
+			def pesando					 = false
 			
             Herramientas.panelCatalogo(form)
             form.tablaVenta.setModel(modelo)
@@ -195,7 +196,7 @@ class Caja {
             Herramientas.In2ActionX(form           , KeyEvent.VK_F12   , "cancelar"  ) { form.btnCancelacion.doClick()           }
             Herramientas.In2ActionX(form.btnCerrar , KeyEvent.VK_ESCAPE, "cerrar2"   ) { form.btnCerrar.doClick()                }
             Herramientas.In2ActionX(form           , KeyEvent.VK_F7    , "cancelaArt") { form.btnCancelaArt.doClick()            }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_F5   , "movs"      ) { form.btnMovimientos.doClick()           }
+            Herramientas.In2ActionX(form           , KeyEvent.VK_F5    , "movs"      ) { form.btnMovimientos.doClick()           }
 
 
             form.toFront()
@@ -254,10 +255,18 @@ class Caja {
             }
             if(basculaActiva){
             form.txtCaptura.keyTyped = { e ->
-                if(e.keyChar == '+') {
-                    def peso = Caja.comMan.readWeight("K", miniDriver)
-                    form.txtCaptura.text = peso + "*"
-                    e.consume()
+                if(e.keyChar == '+' && !pesando) {
+					try {
+						pesando = true
+						def peso = Caja.comMan.readWeight("K", miniDriver)
+						form.txtCaptura.text = peso + "*"
+						e.consume()
+					} catch(exPeso) {
+						sleep(50);
+						throw exPeso
+					} finally {
+						pesando = false
+					}
                     //Dialogos.lanzarAlerta("Báscula: "+peso)
                     //println "--"+peso
                 }

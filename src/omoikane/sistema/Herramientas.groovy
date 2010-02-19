@@ -44,6 +44,27 @@ public class Herramientas
           column.setPreferredWidth(ancho as int)
         }
     }
+    def static utilImpresionCortes() {
+		def jo = javax.swing.JOptionPane
+		def idinicial = jo.showInputDialog("null", "Introduzca el primer id de corte de sucursal a imprimir")
+		def idfinal   = jo.showInputDialog("null", "Introduzca el último id de corte de sucursal a imprimir")
+		
+		def serv = new Nadesico();
+		serv.conectar()
+		def idsSuc = serv.getRows("select id_corte, desde, hasta from cortes_sucursal where id_corte >= ? and id_corte <= ?", [id_inicial, id_final])
+		def idsCorte= ""
+		def cortes = omoikane.sistema.cortes.ContextoCorte.instanciar();
+		
+		idsSuc.each {
+			cortes.imprimirCorteSucursal(omoikane.principal.Principal.IDAlmacen, it.id_corte)			
+			idsCorte = serv.getRows("select id_corte from cortes where fecha_hora >= ? and fecha_hora <= ?", [it.desde, it.hasta])
+			idsCorte.each {
+				omoikane.principal.Cortes.lanzarImprimirCorte(it.id_corte)
+			}
+		}
+		serv.desconectar()
+		jo.showMessageDialog null, "Impresión concluída"
+	}
 
     def static void verificaCampo(txt,expresion,error)
     {
