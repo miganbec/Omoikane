@@ -51,7 +51,7 @@ public class Herramientas
 		
 		def serv = new Nadesico();
 		serv.conectar()
-		def idsSuc = serv.getRows("select id_corte, desde, hasta from cortes_sucursal where id_corte >= ? and id_corte <= ?", [id_inicial, id_final])
+		def idsSuc = serv.getRows("select id_corte, desde, hasta from cortes_sucursal where id_corte >= ? and id_corte <= ?", [idinicial, idfinal])
 		def idsCorte= ""
 		def cortes = omoikane.sistema.cortes.ContextoCorte.instanciar();
 		

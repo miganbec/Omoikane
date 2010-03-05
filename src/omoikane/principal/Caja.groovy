@@ -241,7 +241,8 @@ class Caja {
                         form.txtCaptura.text = ""
                         //form.modelo.addRow([art.id_articulo,art.descripcion,cantidad,precio.total,precio['descuento$'],total].toArray())
                         
-                        form.modelo.addRowMap(["ID Artículo": art.id_articulo      , "Concepto"           : art.descripcion             ,
+                        form.modelo
+						   .addOrUpdateRowMap(["ID Artículo": art.id_articulo      , "Concepto"           : art.descripcion             ,
                                                "Cantidad"   : cantidad             , "Precio"             : precio['PrecioConImpuestos'],
                                                "Descuento"  : precio['descuento$'] , "Impuestos"          : impuesto                    ,
                                                "Total"      : total                , "Impuestos%"         : precio['impuestos%']        ,
@@ -732,6 +733,17 @@ class CajaTableModel extends DefaultTableModel {
         addRow(rowData.values())
         actualizarSumas()
     }
+	public void addOrUpdateRowMap(rowData) {
+		def encontrado = false
+		data.each {
+			if(it['ID Artículo']==rowData['ID Artículo']&&!encontrado) {
+				it['Cantidad'] += rowData['Cantidad']
+				actualizarSumas()
+				encontrado = true
+			} 
+		}
+		if(!encontrado) { addRowMap(rowData) }
+	}
     public Object getValueAt(int row, int col) { return data[row][getColumnName(col)] /*super.getValueAt(row,col)*/ }
     public def getDataMap() { return data }
     public def eliminar(i) { data.remove(i); super.removeRow(i); }

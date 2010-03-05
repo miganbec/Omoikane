@@ -245,7 +245,8 @@ public class Articulos
         formArticulo.setModoModificar();
         formArticulo.btnAddCode.actionPerformed    = {
             new SimpleForm("omoikane.formularios.CodigoArticulo") {
-                def form = it.form
+                def form = it.form;
+				
                 form.visible = true
                 form.btnCancelar.actionPerformed = { form.dispose() }
                 form.btnAceptar.actionPerformed  = {
