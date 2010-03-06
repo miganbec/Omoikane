@@ -142,13 +142,14 @@ public class Articulos
             formArticulo.setTxtPrecio        art.precio.total          as String
             formArticulo.setTxtComentarios   notas                     as String
             formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuArt%'] as String
-            formArticulo.getTxtDescuento2().text       = art.precio['descuArt%'] as String
-            formArticulo.getTxtPrecio2().text          = art.precio.total         as String
+            formArticulo.getTxtDescuento2().text       = (art.precio['PrecioConImpuestos']*art.precio['descuArt%']) as String
+            formArticulo.getTxtPrecio2().text          = (art.precio['PrecioConImpuestos']+(art.precio['PrecioConImpuestos']*art.precio['descuArt%']) )as String
             formArticulo.getTxtImpuestosPorc().text    = art.impuestos            as String
             formArticulo.getTxtImpuestos().text        = art.precio['impuestos']  as String
             formArticulo.getTxtUtilidad().text         = art.precio['utilidad']   as String
             formArticulo.ID                   = ID
             formArticulo.setModoDetalles();
+            omoikane.principal.Articulos.recalcularCampos(formArticulo);
             rellenarCodigosAlternos(ID, formArticulo)
             //rellenarPaquetes(ID, formArticulo)
             return formArticulo
