@@ -63,6 +63,8 @@ public class Principal {
             config = new omoikane.sistema.Config()
             defineAtributos()
             splash.setText("Inicializando escritorio...")
+            //Herramientas.utilImpresionCortes()
+            //System.exit(0)
             escritorio = new Escritorio()
             escritorio.iniciar()
             println "iniciando menús"

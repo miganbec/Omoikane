@@ -16,7 +16,7 @@ import groovy.swing.SwingBuilder;
 import com.griaule.grfingerjava.*;
 import javax.swing.JComponent;
 import org.jdesktop.swingx.JXDatePicker;
-
+import java.text.SimpleDateFormat
 
 public class Herramientas
 {
@@ -51,15 +51,25 @@ public class Herramientas
 		
 		def serv = new Nadesico();
 		serv.conectar()
-		def idsSuc = serv.getRows("select id_corte, desde, hasta from cortes_sucursal where id_corte >= ? and id_corte <= ?", [idinicial, idfinal])
+		def idsSuc = serv.getRows("select id_corte, desde, hasta from cortes_sucursal where id_corte >= $idinicial and id_corte <= $idfinal")
 		def idsCorte= ""
 		def cortes = omoikane.sistema.cortes.ContextoCorte.instanciar();
-		
+                def sdfFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ")
+                def hasta
+                def desde
+                def q
 		idsSuc.each {
-			cortes.imprimirCorteSucursal(omoikane.principal.Principal.IDAlmacen, it.id_corte)			
-			idsCorte = serv.getRows("select id_corte from cortes where fecha_hora >= ? and fecha_hora <= ?", [it.desde, it.hasta])
+                        def comprobante = new Comprobantes()
+                        comprobante.CorteSucursal(omoikane.principal.Principal.IDAlmacen, it.id_corte) //imprimir ticket
+                        comprobante.probar()                          //* Aqui tambien mandar a imprimir*/
+                        desde = sdfFecha.format( it.desde)
+                        hasta = sdfFecha.format( it.hasta)
+                        q="select id_corte from cortes where fecha_hora >= '${desde}' and fecha_hora <= '${hasta}'"
+			idsCorte = serv.getRows(q)
 			idsCorte.each {
-				omoikane.principal.Cortes.lanzarImprimirCorte(it.id_corte)
+                                def comprobante2 = new Comprobantes()
+                                comprobante2.Corte(it.id_corte)//imprimir ticket
+                                comprobante2.probar()//imprimir ticket
 			}
 		}
 		serv.desconectar()

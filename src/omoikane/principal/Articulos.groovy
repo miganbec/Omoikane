@@ -141,8 +141,8 @@ public class Articulos
             formArticulo.setTxtExistencias   art.cantidad              as String
             formArticulo.setTxtPrecio        art.precio.total          as String
             formArticulo.setTxtComentarios   notas                     as String
-            formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuento%'] as String
-            formArticulo.getTxtDescuento2().text       = art.precio['descuento$'] as String
+            formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuArt%'] as String
+            formArticulo.getTxtDescuento2().text       = art.precio['descuArt%'] as String
             formArticulo.getTxtPrecio2().text          = art.precio.total         as String
             formArticulo.getTxtImpuestosPorc().text    = art.impuestos            as String
             formArticulo.getTxtImpuestos().text        = art.precio['impuestos']  as String

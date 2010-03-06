@@ -129,6 +129,8 @@ class Comprobantes {
 		binding.folioInicial = binding.prefijoFolio + "-" + data.folio_inicial
 		binding.folioFinal   = binding.prefijoFolio + "-" + data.folio_final
 		binding.folios       = "Folios desde ${binding.folioInicial} hasta ${binding.folioFinal}"
+                binding.depositos = 0.0f
+                binding.retiros = 0.0f
 
         binding.devoluciones = 0.0f
         def engine = new GStringTemplateEngine()
@@ -142,11 +144,14 @@ class Comprobantes {
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def sdfDia  = new SimpleDateFormat("EEEEEEEEEE dd-MMM-yyyy  ")
         def binding = data
-        binding.fecha  = sdfFecha.format(new Date())
+        binding.fecha  = sdfFecha.format(data.hasta)
         binding.dia    = sdfDia.format(data.desde)
         binding.desde  = sdfHora.format(data.desde)
         binding.hasta  = sdfHora.format(data.hasta)
         binding.devoluciones = 0.0f
+        binding.depositos = 0.0f
+        binding.retiros = 0.0f
+
 		binding.folios       = ""
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)

@@ -84,12 +84,14 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         txtImpuestosPorc = new javax.swing.JTextField();
         txtImpuestos = new javax.swing.JTextField();
         txtUtilidad = new javax.swing.JTextField();
         txtDescuento2 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnAddComp = new javax.swing.JButton();
         btnDelComp = new javax.swing.JButton();
@@ -268,7 +270,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtPrecio2FocusLost(evt);
             }
         });
-        jPanel5.add(txtPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 130, 30));
+        jPanel5.add(txtPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 130, 30));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -305,7 +307,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Precio:");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 20));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, 20));
 
         txtDesctoPorcentaje.setFont(new java.awt.Font("Arial", 0, 14));
         txtDesctoPorcentaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -323,7 +325,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("$:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, 20));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, 20));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -333,10 +335,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("$:");
         jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, 20));
-
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Descuento (%):");
-        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
 
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("$:");
@@ -365,6 +363,18 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtDescuento2.setFont(new java.awt.Font("Arial", 0, 14));
         txtDescuento2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 110, -1));
+
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("el precio siguiente no incluye los demas descuentos");
+        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 340, 20));
+
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Descuento (%):");
+        jPanel5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
+
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Nota :El descuento que aparece es solo por articulo  ");
+        jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 340, 20));
 
         jTabbedPane1.addTab("Detalles", jPanel5);
 
@@ -499,8 +509,10 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
