@@ -360,9 +360,19 @@ class Facturas {
         if( validaFactura() ) {
             if(!facturaGuardada)
                 guardarFactura();
+
+            def serv = Nadesico.conectar();
+            def consulta
+            consulta = serv.getArregloVentas(factura.lblIdFactura.getText() );
+            def res =""
+            for(int i = 0; i < consulta.size(); i++) {
+            if(i>0) { res += "," }
+            res += consulta[i].id_venta
+            }
+            serv.desconectar();
             def n = new omoikane.sistema.n2t()
             def letra = n.aCifra(Double.parseDouble(factura.txtTotal.getText()))
-            def reporte = new Reporte('omoikane/reportes/FacturaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",NumLetra:letra,IDFactura:factura.lblIdFactura.getText()]);
+            def reporte = new Reporte('omoikane/reportes/FacturaEncabezado.jasper',[SUBREPORT_DIR:"omoikane/reportes/",NumLetra:letra,arreglo:res,IDFactura:factura.lblIdFactura.getText()]);
             reporte.lanzarPreview()
         }
         else

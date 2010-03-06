@@ -335,7 +335,7 @@ public class n2t {
 
         public String aCifra(double numero) {
             Integer enteros   = (int) Math.floor(numero);
-            Integer decimales = (int)Math.floor((numero - enteros) * 100);
+            Integer decimales = (int)Math.rint((numero - enteros) * 100);
             String cifra = decmillon(enteros);
             return (cifra + " pesos " + decimales + "/100 MN").toUpperCase();
         }

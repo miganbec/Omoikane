@@ -30,12 +30,16 @@ public class n2tTest {
     @Test
     public void convertirLetrasTest() {
         n2t n = new n2t();
-        System.out.println(n.convertirLetras(1500));
-        System.out.println(n.convertirLetras(11753));
-        System.out.println(n.convertirLetras(100));
-        System.out.println(n.convertirLetras(13296));
-
-        System.out.println(n.aCifra(212.4));
+        System.out.println(n.aCifra(212.10));
+        System.out.println(n.aCifra(212.11));
+        System.out.println(n.aCifra(212.12));
+        System.out.println(n.aCifra(212.13));
+        System.out.println(n.aCifra(212.14));
+        System.out.println(n.aCifra(212.15));
+        System.out.println(n.aCifra(212.16));
+        System.out.println(n.aCifra(212.17));
+        System.out.println(n.aCifra(212.18));
+        System.out.println(n.aCifra(212.19));
     }
 
 }

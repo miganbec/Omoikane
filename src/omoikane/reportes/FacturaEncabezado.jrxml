@@ -7,6 +7,9 @@
 		<defaultValueExpression><![CDATA["C:\\netbeans\\Omoikane\\src\\omoikane\\reportes\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="NumLetra" class="java.lang.String"/>
+	<parameter name="arreglo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2,5"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      facturas.`id_factura` AS facturas_id_factura,
@@ -121,7 +124,7 @@ WHERE
 			<subreport>
 				<reportElement x="0" y="0" width="510" height="12"/>
 				<subreportParameter name="IDMov">
-					<subreportParameterExpression><![CDATA[$P{IDFactura}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{arreglo}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<returnValue subreportVariable="suma iva" toVariable="suma1"/>
