@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="501" pageHeight="283" columnWidth="501" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<subDataset name="dataset1"/>
-	<parameter name="IDMov" class="java.lang.String"/>
+	<parameter name="IDMov" class="java.lang.String">
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      articulos.`codigo` AS articulos_codigo,
@@ -11,11 +13,14 @@
      ventas_detalles.`precio` AS ventas_detalles_precio,
      ventas_detalles.`cantidad` AS ventas_detalles_cantidad,
      ventas_detalles.`total` AS ventas_detalles_total,
-     articulos.`impuestos` AS articulos_impuestos
+     articulos.`impuestos` AS articulos_impuestos,
+     ventas_detalles.`subtotal` AS ventas_detalles_subtotal,
+     ventas_detalles.`impuestos` AS ventas_detalles_impuestos,
+     ventas_detalles.`descuento` AS ventas_detalles_descuento
 FROM
      `ventas_detalles` ventas_detalles INNER JOIN `articulos` articulos ON ventas_detalles.`id_articulo` = articulos.`id_articulo`
 WHERE
-     id_venta IN ( $P!{IDMov} )]]>
+     id_venta IN ($P!{IDMov})]]>
 	</queryString>
 	<field name="articulos_codigo" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -39,6 +44,15 @@ WHERE
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="articulos_impuestos" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_subtotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_impuestos" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas_detalles_descuento" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="suma iva" class="java.lang.Double" calculation="Sum">
@@ -72,7 +86,7 @@ WHERE
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}/$F{ventas_detalles_cantidad}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_precio}-$F{ventas_detalles_descuento}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" x="0" y="0" width="35" height="12"/>

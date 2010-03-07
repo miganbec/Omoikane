@@ -337,6 +337,11 @@ public class n2t {
             Integer enteros   = (int) Math.floor(numero);
             Integer decimales = (int)Math.rint((numero - enteros) * 100);
             String cifra = decmillon(enteros);
+            if(decimales < 10)
+            {
+            return (cifra + " pesos 0" + decimales + "/100 MN").toUpperCase();
+            }
+            else
             return (cifra + " pesos " + decimales + "/100 MN").toUpperCase();
         }
 }
