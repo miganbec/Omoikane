@@ -217,8 +217,8 @@ class Facturas {
         else {  // Si la factura es nueva, se usan los nombres actuales de usuario y almacén
             // Obtención del folio de la factura nueva
             def folioFactura = serv.getLastIDFactura();
-            if(folioFactura != "0")
-                folioFactura++;
+            if(folioFactura != 0)
+              folioFactura=folioFactura+1;
             factura.lblIdFactura.setText(folioFactura.toString());
             // El usuario actual expide la factura
             factura.txtExpidio.setText(omoikane.sistema.Usuarios.usuarioActivo.nombre);
