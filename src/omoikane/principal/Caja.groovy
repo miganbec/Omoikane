@@ -735,12 +735,14 @@ class CajaTableModel extends DefaultTableModel {
     }
 	public void addOrUpdateRowMap(rowData) {
 		def encontrado = false
+		int i = 0;
 		data.each {
 			if(it['ID Artículo']==rowData['ID Artículo']&&!encontrado) {
 				it['Cantidad'] += rowData['Cantidad']
-				actualizarSumas()
+				setValueAt(it['Cantidad'], i, 1)
 				encontrado = true
 			} 
+			i++
 		}
 		if(!encontrado) { addRowMap(rowData) }
 	}

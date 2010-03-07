@@ -19,13 +19,13 @@ import omoikane.principal.*;
 import omoikane.sistema.*;
 
 public class ScrollableTableModel extends AbstractTableModel {
-	java.util.List	colNames	= null;
-	int             rowCount        = -1;
-	java.util.List  colClasses      = null;
+		java.util.List	colNames		= null;
+		int             rowCount        = -1;
+		java.util.List  colClasses      = null;
         String          queryAct        = null;
-        def conn
-        Statement control
-        ResultSet rs
+        def 			conn
+        Statement 		control
+        ResultSet 		rs
         java.util.Hashtable<String,java.util.List> cacheFila = new Hashtable();
 
     public ScrollableTableModel(java.util.List colNames, ArrayList colClases)
@@ -99,6 +99,10 @@ public class ScrollableTableModel extends AbstractTableModel {
 	 * @return The value Object at the specified cell
 	 */
         public getRow( row, nCols ) {
+			
+			def timeTotal = 0
+			def time1 = System.currentTimeMillis()
+			
             row++
             def salida       = [:], fila = []
             def resultSet    = rs;
@@ -115,12 +119,10 @@ public class ScrollableTableModel extends AbstractTableModel {
 
             def query        = queryAct + " limit $limite offset $row"
             control = conn.createStatement()
-            rs = control.executeQuery(query)
-            
+            rs = control.executeQuery(query)            
             
             def  meta        = rs.getMetaData()
             nCols            = meta.getColumnCount()-1
-            //println "Query:"+query
 
             //for(i in 1..limite-1) {  // 1..8
             while(rs.next()) {
@@ -129,6 +131,8 @@ public class ScrollableTableModel extends AbstractTableModel {
                 //println "Des->"+rs.getObject(5)
                 //rs.next()
                 fila = []
+
+				
                 (nCols+1).times {
                     
                     filaDat = rs.getObject(it+1); //+1 Porqué comienza el conteo en 1 y no 0 como la matríz y +1 por saltarse el ID
@@ -144,7 +148,9 @@ public class ScrollableTableModel extends AbstractTableModel {
                             case "xClienteDescuentoCA": CADataPrecio['clienteDescuento'] = resultSet.getObject(it+1); filaDat = null; break;
                             case "xGrupoDescuentoCA": CADataPrecio['grupoDescuento'] = resultSet.getObject(it+1);
                                 filaDat = null
+								
                                 fila[6] = ArticulosFunciones.getPrecioConDatos(CADataPrecio).total
+								
                             break;
                         }
                         /*println "***Precio:"+ArticulosFunciones.getPrecioConDatos(
@@ -153,17 +159,21 @@ public class ScrollableTableModel extends AbstractTableModel {
                     }
                     if(filaDat != null) {
                         fila << filaDat
+						
                     }
                 }
 
-                //print "[$row]"
                 salida[row as String] = fila
                 row++
                 
             } 
             rs.close()
             control.close()
-            
+			
+			//def time2 = System.currentTimeMillis() - time1
+			//timeTotal += time2				
+			//println "Time total: $time2 ms"
+			
             return salida
         }
 	public Object getValueAt(int rowIndex, int columnIndex) {

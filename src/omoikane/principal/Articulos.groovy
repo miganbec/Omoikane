@@ -248,7 +248,7 @@ public class Articulos
             new SimpleForm("omoikane.formularios.CodigoArticulo") {
                 def form = it.form;
 				
-                form.visible = true
+                it.form.visible = true;
                 form.btnCancelar.actionPerformed = { form.dispose() }
                 form.btnAceptar.actionPerformed  = {
                 PuertoNadesico.workIn() { puerto ->
