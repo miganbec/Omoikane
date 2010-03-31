@@ -2,36 +2,27 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="501" pageHeight="283" columnWidth="501" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<subDataset name="dataset1"/>
 	<parameter name="IDMov" class="java.lang.String">
-		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["607560,712598"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      articulos.`codigo` AS articulos_codigo,
      articulos.`descripcion` AS articulos_descripcion,
-     ventas_detalles.`id_venta` AS ventas_detalles_id_venta,
-     ventas_detalles.`id_caja` AS ventas_detalles_id_caja,
      ventas_detalles.`precio` AS ventas_detalles_precio,
-     ventas_detalles.`cantidad` AS ventas_detalles_cantidad,
-     ventas_detalles.`total` AS ventas_detalles_total,
+     sum(ventas_detalles.`cantidad`) AS ventas_detalles_cantidad,
+     sum(ventas_detalles.`total`) AS ventas_detalles_total,
      articulos.`impuestos` AS articulos_impuestos,
-     ventas_detalles.`subtotal` AS ventas_detalles_subtotal,
-     ventas_detalles.`impuestos` AS ventas_detalles_impuestos,
-     ventas_detalles.`descuento` AS ventas_detalles_descuento
+     sum(ventas_detalles.`descuento`) AS ventas_detalles_descuento
 FROM
      `ventas_detalles` ventas_detalles INNER JOIN `articulos` articulos ON ventas_detalles.`id_articulo` = articulos.`id_articulo`
 WHERE
-     id_venta IN ($P!{IDMov})]]>
+     id_venta IN ($P!{IDMov})
+group by articulos.codigo, ventas_detalles.precio]]>
 	</queryString>
 	<field name="articulos_codigo" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="articulos_descripcion" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_detalles_id_venta" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_detalles_id_caja" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ventas_detalles_precio" class="java.lang.Double">
@@ -44,12 +35,6 @@ WHERE
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="articulos_impuestos" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_detalles_subtotal" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ventas_detalles_impuestos" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ventas_detalles_descuento" class="java.lang.Double">
@@ -83,35 +68,35 @@ WHERE
 			</textField>
 			<textField pattern="">
 				<reportElement x="252" y="0" width="57" height="12"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_precio}-$F{ventas_detalles_descuento}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" x="0" y="0" width="35" height="12"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_cantidad}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="422" y="0" width="72" height="12"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ventas_detalles_total}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="309" y="0" width="54" height="12"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[( $F{articulos_impuestos}.doubleValue() == 0.0d ? $F{ventas_detalles_total}.toString() : "0.00" )]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
 				<reportElement positionType="Float" x="363" y="0" width="59" height="12"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isStrikeThrough="false" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[( $F{articulos_impuestos}.doubleValue() == 0.0d ? "0.00" : $F{ventas_detalles_total}.toString() )]]></textFieldExpression>
