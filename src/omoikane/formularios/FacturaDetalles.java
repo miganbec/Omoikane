@@ -375,7 +375,8 @@ public class FacturaDetalles extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        omoikane.principal.Facturas.cancelarFacturaDesdeDetalles();
+        if(JOptionPane.showConfirmDialog(null, "¿Realmente desea cancelar esta factura : ?", "seguro...", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+        omoikane.principal.Facturas.cancelarFacturaDesdeDetalles();}
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed

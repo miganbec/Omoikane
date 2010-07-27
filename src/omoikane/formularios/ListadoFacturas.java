@@ -275,7 +275,9 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_btnNuevaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "¿Realmente desea cancelar esta factura : ?", "seguro...", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
         omoikane.principal.Facturas.cancelarFacturaDesdeLista();
+       }     
 }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
