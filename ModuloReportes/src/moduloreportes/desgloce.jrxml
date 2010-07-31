@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<parameter name="Lineas" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FDesde" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2010-07-09"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FHasta" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2010-07-21"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     sum(ventas_detalles.`cantidad`)as cantidad_suma,
+     sum(ventas_detalles.`total`)as total_suma,
+     articulos.`codigo` AS articulos_codigo,
+     articulos.`descripcion` AS articulos_descripcion
+FROM
+     `ventas_detalles` ventas_detalles INNER JOIN `ventas` ventas ON ventas_detalles.`id_venta` = ventas.`id_venta`
+     INNER JOIN `articulos` articulos ON ventas_detalles.`id_articulo` = articulos.`id_articulo`
+WHERE
+     ventas.fecha_hora >= $P{FDesde}
+ AND ventas.fecha_hora <= $P{FHasta}
+ AND ventas_detalles.id_linea = $P{Lineas}
+GROUP BY
+     articulos_codigo]]>
+	</queryString>
+	<field name="cantidad_suma" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_suma" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="articulos_codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="articulos_descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="GranTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_suma}]]></variableExpression>
+	</variable>
+	<columnHeader>
+		<band height="14" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="121" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="0" width="193" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="0" width="132" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="0" width="108" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="423" y="0" width="132" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{total_suma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="0" width="193" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="315" y="0" width="108" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cantidad_suma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="121" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="17">
+			<staticText>
+				<reportElement x="335" y="0" width="85" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="420" y="0" width="135" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{GranTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>
