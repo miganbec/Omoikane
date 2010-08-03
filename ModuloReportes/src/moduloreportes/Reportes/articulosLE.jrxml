@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
-	<property name="ireport.zoom" value="2.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="Lineas" class="java.lang.Integer">
@@ -27,7 +27,13 @@ WHERE
 	<field name="articulos_codigo" class="java.lang.String"/>
 	<field name="articulos_descripcion" class="java.lang.String"/>
 	<field name="precios_costo" class="java.lang.Double"/>
-	<field name="existencias_cantidad" class="java.lang.Double"/>
+	<field name="existencias_cantidad" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{existencias_cantidad}*$F{precios_costo}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
 	<columnHeader>
 		<band height="14" splitType="Stretch">
 			<staticText>
@@ -106,4 +112,15 @@ WHERE
 			</textField>
 		</band>
 	</detail>
+	<lastPageFooter>
+		<band height="16">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="431" y="0" width="111" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
 </jasperReport>

@@ -28,72 +28,69 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="linea" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="grupo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="panel" alignment="0" pref="580" max="32767" attributes="2"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="108" pref="108" max="108" attributes="0"/>
+                      <Component id="jLabel1" pref="374" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="barra" pref="439" max="32767" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                              <Component id="jLabel1" pref="295" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="146" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="barra" pref="357" max="32767" attributes="1"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jButton1" min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="panel" alignment="0" pref="580" max="32767" attributes="2"/>
-                          <Group type="102" alignment="0" attributes="1">
-                              <Component id="jScrollPane1" min="-2" pref="330" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" pref="244" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="linea" min="-2" max="-2" attributes="0"/>
+                                  <Component id="grupo" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="425" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="barra" alignment="0" min="-2" pref="32" max="-2" attributes="1"/>
-                          <Component id="jButton2" alignment="0" min="-2" pref="29" max="-2" attributes="1"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="grupo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="linea" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="1"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="71" max="32767" attributes="1"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="62" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="barra" max="32767" attributes="1"/>
+                  <Component id="jButton1" alignment="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panel" pref="232" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="panel" pref="249" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -105,7 +102,7 @@
           <Font name="Times New Roman" size="24" style="3"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Articulos Por Grupo o Linea"/>
+        <Property name="text" type="java.lang.String" value="Articulos Por Grupo o L&#xed;nea"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
@@ -181,7 +178,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Lineas"/>
+        <Property name="text" type="java.lang.String" value="L&#xed;neas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
@@ -189,11 +186,19 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="12" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Generar lista"/>
+        <Property name="text" type="java.lang.String" value="Cargar L&#xed;neas o Grupos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="L&#xed;neas o Grupos"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

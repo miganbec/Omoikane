@@ -6,11 +6,11 @@
 	<parameter name="Grupos" class="java.lang.String">
 		<defaultValueExpression><![CDATA["2382,1,2383"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\Users\\Phesus-Lab\\Documents\\proyectos\\ModuloReportes\\src\\moduloreportes\\"]]></defaultValueExpression>
-	</parameter>
 	<parameter name="Almacen" class="java.lang.String">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Phesus-Lab\\Documents\\NetBeansProjects\\Omoikane\\ModuloReportes\\src\\moduloreportes\\Reportes\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -30,6 +30,10 @@ AND
 	<field name="grupos_descripcion" class="java.lang.String"/>
 	<field name="almacenes_descripcion" class="java.lang.String"/>
 	<field name="almacenes_id_almacen" class="java.lang.Integer"/>
+	<variable name="total" class="java.lang.Double"/>
+	<variable name="GranTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{total}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -80,17 +84,6 @@ AND
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{grupos_descripcion}]]></textFieldExpression>
 			</textField>
-			<subreport>
-				<reportElement x="1" y="52" width="554" height="44"/>
-				<subreportParameter name="Almacen">
-					<subreportParameterExpression><![CDATA[$F{almacenes_id_almacen}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="Grupos">
-					<subreportParameterExpression><![CDATA[$F{grupos_id_grupo}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "articulosGE.jasper"]]></subreportExpression>
-			</subreport>
 			<staticText>
 				<reportElement x="1" y="0" width="159" height="27"/>
 				<textElement>
@@ -105,6 +98,18 @@ AND
 				</textElement>
 				<text><![CDATA[Grupo]]></text>
 			</staticText>
+			<subreport>
+				<reportElement x="1" y="52" width="551" height="44"/>
+				<subreportParameter name="Grupos">
+					<subreportParameterExpression><![CDATA[$F{grupos_id_grupo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Almacen">
+					<subreportParameterExpression><![CDATA[$F{almacenes_id_almacen}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<returnValue subreportVariable="total" toVariable="GranTotal" calculation="Sum"/>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "articulosGE.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<pageFooter>
@@ -151,6 +156,21 @@ AND
 		</band>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="27">
+			<staticText>
+				<reportElement x="286" y="0" width="129" height="25"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gran Total :]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="415" y="0" width="137" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{GranTotal}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

@@ -24,33 +24,22 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panel" pref="607" max="32767" attributes="1"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Component id="panel" alignment="1" pref="580" max="32767" attributes="2"/>
+                  <Component id="jLabel1" alignment="0" pref="580" max="32767" attributes="0"/>
+                  <Component id="jButton1" alignment="0" pref="580" max="32767" attributes="0"/>
+                  <Component id="barra" alignment="0" pref="580" max="32767" attributes="2"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="dateDesde" min="-2" pref="212" max="-2" attributes="0"/>
-                      <EmptySpace pref="95" max="32767" attributes="0"/>
+                      <EmptySpace pref="60" max="32767" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="dateHasta" min="-2" pref="205" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
-                      <Component id="jLabel1" pref="198" max="32767" attributes="0"/>
-                      <EmptySpace min="206" pref="206" max="206" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="1" pref="607" max="32767" attributes="0"/>
-                          <Component id="barra" alignment="0" pref="607" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="dateHasta" min="-2" pref="221" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -61,24 +50,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dateHasta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateDesde" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dateHasta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateDesde" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="barra" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="62" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="panel" pref="223" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panel" pref="263" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,14 +75,14 @@
           <Font name="Times New Roman" size="24" style="3"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Utilidad por lineas"/>
+        <Property name="text" type="java.lang.String" value="Utilidad por l&#xed;neas"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="12" style="2"/>
+          <Font name="Times New Roman" size="12" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Desde :"/>
       </Properties>
@@ -105,17 +90,22 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="12" style="2"/>
+          <Font name="Times New Roman" size="12" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Hasta :"/>
       </Properties>
     </Component>
     <Component class="org.jdesktop.swingx.JXDatePicker" name="dateDesde">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="3"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="org.jdesktop.swingx.JXDatePicker" name="dateHasta">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="12" style="2"/>
+          <Font name="Times New Roman" size="12" style="3"/>
         </Property>
       </Properties>
     </Component>
