@@ -31,19 +31,19 @@ class Lineas {
         if(cerrojo(PMA_ABRIRLINEA)){
             def cat = (new omoikane.formularios.CatalogoLineas())
             cat.setVisible(true);
+            cat.jProgressBar1.setIndeterminate(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminas.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
+
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de lineas", Herramientas.getStackTraceString(e)) }
             cat.txtBusqueda.requestFocus()
-            poblarLineas(cat.getTablaLineas(),"")
+            
+            Thread.start {
+                poblarLineas(cat.getTablaLineas(),"")
+                cat.jProgressBar1.setIndeterminate(false);
+            }
             return cat
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
 

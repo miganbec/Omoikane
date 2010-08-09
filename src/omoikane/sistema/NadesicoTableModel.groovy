@@ -9,12 +9,15 @@
 package omoikane.sistema
 
 import java.sql.*;
-import java.util.*;
 import javax.swing.table.*;
 import javax.swing.*;
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
+import java.util.Hashtable;
+import omoikane.sistema.Dialogos;
+import omoikane.sistema.Herramientas;
 
 public class NadesicoTableModel extends AbstractTableModel {
 	java.util.List	colNames	= null;
@@ -22,9 +25,9 @@ public class NadesicoTableModel extends AbstractTableModel {
 	java.util.List  colClasses      = null;
         String          queryAct        = null;
     public NadesicoX       port = null;
-    java.util.Hashtable<String,java.util.List> cacheFila = new Hashtable();
+    Hashtable<String,List> cacheFila = new Hashtable();
 
-    public NadesicoTableModel(java.util.List colNames, ArrayList colClases) {
+    public NadesicoTableModel(List colNames, ArrayList colClases) {
         this.port = new NadesicoX();
         port.conectar();
         this.colNames   = new ArrayList(colNames);
@@ -42,7 +45,7 @@ public class NadesicoTableModel extends AbstractTableModel {
             resetData();
             fireTableDataChanged();
         }
-        catch (Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error al conectar a MySQL", omoikane.sistema.Herramientas.getStackTraceString(e)); }
+        catch (Exception e) { Dialogos.lanzarDialogoError(null, "Error al conectar a MySQL", Herramientas.getStackTraceString(e)); }
     }
     public void resetData() {
         this.rowCount = -1;
@@ -68,7 +71,7 @@ public class NadesicoTableModel extends AbstractTableModel {
 			try {
                 this.rowCount = port.getRowCount();
 			} catch (Exception e) {
-                omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error al pasar a la última fila", omoikane.sistema.Herramientas.getStackTraceString(e));
+                Dialogos.lanzarDialogoError(null, "Error al pasar a la última fila", Herramientas.getStackTraceString(e));
             }
 		}
 
@@ -118,6 +121,6 @@ public class NadesicoTableModel extends AbstractTableModel {
 		return c;
 	}
 	public void destroy() {
-        try { this.port.desconectar(); } catch(Exception e) { Dialogos.error("No se pudo cerrar la conexión con el servidor", e); }
+        try { this.port.desconectar(); } catch(Exception exc) { Dialogos.error("No se pudo cerrar la conexión con el servidor", exc); }
     }
 }

@@ -96,18 +96,23 @@ class Caja {
     static def lanzar() 
     {
         def abierta = Sucursales.abierta(Principal.IDAlmacen)
+
         switch(abierta) {
             case -1: Dialogos.lanzarAlerta("Configuración de sucursal-almacen errónea."); break;
             case  0: abierta = Sucursales.abrirSucursal(Principal.IDAlmacen);  //Sin break para continuar
             case  1:
+
+                    
                     if(abierta!=1) { break; }
                     def serv = Nadesico.conectar()
                     def cajaAbierta = serv.cajaAbierta(IDCaja)
                     serv.desconectar()
+                    
                     Thread.start {
-                    cajaAbierta = cajaAbierta?true:abrirCaja()
-                    if(cajaAbierta) { lanzarCaja() }
-                }
+                        cajaAbierta = cajaAbierta?true:abrirCaja()
+                        if(cajaAbierta) { lanzarCaja() }
+                    }
+                    
             break;
         }
     }
@@ -174,6 +179,7 @@ class Caja {
     }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
+
             def form                     = new omoikane.formularios.Caja()
             def modelo                   = new CajaTableModel(form)
             def autorizadorVentaEspecial = null
@@ -181,6 +187,7 @@ class Caja {
 			def pesando					 = false
 			
             Herramientas.panelCatalogo(form)
+
             form.tablaVenta.setModel(modelo)
             form.modelo = modelo
             escritorio.getPanelEscritorio().add(form)
@@ -188,16 +195,7 @@ class Caja {
             Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
             form.setVisible(true);
             Herramientas.iconificable(form)
-            Herramientas.In2ActionX(form           , KeyEvent.VK_F3    , "buscar"    ) { form.txtCaptura.requestFocusInWindow()  }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_ESCAPE, "cerrar"    ) { form.btnCerrar.doClick()                }
-            Herramientas.In2ActionX(form.txtCaptura, KeyEvent.VK_ESCAPE, "cerrar"    ) { form.btnCerrar.doClick()                }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_F4    , "ventaEsp"  ) { form.btnVentaEspecial.doClick()         }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_PAUSE , "pausar"    ) { form.btnPausar.doClick()                }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_F12   , "cancelar"  ) { form.btnCancelacion.doClick()           }
-            Herramientas.In2ActionX(form.btnCerrar , KeyEvent.VK_ESCAPE, "cerrar2"   ) { form.btnCerrar.doClick()                }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_F7    , "cancelaArt") { form.btnCancelaArt.doClick()            }
-            Herramientas.In2ActionX(form           , KeyEvent.VK_F5    , "movs"      ) { form.btnMovimientos.doClick()           }
-
+            //Shortcuts
 
             form.toFront()
             try { form.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario caja", Herramientas.getStackTraceString(e)) }
@@ -205,25 +203,9 @@ class Caja {
             def date = Calendar.getInstance()
             form.txtFecha.text = date.get(date.DAY_OF_MONTH) + "-" + (date.get(date.MONTH)+1) + "-" + date.get(date.YEAR)
             form.txtCaja.text= "Caja "+IDCaja
-            def serv = Nadesico.conectar()
-
-            /*def scanMan = new ScanMan()
-            try {
-                scanMan.connect(Principal.scannerPort, Principal.scannerBaudRate)
-            } catch(Exception ex2) { Dialogos.error(ex2.getMessage(), ex2) }
-            Principal.scanMan.setHandler { /*form.txtCaptura.text += it;
-                    def robot = new java.awt.Robot()
-                    it.each { 
-                        
-                        if((it as int)==13) { return null }
-                        robot.keyPress(it as int);
-                    }
-                    //robot.keyPress(10)
-                    robot.keyPress(KeyEvent.VK_ENTER)
-                    
-                }*/
-                    
-
+            
+            def serv = Nadesico.conectar();
+            
             def addArtic = { codigo ->
                 try {
                     def captura = form.txtCaptura.text
@@ -492,7 +474,7 @@ class Caja {
                             if(autorizadorVentaEspecial != null) {
                                 serv.addVentaEspecial(salida.ID, autorizadorVentaEspecial.ID)
                             }
-
+                  
                         serv.desconectar()
                         def comprobante = new Comprobantes()
                         comprobante.ticket(IDAlmacen, salida.ID)//imprimir ticket

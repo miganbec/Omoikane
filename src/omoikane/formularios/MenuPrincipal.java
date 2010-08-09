@@ -16,7 +16,10 @@ import java.awt.image.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
+import moduloreportes.VentanaPrincipal;
+import moduloreportes.panelReportes;
 import static omoikane.sistema.Usuarios.*;
+import omoikane.sistema.StopWatch;
 
 /**
  *
@@ -85,6 +88,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnGrupos = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         btnDetallesVentas = new javax.swing.JButton();
+        btnFacturas1 = new javax.swing.JButton();
 
         setIconifiable(true);
         setTitle("Menú Principal");
@@ -99,9 +103,9 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Principal");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14));
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file-manager-128x128.png"))); // NOI18N
         btnCerrar.setText("Cerrar");
         btnCerrar.setIconTextGap(-5);
@@ -110,9 +114,9 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 230, 60));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 200, 70));
 
-        btnVender.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnVender.setFont(new java.awt.Font("Arial", 0, 14));
         btnVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/package-toys-128x128.png"))); // NOI18N
         btnVender.setText("Vender");
         btnVender.setIconTextGap(-5);
@@ -121,12 +125,12 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnVenderActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 210, 60));
+        getContentPane().add(btnVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 210, 70));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Artículos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         btnCajas.setFont(new java.awt.Font("Arial", 0, 14));
         btnCajas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/download-manager-128x128.png"))); // NOI18N
@@ -137,69 +141,75 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnCajasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCajas, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 230, 60));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 840, 10));
+        getContentPane().add(btnCajas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 200, 70));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 840, 10));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Ventas");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Almacen");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 840, 10));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 840, 10));
 
         btnAlmacenes.setFont(new java.awt.Font("Arial", 0, 14));
         btnAlmacenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/server-128x128.png"))); // NOI18N
         btnAlmacenes.setText("Almacenes");
-        btnAlmacenes.setIconTextGap(-5);
+        btnAlmacenes.setIconTextGap(-30);
         btnAlmacenes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlmacenesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAlmacenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 230, 60));
+        getContentPane().add(btnAlmacenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 210, 70));
 
-        btnMovAlmacen.setFont(new java.awt.Font("Arial", 0, 14));
+        btnMovAlmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnMovAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-black-box-128x128.png"))); // NOI18N
         btnMovAlmacen.setText("<html>Movimientos<br>Almacén</html>");
-        btnMovAlmacen.setIconTextGap(-5);
+        btnMovAlmacen.setIconTextGap(-25);
         btnMovAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMovAlmacenActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMovAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 230, 60));
+        getContentPane().add(btnMovAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 200, 70));
 
         btnPreferencias.setFont(new java.awt.Font("Arial", 0, 14));
         btnPreferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-sysguard-128x128.png"))); // NOI18N
         btnPreferencias.setText("Preferencias");
+        btnPreferencias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPreferencias.setIconTextGap(-12);
+        btnPreferencias.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnPreferencias.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnPreferencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPreferenciasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPreferencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 230, 60));
+        getContentPane().add(btnPreferencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 200, 100));
 
-        btnUsuarios.setFont(new java.awt.Font("Arial", 0, 14));
+        btnUsuarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxy-128x128.png"))); // NOI18N
         btnUsuarios.setText("Usuarios     ");
-        btnUsuarios.setIconTextGap(-5);
+        btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUsuarios.setIconTextGap(-12);
+        btnUsuarios.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 230, 60));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 720, 10));
+        getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 210, 100));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 840, 10));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Administración");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         jPanel1.setOpaque(false);
 
@@ -214,7 +224,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 470, 30, 40));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 30, 40));
 
         btnLineas.setFont(new java.awt.Font("Arial", 0, 14));
         btnLineas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usb-128x128.png"))); // NOI18N
@@ -225,20 +235,23 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnLineasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 230, 60));
+        getContentPane().add(btnLineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 200, 70));
 
-        btnFacturas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnFacturas.setFont(new java.awt.Font("Arial", 0, 14));
         btnFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/print-mgr-128x128.png"))); // NOI18N
-        btnFacturas.setText("<html>Facturas</html>");
+        btnFacturas.setText("<html>Reportes</html>");
+        btnFacturas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFacturas.setIconTextGap(-5);
+        btnFacturas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnFacturas.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFacturasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 200, 60));
+        getContentPane().add(btnFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 200, 100));
 
-        btnCortes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCortes.setFont(new java.awt.Font("Arial", 0, 14));
         btnCortes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/super-karamba-128x128.png"))); // NOI18N
         btnCortes.setText("Cortes");
         btnCortes.setIconTextGap(-5);
@@ -247,18 +260,18 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnCortesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 200, 60));
+        getContentPane().add(btnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 200, 70));
 
         btnArticulos.setFont(new java.awt.Font("Arial", 0, 14));
         btnArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/x-mag-128x128.png"))); // NOI18N
         btnArticulos.setText("Catálogo");
-        btnArticulos.setIconTextGap(-5);
+        btnArticulos.setIconTextGap(-25);
         btnArticulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArticulosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnArticulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 230, 60));
+        getContentPane().add(btnArticulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, 70));
 
         btnClientes.setFont(new java.awt.Font("Arial", 0, 14));
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vcard-128x128.png"))); // NOI18N
@@ -269,21 +282,21 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnClientesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 230, 60));
+        getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 200, 70));
 
         btnGrupos.setFont(new java.awt.Font("Arial", 0, 14));
         btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
         btnGrupos.setText("Grupos");
-        btnGrupos.setIconTextGap(-5);
+        btnGrupos.setIconTextGap(-15);
         btnGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGruposActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 230, 60));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 840, 10));
+        getContentPane().add(btnGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 200, 70));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 840, 10));
 
-        btnDetallesVentas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnDetallesVentas.setFont(new java.awt.Font("Arial", 0, 14));
         btnDetallesVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remote-128x128.png"))); // NOI18N
         btnDetallesVentas.setText("<html>Detalles<br>de Ventas</html>");
         btnDetallesVentas.setIconTextGap(-5);
@@ -292,7 +305,18 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnDetallesVentasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDetallesVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 200, 60));
+        getContentPane().add(btnDetallesVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 200, 70));
+
+        btnFacturas1.setFont(new java.awt.Font("Arial", 0, 14));
+        btnFacturas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/print-mgr-128x128.png"))); // NOI18N
+        btnFacturas1.setText("<html>Facturas</html>");
+        btnFacturas1.setIconTextGap(-5);
+        btnFacturas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturas1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFacturas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 200, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,31 +337,49 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_btnCajasActionPerformed
 
     private void btnMovAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovAlmacenActionPerformed
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Almacenes.lanzarMovimientos();
+        System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnMovAlmacenActionPerformed
 
     private void btnLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineasActionPerformed
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Lineas.lanzarCatalogo();
+        System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnLineasActionPerformed
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Caja.lanzar();
+        System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasActionPerformed
-        omoikane.principal.Facturas.lanzarListadoFacturas();
+        
+        VentanaPrincipal  vp = new VentanaPrincipal();
+        panelReportes pvl= new panelReportes();
+        vp.getContentPane().add(pvl);
+        vp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        vp.setVisible(true);
 }//GEN-LAST:event_btnFacturasActionPerformed
 
     private void btnCortesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCortesActionPerformed
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Cortes.lanzarCatalogoSuc();
+        System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnCortesActionPerformed
 
     private void btnArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArticulosActionPerformed
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Articulos.lanzarCatalogo();
+        System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnArticulosActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Clientes.lanzarCatalogo();
+        System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
@@ -345,7 +387,9 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Grupos.lanzarCatalogo();
+        System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnGruposActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -355,12 +399,22 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private void btnPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreferenciasActionPerformed
         // TODO Cambiar esto por preferencias
        omoikane.principal.LineasDuales.lanzarCatalogo();
+
     }//GEN-LAST:event_btnPreferenciasActionPerformed
 
     private void btnDetallesVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesVentasActionPerformed
         // TODO add your handling code here:
+        StopWatch timer = new StopWatch().start();
         omoikane.principal.Ventas.lanzarCatalogo();
+        System.out.println(timer.getElapsedTime());
     }//GEN-LAST:event_btnDetallesVentasActionPerformed
+
+    private void btnFacturas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturas1ActionPerformed
+        // TODO add your handling code here:
+        StopWatch timer = new StopWatch().start();
+        omoikane.principal.Facturas.lanzarListadoFacturas();
+        System.out.println(timer.getElapsedTime());
+    }//GEN-LAST:event_btnFacturas1ActionPerformed
 
     @Override
     public void paintComponent(Graphics g)
@@ -393,6 +447,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCortes;
     private javax.swing.JButton btnDetallesVentas;
     private javax.swing.JButton btnFacturas;
+    private javax.swing.JButton btnFacturas1;
     private javax.swing.JButton btnGrupos;
     private javax.swing.JButton btnLineas;
     private javax.swing.JButton btnMovAlmacen;

@@ -36,7 +36,13 @@ class Facturas {
     static def lanzarListadoFacturas() {
         if(cerrojo(Permisos.PMA_ABRIRFACTURAS) && cat == null ){
             cat = (new omoikane.formularios.ListadoFacturas());
-            cat.tblFacturas.setModel(generarListadoFacturas());
+
+            cat.jProgressBar1.setIndeterminate(true)
+            Thread.start() {
+                    cat.tblFacturas.setModel(generarListadoFacturas());
+                    cat.jProgressBar1.setIndeterminate(false)
+            }
+            
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat);
             Herramientas.In2ActionX(cat, java.awt.event.KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }

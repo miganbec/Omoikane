@@ -12,6 +12,8 @@ package omoikane.formularios;
 
 import java.awt.image.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -29,6 +31,7 @@ public class Caja extends javax.swing.JInternalFrame {
 
     public Caja() {
         initComponents();
+        programarShortcuts();
         this.setOpaque(false);
         ((JPanel)this.getContentPane()).setOpaque(false);
         this.getLayeredPane().setOpaque(false);
@@ -39,6 +42,45 @@ public class Caja extends javax.swing.JInternalFrame {
         this.jLabel13.setVisible(false);
     }
 
+    public void programarShortcuts() {
+        /*
+            Herramientas.In2ActionX(form, KeyEvent.VK_F3    , "buscar"    ) { form.txtCaptura.requestFocusInWindow()  }
+            Herramientas.In2ActionX(form, KeyEvent.VK_ESCAPE, "cerrar"    ) { form.btnCerrar.doClick()                }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F4    , "ventaEsp"  ) { form.btnVentaEspecial.doClick()         }
+            Herramientas.In2ActionX(form, KeyEvent.VK_PAUSE , "pausar"    ) { form.btnPausar.doClick()                }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F12   , "cancelar"  ) { form.btnCancelacion.doClick()           }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F7    , "cancelaArt") { form.btnCancelaArt.doClick()            }
+            Herramientas.In2ActionX(form, KeyEvent.VK_F5    , "movs"      ) { form.btnMovimientos.doClick()           }
+
+         */
+        Action buscar = new AbstractAction() { public void actionPerformed(ActionEvent e) { txtCaptura.requestFocusInWindow(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0), "buscar");
+        getActionMap().put("buscar"                 , buscar  );
+
+        Action cerrar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnCerrar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
+        getActionMap().put("cerrar", cerrar);
+
+        Action ventaEsp = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnVentaEspecial.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0), "ventaEsp");
+        getActionMap().put("ventaEsp" , ventaEsp);
+
+        Action pausar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnPausar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAUSE, 0), "pausar");
+        getActionMap().put("pausar" , pausar);
+
+        Action cancelar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnCancelacion.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F12, 0), "cancelar");
+        getActionMap().put("cancelar", cancelar);
+
+        Action cancelaArt = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnCancelaArt.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F7, 0), "cancelaArt");
+        getActionMap().put("cancelaArt", cancelaArt);
+
+        Action movs = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnMovimientos.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0), "movs");
+        getActionMap().put("movs"                 , movs  );
+    }
     public void paintComponent(Graphics g)
     {
       Graphics2D g2d = (Graphics2D) g;

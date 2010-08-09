@@ -59,6 +59,8 @@ public class CatalogoSucursal extends javax.swing.JInternalFrame {
     /** Creates new form Catalogocortes */
     public CatalogoSucursal() {
         initComponents();
+        programarShortcuts();
+
         String[]  columnas = { "ID Corte","Almacen","Fecha"};
         ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
         Class[]   clases   = {Integer.class, String.class, String.class};
@@ -68,7 +70,7 @@ public class CatalogoSucursal extends javax.swing.JInternalFrame {
         //jTable1.enableInputMethods(false);
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
-        setQueryTable("SELECT cortes_sucursal.id_corte,(cortes_sucursal.id_corte)as id,(almacenes.descripcion)as almacen,(cortes_sucursal.creacion)as fecha FROM cortes_sucursal,almacenes WHERE cortes_sucursal.id_almacen=almacenes.id_almacen ");
+        setQueryTable("SELECT cortes_sucursal.id_corte,(cortes_sucursal.id_corte)as id,(almacenes.descripcion)as almacen,(cortes_sucursal.creacion)as fecha FROM cortes_sucursal,almacenes WHERE cortes_sucursal.id_almacen=almacenes.id_almacen order by fecha desc");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -96,7 +98,36 @@ public class CatalogoSucursal extends javax.swing.JInternalFrame {
 
     }
 
-    
+    public void programarShortcuts() {
+        /*
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_F7    , "corte" ) { cat.btnCorteDia.doClick() }
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_F1    , "caja" ) { cat.btnCortesCaja.doClick() }
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_F3    , "filtrar" ) { cat.btnFiltrar.doClick() }
+         */
+
+        Action cerrar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnCerrar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
+        getActionMap().put("cerrar"                 , cerrar  );
+
+        Action detalles = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnDetalles.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0), "detalles");
+        getActionMap().put("detalles"                 , detalles  );
+
+        Action corteCaja = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnCortesCaja.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "corteCaja");
+        getActionMap().put("corteCaja"                 , corteCaja  );
+
+        Action axCorte = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnCorteDia.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F7, 0), "axCorte");
+        getActionMap().put("axCorte"                 , axCorte  );
+
+        Action filtrar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnFiltrar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0), "filtrar");
+        getActionMap().put("filtrar"                 , filtrar  );
+    }
+
 
     public void setQueryTable(String query) {
         txtQuery = query;

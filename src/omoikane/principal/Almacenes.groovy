@@ -187,14 +187,6 @@ class Almacenes {
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.panelCatalogo(cat)
             Herramientas.setColumnsWidth(cat.movimientos, [0.1,0.1,0.1,0.1,0.38,0.1,0.1]);
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar" ) { cat.btnCerrar.doClick() }
-            Herramientas.In2ActionX(cat.txtBusqueda, KeyEvent.VK_ESCAPE, "cerrar" ) { cat.btnCerrar.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscarFocus" ) { cat.txtBusqueda.requestFocus() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "imprimir" ) { cat.btnImprimir.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ENTER , "filtrar" ) { cat.btnFiltrar.doClick() }
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario movimientos de almacén", Herramientas.getStackTraceString(e)) }
@@ -205,7 +197,11 @@ class Almacenes {
             calendario.add(Calendar.DAY_OF_MONTH, -30);
             def fechaDesde = sdf.format(calendario.getTime())
             //Poblar tabla de movimientos
-            poblarMovimientos(cat.getTablaMovimientos(), "", fechaDesde, fechaHasta)
+            Thread.start {
+                cat.jProgressBar1.setIndeterminate(true);
+                poblarMovimientos(cat.getTablaMovimientos(), "", fechaDesde, fechaHasta)
+                cat.jProgressBar1.setIndeterminate(false);
+            }
             return cat
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }

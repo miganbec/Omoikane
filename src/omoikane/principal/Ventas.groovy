@@ -34,21 +34,11 @@ class Ventas {
             def cat = (new omoikane.formularios.CatalogoVentas())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.1,0.1,0.25,0.25,0.1]);
+            
             Herramientas.panelCatalogo(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
             cat.btnVentasXLinea.actionPerformed = { lanzarVentasXLinea(); }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar"  ) { cat.btnFiltrar.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "cambiar"  ) { if(cat.getBuscarCajero()){cat.activarCajero(false)}else{cat.activarCajero(true)}}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "cambiar1" ) { if(cat.getBuscarCliente()){cat.activarCliente(false)}else{cat.activarCliente(true)}}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "cambiar2" ) { if(cat.getBuscarCaja()){cat.activarCaja(false)}else{cat.activarCaja(true)}}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F11   , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "nada"     ) { }
+
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo ventas", Herramientas.getStackTraceString(e)) }

@@ -55,42 +55,14 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             try { this.notify(); } catch(Exception e) {}
         }
     }
+
     /** Creates new form CatalogoVentas */
     public CatalogoVentas() {
         initComponents();
-        Calendar calendario = Calendar.getInstance();
-        txtFechaHasta.setDate(calendario.getTime());
-        calendario.add(Calendar.DAY_OF_MONTH, -2);
-        txtFechaDesde.setDate(calendario.getTime());
+        jProgressBar1.setIndeterminate(true);
+        programarShortcuts();
 
-        String[]  columnas = { "Fecha","Venta", "Caja", "Almacen", "Cliente","Total"};
-        ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-        Class[]   clases   = {String.class, Integer.class, Integer.class, String.class, String.class, Double.class};
-        ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
-
-        VentasTableModel modeloTabla = new VentasTableModel(cols, cls);
-        //jTable1.enableInputMethods(false);
-        this.modelo = modeloTabla;
-        this.jTable1.setModel(modeloTabla);
-
-        String whereFecha = "" ;
-        String fechaDesde     = "";
-        String fechaHasta     = "";
-        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
-        calendario.setTime(this.txtFechaHasta.getDate());
-        calendario.add(Calendar.DAY_OF_MONTH, 1);
-
-        if(this.txtFechaDesde.getDate() != null || this.txtFechaHasta.getDate() != null)
-        {
-            try {
-                fechaDesde = sdf.format(this.txtFechaDesde.getDate());
-                fechaHasta = sdf.format(calendario.getTime());
-                whereFecha = " AND ventas.fecha_hora >= '"+fechaDesde+"' AND ventas.fecha_hora <= '"+fechaHasta+"'  ";
-
-            } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
-        }
-
-        setQueryTable("SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente"+whereFecha);
+        configJTable();
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -113,6 +85,95 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
     }
 
+    public void programarShortcuts() {
+        /*
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_F1    , "filtrar"  ) { cat.btnFiltrar.doClick() }
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()}
+            xHerramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+            XHerramientas.In2ActionX(cat, KeyEvent.VK_F5    , "cambiar"  ) { if(cat.getBuscarCajero()){cat.activarCajero(false)}else{cat.activarCajero(true)}}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "cambiar1" ) { if(cat.getBuscarCliente()){cat.activarCliente(false)}else{cat.activarCliente(true)}}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "cambiar2" ) { if(cat.getBuscarCaja()){cat.activarCaja(false)}else{cat.activarCaja(true)}}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
+         */
+
+        Action cerrar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnCerrar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cerrar");
+        getActionMap().put("cerrar"                 , cerrar  );
+
+        Action filtrar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnFiltrar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "filtrar");
+        getActionMap().put("filtrar"                 , filtrar  );
+
+        Action buscar = new AbstractAction() { public void actionPerformed(ActionEvent e) { txtBusqueda.requestFocusInWindow(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0), "buscar");
+        getActionMap().put("buscar"                 , buscar  );
+
+        Action detalles = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnDetalles.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0), "detalles");
+        getActionMap().put("detalles"                 , detalles  );
+
+        Action cambiar = new AbstractAction() { public void actionPerformed(ActionEvent e) { if(getBuscarCajero()){activarCajero(false);}else{activarCajero(true);} } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0), "cambiar");
+        getActionMap().put("cambiar"                 , cambiar  );
+
+        Action cambiar1 = new AbstractAction() { public void actionPerformed(ActionEvent e) { if(getBuscarCliente()){activarCliente(false);}else{activarCliente(true);} } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0), "cambiar1");
+        getActionMap().put("cambiar1"                 , cambiar1  );
+
+        Action cambiar2 = new AbstractAction() { public void actionPerformed(ActionEvent e) { if(getBuscarCaja()){activarCaja(false);}else{activarCaja(true);} } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F7, 0), "cambiar2");
+        getActionMap().put("cambiar2"                 , cambiar2  );
+
+        Action imprimir = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnImprimir.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0), "imprimir");
+        getActionMap().put("imprimir"                 , imprimir  );
+    }
+
+
+    public void configJTable() {
+        new Thread() {
+            public void run() {
+                String[]  columnas = { "Fecha","Venta", "Caja", "Almacen", "Cliente","Total"};
+                ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
+                Class[]   clases   = {String.class, Integer.class, Integer.class, String.class, String.class, Double.class};
+                ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
+                double[] anchoCols = {0.2,0.1,0.08,0.25,0.25,0.1};
+
+                VentasTableModel modeloTabla = new VentasTableModel(cols, cls);
+                //jTable1.enableInputMethods(false);
+                modelo = modeloTabla;
+
+                Calendar calendario = Calendar.getInstance();
+                txtFechaHasta.setDate(calendario.getTime());
+                calendario.add(Calendar.DAY_OF_MONTH, -2);
+                txtFechaDesde.setDate(calendario.getTime());
+                String whereFecha = "" ;
+                String fechaDesde     = "";
+                String fechaHasta     = "";
+                SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+                calendario.setTime(txtFechaHasta.getDate());
+                calendario.add(Calendar.DAY_OF_MONTH, 1);
+
+                if(txtFechaDesde.getDate() != null || txtFechaHasta.getDate() != null)
+                {
+                    try {
+                        fechaDesde = sdf.format(txtFechaDesde.getDate());
+                        fechaHasta = sdf.format(calendario.getTime());
+                        whereFecha = " AND ventas.fecha_hora >= '"+fechaDesde+"' AND ventas.fecha_hora <= '"+fechaHasta+"'  ";
+
+                    } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
+                }
+
+                setQueryTable("SELECT ventas.id_venta,ventas.fecha_hora,ventas.id_venta,ventas.id_caja,almacenes.descripcion,clientes.razonSocial,ventas.total FROM ventas,clientes,almacenes WHERE ventas.id_almacen="+IDAlmacen+" AND ventas.id_cliente=clientes.id_cliente"+whereFecha);
+                jTable1.setModel(modeloTabla);
+
+                Herramientas.setColumnsWidth(jTable1, anchoCols);
+                jProgressBar1.setIndeterminate(false);
+            }
+        }.start();
+
+    }
     public void setModoDialogo()
     {
         modal=true;
@@ -153,6 +214,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         btnDetalles = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnVentasXLinea = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         setTitle("Catálogo de Ventas");
 
@@ -199,23 +261,28 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 17));
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fecha", "Venta", "Caja", "Almacén", "Cliente", "Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setFocusable(false);
         jTable1.setRowHeight(20);
         jScrollPane1.setViewportView(jTable1);
 
-        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14));
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
@@ -304,19 +371,12 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVentasXLinea, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -333,7 +393,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                             .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
@@ -345,7 +405,15 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                                 .addComponent(chkCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                                 .addComponent(chkCaja)
-                                .addGap(301, 301, 301)))))
+                                .addGap(301, 301, 301))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVentasXLinea, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -372,8 +440,10 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                     .addComponent(chkCaja)
                     .addComponent(chkCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,7 +465,9 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         VentasTableModel tabModelo = this.modelo;
         this.modelo = null;
-        tabModelo.destroy();
+        if(tabModelo != null) {
+            tabModelo.destroy();
+        }
         this.dispose();
         if(!modal){
         ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
@@ -590,6 +662,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     public javax.swing.JTextField txtBusqueda;
@@ -599,13 +672,16 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
 }
 
-class VentasTableModel extends ScrollableTableModel{
-VentasTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
-public Object getValueAt(int row,int col){    if(col==0)
-    {
-    SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");
-    
-    return sdf.format((java.util.Date) super.getValueAt(row, col));}
-    else
-    {return super.getValueAt(row,col);}
-}} 
+class VentasTableModel extends ScrollableTableModel {
+    VentasTableModel(java.util.List ColNames,ArrayList ColClasses){
+        super(ColNames,ColClasses);
+    }
+    public Object getValueAt(int row,int col){
+        if(col==0) {
+            SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");
+            return sdf.format((java.util.Date) super.getValueAt(row, col));
+        } else {
+            return super.getValueAt(row,col);
+        }
+    }
+}

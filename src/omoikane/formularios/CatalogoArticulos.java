@@ -33,7 +33,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public String          codigoSeleccionado;
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     public String          txtQuery;
-    ArticulosTableModel modelo;
+    public ArticulosTableModel modelo;
     public boolean modal = false;
 
     public void mostrar() { this.setVisible(true);  }
@@ -70,16 +70,31 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         //Conectar a MySQL
         try {
             initComponents();
+            programarShortcuts();
+            cargaProgressBar.setIndeterminate(true);
 
-            String[]  columnas = {"Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"};
-            ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-            Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, Double.class, Double.class};
-            ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
+            new Thread() {
+                public void run() {
+                    String[]  columnas = {"Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"};
+                    ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
+                    Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, Double.class, Double.class};
+                    ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
+                    double[]  widths   = {0.16,0.16,0.07,0.41,0.05,0.08,0.06};
 
-            ArticulosTableModel modeloTabla = new ArticulosTableModel(cols, cls);
-            //jTable1.enableInputMethods(false);
-            this.modelo = modeloTabla;
-            this.jTable1.setModel(modeloTabla);
+                    ArticulosTableModel modeloTabla = new ArticulosTableModel(cols, cls);
+                    //jTable1.enableInputMethods(false);
+                    
+                    modelo = modeloTabla;
+                    setQueryTable("select id_articulo as xID, codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias " +
+                        "from ramcachearticulos");
+                    
+                    jTable1.setModel(modeloTabla);
+                    cargaProgressBar.setIndeterminate(false);
+
+                    Herramientas.setColumnsWidth(jTable1, widths);
+
+                }
+            }.start();
 
             /*setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
                     "from articulos, precios, existencias, lineas , grupos " +
@@ -94,8 +109,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                     "AND clientes.id_cliente = 1 " +
                     "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
              * */
-            setQueryTable("select id_articulo as xID, codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias " +
-                    "from ramcachearticulos");
 
             //Instrucciones para el funcionamiento del fondo semistransparente
             this.setOpaque(false);
@@ -110,6 +123,40 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
            this.dispose();
        }
 
+    }
+    public void programarShortcuts() {
+        /*
+            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()  }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
+            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
+            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
+         */
+
+        Action buscar = new AbstractAction() { public void actionPerformed(ActionEvent e) { txtBusqueda.requestFocusInWindow(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0), "buscar");
+        getActionMap().put("buscar"                 , buscar  );
+
+        Action detalles = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnDetalles.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0), "detalles");
+        getActionMap().put("detalles"                 , detalles  );
+
+        Action nuevo = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnNuevo.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0), "nuevo");
+        getActionMap().put("nuevo"                 , nuevo  );
+
+        Action modificar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnModificar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0), "modificar");
+        getActionMap().put("modificar"                 , modificar  );
+
+        Action eliminar = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnEliminar.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "eliminar");
+        getActionMap().put("eliminar"                 , eliminar  );
+
+        Action imprimir = new AbstractAction() { public void actionPerformed(ActionEvent e) { btnImprimir.doClick(); } };
+        getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0), "imprimir");
+        getActionMap().put("imprimir"                 , imprimir  );
     }
     public void setModoDialogo()
     {
@@ -153,6 +200,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         chkCodigo = new javax.swing.JCheckBox();
         chkLineas = new javax.swing.JCheckBox();
         chkGrupos = new javax.swing.JCheckBox();
+        cargaProgressBar = new javax.swing.JProgressBar();
 
         setIconifiable(true);
         setTitle("Catálogo de artículos");
@@ -160,16 +208,13 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         jScrollPane1.setAutoscrolls(true);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 17));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"
             }
         ));
         jTable1.setFocusable(false);
@@ -287,15 +332,15 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDetalles)
@@ -306,8 +351,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,7 +363,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(chkLineas, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(chkGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cargaProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -336,8 +382,10 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                     .addComponent(chkCodigo)
                     .addComponent(chkLineas)
                     .addComponent(chkGrupos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cargaProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDetalles)
@@ -345,7 +393,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
                     .addComponent(btnAceptar)
-                    .addComponent(btnImprimir))
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -363,14 +411,22 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        ArticulosTableModel tabModelo = this.modelo;
+
         
-        if(tabModelo != null) { tabModelo.destroy(); }
-        this.modelo = null;
-        this.dispose();
-        if(!modal){
-        ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
-        }
+        new Thread() {
+            public void run() {
+                dispose();
+                ArticulosTableModel tabModelo = modelo;
+
+                if(tabModelo != null) { tabModelo.destroy(); }
+                modelo = null;
+
+                if(!modal){
+                ((javax.swing.JInternalFrame)((omoikane.principal.MenuPrincipal)omoikane.principal.Principal.getMenuPrincipal()).getMenuPrincipal()).requestFocusInWindow();
+                }
+            }
+        }.start();
+
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -586,6 +642,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    public javax.swing.JProgressBar cargaProgressBar;
     private javax.swing.JCheckBox chkCodigo;
     private javax.swing.JCheckBox chkGrupos;
     private javax.swing.JCheckBox chkLineas;

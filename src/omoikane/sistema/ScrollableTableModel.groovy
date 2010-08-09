@@ -30,7 +30,7 @@ public class ScrollableTableModel extends AbstractTableModel {
 
     public ScrollableTableModel(java.util.List colNames, ArrayList colClases)
     {
-        def protocol = omoikane.principal.Principal.URLMySQL + "?user=Jasper&password=gatogato&useOldAliasMetadataBehavior=true";
+        def protocol = omoikane.principal.Principal.URLMySQL + "?user=Jasper&password=gatogato&useOldAliasMetadataBehavior=true&useCompression=true";
         conn = DriverManager.getConnection(protocol);
         conn.setAutoCommit(false);
 
@@ -77,7 +77,7 @@ public class ScrollableTableModel extends AbstractTableModel {
        public int getRowCount() {
 
             if(rowCount == -1) {
-                def tmpQ = queryAct.toLowerCase()
+                def tmpQ = queryAct?.toLowerCase()
                 //println "->>"+tmpQ
                 def replaced = tmpQ.replaceAll(/(select (distinct)|select) ([a-zA-Z0-9\._]+)(.*?) (from.*)/, '$1 count($2 $3) $5')
 

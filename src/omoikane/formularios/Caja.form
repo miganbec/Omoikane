@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
@@ -38,22 +38,22 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnTerminar" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="btnTerminar" alignment="0" pref="240" max="32767" attributes="1"/>
                   <Component id="txtCaja" alignment="0" min="-2" max="-2" attributes="1"/>
                   <Component id="jLabel10" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="jLabel16" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtSubtotal" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="txtSubtotal" alignment="0" pref="240" max="32767" attributes="1"/>
                   <Component id="jLabel18" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtDescuento" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="txtDescuento" alignment="0" pref="240" max="32767" attributes="1"/>
                   <Component id="jLabel17" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtImpuesto" alignment="0" pref="243" max="32767" attributes="1"/>
-                  <Component id="txtNArticulos" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="txtImpuesto" alignment="0" pref="240" max="32767" attributes="1"/>
+                  <Component id="txtNArticulos" alignment="0" pref="240" max="32767" attributes="1"/>
                   <Component id="jLabel8" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtTotal" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="txtTotal" alignment="0" pref="240" max="32767" attributes="1"/>
                   <Component id="jLabel9" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtEfectivo" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="txtEfectivo" alignment="0" pref="240" max="32767" attributes="1"/>
                   <Component id="jLabel14" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="txtCambio" alignment="0" pref="243" max="32767" attributes="1"/>
+                  <Component id="txtCambio" alignment="0" pref="240" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -64,29 +64,29 @@
                           <Component id="jLabel13" min="-2" max="-2" attributes="1"/>
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                       <Component id="btnCerrar" min="-2" pref="237" max="-2" attributes="1"/>
                   </Group>
-                  <Component id="jScrollPane1" alignment="0" pref="721" max="32767" attributes="2"/>
+                  <Component id="jScrollPane1" alignment="0" pref="718" max="32767" attributes="2"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtCaptura" pref="619" max="32767" attributes="0"/>
+                      <Component id="txtCaptura" pref="616" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnMovimientos" pref="234" max="32767" attributes="1"/>
-                          <Component id="btnCatalogo" alignment="1" pref="234" max="32767" attributes="1"/>
+                          <Component id="btnMovimientos" pref="233" max="32767" attributes="1"/>
+                          <Component id="btnCatalogo" alignment="1" pref="233" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnPausar" pref="234" max="32767" attributes="1"/>
-                          <Component id="btnVentaEspecial" alignment="1" pref="234" max="32767" attributes="1"/>
+                          <Component id="btnPausar" pref="233" max="32767" attributes="1"/>
+                          <Component id="btnVentaEspecial" alignment="1" pref="233" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnCancelacion" pref="234" max="32767" attributes="1"/>
-                          <Component id="btnCancelaArt" alignment="0" pref="234" max="32767" attributes="1"/>
+                          <Component id="btnCancelacion" pref="233" max="32767" attributes="1"/>
+                          <Component id="btnCancelaArt" alignment="0" pref="233" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>

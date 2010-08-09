@@ -105,7 +105,7 @@ public class Herramientas
         def compensaY = 0
         def config    = omoikane.principal.Principal.config.resolucionPantalla
         
-        if(((config.@ancho[0] as Double)/4)==((config.@alto[0] as Double)/3)) { compensaY = 100 } //Compensaciòn particular para 1024768
+        if(((config.@ancho[0] as Double)/4)==((config.@alto[0] as Double)/3)) { compensaY = 90 } //Compensaciòn particular para 1024768
         Dimension screenSize = omoikane.principal.Principal.escritorio.escritorioFrame.getSize();
         Dimension ventanSize = ventana.getPreferredSize();
 

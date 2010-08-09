@@ -30,16 +30,7 @@ class Usuarios {
             escritorio.getPanelEscritorio().add(cat)
             Herramientas.setColumnsWidth(cat.jTable1, [0.4,0.3,0.3]);
             Herramientas.panelCatalogo(cat)
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F1    , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F7    , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F8    , "imprimir" ) { cat.btnImprimir.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F11   , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F12   , "nada"     ) { }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
+
             Herramientas.iconificable(cat)
             cat.toFront()
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de Usuarios", Herramientas.getStackTraceString(e)) }
