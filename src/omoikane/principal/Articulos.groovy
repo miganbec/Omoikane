@@ -140,7 +140,7 @@ public class Articulos
             formArticulo.setTxtComentarios   notas                     as String
             formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuArt%'] as String
             formArticulo.getTxtDescuento2().text       = (art.precio['PrecioConImpuestos']*art.precio['descuArt%']) as String
-            formArticulo.getTxtPrecio2().text          = (art.precio['PrecioConImpuestos']+(art.precio['PrecioConImpuestos']*art.precio['descuArt%']) )as String
+            formArticulo.getTxtPrecioTotal().text          = (art.precio['PrecioConImpuestos']+(art.precio['PrecioConImpuestos']*art.precio['descuArt%']) )as String
             formArticulo.getTxtImpuestosPorc().text    = art.impuestos            as String
             formArticulo.getTxtImpuestos().text        = art.precio['impuestos']  as String
             formArticulo.getTxtUtilidad().text         = art.precio['utilidad']   as String
@@ -194,8 +194,9 @@ public class Articulos
                     Dialogos.lanzarAlerta(datAdd.mensaje)
                     serv.desconectar()
                     PuertoNadesico.workIn() { it.CacheArticulos.actualizar(datAdd.ID) }
-                } catch(e) { Dialogos.error("Error al enviar a la base de datos. El artículo no se registró", e) }
-                formArticulo.dispose()
+                    formArticulo.dispose()
+                } catch(e) { Dialogos.error("Error al enviar a la base de datos. El artículo no se registró verifique que el codigo no exista", e) }
+                
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
@@ -271,7 +272,7 @@ public class Articulos
             }
         }
 
-        formArticulo.btnAddComp.actionPerformed    = {
+      /*formArticulo.btnAddComp.actionPerformed    = {
             new SimpleForm("omoikane.formularios.Paquetes") {
                 def form = it.form
                 form.visible = true
@@ -316,7 +317,7 @@ public class Articulos
                     Dialogos.lanzarAlerta("Código Eliminado")
                 }
             }
-        }
+        }*/
 
 
 
@@ -349,31 +350,45 @@ public class Articulos
 
     static def recalcularCampos(formArticulo) {
         def f = formArticulo
-        def c = [ imp:Double.parseDouble(f.getTxtImpuestosPorc().text), cos:Double.parseDouble(f.getTxtCosto()),
-                dto:Double.parseDouble(f.getTxtDesctoPorcentaje().text), uti:Double.parseDouble(f.getTxtUtilidadPorc().text)]
+        //def c = [ imp:Double.parseDouble(f.getTxtImpuestosPorc().text), cos:Double.parseDouble(f.getTxtCosto()),
+        //        dto:Double.parseDouble(f.getTxtDesctoPorcentaje().text), uti:Double.parseDouble(f.getTxtUtilidadPorc().text)]
+        def c =[imp:0,cos:0,dto:0,uti:0]
+        if(f.getTxtImpuestosPorc().text==""){c.imp=0}else{c.imp=Double.parseDouble(f.getTxtImpuestosPorc().text)}
+        if(f.getTxtCosto()==""){c.cos=0}else{c.cos=Double.parseDouble(f.getTxtCosto())}
+        if(f.getTxtDesctoPorcentaje().text==""){c.dto=0}else{c.dto=Double.parseDouble(f.getTxtDesctoPorcentaje().text)}
+        if(f.getTxtUtilidadPorc().text==""){c.uti=0}else{c.uti=Double.parseDouble(f.getTxtUtilidadPorc().text)}
+
 
         def utilidad = c.uti * c.cos * 0.01;
         def descuento = (utilidad + c.cos) * c.dto * 0.01;
         def impuesto = ( c.cos + utilidad - descuento ) * c.imp * 0.01;
         def precio = (c.cos + utilidad - descuento + impuesto);
-        def formateador = new java.text.DecimalFormat("#.00");
+        def formateador = new java.text.DecimalFormat("#0.00");
 
         f.setTxtImpuestos4(formateador.format(impuesto));
         f.setTxtDescuento3(formateador.format(descuento));
         f.setTxtDescuento(formateador.format(c.dto));
         f.setTxtUtilidad2(formateador.format(utilidad));
-        f.setTxtPrecio3(formateador.format(precio));
         f.setTxtPrecio(formateador.format(precio));
+        f.setTxtPrecioTotal(formateador.format(precio))
 
     }
 
-    static def recalcularUtilidad(formArticulo, txtPrecio) {
+    static def recalcularUtilidad(formArticulo) {
         def f = formArticulo
-        def c = [cos:(f.getTxtCosto()) as Double                  ,pre:(f.getTxtPrecio2().text) as Double,
-                 poi:(f.getTxtImpuestosPorc().text) as Double     ,pod:(f.getTxtDesctoPorcentaje().text) as Double]
-        def formateador = new java.text.DecimalFormat("#.00");
+        //def c = [cos:(f.getTxtCosto()) as Double                  ,pre:(f.getTxtPrecioTotal().text) as Double,
+        //         poi:(f.getTxtImpuestosPorc().text) as Double     ,pod:(f.getTxtDesctoPorcentaje().text) as Double]
+        def c =[cos:0,poi:0,pod:0,pre:0]
+        if (f.getTxtCosto()==""){c.cos=0}else{c.cos=(f.getTxtCosto()) as Double}
+        if(f.getTxtImpuestosPorc().text==""){c.poi=0}else{c.poi=(f.getTxtImpuestosPorc().text) as Double}
+        if(f.getTxtDesctoPorcentaje().text==""){c.pod=0}else{c.pod=(f.getTxtDesctoPorcentaje().text) as Double}
+        if(f.getTxtPrecioTotal().text==""){c.pre=0}else{c.pre=(f.getTxtPrecioTotal().text) as Double}
+        def formateador = new java.text.DecimalFormat("#0.00");
         c.poi=c.poi/100
         c.pod=c.pod/100
+
+
+
 
         def porcentajeUtilidad  =   (c.pre/(c.cos*(1+c.poi)*(1-c.pod)))-1
         def utilidad            =   c.cos*porcentajeUtilidad
@@ -385,8 +400,7 @@ public class Articulos
         f.setTxtImpuestos4(formateador.format(impuesto));
         f.setTxtUtilidad2(formateador.format(utilidad))
         f.setTxtUtilidadPorcText(formateador.format(porcentajeUtilidad))
-        f.setTxtPrecio3(txtPrecio.getText())
-        f.setTxtPrecio(txtPrecio.getText())
+        f.setTxtPrecio(formateador.format(c.pre))
 
     }
 

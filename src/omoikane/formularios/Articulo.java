@@ -72,32 +72,26 @@ public class Articulo extends javax.swing.JInternalFrame {
         btnDelCode = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        txtPrecio2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txtCosto = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        txtUtilidadPorc = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        txtDesctoPorcentaje = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        txtImpuestosPorc = new javax.swing.JTextField();
         txtImpuestos = new javax.swing.JTextField();
         txtUtilidad = new javax.swing.JTextField();
         txtDescuento2 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnAddComp = new javax.swing.JButton();
-        btnDelComp = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblPaquetes = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
+        txtCosto = new javax.swing.JFormattedTextField();
+        txtPrecioTotal = new javax.swing.JFormattedTextField();
+        txtDesctoPorcentaje = new javax.swing.JFormattedTextField();
+        txtImpuestosPorc = new javax.swing.JFormattedTextField();
+        txtUtilidadPorc = new javax.swing.JFormattedTextField();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtComentarios = new javax.swing.JTextArea();
@@ -143,8 +137,12 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel1.setText("ID Artículo:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
+        txtIDArticulo.setBackground(new java.awt.Color(55, 55, 255));
         txtIDArticulo.setEditable(false);
-        jPanel1.add(txtIDArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 240, -1));
+        txtIDArticulo.setForeground(new java.awt.Color(255, 255, 255));
+        txtIDArticulo.setBorder(null);
+        txtIDArticulo.setFocusable(false);
+        jPanel1.add(txtIDArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 240, 20));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,9 +157,12 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel8.setText("ID Línea [F1]:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, 20));
 
+        txtIDGrupoDes.setBackground(new java.awt.Color(55, 55, 255));
         txtIDGrupoDes.setEditable(false);
+        txtIDGrupoDes.setForeground(new java.awt.Color(255, 255, 255));
+        txtIDGrupoDes.setBorder(null);
         txtIDGrupoDes.setFocusable(false);
-        jPanel1.add(txtIDGrupoDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, -1));
+        jPanel1.add(txtIDGrupoDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, 20));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,35 +186,48 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel10.setText("Existencias:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
 
+        txtExistencias.setBackground(new java.awt.Color(55, 55, 255));
         txtExistencias.setEditable(false);
-        jPanel1.add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 240, -1));
+        txtExistencias.setForeground(new java.awt.Color(255, 255, 255));
+        txtExistencias.setFocusable(false);
+        jPanel1.add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 240, 30));
 
+        txtPrecio.setBackground(new java.awt.Color(55, 55, 255));
         txtPrecio.setEditable(false);
         txtPrecio.setFont(new java.awt.Font("Tahoma", 1, 18));
+        txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
         txtPrecio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 240, 30));
+        txtPrecio.setBorder(null);
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 240, 30));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Precio:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("<html>Última<br>Modificación:</html>");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
+        txtUModificacion.setBackground(new java.awt.Color(55, 55, 255));
         txtUModificacion.setEditable(false);
-        jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 240, 30));
+        txtUModificacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtUModificacion.setBorder(null);
+        txtUModificacion.setFocusable(false);
+        jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 240, 30));
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, -1, 20));
 
         jLabel19.setFont(new java.awt.Font("Arial", 1, 12));
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Descuento:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 20));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 20));
 
+        txtDescuento.setBackground(new java.awt.Color(55, 55, 255));
         txtDescuento.setEditable(false);
-        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, -1));
+        txtDescuento.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuento.setBorder(null);
+        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 240, 30));
 
         txtIDGrupo.setEditable(false);
         jPanel1.add(txtIDGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 40, -1));
@@ -226,9 +240,12 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtIDLinea.setEditable(false);
         jPanel1.add(txtIDLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 40, -1));
 
+        txtIDLineaDes.setBackground(new java.awt.Color(55, 55, 255));
         txtIDLineaDes.setEditable(false);
+        txtIDLineaDes.setForeground(new java.awt.Color(255, 255, 255));
+        txtIDLineaDes.setBorder(null);
         txtIDLineaDes.setFocusable(false);
-        jPanel1.add(txtIDLineaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 190, -1));
+        jPanel1.add(txtIDLineaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 190, 20));
 
         jTabbedPane1.addTab("General", jPanel1);
 
@@ -262,42 +279,14 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel15.setText("Impuestos (%):");
         jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
 
-        txtPrecio2.setEditable(false);
-        txtPrecio2.setFont(new java.awt.Font("Arial", 0, 24));
-        txtPrecio2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPrecio2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPrecio2FocusLost(evt);
-            }
-        });
-        jPanel5.add(txtPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 130, 30));
-
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Costo:");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
-
-        txtCosto.setFont(new java.awt.Font("Arial", 0, 24));
-        txtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCosto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCostoFocusLost(evt);
-            }
-        });
-        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 130, 30));
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, 30));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Utilidad (%):");
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
-
-        txtUtilidadPorc.setFont(new java.awt.Font("Arial", 0, 14));
-        txtUtilidadPorc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUtilidadPorc.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUtilidadPorcFocusLost(evt);
-            }
-        });
-        jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -307,16 +296,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Precio:");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, 20));
-
-        txtDesctoPorcentaje.setFont(new java.awt.Font("Arial", 0, 14));
-        txtDesctoPorcentaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDesctoPorcentaje.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDesctoPorcentajeFocusLost(evt);
-            }
-        });
-        jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 30));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("$:");
@@ -324,13 +304,13 @@ public class Articulo extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("$:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, 20));
+        jLabel11.setText("$");
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 20, 30));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("$:");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, 20));
+        jLabel21.setText("$");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 20, 30));
 
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("$:");
@@ -340,29 +320,32 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel24.setText("$:");
         jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, 20));
 
-        txtImpuestosPorc.setFont(new java.awt.Font("Arial", 0, 14));
-        txtImpuestosPorc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtImpuestosPorc.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtImpuestosPorcFocusLost(evt);
-            }
-        });
-        jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, -1));
-
+        txtImpuestos.setBackground(new java.awt.Color(55, 55, 255));
         txtImpuestos.setEditable(false);
         txtImpuestos.setFont(new java.awt.Font("Arial", 0, 14));
+        txtImpuestos.setForeground(new java.awt.Color(255, 255, 255));
         txtImpuestos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, -1));
+        txtImpuestos.setBorder(null);
+        txtImpuestos.setFocusable(false);
+        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, 30));
 
+        txtUtilidad.setBackground(new java.awt.Color(55, 55, 255));
         txtUtilidad.setEditable(false);
         txtUtilidad.setFont(new java.awt.Font("Arial", 0, 14));
+        txtUtilidad.setForeground(new java.awt.Color(255, 255, 255));
         txtUtilidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 110, -1));
+        txtUtilidad.setBorder(null);
+        txtUtilidad.setFocusable(false);
+        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 110, 30));
 
+        txtDescuento2.setBackground(new java.awt.Color(55, 55, 255));
         txtDescuento2.setEditable(false);
         txtDescuento2.setFont(new java.awt.Font("Arial", 0, 14));
+        txtDescuento2.setForeground(new java.awt.Color(255, 255, 255));
         txtDescuento2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 110, -1));
+        txtDescuento2.setBorder(null);
+        txtDescuento2.setFocusable(false);
+        jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 110, 30));
 
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("el precio siguiente no incluye los demas descuentos");
@@ -376,36 +359,71 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel27.setText("Nota :El descuento que aparece es solo por articulo  ");
         jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 340, 20));
 
-        jTabbedPane1.addTab("Detalles", jPanel5);
-
-        jPanel3.setOpaque(false);
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnAddComp.setText("+");
-        jPanel3.add(btnAddComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 40, 20));
-
-        btnDelComp.setText("-");
-        jPanel3.add(btnDelComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, 20));
-
-        tblPaquetes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "codigo", "descripcion", "cantidad"
+        txtCosto.setEditable(false);
+        txtCosto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCosto.setToolTipText("Solo numeros");
+        txtCosto.setFont(new java.awt.Font("Arial", 0, 14));
+        txtCosto.setHighlighter(null);
+        txtCosto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCostoKeyReleased(evt);
             }
-        ));
-        jScrollPane2.setViewportView(tblPaquetes);
-        tblPaquetes.getColumnModel().getColumn(0).setMaxWidth(80);
-        tblPaquetes.getColumnModel().getColumn(1).setMaxWidth(250);
-        tblPaquetes.getColumnModel().getColumn(2).setMaxWidth(60);
+        });
+        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 140, 30));
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
+        txtPrecioTotal.setEditable(false);
+        txtPrecioTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtPrecioTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrecioTotal.setToolTipText("Solo numeros");
+        txtPrecioTotal.setFont(new java.awt.Font("Arial", 0, 14));
+        txtPrecioTotal.setHighlighter(null);
+        txtPrecioTotal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPrecioTotalKeyReleased(evt);
+            }
+        });
+        jPanel5.add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 140, 30));
 
-        jTabbedPane1.addTab("Componentes", jPanel3);
+        txtDesctoPorcentaje.setEditable(false);
+        txtDesctoPorcentaje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtDesctoPorcentaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDesctoPorcentaje.setToolTipText("Solo numeros");
+        txtDesctoPorcentaje.setFont(new java.awt.Font("Arial", 0, 14));
+        txtDesctoPorcentaje.setHighlighter(null);
+        txtDesctoPorcentaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDesctoPorcentajeKeyReleased(evt);
+            }
+        });
+        jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, 30));
 
-        jPanel6.setOpaque(false);
-        jTabbedPane1.addTab("Movimientos", jPanel6);
+        txtImpuestosPorc.setEditable(false);
+        txtImpuestosPorc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtImpuestosPorc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtImpuestosPorc.setToolTipText("Solo numeros");
+        txtImpuestosPorc.setFont(new java.awt.Font("Arial", 0, 14));
+        txtImpuestosPorc.setHighlighter(null);
+        txtImpuestosPorc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtImpuestosPorcKeyReleased(evt);
+            }
+        });
+        jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, 30));
+
+        txtUtilidadPorc.setEditable(false);
+        txtUtilidadPorc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtUtilidadPorc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUtilidadPorc.setToolTipText("Solo numeros");
+        txtUtilidadPorc.setFont(new java.awt.Font("Arial", 0, 14));
+        txtUtilidadPorc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUtilidadPorcKeyReleased(evt);
+            }
+        });
+        jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, 30));
+
+        jTabbedPane1.addTab("Precio", jPanel5);
 
         txtComentarios.setColumns(25);
         txtComentarios.setRows(20);
@@ -435,41 +453,54 @@ public class Articulo extends javax.swing.JInternalFrame {
         omoikane.principal.Articulos.modificar(this);
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void txtImpuestosPorcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtImpuestosPorcFocusLost
-        omoikane.principal.Articulos.recalcularCampos(this);
-    }//GEN-LAST:event_txtImpuestosPorcFocusLost
+    private void txtPrecioTotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioTotalKeyReleased
+        // TODO add your handling code here:
+        omoikane.principal.Articulos.recalcularUtilidad(this);
+}//GEN-LAST:event_txtPrecioTotalKeyReleased
 
-    private void txtCostoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCostoFocusLost
+    private void txtDesctoPorcentajeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDesctoPorcentajeKeyReleased
+        // TODO add your handling code here:
         omoikane.principal.Articulos.recalcularCampos(this);
-    }//GEN-LAST:event_txtCostoFocusLost
+    }//GEN-LAST:event_txtDesctoPorcentajeKeyReleased
 
-    private void txtUtilidadPorcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUtilidadPorcFocusLost
+    private void txtImpuestosPorcKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImpuestosPorcKeyReleased
+        // TODO add your handling code here:
         omoikane.principal.Articulos.recalcularCampos(this);
-    }//GEN-LAST:event_txtUtilidadPorcFocusLost
+    }//GEN-LAST:event_txtImpuestosPorcKeyReleased
 
-    private void txtDesctoPorcentajeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDesctoPorcentajeFocusLost
+    private void txtUtilidadPorcKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUtilidadPorcKeyReleased
+        // TODO add your handling code here:
         omoikane.principal.Articulos.recalcularCampos(this);
-    }//GEN-LAST:event_txtDesctoPorcentajeFocusLost
+    }//GEN-LAST:event_txtUtilidadPorcKeyReleased
 
-    private void txtPrecio2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecio2FocusLost
-        omoikane.principal.Articulos.recalcularUtilidad(this, txtPrecio2);
-    }//GEN-LAST:event_txtPrecio2FocusLost
+    private void txtCostoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCostoKeyReleased
+        // TODO add your handling code here:
+        omoikane.principal.Articulos.recalcularCampos(this);
+    }//GEN-LAST:event_txtCostoKeyReleased
 
     public void setEditable(boolean editable)
     {
+        this.tblCodigos.setEnabled(editable);
         this.txtCodigo.setEditable(editable);
-        this.txtIDLinea.setEditable(editable);
-        this.txtIDGrupo.setEditable(editable);
-        this.txtDescripcion.setEditable(editable);
-        this.getTxtPrecio2().setEditable(editable);
-        this.txtUnidad.setEnabled(editable);
+        this.txtComentarios.setEditable(editable);
         this.txtCosto.setEditable(editable);
-        this.getTxtUtilidadPorc().setEditable(editable);
-        this.txtPrecio.setEditable(editable);
+        this.txtDescripcion.setEditable(editable);
+        this.txtDesctoPorcentaje.setEditable(editable);
+        this.txtDescuento2.setEditable(editable);
+        this.txtIDGrupo.setEditable(editable);
+        this.txtIDLinea.setEditable(editable);
+        this.txtImpuestos.setEditable(editable);
+        this.txtImpuestosPorc.setEditable(editable);
+        this.txtPrecioTotal.setEditable(editable);
+        this.txtUnidad.setEnabled(editable);
+        this.txtUtilidad.setEditable(editable);
+        this.txtUtilidadPorc.setEditable(editable);
+
     }
     public void setModoDetalles()
     {
         setEditable(false);
+        this.txtExistencias.setBorder(null);
         this.btnGuardar.setVisible(false);
         this.btnModificar.setVisible(false);
 
@@ -477,6 +508,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     public void setModoModificar()
     {
         setEditable(true);
+        this.txtExistencias.setBorder(null);
         this.btnGuardar.setVisible(false);
         this.btnModificar.setVisible(true);
     }
@@ -484,15 +516,16 @@ public class Articulo extends javax.swing.JInternalFrame {
     {
         setEditable(true);
         this.txtExistencias.setEditable(true);
+        this.txtExistencias.setFocusable(true);
+        this.txtExistencias.setBackground(new Color(240,240,240));
+        this.txtExistencias.setForeground(Color.BLACK);
         this.btnModificar.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCode;
-    private javax.swing.JButton btnAddComp;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnDelCode;
-    private javax.swing.JButton btnDelComp;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
@@ -522,22 +555,18 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tblCodigos;
-    private javax.swing.JTable tblPaquetes;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextArea txtComentarios;
-    private javax.swing.JTextField txtCosto;
+    private javax.swing.JFormattedTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtDesctoPorcentaje;
+    private javax.swing.JFormattedTextField txtDesctoPorcentaje;
     private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtDescuento2;
     private javax.swing.JTextField txtExistencias;
@@ -547,13 +576,13 @@ public class Articulo extends javax.swing.JInternalFrame {
     public javax.swing.JTextField txtIDLinea;
     public javax.swing.JTextField txtIDLineaDes;
     private javax.swing.JTextField txtImpuestos;
-    private javax.swing.JTextField txtImpuestosPorc;
+    private javax.swing.JFormattedTextField txtImpuestosPorc;
     private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtPrecio2;
+    private javax.swing.JFormattedTextField txtPrecioTotal;
     private javax.swing.JTextField txtUModificacion;
     private javax.swing.JComboBox txtUnidad;
     private javax.swing.JTextField txtUtilidad;
-    private javax.swing.JTextField txtUtilidadPorc;
+    private javax.swing.JFormattedTextField txtUtilidadPorc;
     // End of variables declaration//GEN-END:variables
 
     public String       getTxtCodigo()              {return txtCodigo.getText();}
@@ -577,7 +606,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     public JTextField   getTxtDescuento2()          {return txtDescuento2;}
     public JTextField   getTxtImpuestos3()          {return txtImpuestos;}
     public JTextField   getTxtImpuestosPorc()       {return txtImpuestosPorc;}
-    public JTextField   getTxtPrecio2()             {return txtPrecio2;}
+    public JTextField   getTxtPrecioTotal()         {return txtPrecioTotal;}
     public JTextField   getTxtUtilidadPorc()        {return txtUtilidadPorc;}
     public JTextField   getTxtUtilidad()            {return txtUtilidad;}
     public void setTxtCodigo(String txtCodigo) {this.txtCodigo.setText(txtCodigo);}
@@ -593,17 +622,15 @@ public class Articulo extends javax.swing.JInternalFrame {
     public void setTxtCosto(String costo)             { txtCosto.setText(costo); }
     public void setTxtExistencias(String existencias) { txtExistencias.setText(existencias); }
     public void setTxtPrecio(String precio) {this.txtPrecio.setText(precio);}
-    public void setTxtImpuestos(String txt){this.getTxtPrecio2().setText(txt);}
-    public void setTxtUtilidadPorc(String utilidad)       { getTxtUtilidadPorc().setText(utilidad); }
-    public void setTxtDesctoPorcentaje(javax.swing.JTextField txtDestoPorcentaje) {this.txtDesctoPorcentaje = txtDestoPorcentaje;}
+    public void setTxtPrecioTotal(String precio) {this.txtPrecioTotal.setText(precio);}
+    public void setTxtImpuestos(String txt){this.getTxtPrecioTotal().setText(txt);}
+    public void setTxtDesctoPorcentaje(String txtDestoPorcentaje) {this.txtDesctoPorcentaje.setText(txtDestoPorcentaje);}
     public void setTxtDescuento2(javax.swing.JTextField txtDescuento2) {this.txtDescuento2 = txtDescuento2;}
     public void setTxtDescuento3(String descuento) {this.txtDescuento2.setText(descuento);}
     public void setTxtImpuestos3(javax.swing.JTextField txtImpuestos3) {this.txtImpuestos = txtImpuestos3;}
     public void setTxtImpuestos4(String txtImpuestos3) {this.txtImpuestos.setText(txtImpuestos3);}
-    public void setTxtImpuestosPorc(javax.swing.JTextField txtImpuestosPorc) {this.txtImpuestosPorc = txtImpuestosPorc;}
-    public void setTxtPrecio2(javax.swing.JTextField txtPrecio2) {this.txtPrecio2 = txtPrecio2;}
-    public void setTxtPrecio3(String precio) {this.txtPrecio2.setText(precio) ;}
-    public void setTxtUtilidadPorc(javax.swing.JTextField txtUtilidadPorc) {this.txtUtilidadPorc = txtUtilidadPorc;}
+    public void setTxtImpuestosPorc(String txtImpuestosPorc) {this.txtImpuestosPorc.setText(txtImpuestosPorc);}
+    public void setTxtUtilidadPorc(String txtUtilidadPorc) {this.txtUtilidadPorc.setText(txtUtilidadPorc);}
     public void setTxtUtilidadPorcText(String txt) {txtUtilidadPorc.setText(txt);}
     public void setTxtUtilidad(javax.swing.JTextField txtUtilidad) {this.txtUtilidad = txtUtilidad;}
     public void setTxtUtilidad2(String utilidad) {this.txtUtilidad.setText(utilidad);}
@@ -628,3 +655,11 @@ public class Articulo extends javax.swing.JInternalFrame {
       fondo = tmp;
     }
 }
+
+/*
+ costo.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                costoCaretUpdate(evt);
+            }
+        });
+*/

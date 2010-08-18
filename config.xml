@@ -20,8 +20,8 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <cacheSTable atras='3' adelante='5'/>
-    <URLServidor>http://5.236.200.140:5542</URLServidor>
-    <URLMySQL>jdbc:mysql://5.236.200.140/omoikane</URLMySQL>
+    <URLServidor>http://localhost:5542</URLServidor>
+    <URLMySQL>jdbc:mysql://localhost/omoikane</URLMySQL>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
     <scannerActivo>false</scannerActivo>

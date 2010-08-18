@@ -10,6 +10,14 @@
  */
 package omoikane.formularios;
 
+import java.util.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.awt.*;
+import javax.swing.table.*;
+import javax.swing.*;
+import javax.swing.event.*;
+import omoikane.sistema.*;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
