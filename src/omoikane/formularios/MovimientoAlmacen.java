@@ -64,6 +64,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         descripcion = new javax.swing.JTextField();
@@ -84,7 +85,9 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         btnEliminarRenglon = new javax.swing.JButton();
         fecha = new org.jdesktop.swingx.JXDatePicker();
-        btnCatalogo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
 
         setTitle("Movimiento de almacén");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,6 +109,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, -1, 30));
         getContentPane().add(folio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 80, -1));
 
+        tablaPrincipal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tablaPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -122,12 +126,13 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaPrincipal.setToolTipText("[ F1 ] catalogo de articulos");
+        tablaPrincipal.setCellSelectionEnabled(true);
+        tablaPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaPrincipal.setGridColor(new java.awt.Color(51, 255, 255));
+        tablaPrincipal.setRowHeight(25);
         tablaPrincipal.setShowHorizontalLines(false);
-        tablaPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaPrincipalMouseClicked(evt);
-            }
-        });
+        tablaPrincipal.setSurrendersFocusOnKeystroke(true);
         jScrollPane1.setViewportView(tablaPrincipal);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 820, 280));
@@ -210,21 +215,11 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         getContentPane().add(btnEliminarRenglon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
         fecha.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
-        fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaActionPerformed(evt);
-            }
-        });
         getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 160, -1));
 
-        btnCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
-        btnCatalogo.setText("Catálogo de artículos [F2]");
-        btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCatalogoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 200, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel3.setText("[ F1 ] catalogo de articulos");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 190, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -274,6 +269,7 @@ public void setModoNuevo()
 {
     this.setTitle("Registrar nuevo movimiento de almacén");
     this.lblTitulo.setText("Nuevo movimiento de almacén");
+    this.folio.setText("0");
     //this.btnEliminar.setVisible(false);
     //this.btnModificar.setVisible(false);
     ((DefaultTableModel)this.tablaPrincipal.getModel()).addRow(new Object[] {});
@@ -283,7 +279,7 @@ public void setModoDetalles()
     this.setTitle("Detalles del movimiento de almacén " + ID);
     this.lblTitulo.setText("Detalles del movimiento");
     this.btnEliminarRenglon.setVisible(false);
-    this.btnCatalogo.setVisible(false);
+    //this.btnCatalogo.setVisible(false);
     this.btnNuevo.setVisible(false);
     //this.btnModificar.setVisible(false);
     this.folio.setEditable(false);
@@ -309,11 +305,6 @@ public void setModoDetalles()
         }
     }//GEN-LAST:event_btnEliminarRenglonActionPerformed
 
-    private void tablaPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPrincipalMouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_tablaPrincipalMouseClicked
-
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
         omoikane.principal.Almacenes.guardarMovimiento(this);
@@ -323,14 +314,6 @@ public void setModoDetalles()
         // TODO add your handling code here:
         omoikane.principal.Almacenes.lanzarImprimirMovimiento(this);
     }//GEN-LAST:event_btnImprimirActionPerformed
-
-    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fechaActionPerformed
-
-    private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCatalogoActionPerformed
 
     public void paintComponent(Graphics g)
     {
@@ -355,7 +338,6 @@ public void setModoDetalles()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField almacen;
-    private javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEliminarRenglon;
     private javax.swing.JButton btnImprimir;
@@ -364,6 +346,8 @@ public void setModoDetalles()
     private org.jdesktop.swingx.JXDatePicker fecha;
     private javax.swing.JTextField folio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -376,6 +360,8 @@ public void setModoDetalles()
     private javax.swing.JComboBox tipoMovimiento;
     private javax.swing.JTextField txtSumaTotal;
     // End of variables declaration//GEN-END:variables
+
+    
 
     public void calculaSumas()
     {

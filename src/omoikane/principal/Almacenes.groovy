@@ -215,7 +215,7 @@ class Almacenes {
             if(fechaHasta == "" || fechaDesde == ""){
                 Dialogos.lanzarAlerta("El intervalo de fechas para filtrar resultados está incompleto, completelo o vacíelo para dejar de leer este mensaje.")
                 fechaDesde = ""; fechaHasta = ""
-            } else {whereFecha = " AND fecha >= '$fechaDesde' AND fecha <= '$fechaHasta'"}
+            } else {whereFecha = " AND fecha >= '$fechaDesde' AND fecha <= '$fechaHasta' ORDER BY fecha DESC"}
         }
         //Comienza la población
         def dataTabMovs = tablaMovs.getModel()
@@ -242,19 +242,14 @@ class Almacenes {
     {
         if(cerrojo(PMA_MODIFICARMOVALMACEN)){
         def nvo = (new omoikane.formularios.MovimientoAlmacen())
-        nvo.cellCodigo.component.keyReleased = { def src = it; if(it.getKeyCode()==it.VK_F1) { Thread.start { src.getSource().setText(Articulos.lanzarDialogoCatalogo()); src.getSource().requestFocus() } } }
+        nvo.cellCodigo.component.keyReleased = { def src = it; if(it.getKeyCode()==it.VK_F1) { Thread.start { src.getSource().setText(Articulos.lanzarDialogoCatalogo());src.getSource().requestFocus()} } }
         nvo.setVisible(true);
         nvo.setAlmacen(IDAlmacen as String)
         Herramientas.In2ActionX(nvo, KeyEvent.VK_ESCAPE, "cerrar"   ) { nvo.btnCerrar.doClick()   }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F12   , "eliminar" ) { nvo.btnEliminarRenglon.doClick() }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F5    , "nuevo"    ) { nvo.btnNuevo.doClick() }
         Herramientas.In2ActionX(nvo, KeyEvent.VK_F8    , "imprimir" ) { nvo.btnImprimir.doClick() }
-        Herramientas.In2ActionX(nvo, KeyEvent.VK_F1    , "catalogo" ) { nvo.btnCatalogo.doClick() }
-        Herramientas.In2ActionX(nvo, KeyEvent.VK_ENTER   , "nada" ) { }
-        Herramientas.In2ActionX(nvo, KeyEvent.VK_F3    , "nada" ) {}
-        Herramientas.In2ActionX(nvo, KeyEvent.VK_F4    , "nada" ) {}
-        Herramientas.In2ActionX(nvo, KeyEvent.VK_F6    , "nada") { }
-        Herramientas.In2ActionX(nvo, KeyEvent.VK_F7    , "nada" ) { }
+        //Herramientas.In2ActionX(nvo, KeyEvent.VK_F1    , "catalogo" ) { nvo.btnCatalogo.doClick() }
         Herramientas.panelCatalogo(nvo)
         Herramientas.iconificable(nvo)
         escritorio.getPanelEscritorio().add(nvo)
@@ -305,7 +300,7 @@ class Almacenes {
             Herramientas.verificaCampos{
                 Herramientas.verificaCampo(formMovimiento.getAlmacen(),Herramientas.numero,"Almacen"+Herramientas.error2)
                 Herramientas.verificaCampo(formMovimiento.getDescripcion(),Herramientas.texto,"Descripcion"+Herramientas.error1)
-                Herramientas.verificaCampo(formMovimiento.getFolio(),Herramientas.numero,"Numero"+Herramientas.error2)
+                Herramientas.verificaCampo(formMovimiento.getFolio(),Herramientas.numero,"Folio"+Herramientas.error2)
                 try {
                     def tipo              = formMovimiento.getTipoMovimiento()
                     def almacen           = formMovimiento.getAlmacen()
@@ -318,6 +313,19 @@ class Almacenes {
                     //def tablaPrincipal    = tabla2xml(tabPrincipalArray)
                     try {
                         def serv = Nadesico.conectar()
+
+                    def tabPrincipalArray2 = []
+                    for(int i = 0; i < tabPrincipalArray.size(); i++)
+                    {
+                        if(tabPrincipalArray.get(i).get(0)== null || tabPrincipalArray.get(i).get(1)== null || tabPrincipalArray.get(i).get(2)== null || tabPrincipalArray.get(i).get(3)== null || tabPrincipalArray.get(i).get(4)== null)
+                        {}
+                        else{
+                            println tabPrincipalArray.get(i)
+                            tabPrincipalArray2.add(tabPrincipalArray.get(i))
+                        }
+                    }
+                    println tabPrincipalArray2 
+                    tabPrincipalArray = tabPrincipalArray2
                         def msj = serv.addMovimiento([almacen:almacen, fecha:fecha, descripcion:descripcion, tipo:tipo, granTotal:granTotal, folio:folio],tabPrincipalArray)
                         Dialogos.lanzarAlerta(" "+msj)
                         formMovimiento.dispose()
