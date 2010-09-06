@@ -29,6 +29,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import omoikane.sistema.Herramientas;
 import javax.swing.JOptionPane;
+import java.text.*;
 
 /**
  *
@@ -53,6 +54,10 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
         this.generarFondo(this);
         // this.txtFecha.setDate(new java.util.Date());
         Herramientas.centrarVentana(this);
+        Calendar calendario = Calendar.getInstance();
+        this.dateHasta.setDate(calendario.getTime());
+        calendario.add(Calendar.DAY_OF_MONTH, -90);
+        this.dateDesde.setDate(calendario.getTime());
     }
 
     @Override
@@ -94,8 +99,10 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFacturas = new javax.swing.JTable();
         jProgressBar1 = new javax.swing.JProgressBar();
+        dateDesde = new org.jdesktop.swingx.JXDatePicker();
+        dateHasta = new org.jdesktop.swingx.JXDatePicker();
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Facturación");
 
@@ -119,9 +126,6 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyTyped(evt);
             }
         });
 
@@ -154,13 +158,10 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
 
         tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "Fecha", "Factura", "Cancelada", "Ventas", "Total"
             }
         ));
         tblFacturas.setFocusable(false);
@@ -173,22 +174,26 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnDetalles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNueva)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -201,11 +206,14 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDetalles)
@@ -230,6 +238,8 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
 
     private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
         // TODO add your handling code here:
+       
+        
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             this.txtBusqueda.selectAll();
         }
@@ -274,23 +284,21 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
         */
 }//GEN-LAST:event_txtBusquedaKeyPressed
 
-    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
-        // TODO add your handling code here:
-        // preBuscar();
-}//GEN-LAST:event_txtBusquedaKeyTyped
-
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
-        omoikane.principal.Facturas.abrirFactura(false);
+        JInternalFrame wnd = (JInternalFrame) omoikane.principal.Facturas.lanzarFacturaDetalles(this);
+        wnd.addInternalFrameListener(iframeAdapter);
 }//GEN-LAST:event_btnDetallesActionPerformed
 
     private void btnNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaActionPerformed
-        omoikane.principal.Facturas.abrirFactura(true);
+      JInternalFrame wnd = (JInternalFrame) omoikane.principal.Facturas.lanzarFacturaNueva();
+        wnd.addInternalFrameListener(iframeAdapter);
 }//GEN-LAST:event_btnNuevaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         if(JOptionPane.showConfirmDialog(null, "¿Realmente desea cancelar esta factura : ?", "seguro...", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-        omoikane.principal.Facturas.cancelarFacturaDesdeLista();
-       }     
+        omoikane.principal.Facturas.cancelarFacturaDesdeLista(this);
+        reset();
+       }
 }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
@@ -310,6 +318,8 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnNueva;
+    private org.jdesktop.swingx.JXDatePicker dateDesde;
+    private org.jdesktop.swingx.JXDatePicker dateHasta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JProgressBar jProgressBar1;
@@ -318,4 +328,51 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
     public javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 
+
+
+    public void reset()
+    {
+        String[] columnas = {"Fecha", "Factura","Cancelada","Ventas","Total"};
+        this.tblFacturas.setModel(new DefaultTableModel());
+        ((DefaultTableModel)this.tblFacturas.getModel()).setColumnIdentifiers(columnas);
+        omoikane.principal.Facturas.poblarListadoFacturas(this);
+        this.txtBusqueda.requestFocus();
+
+    }
+
+    public String getBusqueda(){
+        String resultado = "";
+                resultado = this.txtBusqueda.getText();
+                return resultado;
+
+    }
+
+    public String getFechaDesde(){
+        String fechaDesde     = "";
+        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+        if(this.dateDesde.getDate() != null)
+        {
+            try {
+                fechaDesde = sdf.format(this.dateDesde.getDate());
+            } catch(Exception e) { JOptionPane.showMessageDialog(null, "Error en el registro: Fecha invalida"); }
+        }
+        fechaDesde=fechaDesde+" 00:00:00";
+        return fechaDesde ;
+    }
+
+    public String getFechaHasta(){
+        String fechaHasta     = "";
+        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+        if(this.dateHasta.getDate() != null)
+        {
+            try {
+                fechaHasta = sdf.format(this.dateHasta.getDate());
+            } catch(Exception e) { JOptionPane.showMessageDialog(null, "Error en el registro: Fecha invalida"); }
+        }
+        fechaHasta=fechaHasta+" 23:59:59";
+        return fechaHasta ;
+    }
+
+    public InternalFrameAdapter iframeAdapter = new InternalFrameAdapter()
+    {public void internalFrameClosed(InternalFrameEvent e) { reset(); }};
 }

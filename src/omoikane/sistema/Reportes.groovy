@@ -8,6 +8,8 @@
 
 package omoikane.sistema
 
+import omoikane.principal.*
+import omoikane.sistema.*
 import java.net.*;
 import java.io.*;
 import net.sf.jasperreports.engine.*;
@@ -23,7 +25,7 @@ import net.sf.jasperreports.engine.data.JRTableModelDataSource
 
 class Reporte {
     JasperPrint jp;
-
+    static def escritorio   = omoikane.principal.Principal.escritorio
     Reporte (String reporteJasper, params = [:])
     {
         try {
@@ -67,22 +69,29 @@ class Reporte {
     }
     def lanzarPreview()
     {
-        int ancho = 750
-        int alto  = 500
-        JFrame fj = new JFrame();
-        fj.add(new net.sf.jasperreports.view.JRViewer(jp));
+        //int ancho = 750
+        //int alto  = 500
+        def fj = new omoikane.formularios.Reporte()
+        fj.Panel.add(new net.sf.jasperreports.view.JRViewer(jp));
+        Herramientas.iconificable(fj)
+            fj.setVisible(true)
+            escritorio.getPanelEscritorio().add(fj)
+            fj.toFront()
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension labelSize = new Dimension(ancho,alto)
+        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //Dimension labelSize = new Dimension(ancho,alto)
 
-        int x = screenSize.width/2 - (labelSize.width/2)
-        int y = screenSize.height/2 - (labelSize.height/2)
+        //int x = screenSize.width/2 - (labelSize.width/2)
+        //int y = screenSize.height/2 - (labelSize.height/2)
 
-        fj.setLocation(x+90, y+90);
+        //fj.setLocation(x+90, y+90);
 
-        fj.pack();
-        fj.setSize(ancho,alto)
-        fj.setVisible(true);
+        //fj.pack();
+       // fj.setSize(ancho,alto)
+
+
+
+
 
     }
 
