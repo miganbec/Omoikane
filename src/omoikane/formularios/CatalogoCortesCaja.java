@@ -74,7 +74,7 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
 
-        setQueryTable("SELECT cortes.id_corte,cortes.fecha_hora,cajas.descripcion,cortes.desde,cortes.hasta,cortes.impuestos,cortes.total FROM cortes,cajas WHERE cortes.id_almacen=1 AND cortes.id_caja=cajas.id_caja");
+        setQueryTable("SELECT cortes.id_corte,cortes.fecha_hora,cajas.descripcion,cortes.desde,cortes.hasta,cortes.impuestos,cortes.total FROM cortes,cajas WHERE cortes.id_almacen=1 AND cortes.id_caja=cajas.id_caja ORDER BY cortes.fecha_hora desc");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);

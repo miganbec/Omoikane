@@ -88,6 +88,8 @@ class Reporte {
 
         //fj.pack();
        // fj.setSize(ancho,alto)
+        fj.setAlwaysOnTop(true);
+        //fj.setAlwaysOnTop(false);
 
 
 

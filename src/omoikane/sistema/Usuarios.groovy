@@ -35,8 +35,16 @@ public class Usuarios {
     }
     public static def identificaPersona() {
             def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
-            //ef fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
-            //def serv         = Nadesico.conectar()
+            def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
+            def serv         = Nadesico.conectar()
+            def respuesta    = serv.checkFingerPrint(fingerPrint)
+            //def respuesta = [ID:20,huella:"",nombre:"adan cu",sucursales:["1":4]]
+
+
+
+
+            //def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
+            def serv         = Nadesico.conectar()
             //def respuesta    = serv.checkFingerPrint(fingerPrint)
             def respuesta = [ID:20,huella:"",nombre:"adan cu",sucursales:["1":4]]
             if(respuesta != 0) {
@@ -45,7 +53,8 @@ public class Usuarios {
                 respuesta = [:]
                 respuesta.cerrojo= { return false; }
             }
-            //serv.desconectar()
+            serv.desconectar()
+
             respuesta
     }
     //Esta función sirve para dar un acceso especial a un usuario, por ejemplo para cancelaciones

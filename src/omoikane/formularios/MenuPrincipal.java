@@ -89,6 +89,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jSeparator5 = new javax.swing.JSeparator();
         btnDetallesVentas = new javax.swing.JButton();
         btnFacturas1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setIconifiable(true);
         setTitle("Menú Principal");
@@ -166,7 +167,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnAlmacenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 210, 70));
 
-        btnMovAlmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnMovAlmacen.setFont(new java.awt.Font("Arial", 0, 14));
         btnMovAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-black-box-128x128.png"))); // NOI18N
         btnMovAlmacen.setText("<html>Movimientos<br>Almacén</html>");
         btnMovAlmacen.setIconTextGap(-25);
@@ -191,7 +192,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnPreferencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 200, 100));
 
-        btnUsuarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnUsuarios.setFont(new java.awt.Font("Arial", 0, 14));
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxy-128x128.png"))); // NOI18N
         btnUsuarios.setText("Usuarios     ");
         btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -318,6 +319,14 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnFacturas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 200, 70));
 
+        jButton1.setText("Menú dinámico");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -416,6 +425,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         System.out.println(timer.getElapsedTime());
     }//GEN-LAST:event_btnFacturas1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new omoikane.menudinamico.MenuModulos();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -454,6 +468,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPreferencias;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnVender;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

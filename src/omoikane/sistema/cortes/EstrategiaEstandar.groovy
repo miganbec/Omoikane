@@ -30,8 +30,10 @@ public class EstrategiaEstandar implements EstrategiasCorte {
     {
         try {
             def serv = Nadesico.conectar()
+
             def newCorte = serv.addCorte(IDCaja, IDAlmacen, subtotal, impuestos, descuento, total,
                                    nVentas, desde, hasta, depositos, retiros)
+
             serv.desconectar()
 
             omoikane.sistema.Dialogos.lanzarAlerta(newCorte.mensaje)

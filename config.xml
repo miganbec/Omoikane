@@ -15,13 +15,17 @@
         puerto paralelo      linux : /dev/lpX       windows: LPTX:
         puerto serial a usb  linux : /dev/ttyUSBX   windows: COMX
         X es el valor del puerto en el que se encuentra
+	
+	01/09/2010
+	- tipoCorte
+		1: Estándar, 2: Doble
 -->
 
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <cacheSTable atras='3' adelante='5'/>
-    <URLServidor>http://localhost:5542</URLServidor>
-    <URLMySQL>jdbc:mysql://localhost/omoikane</URLMySQL>
+    <URLServidor>http://nadesico:5542</URLServidor>
+    <URLMySQL>jdbc:mysql://nadesico/omoikane</URLMySQL>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
     <scannerActivo>false</scannerActivo>
@@ -32,4 +36,5 @@
     <fondoBlur>false</fondoBlur>
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
+    <tipoCorte>1</tipoCorte>
 </document>

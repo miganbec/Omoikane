@@ -90,7 +90,6 @@ public class ScrollableTableModel extends AbstractTableModel {
             return this.rowCount
 
        }
-
 	/**
 	 * <p>Returns the value for the cell at columnIndex
 	 * and rowIndex</p>

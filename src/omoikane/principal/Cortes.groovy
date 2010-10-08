@@ -120,8 +120,10 @@ class Cortes {
             SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             def fecha = sdf.format(mov.fecha_hora)
             fecha= " fecha_hora = '$fecha' "
-            def mov2  = puerto.getCorteWhereFrom(fecha," cortes_dual ")
-            lastMovID2=mov2.id_corte
+            if(corteDualActivo()) {
+                def mov2  = puerto.getCorteWhereFrom(fecha," cortes_dual ")
+                lastMovID2=mov2.id_corte
+            }
             form.ID = IDE
             form.setTxtDescuento     (mov.descuentos as String)
             form.setTxtDesde         (sdf.format(mov.desde) as String)
@@ -152,11 +154,15 @@ class Cortes {
         def comprobante = new Comprobantes()
         comprobante.Corte(ID)//imprimir ticket
         comprobante.probar()//imprimir ticket
-        comprobante.Corte(lastMovID2, "cortes_dual") //imprimir corte
-        comprobante.probar()//imprimir ticket
+        if(corteDualActivo()) {
+            comprobante.Corte(lastMovID2, "cortes_dual") //imprimir corte
+            comprobante.probar()//imprimir ticket
+        }
     }
 
-
+    static def corteDualActivo() {
+        return (Principal.tipoCorte == cortes.ContextoCorte.TIPO_DUAL);
+    }
 
     static def lanzarVentanaCorteSucursal(resultadoCorte,IDAlmacen, IDCorte) {
         if(cerrojo(PMA_TOTALVENTASUCURSAL)) {

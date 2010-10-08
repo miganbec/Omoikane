@@ -29,16 +29,17 @@ public class ScanMan implements SerialPortEventListener
     public InputStream in7;
     public OutputStream out;
     public CommPort commPort
-    def handlerScan = { throw new Exception("No se definió handler alguno para ScanMan (Manejador de escáner serial)") }
+    public java.awt.Robot robot = new java.awt.Robot();
+    //def handlerScan = { throw new Exception("No se definió handler alguno para ScanMan (Manejador de escáner serial)") }
 
     public ScanMan()
     {
         super();
     }
 
-    public setHandler(claus) {
-        this.handlerScan = claus
-    }
+    //public setHandler(claus) {
+    //    this.handlerScan = claus
+    //}
     public void finalize() { disconnect() }
     public void disconnect() {
        
@@ -85,7 +86,9 @@ public class ScanMan implements SerialPortEventListener
             }
         }
     }
-
+    public void handleScan(String scanned) {
+        throw new Exception("No se definió handler alguno para ScanMan (Manejador de escáner serial)")
+    }
     /**
      * Handles the input coming from the serial port. A new line character
      * is treated as the end of a block in this example.
@@ -114,7 +117,7 @@ public class ScanMan implements SerialPortEventListener
                     println "se agregó una letra a la recolección"
                 }
                 println "se llamará al handler de la cadena completa del escáner"
-                handlerScan(new String(buffer,0,len))
+                handleScan(new String(buffer,0,len))
                 println "terminó la llamada al handler"
             }
             catch ( Exception e )

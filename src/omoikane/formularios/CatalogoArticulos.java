@@ -91,7 +91,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                     jTable1.setModel(modeloTabla);
                     cargaProgressBar.setIndeterminate(false);
 
-                    Herramientas.setColumnsWidth(jTable1, widths);
+                    Herramientas.setColumnsWidth(jTable1, 964, widths);
 
                 }
             }.start();

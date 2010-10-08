@@ -45,5 +45,10 @@ public class Main {
         });
         vp.setVisible(true);
     }
-
+    public static void lanzarVentanaEstandar() {
+        VentanaPrincipal  vp = new VentanaPrincipal();
+        panelReportes pvl= new panelReportes();
+        vp.getContentPane().add(pvl);
+        vp.setVisible(true);
+    }
 }

@@ -75,32 +75,13 @@ public class Principal {
             menuPrincipal.iniciar()
 
             if(scannerActivo){
-                scanMan = new ScanMan()
+                scanMan = new DefaultScanMan()
                 try {
                     println "comienza intento de conexión"
                     scanMan.connect(Principal.scannerPort, Principal.scannerBaudRate)
                     println "fin intento de conexión"
                 } catch(Exception ex2) { Dialogos.error(ex2.getMessage(), ex2) }
 
-
-                def robot = new java.awt.Robot()
-                scanMan.setHandler {
-                    println "iniciando handler antes de each"
-                    it.each {
-                        if((it as int)==13) { return null }
-                        println "caracter:"+it
-                        robot.keyPress(it as int);
-                    }
-                    println "después de each"
-
-                    try {
-                        println "supuesto enter"
-                        robot.keyPress(KeyEvent.VK_ENTER)
-                        robot.keyRelease(KeyEvent.VK_ENTER)
-                        println "fin supuesto enter"
-                    } catch(Exception exc) { Dialogos.error("Error capturar desde escáner de códigos de barras", exc) }
-
-                }
                 toFinalizeTracker.put("scanMan", "")
 
             }
@@ -136,17 +117,18 @@ public class Principal {
             fondoBlur           = Boolean.valueOf(config.fondoBlur[0].text())
             IDAlmacen           = Integer.valueOf(config.idAlmacen[0].text())
             IDCaja              = Integer.valueOf(config.idCaja[0].text())
-            puertoImpresion     = String.valueOf(config.puertoImpresion[0].text())
+            puertoImpresion     = String .valueOf(config.puertoImpresion[0].text())
             impresoraActiva     = Boolean.valueOf(config.impresoraActiva[0].text())
-            puertoBascula       = String.valueOf(config.puertoBascula[0].text())
-            URLMySQL            = String.valueOf(config.URLMySQL[0].text())
+            puertoBascula       = String .valueOf(config.puertoBascula[0].text())
+            URLMySQL            = String .valueOf(config.URLMySQL[0].text())
             scannerBaudRate     = Integer.valueOf(config.ScannerBaudRate[0].text())
-            scannerPort         = String.valueOf(config.ScannerPort[0].text())
+            scannerPort         = String .valueOf(config.ScannerPort[0].text())
             scannerActivo       = Boolean.valueOf(config.scannerActivo[0].text())
             basculaActiva       = Boolean.valueOf(config.basculaActiva[0].text())
+            tipoCorte           = Integer.valueOf(config.tipoCorte[0].text())
         }
 
-    static def iniciarSesion(){
+    static def iniciarSesion() {
         try{
         while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
         escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
