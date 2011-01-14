@@ -7,6 +7,8 @@ package omoikane.sistema;
 
 import java.text.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Octavio
@@ -18,6 +20,12 @@ public class DefaultScanMan extends ScanMan {
         for (char ch=it.first(); ch != CharacterIterator.DONE; ch=it.next()) {
             if(((int)ch)==13) { break; }
             System.out.println ("caracter:"+ch);
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(DefaultScanMan.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
             super.robot.keyPress((int) ch);
         }
         

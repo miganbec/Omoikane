@@ -56,7 +56,7 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
         Herramientas.centrarVentana(this);
         Calendar calendario = Calendar.getInstance();
         this.dateHasta.setDate(calendario.getTime());
-        calendario.add(Calendar.DAY_OF_MONTH, -90);
+        calendario.add(Calendar.DAY_OF_MONTH, -15);
         this.dateDesde.setDate(calendario.getTime());
     }
 
@@ -101,6 +101,7 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         dateDesde = new org.jdesktop.swingx.JXDatePicker();
         dateHasta = new org.jdesktop.swingx.JXDatePicker();
+        jButton1 = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,6 +168,13 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
         tblFacturas.setFocusable(false);
         jScrollPane1.setViewportView(tblFacturas);
 
+        jButton1.setText("Busqueda");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,9 +196,11 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dateDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(48, 48, 48)
+                        .addComponent(dateDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE))
@@ -209,11 +219,12 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDetalles)
@@ -312,6 +323,11 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
             btnCancelar.doClick();
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -320,6 +336,7 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNueva;
     private org.jdesktop.swingx.JXDatePicker dateDesde;
     private org.jdesktop.swingx.JXDatePicker dateHasta;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JProgressBar jProgressBar1;
@@ -356,8 +373,9 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
                 fechaDesde = sdf.format(this.dateDesde.getDate());
             } catch(Exception e) { JOptionPane.showMessageDialog(null, "Error en el registro: Fecha invalida"); }
         }
-        fechaDesde=fechaDesde+" 00:00:00";
+        fechaDesde= "'"+fechaDesde+"'";
         return fechaDesde ;
+
     }
 
     public String getFechaHasta(){
@@ -369,7 +387,7 @@ public class ListadoFacturas extends javax.swing.JInternalFrame {
                 fechaHasta = sdf.format(this.dateHasta.getDate());
             } catch(Exception e) { JOptionPane.showMessageDialog(null, "Error en el registro: Fecha invalida"); }
         }
-        fechaHasta=fechaHasta+" 23:59:59";
+        fechaHasta= "'"+fechaHasta+"'";
         return fechaHasta ;
     }
 

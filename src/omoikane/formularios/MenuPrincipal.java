@@ -285,7 +285,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 200, 70));
 
-        btnGrupos.setFont(new java.awt.Font("Arial", 0, 14));
+        btnGrupos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
         btnGrupos.setText("Grupos");
         btnGrupos.setIconTextGap(-15);
@@ -319,13 +319,14 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnFacturas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 200, 70));
 
-        jButton1.setText("Menú dinámico");
+        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton1.setText("Módulos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 200, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

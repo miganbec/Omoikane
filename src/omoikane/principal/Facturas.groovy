@@ -57,10 +57,11 @@ class Facturas {
 
     static def poblarListadoFacturas(form) {
         def modeloFacturas = form.tblFacturas.getModel()
+        def txtBusqueda=form.getBusqueda()
         def serv = Nadesico.conectar();
         def filaNva= []
         def a = "no"
-        def filasUltimasFacturas = serv.getRows( "SELECT fecha, id_factura, cancelada, total FROM facturas ORDER BY fecha DESC " );
+        def filasUltimasFacturas = serv.getRows( "SELECT fecha, id_factura, cancelada, total FROM facturas WHERE id_factura LIKE '%"+txtBusqueda+"%' AND fecha >="+form.getFechaDesde()+" AND fecha <="+form.getFechaHasta()+" ORDER BY fecha DESC" );
         // println "filasUltimasFacturas: " + filasUltimasFacturas.toString();
         filasUltimasFacturas.each {
             def filasVentas = serv.getRows( "SELECT id_venta FROM ventas_facturadas WHERE id_factura = ${it.id_factura} " );
@@ -71,7 +72,7 @@ class Facturas {
                 strVentas += venta.id_venta;
             }
             if(it.cancelada == true) {a="sí"}else{a="no"}
-            filaNva = [it.fecha, it.id_factura,a,strVentas,it.total]
+            filaNva = [String.format('%tY-%<tm-%<td', it.fecha ), it.id_factura,a,strVentas,it.total]
             modeloFacturas.addRow(filaNva.toArray())
         }
     }
