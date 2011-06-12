@@ -10,6 +10,8 @@ package omoikane.principal;
 public class MainJava {
 	public static void main(String args[])
         {
+
             Principal.main(args);
+
         }
 }

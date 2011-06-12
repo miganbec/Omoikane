@@ -411,6 +411,7 @@ public class FingerUtil implements IStatusEventListener, IImageEventListener, IF
    }      
    public static void inicializar() {
             System.out.println(System.getProperty("user.dir"));
+            System.out.println(System.getProperty("java.library.path"));
             String grFingerNativeDirectory = (new File(".")).getAbsolutePath();
 
             setFingerprintSDKNativeDirectory(grFingerNativeDirectory)

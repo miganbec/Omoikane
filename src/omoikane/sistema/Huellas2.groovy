@@ -14,7 +14,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
-import omoikane.formularios.*;
+import omoikane.formularios.MiniLeerHuella;
 
 
 import com.griaule.grfingerjava.FingerprintImage;

@@ -461,7 +461,7 @@ public class CatalogoCortesCaja extends javax.swing.JInternalFrame {
 
 }
 class CortesTableModel extends NadesicoTableModel{
-CortesTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
+CortesTableModel(java.util.List ColNames,ArrayList ColClasses){super((ArrayList)ColNames,ColClasses);}
 public Object getValueAt(int row,int col){    if(col==0 || col==2 || col==3)
     {
     SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");

@@ -1,0 +1,99 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+version = '1.0'
+
+mainClassName = "omoikane.principal.Principal"
+
+sourceCompatibility = 1.6
+
+title = 'Omoikane'
+
+def defaultEncoding = "UTF-8"
+[compileGroovy, compileTestGroovy]*.options*.encoding = defaultEncoding
+[compileGroovy, compileTestGroovy]*.groovyOptions*.encoding = defaultEncoding
+System.setProperty('file.encoding', defaultEncoding)
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.7.6'
+	compile (
+		[group: 'net.sf.jasperreports', name: 'jasperreports'       , version: '3.7.1'],
+		[group: 'org.codehaus.groovy' , name: 'groovy-all'          , version: '1.7.6'],
+		[group: 'org.codehaus.groovy' , name: 'groovy-xmlrpc'       , version: '0.4'],
+		[group: 'mysql'               , name: 'mysql-connector-java', version: '5.1.16'],
+        [group: 'jivesoftware'        , name: 'smack'               , version: '3.0.4'],
+		[group: 'org.swinglabs'       , name: 'swingx'              , version: '1.6.1'],
+		[group: 'com.kenai.nbpwr'     , name: 'org-jdesktop-animation-timing', version:'1.0-201002281504'],
+		[group: 'com.miglayout'       , name: 'miglayout'           , version: '3.7.4'],
+		[group: 'org.rxtx'            , name: 'rxtx'                , version: '2.1.7']
+	)
+	compile files('lib/jcalc-1.0.4.jar' , 'lib/ext/ModuloReportes.jar',
+				  'lib/grfingerjava.jar', 'lib/OmoikaneMedia.jar',
+				  'lib/nimbus.jar')
+	runtime files('lib/OmoikaneMedia.jar',
+				  'lib/nimbus.jar',
+				  'lib/AbsoluteLayout.jar')
+}
+
+jar {
+    manifest {
+	    def manifestClasspath = configurations.runtime.collect { "lib/"+it.getName() }.join(' ') 
+	              
+        attributes 'Implementation-Title': title, 
+				   'Implementation-Version': version,
+				   'Main-Class': mainClassName,
+				   'Class-Path': manifestClasspath
+    }
+	 
+}
+
+task distribuir(dependsOn: 'installApp') {
+	miDistDir = new File("dist")
+
+	//Copy griaule related files
+	copy {
+	   from "libgrfingerjava.so", 
+			"GrFingerLicenseAgreement.txt",
+			"GrFingerJavaLicenseAgreement.txt",
+			"pthreadVC2.dll",
+			"CapPluginHamster.dll",
+			"grfingerjava.dll"
+	   into "$miDistDir"
+	}
+	
+	//Copy binary
+	copy {
+		from "$buildDir/install/${title}/lib/${title}-${version}.jar"
+		into "$miDistDir"
+		rename { "Omoikane.jar" }
+	}
+	
+	//Copy libs without main binary
+	daLibs = new File("$miDistDir/lib")
+	copy {
+		from "$buildDir/install/${title}/lib"
+		into "$daLibs"
+		exclude "${title}-${version}.jar"
+	}
+	
+	//Copy extensions
+	daExts = new File("$miDistDir/lib/ext")
+	copy {
+		from "lib/ext"
+		into "$daExts"
+	}
+}
+

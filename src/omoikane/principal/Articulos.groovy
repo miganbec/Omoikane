@@ -243,9 +243,11 @@ public class Articulos
          }
         formArticulo.setModoModificar();
         formArticulo.btnAddCode.actionPerformed    = {
-            new SimpleForm("omoikane.formularios.CodigoArticulo") {
+            new SimpleForm("omoikane.formularios.CodigoArticulo", {
+
                 def form = it.form;
-				
+
+
                 it.form.visible = true;
                 form.btnCancelar.actionPerformed = { form.dispose() }
                 form.btnAceptar.actionPerformed  = {
@@ -256,7 +258,7 @@ public class Articulos
                         form.dispose()
                     }
                 }
-            }
+            })
         }
 
         formArticulo.btnDelCode.actionPerformed    = {

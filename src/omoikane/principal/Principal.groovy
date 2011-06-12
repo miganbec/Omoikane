@@ -43,9 +43,11 @@ public class Principal {
         public static def             toFinalizeTracker = [:]
         public static def             scanMan
         public static def             tipoCorte         = ContextoCorte.TIPO_DUAL
+        final  static def             ASEGURADO         = true
 
 	public static void main(args)
         {
+            println "Prueba de codificación: áéíóú"
             iniciar()
         }
         static iniciar()
@@ -57,7 +59,7 @@ public class Principal {
 
             shutdownHandler = new ShutdownHandler()
             Runtime.getRuntime().addShutdownHook(shutdownHandler);
-            FingerUtil.inicializar()
+            if(ASEGURADO) { FingerUtil.inicializar() }
 
             splash.setText("Cargando configuración...")
             config = new omoikane.sistema.Config()
@@ -77,9 +79,9 @@ public class Principal {
             if(scannerActivo){
                 scanMan = new DefaultScanMan()
                 try {
-                    println "comienza intento de conexión"
+                    println "comienza intento de conexi?n"
                     scanMan.connect(Principal.scannerPort, Principal.scannerBaudRate)
-                    println "fin intento de conexión"
+                    println "fin intento de conexi?n"
                 } catch(Exception ex2) { Dialogos.error(ex2.getMessage(), ex2) }
 
                 toFinalizeTracker.put("scanMan", "")
@@ -96,16 +98,16 @@ public class Principal {
             
             def objPrueba = puerto.ObjPrueba.newInstance()
             objPrueba.metodo1()
-            objPrueba.metodo2("hola desde invocación rara")
+            objPrueba.metodo2("hola desde invocaci?n rara")
             println "resultado metodo 3: "+objPrueba.metodo3()
             println "resultado de la propiedad1 : " +objPrueba.prop1
             println "resultado de la propiedad2 : " +objPrueba.prop2
             println puerto.Articulos.get(145594).descripcion
-            //puerto.(new Articulos(descripcion:"último objeto8")).addToCodigos(new CodigosArticulo(codigo:"lalalauiiuiui")).save()
-            def art = (puerto.Articulos.newInstance(descripcion:"otro más")).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:"él código")).save()
+            //puerto.(new Articulos(descripcion:"?ltimo objeto8")).addToCodigos(new CodigosArticulo(codigo:"lalalauiiuiui")).save()
+            def art = (puerto.Articulos.newInstance(descripcion:"otro m?s")).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:"?l c?digo")).save()
             //art.save()
             */
-            } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar aplicaciòn", Herramientas.getStackTraceString(e)) }
+            } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar aplicaci?n", Herramientas.getStackTraceString(e)) }
             ///////////////////////
 
         }

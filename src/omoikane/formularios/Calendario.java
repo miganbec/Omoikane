@@ -91,12 +91,13 @@ public class Calendario extends javax.swing.JInternalFrame {
 
         jxmvCalendario.setBackground(new java.awt.Color(0, 0, 51));
         jxmvCalendario.setForeground(new java.awt.Color(255, 255, 255));
-        jxmvCalendario.setAntialiased(true);
+        //jxmvCalendario.setAntialiased(true);   //Obsoleto en swingx > 0.9.5
         jxmvCalendario.setDaysOfTheWeekForeground(new java.awt.Color(204, 204, 204));
         jxmvCalendario.setFont(new java.awt.Font("Arial", 0, 24));
         jxmvCalendario.setMonthStringBackground(new java.awt.Color(0, 0, 153));
         jxmvCalendario.setMonthStringForeground(new java.awt.Color(204, 204, 204));
-        jxmvCalendario.setSelectedBackground(new java.awt.Color(51, 0, 153));
+        //jxmvCalendario.setSelectionBackground(new java.awt.Color(51, 0, 153)); //Obsoleto
+        jxmvCalendario.setSelectionBackground(new java.awt.Color(51, 0, 153));
         jxmvCalendario.setTraversable(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -458,7 +458,7 @@ public class CatalogoSucursal extends javax.swing.JInternalFrame {
 }
 
 class SucursalTableModel extends NadesicoTableModel{
-SucursalTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
+SucursalTableModel(java.util.List ColNames,ArrayList ColClasses){super((ArrayList)ColNames,ColClasses);}
 public Object getValueAt(int row,int col){    if(col==2)
     {
     SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");

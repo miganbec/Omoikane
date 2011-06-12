@@ -5,6 +5,15 @@
  *                   /////////////
  * //////////////////////////////                   */
 // ***************************************************
+ // ***************************************************
+ // ***************************************************
+ // ***************************************************
+ // ***************************************************
+ // ***************************************************
+ // ***************************************************
+ // ***************************************************
+ // ***************************************************
+ // ***************************************************
 
 package omoikane.sistema
 
@@ -27,7 +36,7 @@ public class NadesicoTableModel extends AbstractTableModel {
     public NadesicoX       port = null;
     Hashtable<String,List> cacheFila = new Hashtable();
 
-    public NadesicoTableModel(List colNames, ArrayList colClases) {
+    public NadesicoTableModel(ArrayList colNames, ArrayList colClases) {
         this.port = new NadesicoX();
         port.conectar();
         this.colNames   = new ArrayList(colNames);

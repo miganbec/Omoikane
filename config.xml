@@ -18,14 +18,14 @@
 	
 	01/09/2010
 	- tipoCorte
-		1: Estándar, 2: Doble
+		1: Estï¿½ndar, 2: Doble
 -->
 
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <cacheSTable atras='3' adelante='5'/>
-    <URLServidor>http://nadesico:5542</URLServidor>
-    <URLMySQL>jdbc:mysql://nadesico/omoikane</URLMySQL>
+    <URLServidor>http://sfmvaldez.poweredbyclear.com:5543</URLServidor>
+    <URLMySQL>jdbc:mysql://sfmvaldez.poweredbyclear.com:3307/omoikane</URLMySQL>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
     <scannerActivo>false</scannerActivo>
