@@ -49,12 +49,12 @@ public class panelReportes extends javax.swing.JPanel {
         panelReportes.setEnabled(false);
         panelReportes.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 56)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 56));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("!Bienvenido¡");
         panelReportes.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Times New Roman", 3, 14));
         jButton1.setText("<html><center>Ventas<br>X<br>Lineas</center><html>");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,11 +62,11 @@ public class panelReportes extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REPORTES");
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Times New Roman", 3, 14));
         jButton2.setText("<html><center>Utilidad<br>X<br>Linea</center><html>");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,19 +74,23 @@ public class panelReportes extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Times New Roman", 3, 14));
         jButton3.setText("<html><center>Articulos<br>X<br>Linea o Grupo</center><html>");
-        jButton3.setActionCommand("<html><center>Articulos<br>X<br>Linea o Grupo</center><html>");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jSalir.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jSalir.setFont(new java.awt.Font("Times New Roman", 3, 14));
         jSalir.setText("Salir");
+        jSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSalirActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Times New Roman", 3, 14));
         jButton5.setText("<html><center>Costeos<br>X<br>Linea o Grupo</center><html>");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +112,7 @@ public class panelReportes extends javax.swing.JPanel {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                     .addComponent(jSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                .addComponent(panelReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -116,7 +120,7 @@ public class panelReportes extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                    .addComponent(panelReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,7 +131,7 @@ public class panelReportes extends javax.swing.JPanel {
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                         .addComponent(jSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -152,6 +156,10 @@ public class panelReportes extends javax.swing.JPanel {
         // TODO add your handling code here:
         moduloreportes.Funciones.lanzarCosteoGL(this);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

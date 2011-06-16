@@ -2,33 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="2afe5804-b09c-4b36-a223-c0088e978786" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.jfd" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ModuloReportes/dist/README.TXT" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ModuloReportes/dist/ModuloReportes.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/dist/lib/AbsoluteLayout.jar" afterPath="$PROJECT_DIR$/ModuloReportes/dist/lib/AbsoluteLayout.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$" afterPath="$PROJECT_DIR$" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/build.xml" afterPath="$PROJECT_DIR$/ModuloReportes/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/nbproject/build-impl.xml" afterPath="$PROJECT_DIR$/ModuloReportes/nbproject/build-impl.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/nbproject/genfiles.properties" afterPath="$PROJECT_DIR$/ModuloReportes/nbproject/genfiles.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/nbproject/groovy-build.xml" afterPath="$PROJECT_DIR$/ModuloReportes/nbproject/groovy-build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/Omoikane.jar" afterPath="$PROJECT_DIR$/dist/Omoikane.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/ModuloReportes.jar" afterPath="$PROJECT_DIR$/lib/ModuloReportes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/ext/ModuloReportes.jar" afterPath="$PROJECT_DIR$/lib/ext/ModuloReportes.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/ModuloReportes/nbproject/private/private.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/ModuloReportes/nbproject/private/private.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/nbproject/project.properties" afterPath="$PROJECT_DIR$/ModuloReportes/nbproject/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/nbproject/project.xml" afterPath="$PROJECT_DIR$/ModuloReportes/nbproject/project.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/Funciones.groovy" afterPath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/Funciones.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/Comandos.groovy" afterPath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/Comandos.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/MenuOmoikane.java" afterPath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/MenuOmoikane.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/panelReportes.form" afterPath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/panelReportes.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/panelReportes.java" afterPath="$PROJECT_DIR$/ModuloReportes/src/moduloreportes/panelReportes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Omoikane.ipr" afterPath="$PROJECT_DIR$/Omoikane.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Omoikane.iws" afterPath="$PROJECT_DIR$/Omoikane.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/formularios/AbrirCaja.java" afterPath="$PROJECT_DIR$/src/omoikane/formularios/AbrirCaja.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/formularios/Calendario.java" afterPath="$PROJECT_DIR$/src/omoikane/formularios/Calendario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/formularios/CatalogoCortesCaja.java" afterPath="$PROJECT_DIR$/src/omoikane/formularios/CatalogoCortesCaja.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/formularios/CatalogoSucursal.java" afterPath="$PROJECT_DIR$/src/omoikane/formularios/CatalogoSucursal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/principal/Articulos.groovy" afterPath="$PROJECT_DIR$/src/omoikane/principal/Articulos.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/principal/MainJava.java" afterPath="$PROJECT_DIR$/src/omoikane/principal/MainJava.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/config.xml" afterPath="$PROJECT_DIR$/dist/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.java" afterPath="$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/menudinamico/MenuModulos.java" afterPath="$PROJECT_DIR$/src/omoikane/menudinamico/MenuModulos.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.java" afterPath="$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/principal/Caja.groovy" afterPath="$PROJECT_DIR$/src/omoikane/principal/Caja.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/principal/MenuPrincipal.groovy" afterPath="$PROJECT_DIR$/src/omoikane/principal/MenuPrincipal.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/principal/Principal.groovy" afterPath="$PROJECT_DIR$/src/omoikane/principal/Principal.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/sistema/FingerUtil.groovy" afterPath="$PROJECT_DIR$/src/omoikane/sistema/FingerUtil.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/sistema/Huellas2.groovy" afterPath="$PROJECT_DIR$/src/omoikane/sistema/Huellas2.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/sistema/NadesicoTableModel.groovy" afterPath="$PROJECT_DIR$/src/omoikane/sistema/NadesicoTableModel.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/sistema/Usuarios.groovy" afterPath="$PROJECT_DIR$/src/omoikane/sistema/Usuarios.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/omoikane/sistema/Herramientas.groovy" afterPath="$PROJECT_DIR$/src/omoikane/sistema/Herramientas.groovy" />
     </list>
     <ignored path="Omoikane.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,6 +51,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/omoikane/principal/Caja.groovy" line="97" class="Class at Caja.groovy:97" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -92,20 +106,97 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainJava.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/omoikane/principal/MainJava.java">
+      <file leaf-file-name="MenuPrincipal.jfd" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.jfd">
+          <provider selected="true" editor-type-id="JFormDesigner">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuPrincipal.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
+            <state line="506" column="0" selection-start="21112" selection-end="21112" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1307908979000" expanded="false" signature="1897:14666" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+                <marker date="1307908979000" expanded="false" signature="20186:21108" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuPrincipal.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/principal/MenuPrincipal.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="70" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Principal.groovy" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/omoikane/principal/Principal.groovy">
+      <file leaf-file-name="Herramientas.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/sistema/Herramientas.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="16" selection-start="901" selection-end="901" vertical-scroll-proportion="-0.16949153">
+            <state line="341" column="37" selection-start="14050" selection-end="14050" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuModulos.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/MenuModulos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="11" selection-start="856" selection-end="856" vertical-scroll-proportion="0.42443728">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PanelMenu.jfd" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.jfd">
+          <provider selected="true" editor-type-id="JFormDesigner">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PanelMenu.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="37" selection-start="451" selection-end="451" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1308166151000" expanded="false" signature="853:4097" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+                <marker date="1308166151000" expanded="false" signature="4275:4551" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuSPI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/MenuSPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="32" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Caja.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/principal/Caja.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="97" column="0" selection-start="4662" selection-end="4662" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbrirCaja.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/AbrirCaja.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1306009615000" expanded="false" signature="1733:5994" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+                <marker date="1306009615000" expanded="false" signature="6396:6772" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,7 +211,15 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/omoikane/principal/Caja.groovy" />
         <option value="$PROJECT_DIR$/src/omoikane/principal/Principal.groovy" />
+        <option value="$PROJECT_DIR$/src/omoikane/principal/MenuPrincipal.groovy" />
+        <option value="$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.jfd" />
+        <option value="$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/omoikane/sistema/Herramientas.groovy" />
+        <option value="$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.jfd" />
+        <option value="$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.java" />
+        <option value="$PROJECT_DIR$/src/omoikane/menudinamico/MenuModulos.java" />
       </list>
     </option>
   </component>
@@ -159,16 +258,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Omoikane" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Favorites" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -183,7 +273,16 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -244,7 +343,25 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="principal">
+            <PATH_ELEMENT USER_OBJECT="menudinamico">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ModuloReportes">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -255,17 +372,18 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="85" />
-    <property name="project.structure.last.edited" value="SDKs" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="76" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="55" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="89" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="89" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="81" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="78" />
@@ -281,10 +399,10 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.MainJava">
@@ -306,7 +424,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Omoikane" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54673" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -383,14 +507,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="FtpUpload" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" />
       <module name="" />
@@ -414,6 +530,14 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="FtpUpload" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -448,559 +572,7 @@
       <list>
         <SvnCopyRootSimple>
           <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/groovy-all.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jcommon-1.0.13.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/Filters.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jansi-1.2.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/asm-util-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/commons-logging-1.0.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jcalc-1.0.4.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ant-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/asm-util-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/commons-javaflow-20060411.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/poi-3.0.1-FINAL-20070705.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/fdsapi.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/ant-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/smack-3.0.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/nimbus.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/backport-util-concurrent.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/TimingFramework-1.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/README.TXT" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/junit-4.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/fdsapi.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/bsf-2.4.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/BarbecueRenderer.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/groovy-xmlrpc-0.4.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/servlet.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/commons-beanutils-1.7.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/grfingerjava.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/iText-2.1.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/spring-beans.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
           <option name="myCopyRoot" value="$PROJECT_DIR$" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/poi-3.0.1-FINAL-20070705.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/smack-3.0.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ext/ModuloReportes.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/Omoikane.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/lib" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/backport-util-concurrent.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/png-encoder-1.5.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jcommon-1.0.13.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/commons-beanutils-1.7.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jfreechart-1.0.13.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jline-0.9.94.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/ant-launcher-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/barbecue-1.5-beta1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jakarta-regexp-1.5.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/commons-digester-1.7.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/antlr-2.7.7.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jdic.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/hibernate3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/asm-2.2.3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/servlet-api-2.4.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ant-junit-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/spring-beans.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/commons-collections-2.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jline-0.9.94.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/OmoikaneMedia.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jr-barbecue.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ivy-2.1.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/bsf-2.4.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jansi-1.2.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ant-nodeps-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/asm-commons-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/commons-javaflow-20060411.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ext/PluginMenu3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/RXTXcomm.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/synthetica.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jsp-api-2.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/OmoikaneMedia.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/mysql-connector-java-5.1.6-bin.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/smackx-3.0.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/servlet.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/antlr-2.7.7.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jr-barbecue.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/junit-4.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jcalc-1.0.4.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jsp-api-2.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jdt-compiler-3.1.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/grfingerjava.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/hibernate3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/PluginMenu3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/groovy-all.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/spring-core.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/commons-collections-2.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/ant-junit-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/commons-logging-1.0.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jdic.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/nimbus.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/OmoikaneAPI-1.0-SNAPSHOT.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/PluginPruebaMenu2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/groovy-xmlrpc-0.4.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/iText-2.1.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/TimingFramework-1.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jakarta-regexp-1.5.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/asm-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/mysql-connector-java-5.1.6-bin.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ModuloReportes.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/png-encoder-1.5.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/ivy-2.1.0.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ant-antlr-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/ModuloReportes.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jdt-compiler-3.1.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jfreechart-1.0.13.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/xstream-1.3.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/miglayout-3.7.3.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/Filters.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/swingx-0.9.3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/ant-antlr-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/lib/OmoikaneAPI-1.0-SNAPSHOT.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/AbsoluteLayout.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/asm-2.2.3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/synthetica.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ext" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/ant-nodeps-1.8.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/commons-digester-1.7.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/asm-analysis-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/miglayout-3.7.3.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/commons-cli-1.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/barbecue-1.5-beta1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/swingx-0.9.3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/jasperreports-3.7.3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/OmoikaneAPI-1.0-SNAPSHOT.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/RXTXcomm.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/asm-analysis-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/jasperreports-3.7.3.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/asm-tree-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/AbsoluteLayout.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/BarbecueRenderer.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/bsf.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/spring-core.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/smackx-3.0.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/commons-cli-1.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/asm-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/servlet-api-2.4.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/asm-commons-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/bsf.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/xstream-1.3.1.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist/lib/asm-tree-3.2.jar" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib/ant-launcher-1.8.1.jar" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -1009,14 +581,6 @@
         <SvnCopyRootSimple>
           <option name="myVcsRoot" value="$PROJECT_DIR$" />
           <option name="myCopyRoot" value="$PROJECT_DIR$" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/dist" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/Misc/lib" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -1030,11 +594,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="710" extended-state="6" />
+    <frame x="0" y="22" width="1208" height="674" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1045,13 +609,15 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24939074" sideWeight="0.21525423" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39967507" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24939074" sideWeight="0.67118645" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26488352" sideWeight="0.6498195" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3501805" sideWeight="0.99913716" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931036" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="JFormDesigner Form Converter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1092,26 +658,89 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/AbrirCaja.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1306009615000" expanded="false" signature="1733:5994" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1306009615000" expanded="false" signature="6396:6772" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/AbrirCaja.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/omoikane/principal/MainJava.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/omoikane/principal/Principal.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="16" selection-start="901" selection-end="901" vertical-scroll-proportion="-0.16949153">
+        <state line="137" column="18" selection-start="6495" selection-end="6495" vertical-scroll-proportion="3.233533" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/principal/MainJava.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="188" selection-end="188" vertical-scroll-proportion="0.52316076" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="79" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.4441417" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="506" column="0" selection-start="21112" selection-end="21112" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/principal/MenuPrincipal.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="70" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/sistema/Herramientas.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="341" column="37" selection-start="14050" selection-end="14050" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/MenuSPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="32" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/principal/Caja.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="0" selection-start="4662" selection-end="4662" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/AbrirCaja.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/formularios/MenuPrincipal.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/PanelMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="37" selection-start="451" selection-end="451" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1308166151000" expanded="false" signature="853:4097" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1308166151000" expanded="false" signature="4275:4551" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/omoikane/menudinamico/MenuModulos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="11" selection-start="856" selection-end="856" vertical-scroll-proportion="0.42443728">
           <folding />
         </state>
       </provider>

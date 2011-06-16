@@ -35,7 +35,7 @@
                   <Component id="jSalir" alignment="0" pref="112" max="32767" attributes="1"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="panelReportes" pref="662" max="32767" attributes="0"/>
+              <Component id="panelReportes" pref="639" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -45,7 +45,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="panelReportes" alignment="1" pref="578" max="32767" attributes="0"/>
+                  <Component id="panelReportes" alignment="1" pref="560" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="29" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -56,7 +56,7 @@
                       <Component id="jButton5" min="-2" max="-2" attributes="1"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace pref="168" max="32767" attributes="0"/>
+                      <EmptySpace pref="151" max="32767" attributes="0"/>
                       <Component id="jSalir" min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -129,7 +129,6 @@
           <Font name="Times New Roman" size="14" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Articulos&lt;br&gt;X&lt;br&gt;Linea o Grupo&lt;/center&gt;&lt;html&gt;"/>
-        <Property name="actionCommand" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Articulos&lt;br&gt;X&lt;br&gt;Linea o Grupo&lt;/center&gt;&lt;html&gt;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -142,6 +141,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jSalirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>

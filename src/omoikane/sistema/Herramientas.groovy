@@ -17,8 +17,11 @@ import com.griaule.grfingerjava.*;
 import javax.swing.JComponent;
 import org.jdesktop.swingx.JXDatePicker;
 import java.text.SimpleDateFormat
+ import java.util.jar.JarFile
+ import java.util.jar.Manifest
+ import java.util.jar.Attributes
 
-public class Herramientas
+ public class Herramientas
 {
         static def texto      = /^([a-zA-Z0-9_\-\s\&\ñ\Ñ\+áéíóúüàèìòùÁÉÍÓÚÀÈÌÒÙÜ\\\%\.\/\"\'\,\;\.\:\#\@]+)$/
         static def textoVacio = /^([a-zA-Z0-9_\-\s\&\ñ\Ñ\+áéíóúüàèìòùÁÉÍÓÚÀÈÌÒÙÜ\\\%\.\/\"\'\,\;\.\:\#\@]*)$/
@@ -340,6 +343,11 @@ public class Herramientas
 
             
         }
+    }
+
+    public static def getVersion() {
+
+      return "1.3.1"
     }
 
 }

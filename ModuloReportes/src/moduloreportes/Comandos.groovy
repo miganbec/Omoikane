@@ -27,15 +27,16 @@ public class Comandos {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, login, password);
         } catch (ClassNotFoundException c) {
+            c.printStackTrace();
             JOptionPane.showMessageDialog(null, c);
         }
         return conn;
     }
 
     static def defineAtributos() {
-            login      = String .valueOf(config.login[0].text())
-            password   = String .valueOf(config.password[0].text())
-            url        = String .valueOf(config.url[0].text())
+            login      = String .valueOf(config.loginJasper[0].text())
+            password   = String .valueOf(config.passJasper[0].text())
+            url        = String .valueOf(config.URLMySQL[0].text())
     }
 }
 	

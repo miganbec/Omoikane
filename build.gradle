@@ -1,8 +1,10 @@
+import org.apache.tools.ant.filters.ReplaceTokens 
+
 apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'idea'
 
-version = '1.0'
+version = '1.3.1'
 
 mainClassName = "omoikane.principal.Principal"
 
@@ -40,12 +42,16 @@ dependencies {
 		[group: 'com.miglayout'       , name: 'miglayout'           , version: '3.7.4'],
 		[group: 'org.rxtx'            , name: 'rxtx'                , version: '2.1.7']
 	)
-	compile files('lib/jcalc-1.0.4.jar' , 'lib/ext/ModuloReportes.jar',
-				  'lib/grfingerjava.jar', 'lib/OmoikaneMedia.jar',
-				  'lib/nimbus.jar')
-	runtime files('lib/OmoikaneMedia.jar',
+	compile files('lib/jcalc-1.0.4.jar',
+				  'lib/grfingerjava.jar', 
+				  'lib/OmoikaneMedia.jar',
 				  'lib/nimbus.jar',
-				  'lib/AbsoluteLayout.jar')
+				  'lib/OmoikaneAPI-1.0-SNAPSHOT.jar',
+			      'lib/AbsoluteLayout.jar',
+				  'lib/ext/ModuloReportes.jar',
+			      'lib/ext/PlugMenu3.jar.jar')
+	runtime files('lib/OmoikaneMedia.jar',
+				  'lib/nimbus.jar')
 }
 
 jar {
@@ -57,7 +63,8 @@ jar {
 				   'Main-Class': mainClassName,
 				   'Class-Path': manifestClasspath
     }
-	 
+
+	
 }
 
 task distribuir(dependsOn: 'installApp') {

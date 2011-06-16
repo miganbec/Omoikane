@@ -11,6 +11,12 @@
 
 package omoikane.menudinamico;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle;
+
 /**
  *
  * @author Octavio
@@ -18,6 +24,11 @@ package omoikane.menudinamico;
 public class PanelMenu extends javax.swing.JPanel {
 
     /** Creates new form PanelMenu */
+
+    private void thisKeyReleased(KeyEvent e) {
+        // TODO add your code here
+    }
+
     public PanelMenu() {
         initComponents();
     }
@@ -29,49 +40,71 @@ public class PanelMenu extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Generated using JFormDesigner Evaluation license - Octavio Ruiz
     private void initComponents() {
+        jLabel1 = new JLabel();
+        pnlBotones = new JPanel();
+        btnCerrar = new JButton();
 
-        jLabel1 = new javax.swing.JLabel();
-        pnlBotones = new javax.swing.JPanel();
-        btnCerrar = new javax.swing.JButton();
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jLabel1.setText("Módulos");
-
-        pnlBotones.setLayout(new javax.swing.BoxLayout(pnlBotones, javax.swing.BoxLayout.LINE_AXIS));
-
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/back.png"))); // NOI18N
-        btnCerrar.setText("Cerrar[ESC]");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+        //======== this ========
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                thisKeyReleased(e);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        // JFormDesigner evaluation mark
+        setBorder(new javax.swing.border.CompoundBorder(
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+
+
+        //---- jLabel1 ----
+        jLabel1.setFont(new Font("Tahoma", Font.BOLD, 24));
+        jLabel1.setText("M\u00f3dulos");
+
+        //======== pnlBotones ========
+        {
+            pnlBotones.setLayout(new BoxLayout(pnlBotones, BoxLayout.X_AXIS));
+        }
+
+        //---- btnCerrar ----
+        btnCerrar.setIcon(new ImageIcon(getClass().getResource("/48x48/back.png")));
+        btnCerrar.setText("Cerrar[ESC]");
+        btnCerrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCerrarActionPerformed(e);
+            }
+        });
+
+        GroupLayout layout = new GroupLayout(this);
+        setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlBotones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                        .addComponent(btnCerrar)))
-                .addContainerGap())
+            layout.createParallelGroup()
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                            .addComponent(btnCerrar))
+                        .addComponent(pnlBotones, GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))
+                    .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                .addContainerGap())
+            layout.createParallelGroup()
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnCerrar, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(pnlBotones, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -81,9 +114,10 @@ public class PanelMenu extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
-    private javax.swing.JLabel jLabel1;
-    public javax.swing.JPanel pnlBotones;
+    // Generated using JFormDesigner Evaluation license - Octavio Ruiz
+    private JLabel jLabel1;
+    public JPanel pnlBotones;
+    private JButton btnCerrar;
     // End of variables declaration//GEN-END:variables
     
     // End of variables declaration
@@ -102,4 +136,11 @@ public class PanelMenu extends javax.swing.JPanel {
         this.pnlBotones = pnlBotones;
     }
 
+    public JButton getBtnCerrar() {
+        return btnCerrar;
+    }
+
+    public void setBtnCerrar(JButton btnCerrar) {
+        this.btnCerrar = btnCerrar;
+    }
 }

@@ -35,7 +35,7 @@ public class Principal {
         public static boolean         impresoraActiva
         public static boolean         scannerActivo
         public static boolean         basculaActiva
-        public static String          puertoBascula
+        public static def             driverBascula
         public static String          URLMySQL
         public static int             scannerBaudRate
         public static String          scannerPort
@@ -121,13 +121,22 @@ public class Principal {
             IDCaja              = Integer.valueOf(config.idCaja[0].text())
             puertoImpresion     = String .valueOf(config.puertoImpresion[0].text())
             impresoraActiva     = Boolean.valueOf(config.impresoraActiva[0].text())
-            puertoBascula       = String .valueOf(config.puertoBascula[0].text())
             URLMySQL            = String .valueOf(config.URLMySQL[0].text())
             scannerBaudRate     = Integer.valueOf(config.ScannerBaudRate[0].text())
             scannerPort         = String .valueOf(config.ScannerPort[0].text())
             scannerActivo       = Boolean.valueOf(config.scannerActivo[0].text())
-            basculaActiva       = Boolean.valueOf(config.basculaActiva[0].text())
+            basculaActiva       = Boolean.valueOf(config.bascula.@activa[0])
             tipoCorte           = Integer.valueOf(config.tipoCorte[0].text())
+            if(basculaActiva) {
+                driverBascula       = [
+                        port: String.valueOf(config.bascula.@port[0]),
+                        baud: Integer.valueOf(config.bascula.@baud[0]),
+                        bits: String.valueOf(config.bascula.@bits[0]),
+                        stopBits: String.valueOf(config.bascula.@stopBits[0]),
+                        parity:   String.valueOf(config.bascula.@parity[0]),
+                        stopChar: String.valueOf(config.bascula.@stopChar[0])
+                ];
+            }
         }
 
     static def iniciarSesion() {

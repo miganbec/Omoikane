@@ -16,8 +16,6 @@ import java.awt.image.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
-import moduloreportes.VentanaPrincipal;
-import moduloreportes.panelReportes;
 import static omoikane.sistema.Usuarios.*;
 import omoikane.sistema.StopWatch;
 
@@ -62,273 +60,306 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Generated using JFormDesigner Evaluation license - Octavio Ruiz
     private void initComponents() {
+        jLabel1 = new JLabel();
+        btnCerrar = new JButton();
+        btnVender = new JButton();
+        jLabel2 = new JLabel();
+        btnCajas = new JButton();
+        jSeparator2 = new JSeparator();
+        jLabel3 = new JLabel();
+        jLabel4 = new JLabel();
+        jSeparator3 = new JSeparator();
+        btnAlmacenes = new JButton();
+        btnMovAlmacen = new JButton();
+        btnUsuarios = new JButton();
+        jSeparator4 = new JSeparator();
+        jLabel5 = new JLabel();
+        jPanel1 = new JPanel();
+        btnLineas = new JButton();
+        btnCortes = new JButton();
+        btnArticulos = new JButton();
+        btnGrupos = new JButton();
+        jSeparator5 = new JSeparator();
+        btnDetallesVentas = new JButton();
+        btnModulos = new JButton();
+        lblVersion = new JLabel();
 
-        jLabel1 = new javax.swing.JLabel();
-        btnCerrar = new javax.swing.JButton();
-        btnVender = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnCajas = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        btnAlmacenes = new javax.swing.JButton();
-        btnMovAlmacen = new javax.swing.JButton();
-        btnPreferencias = new javax.swing.JButton();
-        btnUsuarios = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        btnLineas = new javax.swing.JButton();
-        btnFacturas = new javax.swing.JButton();
-        btnCortes = new javax.swing.JButton();
-        btnArticulos = new javax.swing.JButton();
-        btnClientes = new javax.swing.JButton();
-        btnGrupos = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JSeparator();
-        btnDetallesVentas = new javax.swing.JButton();
-        btnFacturas1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-
+        //======== this ========
+        setVisible(true);
         setIconifiable(true);
-        setTitle("Menú Principal");
+        setTitle("Men\u00fa Principal");
         setFocusCycleRoot(false);
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
+        addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                formFocusGained(e);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Container contentPane = getContentPane();
+        contentPane.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        //---- jLabel1 ----
+        jLabel1.setFont(new Font("Arial", Font.BOLD, 36));
+        jLabel1.setForeground(Color.white);
         jLabel1.setText("Principal");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        contentPane.add(jLabel1);
+        jLabel1.setBounds(new Rectangle(new Point(30, 20), jLabel1.getPreferredSize()));
 
-        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14));
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file-manager-128x128.png"))); // NOI18N
+        //---- btnCerrar ----
+        btnCerrar.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnCerrar.setIcon(new ImageIcon(getClass().getResource("/file-manager-128x128.png")));
         btnCerrar.setText("Cerrar");
         btnCerrar.setIconTextGap(-5);
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+        btnCerrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCerrarActionPerformed(e);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 200, 70));
+        contentPane.add(btnCerrar);
+        btnCerrar.setBounds(660, 10, 200, 70);
 
-        btnVender.setFont(new java.awt.Font("Arial", 0, 14));
-        btnVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/package-toys-128x128.png"))); // NOI18N
+        //---- btnVender ----
+        btnVender.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnVender.setIcon(new ImageIcon(getClass().getResource("/package-toys-128x128.png")));
         btnVender.setText("Vender");
         btnVender.setIconTextGap(-5);
-        btnVender.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVenderActionPerformed(evt);
+        btnVender.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnVenderActionPerformed(e);
             }
         });
-        getContentPane().add(btnVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 210, 70));
+        contentPane.add(btnVender);
+        btnVender.setBounds(20, 110, 210, 70);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Artículos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        //---- jLabel2 ----
+        jLabel2.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabel2.setForeground(Color.white);
+        jLabel2.setText("Art\u00edculos");
+        contentPane.add(jLabel2);
+        jLabel2.setBounds(new Rectangle(new Point(20, 180), jLabel2.getPreferredSize()));
 
-        btnCajas.setFont(new java.awt.Font("Arial", 0, 14));
-        btnCajas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/download-manager-128x128.png"))); // NOI18N
+        //---- btnCajas ----
+        btnCajas.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnCajas.setIcon(new ImageIcon(getClass().getResource("/download-manager-128x128.png")));
         btnCajas.setText("Cajas");
         btnCajas.setIconTextGap(-5);
-        btnCajas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCajasActionPerformed(evt);
+        btnCajas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCajasActionPerformed(e);
             }
         });
-        getContentPane().add(btnCajas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 200, 70));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 840, 10));
+        contentPane.add(btnCajas);
+        btnCajas.setBounds(450, 310, 200, 70);
+        contentPane.add(jSeparator2);
+        jSeparator2.setBounds(20, 100, 840, 10);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        //---- jLabel3 ----
+        jLabel3.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabel3.setForeground(Color.white);
         jLabel3.setText("Ventas");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        contentPane.add(jLabel3);
+        jLabel3.setBounds(new Rectangle(new Point(20, 80), jLabel3.getPreferredSize()));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        //---- jLabel4 ----
+        jLabel4.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabel4.setForeground(Color.white);
         jLabel4.setText("Almacen");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 840, 10));
+        contentPane.add(jLabel4);
+        jLabel4.setBounds(new Rectangle(new Point(20, 280), jLabel4.getPreferredSize()));
+        contentPane.add(jSeparator3);
+        jSeparator3.setBounds(20, 200, 840, 10);
 
-        btnAlmacenes.setFont(new java.awt.Font("Arial", 0, 14));
-        btnAlmacenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/server-128x128.png"))); // NOI18N
+        //---- btnAlmacenes ----
+        btnAlmacenes.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnAlmacenes.setIcon(new ImageIcon(getClass().getResource("/server-128x128.png")));
         btnAlmacenes.setText("Almacenes");
         btnAlmacenes.setIconTextGap(-30);
-        btnAlmacenes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlmacenesActionPerformed(evt);
+        btnAlmacenes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnAlmacenesActionPerformed(e);
             }
         });
-        getContentPane().add(btnAlmacenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 210, 70));
+        contentPane.add(btnAlmacenes);
+        btnAlmacenes.setBounds(20, 310, 210, 70);
 
-        btnMovAlmacen.setFont(new java.awt.Font("Arial", 0, 14));
-        btnMovAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-black-box-128x128.png"))); // NOI18N
-        btnMovAlmacen.setText("<html>Movimientos<br>Almacén</html>");
+        //---- btnMovAlmacen ----
+        btnMovAlmacen.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnMovAlmacen.setIcon(new ImageIcon(getClass().getResource("/k-black-box-128x128.png")));
+        btnMovAlmacen.setText("<html>Movimientos<br>Almac\u00e9n</html>");
         btnMovAlmacen.setIconTextGap(-25);
-        btnMovAlmacen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMovAlmacenActionPerformed(evt);
+        btnMovAlmacen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnMovAlmacenActionPerformed(e);
             }
         });
-        getContentPane().add(btnMovAlmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 200, 70));
+        contentPane.add(btnMovAlmacen);
+        btnMovAlmacen.setBounds(240, 310, 200, 70);
 
-        btnPreferencias.setFont(new java.awt.Font("Arial", 0, 14));
-        btnPreferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/k-sysguard-128x128.png"))); // NOI18N
-        btnPreferencias.setText("Preferencias");
-        btnPreferencias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnPreferencias.setIconTextGap(-12);
-        btnPreferencias.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btnPreferencias.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        btnPreferencias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPreferenciasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPreferencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 200, 100));
-
-        btnUsuarios.setFont(new java.awt.Font("Arial", 0, 14));
-        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxy-128x128.png"))); // NOI18N
+        //---- btnUsuarios ----
+        btnUsuarios.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnUsuarios.setIcon(new ImageIcon(getClass().getResource("/proxy-128x128.png")));
         btnUsuarios.setText("Usuarios     ");
-        btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUsuarios.setHorizontalTextPosition(SwingConstants.CENTER);
         btnUsuarios.setIconTextGap(-12);
-        btnUsuarios.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btnUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuariosActionPerformed(evt);
+        btnUsuarios.setVerticalAlignment(SwingConstants.TOP);
+        btnUsuarios.setVerticalTextPosition(SwingConstants.TOP);
+        btnUsuarios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnUsuariosActionPerformed(e);
             }
         });
-        getContentPane().add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 210, 100));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 840, 10));
+        contentPane.add(btnUsuarios);
+        btnUsuarios.setBounds(20, 410, 210, 100);
+        contentPane.add(jSeparator4);
+        jSeparator4.setBounds(20, 400, 840, 10);
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14));
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Administración");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+        //---- jLabel5 ----
+        jLabel5.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabel5.setForeground(Color.white);
+        jLabel5.setText("Administraci\u00f3n");
+        contentPane.add(jLabel5);
+        jLabel5.setBounds(new Rectangle(new Point(20, 380), jLabel5.getPreferredSize()));
 
-        jPanel1.setOpaque(false);
+        //======== jPanel1 ========
+        {
+            jPanel1.setOpaque(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+            // JFormDesigner evaluation mark
+            jPanel1.setBorder(new javax.swing.border.CompoundBorder(
+                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                    "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                    javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                    java.awt.Color.red), jPanel1.getBorder())); jPanel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 30, 40));
 
-        btnLineas.setFont(new java.awt.Font("Arial", 0, 14));
-        btnLineas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usb-128x128.png"))); // NOI18N
-        btnLineas.setText("Líneas");
+            GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup()
+                    .addGap(0, 25, Short.MAX_VALUE)
+            );
+            jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup()
+                    .addGap(0, 25, Short.MAX_VALUE)
+            );
+        }
+        contentPane.add(jPanel1);
+        jPanel1.setBounds(865, 500, 10, 10);
+
+        //---- btnLineas ----
+        btnLineas.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnLineas.setIcon(new ImageIcon(getClass().getResource("/usb-128x128.png")));
+        btnLineas.setText("L\u00edneas");
         btnLineas.setIconTextGap(-5);
-        btnLineas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLineasActionPerformed(evt);
+        btnLineas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnLineasActionPerformed(e);
             }
         });
-        getContentPane().add(btnLineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 200, 70));
+        contentPane.add(btnLineas);
+        btnLineas.setBounds(240, 210, 200, 70);
 
-        btnFacturas.setFont(new java.awt.Font("Arial", 0, 14));
-        btnFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/print-mgr-128x128.png"))); // NOI18N
-        btnFacturas.setText("<html>Reportes</html>");
-        btnFacturas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnFacturas.setIconTextGap(-5);
-        btnFacturas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btnFacturas.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        btnFacturas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFacturasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 200, 100));
-
-        btnCortes.setFont(new java.awt.Font("Arial", 0, 14));
-        btnCortes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/super-karamba-128x128.png"))); // NOI18N
+        //---- btnCortes ----
+        btnCortes.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnCortes.setIcon(new ImageIcon(getClass().getResource("/super-karamba-128x128.png")));
         btnCortes.setText("Cortes");
         btnCortes.setIconTextGap(-5);
-        btnCortes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCortesActionPerformed(evt);
+        btnCortes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCortesActionPerformed(e);
             }
         });
-        getContentPane().add(btnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 200, 70));
+        contentPane.add(btnCortes);
+        btnCortes.setBounds(450, 110, 200, 70);
 
-        btnArticulos.setFont(new java.awt.Font("Arial", 0, 14));
-        btnArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/x-mag-128x128.png"))); // NOI18N
-        btnArticulos.setText("Catálogo");
+        //---- btnArticulos ----
+        btnArticulos.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnArticulos.setIcon(new ImageIcon(getClass().getResource("/x-mag-128x128.png")));
+        btnArticulos.setText("Cat\u00e1logo");
         btnArticulos.setIconTextGap(-25);
-        btnArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArticulosActionPerformed(evt);
+        btnArticulos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnArticulosActionPerformed(e);
             }
         });
-        getContentPane().add(btnArticulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, 70));
+        contentPane.add(btnArticulos);
+        btnArticulos.setBounds(20, 210, 210, 70);
 
-        btnClientes.setFont(new java.awt.Font("Arial", 0, 14));
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vcard-128x128.png"))); // NOI18N
-        btnClientes.setText("Clientes");
-        btnClientes.setIconTextGap(-5);
-        btnClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientesActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 200, 70));
-
-        btnGrupos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folder-blue-128x128.png"))); // NOI18N
+        //---- btnGrupos ----
+        btnGrupos.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnGrupos.setIcon(new ImageIcon(getClass().getResource("/folder-blue-128x128.png")));
         btnGrupos.setText("Grupos");
         btnGrupos.setIconTextGap(-15);
-        btnGrupos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGruposActionPerformed(evt);
+        btnGrupos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnGruposActionPerformed(e);
             }
         });
-        getContentPane().add(btnGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 200, 70));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 840, 10));
+        contentPane.add(btnGrupos);
+        btnGrupos.setBounds(450, 210, 200, 70);
+        contentPane.add(jSeparator5);
+        jSeparator5.setBounds(20, 300, 840, 10);
 
-        btnDetallesVentas.setFont(new java.awt.Font("Arial", 0, 14));
-        btnDetallesVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remote-128x128.png"))); // NOI18N
+        //---- btnDetallesVentas ----
+        btnDetallesVentas.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnDetallesVentas.setIcon(new ImageIcon(getClass().getResource("/remote-128x128.png")));
         btnDetallesVentas.setText("<html>Detalles<br>de Ventas</html>");
         btnDetallesVentas.setIconTextGap(-5);
-        btnDetallesVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetallesVentasActionPerformed(evt);
+        btnDetallesVentas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnDetallesVentasActionPerformed(e);
             }
         });
-        getContentPane().add(btnDetallesVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 200, 70));
+        contentPane.add(btnDetallesVentas);
+        btnDetallesVentas.setBounds(240, 110, 200, 70);
 
-        btnFacturas1.setFont(new java.awt.Font("Arial", 0, 14));
-        btnFacturas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/print-mgr-128x128.png"))); // NOI18N
-        btnFacturas1.setText("<html>Facturas</html>");
-        btnFacturas1.setIconTextGap(-5);
-        btnFacturas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFacturas1ActionPerformed(evt);
+        //---- btnModulos ----
+        btnModulos.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnModulos.setText("M\u00f3dulos");
+        btnModulos.setIcon(new ImageIcon(getClass().getResource("/k-black-box-128x128.png")));
+        btnModulos.setIconTextGap(-15);
+        btnModulos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jButton1ActionPerformed(e);
             }
         });
-        getContentPane().add(btnFacturas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 200, 70));
+        contentPane.add(btnModulos);
+        btnModulos.setBounds(660, 210, 200, 70);
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Módulos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        //---- lblVersion ----
+        lblVersion.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblVersion.setText("Versi\u00f3n");
+        lblVersion.setForeground(Color.blue);
+        contentPane.add(lblVersion);
+        lblVersion.setBounds(815, 485, 55, lblVersion.getPreferredSize().height);
+
+        { // compute preferred size
+            Dimension preferredSize = new Dimension();
+            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+                Rectangle bounds = contentPane.getComponent(i).getBounds();
+                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
             }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 200, 70));
-
-        pack();
+            Insets insets = contentPane.getInsets();
+            preferredSize.width += insets.right;
+            preferredSize.height += insets.bottom;
+            contentPane.setMinimumSize(preferredSize);
+            contentPane.setPreferredSize(preferredSize);
+        }
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -364,14 +395,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnVenderActionPerformed
 
-    private void btnFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasActionPerformed
-        
-        VentanaPrincipal  vp = new VentanaPrincipal();
-        panelReportes pvl= new panelReportes();
-        vp.getContentPane().add(pvl);
-        vp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        vp.setVisible(true);
-}//GEN-LAST:event_btnFacturasActionPerformed
 
     private void btnCortesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCortesActionPerformed
         StopWatch timer = new StopWatch().start();
@@ -441,7 +464,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     public void generarFondo(Component componente)
     {
-      Rectangle areaDibujo = this.getBounds();
+      Rectangle areaDibujo = new Rectangle(this.getPreferredSize());
       BufferedImage tmp;
       GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
 
@@ -454,32 +477,30 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlmacenes;
-    private javax.swing.JButton btnArticulos;
-    private javax.swing.JButton btnCajas;
-    private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnClientes;
-    private javax.swing.JButton btnCortes;
-    private javax.swing.JButton btnDetallesVentas;
-    private javax.swing.JButton btnFacturas;
-    private javax.swing.JButton btnFacturas1;
-    private javax.swing.JButton btnGrupos;
-    private javax.swing.JButton btnLineas;
-    private javax.swing.JButton btnMovAlmacen;
-    private javax.swing.JButton btnPreferencias;
-    private javax.swing.JButton btnUsuarios;
-    private javax.swing.JButton btnVender;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
+    // Generated using JFormDesigner Evaluation license - Octavio Ruiz
+    private JLabel jLabel1;
+    private JButton btnCerrar;
+    private JButton btnVender;
+    private JLabel jLabel2;
+    private JButton btnCajas;
+    private JSeparator jSeparator2;
+    private JLabel jLabel3;
+    private JLabel jLabel4;
+    private JSeparator jSeparator3;
+    private JButton btnAlmacenes;
+    private JButton btnMovAlmacen;
+    private JButton btnUsuarios;
+    private JSeparator jSeparator4;
+    private JLabel jLabel5;
+    private JPanel jPanel1;
+    private JButton btnLineas;
+    private JButton btnCortes;
+    private JButton btnArticulos;
+    private JButton btnGrupos;
+    private JSeparator jSeparator5;
+    private JButton btnDetallesVentas;
+    private JButton btnModulos;
+    private JLabel lblVersion;
     // End of variables declaration//GEN-END:variables
 
 }

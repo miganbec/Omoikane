@@ -26,13 +26,15 @@
     <cacheSTable atras='3' adelante='5'/>
     <URLServidor>http://sfmvaldez.poweredbyclear.com:5543</URLServidor>
     <URLMySQL>jdbc:mysql://sfmvaldez.poweredbyclear.com:3307/omoikane</URLMySQL>
+    <loginJasper>Jasper</loginJasper>
+    <passJasper>gatogato</passJasper>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
     <scannerActivo>false</scannerActivo>
     <ScannerPort>COM4</ScannerPort>
     <ScannerBaudRate>9600</ScannerBaudRate>
-    <basculaActiva>false</basculaActiva>
-    <puertoBascula>COM2</puertoBascula>
+    
+    <bascula activa='true' port='COM2' baud='9600' bits='8' stopBits='1' parity='None' stopChar='3'/>
     <fondoBlur>false</fondoBlur>
     <idAlmacen>1</idAlmacen>
     <idCaja>1</idCaja>
