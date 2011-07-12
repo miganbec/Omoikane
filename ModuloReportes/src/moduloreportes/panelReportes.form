@@ -25,17 +25,18 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel1" alignment="1" pref="112" max="32767" attributes="1"/>
-                  <Component id="jButton3" alignment="0" pref="112" max="32767" attributes="1"/>
-                  <Component id="jButton5" alignment="0" pref="112" max="32767" attributes="1"/>
-                  <Component id="jButton2" alignment="0" pref="112" max="32767" attributes="1"/>
-                  <Component id="jButton1" alignment="0" pref="112" max="32767" attributes="1"/>
-                  <Component id="jSalir" alignment="0" pref="112" max="32767" attributes="1"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel1" alignment="1" min="-2" pref="112" max="-2" attributes="1"/>
+                  <Component id="jButton1" alignment="1" pref="114" max="32767" attributes="1"/>
+                  <Component id="jButton2" alignment="1" pref="114" max="32767" attributes="1"/>
+                  <Component id="jButton5" pref="114" max="32767" attributes="1"/>
+                  <Component id="jButton3" alignment="1" pref="114" max="32767" attributes="1"/>
+                  <Component id="jButton4" alignment="0" pref="114" max="32767" attributes="1"/>
+                  <Component id="jSalir" alignment="1" pref="114" max="32767" attributes="1"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="panelReportes" pref="639" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelReportes" pref="640" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -48,15 +49,17 @@
                   <Component id="panelReportes" alignment="1" pref="560" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="29" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton4" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace pref="151" max="32767" attributes="0"/>
+                      <EmptySpace pref="119" max="32767" attributes="0"/>
                       <Component id="jSalir" min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -82,7 +85,7 @@
               <Font name="Times New Roman" size="56" style="3"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="!Bienvenido&#xa1;"/>
+            <Property name="text" type="java.lang.String" value="&#xa1;Bienvenido!"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -154,6 +157,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="14" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Ventas&lt;br&gt;X&lt;br&gt;Grupos&lt;/center&gt;&lt;html&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

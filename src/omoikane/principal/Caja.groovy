@@ -23,7 +23,7 @@ import static omoikane.sistema.Permisos.*
 import omoikane.sistema.cortes.*
 import omoikane.sistema.excepciones.*;
 
-class Caja {
+class Caja implements Serializable {
 
     //variables del sistema
     static def IDCaja    = Principal.IDCaja
@@ -317,9 +317,9 @@ class Caja {
             }
             form.btnMovimientos.actionPerformed = {
                 Thread.start {
-                    
+                    def panel  = new omoikane.formularios.PanelMovimientosCaja()
+                    if(cerrojo(PMA_MOVIMIENTOSCAJA)) {
                     try {
-                        def panel  = new omoikane.formularios.PanelMovimientosCaja()
                         
                         panel.setVisible(true)
                         Herramientas.In2ActionX(panel, KeyEvent.VK_F6, "retiro"   ) { panel.btnRetiro.doClick()     }
@@ -367,6 +367,8 @@ class Caja {
                         panel.txtImporte.requestFocusInWindow()
                     } catch(exce) {
                         Dialogos.error("Error en movimientos caja: ${exce.getMessage()}", exce)
+                    }} else {
+                        javax.swing.JOptionPane.showMessageDialog(panel, "Acceso denegado")
                     }
                     
                 }

@@ -37,6 +37,6 @@
     <bascula activa='true' port='COM2' baud='9600' bits='8' stopBits='1' parity='None' stopChar='3'/>
     <fondoBlur>false</fondoBlur>
     <idAlmacen>1</idAlmacen>
-    <idCaja>1</idCaja>
+    <idCaja>3</idCaja>
     <tipoCorte>1</tipoCorte>
 </document>

@@ -4,6 +4,10 @@
  *                    /////////////
  *                   /////////////
  * //////////////////////////////                   */
+ //iiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+ //iiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+ //iiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+ //iiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 
 package omoikane.sistema;
 
@@ -49,7 +53,9 @@ public class Usuarios {
                 respuesta = [ID:20,huella:"",nombre:"Pruebas",sucursales:["1":4]]
             }
             if(respuesta != 0) {
-                respuesta.cerrojo= { llave -> return llave<=respuesta.sucursales[Principal.IDAlmacen as String] }
+                respuesta.cerrojo= { llave ->
+                  return llave<=respuesta.sucursales[Principal.IDAlmacen as String]
+                }
             } else {
                 respuesta = [:]
                 respuesta.cerrojo= { return false; }

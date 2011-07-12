@@ -16,6 +16,15 @@ class Funciones {
         form.panelReportes.updateUI();
     }
 
+    static def lanzarVentaXGrupos(form) //lanza el formulario de ventas por lineas
+    {
+        form.panelReportes.removeAll();
+        def vxg = new VentasXGrupos();
+        poblarGrupo(vxg)
+        form.panelReportes.add(vxg);
+        form.panelReportes.updateUI();
+    }
+
     static def lanzarutilidadXLinea(form) //lanza el formulario de ventas por lineas
     {
         form.panelReportes.removeAll();
@@ -118,6 +127,19 @@ class Funciones {
             list=list.replace('[','')
             list=list.replace(']','')
             def reporte = new Reporte('moduloreportes/Reportes/VentasXLinea.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
+            reporte.lanzarPreview(form)
+            form.barra.setIndeterminate(false);
+            }
+        }
+
+    static def lanzarReporteVXG(form) {
+            form.barra.setIndeterminate(true);
+            Thread.start {
+            def list
+            list = (String) (form.getGrupos()*.id)
+            list=list.replace('[','')
+            list=list.replace(']','')
+            def reporte = new Reporte('moduloreportes/Reportes/VentasXGrupo.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Grupos:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }

@@ -74,6 +74,7 @@ class Permisos {
     static def PMA_LANZARCAJA            = CAJERO
     static def PMA_ABRIRCAJAS            = SUPERVISOR //INICIAR VENTAS EN CAJA
     static def PMA_VENTAESPECIAL         = GERENTE
+    static def PMA_MOVIMIENTOSCAJA       = SUPERVISOR
 }
 
 

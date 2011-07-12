@@ -22,6 +22,9 @@ sourceSets {
         groovy {
             srcDir 'src'
         }
+	 	resources {
+	            srcDir 'src'
+	        }
     }
 }
 
@@ -63,8 +66,6 @@ jar {
 				   'Main-Class': mainClassName,
 				   'Class-Path': manifestClasspath
     }
-
-	
 }
 
 task distribuir(dependsOn: 'installApp') {

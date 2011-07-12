@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="Lineas" class="java.lang.Integer">
+	<parameter name="Grupo" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="FDesde" class="java.lang.String">
@@ -14,17 +14,22 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     sum(ventas_detalles.`cantidad`)as cantidad_suma,
-     sum(ventas_detalles.`total`)as total_suma,
-     articulos.`codigo` AS articulos_codigo,
-     articulos.`descripcion` AS articulos_descripcion
+     sum(vd.`cantidad`) AS cantidad_suma,
+     sum(vd.`total`)    AS total_suma,
+     a.`codigo`         AS articulos_codigo,
+     a.`descripcion`    AS articulos_descripcion
 FROM
-     `ventas_detalles` ventas_detalles INNER JOIN `ventas` ventas ON ventas_detalles.`id_venta` = ventas.`id_venta`
-     INNER JOIN `articulos` articulos ON ventas_detalles.`id_articulo` = articulos.`id_articulo`
+     ventas_detalles vd,
+     ventas v,
+     articulos a
 WHERE
-     ventas.fecha_hora >= $P{FDesde}
- AND ventas.fecha_hora <= $P{FHasta}
- AND ventas_detalles.id_linea = $P{Lineas}
+     a.id_articulo = vd.id_articulo
+ AND
+     v.id_venta = vd.id_venta
+ AND
+     v.fecha_hora >= $P{FDesde}
+ AND v.fecha_hora <= $P{FHasta}
+ AND a.id_grupo = $P{Grupo}
 GROUP BY
      articulos_codigo]]>
 	</queryString>
@@ -53,21 +58,21 @@ GROUP BY
 				<text><![CDATA[Codigo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="122" y="0" width="213" height="13"/>
+				<reportElement x="122" y="0" width="205" height="13"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Descripcion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="444" y="0" width="111" height="13"/>
+				<reportElement x="447" y="0" width="108" height="13"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="335" y="0" width="92" height="13"/>
+				<reportElement x="340" y="0" width="93" height="13"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
@@ -78,22 +83,22 @@ GROUP BY
 	<detail>
 		<band height="11" splitType="Stretch">
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="444" y="0" width="111" height="11"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="447" y="0" width="108" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{total_suma}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="122" y="0" width="213" height="11"/>
+				<reportElement x="122" y="0" width="205" height="11"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulos_descripcion}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00;-#,##0.00">
-				<reportElement x="335" y="0" width="92" height="11"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="340" y="0" width="93" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8" pdfFontName="Times-Roman"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{cantidad_suma}]]></textFieldExpression>
@@ -110,15 +115,15 @@ GROUP BY
 	<lastPageFooter>
 		<band height="17">
 			<staticText>
-				<reportElement x="384" y="0" width="60" height="16"/>
+				<reportElement x="391" y="0" width="56" height="16"/>
 				<textElement verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total :]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="444" y="0" width="111" height="16"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="447" y="0" width="108" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="10" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$V{GranTotal}]]></textFieldExpression>
