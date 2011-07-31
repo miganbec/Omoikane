@@ -24,7 +24,7 @@ public class AbrirCaja extends javax.swing.JInternalFrame {
         ((JPanel)this.getContentPane()).setOpaque(false);
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
-        this.setBounds(10,10,10,10);
+        this.setBounds(10,10,590,160);
         this.generarFondo(this);
     }
 

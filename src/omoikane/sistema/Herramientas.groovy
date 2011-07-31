@@ -347,7 +347,7 @@ import java.text.SimpleDateFormat
 
     public static def getVersion() {
 
-      return "1.3.1"
+      return "1.3.2"
     }
 
 }

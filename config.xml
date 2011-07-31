@@ -24,8 +24,8 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <cacheSTable atras='3' adelante='5'/>
-    <URLServidor>http://sfmvaldez.poweredbyclear.com:5543</URLServidor>
-    <URLMySQL>jdbc:mysql://sfmvaldez.poweredbyclear.com:3307/omoikane</URLMySQL>
+    <URLServidor>http://172.16.1.1:5542</URLServidor>
+    <URLMySQL>jdbc:mysql://172.16.1.1:3306/omoikane</URLMySQL>
     <loginJasper>Jasper</loginJasper>
     <passJasper>gatogato</passJasper>
     <impresoraActiva>false</impresoraActiva>
