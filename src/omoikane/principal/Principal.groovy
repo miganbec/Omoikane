@@ -128,13 +128,16 @@ public class Principal {
             basculaActiva       = Boolean.valueOf(config.bascula.@activa[0])
             tipoCorte           = Integer.valueOf(config.tipoCorte[0].text())
             if(basculaActiva) {
+                String cmd = ""
+                String.valueOf(config.bascula.@weightCommand[0]).split(",").each { cmd += (it as Integer) as char }
                 driverBascula       = [
                         port: String.valueOf(config.bascula.@port[0]),
                         baud: Integer.valueOf(config.bascula.@baud[0]),
                         bits: String.valueOf(config.bascula.@bits[0]),
                         stopBits: String.valueOf(config.bascula.@stopBits[0]),
                         parity:   String.valueOf(config.bascula.@parity[0]),
-                        stopChar: String.valueOf(config.bascula.@stopChar[0])
+                        stopChar: String.valueOf(config.bascula.@stopChar[0]),
+                        weightCommand: cmd
                 ];
             }
         }

@@ -34,7 +34,7 @@
     <ScannerPort>COM4</ScannerPort>
     <ScannerBaudRate>9600</ScannerBaudRate>
     
-    <bascula activa='true' port='COM2' baud='9600' bits='8' stopBits='1' parity='None' stopChar='3'/>
+    <bascula activa='true' port='COM2' baud='9600' bits='8' stopBits='1' parity='None' stopChar='3' weightCommand="87,13"/>
     <fondoBlur>false</fondoBlur>
     <idAlmacen>1</idAlmacen>
     <idCaja>3</idCaja>

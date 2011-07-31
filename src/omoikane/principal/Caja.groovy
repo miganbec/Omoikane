@@ -241,7 +241,7 @@ class Caja implements Serializable {
                 if(e.keyChar == '+' && !pesando) {
 					try {
 						pesando = true
-						def peso = Caja.comMan.readWeight("K", miniDriver)
+						def peso = Caja.comMan.readWeight(miniDriver.weightCommand, miniDriver)
 						form.txtCaptura.text = peso + "*"
 						e.consume()
 					} catch(exPeso) {
