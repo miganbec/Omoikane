@@ -126,7 +126,7 @@ class Funciones {
             list = (String) (form.getLineas()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('moduloreportes/Reportes/VentasXLinea.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
+            def reporte = new Reporte('moduloreportes/Reportes/VentasXLinea.jrxmal', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }

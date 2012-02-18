@@ -16,6 +16,8 @@ import groovy.inspect.swingui.*;
 import java.awt.*;
 import net.sf.jasperreports.engine.data.JRTableModelDataSource
 import net.sf.jasperreports.engine.data.JRTableModelDataSource
+import org.slf4j.Logger
+import java.util.logging.Logger
 
 class Reporte {
     JasperPrint jp;
@@ -34,17 +36,24 @@ class Reporte {
     Reporte(String reporteJasper, javax.swing.JTable tablaj)
     {
         try {
-            def stream = cargarPlantilla(reporteJasper)
+            //def stream = cargarPlantilla(reporteJasper)
+            def stream = cargarYCompilarJXML(reporteJasper)
             jp = JasperFillManager.fillReport(stream, new java.util.HashMap(), new JRTableModelDataSource(tablaj))
-        } catch(Exception e) {JOptionPane.showMessageDialog(null, e)}
+        } catch(Exception e) {
+
+            JOptionPane.showMessageDialog(null, e)
+        }
     }
 
     Reporte(String reporteJasper,java.util.List matriz)
     {
         try {
-            def stream = cargarPlantilla(reporteJasper)
+            def stream = cargarYCompilarJXML(reporteJasper)
             jp = JasperFillManager.fillReport(stream, new java.util.HashMap(), new JRMapCollectionDataSource(matriz))
-        } catch(Exception e) {JOptionPane.showMessageDialog(null, e)}
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e)
+            Logger.getLogger("").severe("Error al generar reporte");
+        }
     }
 
     def cargarPlantilla(String reporteURL)
@@ -52,6 +61,13 @@ class Reporte {
         def stream = ClassLoader.getSystemResourceAsStream(reporteURL)
         if(stream == null) { throw new Exception("Plantilla de reporte no encontrada. " + reporteURL); }
         return stream
+    }
+
+    def cargarYCompilarJXML(String reporteURL)
+    {
+       def stream = cargarPlantilla(reporteURL)
+       JasperReport report = JasperCompileManager.compileReport(reporteURL);
+       return report;
     }
 
     def toPDF(salida)

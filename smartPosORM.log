@@ -1,0 +1,636 @@
+17:39:58,575  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+17:39:58,582  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+17:39:58,583  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+17:39:59,208  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+17:40:01,329 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+17:40:01,330 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_5' (errno: 150)
+17:47:05,320  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+17:47:05,326  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+17:47:05,328  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+17:47:05,855  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+17:47:06,957 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+17:47:06,958 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_7' (errno: 150)
+17:47:08,027 ERROR TestContextManager:324 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@65f9c5c8] to prepare test instance [omoikane.principal.CorteSucursalTest@712801c5]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'omoikane.principal.CorteSucursalTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: omoikane.principal.Sucursales omoikane.principal.CorteSucursalTest.sucursales; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:220)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:301)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:303)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:240)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:180)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:94)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:196)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:65)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: omoikane.principal.Sucursales omoikane.principal.CorteSucursalTest.sucursales; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:502)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:282)
+	... 24 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:920)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:789)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:703)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:474)
+	... 26 more
+18:00:02,487  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:00:02,493  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:00:02,495  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:00:02,984  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:00:03,975 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:00:03,977 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_9' (errno: 150)
+18:00:04,917 ERROR TestContextManager:324 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@52e5376a] to prepare test instance [omoikane.principal.CorteSucursalTest@46993aaa]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'omoikane.principal.CorteSucursalTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: omoikane.principal.Sucursales omoikane.principal.CorteSucursalTest.sucursales; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:220)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:301)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:303)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:240)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:180)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:94)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:196)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:65)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: omoikane.principal.Sucursales omoikane.principal.CorteSucursalTest.sucursales; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:502)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:282)
+	... 24 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:920)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:789)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:703)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:474)
+	... 26 more
+18:07:30,733  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:07:30,739  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:07:30,740  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:07:31,204  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:07:32,237 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:07:32,238 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_b' (errno: 150)
+18:07:33,179 ERROR TestContextManager:324 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4e81d783] to prepare test instance [omoikane.principal.CorteSucursalTest@2e6c01b9]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'omoikane.principal.CorteSucursalTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: omoikane.principal.Sucursales omoikane.principal.CorteSucursalTest.sucursales; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:220)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:301)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:303)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:240)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:180)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:94)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:196)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:65)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: omoikane.principal.Sucursales omoikane.principal.CorteSucursalTest.sucursales; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:502)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:282)
+	... 24 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [omoikane.principal.Sucursales] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:920)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:789)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:703)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:474)
+	... 26 more
+18:21:10,374  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:21:10,380  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:21:10,382  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:21:10,874  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:21:12,122 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:21:12,123 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_d' (errno: 150)
+18:21:13,226  WARN JDBCExceptionReporter:233 - SQL Error: 1111, SQLState: HY000
+18:21:13,227 ERROR JDBCExceptionReporter:234 - Invalid use of group function
+18:23:23,999  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:23:24,006  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:23:24,008  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:23:24,513  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:23:25,504 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:23:25,505 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_f' (errno: 150)
+18:23:26,632  WARN JDBCExceptionReporter:233 - SQL Error: 1111, SQLState: HY000
+18:23:26,633 ERROR JDBCExceptionReporter:234 - Invalid use of group function
+18:26:52,164  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:26:52,172  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:26:52,173  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:26:52,676  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:26:53,669 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:26:53,670 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_11' (errno: 150)
+18:26:54,714 ERROR PARSER:56 - line 1:56: unexpected token: HAVING
+18:36:19,649  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:36:19,655  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:36:19,657  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:36:20,176  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:36:21,255 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:36:21,256 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_13' (errno: 150)
+18:36:22,325 ERROR PARSER:56 - line 1:56: unexpected token: HAVING
+18:40:03,210  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:40:03,216  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:40:03,218  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:40:03,715  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:40:04,765 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:40:04,766 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_15' (errno: 150)
+18:40:05,940  WARN JDBCExceptionReporter:233 - SQL Error: 1093, SQLState: HY000
+18:40:05,941 ERROR JDBCExceptionReporter:234 - You can't specify target table 'corte_sucursal' for update in FROM clause
+19:00:16,932  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:00:16,939  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:00:16,940  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:00:17,450  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:00:18,509 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:00:18,510 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_17' (errno: 150)
+19:02:01,190  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:02:01,196  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:02:01,198  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:02:01,711  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:02:02,754 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:02:02,755 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_19' (errno: 150)
+01:41:32,162  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:41:32,170  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:41:32,172  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:41:32,753  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:41:34,028 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:41:34,029 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_1b' (errno: 150)
+01:42:04,100  WARN JDBCExceptionReporter:233 - SQL Error: 1111, SQLState: HY000
+01:42:04,101 ERROR JDBCExceptionReporter:234 - Invalid use of group function
+01:42:46,299  WARN JDBCExceptionReporter:233 - SQL Error: 1111, SQLState: HY000
+01:42:46,300 ERROR JDBCExceptionReporter:234 - Invalid use of group function
+01:43:20,801  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:43:20,809  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:43:20,811  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:43:21,317  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:43:22,353 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:43:22,354 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_1d' (errno: 150)
+01:45:32,303  INFO TestContextManager:185 - @TestExecutionListeners is not present for class [class omoikane.principal.CorteSucursalTest]: using defaults.
+01:45:32,442  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [applicationContext.xml]
+01:45:33,683  INFO GenericApplicationContext:456 - Refreshing org.springframework.context.support.GenericApplicationContext@9a082e2: startup date [Thu Nov 03 01:45:33 CST 2011]; root of context hierarchy
+01:45:34,010  INFO GenericApplicationContext:1332 - Bean 'dataSource' of type [class org.apache.commons.dbcp.BasicDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+01:45:34,039  INFO GenericApplicationContext:1332 - Bean 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#79884a40' of type [class org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+01:45:34,073  INFO LocalContainerEntityManagerFactoryBean:221 - Building JPA container EntityManagerFactory for persistence unit 'OmoikanePU'
+01:45:34,225  INFO Version:37 - Hibernate Commons Annotations 3.2.0.Final
+01:45:34,232  INFO Environment:603 - Hibernate 3.6.5.Final
+01:45:34,233  INFO Environment:636 - hibernate.properties not found
+01:45:34,237  INFO Environment:814 - Bytecode provider name : javassist
+01:45:34,240  INFO Environment:695 - using JDK 1.4 java.sql.Timestamp handling
+01:45:34,311  INFO Version:42 - Hibernate EntityManager 3.6.5.Final
+01:45:34,329  INFO Ejb3Configuration:523 - Processing PersistenceUnitInfo [
+	name: OmoikanePU
+	...]
+01:45:34,847  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.VentaDetalle
+01:45:34,892  INFO EntityBinder:530 - Bind entity omoikane.entities.VentaDetalle on table venta_detalle
+01:45:34,945  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.MovimientoAlmacenDetalle
+01:45:34,947  INFO EntityBinder:530 - Bind entity omoikane.entities.MovimientoAlmacenDetalle on table movimiento_almacen_detalle
+01:45:34,960  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.MovimientoAlmacen
+01:45:34,961  INFO EntityBinder:530 - Bind entity omoikane.entities.MovimientoAlmacen on table movimiento_almacen
+01:45:35,036  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.VentaFacturada
+01:45:35,037  INFO EntityBinder:530 - Bind entity omoikane.entities.VentaFacturada on table venta_facturada
+01:45:35,043  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Venta
+01:45:35,044  INFO EntityBinder:530 - Bind entity omoikane.entities.Venta on table Venta
+01:45:35,058  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.CorteSucursal
+01:45:35,059  INFO EntityBinder:530 - Bind entity omoikane.entities.CorteSucursal on table corte_sucursal
+01:45:35,066  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Preferencia
+01:45:35,067  INFO EntityBinder:530 - Bind entity omoikane.entities.Preferencia on table Preferencia
+01:45:35,070  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.CodigoArticulo
+01:45:35,071  INFO EntityBinder:530 - Bind entity omoikane.entities.CodigoArticulo on table codigo_articulo
+01:45:35,073  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Anotacion
+01:45:35,076  INFO EntityBinder:530 - Bind entity omoikane.entities.Anotacion on table Anotacion
+01:45:35,078  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Caja
+01:45:35,080  INFO EntityBinder:530 - Bind entity omoikane.entities.Caja on table Caja
+01:45:35,088  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Corte
+01:45:35,088  INFO EntityBinder:530 - Bind entity omoikane.entities.Corte on table Corte
+01:45:35,105  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Usuario
+01:45:35,106  INFO EntityBinder:530 - Bind entity omoikane.entities.Usuario on table Usuario
+01:45:35,115  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.MovimientoCorte
+01:45:35,115  INFO EntityBinder:530 - Bind entity omoikane.entities.MovimientoCorte on table movimiento_corte
+01:45:35,125  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.CodigoProducto
+01:45:35,126  INFO EntityBinder:530 - Bind entity omoikane.entities.CodigoProducto on table codigo_producto
+01:45:35,129  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.VentaEspecial
+01:45:35,130  INFO EntityBinder:530 - Bind entity omoikane.entities.VentaEspecial on table venta_especial
+01:45:35,134  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Cliente
+01:45:35,135  INFO EntityBinder:530 - Bind entity omoikane.entities.Cliente on table Cliente
+01:45:35,141  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Producto
+01:45:35,142  INFO EntityBinder:530 - Bind entity omoikane.entities.Producto on table Producto
+01:45:35,165  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Paquete
+01:45:35,166  INFO EntityBinder:530 - Bind entity omoikane.entities.Paquete on table Paquete
+01:45:35,169  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Grupo
+01:45:35,169  INFO EntityBinder:530 - Bind entity omoikane.entities.Grupo on table Grupo
+01:45:35,173  INFO AnnotationBinder:532 - Binding entity from annotated class: omoikane.entities.Linea
+01:45:35,174  INFO EntityBinder:530 - Bind entity omoikane.entities.Linea on table Linea
+01:45:35,188  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.MovimientoAlmacen.movimientoAlmacenDetallesById -> movimiento_almacen_detalle
+01:45:35,190  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Venta.ventaDetallesByVentaId -> venta_detalle
+01:45:35,191  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Venta.ventaEspecialsByVentaId -> venta_especial
+01:45:35,192  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.CorteSucursal.cortesById -> Corte
+01:45:35,192  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Caja.ventaDetallesById -> venta_detalle
+01:45:35,193  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Caja.ventasById -> Venta
+01:45:35,194  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Corte.cajas -> Caja
+01:45:35,194  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Corte.ventas -> Venta
+01:45:35,195  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Usuario.movimientoCortesById -> movimiento_corte
+01:45:35,196  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Usuario.movimientoCortesById_0 -> movimiento_corte
+01:45:35,196  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Usuario.ventaEspecialsById -> venta_especial
+01:45:35,197  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Cliente.ventasByClienteId -> Venta
+01:45:35,198  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Producto.codigoArticulosById -> codigo_producto
+01:45:35,199  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Producto.movimientoAlmacenDetallesById -> movimiento_almacen_detalle
+01:45:35,199  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Producto.paquetesById -> Paquete
+01:45:35,200  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Producto.ventaDetallesById -> venta_detalle
+01:45:35,201  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Grupo.productosByGrupoId -> Producto
+01:45:35,201  INFO CollectionBinder:762 - Mapping collection: omoikane.entities.Linea.productosByLineaId -> Producto
+01:45:35,203  INFO Configuration:1676 - Hibernate Validator not found: ignoring
+01:45:35,219  INFO Version:24 - Hibernate Validator 4.2.0.Final
+01:45:35,544  INFO HibernateSearchEventListenerRegister:75 - Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+01:45:35,566  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:45:35,570  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:45:35,571  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:45:35,575  INFO ConnectionProviderFactory:173 - Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+01:45:35,579  INFO InjectedDataSourceConnectionProvider:62 - Using provided datasource
+01:45:36,008  INFO Dialect:135 - Using dialect: org.hibernate.dialect.MySQLDialect
+01:45:36,021  INFO SettingsFactory:126 - Database ->
+       name : MySQL
+    version : 5.5.14
+      major : 5
+      minor : 5
+01:45:36,022  INFO SettingsFactory:132 - Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.16 ( Revision: ${bzr.revision-id} )
+      major : 5
+      minor : 1
+01:45:36,024  INFO TransactionFactoryFactory:62 - Using default transaction strategy (direct JDBC transactions)
+01:45:36,026  INFO TransactionManagerLookupFactory:83 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+01:45:36,026  INFO SettingsFactory:179 - Automatic flush during beforeCompletion(): disabled
+01:45:36,027  INFO SettingsFactory:183 - Automatic session close at end of transaction: disabled
+01:45:36,027  INFO SettingsFactory:190 - JDBC batch size: 20
+01:45:36,028  INFO SettingsFactory:193 - JDBC batch updates for versioned data: disabled
+01:45:36,029  INFO SettingsFactory:198 - Scrollable result sets: enabled
+01:45:36,030  INFO SettingsFactory:206 - JDBC3 getGeneratedKeys(): enabled
+01:45:36,046  INFO SettingsFactory:214 - Connection release mode: auto
+01:45:36,048  INFO SettingsFactory:238 - Maximum outer join fetch depth: 2
+01:45:36,048  INFO SettingsFactory:241 - Default batch fetch size: 1
+01:45:36,049  INFO SettingsFactory:245 - Generate SQL with comments: disabled
+01:45:36,049  INFO SettingsFactory:249 - Order SQL updates by primary key: disabled
+01:45:36,050  INFO SettingsFactory:253 - Order SQL inserts for batching: disabled
+01:45:36,050  INFO SettingsFactory:431 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+01:45:36,052  INFO ASTQueryTranslatorFactory:47 - Using ASTQueryTranslatorFactory
+01:45:36,053  INFO SettingsFactory:261 - Query language substitutions: {}
+01:45:36,053  INFO SettingsFactory:266 - JPA-QL strict compliance: enabled
+01:45:36,054  INFO SettingsFactory:271 - Second-level cache: enabled
+01:45:36,054  INFO SettingsFactory:275 - Query cache: disabled
+01:45:36,055  INFO SettingsFactory:406 - Cache region factory : org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge
+01:45:36,060  INFO RegionFactoryCacheProviderBridge:61 - Cache provider: org.hibernate.cache.EhCacheProvider
+01:45:36,066  INFO SettingsFactory:285 - Optimize cache for minimal puts: disabled
+01:45:36,067  INFO SettingsFactory:294 - Structured second-level cache entries: enabled
+01:45:36,072  INFO SettingsFactory:314 - Echoing all SQL to stdout
+01:45:36,073  INFO SettingsFactory:323 - Statistics: disabled
+01:45:36,074  INFO SettingsFactory:327 - Deleted entity synthetic identifier rollback: disabled
+01:45:36,074  INFO SettingsFactory:343 - Default entity-mode: pojo
+01:45:36,075  INFO SettingsFactory:347 - Named query checking : enabled
+01:45:36,075  INFO SettingsFactory:351 - Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+01:45:36,094  INFO SessionFactoryImpl:202 - building session factory
+01:45:36,162  INFO BasicTypeRegistry:150 - Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@36fffa61
+01:45:36,164  INFO BasicTypeRegistry:150 - Type registration [clob] overrides previous : org.hibernate.type.ClobType@5f8f127c
+01:45:36,166  INFO BasicTypeRegistry:150 - Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@5f8f127c
+01:45:36,167  INFO BasicTypeRegistry:150 - Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@2a06bbe7
+01:45:36,167  INFO BasicTypeRegistry:150 - Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@201a503f
+01:45:36,168  INFO BasicTypeRegistry:150 - Type registration [blob] overrides previous : org.hibernate.type.BlobType@1f8a6890
+01:45:36,168  INFO BasicTypeRegistry:150 - Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@1f8a6890
+01:45:36,169  INFO BasicTypeRegistry:150 - Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@37d6d61d
+01:45:36,170  INFO BasicTypeRegistry:150 - Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@7983268e
+01:45:36,187  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:45:36,841  INFO SessionFactoryObjectFactory:105 - Not binding factory to JNDI, no JNDI name configured
+01:45:36,847  INFO SchemaUpdate:155 - Running hbm2ddl schema update
+01:45:36,847  INFO SchemaUpdate:167 - fetching database metadata
+01:45:36,850  INFO SchemaUpdate:179 - updating schema
+01:45:36,960  INFO TableMetadata:65 - table found: Omoikane.anotacion
+01:45:36,961  INFO TableMetadata:66 - columns: [texto, producto_id]
+01:45:36,961  INFO TableMetadata:68 - foreign keys: [fk_producto]
+01:45:36,962  INFO TableMetadata:69 - indexes: [primary]
+01:45:36,971  INFO TableMetadata:65 - table found: Omoikane.caja
+01:45:36,971  INFO TableMetadata:66 - columns: [id, umodificacion, descripcion, creacion, corte_sucursal_id]
+01:45:36,972  INFO TableMetadata:68 - foreign keys: [fk_cajas_cortes1]
+01:45:36,972  INFO TableMetadata:69 - indexes: [primary, fk_cajas_cortes1]
+01:45:36,981  INFO TableMetadata:65 - table found: Omoikane.cliente
+01:45:36,982  INFO TableMetadata:66 - columns: [actualizacion, nombre, descuento, cliente_id, creacion, saldo]
+01:45:36,982  INFO TableMetadata:68 - foreign keys: []
+01:45:36,983  INFO TableMetadata:69 - indexes: [primary]
+01:45:37,001  INFO TableMetadata:65 - table found: Omoikane.corte
+01:45:37,001  INFO TableMetadata:66 - columns: [total, n_ventas, fecha, abierto, descuentos, subtotal, desde, hora, id_caja, retiros, impuestos, corte_sucursal_id, hasta, depositos]
+01:45:37,002  INFO TableMetadata:68 - foreign keys: [fk_cortes_cortes_sucursal1]
+01:45:37,002  INFO TableMetadata:69 - indexes: [fk_cortes_cortes_sucursal1, primary, index_3, index_2]
+01:45:37,012  INFO TableMetadata:65 - table found: Omoikane.grupo
+01:45:37,013  INFO TableMetadata:66 - columns: [id, descuento, creado, modificado, descripcion]
+01:45:37,013  INFO TableMetadata:68 - foreign keys: []
+01:45:37,014  INFO TableMetadata:69 - indexes: [primary, index_1]
+01:45:37,021  INFO TableMetadata:65 - table found: Omoikane.linea
+01:45:37,021  INFO TableMetadata:66 - columns: [id, descuento, creado, modificado, descripcion]
+01:45:37,022  INFO TableMetadata:68 - foreign keys: []
+01:45:37,022  INFO TableMetadata:69 - indexes: [primary]
+01:45:37,028  INFO TableMetadata:65 - table found: Omoikane.codigo_articulo
+01:45:37,028  INFO TableMetadata:66 - columns: [codigo, id, producto_id, version]
+01:45:37,029  INFO TableMetadata:68 - foreign keys: []
+01:45:37,029  INFO TableMetadata:69 - indexes: [primary]
+01:45:37,036  INFO TableMetadata:65 - table found: Omoikane.codigo_producto
+01:45:37,037  INFO TableMetadata:66 - columns: [codigo, id, producto_id, version]
+01:45:37,037  INFO TableMetadata:68 - foreign keys: [fk_codigos_articulos_productos1]
+01:45:37,038  INFO TableMetadata:69 - indexes: [primary, index_3, index_4]
+01:45:37,045  INFO TableMetadata:65 - table found: Omoikane.corte_sucursal
+01:45:37,045  INFO TableMetadata:66 - columns: [id, abierto, retiros, umodificacion, creacion, hasta, depositos, desde]
+01:45:37,046  INFO TableMetadata:68 - foreign keys: []
+01:45:37,046  INFO TableMetadata:69 - indexes: [primary, index_3, index_2]
+01:45:37,054  INFO TableMetadata:65 - table found: Omoikane.movimiento_almacen
+01:45:37,054  INFO TableMetadata:66 - columns: [id, hora, fecha, creado, folio, tipo, modificado, descripcion, monto]
+01:45:37,055  INFO TableMetadata:68 - foreign keys: []
+01:45:37,055  INFO TableMetadata:69 - indexes: [primary]
+01:45:37,095  INFO TableMetadata:65 - table found: Omoikane.movimiento_almacen_detalle
+01:45:37,095  INFO TableMetadata:66 - columns: [id, cantidad, movimiento_id, costo, producto_id]
+01:45:37,096  INFO TableMetadata:68 - foreign keys: [fk_movimientos_almacen_detalles_movimientos_almacen1, fk_movimientos_almacen_detalles_productos1]
+01:45:37,097  INFO TableMetadata:69 - indexes: [primary, fk_movimientos_almacen_detalles_productos1]
+01:45:37,106  INFO TableMetadata:65 - table found: Omoikane.movimiento_corte
+01:45:37,106  INFO TableMetadata:66 - columns: [importe, hora, usuario_id, fecha, tipo, corte_id_caja, cajero_id, corte_sucursal_id]
+01:45:37,107  INFO TableMetadata:68 - foreign keys: [fk_movimientos_cortes_usuarios1, fk_movimientos_cortes_usuarios2, fk_movimientos_cortes_cortes1]
+01:45:37,107  INFO TableMetadata:69 - indexes: [fk_movimientos_cortes_usuarios1, fk_movimientos_cortes_usuarios2, primary, fk_movimientos_cortes_cortes1]
+01:45:37,126  INFO TableMetadata:65 - table found: Omoikane.venta_detalle
+01:45:37,127  INFO TableMetadata:66 - columns: [total, id, descuento, caja_id, precio, impuestos, cantidad, venta_id, tipo_salida, producto_id, subtotal]
+01:45:37,127  INFO TableMetadata:68 - foreign keys: [fk_ventas_detalles_cajas1, id_producto, fk_ventas_detalles_ventas1]
+01:45:37,128  INFO TableMetadata:69 - indexes: [primary, id_producto, index_3, index_2]
+01:45:37,135  INFO TableMetadata:65 - table found: Omoikane.venta_especial
+01:45:37,135  INFO TableMetadata:66 - columns: [id, id_autorizador, usuarios_id_usuario, id_venta]
+01:45:37,136  INFO TableMetadata:68 - foreign keys: [fk_ventasprecioespecial_ventas1, fk_ventasprecioespecial_usuarios1]
+01:45:37,136  INFO TableMetadata:69 - indexes: [primary, fk_ventasprecioespecial_ventas1, fk_ventasprecioespecial_usuarios1]
+01:45:37,144  INFO TableMetadata:65 - table found: Omoikane.venta_facturada
+01:45:37,144  INFO TableMetadata:66 - columns: [venta_id, factura_id]
+01:45:37,145  INFO TableMetadata:68 - foreign keys: [fk_ventas_facturadas_ventas1]
+01:45:37,145  INFO TableMetadata:69 - indexes: [primary]
+01:45:37,153  INFO TableMetadata:65 - table found: Omoikane.paquete
+01:45:37,153  INFO TableMetadata:66 - columns: [codigo, id, cantidad, producto_id]
+01:45:37,153  INFO TableMetadata:68 - foreign keys: [fk45341af2bffd8c1c]
+01:45:37,154  INFO TableMetadata:69 - indexes: [fk45341af2bffd8c1c, primary]
+01:45:37,160  INFO TableMetadata:65 - table found: Omoikane.preferencia
+01:45:37,161  INFO TableMetadata:66 - columns: [id, valor, clave]
+01:45:37,161  INFO TableMetadata:68 - foreign keys: []
+01:45:37,161  INFO TableMetadata:69 - indexes: [primary]
+01:45:37,172  INFO TableMetadata:65 - table found: Omoikane.producto
+01:45:37,172  INFO TableMetadata:66 - columns: [creado, descripcion, modificado, costo, existencia, utilidad, id, codigo, descuento, impuestos, unidad, linea_id, grupo_id]
+01:45:37,173  INFO TableMetadata:68 - foreign keys: [fk_productos_lineas1, fk_productos_grupos1]
+01:45:37,173  INFO TableMetadata:69 - indexes: [fk_productos_lineas1, codigo, fk_productos_grupos1, primary]
+01:45:37,185  INFO TableMetadata:65 - table found: Omoikane.usuario
+01:45:37,185  INFO TableMetadata:66 - columns: [nombre, id, fecha_hora_alta, umodificacion, huella1, huella2, huella3, nip]
+01:45:37,186  INFO TableMetadata:68 - foreign keys: []
+01:45:37,186  INFO TableMetadata:69 - indexes: [primary]
+01:45:37,203  INFO TableMetadata:65 - table found: Omoikane.venta
+01:45:37,204  INFO TableMetadata:66 - columns: [total, fecha, creado, modificado, cambio, subtotal, eliminar, efectivo, id, hora, facturada, descuento, caja_id, usuario_id, cliente_id, completada, folio, impuestos, corte_sucursal_id]
+01:45:37,205  INFO TableMetadata:68 - foreign keys: [fk_ventas_clientes1, fk_ventas_cajas1, fk_ventas_cortes1]
+01:45:37,205  INFO TableMetadata:69 - indexes: [fk_ventas_clientes1, primary, idx_caja_fecha, fk_ventas_cortes1]
+01:45:37,274 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:45:37,275 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_1f' (errno: 150)
+01:45:37,275  INFO SchemaUpdate:217 - schema update complete
+01:45:37,346  INFO GenericApplicationContext:1332 - Bean 'entityManagerFactory' of type [class org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+01:45:37,419  INFO GenericApplicationContext:1332 - Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+01:45:37,428  INFO GenericApplicationContext:1332 - Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+01:45:37,445  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fc8efd1: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,omoikane.repository.PruebaSpring#0,omoikane.principal.Sucursales#0,codigoProductoRepo,preferenciaRepo,corteSucursalRepo,paqueteRepo,ventaEspecialRepo,ventaDetalleRepo,anotacionRepo,cajaRepo,ventaFacturadaRepo,movimientoAlmacenRepo,ventaRepo,productoRepo,corteRepo,clienteRepo,lineaRepo,movimientoAlmacenDetalleRepo,usuarioRepo,movimientoCorteRepo,grupoRepo,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.synyx.hades.dao.orm.DaoInterfaceAwareBeanPostProcessor#0,log4jInitializer,dataSource,entityManagerFactory,transactionManager,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#1,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#1,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor]; root of factory hierarchy
+01:45:37,923  INFO UpdateChecker:98 - New update(s) found: 2.4.6 [http://www.terracotta.org/confluence/display/release/Release+Notes+Ehcache+Core+2.4]. Please check http://ehcache.org for the latest version.
+01:45:38,069  INFO CorteSucursal:40 - Caja efectivamente cerrada
+01:45:38,094  INFO CorteSucursal:43 - Abrimos la caja con éxito
+01:45:38,094  INFO CorteSucursal:46 - Comprobado la caja está abierta
+01:45:38,421  INFO CorteSucursal:49 - Se cierra la caja con éxito
+01:45:38,421  INFO CorteSucursal:52 - Comprobado la caja está cerrada
+01:45:38,451  INFO GenericApplicationContext:1002 - Closing org.springframework.context.support.GenericApplicationContext@9a082e2: startup date [Thu Nov 03 01:45:33 CST 2011]; root of context hierarchy
+01:45:38,452  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fc8efd1: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,omoikane.repository.PruebaSpring#0,omoikane.principal.Sucursales#0,codigoProductoRepo,preferenciaRepo,corteSucursalRepo,paqueteRepo,ventaEspecialRepo,ventaDetalleRepo,anotacionRepo,cajaRepo,ventaFacturadaRepo,movimientoAlmacenRepo,ventaRepo,productoRepo,corteRepo,clienteRepo,lineaRepo,movimientoAlmacenDetalleRepo,usuarioRepo,movimientoCorteRepo,grupoRepo,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.synyx.hades.dao.orm.DaoInterfaceAwareBeanPostProcessor#0,log4jInitializer,dataSource,entityManagerFactory,transactionManager,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#1,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#1,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor]; root of factory hierarchy
+01:45:38,460  INFO LocalContainerEntityManagerFactoryBean:406 - Closing JPA EntityManagerFactory for persistence unit 'OmoikanePU'
+01:45:38,460  INFO SessionFactoryImpl:927 - closing
+01:47:11,244  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:47:11,250  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:47:11,252  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:47:11,727  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:47:12,693 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:47:12,695 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_21' (errno: 150)
+01:47:13,435  WARN CorteSucursal:40 - Caja efectivamente cerrada
+01:47:13,436  WARN CorteSucursal:43 - Abrimos la caja con éxito
+01:47:13,437  WARN CorteSucursal:46 - Comprobado la caja está abierta
+01:47:13,779  WARN CorteSucursal:49 - Se cierra la caja con éxito
+01:47:13,779  WARN CorteSucursal:52 - Comprobado la caja está cerrada
+01:47:38,147  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:47:38,154  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:47:38,156  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:47:38,630  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:47:39,594 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:47:39,595 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_23' (errno: 150)
+01:47:40,364  WARN CorteSucursal:40 - Caja efectivamente cerrada
+01:47:40,365  WARN CorteSucursal:43 - Abrimos la caja con éxito
+01:47:40,365  WARN CorteSucursal:46 - Comprobado la caja está abierta
+01:47:40,677  WARN CorteSucursal:49 - Se cierra la caja con éxito
+01:47:40,677  WARN CorteSucursal:52 - Comprobado la caja está cerrada
+01:49:17,494  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:49:17,500  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:49:17,502  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:49:17,985  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:49:18,996 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:49:18,997 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_25' (errno: 150)
+01:49:19,750  WARN CorteSucursal:40 - Caja efectivamente cerrada
+01:49:19,750  WARN CorteSucursal:43 - Abrimos la caja con éxito
+01:49:19,751  WARN CorteSucursal:46 - Comprobado la caja está abierta
+01:49:20,061  WARN CorteSucursal:49 - Se cierra la caja con éxito
+01:49:20,062  WARN CorteSucursal:52 - Comprobado la caja está cerrada
+01:51:59,889  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:51:59,895  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:51:59,897  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:52:00,383  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:52:01,398 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:52:01,399 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_27' (errno: 150)
+01:53:05,269  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+01:53:05,275  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+01:53:05,277  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+01:53:05,758  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+01:53:06,719 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+01:53:06,720 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_29' (errno: 150)
+01:53:07,807  WARN JDBCExceptionReporter:233 - SQL Error: 1111, SQLState: HY000
+01:53:07,807 ERROR JDBCExceptionReporter:234 - Invalid use of group function
+10:58:31,344  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+10:58:31,350  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+10:58:31,352  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+10:58:31,829  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+10:58:32,798 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+10:58:32,799 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_2b' (errno: 150)
+10:58:33,884  WARN JDBCExceptionReporter:233 - SQL Error: 1305, SQLState: 42000
+10:58:33,885 ERROR JDBCExceptionReporter:234 - FUNCTION omoikane.Ã‘AST_INSERT_ID does not exist
+10:58:57,677  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+10:58:57,683  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+10:58:57,685  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+10:58:58,199  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+10:58:59,293 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+10:58:59,295 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_2d' (errno: 150)
+11:14:25,222  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+11:14:25,228  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+11:14:25,229  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+11:14:25,711  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+11:14:26,664 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+11:14:26,665 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_2f' (errno: 150)
+11:14:27,757  WARN CorteSucursal:39 - Caja efectivamente cerrada
+11:14:27,757  WARN CorteSucursal:42 - Abrimos la caja con éxito
+11:14:27,758  WARN CorteSucursal:45 - Comprobado la caja está abierta
+11:14:27,771  WARN CorteSucursal:48 - Se cierra la caja con éxito
+11:14:27,771  WARN CorteSucursal:51 - Comprobado la caja está cerrada
+11:16:59,178  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+11:16:59,184  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+11:16:59,186  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+11:16:59,650  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+11:17:00,615 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+11:17:00,617 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_31' (errno: 150)
+11:17:01,707  WARN CorteSucursal:39 - Caja efectivamente cerrada
+11:17:01,825  WARN JDBCExceptionReporter:233 - SQL Error: 1048, SQLState: 23000
+11:17:01,826 ERROR JDBCExceptionReporter:234 - Column 'depositos' cannot be null
+11:18:24,483  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+11:18:24,489  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+11:18:24,491  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+11:18:24,963  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+11:18:25,920 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+11:18:25,921 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_33' (errno: 150)
+11:18:26,974  WARN CorteSucursal:39 - Caja efectivamente cerrada
+11:18:27,027  WARN JDBCExceptionReporter:233 - SQL Error: 1048, SQLState: 23000
+11:18:27,028 ERROR JDBCExceptionReporter:234 - Column 'desde' cannot be null
+11:35:39,063  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+11:35:39,069  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+11:35:39,071  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+11:35:39,559  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+11:35:41,188 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+11:35:41,189 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_3c' (errno: 150)
+11:35:42,265  WARN CorteSucursal:39 - Caja efectivamente cerrada
+11:35:42,322  WARN CorteSucursal:42 - Abrimos la caja con éxito
+11:51:25,870  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+11:51:25,877  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+11:51:25,878  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+11:51:26,356  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+11:51:27,546 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+11:51:27,547 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_3e' (errno: 150)
+11:51:28,637  WARN CorteSucursal:39 - Caja efectivamente cerrada
+11:51:28,696  WARN CorteSucursal:42 - Abrimos la caja con éxito
+11:51:28,701  WARN CorteSucursal:45 - Comprobado la caja está abierta
+11:51:28,714  WARN CorteSucursal:48 - Se cierra la caja con éxito
+11:51:28,717  WARN CorteSucursal:51 - Comprobado la caja está cerrada
+12:40:21,493  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+12:40:21,500  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+12:40:21,501  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+12:40:21,990  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+12:40:22,976 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+12:40:22,977 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_40' (errno: 150)
+12:40:24,042  WARN CorteSucursal:39 - Caja efectivamente cerrada
+12:40:24,101  WARN CorteSucursal:42 - Abrimos la caja con éxito
+12:40:24,169  WARN CorteSucursal:46 - Comprobado la caja está abierta. Fecha de creación: 2011-11-03 12:40:24.0
+12:40:24,182  WARN CorteSucursal:49 - Se cierra la caja con éxito
+12:40:24,185  WARN CorteSucursal:52 - Comprobado la caja está cerrada
+12:40:24,190  WARN CorteSucursal:57 - Abrimos la caja con éxito
+12:40:24,193  WARN CorteSucursal:60 - Se cierra la caja con éxito
+18:14:57,954  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:14:57,987  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:14:57,988  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:14:59,031  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:15:00,724 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:15:00,725 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_42' (errno: 150)
+18:15:02,800  WARN CorteSucursal:39 - Caja efectivamente cerrada
+18:15:02,950  WARN CorteSucursal:42 - Abrimos la caja con éxito
+18:15:03,005  WARN CorteSucursal:46 - Comprobado la caja está abierta. Fecha de creación: 2011-11-05 18:15:02.0
+18:15:03,050  WARN CorteSucursal:49 - Se cierra la caja con éxito
+18:15:03,053  WARN CorteSucursal:52 - Comprobado la caja está cerrada
+18:15:03,066  WARN CorteSucursal:57 - Abrimos la caja con éxito
+18:15:03,069  WARN CorteSucursal:60 - Se cierra la caja con éxito
+18:15:39,017  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:15:39,025  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:15:39,027  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:15:39,510  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:15:40,529 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:15:40,530 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_44' (errno: 150)
+18:15:41,759  WARN JDBCExceptionReporter:233 - SQL Error: 1452, SQLState: 23000
+18:15:41,760 ERROR JDBCExceptionReporter:234 - Cannot add or update a child row: a foreign key constraint fails (`omoikane`.`caja`, CONSTRAINT `fk_cajas_cortes1` FOREIGN KEY (`id`, `corte_sucursal_id`) REFERENCES `corte` (`id_caja`, `corte_sucursal_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+18:26:08,398  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+18:26:08,405  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+18:26:08,407  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+18:26:08,889  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+18:26:10,338 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+18:26:10,339 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_4d' (errno: 150)
+18:26:11,607  WARN JDBCExceptionReporter:233 - SQL Error: 1452, SQLState: 23000
+18:26:11,608 ERROR JDBCExceptionReporter:234 - Cannot add or update a child row: a foreign key constraint fails (`omoikane`.`caja`, CONSTRAINT `fk_cajas_cortes1` FOREIGN KEY (`id`, `corte_sucursal_id`) REFERENCES `corte` (`id_caja`, `corte_sucursal_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+19:08:34,281  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:08:34,288  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:08:34,289  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:08:34,756  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:08:36,219 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:08:36,220 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_58' (errno: 150)
+19:08:56,129  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:08:56,135  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:08:56,137  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:08:56,613  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:08:57,862 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:08:57,863 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_5a' (errno: 150)
+19:10:04,094  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:10:04,100  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:10:04,102  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:10:04,584  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:10:05,661 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:10:05,663 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_5c' (errno: 150)
+19:20:40,443  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:20:40,449  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:20:40,451  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:20:40,918  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:20:41,991 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:20:41,992 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_5e' (errno: 150)
+19:20:43,234  WARN CorteSucursal:37 - Caja creada
+19:22:14,405  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:22:14,412  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:22:14,413  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:22:14,882  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:22:15,924 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:22:15,925 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_60' (errno: 150)
+19:22:17,185  WARN CortesTest:37 - Caja creada
+19:22:43,863  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+19:22:43,871  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+19:22:43,872  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+19:22:44,340  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+19:22:45,473 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+19:22:45,475 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_62' (errno: 150)
+19:22:46,687  INFO CortesTest:37 - Caja creada
+22:42:19,901  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.VentaEspecialPK
+22:42:19,946  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.MovimientoCortePK
+22:42:19,948  WARN RootClass:258 - composite-id class does not override hashCode(): omoikane.entities.CortePK
+22:42:20,964  WARN ConfigurationFactory:134 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/octavioruizcastillo/.gradle/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.4.2.jar!/ehcache-failsafe.xml
+22:42:22,916 ERROR SchemaUpdate:212 - Unsuccessful: alter table Omoikane.codigo_articulo add index FK9211FFC1ABA3A57E (producto_id), add constraint FK9211FFC1ABA3A57E foreign key (producto_id) references Producto (id)
+22:42:22,917 ERROR SchemaUpdate:213 - Can't create table 'omoikane.#sql-22a_64' (errno: 150)
+22:42:25,772  INFO CortesTest:44 - Corte sucursal creado
+22:42:25,798  INFO CortesTest:49 - Caja creada
