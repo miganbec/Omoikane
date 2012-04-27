@@ -47,7 +47,7 @@ public class Principal {
         public static String                URLMySQL
         public static int                   scannerBaudRate
         public static String                scannerPort
-        public static ContextoFPSDK.SDK     sdkFingerprint = SDK.ONETOUCH;
+        public static SDK                   sdkFingerprint = SDK.ONETOUCH;
         public static ShutdownHandler       shutdownHandler
         public static def                   toFinalizeTracker       = [:]
         public static def                   scanMan
