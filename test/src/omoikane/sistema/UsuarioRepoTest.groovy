@@ -1,13 +1,15 @@
-package omoikane.repository;
+package omoikane.sistema;
 
 import omoikane.entities.Usuario;
-import org.codehaus.groovy.ant.Groovy;
+
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+
+
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,19 +18,17 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Set;
 
-import static org.hamcrest.core.Is.is;
+
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertEquals;
+
+
 import static org.junit.Assert.assertThat
-import groovy.inspect.Inspector;
+
+import org.apache.log4j.Logger
+import omoikane.repository.UsuarioRepo;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,6 +49,8 @@ public class UsuarioRepoTest extends GroovyTestCase/*AbstractTransactionalJUnit4
 
     Usuario usuario;
     private static Validator validator;
+
+    public static Logger logger        = Logger.getLogger(UsuarioRepoTest.class);
 
     @Before
     public void setUp() {
@@ -74,7 +76,7 @@ public class UsuarioRepoTest extends GroovyTestCase/*AbstractTransactionalJUnit4
     public void buscarTodos() {
         List<Usuario> users = usuarioRepo.findAll();
         users.each {
-          println it.nombre;
+          logger.info( "Usuario: "+it.nombre );
         }
         def countUsers = usuarioRepo.count();
         assert users.size() == countUsers;

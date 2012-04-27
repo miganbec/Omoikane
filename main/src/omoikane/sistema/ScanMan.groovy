@@ -73,7 +73,7 @@ public class ScanMan implements SerialPortEventListener
                 in7 = serialPort.getInputStream();
                 out = serialPort.getOutputStream();
 
-                //(new Thread(new SerialWriter(out))).start();
+                //(new Thread(new SerialWriter(out))).startCapture();
 
 
                 serialPort.addEventListener(this);

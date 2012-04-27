@@ -4,25 +4,44 @@
  * Created on 17 de septiembre de 2007, 10:25 AM
  */
 
-package omoikane.formularios;
+package omoikane.sistema.huellas;
 
-import java.awt.Image;
-import javax.swing.*;
-import java.awt.*;
+import omoikane.sistema.JInternalDialog2;
 
 /**
  *
  * @author  Octavio
  */
-public class MiniLeerHuella extends javax.swing.JPanel {
+public abstract class MiniLeerHuella extends javax.swing.JPanel {
 
+    public byte[] byteTemplate = new byte[0];
+    public JInternalDialog2 parent;
     /** Creates new form LeerHuella */
-    public MiniLeerHuella() {
+    public MiniLeerHuella(JInternalDialog2 parent) {
+        this.setVisible(true);
+        this.setBounds(0,0,500,500);
+        this.parent = parent;
+
         initComponents();
         this.setOpaque(false);
         setLectorActivo(false);
     }
     
+    public class HiloParaCerrar extends Thread
+    {
+        MiniLeerHuella hu;
+        public HiloParaCerrar(MiniLeerHuella hu)
+        {
+            this.hu = hu;
+        }
+        public void run()
+        {
+            hu.cerrar();
+        }
+    }
+
+    protected abstract void cerrar();
+
     public void setLectorActivo(boolean edo)
     {
         if(edo)

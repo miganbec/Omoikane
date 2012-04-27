@@ -15,7 +15,12 @@
         puerto paralelo      linux : /dev/lpX       windows: LPTX:
         puerto serial a usb  linux : /dev/ttyUSBX   windows: COMX
         X es el valor del puerto en el que se encuentra
-	
+
+	26/04/2012
+	- Se agrega nodo fingerPrintSDK, opciones (quitar comillas):
+	    - "GRIAULE"
+	    - "ONETOUCH"
+
 	31/07/2011
 	- Se quitan: basculaActiva y puertoBascula
 	- Bascula:
@@ -30,18 +35,19 @@
 <document>
     <resolucionPantalla ancho='1024' alto='768'/>
     <cacheSTable atras='3' adelante='5'/>
-    <URLServidor>http://sfmvaldez.poweredbyclear.com:5543</URLServidor>
-    <URLMySQL>jdbc:mysql://sfmvaldez.poweredbyclear.com:3308/omoikane</URLMySQL>
+    <URLServidor>http://172.16.1.1:5542</URLServidor>
+    <URLMySQL>jdbc:mysql://172.16.1.1:3306/omoikane</URLMySQL>
     <loginJasper>Jasper</loginJasper>
-    <passJasper>gatogato</passJasper>
+    <passJasper></passJasper>
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
     <scannerActivo>false</scannerActivo>
     <ScannerPort>COM4</ScannerPort>
     <ScannerBaudRate>9600</ScannerBaudRate>
+    <fingerPrintSDK>ONETOUCH</fingerPrintSDK>
     
     <bascula activa='false' port='COM2' baud='9600' bits='8' stopBits='1' parity='None' stopChar='3' weightCommand=''/>
-    <fondoBlur>false</fondoBlur>
+    <fondoBlur>true</fondoBlur>
     <idAlmacen>1</idAlmacen>
     <idCaja>3</idCaja>
     <tipoCorte>1</tipoCorte>

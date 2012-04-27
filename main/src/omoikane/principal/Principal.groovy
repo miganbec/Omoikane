@@ -7,8 +7,16 @@ package omoikane.principal
 
 import omoikane.sistema.*
 import omoikane.sistema.Usuarios as SisUsuarios
-import java.awt.event.*;
-import omoikane.sistema.cortes.ContextoCorte;
+
+import omoikane.sistema.cortes.ContextoCorte
+import omoikane.sistema.huellas.FingerUtil
+import org.apache.log4j.Logger
+import org.springframework.context.support.ClassPathXmlApplicationContext
+import org.springframework.context.ApplicationContext
+import omoikane.exceptions.UEHandler
+
+import omoikane.sistema.huellas.ContextoFPSDK
+import omoikane.sistema.huellas.ContextoFPSDK.SDK
 
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,36 +32,43 @@ public class Principal {
         static def escritorio
         static def menuPrincipal
         static def config
-        public static int             IDAlmacen
-        public static int             IDCaja
-        public static int             sysAncho
-        public static int             sysAlto
-        public static int             CacheSTableAtras
-        public static int             CacheSTableAdelante
-        public static boolean         fondoBlur
-        public static String          puertoImpresion
-        public static boolean         impresoraActiva
-        public static boolean         scannerActivo
-        public static boolean         basculaActiva
-        public static def             driverBascula
-        public static String          URLMySQL
-        public static int             scannerBaudRate
-        public static String          scannerPort
-        public static ShutdownHandler shutdownHandler
-        public static def             toFinalizeTracker = [:]
-        public static def             scanMan
-        public static def             tipoCorte         = ContextoCorte.TIPO_DUAL
-        final  static def             ASEGURADO         = false
+        public static int                   IDAlmacen
+        public static int                   IDCaja
+        public static int                   sysAncho
+        public static int                   sysAlto
+        public static int                   CacheSTableAtras
+        public static int                   CacheSTableAdelante
+        public static boolean               fondoBlur
+        public static String                puertoImpresion
+        public static boolean               impresoraActiva
+        public static boolean               scannerActivo
+        public static boolean               basculaActiva
+        public static def                   driverBascula
+        public static String                URLMySQL
+        public static int                   scannerBaudRate
+        public static String                scannerPort
+        public static ContextoFPSDK.SDK     sdkFingerprint = SDK.ONETOUCH;
+        public static ShutdownHandler       shutdownHandler
+        public static def                   toFinalizeTracker       = [:]
+        public static def                   scanMan
+        public static def                   tipoCorte               = ContextoCorte.TIPO_DUAL
+        final  static def                   ASEGURADO               = true
+        public static Logger                logger                  = Logger.getLogger(Principal.class);
+        public static ApplicationContext    applicationContext;
 
-	public static void main(args)
+	    public static void main(args)
         {
-            println "Prueba de codificación: áéíóú"
+            logger.info( "Prueba de codificación: áéíóú" )
             iniciar()
+        }
+        public static ApplicationContext getContext() {
+            return applicationContext;
         }
         static iniciar()
         {
             try {
-            println "iniciando"
+            logger.info("Iniciando sistema");
+            configExceptions()
             def splash = new Splash()
             splash.iniciar()
 
@@ -63,7 +78,10 @@ public class Principal {
 
             splash.setText("Cargando configuración...")
             config = new omoikane.sistema.Config()
-            defineAtributos()
+            config.defineAtributos()
+
+            splash.setText("Cargando ApplicationContext...")
+            applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
             splash.setText("Inicializando escritorio...")
             //Herramientas.utilImpresionCortes()
             //System.exit(0)
@@ -107,46 +125,19 @@ public class Principal {
             def art = (puerto.Articulos.newInstance(descripcion:"otro m?s")).addToCodigos(puerto.CodigosArticulo.newInstance(codigo:"?l c?digo")).save()
             //art.save()
             */
-            } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar aplicaci?n", Herramientas.getStackTraceString(e)) }
+            } catch(e) {
+                Dialogos.lanzarDialogoError(null, "Al iniciar aplicación: ${e.message}", Herramientas.getStackTraceString(e))
+                System.exit(1);
+            }
             ///////////////////////
 
         }
-        static def defineAtributos() {
-            sysAncho            = Integer.valueOf(config.resolucionPantalla.@ancho[0])
-            sysAlto             = Integer.valueOf(config.resolucionPantalla.@alto[0])
-            CacheSTableAtras    = Integer.valueOf(config.cacheSTable.@atras[0])
-            CacheSTableAdelante = Integer.valueOf(config.cacheSTable.@adelante[0])
-            fondoBlur           = Boolean.valueOf(config.fondoBlur[0].text())
-            IDAlmacen           = Integer.valueOf(config.idAlmacen[0].text())
-            IDCaja              = Integer.valueOf(config.idCaja[0].text())
-            puertoImpresion     = String .valueOf(config.puertoImpresion[0].text())
-            impresoraActiva     = Boolean.valueOf(config.impresoraActiva[0].text())
-            URLMySQL            = String .valueOf(config.URLMySQL[0].text())
-            scannerBaudRate     = Integer.valueOf(config.ScannerBaudRate[0].text())
-            scannerPort         = String .valueOf(config.ScannerPort[0].text())
-            scannerActivo       = Boolean.valueOf(config.scannerActivo[0].text())
-            basculaActiva       = Boolean.valueOf(config.bascula.@activa[0])
-            tipoCorte           = Integer.valueOf(config.tipoCorte[0].text())
-            if(basculaActiva) {
-                String cmd = ""
-                String.valueOf(config.bascula.@weightCommand[0]).split(",").each { cmd += (it as Integer) as char }
-                driverBascula       = [
-                        port: String.valueOf(config.bascula.@port[0]),
-                        baud: Integer.valueOf(config.bascula.@baud[0]),
-                        bits: String.valueOf(config.bascula.@bits[0]),
-                        stopBits: String.valueOf(config.bascula.@stopBits[0]),
-                        parity:   String.valueOf(config.bascula.@parity[0]),
-                        stopChar: String.valueOf(config.bascula.@stopChar[0]),
-                        weightCommand: cmd
-                ];
-            }
-        }
 
-    static def iniciarSesion() {
+    static def iniciarSesion() throws Exception {
         try{
         while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
         escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
-        } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar secion ciclo de huella", Herramientas.getStackTraceString(e)) }
+        } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar sesión en ciclo de huella", Herramientas.getStackTraceString(e)) }
     }
 
     static def cerrarSesion(){
@@ -159,5 +150,10 @@ public class Principal {
                 Principal.menuPrincipal.iniciar()
                 }
         } catch(e) { Dialogos.lanzarDialogoError(null, "Error al cerrar secion ciclo de huella", Herramientas.getStackTraceString(e)) }
+    }
+
+    static def configExceptions() {
+        Thread.setDefaultUncaughtExceptionHandler(new UEHandler());
+        //Logger.getRootLogger().addAppender(new CEAppender());
     }
 }

@@ -12,7 +12,7 @@ import javax.validation.constraints.Min;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@Entity
+//@Entity
 public class Paquete {
                 private int id;
 

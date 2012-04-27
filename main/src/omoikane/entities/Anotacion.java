@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@Entity
+//@Entity
 public class Anotacion {
 
     @NotNull

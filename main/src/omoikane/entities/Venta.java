@@ -18,7 +18,7 @@ import java.util.Collection;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@Entity
+//@Entity
 public class Venta {
                     private int id;
 

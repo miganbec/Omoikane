@@ -9,8 +9,8 @@ import javax.persistence.*;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "venta_facturada", catalog = "Omoikane")
-@Entity
+//@Table(name = "venta_facturada", catalog = "Omoikane")
+//@Entity
 public class VentaFacturada {
     private int facturaId;
 

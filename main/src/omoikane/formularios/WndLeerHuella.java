@@ -10,6 +10,10 @@
 package omoikane.formularios;
 
 import omoikane.sistema.*;
+import omoikane.sistema.huellas.ContextoFPSDK;
+import omoikane.sistema.huellas.HuellasOneTouchSDK;
+import omoikane.sistema.huellas.MiniLeerHuella;
+
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 import java.awt.event.ActionEvent;
@@ -20,7 +24,7 @@ import java.awt.event.ActionEvent;
  */
 public class WndLeerHuella extends JInternalDialog2 {
     
-    Huellas2 pnlHuella;
+    MiniLeerHuella pnlHuella;
     /** Creates a new instance of WndLeerHuella */
     public WndLeerHuella(Object parent) {
         super(parent, "Leer huella");
@@ -34,9 +38,9 @@ public class WndLeerHuella extends JInternalDialog2 {
         this.getInputMap(this.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("F10"), "apagado");
     }
     
-    public byte[] getHuella()
-    {
-        pnlHuella = new Huellas2(this);
+    public byte[] getHuella() throws Exception {
+
+        pnlHuella = ContextoFPSDK.instanciar(this);
         super.setContentPane(pnlHuella);
         super.setActivo(true);
         return pnlHuella.byteTemplate;

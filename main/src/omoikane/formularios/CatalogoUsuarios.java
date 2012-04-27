@@ -25,7 +25,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
     public String          codigoSeleccionado;
     public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
     public String          txtQuery;
-    omoikane.sistema.NadesicoTableModel modelo;
+    ScrollableTableModel modelo;
     
     class TimerBusqueda extends Thread
     {
@@ -101,7 +101,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
         Class[]   clases   = {String.class, String.class, String.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
 
-        NadesicoTableModel modeloTabla = new NadesicoTableModel(cols, cls);
+        ScrollableTableModel modeloTabla = new ScrollableTableModel(cols, cls);
         //jTable1.enableInputMethods(false);
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
@@ -379,7 +379,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        NadesicoTableModel tabModelo = this.modelo;
+        ScrollableTableModel tabModelo = this.modelo;
         this.modelo = null;
         tabModelo.destroy();
         this.dispose();

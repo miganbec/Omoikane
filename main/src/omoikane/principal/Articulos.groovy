@@ -280,7 +280,7 @@ public class Articulos
                 form.visible = true
                 SwingBuilder.build {
                 //Al presionar F1: (lanzarCatalogoDialogo)
-                form.txtCodigo.keyReleased = { if(it.keyCode == it.VK_F1) Thread.start {form.txtCodigo.setText(Articulos.lanzarDialogoCatalogo() as String); form.txtCodigo.requestFocus()}  }
+                form.txtCodigo.keyReleased = { if(it.keyCode == it.VK_F1) Thread.startCapture {form.txtCodigo.setText(Articulos.lanzarDialogoCatalogo() as String); form.txtCodigo.requestFocus()}  }
                 }
                 form.btnBuscar.actionPerformed = {
                     try{

@@ -18,24 +18,24 @@ import java.util.Collection;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Table(name="usuarios")
 public class Usuario {
 
-
-                private Long id;
+    private Long id;
 
     @NotNull    private Timestamp fechaHoraAlta;
 
     @NotEmpty(message = "¡El nombre es importante! No puede estár vacío")
-                private String nombre;
+    private String nombre;
 
-                private byte[] huella1;
+    private byte[] huella1;
 
-                private byte[] huella2;
+    private byte[] huella2;
 
-                private byte[] huella3;
+    private byte[] huella3;
 
     @Range(min = 1000, max = 9999, message = "El nip debe ser un número de 4 dígitos")
-                private int nip;
+    private int nip;
 
     @NotNull    private Timestamp umodificacion;
 
@@ -50,7 +50,8 @@ public class Usuario {
         umodificacion = new Timestamp(Calendar.getInstance().getTime().getTime());
     }
 
-    @Column(name = "id")
+     // **03/04/2012: Retrocompatibilidad ==(nuevo)id --> id_usuario(antiguo)==
+    @Column(name = "id_usuario")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {

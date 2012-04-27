@@ -13,7 +13,7 @@ class GroovyTests {
 	public static void comManScannerTest() {
             //static def miniDriver = [port:"COM2", baud:9600, bits: "8", stopBits:"1", parity:"None", stopChar:"3"]
             //def comPort = new ComManScanner(null, miniDriver)
-            //Thread.start {
+            //Thread.startCapture {
             /*
                 for(int i = 0; i < 20; i++) {
                     println "sólo esperando..."+comPort.dump()

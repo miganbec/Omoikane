@@ -17,7 +17,7 @@ import java.util.Collection;
  * Time: 04:04
  *
  */
-@Entity
+//@Entity
 public class Linea {
     private int id;
 

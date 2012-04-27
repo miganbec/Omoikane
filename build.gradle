@@ -4,7 +4,7 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'idea'
 
-version = '1.3.1'
+version = '1.3.3'
 
 mainClassName = "omoikane.principal.MainJava"
 
@@ -74,9 +74,13 @@ dependencies {
 				  'lib/OmoikaneMedia.jar',
 				  'lib/nimbus.jar',
 				  'lib/OmoikaneAPI-1.0-SNAPSHOT.jar',
-			      'lib/AbsoluteLayout.jar',
+				  'lib/AbsoluteLayout.jar',
 				  'lib/ext/ModuloReportes.jar',
-			      'lib/ext/PlugMenu3.jar.jar')
+				  'lib/ext/PlugMenu3.jar.jar',
+				  'lib/dpfpenrollment.jar',
+				  'lib/dpfpverification.jar',
+				  'lib/dpotapi.jar',
+				  'lib/dpotjni.jar')
 	runtime files('lib/OmoikaneMedia.jar',
 				  'lib/nimbus.jar')
 	testCompile ('junit:junit:4.8.1',

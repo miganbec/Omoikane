@@ -9,8 +9,8 @@ import javax.persistence.*;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "codigo_producto", catalog = "Omoikane")
-@Entity
+//@javax.persistence.Table(name = "codigo_producto", catalog = "Omoikane")
+//@Entity
 public class CodigoProducto {
     private Long id;
 

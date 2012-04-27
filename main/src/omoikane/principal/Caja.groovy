@@ -87,28 +87,6 @@ class Caja implements Serializable {
         }else{Dialogos.lanzarAlerta("Caja Cerrada... Habilitar para continuar :)");omoikane.principal.Principal.cerrarSesion();}
     }
 
-
-    static Boolean abrirSucursal() {
-        if(cerrojo(PMA_ABRIRSUCURSAL)) {
-            if(JOptionPane.showConfirmDialog(null, "¿Habilitar sucursal para realizar ventas?", "Habilitar sucursal para vender", JOptionPane.YES_NO_CANCEL_OPTION)==JOptionPane.YES_OPTION)
-            {
-                Sucursales        sucursales = new Sucursales();
-                Sucursales.ESTADO estado     = sucursales.abrirSucursal();
-
-                if(estado == Sucursales.ESTADO.CORTEPENDIENTE) {
-                    Dialogos.lanzarAlerta("Está pendiente el corte del día anterior, necesita realizarlo para continuar")
-                    return false
-                } else {
-                    Dialogos.lanzarAlerta("Sucursal habilitada para vender!")
-                    return true
-                }
-            } else { return false }
-        }else{
-          Dialogos.lanzarAlerta("La Sucursal esta cerrada y no tiene aun permiso de entrar espere a habilitar para continuar ¨: )");
-          omoikane.principal.Principal.cerrarSesion();
-        }
-    }
-
     static def lanzar() 
     {
         def abierta = abrirSucursal()
@@ -450,7 +428,7 @@ class Caja implements Serializable {
                     }
                     if(form.modelo.getDataMap().size() == 0) { throw new Exception("Venta vacía") }
                         //def foco = new Object()
-                        //Thread.start {
+                        //Thread.startCapture {
 //                            def aaa= new SimpleForm("omoikane.formularios.DialogoCambio") {
 //                                def sform = it.form
 //                                Herramientas.panelFormulario(sform)

@@ -12,6 +12,9 @@ import omoikane.formularios.*;
 
 class Dialogos
 {
+    static def error(String mensaje, Exception detalles) {
+
+    }
     static def error(mensaje, detalles, parent = null)
     {
         //Recibe tanto detalles en texto como la excepcion directamente

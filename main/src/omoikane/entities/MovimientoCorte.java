@@ -16,9 +16,9 @@ import java.sql.Time;
  * Time: 04:04
  *
  */
-@IdClass(omoikane.entities.MovimientoCortePK.class)
-@Table(name = "movimiento_corte", catalog = "Omoikane")
-@Entity
+//@IdClass(omoikane.entities.MovimientoCortePK.class)
+//@Table(name = "movimiento_corte", catalog = "Omoikane")
+//@Entity
 public class MovimientoCorte {
 
     public enum Tipo {

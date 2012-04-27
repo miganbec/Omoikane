@@ -19,8 +19,8 @@ import java.util.Collection;
  * Time: 04:04
  *
  */
-@Table(name = "movimiento_almacen", catalog = "Omoikane")
-@Entity
+//@Table(name = "movimiento_almacen", catalog = "Omoikane")
+//@Entity
 public class MovimientoAlmacen {
 
     public enum Tipo {

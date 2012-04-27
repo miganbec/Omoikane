@@ -17,8 +17,8 @@ import java.util.Collection;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@IdClass(omoikane.entities.CortePK.class)
-@Entity
+//@IdClass(omoikane.entities.CortePK.class)
+//@Entity
 public class Corte {
     private int idCaja;
 

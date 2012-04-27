@@ -10,5 +10,6 @@ import org.synyx.hades.dao.GenericDao;
  * Time: 00:58
  * To change this template use File | Settings | File Templates.
  */
-public interface ProductoRepo extends GenericDao<Producto, Long> {
+public interface ProductoRepo // extends GenericDao<Producto, Long>
+{
 }

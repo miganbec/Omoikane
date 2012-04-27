@@ -9,9 +9,9 @@ import javax.persistence.*;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@IdClass(omoikane.entities.VentaEspecialPK.class)
-@Table(name = "venta_especial", catalog = "Omoikane")
-@Entity
+//@IdClass(omoikane.entities.VentaEspecialPK.class)
+//@Table(name = "venta_especial", catalog = "Omoikane")
+//@Entity
 public class VentaEspecial {
     private int id;
 

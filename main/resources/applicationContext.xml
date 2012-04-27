@@ -4,16 +4,23 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:hades="http://schemas.synyx.org/hades"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://schemas.synyx.org/hades http://schemas.synyx.org/hades/hades.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/jdbc
+            http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+            http://schemas.synyx.org/hades
+            http://schemas.synyx.org/hades/hades.xsd">
 
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="omoikane.entities"/>
-    <bean class="omoikane.repository.PruebaSpring"></bean>
-    <bean class="omoikane.principal.Sucursales"></bean>
-    <bean class="omoikane.sistema.cortes.EstrategiaEstandar"></bean>
+    <!--<context:component-scan base-package="omoikane.entities"/>-->
+    <!--<context:component-scan base-package="omoikane.sistema"/>-->
+    <bean id="usuarios" class="omoikane.sistema.Usuarios"></bean>
 
     <hades:dao-config base-package="omoikane.repository"
                       entity-manager-factory-ref="entityManagerFactory"></hades:dao-config>
@@ -31,7 +38,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="password" value=""/>
-        <property name="username" value="root"/>
+        <property name="username" value="Jasper"/>
         <property name="url" value="jdbc:mysql://localhost/Omoikane"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     </bean>

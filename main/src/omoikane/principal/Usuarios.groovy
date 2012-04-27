@@ -15,11 +15,13 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import javax.swing.*;
 import static omoikane.sistema.Usuarios.*;
-import static omoikane.sistema.Permisos.*;
+import static omoikane.sistema.Permisos.*
+ import org.apache.log4j.Logger;
 
 class Usuarios {
     static def escritorio = omoikane.principal.Principal.escritorio
     static def Almacen = Principal.IDAlmacen
+    public static Logger          logger            = Logger.getLogger(Usuarios.class);
     
     static def lanzarCatalogo()
     {
@@ -36,8 +38,13 @@ class Usuarios {
             try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de Usuarios", Herramientas.getStackTraceString(e)) }
             cat.txtBusqueda.requestFocus()
             return cat
-        }else{Dialogos.lanzarAlerta("Acceso Denegado")}
-        } catch(e) { Dialogos.error("Error al lanzar catalogo de Usuarios", e) }
+        }else{
+            Dialogos.lanzarAlerta("Acceso Denegado")
+        }
+        } catch(Exception e) {
+
+            logger.error("Error al lanzar catalogo de Usuarios", e);
+        }
     }
 
     public static String lanzarDialogoCatalogo()
@@ -150,7 +157,7 @@ class Usuarios {
                     serv.desconectar()
                     formUsuario.dispose()
                     return formUsuario
-                }}catch(e) { Dialogos.error("Error al enviar a la base de datos. El Usuario no se registró", e) }
+                }}catch(e) { logger.error("Error al enviar a la base de datos. El Usuario no se registró", e) }
                 }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
         } catch(e) { Dialogos.error("Error al lanzar guardar Usuario", e) }

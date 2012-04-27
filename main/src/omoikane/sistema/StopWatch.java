@@ -12,7 +12,7 @@ package omoikane.sistema;
 
 /**
    * A class to help benchmark code
-   * It simulates a real stop watch
+   * It simulates a real stopCapture watch
    */
 public class StopWatch {
 

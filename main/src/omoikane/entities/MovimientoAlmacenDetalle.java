@@ -13,8 +13,8 @@ import java.math.BigDecimal;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "movimiento_almacen_detalle", catalog = "Omoikane")
-@Entity
+//Table(name = "movimiento_almacen_detalle", catalog = "Omoikane")
+//@Entity
 public class MovimientoAlmacenDetalle {
 
                         private int id;

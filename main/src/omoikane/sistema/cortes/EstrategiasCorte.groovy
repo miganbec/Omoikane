@@ -10,12 +10,12 @@ package omoikane.sistema.cortes;
  * @author Octavio
  */
 public abstract class EstrategiasCorte {
-    private abstract void hacerCorteCaja(IDCaja, IDAlmacen, subtotal, impuestos, descuento, total,
+    abstract def hacerCorteCaja(IDCaja, IDAlmacen, subtotal, impuestos, descuento, total,
                                      nVentas, desde, hasta, depositos, retiros);
-    public abstract def obtenerSumaCaja(IDCaja, horaAbierta, horaCerrada);
-    private abstract def hacerCorteSucursal(IDAlmacen);
-    public abstract def obtenerSumaSucursal(IDAlmacen, IDCorte);
-    public abstract def imprimirCorteSucursal(IDAlmacen, IDCorte);
+    abstract def obtenerSumaCaja(IDCaja, horaAbierta, horaCerrada);
+    abstract def hacerCorteSucursal(IDAlmacen);
+    abstract def obtenerSumaSucursal(IDAlmacen, IDCorte);
+    abstract def imprimirCorteSucursal(IDAlmacen, IDCorte);
 
     public Boolean isCajaAbierta(Integer idCaja) {
       throw new UnsupportedOperationException("No implementado");

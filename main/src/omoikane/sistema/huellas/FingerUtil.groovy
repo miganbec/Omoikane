@@ -6,7 +6,7 @@
  *                   /////////////
  * //////////////////////////////                   */
 
-package omoikane.sistema;
+package omoikane.sistema.huellas;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -113,12 +113,6 @@ public class FingerUtil implements IStatusEventListener, IImageEventListener, IF
        }
    }
 
-
-   /**
-    * This function is called every time a fingerprint reader is plugged.
-    *
-    * @see griaule.grFinger.StatusCallBack#onPlug(java.lang.String)
-    */
    public void onSensorPlug(String idSensor) {
        //Logs the sensor has been pluged.
        this.onPlugAction()
@@ -130,12 +124,6 @@ public class FingerUtil implements IStatusEventListener, IImageEventListener, IF
            println(e.getMessage());
        }
    }
-
-   /**
-    * This function is called every time a fingerprint reader is unplugged.
-    *
-    * @see griaule.grFinger.StatusCallBack#onUnplug(java.lang.String)
-    */
    public void onSensorUnplug(String idSensor) {
        //Logs the sensor has been unpluged.
        this.onUnplugAction()
@@ -146,11 +134,6 @@ public class FingerUtil implements IStatusEventListener, IImageEventListener, IF
        }
    }
 
-   /**
-    * This function is called every time a fingerfrint image is captured.
-    *
-    * @see griaule.grFinger.ImageCallBack#onImage(java.lang.String, griaule.grFinger.FingerprintImage)
-    */
    public void onImageAcquired(String idSensor, FingerprintImage fingerprint) {
 
        this.fingerprint=fingerprint;
@@ -165,22 +148,12 @@ public class FingerUtil implements IStatusEventListener, IImageEventListener, IF
 
    }
 
-   /**
-    * This Function is called every time a finger is placed on sensor.
-    *
-    * @see griaule.grFinger.FingerCallBack#onFingerDown(java.lang.String)
-    */
    public void onFingerDown(String idSensor) {
        // Just signals that a finger event ocurred.
        onFingerInAction()
 
    }
 
-   /**
-    * This Function is called every time a finger is removed from sensor.
-    *
-    * @see griaule.grFinger.FingerCallBack#onFingerUp(java.lang.String)
-    */
    public void onFingerUp(String idSensor) {
        // Just signals that a finger event ocurred.
        onFingerOutAction()

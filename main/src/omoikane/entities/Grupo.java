@@ -17,7 +17,7 @@ import java.util.Collection;
  * Date: 14/07/11
  * Time: 04:04
  */
-@Entity
+//@Entity
 public class Grupo {
     private int id;
 

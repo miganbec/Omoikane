@@ -17,8 +17,8 @@ import java.util.Date;
  * Date: 14/07/11
  * Time: 04:04
  */
-@Table(name = "corte_sucursal", catalog = "Omoikane")
-@Entity
+//@Table(name = "corte_sucursal", catalog = "Omoikane")
+//@Entity
 public class CorteSucursal  {
     private Long id;
 
