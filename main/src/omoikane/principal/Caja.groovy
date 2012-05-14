@@ -89,17 +89,24 @@ class Caja implements Serializable {
 
     static def lanzar() 
     {
-        def abierta = abrirSucursal()
+        def abierta = Sucursales.abierta(Principal.IDAlmacen)
 
-        if(abierta) {
-            def serv = Nadesico.conectar()
-            def cajaAbierta = serv.cajaAbierta(IDCaja)
-            serv.desconectar()
+        switch(abierta) {
+            case -1: Dialogos.lanzarAlerta("Configuración de sucursal-almacen errónea."); break;
+            case  0: abierta = Sucursales.abrirSucursal(Principal.IDAlmacen);  //Sin break para continuar
+            case  1:
 
-            Thread.start {
-                cajaAbierta = cajaAbierta?true:abrirCaja()
-                if(cajaAbierta) { lanzarCaja() }
-            }
+                    if(abierta!=1) { break; }
+                    def serv = Nadesico.conectar()
+                    def cajaAbierta = serv.cajaAbierta(IDCaja)
+                    serv.desconectar()
+
+                    Thread.start {
+                        cajaAbierta = cajaAbierta?true:abrirCaja()
+                        if(cajaAbierta) { lanzarCaja() }
+                    }
+
+            break;
         }
     }
 
@@ -178,7 +185,7 @@ class Caja implements Serializable {
             form.modelo = modelo
             escritorio.getPanelEscritorio().add(form)
             Herramientas.centrarVentana(form);
-            Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.12,0.12,0.12,0.13]);
+            Herramientas.setColumnsWidth(form.tablaVenta, [0.48,0.16,0.16,0.0,0.17]);
             form.setVisible(true);
             Herramientas.iconificable(form)
             //Shortcuts
@@ -199,8 +206,23 @@ class Caja implements Serializable {
                     if(captura.size()==13) { captura = Caja.filtroEAN13(captura) }
                     captura     = captura.split("\\*")
                     def cantidad= captura.size()==1?1:captura[0..captura.size()-2].inject(1) { acum, i -> acum*(i as Double) }
+
                     def art     = serv.codigo2Articulo(IDAlmacen, captura[captura.size()-1])
                     if(art == null || art == 0) { Dialogos.lanzarAlerta("Articulo no encontrado!!"); } else {
+                        try {
+                            if(art.unidad != "KG" && art.unidad != "LT")
+                                { cantidad = Math.ceil(cantidad) }
+                            else
+                                {
+                                    cantidad *= 1000;
+                                    cantidad = Math.ceil(cantidad);
+                                    cantidad /= 1000;
+                                    if(cantidad < 0.05) { cantidad = 0.05; }
+                                }
+                        } catch(Exception e) {
+                            e.printStackTrace()
+                            throw new Exception("Error en caja comprobando unidad de producto", e);
+                        }
                         def precio    = serv.getPrecio(art.id_articulo, IDAlmacen, IDCliente)
                         def factImp   = (precio['impuestos%'])/100
                         def total     = Caja.cifra(cantidad * precio.total)
@@ -220,7 +242,9 @@ class Caja implements Serializable {
                         form.repaint()
                         form.tablaVenta.scrollRectToVisible(form.tablaVenta.getCellRect(form.tablaVenta.getRowCount()-1, 1, true));
                     }
-                } catch(e) { Dialogos.error("Error al obtener información de nadesico!", e) }
+                } catch(e) {
+                    Dialogos.error("Error al obtener información de nadesico!", e)
+                }
             }
             if(basculaActiva){
             form.txtCaptura.keyTyped = { e ->
@@ -450,14 +474,18 @@ class Caja implements Serializable {
                         def detalles = [], cantTemp
                         form.modelo.getDataMap().each {
                             cantTemp = it['Cantidad']
-                            if(cantTemp instanceof String) { cantTemp = Caja.aDoble(cantTemp) }
-                            detalles << [IDArticulo:it['ID Artículo'], cantidad:cantTemp, precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
+                            if(cantTemp instanceof String) {
+                                cantTemp = Caja.aDoble(cantTemp)
+                            }
+                            detalles << [IDArticulo:it['ID Artículo'], cantidad:cantTemp as float, precio:it['Precio'], descuento:it['Descuento'], total:Caja.aDoble(it['Total'])]
                         }
                         def dinero
                         def cambio
                         if(form.txtEfectivo.text == "") { dinero =  Caja.aDoble(form.txtTotal.text) ;cambio = "0.0"}
-                        else{dinero = Caja.aDoble(form.txtEfectivo.text);cambio = Caja.aDoble(form.txtCambio.text)}
-                        def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), Caja.aDoble(form.txtImpuesto.text), Caja.aDoble(form.txtTotal.text), detalles,dinero,cambio,form.totalOriginal)
+                        else{
+                            dinero = Caja.aDoble(form.txtEfectivo.text);
+                            cambio = Caja.aDoble(form.txtCambio.text)}
+                            def salida = serv.conectar().aplicarVenta(IDCaja, IDAlmacen, IDCliente, omoikane.sistema.Usuarios.usuarioActivo.ID, Caja.aDoble(form.txtSubtotal.text), Caja.aDoble(form.txtDescuento.text), Caja.aDoble(form.txtImpuesto.text), Caja.aDoble(form.txtTotal.text), detalles,dinero,cambio,form.totalOriginal)
 
                             if(autorizadorVentaEspecial != null) {
                                 serv.addVentaEspecial(salida.ID, autorizadorVentaEspecial.ID)
@@ -716,11 +744,26 @@ class CajaTableModel extends DefaultTableModel {
 		}
 		if(!encontrado) { addRowMap(rowData) }
 	}
-    public Object getValueAt(int row, int col) { return data[row][getColumnName(col)] /*super.getValueAt(row,col)*/ }
+    public Object getValueAt(int row, int col) {
+        String celda = data[row][getColumnName(col)];
+        switch(col) {
+            case 0:
+                return celda;
+            case 1:
+                return String.format("%,.3f", celda as float);
+            case 2:
+            case 3:
+                return String.format("%,.2f", celda as float);
+            case 4:
+                return celda;
+        }
+        return celda; /*super.getValueAt(row,col)*/
+    }
     public def getDataMap() { return data }
     public def eliminar(i) { data.remove(i); super.removeRow(i); }
     public void setValueAt(Object val, int row, int col) {
         try {
+
         data[row][getColumnName(col)] = val
         def totalTemp,totalTemp1
         def descTemp, factImp,factDes, descTemp1

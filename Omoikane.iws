@@ -28,72 +28,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/ModuloReportes/src/moduloreportes/Reporte.groovy" line="50" class="moduloreportes.Reporte" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/test/src/omoikane/sistema/UsuarioRepoTest.groovy" line="2" class="UsuarioRepoTest.groovy" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/sistema/Usuarios.groovy" line="160" class="omoikane.sistema.Usuarios" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/sistema/Usuarios.groovy" line="120" class="omoikane.sistema.Usuarios" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/sistema/NadesicoX.groovy" line="19" class="omoikane.sistema.NadesicoX" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/sistema/Usuarios.groovy" line="82" class="omoikane.sistema.Usuarios" package="">
+      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/principal/Caja.groovy" line="479" class="omoikane.principal.Caja" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -147,78 +82,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Principal.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy">
+      <file leaf-file-name="Sucursales.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Sucursales.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="0" selection-start="3582" selection-end="3582" vertical-scroll-proportion="0.0">
+            <state line="60" column="25" selection-start="2079" selection-end="2079" vertical-scroll-proportion="0.0">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log4j.properties" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/resources/log4j.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="0.3891273">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Usuarios.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/Usuarios.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="47" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WndLeerHuella.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/formularios/WndLeerHuella.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/Config.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="99" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="71" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="44" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/resources/applicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="45" selection-start="2241" selection-end="2241" vertical-scroll-proportion="-4.3404255">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
@@ -226,17 +95,15 @@
         <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/ContextoFPSDK.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="34" column="24" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HuellasGriaule.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasGriaule.java">
+      <file leaf-file-name="HuellasOneTouchSDK.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasOneTouchSDK.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="19" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+            <state line="227" column="33" selection-start="7476" selection-end="7476" vertical-scroll-proportion="0.5186289">
               <folding />
             </state>
           </provider>
@@ -256,9 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/src/omoikane/sistema/huellas/MiniLeerHuella.java" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasGriaule.java" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasOneTouchSDK.java" />
         <option value="$PROJECT_DIR$/main/src/omoikane/exceptions/CEAppender.java" />
         <option value="$PROJECT_DIR$/main/src/omoikane/sistema/huellas/ContextoFPSDK.groovy" />
         <option value="$PROJECT_DIR$/test/src/omoikane/sistema/ConfigTest.java" />
@@ -268,12 +132,18 @@
         <option value="$PROJECT_DIR$/main/src/omoikane/sistema/Usuarios.groovy" />
         <option value="$PROJECT_DIR$/main/src/omoikane/sistema/Config.groovy" />
         <option value="$PROJECT_DIR$/main/src/omoikane/sistema/huellas/ContextoFPSDK.java" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy" />
         <option value="$PROJECT_DIR$/main/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/sistema/Dialogos.groovy" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/principal/Cortes.groovy" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/principal/Caja.groovy" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
   </component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
@@ -352,6 +222,18 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -367,7 +249,85 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huellas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cortes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -763,12 +723,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.Unnamed" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.UsuarioRepoTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.UsuarioRepoTest.buscarTodos" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.UsuarioRepoTest.crearUsuario" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ConfigTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ContextoFPSDKTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.UsuarioRepoTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.UsuarioRepoTest.buscarTodos" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.UsuarioRepoTest.crearUsuario" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ConfigTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ContextoFPSDKTest" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Unnamed" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -823,30 +783,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1431" y="-9" width="1458" height="918" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="0" width="1458" height="870" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950467" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17403066" sideWeight="0.6984786" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4184492" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41714287" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950467" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950467" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Dynamic properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.6550802" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Dynamic properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.6550802" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32714286" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35019085" sideWeight="0.67081606" order="1" side_tool="true" content_ui="tabs" x="104" y="150" width="331" height="749" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34964028" sideWeight="0.6571429" order="1" side_tool="true" content_ui="tabs" x="104" y="150" width="331" height="749" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.6571429" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39971602" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18705036" sideWeight="0.67112297" order="0" side_tool="true" content_ui="tabs" x="2066" y="95" width="330" height="736" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3449198" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328777" sideWeight="0.58285713" order="0" side_tool="true" content_ui="tabs" x="2066" y="95" width="330" height="736" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34285715" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912534" sideWeight="0.30843708" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39972338" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -898,119 +858,101 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/sistema/n2tTest.java">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/Config.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="54" column="99" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/sistema/UsuarioRepoTest.groovy">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="51" selection-start="1276" selection-end="1299" vertical-scroll-proportion="0.46575344">
-          <folding />
-        </state>
+        <state line="16" column="44" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/cortes/ContextoCorte.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="51" selection-start="470" selection-end="470" vertical-scroll-proportion="0.66377443">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/main/resources/applicationContext.xml">
+      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/sistema/ConfigTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="23" selection-start="354" selection-end="378" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/sistema/Huellas/ContextoFPSDKTest.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="63" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasOneTouchSDK.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="49" selection-start="2640" selection-end="2640" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="45" column="45" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasGriaule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="19" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="7" column="19" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/formularios/WndLeerHuella.java">
+    <entry file="file://$PROJECT_DIR$/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="7" column="17" selection-start="343" selection-end="343" vertical-scroll-proportion="0.1827957" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="0" selection-start="3582" selection-end="3582" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/Usuarios.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="47" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0">
+        <state line="132" column="141" selection-start="4395" selection-end="4395" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_24/src.zip!/java/awt/EventDispatchThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="0" selection-start="5505" selection-end="5505" vertical-scroll-proportion="0.33178654">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/Config.groovy">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Caja.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="99" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.0">
+        <state line="224" column="79" selection-start="10612" selection-end="10612" vertical-scroll-proportion="0.5832013">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Lineas.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="80" selection-start="620" selection-end="620" vertical-scroll-proportion="-0.36474165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/Dialogos.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="29" selection-start="331" selection-end="331" vertical-scroll-proportion="0.025335321">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Cortes.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="208" column="105" selection-start="9277" selection-end="9277" vertical-scroll-proportion="0.31458968">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="71" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
+        <state line="53" column="80" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.6706408">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Sucursales.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="44" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
+        <state line="60" column="25" selection-start="2079" selection-end="2079" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="45" selection-start="2241" selection-end="2241" vertical-scroll-proportion="-4.3404255">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/ContextoFPSDK.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="24" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="34" column="24" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasOneTouchSDK.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="3582" selection-end="3582" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="0.3891273">
+        <state line="227" column="33" selection-start="7476" selection-end="7476" vertical-scroll-proportion="0.5186289">
           <folding />
         </state>
       </provider>

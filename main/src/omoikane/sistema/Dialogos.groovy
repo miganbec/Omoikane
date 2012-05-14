@@ -13,7 +13,8 @@ import omoikane.formularios.*;
 class Dialogos
 {
     static def error(String mensaje, Exception detalles) {
-
+        String detallesTxt = Herramientas.getStackTraceString(detalles);
+        error(mensaje, detallesTxt, null);
     }
     static def error(mensaje, detalles, parent = null)
     {

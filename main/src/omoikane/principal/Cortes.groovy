@@ -208,7 +208,7 @@ class Cortes {
                     //if(sucursalesHelper.existe(IDAlmacen)) { paso = 2 } else { Dialogos.lanzarAlerta("Sucursal inválida, probablemente sea error de configuración!"); break; }
                     //break;
                 case 2:
-                    def abierta = sucursalesHelper.isAbierta(IDAlmacen)
+                    def abierta = sucursalesHelper.abierta(IDAlmacen)
                     if(abierta==1) { paso = 3 } else { Dialogos.lanzarAlerta("Sucursal inhabilitada, no se han iniciado ventas o hay un corte pendiente."); break }
                 case 3:
                     def cajasCerradas = sucursalesHelper.cajasSucursalCerradas(IDAlmacen)
