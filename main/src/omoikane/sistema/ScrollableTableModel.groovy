@@ -52,6 +52,7 @@ public class ScrollableTableModel extends AbstractTableModel {
 
             resetData();
             fireTableDataChanged();
+
         }
         catch (Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error al conectar a MySQL", omoikane.sistema.Herramientas.getStackTraceString(e)); }
     }
@@ -164,7 +165,7 @@ public class ScrollableTableModel extends AbstractTableModel {
             rs.close()
             control.close()
 			
-			//def time2 = System.currentTimeMillis() - time1
+              //def time2 = System.currentTimeMillis() - time1
 			//timeTotal += time2				
 			//println "Time total: $time2 ms"
 			
@@ -178,8 +179,12 @@ public class ScrollableTableModel extends AbstractTableModel {
                 //Prueba del caché:  System.out.println("Requesting... [fila:"+rowIndex+"] contenido: ["+cacheFila.toString());
             }
             //println cacheFila.get(String.valueOf(rowIndex)).dump()
-            
-            return cacheFila.get(String.valueOf(rowIndex)).get(columnIndex+1);
+
+            if(cacheFila.get(String.valueOf(rowIndex)) == null) {
+              return "";
+            } else {
+              return cacheFila.get(String.valueOf(rowIndex)).get(columnIndex+1);
+            }
         }
 
         public int getIDArticuloFila(int rowIndex)

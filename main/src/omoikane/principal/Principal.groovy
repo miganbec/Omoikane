@@ -52,7 +52,7 @@ public class Principal {
         public static def                   toFinalizeTracker       = [:]
         public static def                   scanMan
         public static def                   tipoCorte               = ContextoCorte.TIPO_DUAL
-        final  static def                   ASEGURADO               = true
+        final  static def                   ASEGURADO               = false
         public static Logger                logger                  = Logger.getLogger(Principal.class);
         public static ApplicationContext    applicationContext;
 

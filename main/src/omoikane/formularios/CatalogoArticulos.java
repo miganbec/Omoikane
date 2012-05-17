@@ -89,6 +89,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                         "from ramcachearticulos");
                     
                     jTable1.setModel(modeloTabla);
+                    jTable1.getSelectionModel().setSelectionInterval(0,0);
                     cargaProgressBar.setIndeterminate(false);
 
                     Herramientas.setColumnsWidth(jTable1, 964, widths);
@@ -163,6 +164,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         modal=true;
         this.btnAceptar.setVisible(true);
         Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
+
             ((CatalogoArticulos)e.getSource()).btnAceptar.doClick();
         } };
         getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "aceptar");
@@ -173,6 +175,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         txtQuery = query;
 
         modelo.setQuery(query);
+        jTable1.getSelectionModel().setSelectionInterval(0,0);
 
     }
     /** This method is called from within the constructor to
