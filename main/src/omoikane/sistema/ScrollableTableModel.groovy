@@ -59,7 +59,12 @@ public class ScrollableTableModel extends AbstractTableModel {
     public void resetData() {
         this.rowCount = -1;
     }
-
+	/**
+	 * <p>Fills the <code>colNames</code> property from the
+	 * <code>resultSet</code> if this property is null
+	 * using the current <code>resultSet</code>.</p>
+	 * @see ScrollableTableModel#fillColNames(ResultSet)
+	 */
 	/**
 	 * @return The number of columns in this model.
 	 */

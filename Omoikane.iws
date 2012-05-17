@@ -4,20 +4,20 @@
     <list id="2afe5804-b09c-4b36-a223-c0088e978786" name="Default" comment="Snapshot&#10;- Optimización de modelo&#10;- Implementación de capa ORM&#10;- Implementación de repositorios de datos&#10;- Implementación de entidades, eventos y restricciones JPA&#10;- Refactorización del esquema de base de datos" />
     <list id="49f24c3e-f1dd-495c-a07c-2375f3225374" name="PrChangeList" comment="comentario..." />
     <list default="true" id="18478f5e-e12e-4818-b885-b2c1d4616a4d" name="Test de entidades" comment="Snapshot&#10;- Optimización de modelo&#10;- Implementación de capa ORM&#10;- Implementación de repositorios de datos&#10;- Implementación de entidades, eventos y restricciones JPA&#10;- Refactorización del esquema de base de datos">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/omoikane/sucursal/ISucursalTest.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/omoikane/sucursal" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/src/omoikane/principal/Cajas.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/omoikane/sucursal/ISucursalTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes/EstrategiaDual.groovy" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes/EstrategiaEstandar.groovy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes/EstrategiasCorte.groovy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes/ContextoCorte.groovy" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Omoikane.iws" afterPath="$PROJECT_DIR$/Omoikane.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/formularios/CatalogoSucursal.java" afterPath="$PROJECT_DIR$/main/src/omoikane/formularios/CatalogoSucursal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/formularios/CorteSucursalDetalles.java" afterPath="$PROJECT_DIR$/main/src/omoikane/formularios/CorteSucursalDetalles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/Omoikane.jar" afterPath="$PROJECT_DIR$/dist/Omoikane.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes/EstrategiaDual.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/cortes/EstrategiasCorte.groovy" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/lib/ModuloReportes.jar" afterPath="$PROJECT_DIR$/dist/lib/ModuloReportes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/Omoikane.jar" afterPath="$PROJECT_DIR$/dist/Omoikane.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/formularios/CorteSucursalDetalles.java" afterPath="$PROJECT_DIR$/main/src/omoikane/formularios/CorteSucursalDetalles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/formularios/CatalogoSucursal.java" afterPath="$PROJECT_DIR$/main/src/omoikane/formularios/CatalogoSucursal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Omoikane.iws" afterPath="$PROJECT_DIR$/Omoikane.iws" />
     </list>
     <list id="efab7105-a172-4e1c-a7be-ef862723753d" name="Configuraciones" comment="Configuraciones" />
     <list id="71d76b17-e4d1-4d9a-bd81-cbfd4ca29435" name="Prueba" comment="Prueba" />
@@ -93,10 +93,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Principal.groovy" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Principal.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="78" selection-start="3582" selection-end="3582" vertical-scroll-proportion="0.0">
+            <state line="54" column="74" selection-start="2591" selection-end="2591" vertical-scroll-proportion="0.8233216">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainJava.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/MainJava.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuPrincipal.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/MenuPrincipal.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="6" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -114,7 +132,7 @@
       <file leaf-file-name="ScrollableTableModel.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/ScrollableTableModel.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="35" selection-start="1637" selection-end="1637" vertical-scroll-proportion="0.0">
+            <state line="59" column="35" selection-start="1879" selection-end="1879" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -129,19 +147,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CatalogoArticulos.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CatalogoArticulos.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/omoikane/formularios/CatalogoArticulos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="41" selection-start="3432" selection-end="3432" vertical-scroll-proportion="0.315197">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Caja.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Caja.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="6" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
+            <state line="91" column="41" selection-start="3357" selection-end="3357" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -183,9 +192,9 @@
         <option value="$PROJECT_DIR$/main/src/omoikane/entities/VentaDetalle.java" />
         <option value="$PROJECT_DIR$/test/src/omoikane/sistema/n2tTest.java" />
         <option value="$PROJECT_DIR$/main/src/omoikane/sistema/huellas/FingerUtil.groovy" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy" />
         <option value="$PROJECT_DIR$/main/src/omoikane/sistema/ScrollableTableModel.groovy" />
         <option value="$PROJECT_DIR$/main/src/omoikane/formularios/CatalogoArticulos.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy" />
       </list>
     </option>
   </component>
@@ -241,26 +250,6 @@
           </PATH>
         </subPane>
         <subPane subId="Problems" />
-        <subPane subId="Tests">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test/src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
         <subPane subId="Production">
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
@@ -346,6 +335,26 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Tests">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -518,6 +527,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Favorites">
         <subPane subId="Omoikane">
           <PATH>
@@ -578,16 +597,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Omoikane" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -602,15 +611,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="80" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="72" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="52" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="84" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="84" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
@@ -633,13 +642,13 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -820,6 +829,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" />
       <module name="" />
@@ -853,24 +880,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" />
       <option name="MAIN_CLASS_NAME" />
@@ -888,14 +897,6 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="FtpUpload" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -922,6 +923,14 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="FtpUpload" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -1072,9 +1081,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="715" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32542372" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3300813" sideWeight="0.23809524" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290008" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1087,12 +1095,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3226891" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282313" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3300813" sideWeight="0.41512606" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3300813" sideWeight="0.2420168" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399187" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3300813" sideWeight="0.5714286" order="0" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="714" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3300813" sideWeight="0.32436976" order="0" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="714" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7394958" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42016807" sideWeight="0.99913716" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42016807" sideWeight="0.99913716" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JFormDesigner Form Converter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1143,16 +1152,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/entities/Venta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="13" selection-start="523" selection-end="523" vertical-scroll-proportion="-5.4400716" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/entities/VentaDetalle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="29" selection-start="4425" selection-end="4425" vertical-scroll-proportion="0.6923077" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/entities/VentaEspecial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="13" selection-start="346" selection-end="346" vertical-scroll-proportion="-0.6744186" />
@@ -1185,30 +1184,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/Config.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="7" selection-start="410" selection-end="410" vertical-scroll-proportion="-0.2889306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/FingerUtil.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="388" column="0" selection-start="12612" selection-end="12612" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Caja.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="6" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="78" selection-start="3582" selection-end="3582" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="7" selection-start="410" selection-end="410" vertical-scroll-proportion="-0.2889306" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/formularios/VentasDetalles.java">
@@ -1218,21 +1194,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/ScrollableTableModel.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="35" selection-start="1637" selection-end="1637" vertical-scroll-proportion="0.0">
+        <state line="59" column="35" selection-start="1879" selection-end="1879" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Articulos.groovy">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/FingerUtil.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="55" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.0">
+        <state line="388" column="0" selection-start="12612" selection-end="12612" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Caja.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="6" selection-start="789" selection-end="789" vertical-scroll-proportion="0.022514071">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/formularios/CatalogoArticulos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="41" selection-start="3432" selection-end="3432" vertical-scroll-proportion="0.315197">
+        <state line="91" column="41" selection-start="3357" selection-end="3357" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Articulos.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="55" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/MainJava.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/MenuPrincipal.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="6" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/principal/Principal.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="74" selection-start="2591" selection-end="2591" vertical-scroll-proportion="0.8233216">
           <folding />
         </state>
       </provider>

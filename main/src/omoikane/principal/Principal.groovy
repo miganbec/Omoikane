@@ -52,7 +52,8 @@ public class Principal {
         public static def                   toFinalizeTracker       = [:]
         public static def                   scanMan
         public static def                   tipoCorte               = ContextoCorte.TIPO_DUAL
-        final  static def                   ASEGURADO               = false
+        final  static def                   ASEGURADO               = true
+        final  static def                   DEPURAR                 = false
         public static Logger                logger                  = Logger.getLogger(Principal.class);
         public static ApplicationContext    applicationContext;
 
@@ -67,6 +68,7 @@ public class Principal {
         static iniciar()
         {
             try {
+
             logger.info("Iniciando sistema");
             configExceptions()
             def splash = new Splash()
@@ -153,7 +155,9 @@ public class Principal {
     }
 
     static def configExceptions() {
-        Thread.setDefaultUncaughtExceptionHandler(new UEHandler());
+        if(DEPURAR) {
+            Thread.setDefaultUncaughtExceptionHandler(new UEHandler());
+        }
         //Logger.getRootLogger().addAppender(new CEAppender());
     }
 }
