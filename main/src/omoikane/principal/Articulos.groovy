@@ -12,7 +12,8 @@ import javax.swing.table.TableColumn;
 import java.awt.event.*;
 import groovy.swing.*;
 import static omoikane.sistema.Usuarios.*;
-import static omoikane.sistema.Permisos.*;
+import static omoikane.sistema.Permisos.*
+
 
 public class Articulos
 {
@@ -53,12 +54,21 @@ public class Articulos
         def cat = lanzarCatalogo()
         cat.setModoDialogo()
         cat.internalFrameClosed = {synchronized(foco){foco.notifyAll()} }
-        cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ENTER) {cat.btnAceptar.doClick()} }
+        cat.txtBusqueda.keyReleased = {
+          if(it.keyCode == it.VK_ENTER) {
+              cat.btnAceptar.doClick()
+          }
+        }
         def retorno
-        cat.btnAceptar.actionPerformed = { 
-            def catTab = cat.jTable1;
-            retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String;
-            cat.btnCerrar.doClick();
+        cat.btnAceptar.actionPerformed = {
+            println "Enter desde closure btnAceptar.actionPerformed en lanzarDialogoCatalogo()"
+            JTable catTab = cat.jTable1;
+
+            Boolean isSelected = catTab.getSelectionModel().getMinSelectionIndex() >= 0;
+            if(isSelected) {
+              retorno = catTab.getModel().getValueAt(catTab.getSelectedRow(), 0) as String;
+              cat.btnCerrar.doClick();
+            }
         }
         synchronized(foco){foco.wait()}
         retorno

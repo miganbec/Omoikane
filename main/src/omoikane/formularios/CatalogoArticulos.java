@@ -89,10 +89,10 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                         "from ramcachearticulos");
                     
                     jTable1.setModel(modeloTabla);
-                    jTable1.getSelectionModel().setSelectionInterval(0,0);
+
                     cargaProgressBar.setIndeterminate(false);
 
-                    Herramientas.setColumnsWidth(jTable1, widths);
+                    Herramientas.setColumnsWidth(jTable1, 960, widths);
 
                 }
             }.start();
@@ -162,20 +162,23 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public void setModoDialogo()
     {
         modal=true;
+
         this.btnAceptar.setVisible(true);
         Action aceptar = new AbstractAction() { public void actionPerformed(ActionEvent e) {
-
+            System.out.println("Print desde catálogo articulos setModoDialogo()");
             ((CatalogoArticulos)e.getSource()).btnAceptar.doClick();
         } };
         getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "aceptar");
         getActionMap().put("aceptar"                 , aceptar  );
+
     }
 
     public void setQueryTable(String query) {
         txtQuery = query;
 
         modelo.setQuery(query);
-        jTable1.getSelectionModel().setSelectionInterval(0,0);
+        //Selecciona la primera fila luego de una búsqueda
+        //jTable1.getSelectionModel().setSelectionInterval(0,0);
 
     }
     /** This method is called from within the constructor to
@@ -527,14 +530,17 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
-        ScrollableTableModel stm = ((ScrollableTableModel)jTable1.getModel());
-        int IDArticulo = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
-        System.out.println ("btn aceptar");
 
-        if(IDArticulo != -1) { 
-            IDSeleccionado = IDArticulo; codigoSeleccionado = (String)stm.getValueAt(this.jTable1.getSelectedRow(), 0);
-            this.btnCerrar.doClick();
+        Boolean isSelected = jTable1.getSelectionModel().getMinSelectionIndex() >= 0;
+        if(isSelected) {
+            ScrollableTableModel stm = ((ScrollableTableModel)jTable1.getModel());
+            int IDArticulo = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
+            System.out.println ("btn aceptar");
+
+            if(IDArticulo != -1) {
+                IDSeleccionado = IDArticulo; codigoSeleccionado = (String)stm.getValueAt(this.jTable1.getSelectedRow(), 0);
+                this.btnCerrar.doClick();
+            }
         }
 }//GEN-LAST:event_btnAceptarActionPerformed
 
