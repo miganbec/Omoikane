@@ -70,7 +70,6 @@ dependencies {
 		[group: 'commons-dbcp'        , name: 'commons-dbcp'           , version: '1.4']		
 	)
 	compile files('lib/jcalc-1.0.4.jar',
-				  'lib/grfingerjava.jar', 
 				  'lib/OmoikaneMedia.jar',
 				  'lib/nimbus.jar',
 				  'lib/OmoikaneAPI-1.0-SNAPSHOT.jar',
@@ -115,9 +114,10 @@ jar {
 }
 
 task distribuir(dependsOn: 'installApp') {
-	miDistDir = new File("dist")
+	miDistDir        = new File("dist")
 
 	//Copy griaule related files
+	/* Descontinuado el 09/07/2012
 	copy {
 	   from "libgrfingerjava.so", 
 			"GrFingerLicenseAgreement.txt",
@@ -125,6 +125,27 @@ task distribuir(dependsOn: 'installApp') {
 			"pthreadVC2.dll",
 			"CapPluginHamster.dll",
 			"grfingerjava.dll"
+	   into "$miDistDir"
+	}
+	*/
+
+    //Copy DigitalPersona related files
+    copy {
+	   from "DPCOper2.dll",
+			"DPCrStor.dll",
+			"DPDevice2.dll",
+			"DPDevTS.dll",
+			"DpHostW.exe",
+			"DPJasPer.dll",
+            "DPmsg.dll",
+            "DPMux.dll",
+            "DpSvInfo2.dll",
+            "DPTSClnt.dll",
+            // RXTX Comm files
+            "RXTXcomm.jar",
+            "rxtxSerial.dll",
+            // Scripts
+            "inicio.bat"
 	   into "$miDistDir"
 	}
 	
@@ -149,5 +170,14 @@ task distribuir(dependsOn: 'installApp') {
 		from "lib/ext"
 		into "$daExts"
 	}
+
+    //Copy to local repo
+    miDistArchiveDir = new File("archive/dist-${version}")
+    copy {
+        from "$miDistDir"
+        into "$miDistArchiveDir"
+    }
+
+
 }
 

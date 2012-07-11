@@ -13,7 +13,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import groovy.inspect.swingui.*
 import groovy.swing.SwingBuilder;
-import com.griaule.grfingerjava.*;
 import javax.swing.JComponent;
 import org.jdesktop.swingx.JXDatePicker;
 import java.text.SimpleDateFormat
@@ -227,27 +226,6 @@ import java.text.SimpleDateFormat
         return false;
     }
 
-    public static int  FingerMatch(String huellaA, String huellaB)
-    {
-        System.out.println("Verificando zero...");
-        Template  ref1, ref2;
-        ref1 = new Template();
-        ref2 = new Template();
-        boolean autorizado = false;
-
-        ref1.setData(Herramientas.hexString2Bytes(huellaA));
-        ref2.setData(Herramientas.hexString2Bytes(huellaB));
-
-        try {
-            System.out.println("Verificando...");
-            autorizado = (new MatchingContext()).verify(ref2, ref1);
-        } catch(GrFingerJavaException grje)
-        {
-            grje.printStackTrace();
-        }
-        return (autorizado?1:0);
-    }
-
     public static panelFormulario(component){
         for(Component child: component.getContentPane().getComponents()){
 
@@ -347,7 +325,7 @@ import java.text.SimpleDateFormat
 
     public static def getVersion() {
 
-      return "1.3.3"
+      return "1.3.3 Final"
     }
 
 }

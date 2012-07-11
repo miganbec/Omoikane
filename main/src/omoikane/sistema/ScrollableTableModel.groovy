@@ -30,7 +30,10 @@ public class ScrollableTableModel extends AbstractTableModel {
 
     public ScrollableTableModel(java.util.List colNames, ArrayList colClases)
     {
-        def protocol = omoikane.principal.Principal.URLMySQL + "?user=Jasper&password=gatogato&useOldAliasMetadataBehavior=true&useCompression=true";
+        def protocol = omoikane.principal.Principal.URLMySQL +
+                        "?user="     + omoikane.principal.Principal.loginJasper +
+                        "&password=" + omoikane.principal.Principal.passJasper  +
+                        "&useOldAliasMetadataBehavior=true&useCompression=true";
         conn = DriverManager.getConnection(protocol);
         conn.setAutoCommit(false);
 

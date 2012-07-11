@@ -11,7 +11,6 @@ package omoikane.formularios;
 
 import omoikane.sistema.*;
 import omoikane.sistema.huellas.ContextoFPSDK;
-import omoikane.sistema.huellas.HuellasOneTouchSDK;
 import omoikane.sistema.huellas.MiniLeerHuella;
 
 import javax.swing.AbstractAction;
@@ -43,8 +42,13 @@ public class WndLeerHuella extends JInternalDialog2 {
         pnlHuella = ContextoFPSDK.instanciar(this);
         super.setContentPane(pnlHuella);
         super.setActivo(true);
-        return pnlHuella.byteTemplate;
+        return pnlHuella.byteSample;
         //return null;
+    }
+
+    public MiniLeerHuella getMiniLeerHuella() throws Exception {
+        getHuella();
+        return pnlHuella;
     }
     
 }

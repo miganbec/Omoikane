@@ -12,9 +12,9 @@ import groovy.swing.*
 import omoikane.sistema.Reloj;
 import groovy.inspect.swingui.*
 
-class Escritorio {
+ class Escritorio {
 
-    def escritorioFrame = new omoikane.formularios.Escritorio()
+    omoikane.formularios.Escritorio escritorioFrame = new omoikane.formularios.Escritorio()
     def reloj = new Reloj(escritorioFrame.reloj)
 
     void iniciar()

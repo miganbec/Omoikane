@@ -9,7 +9,6 @@ import omoikane.sistema.*
 import omoikane.sistema.Usuarios as SisUsuarios
 
 import omoikane.sistema.cortes.ContextoCorte
-import omoikane.sistema.huellas.FingerUtil
 import org.apache.log4j.Logger
 import org.springframework.context.support.ClassPathXmlApplicationContext
 import org.springframework.context.ApplicationContext
@@ -17,6 +16,7 @@ import omoikane.exceptions.UEHandler
 
 import omoikane.sistema.huellas.ContextoFPSDK
 import omoikane.sistema.huellas.ContextoFPSDK.SDK
+import omoikane.sistema.huellas.HuellasCache
 
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,9 +29,9 @@ import omoikane.sistema.huellas.ContextoFPSDK.SDK
  *  * @author Octavio
  */
 public class Principal {
-        static def escritorio
-        static def menuPrincipal
-        static def config
+        static Escritorio escritorio
+        static def        menuPrincipal
+        static def        config
         public static int                   IDAlmacen
         public static int                   IDCaja
         public static int                   sysAncho
@@ -45,6 +45,8 @@ public class Principal {
         public static boolean               basculaActiva
         public static def                   driverBascula
         public static String                URLMySQL
+        public static String                loginJasper
+        public static String                passJasper
         public static int                   scannerBaudRate
         public static String                scannerPort
         public static SDK                   sdkFingerprint = SDK.ONETOUCH;
@@ -76,14 +78,16 @@ public class Principal {
 
             shutdownHandler = new ShutdownHandler()
             Runtime.getRuntime().addShutdownHook(shutdownHandler);
-            if(ASEGURADO) { FingerUtil.inicializar() }
 
             splash.setText("Cargando configuración...")
             config = new omoikane.sistema.Config()
-            config.defineAtributos()
 
             splash.setText("Cargando ApplicationContext...")
             applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+            splash.setText("Cargando huellas en caché...")
+            applicationContext.getBean(HuellasCache.class).getHuellasBD();
+
             splash.setText("Inicializando escritorio...")
             //Herramientas.utilImpresionCortes()
             //System.exit(0)
@@ -139,7 +143,7 @@ public class Principal {
         try{
         while(!SisUsuarios.login().cerrojo(SisUsuarios.CAJERO)) {}  // Aquí se detendrá el programa a esperar login
         escritorio.setNombreUsuario(SisUsuarios.usuarioActivo.nombre)
-        } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar sesión en ciclo de huella", Herramientas.getStackTraceString(e)) }
+        } catch(e) { Dialogos.lanzarDialogoError(null, "Error al iniciar sesión en ciclo de huella: "+e.getMessage(), Herramientas.getStackTraceString(e)) }
     }
 
     static def cerrarSesion(){

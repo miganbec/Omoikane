@@ -18,8 +18,12 @@ import groovy.inspect.swingui.*
     Config config
     
     Config() {
-        cargar()
-        config = this
+       cargar()
+       if(config == null ) {
+           config = this
+           defineAtributos()
+       }
+       config = this
     }
 
     def cargar () {
@@ -47,6 +51,8 @@ import groovy.inspect.swingui.*
             Principal.puertoImpresion         = String .valueOf(config.puertoImpresion[0].text())
             Principal.impresoraActiva         = Boolean.valueOf(config.impresoraActiva[0].text())
             Principal.URLMySQL                = String .valueOf(config.URLMySQL[0].text())
+            Principal.loginJasper             = String .valueOf(config.loginJasper[0].text())
+            Principal.passJasper              = String .valueOf(config.passJasper[0].text())
             Principal.scannerBaudRate         = Integer.valueOf(config.ScannerBaudRate[0].text())
             Principal.scannerPort             = String .valueOf(config.ScannerPort[0].text())
             Principal.scannerActivo           = Boolean.valueOf(config.scannerActivo[0].text())

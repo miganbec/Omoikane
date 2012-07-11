@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
@@ -21,9 +22,13 @@
     <!--<context:component-scan base-package="omoikane.entities"/>-->
     <!--<context:component-scan base-package="omoikane.sistema"/>-->
     <bean id="usuarios" class="omoikane.sistema.Usuarios"></bean>
+    <bean id="huellasCache" class="omoikane.sistema.huellas.HuellasCache"></bean>
+    <bean id="config" class="omoikane.sistema.Config"></bean>
 
     <hades:dao-config base-package="omoikane.repository"
-                      entity-manager-factory-ref="entityManagerFactory"></hades:dao-config>
+                      entity-manager-factory-ref="entityManagerFactory">
+        <hades:dao id="usuarioRepo" />
+    </hades:dao-config>
 
     <bean id="log4jInitializer" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="targetClass" value="org.springframework.util.Log4jConfigurer"/>
@@ -37,9 +42,9 @@
 
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="password" value=""/>
-        <property name="username" value="Jasper"/>
-        <property name="url" value="jdbc:mysql://localhost/Omoikane"/>
+        <property name="password" value="#{ T(omoikane.principal.Principal).passJasper }"/>
+        <property name="username" value="#{ T(omoikane.principal.Principal).loginJasper }"/>
+        <property name="url" value="#{ T(omoikane.principal.Principal).URLMySQL }"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     </bean>
 

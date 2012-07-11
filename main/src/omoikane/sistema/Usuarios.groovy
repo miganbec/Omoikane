@@ -12,11 +12,7 @@
 package omoikane.sistema;
 
 
- import com.griaule.grfingerjava.*;
-
-
  import omoikane.principal.*
- import java.util.logging.Level
 
  import omoikane.repository.UsuarioRepo
  import org.apache.log4j.Logger
@@ -24,8 +20,8 @@ package omoikane.sistema;
  import omoikane.entities.Usuario
  import org.springframework.beans.factory.annotation.Autowired
  import org.springframework.stereotype.Service
- import javax.imageio.ImageIO
- import java.awt.image.BufferedImage
+
+ import omoikane.sistema.huellas.MiniLeerHuella
 
  @Service
  public class Usuarios {
@@ -33,6 +29,10 @@ package omoikane.sistema;
 
     @Autowired
     UsuarioRepo usuarioRepo;
+
+    public Long getUserCount() {
+        return usuarioRepo.countIt();
+    }
 
     //public Usuario usrActivo = new Usuario();
     private static boolean autorizado = false;
@@ -55,21 +55,31 @@ package omoikane.sistema;
     public static def identificaPersona() throws Exception {
             def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
             def respuesta
-            def fingerPrint
+            MiniLeerHuella fingerPrint
+            Usuarios sysUsers = omoikane.principal.Principal.applicationContext.getBean(Usuarios.class);
 
-            if(Principal.ASEGURADO) {
-              while(true) {
-                fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
-                if (fingerPrint != null && fingerPrint.length > 0) { break; }
-              }
-            }
+            if(Principal.ASEGURADO && sysUsers.getUserCount() > 0) {
+                while(true) {
+                    fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getMiniLeerHuella()
+                    if (fingerPrint.verifyFeatureSet != null && fingerPrint.verifyFeatureSet.length > 0) { break; }
+                }
 
-            def serv         = Nadesico.conectar()
-            if(Principal.ASEGURADO) {
-                respuesta    = serv.checkFingerPrint(fingerPrint)
+                def serv          = Nadesico.conectar()
+                //Aquí sucede la identificación del usuario
+                Usuario usuario = fingerPrint.identify();
+
+                if(usuario == null) {
+                    respuesta = 0;
+                } else {
+                    def nadesicoUsuario = serv.getUsuario(usuario.getId(),1);
+                    respuesta = [ID: usuario.getId(), huella: "", nombre: usuario.getNombre(), sucursales:["1":nadesicoUsuario.perfil]]
+                }
+                serv.desconectar()
+
             } else {
-                respuesta = [ID:20,huella:"",nombre:"Pruebas",sucursales:["1":4]]
+                respuesta = [ID:1,huella:"",nombre:"Instalador",sucursales:["1":4]]
             }
+
             /* Intento de pasar la DAL y parte de la BL a Omoikane
             Usuarios userSystem   = (Usuarios) Principal.getContext().getBean("usuarios");
 
@@ -101,9 +111,9 @@ package omoikane.sistema;
         return usuarioActivo.cerrojo(llave) as boolean
     }
 
-    public static def leerHuella(){
+    public static MiniLeerHuella leerHuella(){
         def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
-        def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getHuella()
+        def fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getMiniLeerHuella()
         return fingerPrint
     }
 
@@ -138,9 +148,9 @@ package omoikane.sistema;
 
                             mC = new MatchingContext()
                             ref2.setData(usuario.huella1);
-                            if(ref2!=null)  {autorizado = (mC.verify(ref1, ref2));
-                            if(!autorizado) {ref2.setData(usuario.huella2);  autorizado = (mC.verify(ref1, ref2)); }
-                            if(!autorizado) {ref2.setData(usuario.huella3);  autorizado = (mC.verify(ref1, ref2)); }
+                            if(ref2!=null)  {autorizado = (mC.identify(ref1, ref2));
+                            if(!autorizado) {ref2.setData(usuario.huella2);  autorizado = (mC.identify(ref1, ref2)); }
+                            if(!autorizado) {ref2.setData(usuario.huella3);  autorizado = (mC.identify(ref1, ref2)); }
                             }
                             if(mC != null)
                             {

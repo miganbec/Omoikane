@@ -16,9 +16,15 @@ import java.awt.event.*;
 import javax.swing.*;
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*
- import org.apache.log4j.Logger;
+ import org.apache.log4j.Logger
+ import omoikane.entities.Usuario
+ import omoikane.sistema.huellas.TemplateMap
+ import omoikane.repository.UsuarioRepo
+ import javax.validation.ConstraintViolationException
+ import javax.validation.ConstraintViolation
 
-class Usuarios {
+
+ class Usuarios {
     static def escritorio = omoikane.principal.Principal.escritorio
     static def Almacen = Principal.IDAlmacen
     public static Logger          logger            = Logger.getLogger(Usuarios.class);
@@ -113,6 +119,8 @@ class Usuarios {
             formUsuario.setTxtNombre         art.nombre              as String
             formUsuario.setTxtUModificacion  art.uModificacion       as String
             formUsuario.setTxtNIP            art.nip                 as String
+
+            formUsuario.setTemplates( TemplateMap.deserializar(art.huella1) );
             switch(art.perfil){
                 case 0  :formUsuario.setTxtPerfil( "Cajero"         ); break;
                 case 0.5:formUsuario.setTxtPerfil( "Capturista"     ); break;
@@ -133,28 +141,29 @@ class Usuarios {
         try{
         if(cerrojo(PMA_MODIFICARUSUARIO)){
             Herramientas.verificaCampos {
-                def Nombre            = formUsuario.getTxtNombre()
-                def H1                = formUsuario.getTxtH1()
-                def H2                = formUsuario.getTxtH2()
-                def H3                = formUsuario.getTxtH3()
+                def nombre            = formUsuario.getTxtNombre()
+                def h1                = formUsuario.getTxtH1()
+                def h2                = new byte[0]; //formUsuario.getTxtH2()
+                def h3                = new byte[0];//formUsuario.getTxtH3()
                 def NIP               = formUsuario.getTxtNIP()
-                def Perfil            = formUsuario.getTxtPerfil()
-                Herramientas.verificaCampo(Nombre,Herramientas.texto,"Nombre"+Herramientas.error1)
+                def perfil            = formUsuario.getTxtPerfil()
+                Herramientas.verificaCampo(nombre,Herramientas.texto,"Nombre"+Herramientas.error1)
                 Herramientas.verificaCampo(NIP,Herramientas.numero,"NIP"+Herramientas.error2)
-                switch(Perfil) {
-                    case "Cajero"       :Perfil=0; break;
-                    case "Capturista"   :Perfil=(0.5); break;
-                    case "Supervisor"   :Perfil=1; break;
-                    case "Gerente"      :if(cerrojo(ADMINISTRADOR)) {Perfil=2}else{Dialogos.lanzarAlerta("Acceso Denegado solo el administrador puede agregar un nuevo gerente")}; break;
-                    case "Administrador":if(cerrojo(PROPIETARIO)  ) {Perfil=3}else{Dialogos.lanzarAlerta("Acceso Denegado solo un propietario puede agregar un nuevo administrador")}; break;
-                    case "Propietario"  :if(cerrojo(PROPIETARIO)  ) {Perfil=4}else{Dialogos.lanzarAlerta("Acceso Denegado no es un propietario")}; break;
+                switch(perfil) {
+                    case "Cajero"       :perfil=0; break;
+                    case "Capturista"   :perfil=(0.5); break;
+                    case "Supervisor"   :perfil=1; break;
+                    case "Gerente"      :if(cerrojo(ADMINISTRADOR)) {perfil=2}else{Dialogos.lanzarAlerta("Acceso Denegado solo el administrador puede agregar un nuevo gerente")}; break;
+                    case "Administrador":if(cerrojo(PROPIETARIO)  ) {perfil=3}else{Dialogos.lanzarAlerta("Acceso Denegado solo un propietario puede agregar un nuevo administrador")}; break;
+                    case "Propietario"  :if(cerrojo(PROPIETARIO)  ) {perfil=4}else{Dialogos.lanzarAlerta("Acceso Denegado no es un propietario")}; break;
                     default: break;}
-                if (Perfil instanceof String ){Perfil = -1}
+                if (perfil instanceof String ){perfil = -1}
                 try {
-                if(Perfil>=0){
+                if(perfil>=0){
                     def serv = Nadesico.conectar()
-                    Dialogos.lanzarAlerta(serv.addUsuario(Nombre,H1,H2,H3,NIP,Perfil,Almacen))
+                    Dialogos.lanzarAlerta(serv.addUsuario(nombre,h1,h2,h3,NIP,perfil,almacen))
                     serv.desconectar()
+
                     formUsuario.dispose()
                     return formUsuario
                 }}catch(e) { logger.error("Error al enviar a la base de datos. El Usuario no se registró", e) }
@@ -198,7 +207,7 @@ class Usuarios {
         } catch(e) { Dialogos.error("Error al lanzar modificar Usuarios", e) }
     }
 
-    static def modificar(formUsuario)
+    static def modificar(omoikane.formularios.Usuario formUsuario)
     {
         try{
         if(cerrojo(PMA_MODIFICARUSUARIO)){
@@ -219,9 +228,22 @@ class Usuarios {
                     default: break;}
                 try{
                     def serv = Nadesico.conectar()
-                    Dialogos.lanzarAlerta(serv.modUsuario(Nombre,NIP,Perfil,Almacen,USR))
+                    String mensajeNadesicoModUsuario = serv.modUsuario(Nombre,NIP,Perfil,Almacen,USR)
+                    UsuarioRepo repo;
+                    repo = Principal.applicationContext.getBean(UsuarioRepo.class);
+                    Usuario usuario = repo.readByPrimaryKey(Long.valueOf(USR));
+                    usuario.huella1 = formUsuario.getTemplates().serializar();
+
+                    repo.saveAndFlush(usuario);
+                    Dialogos.lanzarAlerta(mensajeNadesicoModUsuario)
                     serv.desconectar()
-                }catch(e) { Dialogos.error("Error al enviar a la base de datos. El Usuario no se modifico", e)}}
+                } catch(ConstraintViolationException e) {
+                    //String violacionesTxt = "";
+                    for(ConstraintViolation violacion : e.constraintViolations) {
+                        logger.info( violacion.messageTemplate );
+                        Dialogos.lanzarAlerta( violacion.messageTemplate );
+                    }
+                } catch(Exception e) { Dialogos.error("Error al enviar a la base de datos. El Usuario no se modifico", e)}}
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
         }catch(e) { Dialogos.error("Error al lanzar modificar Usuarios", e) }
     } 

@@ -6,6 +6,8 @@
 
 package omoikane.sistema.huellas;
 
+import com.digitalpersona.onetouch.processing.DPFPImageQualityException;
+import omoikane.entities.Usuario;
 import omoikane.sistema.JInternalDialog2;
 
 /**
@@ -14,7 +16,9 @@ import omoikane.sistema.JInternalDialog2;
  */
 public abstract class MiniLeerHuella extends javax.swing.JPanel {
 
-    public byte[] byteTemplate = new byte[0];
+    public byte[] byteSample = new byte[0];
+    public byte[] verifyFeatureSet = new byte[0];
+    public byte[] enrollFeatureSet = new byte[0];
     public JInternalDialog2 parent;
     /** Creates new form LeerHuella */
     public MiniLeerHuella(JInternalDialog2 parent) {
@@ -26,6 +30,8 @@ public abstract class MiniLeerHuella extends javax.swing.JPanel {
         this.setOpaque(false);
         setLectorActivo(false);
     }
+
+    public abstract Usuario identify() throws DPFPImageQualityException;
     
     public class HiloParaCerrar extends Thread
     {

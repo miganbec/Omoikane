@@ -390,9 +390,9 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDUsuario = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         if(IDUsuario != -1) {
-            String descripcion = ((NadesicoTableModel)jTable1.getModel()).getDescripcion(jTable1.getSelectedRow());
+            String descripcion = ((ScrollableTableModel)jTable1.getModel()).getDescripcion(jTable1.getSelectedRow());
             if(JOptionPane.showConfirmDialog(null, "¿Realmente desea eliminar éste Usuario: \""+descripcion+"\"?", "lala", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 omoikane.principal.Usuarios.eliminarUsuario(IDUsuario);
             }
@@ -401,7 +401,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDUsuario = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
 
         //Lanzar la ventana de detalles:
         if(IDUsuario != -1) { 
@@ -418,7 +418,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
         // TODO add your handling code here:
-        int IDUsuario = ((NadesicoTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
+        int IDUsuario = ((ScrollableTableModel)jTable1.getModel()).getIDArticuloFila(this.jTable1.getSelectedRow());
         
         //Lanzar la ventana de detalles:
         if(IDUsuario != -1) {
@@ -484,7 +484,7 @@ public class CatalogoUsuarios extends javax.swing.JInternalFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        NadesicoTableModel stm = ((NadesicoTableModel)jTable1.getModel());
+        ScrollableTableModel stm = ((ScrollableTableModel)jTable1.getModel());
         int IDUsuario = stm.getIDArticuloFila(this.jTable1.getSelectedRow());
 
         if(IDUsuario != -1) {

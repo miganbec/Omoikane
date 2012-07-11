@@ -18,6 +18,8 @@ import java.util.Collection;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@Cacheable(true)
+// **03/04/2012: Retrocompatibilidad ==(nuevo)usuario --> usuarios(antiguo)==
 @Table(name="usuarios")
 public class Usuario {
 
@@ -47,7 +49,7 @@ public class Usuario {
 
     @PreUpdate
     protected void onUpdate() {
-        umodificacion = new Timestamp(Calendar.getInstance().getTime().getTime());
+        setUmodificacion(new Timestamp(Calendar.getInstance().getTime().getTime()));
     }
 
      // **03/04/2012: Retrocompatibilidad ==(nuevo)id --> id_usuario(antiguo)==

@@ -23,7 +23,8 @@ public class ContextoFPSDK {
         if(sdk == SDK.ONETOUCH) {
             return new HuellasOneTouchSDK(parent);
         } else if (sdk == SDK.GRIAULE) {
-            return new HuellasGriaule(parent);
+            //return new HuellasGriaule(parent);
+            throw new Exception("Soporte para griaule descontinuado");
         }
         throw new Exception("Error en la configuración, valor del nodo SDKFingerPrint incorrecto");
     }
