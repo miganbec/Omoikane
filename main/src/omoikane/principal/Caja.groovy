@@ -439,9 +439,17 @@ class Caja implements Serializable {
             }
 
             form.btnCatalogo.actionPerformed = { e ->
-                synchronized(this) {
-                    form.btnCatalogo.setEnabled(false); Thread.start { catArticulos() }
-                }
+              synchronized(this) {
+                  form.btnCatalogo.setEnabled(false);
+                    Thread.start {
+                    try {
+                      catArticulos()
+                    } catch (Exception ex) {
+                      form.btnCatalogo.setEnabled(true);
+                      throw ex;
+                    }
+                  }
+              }
             }
             form.btnTerminar.actionPerformed = { e ->
                 try {
