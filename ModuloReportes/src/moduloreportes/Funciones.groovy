@@ -126,7 +126,7 @@ class Funciones {
             list = (String) (form.getLineas()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('moduloreportes/Reportes/VentasXLinea.jrxmal', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
+            def reporte = new Reporte('Reportes/VentasXLinea.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -139,7 +139,7 @@ class Funciones {
             list = (String) (form.getGrupos()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('moduloreportes/Reportes/VentasXGrupo.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Grupos:list]);
+            def reporte = new Reporte('Reportes/VentasXGrupo.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Grupos:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -148,7 +148,7 @@ class Funciones {
     static def lanzarReporteUXL(form) {
             form.barra.setIndeterminate(true);
             Thread.start {
-            def reporte = new Reporte('moduloreportes/Reportes/utilidadXLinea.jasper',[FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta()]);
+            def reporte = new Reporte('Reportes/utilidadXLinea.jrxml',[FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta()]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -161,7 +161,7 @@ class Funciones {
             list = (String) (form.getLineas()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('moduloreportes/Reportes/ArticulosLineas.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",Lineas:list]);
+            def reporte = new Reporte('Reportes/ArticulosLineas.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Lineas:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -174,7 +174,7 @@ class Funciones {
             list = (String) (form.getLineas()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('moduloreportes/Reportes/ArticulosGrupos.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",Grupos:list]);
+            def reporte = new Reporte('Reportes/ArticulosGrupos.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Grupos:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -191,7 +191,7 @@ class Funciones {
             alm=alm.replace(']','')
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('moduloreportes/Reportes/CosteoGrupos.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",Grupos:list,Almacen:alm]);
+            def reporte = new Reporte('Reportes/CosteoGrupos.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Grupos:list,Almacen:alm]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -208,7 +208,7 @@ class Funciones {
             alm=alm.replace(']','')
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('moduloreportes/Reportes/CosteoLineas.jasper', [SUBREPORT_DIR:"moduloreportes/Reportes/",Lineas:list,Almacen:alm]);
+            def reporte = new Reporte('Reportes/CosteoLineas.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Lineas:list,Almacen:alm]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }

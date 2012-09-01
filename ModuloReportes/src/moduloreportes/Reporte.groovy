@@ -16,18 +16,20 @@ import groovy.inspect.swingui.*;
 import java.awt.*;
 import net.sf.jasperreports.engine.data.JRTableModelDataSource
 import net.sf.jasperreports.engine.data.JRTableModelDataSource
-import org.slf4j.Logger
 import java.util.logging.Logger
+import java.util.Scanner;
 
 class Reporte {
     JasperPrint jp;
 
+    
     Reporte (String reporteJasper, params = [:])
     {
         try {
             def conn
             conn = moduloreportes.Comandos.Enlace(conn);
-            def stream = cargarPlantilla(reporteJasper)
+            //def stream = cargarPlantilla(reporteJasper)
+            def stream = cargarYCompilarJXML(reporteJasper)
             jp         = JasperFillManager.fillReport(stream, params, conn);
             conn.close()
         } catch(Exception e) {JOptionPane.showMessageDialog(null, e)}
@@ -58,7 +60,8 @@ class Reporte {
 
     def cargarPlantilla(String reporteURL)
     {
-        def stream = ClassLoader.getSystemResourceAsStream(reporteURL)
+        //def stream = ClassLoader.getSystemResourceAsStream(reporteURL)
+        FileInputStream stream = readFile(reporteURL)
         if(stream == null) { throw new Exception("Plantilla de reporte no encontrada. " + reporteURL); }
         return stream
     }
@@ -80,6 +83,16 @@ class Reporte {
         form.panel.removeAll();
         form.panel.add(new net.sf.jasperreports.view.JRViewer(jp));
         form.panel.updateUI()
+    }
+    
+    private FileInputStream readFile(String filename) throws IOException {
+        File file = new File( filename );
+        if ( !file.exists() ) {
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+            out.close();
+        }
+        FileInputStream fis = new FileInputStream(file);
+        return fis;
     }
 
 

@@ -16,5 +16,5 @@
 <document>
     <loginJasper>Jasper</loginJasper>
     <passJasper>gatogato</passJasper>
-    <URLMySQL>jdbc:mysql://sfmvaldez.poweredbyclear.com:3307/omoikane?useCompression=true</URLMySQL>
+    <URLMySQL>jdbc:mysql://sfmvaldez.poweredbyclear.com:3308/omoikane?useCompression=true</URLMySQL>
 </document>
