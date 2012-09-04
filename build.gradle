@@ -45,7 +45,7 @@ dependencies {
 	groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.7.6'
 	compile (
 		'joda-time:joda-time:1.6.2',
-		[group: 'net.sf.jasperreports', name: 'jasperreports'          , version: '3.7.1'],
+		[group: 'net.sf.jasperreports', name: 'jasperreports'          , version: '3.7.2'],
 		[group: 'org.codehaus.groovy' , name: 'groovy-all'             , version: '1.7.6'],
 		[group: 'org.codehaus.groovy' , name: 'groovy-xmlrpc'          , version: '0.4'],
 		[group: 'mysql'               , name: 'mysql-connector-java'   , version: '5.1.16'],
@@ -74,8 +74,6 @@ dependencies {
 				  'lib/nimbus.jar',
 				  'lib/OmoikaneAPI-1.0-SNAPSHOT.jar',
 				  'lib/AbsoluteLayout.jar',
-				  'lib/ext/ModuloReportes.jar',
-				  'lib/ext/PlugMenu3.jar.jar',
 				  'lib/dpfpenrollment.jar',
 				  'lib/dpfpverification.jar',
 				  'lib/dpotapi.jar',
@@ -165,11 +163,11 @@ task distribuir(dependsOn: 'installApp') {
 	}
 	
 	//Copy extensions
-	daExts = new File("$miDistDir/lib/ext")
+	/*daExts = new File("$miDistDir/lib/ext")
 	copy {
 		from "lib/ext"
 		into "$daExts"
-	}
+	}*/
 
     //Copy to local repo
     miDistArchiveDir = new File("archive/dist-${version}")

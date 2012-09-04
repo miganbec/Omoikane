@@ -9,7 +9,7 @@
  * Created on 12/07/2010, 04:53:23 PM
  */
 
-package moduloreportes;
+package omoikane.moduloreportes;
 
 
 import java.sql.*;

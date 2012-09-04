@@ -5,7 +5,7 @@ import org.junit.Test
 import omoikane.principal.Principal
 import omoikane.sistema.huellas.ContextoFPSDK.SDK
 import omoikane.sistema.huellas.ContextoFPSDK
-import omoikane.sistema.huellas.HuellasGriaule
+//import omoikane.sistema.huellas.HuellasGriaule
 import omoikane.sistema.huellas.HuellasOneTouchSDK
 
 /**
@@ -25,7 +25,7 @@ class ContextoFPSDKTest extends GroovyTestCase  {
     @Test
     public void testInstanciar() {
         Principal.sdkFingerprint = SDK.GRIAULE;
-        assert ContextoFPSDK.instanciar(null).class == HuellasGriaule.class;
+        assert ContextoFPSDK.instanciar(null).class == Exception.class;
         Principal.sdkFingerprint = SDK.ONETOUCH;
         assert ContextoFPSDK.instanciar(null).class == HuellasOneTouchSDK.class;
     }

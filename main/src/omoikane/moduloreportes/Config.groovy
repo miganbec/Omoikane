@@ -6,7 +6,7 @@
  *                   /////////////
  * //////////////////////////////                   */
 
-package moduloreportes
+package omoikane.moduloreportes
 
 
 import groovy.inspect.swingui.*

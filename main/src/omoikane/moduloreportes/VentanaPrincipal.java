@@ -9,7 +9,7 @@
  * Created on 12/07/2010, 04:10:32 PM
  */
 
-package moduloreportes;
+package omoikane.moduloreportes;
 
 /**
  *

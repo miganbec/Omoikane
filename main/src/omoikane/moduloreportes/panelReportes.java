@@ -9,7 +9,7 @@
  * Created on 12/07/2010, 04:26:37 PM
  */
 
-package moduloreportes;
+package omoikane.moduloreportes;
 
 import javax.swing.JButton;
 

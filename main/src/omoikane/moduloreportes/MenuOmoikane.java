@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package moduloreportes;
+package omoikane.moduloreportes;
 
 import com.phesus.omoikaneapi.Menus.MenuBean;
 import java.awt.event.ActionEvent;

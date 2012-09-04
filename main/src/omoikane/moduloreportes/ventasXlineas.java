@@ -9,7 +9,7 @@
  * Created on 12/07/2010, 04:53:23 PM
  */
 
-package moduloreportes;
+package omoikane.moduloreportes;
 
 
 import javax.swing.*;
@@ -18,11 +18,11 @@ import java.text.*;
  *
  * @author Phesus-Lab
  */
-public class VentasXGrupos extends javax.swing.JPanel {
+public class ventasXlineas extends javax.swing.JPanel {
 
         
     /** Creates new form ventasXlineas */
-    public VentasXGrupos(){
+    public ventasXlineas(){
         initComponents();
     }
 
@@ -53,7 +53,7 @@ public class VentasXGrupos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ventas por grupos");
+        jLabel1.setText("Ventas por líneas");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 12));
@@ -62,9 +62,9 @@ public class VentasXGrupos extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 12));
         jLabel3.setText("Hasta :");
 
-        dateDesde.setFont(new java.awt.Font("Times New Roman", 3, 12));
+        dateDesde.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
-        dateHasta.setFont(new java.awt.Font("Times New Roman", 3, 12));
+        dateHasta.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -74,7 +74,7 @@ public class VentasXGrupos extends javax.swing.JPanel {
         barra.setBackground(new java.awt.Color(0, 0, 0));
         barra.setForeground(new java.awt.Color(255, 255, 255));
 
-        lista.setFont(new java.awt.Font("Times New Roman", 3, 12));
+        lista.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         lista.setVisibleRowCount(4);
         jScrollPane1.setViewportView(lista);
 
@@ -87,7 +87,7 @@ public class VentasXGrupos extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 12));
-        jLabel4.setText("Grupos");
+        jLabel4.setText("Líneas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,7 +97,7 @@ public class VentasXGrupos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -113,9 +113,9 @@ public class VentasXGrupos extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(166, 166, 166)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                         .addGap(206, 206, 206))
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE))
+                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -140,14 +140,14 @@ public class VentasXGrupos extends javax.swing.JPanel {
                         .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        moduloreportes.Funciones.lanzarReporteVXG(this);
+        moduloreportes.Funciones.lanzarReporteVXL(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -165,7 +165,7 @@ public class VentasXGrupos extends javax.swing.JPanel {
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 
-    public Object[] getGrupos(){
+    public Object[] getLineas(){
         return this.lista.getSelectedValues();
     }
 

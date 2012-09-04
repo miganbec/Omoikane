@@ -1,4 +1,4 @@
-package moduloreportes
+package omoikane.moduloreportes
 
 /*
  * @author Phesus-Lab
@@ -17,12 +17,13 @@ import java.awt.*;
 import net.sf.jasperreports.engine.data.JRTableModelDataSource
 import net.sf.jasperreports.engine.data.JRTableModelDataSource
 import java.util.logging.Logger
-import java.util.Scanner;
+import java.util.Scanner
+import org.apache.log4j.Logger;
 
 class Reporte {
     JasperPrint jp;
 
-    
+    public static Logger logger = Logger.getLogger(Reporte.class);
     Reporte (String reporteJasper, params = [:])
     {
         try {
@@ -32,7 +33,9 @@ class Reporte {
             def stream = cargarYCompilarJXML(reporteJasper)
             jp         = JasperFillManager.fillReport(stream, params, conn);
             conn.close()
-        } catch(Exception e) {JOptionPane.showMessageDialog(null, e)}
+        } catch(Exception e) {
+            logger.error("Error leyendo plantilla de reporte", e);
+        }
     }
 
     Reporte(String reporteJasper, javax.swing.JTable tablaj)
@@ -42,8 +45,7 @@ class Reporte {
             def stream = cargarYCompilarJXML(reporteJasper)
             jp = JasperFillManager.fillReport(stream, new java.util.HashMap(), new JRTableModelDataSource(tablaj))
         } catch(Exception e) {
-
-            JOptionPane.showMessageDialog(null, e)
+            logger.error("Error leyendo plantilla de reporte", e);
         }
     }
 
@@ -53,8 +55,7 @@ class Reporte {
             def stream = cargarYCompilarJXML(reporteJasper)
             jp = JasperFillManager.fillReport(stream, new java.util.HashMap(), new JRMapCollectionDataSource(matriz))
         } catch(Exception e) {
-            JOptionPane.showMessageDialog(null, e)
-            Logger.getLogger("").severe("Error al generar reporte");
+            logger.error("Error leyendo plantilla de reporte", e);
         }
     }
 
