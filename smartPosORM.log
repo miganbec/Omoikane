@@ -2528,3 +2528,102 @@ groovy.lang.MissingPropertyException: No such property: moduloreportes for class
 	at groovy.lang.Closure.call(Closure.java:277)
 	at groovy.lang.Closure.run(Closure.java:360)
 	at java.lang.Thread.run(Thread.java:680)
+13:28:32,893  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+13:28:34,615 ERROR SchemaUpdate:212 - Unsuccessful: create table Preferencia (id integer not null auto_increment, clave longtext not null, valor longtext not null, primary key (id))
+13:28:34,615 ERROR SchemaUpdate:213 - CREATE command denied to user 'Jasper'@'189.193.8.17' for table 'preferencia'
+13:28:34,687  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+13:49:18,701  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+13:49:20,188 ERROR SchemaUpdate:212 - Unsuccessful: create table Preferencia (id integer not null auto_increment, clave longtext not null, valor longtext not null, primary key (id))
+13:49:20,188 ERROR SchemaUpdate:213 - CREATE command denied to user 'Jasper'@'189.193.8.17' for table 'preferencia'
+13:49:20,194  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+13:56:41,206  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+13:56:41,628  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:31:00,048  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:31:01,470  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:33:12,755  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:33:13,242  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:35:02,210  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:35:02,716  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:36:41,749  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:36:42,127  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:37:44,456  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:37:45,016  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:38:48,897  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:38:49,293  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:39:45,507  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:39:45,957  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:41:41,275  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:41:41,726  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:42:31,043  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:42:31,470  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:43:13,934  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:43:14,344  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:48:29,501  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:48:29,824  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:50:04,355  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:50:04,740  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:51:07,488  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:51:07,821  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:54:43,866  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:54:44,270  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:55:24,519  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:55:24,899  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+14:58:48,806  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+14:58:49,192  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+15:01:24,504  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+15:01:24,900  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+15:03:09,747  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+15:03:10,114  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+15:04:05,765  WARN Cache:992 - Cache: org.hibernate.cache.UpdateTimestampsCache has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
+15:04:06,141  WARN AbstractEhcacheRegionFactory:146 - Couldn't find a specific ehcache configuration for cache named [org.hibernate.cache.StandardQueryCache]; using defaults.
+15:11:23,938 ERROR Funciones:? - Error con la conexión o no está conectado
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'omoikane.lineas' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3597)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3529)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1990)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2151)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2619)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2569)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1510)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:124)
+	at omoikane.moduloreportes.Funciones$_poblarLinea_closure1.doCall(Funciones.groovy:65)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:88)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:273)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:886)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.callCurrent(PogoMetaClassSite.java:66)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:44)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:141)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:149)
+	at omoikane.moduloreportes.Funciones$_poblarLinea_closure1.doCall(Funciones.groovy)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:88)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:273)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:886)
+	at groovy.lang.Closure.call(Closure.java:282)
+	at groovy.lang.Closure.call(Closure.java:277)
+	at groovy.lang.Closure.run(Closure.java:360)
+	at java.lang.Thread.run(Thread.java:680)

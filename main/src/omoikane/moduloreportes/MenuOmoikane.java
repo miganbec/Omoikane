@@ -25,6 +25,7 @@ public class MenuOmoikane extends MenuBean {
         panelReportes pvl= new panelReportes();
         vp.getContentPane().add(pvl);
         vp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        vp.setTitle("Reportes avanzados");
         vp.setVisible(true);
         pvl.getSalir().addActionListener(new ActionListener() {
 

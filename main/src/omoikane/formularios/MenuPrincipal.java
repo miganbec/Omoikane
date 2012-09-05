@@ -16,7 +16,8 @@ import java.awt.image.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
-import static omoikane.sistema.Usuarios.*;
+
+import omoikane.moduloreportes.MenuOmoikane;
 import omoikane.sistema.StopWatch;
 
 /**
@@ -83,7 +84,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnGrupos = new JButton();
         jSeparator5 = new JSeparator();
         btnDetallesVentas = new JButton();
-        btnModulos = new JButton();
+        btnReportes = new JButton();
         lblVersion = new JLabel();
 
         //======== this ========
@@ -205,11 +206,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         //---- btnUsuarios ----
         btnUsuarios.setFont(new Font("Arial", Font.PLAIN, 14));
         btnUsuarios.setIcon(new ImageIcon(getClass().getResource("/proxy-128x128.png")));
-        btnUsuarios.setText("Usuarios     ");
-        btnUsuarios.setHorizontalTextPosition(SwingConstants.CENTER);
-        btnUsuarios.setIconTextGap(-12);
-        btnUsuarios.setVerticalAlignment(SwingConstants.TOP);
-        btnUsuarios.setVerticalTextPosition(SwingConstants.TOP);
+        btnUsuarios.setText("Usuarios");
+        //btnUsuarios.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnUsuarios.setIconTextGap(-10);
+        //btnUsuarios.setVerticalAlignment(SwingConstants.TOP);
+        //btnUsuarios.setVerticalTextPosition(SwingConstants.TOP);
         btnUsuarios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -217,7 +218,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
             }
         });
         contentPane.add(btnUsuarios);
-        btnUsuarios.setBounds(20, 410, 210, 100);
+        btnUsuarios.setBounds(20, 410, 210, 70);
         contentPane.add(jSeparator4);
         jSeparator4.setBounds(20, 400, 840, 10);
 
@@ -326,26 +327,26 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         contentPane.add(btnDetallesVentas);
         btnDetallesVentas.setBounds(240, 110, 200, 70);
 
-        //---- btnModulos ----
-        btnModulos.setFont(new Font("Arial", Font.PLAIN, 14));
-        btnModulos.setText("M\u00f3dulos");
-        btnModulos.setIcon(new ImageIcon(getClass().getResource("/k-black-box-128x128.png")));
-        btnModulos.setIconTextGap(-15);
-        btnModulos.addActionListener(new ActionListener() {
+        //---- btnReportes ----
+        btnReportes.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnReportes.setText("<html>Reportes<br>Avanzados</html>");
+        btnReportes.setIcon(new ImageIcon(getClass().getResource("/k-black-box-128x128.png")));
+        btnReportes.setIconTextGap(-20);
+        btnReportes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jButton1ActionPerformed(e);
             }
         });
-        contentPane.add(btnModulos);
-        btnModulos.setBounds(660, 210, 200, 70);
+        contentPane.add(btnReportes);
+        btnReportes.setBounds(240, 410, 200, 70);
 
         //---- lblVersion ----
         lblVersion.setHorizontalAlignment(SwingConstants.RIGHT);
         lblVersion.setText("Versi\u00f3n");
         lblVersion.setForeground(Color.blue);
         contentPane.add(lblVersion);
-        lblVersion.setBounds(815, 485, 55, lblVersion.getPreferredSize().height);
+        lblVersion.setBounds(815, 485, 65, lblVersion.getPreferredSize().height);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -451,7 +452,9 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new omoikane.menudinamico.MenuModulos();
+        //new omoikane.menudinamico.MenuModulos();
+        MenuOmoikane menuOmoikane = new MenuOmoikane();
+        menuOmoikane.launch();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     @Override
@@ -499,7 +502,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private JButton btnGrupos;
     private JSeparator jSeparator5;
     private JButton btnDetallesVentas;
-    private JButton btnModulos;
+    private JButton btnReportes;
     private JLabel lblVersion;
     // End of variables declaration//GEN-END:variables
 

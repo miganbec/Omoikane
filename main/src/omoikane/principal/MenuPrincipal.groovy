@@ -84,9 +84,9 @@ class MenuPrincipal {
                 if(it.keyCode==it.VK_UP)   { menuPrincipal.btnGrupos.requestFocusInWindow() }
                 if(it.keyCode==it.VK_DOWN) { menuPrincipal.btnCortes.requestFocusInWindow() }
             }
-            menuPrincipal.btnModulos.keyReleased = {
-                if(it.keyCode==it.VK_UP)   { menuPrincipal.btnCerrar.requestFocusInWindow() }
-                if(it.keyCode==it.VK_DOWN) { menuPrincipal.btnCerrar.requestFocusInWindow() }
+            menuPrincipal.btnReportes.keyReleased = {
+                if(it.keyCode==it.VK_UP)   { menuPrincipal.btnReportes.requestFocusInWindow() }
+                if(it.keyCode==it.VK_DOWN) { menuPrincipal.btnReportes.requestFocusInWindow() }
             }
 
             menuPrincipal.btnCerrar.actionPerformed = {
