@@ -171,15 +171,15 @@ public class CosteoGL extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(this.grupo.isSelected()){moduloreportes.Funciones.lanzarReporteCXG(this);}
-        if(this.linea.isSelected()){moduloreportes.Funciones.lanzarReporteCXL(this);}
+        if(this.grupo.isSelected()){Funciones.lanzarReporteCXG(this);}
+        if(this.linea.isSelected()){Funciones.lanzarReporteCXL(this);}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(this.linea.isSelected()){moduloreportes.Funciones.poblarLinea(this);}
+        if(this.linea.isSelected()){Funciones.poblarLinea(this);}
         else{
-        if(this.grupo.isSelected()){moduloreportes.Funciones.poblarGrupo(this);}
+        if(this.grupo.isSelected()){Funciones.poblarGrupo(this);}
         }
                 
     }//GEN-LAST:event_jButton2ActionPerformed

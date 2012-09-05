@@ -151,22 +151,22 @@ public class panelReportes extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        moduloreportes.Funciones.lanzarVentaXLineas(this);
+        Funciones.lanzarVentaXLineas(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        moduloreportes.Funciones.lanzarutilidadXLinea(this);
+        Funciones.lanzarutilidadXLinea(this);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        moduloreportes.Funciones.lanzararticulosGL(this);
+        Funciones.lanzararticulosGL(this);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        moduloreportes.Funciones.lanzarCosteoGL(this);
+        Funciones.lanzarCosteoGL(this);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
@@ -174,7 +174,7 @@ public class panelReportes extends javax.swing.JPanel {
     }//GEN-LAST:event_jSalirActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        moduloreportes.Funciones.lanzarVentaXGrupos(this);
+        Funciones.lanzarVentaXGrupos(this);
     }//GEN-LAST:event_jButton4ActionPerformed
 
 

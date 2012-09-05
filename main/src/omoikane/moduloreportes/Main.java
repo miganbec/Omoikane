@@ -7,6 +7,7 @@ package omoikane.moduloreportes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -30,9 +31,10 @@ public class Main {
         }
         catch (Exception e)
         {
-        e.printStackTrace();
+            e.printStackTrace();
         }
 
+        Locale.setDefault(Locale.US);
         final VentanaPrincipal  vp = new VentanaPrincipal();
         vp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         panelReportes pvl= new panelReportes();

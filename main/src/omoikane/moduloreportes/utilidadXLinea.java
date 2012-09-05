@@ -113,7 +113,7 @@ public class utilidadXLinea extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        moduloreportes.Funciones.lanzarReporteUXL(this);
+        Funciones.lanzarReporteUXL(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

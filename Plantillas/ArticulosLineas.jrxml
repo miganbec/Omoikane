@@ -83,7 +83,9 @@ WHERE
 					<subreportParameterExpression><![CDATA[$F{lineas_id_linea}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "articulosL.jasper"]]></subreportExpression>
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[net.sf.jasperreports.engine.JasperCompileManager.compileReport($P{SUBREPORT_DIR} + "articulosL.jrxml")]]>
+                </subreportExpression>
 			</subreport>
 		</band>
 	</detail>

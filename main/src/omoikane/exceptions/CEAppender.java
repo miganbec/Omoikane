@@ -33,7 +33,9 @@ public class CEAppender extends AppenderSkeleton {
         System.out.println(event.getMessage());
         ExceptionWindow ew = new ExceptionWindow();
         ew.getLblTituloError().setText((String) event.getMessage());
+
         if(event.getThrowableInformation() != null) {
+            event.getThrowableInformation().getThrowable().printStackTrace();
             ew.getTxtExcepcion().setText(Misc.getStackTraceString(event.getThrowableInformation().getThrowable()));
         }
         ew.setVisible(true);

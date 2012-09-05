@@ -98,7 +98,8 @@ class Comprobantes {
     }
 
     def generarTicket() {
-        def plantilla   = getClass().getResourceAsStream("/omoikane/reportes/FormatoTicket.txt").getText('UTF-8') as String
+        def plantilla = new File("Plantillas/FormatoTicket.txt").getText('UTF-8') as String
+        //def plantilla   = getClass().getResourceAsStream("/omoikane/reportes/FormatoTicket.txt").getText('UTF-8') as String
         def sdfFecha    = new SimpleDateFormat("dd-MM-yyyy")
         def sdfHora     = new SimpleDateFormat("hh:mm a")
         def binding     = data
@@ -113,7 +114,8 @@ class Comprobantes {
     }
 
     def generarCorte() {
-        def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoCorte.txt").getText('UTF-8') as String
+        def plantilla = new File("Plantillas/FormatoCorte.txt").getText('UTF-8') as String
+        //def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoCorte.txt").getText('UTF-8') as String
         def sdfFecha = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a")
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def sdfDia  = new SimpleDateFormat("EEEEEEEEEE dd-MMM-yyyy  ")
@@ -139,7 +141,8 @@ class Comprobantes {
     }
 
     def generarCorteSucursal() {
-        def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoCorte.txt").getText('UTF-8') as String
+        def plantilla = new File("Plantillas/FormatoCorte.txt").getText('UTF-8') as String
+        //def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoCorte.txt").getText('UTF-8') as String
         def sdfFecha = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a")
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def sdfDia  = new SimpleDateFormat("EEEEEEEEEE dd-MMM-yyyy  ")
@@ -159,7 +162,8 @@ class Comprobantes {
     }
 
     def generarMovimiento() {
-        def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoMovimiento.txt").getText('UTF-8') as String
+        def plantilla = new File("Plantillas/FormatoMovimiento.txt").getText('UTF-8') as String
+        //def plantilla = getClass().getResourceAsStream("/omoikane/reportes/FormatoMovimiento.txt").getText('UTF-8') as String
         def sdfFecha = new SimpleDateFormat("dd-MM-yyyy")
         def sdfHora  = new SimpleDateFormat("hh:mm a")
         def binding = data

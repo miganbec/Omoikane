@@ -170,7 +170,9 @@ GROUP BY
 					<subreportParameterExpression><![CDATA[$P{FDesde}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "desgloceGrupo.jasper"]]></subreportExpression>
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[net.sf.jasperreports.engine.JasperCompileManager.compileReport($P{SUBREPORT_DIR} + "desgloceGrupo.jrxml")]]>
+                </subreportExpression>
 			</subreport>
 		</band>
 	</detail>

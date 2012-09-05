@@ -108,7 +108,9 @@ AND
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<returnValue subreportVariable="total" toVariable="GranTotal" calculation="Sum"/>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "articulosGE.jasper"]]></subreportExpression>
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[net.sf.jasperreports.engine.JasperCompileManager.compileReport($P{SUBREPORT_DIR} + "articulosGE.jrxml")]]>
+                </subreportExpression>
 			</subreport>
 		</band>
 	</detail>

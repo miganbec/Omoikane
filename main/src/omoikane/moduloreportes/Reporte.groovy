@@ -28,7 +28,7 @@ class Reporte {
     {
         try {
             def conn
-            conn = moduloreportes.Comandos.Enlace(conn);
+            conn = Comandos.Enlace(conn);
             //def stream = cargarPlantilla(reporteJasper)
             def stream = cargarYCompilarJXML(reporteJasper)
             jp         = JasperFillManager.fillReport(stream, params, conn);

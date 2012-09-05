@@ -11,7 +11,8 @@ package omoikane.moduloreportes
  */
 
 import java.sql.*;
-import javax.swing.*;
+import javax.swing.*
+import org.apache.log4j.Logger
 
 public class Comandos {
 
@@ -19,16 +20,17 @@ public class Comandos {
     public static String login 
     public static String password 
     public static String url
+    public static Logger logger = Logger.getLogger(Comandos.class);
 
     public static Connection Enlace(Connection conn) throws SQLException {
         try {
-            config = new moduloreportes.Config()
+            config = new Config()
             defineAtributos()
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, login, password);
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
-            JOptionPane.showMessageDialog(null, c);
+            logger.error("Error al conectar con la base de datos", c)
         }
         return conn;
     }

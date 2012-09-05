@@ -60,7 +60,7 @@ class Funciones {
         vxl.barra.setIndeterminate(true);
         Thread.start {
             try{
-                conn = moduloreportes.Comandos.Enlace(conn);
+                conn = Comandos.Enlace(conn);
                 def st=conn.createStatement();
                 def rs=st.executeQuery("SELECT lineas.id_linea,lineas.descripcion FROM lineas");
                 while(rs.next()){
@@ -70,7 +70,10 @@ class Funciones {
                 listaNormales.setModel(dataListNormal);
                 conn.close()
 
-            }catch(Exception e) {JOptionPane.showMessageDialog(null,"Error con la conexion o no esta conectado");}
+            }catch(Exception e) {
+              //JOptionPane.showMessageDialog(null,"Error con la conexion o no esta conectado");
+              logger.error("Error con la conexión o no está conectado", e)
+            }
         }
 
     }
@@ -83,7 +86,7 @@ class Funciones {
         vxl.barra.setIndeterminate(true);
         Thread.start {
             try{
-                conn = moduloreportes.Comandos.Enlace(conn);
+                conn = Comandos.Enlace(conn);
                 def st=conn.createStatement();
                 def rs=st.executeQuery("SELECT grupos.id_grupo,grupos.descripcion FROM grupos");
                 while(rs.next()){
@@ -93,7 +96,10 @@ class Funciones {
                 listaNormales.setModel(dataListNormal);
                 conn.close()
 
-            }catch(Exception e) {JOptionPane.showMessageDialog(null,"Error con la conexion o no esta conectado");}
+            }catch(Exception e) {
+              //JOptionPane.showMessageDialog(null,"Error con la conexion o no esta conectado");
+              logger.error("Error con la conexión o no está conectado", e)
+            }
         }
 
     }
@@ -106,7 +112,7 @@ class Funciones {
         vxl.barra.setIndeterminate(true);
         Thread.start {
             try{
-                conn = moduloreportes.Comandos.Enlace(conn);
+                conn = Comandos.Enlace(conn);
                 def st=conn.createStatement();
                 def rs=st.executeQuery("SELECT almacenes.id_almacen,almacenes.descripcion FROM almacenes");
                 while(rs.next()){
@@ -116,7 +122,10 @@ class Funciones {
                 listaNormales.setModel(dataListNormal);
                 conn.close()
 
-            }catch(Exception e) {JOptionPane.showMessageDialog(null,"Error con la conexion o no esta conectado");}
+            }catch(Exception e) {
+              //JOptionPane.showMessageDialog(null,"Error con la conexion o no esta conectado");
+              logger.error("Error con la conexión o no está conectado", e)
+            }
         }
 
     }
@@ -128,7 +137,7 @@ class Funciones {
             list = (String) (form.getLineas()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('Plantillas/VentasXLinea.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
+            def reporte = new Reporte('Plantillas/VentasXLinea.jrxml', [SUBREPORT_DIR:"Plantillas/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Lineas:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -141,7 +150,7 @@ class Funciones {
             list = (String) (form.getGrupos()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('Plantillas/VentasXGrupo.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Grupos:list]);
+            def reporte = new Reporte('Plantillas/VentasXGrupo.jrxml', [SUBREPORT_DIR:"Plantillas/",FDesde:form.getFechaDesde(),FHasta:form.getFechaHasta(),Grupos:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -163,7 +172,7 @@ class Funciones {
             list = (String) (form.getLineas()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('Plantillas/ArticulosLineas.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Lineas:list]);
+            def reporte = new Reporte('Plantillas/ArticulosLineas.jrxml', [SUBREPORT_DIR:"Plantillas/",Lineas:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -176,7 +185,7 @@ class Funciones {
             list = (String) (form.getLineas()*.id)
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('Plantillas/ArticulosGrupos.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Grupos:list]);
+            def reporte = new Reporte('Plantillas/ArticulosGrupos.jrxml', [SUBREPORT_DIR:"Plantillas/",Grupos:list]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -193,7 +202,7 @@ class Funciones {
             alm=alm.replace(']','')
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('Plantillas/CosteoGrupos.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Grupos:list,Almacen:alm]);
+            def reporte = new Reporte('Plantillas/CosteoGrupos.jrxml', [SUBREPORT_DIR:"Plantillas/",Grupos:list,Almacen:alm]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
@@ -210,7 +219,7 @@ class Funciones {
             alm=alm.replace(']','')
             list=list.replace('[','')
             list=list.replace(']','')
-            def reporte = new Reporte('Plantillas/CosteoLineas.jrxml', [SUBREPORT_DIR:"moduloreportes/Reportes/",Lineas:list,Almacen:alm]);
+            def reporte = new Reporte('Plantillas/CosteoLineas.jrxml', [SUBREPORT_DIR:"Plantillas/",Lineas:list,Almacen:alm]);
             reporte.lanzarPreview(form)
             form.barra.setIndeterminate(false);
             }
