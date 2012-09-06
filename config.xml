@@ -38,9 +38,9 @@
 
 
     <URLServidor>http://localhost:5542</URLServidor>
-    <URLMySQL>jdbc:mysql://localhost:3306/omoikane</URLMySQL>
-    <loginJasper>root</loginJasper>
-    <passJasper></passJasper>
+    <URLMySQL>jdbc:mysql://192.168.2.111:3306/omoikane</URLMySQL>
+    <loginJasper>ZooMMX</loginJasper>
+    <passJasper>GatoGato00</passJasper>
 
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>

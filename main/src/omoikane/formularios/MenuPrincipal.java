@@ -19,6 +19,7 @@ import java.awt.event.*;
 
 import omoikane.moduloreportes.MenuOmoikane;
 import omoikane.sistema.StopWatch;
+import phesus.configuratron.ConfiguratorApp;
 
 /**
  *
@@ -85,6 +86,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jSeparator5 = new JSeparator();
         btnDetallesVentas = new JButton();
         btnReportes = new JButton();
+        btnConfig = new JButton();
         lblVersion = new JLabel();
 
         //======== this ========
@@ -330,8 +332,8 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         //---- btnReportes ----
         btnReportes.setFont(new Font("Arial", Font.PLAIN, 14));
         btnReportes.setText("<html>Reportes<br>Avanzados</html>");
-        btnReportes.setIcon(new ImageIcon(getClass().getResource("/k-black-box-128x128.png")));
-        btnReportes.setIconTextGap(-20);
+        btnReportes.setIcon(new ImageIcon(getClass().getResource("/k-chart-128x128.png")));
+        btnReportes.setIconTextGap(-15);
         btnReportes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -340,6 +342,20 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         contentPane.add(btnReportes);
         btnReportes.setBounds(240, 410, 200, 70);
+
+        //---- btnConfig ----
+        btnConfig.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnConfig.setText("Controles");
+        btnConfig.setIcon(new ImageIcon(getClass().getResource("/k-sysguard-128x128.png")));
+        btnConfig.setIconTextGap(-17);
+        btnConfig.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnConfigActionPerformed(e);
+            }
+        });
+        contentPane.add(btnConfig);
+        btnConfig.setBounds(450, 410, 200, 70);
 
         //---- lblVersion ----
         lblVersion.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -457,6 +473,12 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         menuOmoikane.launch();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //new omoikane.menudinamico.MenuModulos();
+        ConfiguratorApp.main(null);
+    }
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -504,6 +526,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private JButton btnDetallesVentas;
     private JButton btnReportes;
     private JLabel lblVersion;
+    private JButton btnConfig;
     // End of variables declaration//GEN-END:variables
 
 }

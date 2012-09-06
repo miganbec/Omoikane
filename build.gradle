@@ -77,7 +77,11 @@ dependencies {
 				  'lib/dpfpenrollment.jar',
 				  'lib/dpfpverification.jar',
 				  'lib/dpotapi.jar',
-				  'lib/dpotjni.jar')
+				  'lib/dpotjni.jar',
+                  'lib/Configuratron.jar',
+                  'lib/FXExperienceControls.jar',
+                  'lib/JavaFxDialog.jar',
+                  'lib/jfxrt.jar')
 	runtime files('lib/OmoikaneMedia.jar',
 				  'lib/nimbus.jar')
 	testCompile ('junit:junit:4.8.1',
