@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.9998847412135" prefWidth="957.9999000000025" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.caja.presentation.CajaController">
+  <children>
+    <ToolBar minHeight="30.0" prefHeight="30.0" prefWidth="957.9998779296875" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
+      <items>
+        <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" text="Buscar Producto F1]" />
+        <Button fx:id="ventaEspecialButton" mnemonicParsing="false" text="Venta Especial [F4]" />
+        <Button id="cancelarProductoButton" fx:id="cancelarArtículoButton" mnemonicParsing="false" text="Cancelar Artículo F7]" />
+        <Button fx:id="movimientosButton" mnemonicParsing="false" text="Movimientos de Caja [F5]" />
+        <Button fx:id="pausarButton" mnemonicParsing="false" text="Pausar [Pause]" />
+        <Button fx:id="cancelarVentaButton" mnemonicParsing="false" text="Cancelar Venta [F12]" />
+      </items>
+    </ToolBar>
+    <SplitPane dividerPositions="0.5951883467770221" focusTraversable="true" prefHeight="511.0" prefWidth="958.0" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TableView fx:id="ventaTableView" prefHeight="423.0" prefWidth="545.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="56.0">
+              <columns>
+                <TableColumn fx:id="conceptoVentaColumn" prefWidth="225.0" text="Concepto" />
+                <TableColumn fx:id="cantidadVentaColumn" prefWidth="75.0" text="Cantidad" />
+                <TableColumn fx:id="precioVentaColumn" prefWidth="75.0" text="Precio" />
+                <TableColumn fx:id="importeVentaColumn" prefWidth="75.0" text="Importe" />
+              </columns>
+            </TableView>
+            <Label fx:id="cajaLabel" text="Caja 3" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+              <font>
+                <Font size="24.0" />
+              </font>
+            </Label>
+            <Label fx:id="fechaLabel" text="Lunes 10 de Septiembre de 2012" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="19.0">
+              <font>
+                <Font size="20.0" />
+              </font>
+            </Label>
+            <Label fx:id="nArticulosLabel" text="5 artículo(s)" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+          </children>
+        </AnchorPane>
+        <AnchorPane maxWidth="384.0" minHeight="0.0" minWidth="384.0" prefHeight="480.0" prefWidth="384.0">
+          <children>
+            <TabPane prefHeight="394.0" prefWidth="377.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-2.0">
+              <tabs>
+                <Tab text="Vender [F3]">
+                  <content>
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="377.0">
+                      <children>
+                        <Label text="Captura:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                        <TextField id="captura" fx:id="capturaTextField" onKeyReleased="#onCapturaKeyReleased" prefWidth="275.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="11.0" />
+                        <TableView fx:id="productosTableView" prefHeight="310.0" prefWidth="350.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="39.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Column X" />
+                            <TableColumn prefWidth="75.0" text="Column X" />
+                          </columns>
+                        </TableView>
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Cobrar">
+                  <content>
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                        <ToggleButton mnemonicParsing="false" prefWidth="155.0" text="Tarjeta" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="54.0">
+                          <font>
+                            <Font size="16.0" fx:id="x1" />
+                          </font>
+                          <toggleGroup>
+                            <ToggleGroup fx:id="formaPagoGroup" />
+                          </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" text="Cheque" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="88.0" />
+                        <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" selected="true" text="Efectivo" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="54.0" />
+                        <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" text="Vale" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="88.0" />
+                        <TextField fx:id="efectivoTextField" text="${capturaTextField.text}" layoutY="204.0" prefHeight="27.0" prefWidth="316.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
+                        <TextField fx:id="cambioTextField" layoutY="255.0" prefHeight="27.0" prefWidth="316.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
+                        <Button fx:id="terminarVentaButton" mnemonicParsing="false" prefWidth="316.0" text="Terminar Venta" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0">
+                          <font>
+                            <Font size="18.0" />
+                          </font>
+                        </Button>
+                        <Label font="$x1" layoutX="34.0" layoutY="182.0" text="Efectivo" />
+                        <Label font="$x1" layoutX="34.0" layoutY="233.0" text="Cambio" />
+                        <Label text="Forma de Pago" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="23.0" />
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Label fx:id="totalLabel" alignment="CENTER_RIGHT" prefWidth="201.0" text="\$ 180.93" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0">
+              <font>
+                <Font size="36.0" />
+              </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" AnchorPane.bottomAnchor="46.5" AnchorPane.rightAnchor="13.5" />
+            <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="121.0" text="Cobrar" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" />
+            <Label prefWidth="68.0" text="Impuestos:" AnchorPane.bottomAnchor="57.0" AnchorPane.rightAnchor="147.0" />
+            <Label fx:id="impuestosLabel" alignment="CENTER_RIGHT" prefWidth="58.0" text="0.00" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="14.0" />
+            <Label prefWidth="67.99990000000253" text="Descuento:" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="147.0" />
+            <Label fx:id="descuentoLabel" alignment="CENTER_RIGHT" prefWidth="62.0" text="45.83" textAlignment="RIGHT" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="14.0" />
+            <Label prefWidth="68.0" text="Subtotal:" AnchorPane.bottomAnchor="89.0" AnchorPane.rightAnchor="147.0" />
+            <Label fx:id="subtotalLabel" alignment="CENTER_RIGHT" prefWidth="58.0" text="226.75" AnchorPane.bottomAnchor="92.0" AnchorPane.rightAnchor="14.0" />
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>
