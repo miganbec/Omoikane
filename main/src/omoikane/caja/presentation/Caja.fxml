@@ -12,7 +12,7 @@
   <children>
     <ToolBar minHeight="30.0" prefHeight="30.0" prefWidth="957.9998779296875" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
       <items>
-        <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" text="Buscar Producto F1]" />
+        <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" text="Buscar Producto [F1]" />
         <Button fx:id="ventaEspecialButton" mnemonicParsing="false" text="Venta Especial [F4]" />
         <Button id="cancelarProductoButton" fx:id="cancelarArtículoButton" mnemonicParsing="false" text="Cancelar Artículo F7]" />
         <Button fx:id="movimientosButton" mnemonicParsing="false" text="Movimientos de Caja [F5]" />
@@ -26,10 +26,10 @@
           <children>
             <TableView fx:id="ventaTableView" prefHeight="423.0" prefWidth="545.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="56.0">
               <columns>
-                <TableColumn fx:id="conceptoVentaColumn" prefWidth="225.0" text="Concepto" />
-                <TableColumn fx:id="cantidadVentaColumn" prefWidth="75.0" text="Cantidad" />
-                <TableColumn fx:id="precioVentaColumn" prefWidth="75.0" text="Precio" />
-                <TableColumn fx:id="importeVentaColumn" prefWidth="75.0" text="Importe" />
+                <TableColumn prefWidth="225.0" text="Concepto" fx:id="conceptoVentaColumn" />
+                <TableColumn prefWidth="75.0" text="Cantidad" fx:id="cantidadVentaColumn" />
+                <TableColumn prefWidth="75.0" text="Precio" fx:id="precioVentaColumn" />
+                <TableColumn prefWidth="75.0" text="Importe" fx:id="importeVentaColumn" />
               </columns>
             </TableView>
             <Label fx:id="cajaLabel" text="Caja 3" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
@@ -80,7 +80,7 @@
                         <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" text="Cheque" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="88.0" />
                         <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" selected="true" text="Efectivo" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="54.0" />
                         <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" text="Vale" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="88.0" />
-                        <TextField fx:id="efectivoTextField" text="${capturaTextField.text}" layoutY="204.0" prefHeight="27.0" prefWidth="316.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
+                        <TextField fx:id="efectivoTextField" layoutY="204.0" prefHeight="27.0" prefWidth="316.0" text="${capturaTextField.text}" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
                         <TextField fx:id="cambioTextField" layoutY="255.0" prefHeight="27.0" prefWidth="316.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
                         <Button fx:id="terminarVentaButton" mnemonicParsing="false" prefWidth="316.0" text="Terminar Venta" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0">
                           <font>
@@ -104,11 +104,11 @@
             <Line endX="100.0" startX="-100.0" AnchorPane.bottomAnchor="46.5" AnchorPane.rightAnchor="13.5" />
             <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="121.0" text="Cobrar" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" />
             <Label prefWidth="68.0" text="Impuestos:" AnchorPane.bottomAnchor="57.0" AnchorPane.rightAnchor="147.0" />
-            <Label fx:id="impuestosLabel" alignment="CENTER_RIGHT" prefWidth="58.0" text="0.00" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="14.0" />
+            <Label fx:id="impuestosLabel" alignment="CENTER_RIGHT" prefWidth="97.0" text="0.00" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="14.0" />
             <Label prefWidth="67.99990000000253" text="Descuento:" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="147.0" />
-            <Label fx:id="descuentoLabel" alignment="CENTER_RIGHT" prefWidth="62.0" text="45.83" textAlignment="RIGHT" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="14.0" />
+            <Label fx:id="descuentoLabel" alignment="CENTER_RIGHT" prefWidth="97.0" text="45.83" textAlignment="RIGHT" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="14.0" />
             <Label prefWidth="68.0" text="Subtotal:" AnchorPane.bottomAnchor="89.0" AnchorPane.rightAnchor="147.0" />
-            <Label fx:id="subtotalLabel" alignment="CENTER_RIGHT" prefWidth="58.0" text="226.75" AnchorPane.bottomAnchor="92.0" AnchorPane.rightAnchor="14.0" />
+            <Label fx:id="subtotalLabel" alignment="CENTER_RIGHT" prefWidth="97.0" text="226.75" AnchorPane.bottomAnchor="92.0" AnchorPane.rightAnchor="14.0" />
           </children>
         </AnchorPane>
       </items>

@@ -11,7 +11,8 @@ import omoikane.caja.presentation.CajaModel;
  */
 public interface ICajaLogic {
 
-    public void captura(CajaModel model);
+    public void onCaptura(CajaModel model);
     public void calcularCambio(CajaModel model);
     public void terminarVenta(CajaModel model);
+    public void onProductListChanged(CajaModel model);
 }

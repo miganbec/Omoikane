@@ -6,6 +6,7 @@ package omoikane.caja.presentation;
  **/
 
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 import javafx.collections.ListChangeListener;
@@ -89,7 +90,7 @@ public class CajaController
     @FXML
     private void onCapturaKeyReleased(KeyEvent event) {
         if ( event.getCode() == KeyCode.ENTER ) {
-            getCajaLogic().captura( modelo );
+            getCajaLogic().onCaptura(modelo);
         }
     }
 
@@ -120,7 +121,7 @@ public class CajaController
         conceptoVentaColumn     .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.545d) );
         cantidadVentaColumn     .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
         precioVentaColumn       .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
-        importeVentaColumn.prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
+        importeVentaColumn      .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
 
     }
 
@@ -129,6 +130,18 @@ public class CajaController
 
         //Bindings
         capturaTextField.textProperty().bindBidirectional(modelo.getCaptura());
+        subtotalLabel.textProperty().bind(
+                new Number2StringBinding(modelo.getSubtotal(), NumberFormat.getCurrencyInstance())
+        );
+        descuentoLabel.textProperty().bind(
+                new Number2StringBinding(modelo.getDescuento(), NumberFormat.getCurrencyInstance())
+        );
+        impuestosLabel.textProperty().bind(
+                new Number2StringBinding(modelo.getImpuestos(), NumberFormat.getCurrencyInstance())
+        );
+        totalLabel.textProperty().bind(
+                new Number2StringBinding(modelo.getTotal(), NumberFormat.getCurrencyInstance())
+        );
 
         //Setup table view and table model
         ventaTableView.setItems(modelo.getProductos());
@@ -149,6 +162,7 @@ public class CajaController
         ventaTableView.getItems().addListener(new ListChangeListener<ProductoModel>() {
             @Override
             public void onChanged(Change<? extends ProductoModel> change) {
+                getCajaLogic().onProductListChanged(modelo);
                 nArticulosLabel.textProperty().set( modelo.getProductos().size() + " artículo(s)" );
             }
         });

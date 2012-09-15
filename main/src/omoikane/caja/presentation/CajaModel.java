@@ -1,6 +1,7 @@
 package omoikane.caja.presentation;
 
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -18,12 +19,25 @@ import java.math.BigDecimal;
 public class CajaModel {
     private StringProperty captura;
     private ObservableList<ProductoModel> productos;
+    private ObjectProperty<BigDecimal> subtotal;
+    private ObjectProperty<BigDecimal> descuento;
+    private ObjectProperty<BigDecimal> impuestos;
+    private ObjectProperty<BigDecimal> total;
 
     /**
      * Instancía todos los atributos
      */
     public CajaModel() {
         setCaptura(new SimpleStringProperty());
+        descuento   = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
+        impuestos   = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
+        subtotal    = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
+        total       = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
+
+        getDescuento().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
+        getImpuestos().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
+        getSubtotal ().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
+        getTotal    ().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
 
         ObservableList<ProductoModel> list = FXCollections.observableArrayList();
         setProductos(list);
@@ -46,4 +60,35 @@ public class CajaModel {
         this.productos = productos;
     }
 
+    public ObjectProperty<BigDecimal> getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(BigDecimal subtotal) {
+        this.subtotal.set( subtotal );
+    }
+
+    public ObjectProperty<BigDecimal> getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(BigDecimal descuento) {
+        this.descuento.set( descuento );
+    }
+
+    public ObjectProperty<BigDecimal> getImpuestos() {
+        return impuestos;
+    }
+
+    public void setImpuestos(BigDecimal impuestos) {
+        this.impuestos.set( impuestos );
+    }
+
+    public ObjectProperty<BigDecimal> getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total.set( total );
+    }
 }

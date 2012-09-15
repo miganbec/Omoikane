@@ -8,11 +8,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.9998847412135" prefWidth="957.9999000000025" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.caja.presentation.CajaController">
+<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.9998847412135" prefWidth="957.9999000000025" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.caja.presentation.CajaController">
   <children>
     <ToolBar minHeight="30.0" prefHeight="30.0" prefWidth="957.9998779296875" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
       <items>
-        <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" text="Buscar Producto F1]" />
+        <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" text="Buscar Producto [F1]" />
         <Button fx:id="ventaEspecialButton" mnemonicParsing="false" text="Venta Especial [F4]" />
         <Button id="cancelarProductoButton" fx:id="cancelarArtículoButton" mnemonicParsing="false" text="Cancelar Artículo F7]" />
         <Button fx:id="movimientosButton" mnemonicParsing="false" text="Movimientos de Caja [F5]" />
@@ -26,8 +26,10 @@
           <children>
             <TableView fx:id="ventaTableView" prefHeight="423.0" prefWidth="545.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="56.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Column X" />
-                <TableColumn prefWidth="75.0" text="Column X" />
+                <TableColumn fx:id="conceptoVentaColumn" prefWidth="225.0" text="Concepto" />
+                <TableColumn fx:id="cantidadVentaColumn" prefWidth="75.0" text="Cantidad" />
+                <TableColumn fx:id="precioVentaColumn" prefWidth="75.0" text="Precio" />
+                <TableColumn fx:id="importeVentaColumn" prefWidth="75.0" text="Importe" />
               </columns>
             </TableView>
             <Label fx:id="cajaLabel" text="Caja 3" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
@@ -52,7 +54,7 @@
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="377.0">
                       <children>
                         <Label text="Captura:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                        <TextField id="captura" fx:id="capturaTextField" onKeyReleased="onCapturaKeyReleased" prefWidth="275.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="11.0" />
+                        <TextField id="captura" fx:id="capturaTextField" onKeyReleased="#onCapturaKeyReleased" prefWidth="275.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="11.0" />
                         <TableView fx:id="productosTableView" prefHeight="310.0" prefWidth="350.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="39.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Column X" />
@@ -78,7 +80,7 @@
                         <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" text="Cheque" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="88.0" />
                         <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" selected="true" text="Efectivo" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="54.0" />
                         <ToggleButton font="$x1" mnemonicParsing="false" prefWidth="155.0" text="Vale" toggleGroup="$formaPagoGroup" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="88.0" />
-                        <TextField fx:id="efectivoTextField" layoutY="204.0" prefHeight="27.0" prefWidth="316.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
+                        <TextField fx:id="efectivoTextField" text="${capturaTextField.text}" layoutY="204.0" prefHeight="27.0" prefWidth="316.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
                         <TextField fx:id="cambioTextField" layoutY="255.0" prefHeight="27.0" prefWidth="316.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0" />
                         <Button fx:id="terminarVentaButton" mnemonicParsing="false" prefWidth="316.0" text="Terminar Venta" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="27.0">
                           <font>

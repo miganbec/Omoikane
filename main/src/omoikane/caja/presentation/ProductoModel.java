@@ -1,6 +1,8 @@
 package omoikane.caja.presentation;
 
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.math.BigDecimal;
@@ -19,7 +21,16 @@ public class ProductoModel {
     private StringProperty concepto;
     private ObjectProperty<BigDecimal> cantidad;
     private ObjectProperty<BigDecimal> precio;
+    private ObjectProperty<BigDecimal> impuestos;
+    private ObjectProperty<BigDecimal> descuentos;
 
+    public ProductoModel() {
+        concepto   = new SimpleStringProperty("Concepto vacío");
+        cantidad   = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+        precio     = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+        impuestos  = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+        descuentos = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+    }
 
     /**
      *
@@ -94,5 +105,33 @@ public class ProductoModel {
     public void setPrecio(ObjectProperty<BigDecimal> precio) {
         precio.get().setScale(2, BigDecimal.ROUND_HALF_UP);
         this.precio = precio;
+    }
+
+    public ObjectProperty<BigDecimal> getImpuestos() {
+        return impuestos;
+    }
+
+    public void setImpuestos(ObjectProperty<BigDecimal> impuestos) {
+        impuestos.get().setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.impuestos = impuestos;
+    }
+
+    public String getImpuestosString() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        return nf.format(impuestos.get());
+    }
+
+    public ObjectProperty<BigDecimal> getDescuentos() {
+        return descuentos;
+    }
+
+    public void setDescuentos(ObjectProperty<BigDecimal> descuentos) {
+        descuentos.get().setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.descuentos = descuentos;
+    }
+
+    public String getDescuentosString() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        return nf.format(descuentos.get());
     }
 }
