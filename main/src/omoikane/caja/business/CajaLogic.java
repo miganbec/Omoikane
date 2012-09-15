@@ -6,6 +6,10 @@ import omoikane.caja.presentation.CajaModel;
 import omoikane.caja.presentation.ProductoModel;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,13 +22,16 @@ public class CajaLogic implements ICajaLogic {
     @Override
     public void onCaptura(CajaModel model) {
 
+        LineaDeCaptura captura = new LineaDeCaptura(model.getCaptura().get());
+
         ProductoModel productoModel = new ProductoModel();
-        productoModel.setConcepto(new SimpleStringProperty(model.getCaptura().get()));
-        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(new BigDecimal("1.25")));
+        productoModel.setConcepto(new SimpleStringProperty(captura.getCodigo()));
+        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
         productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(new BigDecimal("1048.32")));
 
         model.getProductos().add(productoModel);
     }
+
 
     @Override
     public void calcularCambio(CajaModel model )
