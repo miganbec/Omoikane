@@ -4,12 +4,14 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.caja.presentation.ProductoModel;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,17 +21,32 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class CajaLogic implements ICajaLogic {
+    public static Logger logger = Logger.getLogger(CajaLogic.class);
+    Boolean capturaBloqueada = false;
+
     @Override
-    public void onCaptura(CajaModel model) {
+    /**
+     * Pseudo evento gatillado cuando se intenta capturar un producto en la "línea de captura".
+     * Ignora cualquier intento de captura si ya existe una en curso
+     */
+    public synchronized void onCaptura(CajaModel model) {
+        if(!capturaBloqueada) {
+            capturaBloqueada = true;
+            try {
+                LineaDeCaptura captura = new LineaDeCaptura(model.getCaptura().get());
+                model.getCaptura().set("");
 
-        LineaDeCaptura captura = new LineaDeCaptura(model.getCaptura().get());
+                ProductoModel productoModel = new ProductoModel();
+                productoModel.setConcepto(new SimpleStringProperty(captura.getCodigo()));
+                productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
+                productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(new BigDecimal("1048.32")));
 
-        ProductoModel productoModel = new ProductoModel();
-        productoModel.setConcepto(new SimpleStringProperty(captura.getCodigo()));
-        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
-        productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(new BigDecimal("1048.32")));
-
-        model.getProductos().add(productoModel);
+                model.getProductos().add(productoModel);
+            } catch (Exception e) {
+                logger.error("Error durante captura ('evento onCaptura')", e);
+            }
+            capturaBloqueada = false;
+        }
     }
 
 

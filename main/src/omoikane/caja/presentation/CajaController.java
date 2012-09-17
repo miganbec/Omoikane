@@ -7,6 +7,9 @@ package omoikane.caja.presentation;
 
 import java.net.URL;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.collections.ListChangeListener;
@@ -89,7 +92,7 @@ public class CajaController
 
     @FXML
     private void onCapturaKeyReleased(KeyEvent event) {
-        if ( event.getCode() == KeyCode.ENTER ) {
+        if ( !modelo.getCaptura().get().isEmpty() && event.getCode() == KeyCode.ENTER ) {
             getCajaLogic().onCaptura(modelo);
         }
     }
@@ -123,6 +126,27 @@ public class CajaController
         precioVentaColumn       .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
         importeVentaColumn      .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
 
+        //Escribir la fecha
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE d 'de' MMMM 'de' yyyy");
+        String fecha = sdf.format(new Date());
+        fechaLabel.textProperty().set( capitalizarFecha(fecha) );
+    }
+
+    public String capitalizarFecha(String s) {
+
+        final StringBuilder result = new StringBuilder(s.length());
+        String[] words = s.split("\\s");
+        for(int i=0,l=words.length;i<l;++i) {
+            if(i>0) { result.append(" ");  }
+            if(words[i].equalsIgnoreCase("de")) {
+                result.append(words[i]);
+            } else {
+                result.append(Character.toUpperCase(words[i].charAt(0)))
+                        .append(words[i].substring(1));
+            }
+
+        }
+        return result.toString();
     }
 
     public void setModel(final CajaModel modelo) {
