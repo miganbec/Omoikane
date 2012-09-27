@@ -197,17 +197,18 @@ public class Producto {
         this.anotacionById = anotacionById;
     }
 
-    private Collection<CodigoProducto> codigoArticulosById;
+    private Collection<CodigoProducto> codigosAlternos;
 
-    @OneToMany(mappedBy = "productoByProductoId")
-    public Collection<CodigoProducto> getCodigoArticulosById() {
-        return codigoArticulosById;
+    @OneToMany(mappedBy = "producto")
+    public Collection<CodigoProducto> getCodigosAlternos() {
+        return codigosAlternos;
     }
 
-    public void setCodigoArticulosById(Collection<CodigoProducto> codigoArticulosById) {
-        this.codigoArticulosById = codigoArticulosById;
+    public void setCodigosAlternos(Collection<CodigoProducto> codigosAlternos) {
+        this.codigosAlternos = codigosAlternos;
     }
 
+    /** Aún no implementado por ORM
     private Collection<MovimientoAlmacenDetalle> movimientoAlmacenDetallesById;
 
     @OneToMany(mappedBy = "productoByProductoId")
@@ -229,6 +230,7 @@ public class Producto {
     public void setPaquetesById(Collection<Paquete> paquetesById) {
         this.paquetesById = paquetesById;
     }
+    */
 
     private Linea lineaByLineaId;
 
@@ -256,6 +258,7 @@ public class Producto {
         this.grupoByGrupoId = grupoByGrupoId;
     }
 
+    /** Aún no implementado por ORM
     private Collection<VentaDetalle> ventaDetallesById;
 
     @OneToMany(mappedBy = "productoByProductoId")
@@ -266,4 +269,5 @@ public class Producto {
     public void setVentaDetallesById(Collection<VentaDetalle> ventaDetallesById) {
         this.ventaDetallesById = ventaDetallesById;
     }
+    */
 }

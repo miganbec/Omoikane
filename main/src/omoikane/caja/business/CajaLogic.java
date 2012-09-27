@@ -2,9 +2,15 @@ package omoikane.caja.business;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import omoikane.caja.data.ProductosDAO;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.caja.presentation.ProductoModel;
+import omoikane.entities.Producto;
+import omoikane.repository.ProductoRepo;
+import omoikane.repository.UsuarioRepo;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -20,9 +26,17 @@ import java.util.List;
  * Time: 02:01 AM
  * To change this template use File | Settings | File Templates.
  */
+@Service
 public class CajaLogic implements ICajaLogic {
     public static Logger logger = Logger.getLogger(CajaLogic.class);
     Boolean capturaBloqueada = false;
+
+
+    @Autowired
+    UsuarioRepo usuarioRepo;
+
+    @Autowired
+    ProductosDAO productosDAO;
 
     @Override
     /**
@@ -36,17 +50,24 @@ public class CajaLogic implements ICajaLogic {
                 LineaDeCaptura captura = new LineaDeCaptura(model.getCaptura().get());
                 model.getCaptura().set("");
 
-                ProductoModel productoModel = new ProductoModel();
-                productoModel.setConcepto(new SimpleStringProperty(captura.getCodigo()));
-                productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
-                productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(new BigDecimal("1048.32")));
+                addProducto(model, captura);
 
-                model.getProductos().add(productoModel);
             } catch (Exception e) {
                 logger.error("Error durante captura ('evento onCaptura')", e);
             }
             capturaBloqueada = false;
         }
+    }
+
+    private void addProducto(CajaModel model, LineaDeCaptura captura) {
+        Producto producto = productosDAO.findByCodigo(captura.getCodigo()).get(0);
+
+        ProductoModel productoModel = new ProductoModel();
+        productoModel.setConcepto(new SimpleStringProperty(producto.getDescripcion()));
+        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
+        productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(producto.getCosto()));
+
+        model.getProductos().add(productoModel);
     }
 
 

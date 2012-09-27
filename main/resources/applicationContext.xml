@@ -22,8 +22,10 @@
     <!--<context:component-scan base-package="omoikane.entities"/>-->
     <!--<context:component-scan base-package="omoikane.sistema"/>-->
     <bean id="usuarios" class="omoikane.sistema.Usuarios"></bean>
+    <bean id="cajaLogic" class="omoikane.caja.business.CajaLogic"></bean>
     <bean id="huellasCache" class="omoikane.sistema.huellas.HuellasCache"></bean>
     <bean id="config" class="omoikane.sistema.Config"></bean>
+    <bean id="productoDao" class="omoikane.caja.data.ProductosNadesicoAdapter"></bean>
 
     <hades:dao-config base-package="omoikane.repository"
                       entity-manager-factory-ref="entityManagerFactory">

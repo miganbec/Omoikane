@@ -18,6 +18,8 @@ import java.util.Collection;
  *
  */
 //@Entity
+// **25/09/2012: Retrocompatibilidad ==(nuevo)linea --> lineas(antiguo)==
+//@Table(name="lineas")
 public class Linea {
     private int id;
 

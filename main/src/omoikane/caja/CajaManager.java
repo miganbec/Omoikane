@@ -9,6 +9,8 @@ import omoikane.caja.business.CajaLogic;
 import omoikane.caja.business.ICajaLogic;
 import omoikane.caja.presentation.CajaController;
 import omoikane.caja.presentation.CajaModel;
+import omoikane.principal.Principal;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,6 +35,9 @@ public class CajaManager extends Application {
     public void start(Stage primaryStage) {
         try {
 
+            omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
+            omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
             FXMLLoader fxmlLoader = new FXMLLoader(CajaManager.class.getResource("presentation/Caja.fxml"));
             AnchorPane page = (AnchorPane) fxmlLoader.load();
 
@@ -45,7 +50,7 @@ public class CajaManager extends Application {
             controller = fxmlLoader.getController();
             controller.setModel(model);
 
-            ICajaLogic cajaLogic = new CajaLogic();
+            ICajaLogic cajaLogic = Principal.applicationContext.getBean(CajaLogic.class);
             controller.setCajaLogic( cajaLogic );
 
         } catch (Exception ex) {

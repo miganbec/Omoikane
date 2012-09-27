@@ -18,6 +18,8 @@ import java.util.Collection;
  * Time: 04:04
  */
 //@Entity
+// **25/09/2012: Retrocompatibilidad ==(nuevo)grupo --> grupos(antiguo)==
+//@Table(name="grupos")
 public class Grupo {
     private int id;
 

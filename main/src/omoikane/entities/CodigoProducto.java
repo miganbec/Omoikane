@@ -63,16 +63,16 @@ public class CodigoProducto {
         return true;
     }
 
-    private Producto productoByProductoId;
+    private Producto producto;
 
     @ManyToOne
     public
     @JoinColumn(name = "producto_id", referencedColumnName = "id", nullable = false)
-    Producto getProductoByProductoId() {
-        return productoByProductoId;
+    Producto getProducto() {
+        return producto;
     }
 
-    public void setProductoByProductoId(Producto productoByProductoId) {
-        this.productoByProductoId = productoByProductoId;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }
