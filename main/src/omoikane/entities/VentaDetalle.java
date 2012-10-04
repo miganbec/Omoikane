@@ -1,5 +1,7 @@
 package omoikane.entities;
 
+import omoikane.producto.Producto;
+
 import javax.persistence.*;
 
 /**

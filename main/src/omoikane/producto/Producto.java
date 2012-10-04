@@ -1,5 +1,9 @@
-package omoikane.entities;
+package omoikane.producto;
 
+import omoikane.entities.Anotacion;
+import omoikane.entities.CodigoProducto;
+import omoikane.entities.Grupo;
+import omoikane.entities.Linea;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -18,7 +22,7 @@ import java.util.Collection;
  * To change this template use File | Settings | File Templates.
  */
 //@Entity
-public class Producto {
+public class Producto implements IProductoApreciado {
                 private int id;
 
     @NotEmpty   private String codigo;
@@ -270,4 +274,25 @@ public class Producto {
         this.ventaDetallesById = ventaDetallesById;
     }
     */
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_articulo")
+    private BaseParaPrecio baseParaPrecio;
+
+    @Transient
+    private PrecioOmoikaneLogic precio;
+
+    @Override
+    public IPrecio getPrecio() {
+        return precio;
+    }
+
+    @Override
+    public void setPrecio(IPrecio precio) {
+        this.precio = (PrecioOmoikaneLogic) precio;
+    }
+
+    @Override
+    public BaseParaPrecio getBaseParaPrecio() {
+        return baseParaPrecio;
+    }
 }

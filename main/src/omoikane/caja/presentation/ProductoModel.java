@@ -21,6 +21,7 @@ public class ProductoModel {
     private StringProperty concepto;
     private ObjectProperty<BigDecimal> cantidad;
     private ObjectProperty<BigDecimal> precio;
+    private ObjectProperty<BigDecimal> precioBase;
     private ObjectProperty<BigDecimal> impuestos;
     private ObjectProperty<BigDecimal> descuentos;
 
@@ -116,6 +117,17 @@ public class ProductoModel {
         this.impuestos = impuestos;
     }
 
+    public String getSubtotalString() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        return nf.format(getSubtotal());
+    }
+
+    public BigDecimal getSubtotal() {
+        BigDecimal subtotal = cantidad.get().multiply( precioBase.get() );
+        return subtotal;
+    }
+
+
     public String getImpuestosString() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         return nf.format(impuestos.get());
@@ -133,5 +145,13 @@ public class ProductoModel {
     public String getDescuentosString() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         return nf.format(descuentos.get());
+    }
+
+    public void setPrecioBase(ObjectProperty<BigDecimal> precioBase) {
+        this.precioBase = precioBase;
+    }
+
+    public ObjectProperty<BigDecimal> getPrecioBase() {
+        return precioBase;
     }
 }

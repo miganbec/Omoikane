@@ -2,10 +2,11 @@ package omoikane.caja.business;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import omoikane.caja.data.ProductosDAO;
+import omoikane.caja.data.IProductosDAO;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.caja.presentation.ProductoModel;
-import omoikane.entities.Producto;
+import omoikane.producto.Articulo;
+import omoikane.producto.Producto;
 import omoikane.repository.ProductoRepo;
 import omoikane.repository.UsuarioRepo;
 import org.apache.log4j.Logger;
@@ -13,10 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 /**
@@ -36,7 +33,10 @@ public class CajaLogic implements ICajaLogic {
     UsuarioRepo usuarioRepo;
 
     @Autowired
-    ProductosDAO productosDAO;
+    ProductoRepo productoRepo;
+
+    @Autowired
+    IProductosDAO productosDAO;
 
     @Override
     /**
@@ -61,11 +61,15 @@ public class CajaLogic implements ICajaLogic {
 
     private void addProducto(CajaModel model, LineaDeCaptura captura) {
         Producto producto = productosDAO.findByCodigo(captura.getCodigo()).get(0);
+        /*Articulo producto = productoRepo.findByCodigo(captura.getCodigo()).get(0);*/
 
         ProductoModel productoModel = new ProductoModel();
+        productoModel.setPrecioBase(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecioBase()));
         productoModel.setConcepto(new SimpleStringProperty(producto.getDescripcion()));
         productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
-        productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(producto.getCosto()));
+        productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecio()));
+        productoModel.setDescuentos(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getDescuento()));
+        productoModel.setImpuestos(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getImpuestos()));
 
         model.getProductos().add(productoModel);
     }
@@ -97,7 +101,7 @@ public class CajaLogic implements ICajaLogic {
         total.setScale(2, BigDecimal.ROUND_HALF_UP);
 
         for ( ProductoModel producto : model.getProductos() ) {
-            subtotal   = subtotal  .add( producto.getImporte() );
+            subtotal   = subtotal  .add( producto.getSubtotal() );
             descuentos = descuentos.add( producto.getDescuentos().get() );
             impuestos  = impuestos .add( producto.getImpuestos().get() );
         }

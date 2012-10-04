@@ -1,7 +1,6 @@
 package omoikane.caja.data;
 
-import omoikane.entities.Producto;
-import org.synyx.hades.dao.Query;
+import omoikane.producto.Producto;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  * Time: 11:19
  * To change this template use File | Settings | File Templates.
  */
-public interface ProductosDAO {
+public interface IProductosDAO {
 
     public List<Producto> findByCodigo(String codigo);
 }

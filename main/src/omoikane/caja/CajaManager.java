@@ -10,6 +10,8 @@ import omoikane.caja.business.ICajaLogic;
 import omoikane.caja.presentation.CajaController;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.principal.Principal;
+import omoikane.producto.Articulo;
+import omoikane.repository.ProductoRepo;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -37,6 +39,14 @@ public class CajaManager extends Application {
 
             omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
             omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+            /* PRuebas */
+
+            ProductoRepo productoRepo = Principal.applicationContext.getBean(ProductoRepo.class);
+            Articulo art = productoRepo.readByPrimaryKey(1000l);
+            System.out.print("pausa");
+
+            /* end of pruebas */
 
             FXMLLoader fxmlLoader = new FXMLLoader(CajaManager.class.getResource("presentation/Caja.fxml"));
             AnchorPane page = (AnchorPane) fxmlLoader.load();
