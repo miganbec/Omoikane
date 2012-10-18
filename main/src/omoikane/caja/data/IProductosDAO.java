@@ -14,4 +14,5 @@ import java.util.List;
 public interface IProductosDAO {
 
     public List<Producto> findByCodigo(String codigo);
+    public List<Producto> findByDescripcionLike(String descripcion);
 }

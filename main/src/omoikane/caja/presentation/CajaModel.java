@@ -18,6 +18,7 @@ import java.math.BigDecimal;
  */
 public class CajaModel {
     private StringProperty captura;
+    private ObservableList<ProductoModel> venta;
     private ObservableList<ProductoModel> productos;
     private ObjectProperty<BigDecimal> subtotal;
     private ObjectProperty<BigDecimal> descuento;
@@ -40,7 +41,9 @@ public class CajaModel {
         getTotal    ().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
 
         ObservableList<ProductoModel> list = FXCollections.observableArrayList();
-        setProductos(list);
+        setVenta(list);
+        ObservableList<ProductoModel> productos = FXCollections.observableArrayList();
+        setProductos(productos);
     }
 
     public StringProperty getCaptura() {
@@ -51,6 +54,14 @@ public class CajaModel {
         this.captura = captura;
     }
 
+
+    public ObservableList<ProductoModel> getVenta() {
+        return venta;
+    }
+
+    public void setVenta(ObservableList<ProductoModel> venta) {
+        this.venta = venta;
+    }
 
     public ObservableList<ProductoModel> getProductos() {
         return productos;

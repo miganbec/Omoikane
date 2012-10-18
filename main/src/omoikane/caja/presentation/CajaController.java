@@ -9,7 +9,6 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.collections.ListChangeListener;
@@ -20,6 +19,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import omoikane.caja.business.ICajaLogic;
+import omoikane.sistema.Dialogos;
+import omoikane.sistema.Herramientas;
 
 
 public class CajaController
@@ -27,6 +28,8 @@ public class CajaController
 
     private CajaModel modelo;
     private ICajaLogic cajaLogic;
+
+    private TimerBusqueda timerBusqueda;
 
     @FXML
     private Button buscarProductoButton;
@@ -68,9 +71,6 @@ public class CajaController
     private Button pausarButton;
 
     @FXML
-    private TableView<?> productosTableView;
-
-    @FXML
     private Label subtotalLabel;
 
     @FXML
@@ -91,12 +91,30 @@ public class CajaController
     @FXML private TableColumn importeVentaColumn;
 
     @FXML
+    private TableView<ProductoModel> productosTableView;
+
+    @FXML private TableColumn descripcionProductoColumn;
+    @FXML private TableColumn precioProductoColumn;
+
+    @FXML
     private void onCapturaKeyReleased(KeyEvent event) {
         if ( !modelo.getCaptura().get().isEmpty() && event.getCode() == KeyCode.ENTER ) {
             getCajaLogic().onCaptura(modelo);
         }
     }
 
+    @FXML
+    private void onCapturaKeyTyped(KeyEvent event) {
+        if ( modelo.getCaptura().get() != null && !modelo.getCaptura().get().isEmpty() ) {
+            if(timerBusqueda != null && timerBusqueda.isAlive()) { timerBusqueda.cancelar(); }
+            this.timerBusqueda = new TimerBusqueda(this);
+            timerBusqueda.start();
+        }
+    }
+
+    public CajaModel getModel() {
+        return modelo;
+    }
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -125,6 +143,9 @@ public class CajaController
         cantidadVentaColumn     .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
         precioVentaColumn       .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
         importeVentaColumn      .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
+
+        descripcionProductoColumn.prefWidthProperty().bind( productosTableView.widthProperty().multiply(0.743d) );
+        precioProductoColumn     .prefWidthProperty().bind( productosTableView.widthProperty().multiply(0.25d ) );
 
         //Escribir la fecha
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE d 'de' MMMM 'de' yyyy");
@@ -167,8 +188,8 @@ public class CajaController
                 new Number2StringBinding(modelo.getTotal(), NumberFormat.getCurrencyInstance())
         );
 
-        //Setup table view and table model
-        ventaTableView.setItems(modelo.getProductos());
+        //Setup table view and table model (ventas)
+        ventaTableView.setItems(modelo.getVenta());
         conceptoVentaColumn.setCellValueFactory(
                 new PropertyValueFactory<ProductoModel, String>("conceptoString")
         );
@@ -182,12 +203,21 @@ public class CajaController
                 new PropertyValueFactory<ProductoModel, String>("importeString")
         );
 
-        nArticulosLabel.textProperty().set( modelo.getProductos().size() + " artículo(s)" );
+        //Setup table productos
+        productosTableView.setItems(modelo.getProductos());
+        descripcionProductoColumn.setCellValueFactory(
+                new PropertyValueFactory<ProductoModel, String>("conceptoString")
+        );
+        precioProductoColumn.setCellValueFactory(
+                new PropertyValueFactory<ProductoModel, String>("precioString")
+        );
+
+        nArticulosLabel.textProperty().set(modelo.getVenta().size() + " artículo(s)");
         ventaTableView.getItems().addListener(new ListChangeListener<ProductoModel>() {
             @Override
             public void onChanged(Change<? extends ProductoModel> change) {
                 getCajaLogic().onProductListChanged(modelo);
-                nArticulosLabel.textProperty().set( modelo.getProductos().size() + " artículo(s)" );
+                nArticulosLabel.textProperty().set( modelo.getVenta().size() + " artículo(s)" );
             }
         });
     }
@@ -198,5 +228,29 @@ public class CajaController
 
     public void setCajaLogic(ICajaLogic cajaLogic) {
         this.cajaLogic = cajaLogic;
+    }
+
+    class TimerBusqueda extends Thread
+    {
+        CajaController cc;
+        boolean busquedaActiva = true;
+
+        TimerBusqueda(CajaController cc) { this.cc = cc; }
+        public void run()
+        {
+            synchronized(this)
+            {
+                busquedaActiva = true;
+                try { this.wait(500); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
+                if(busquedaActiva && cc.modelo != null) {
+                    cc.getCajaLogic().buscar(cc.getModel());
+                }
+            }
+        }
+        void cancelar()
+        {
+            busquedaActiva = false;
+            try { this.notify(); } catch(Exception e) {}
+        }
     }
 }

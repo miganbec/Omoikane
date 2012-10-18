@@ -142,7 +142,7 @@ public class Articulo implements Serializable, IProductoApreciado {
         this.idGrupo = idGrupo;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_articulo")
     private BaseParaPrecio baseParaPrecio;
 

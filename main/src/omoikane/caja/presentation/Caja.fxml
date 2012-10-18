@@ -12,15 +12,15 @@
   <children>
     <ToolBar minHeight="30.0" prefHeight="30.0" prefWidth="957.9998779296875" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
       <items>
-        <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" text="Buscar Producto [F1]" />
+        <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" prefHeight="21.0" prefWidth="147.0" text="Productos... [F1]" />
         <Button fx:id="ventaEspecialButton" mnemonicParsing="false" text="Venta Especial [F4]" />
-        <Button id="cancelarProductoButton" fx:id="cancelarArtículoButton" mnemonicParsing="false" text="Cancelar Artículo F7]" />
+        <Button fx:id="cancelarArticuloButton" mnemonicParsing="false" text="Cancelar Artículo [F7]" />
         <Button fx:id="movimientosButton" mnemonicParsing="false" text="Movimientos de Caja [F5]" />
         <Button fx:id="pausarButton" mnemonicParsing="false" text="Pausar [Pause]" />
         <Button fx:id="cancelarVentaButton" mnemonicParsing="false" text="Cancelar Venta [F12]" />
       </items>
     </ToolBar>
-    <SplitPane dividerPositions="0.5951883467770221" focusTraversable="true" prefHeight="511.0" prefWidth="958.0" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.5951882845188284" focusTraversable="true" prefHeight="511.0" prefWidth="958.0" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
@@ -54,11 +54,11 @@
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="377.0">
                       <children>
                         <Label text="Captura:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                        <TextField id="captura" fx:id="capturaTextField" onKeyReleased="#onCapturaKeyReleased" prefWidth="275.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="11.0" />
+                        <TextField id="captura" fx:id="capturaTextField" onKeyReleased="#onCapturaKeyReleased" onKeyTyped="#onCapturaKeyTyped" prefWidth="275.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="11.0" />
                         <TableView fx:id="productosTableView" prefHeight="310.0" prefWidth="350.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="39.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Column X" />
-                            <TableColumn prefWidth="75.0" text="Column X" />
+                            <TableColumn prefWidth="225.0" text="Descripcion" fx:id="descripcionProductoColumn" />
+                            <TableColumn prefWidth="75.0" text="Precio" fx:id="precioProductoColumn" />
                           </columns>
                         </TableView>
                       </children>

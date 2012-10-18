@@ -7,7 +7,7 @@
          <properties>
                 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
                 <property name="hibernate.hbm2ddl.auto" value="update"/>
-                <property name="hibernate.show_sql" value="false"/>
+                <property name="hibernate.show_sql" value="true"/>
                 <property name= "hibernate.format_sql" value="true"/>
                 <property name= "hibernate.c3p0.min_size" value="5"/>
                 <property name= "hibernate.c3p0.max_size" value="20"/>

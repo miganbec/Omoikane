@@ -2,10 +2,10 @@ package omoikane.caja.business;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import omoikane.caja.data.IProductosDAO;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.caja.presentation.ProductoModel;
-import omoikane.producto.Articulo;
 import omoikane.producto.Producto;
 import omoikane.repository.ProductoRepo;
 import omoikane.repository.UsuarioRepo;
@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 
 /**
@@ -27,13 +28,6 @@ import java.math.BigDecimal;
 public class CajaLogic implements ICajaLogic {
     public static Logger logger = Logger.getLogger(CajaLogic.class);
     Boolean capturaBloqueada = false;
-
-
-    @Autowired
-    UsuarioRepo usuarioRepo;
-
-    @Autowired
-    ProductoRepo productoRepo;
 
     @Autowired
     IProductosDAO productosDAO;
@@ -59,19 +53,43 @@ public class CajaLogic implements ICajaLogic {
         }
     }
 
+    @Override
+    public void buscar(CajaModel model) {
+        String descripcion = model.getCaptura().get();
+        ArrayList<Producto> productos = (ArrayList<Producto>) productosDAO.findByDescripcionLike( "%"+descripcion+"%" );
+        ObservableList<ProductoModel> obsProductos = model.getProductos();
+
+        obsProductos.clear();
+
+        for( Producto p : productos ) {
+            ProductoModel productoModel = new ProductoModel();
+            productoToProductoModel(p, productoModel);
+            productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>( new BigDecimal(1) ));
+
+            obsProductos.add(productoModel);
+        }
+
+    }
+
     private void addProducto(CajaModel model, LineaDeCaptura captura) {
+        model.getProductos().clear(); // Borra resultados de la búsqueda integrada
+
         Producto producto = productosDAO.findByCodigo(captura.getCodigo()).get(0);
         /*Articulo producto = productoRepo.findByCodigo(captura.getCodigo()).get(0);*/
 
         ProductoModel productoModel = new ProductoModel();
+        productoToProductoModel(producto, productoModel);
+        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
+
+        model.getVenta().add(productoModel);
+    }
+
+    private void productoToProductoModel(Producto producto, ProductoModel productoModel) {
         productoModel.setPrecioBase(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecioBase()));
         productoModel.setConcepto(new SimpleStringProperty(producto.getDescripcion()));
-        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
-        productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecio()));
         productoModel.setDescuentos(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getDescuento()));
         productoModel.setImpuestos(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getImpuestos()));
-
-        model.getProductos().add(productoModel);
+        productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecio()));
     }
 
 
@@ -100,7 +118,7 @@ public class CajaLogic implements ICajaLogic {
         BigDecimal total = new BigDecimal(0);
         total.setScale(2, BigDecimal.ROUND_HALF_UP);
 
-        for ( ProductoModel producto : model.getProductos() ) {
+        for ( ProductoModel producto : model.getVenta() ) {
             subtotal   = subtotal  .add( producto.getSubtotal() );
             descuentos = descuentos.add( producto.getDescuentos().get() );
             impuestos  = impuestos .add( producto.getImpuestos().get() );
