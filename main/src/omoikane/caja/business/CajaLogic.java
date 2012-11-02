@@ -4,14 +4,15 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import omoikane.caja.data.IProductosDAO;
+import omoikane.caja.presentation.BuscarMasDummyProducto;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.caja.presentation.ProductoModel;
 import omoikane.producto.Producto;
-import omoikane.repository.ProductoRepo;
-import omoikane.repository.UsuarioRepo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.synyx.hades.domain.PageRequest;
+import org.synyx.hades.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -55,11 +56,15 @@ public class CajaLogic implements ICajaLogic {
 
     @Override
     public void buscar(CajaModel model) {
+        Pageable pagina = model.getPaginacionBusqueda();
         String descripcion = model.getCaptura().get();
-        ArrayList<Producto> productos = (ArrayList<Producto>) productosDAO.findByDescripcionLike( "%"+descripcion+"%" );
+        ArrayList<Producto> productos = (ArrayList<Producto>) productosDAO.findByDescripcionLike( "%"+descripcion+"%", pagina);
         ObservableList<ProductoModel> obsProductos = model.getProductos();
 
-        obsProductos.clear();
+        if (pagina.getPageNumber()==1 )
+            obsProductos.clear();
+        else
+            obsProductos.remove( obsProductos.size() - 1 ); //Remueve el renglón "Buscar más productos"
 
         for( Producto p : productos ) {
             ProductoModel productoModel = new ProductoModel();
@@ -68,8 +73,11 @@ public class CajaLogic implements ICajaLogic {
 
             obsProductos.add(productoModel);
         }
+        if(obsProductos.size() > 0) obsProductos.add( new BuscarMasDummyProducto() );
 
+        model.setPaginacionBusqueda(new PageRequest(pagina.getPageNumber()+1, pagina.getPageSize()));
     }
+
 
     private void addProducto(CajaModel model, LineaDeCaptura captura) {
         model.getProductos().clear(); // Borra resultados de la búsqueda integrada
@@ -85,6 +93,7 @@ public class CajaLogic implements ICajaLogic {
     }
 
     private void productoToProductoModel(Producto producto, ProductoModel productoModel) {
+        productoModel.setCodigo(new SimpleStringProperty(producto.getCodigo()));
         productoModel.setPrecioBase(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecioBase()));
         productoModel.setConcepto(new SimpleStringProperty(producto.getDescripcion()));
         productoModel.setDescuentos(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getDescuento()));

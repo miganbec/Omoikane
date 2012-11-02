@@ -12,6 +12,7 @@ import omoikane.caja.presentation.CajaModel;
 import omoikane.principal.Principal;
 import omoikane.producto.Articulo;
 import omoikane.repository.ProductoRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**

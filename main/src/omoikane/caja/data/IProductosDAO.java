@@ -1,6 +1,7 @@
 package omoikane.caja.data;
 
 import omoikane.producto.Producto;
+import org.synyx.hades.domain.Pageable;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ import java.util.List;
 public interface IProductosDAO {
 
     public List<Producto> findByCodigo(String codigo);
-    public List<Producto> findByDescripcionLike(String descripcion);
+    public List<Producto> findByDescripcionLike(String descripcion, Pageable pagina);
 }

@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
+import javafx.beans.binding.StringExpression;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,9 +20,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import omoikane.caja.business.ICajaLogic;
 import omoikane.sistema.Dialogos;
 import omoikane.sistema.Herramientas;
+import org.synyx.hades.domain.PageRequest;
 
 
 public class CajaController
@@ -99,8 +104,55 @@ public class CajaController
     @FXML
     private void onCapturaKeyReleased(KeyEvent event) {
         if ( !modelo.getCaptura().get().isEmpty() && event.getCode() == KeyCode.ENTER ) {
+
+            ifAnySelectedProductoThenSelect();
             getCajaLogic().onCaptura(modelo);
+
+        } else if ( event.getCode() == KeyCode.ESCAPE ) {
+            modelo.getCaptura().set("");
         }
+    }
+
+    private void ifAnySelectedProductoThenSelect() {
+        ProductoModel pm = productosTableView.getSelectionModel().getSelectedItem();
+        if(pm != null) {
+            modelo.getCaptura().set( pm.getCodigo().get() );
+        }
+    }
+
+    @FXML void onBusquedaIntegradaClicked(MouseEvent event) {
+        if(!ifBuscarMasSelected()) {
+            ifAnySelectedProductoThenSelect();
+        }
+    }
+
+    @FXML
+    private void onCapturaKeyPressed(KeyEvent event) {
+        SelectionModel selectionModel = productosTableView.getSelectionModel();
+        if( event.getCode() == KeyCode.DOWN ) {
+            selectionModel.selectNext();
+            ifBuscarMasSelected();
+            scroll();
+
+        } else if( event.getCode() == KeyCode.UP ) {
+            selectionModel.selectPrevious();
+            scroll();
+        }
+    }
+
+    private void scroll() {
+        SelectionModel selectionModel = productosTableView.getSelectionModel();
+        productosTableView.scrollTo(selectionModel.getSelectedIndex());
+    }
+
+    private Boolean ifBuscarMasSelected() {
+        if( BuscarMasDummyProducto.class.isInstance( productosTableView.getSelectionModel().getSelectedItem() )) {
+            getCajaLogic().buscar(getModel());
+
+            SelectionModel selectionModel = productosTableView.getSelectionModel();
+            return true;
+        }
+        return false;
     }
 
     @FXML
@@ -243,6 +295,7 @@ public class CajaController
                 busquedaActiva = true;
                 try { this.wait(500); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
                 if(busquedaActiva && cc.modelo != null) {
+                    getModel().setPaginacionBusqueda(new PageRequest(1,10));
                     cc.getCajaLogic().buscar(cc.getModel());
                 }
             }

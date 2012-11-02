@@ -6,9 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +17,7 @@ import java.util.Locale;
  */
 public class ProductoModel {
     private StringProperty concepto;
+    private StringProperty codigo;
     private ObjectProperty<BigDecimal> cantidad;
     private ObjectProperty<BigDecimal> precio;
     private ObjectProperty<BigDecimal> precioBase;
@@ -27,6 +26,7 @@ public class ProductoModel {
 
     public ProductoModel() {
         concepto   = new SimpleStringProperty("Concepto vacío");
+        setCodigo  ( new SimpleStringProperty(null) );
         cantidad   = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
         precio     = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
         impuestos  = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
@@ -153,5 +153,13 @@ public class ProductoModel {
 
     public ObjectProperty<BigDecimal> getPrecioBase() {
         return precioBase;
+    }
+
+    public StringProperty getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(StringProperty codigo) {
+        this.codigo = codigo;
     }
 }

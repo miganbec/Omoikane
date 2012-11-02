@@ -3,6 +3,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 
 version = '1.4.0 alfa'
 
@@ -39,6 +40,7 @@ sourceSets {
 repositories {
     mavenCentral()
 	mavenRepo urls: "http://maven.springframework.org/milestone"
+    mavenRepo urls: "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases"
 }
 
 dependencies {
@@ -67,7 +69,9 @@ dependencies {
 		[group: 'org.synyx.hades'     , name: 'org.synyx.hades'        , version: '2.0.3.RELEASE', transitive:false],
 		[group: 'org.hibernate'       , name: 'hibernate-entitymanager', version: '3.6.5.Final'],
         [group: 'org.hibernate'       , name: 'hibernate-validator'    , version: '4.2.0.Final'],
-		[group: 'commons-dbcp'        , name: 'commons-dbcp'           , version: '1.4']		
+		[group: 'commons-dbcp'        , name: 'commons-dbcp'           , version: '1.4'],
+        'org.dbunit:dbunit:2.4.8',
+        'com.github.springtestdbunit:spring-test-dbunit:1.0.0'
 	)
 	compile files('lib/jcalc-1.0.4.jar',
 				  'lib/OmoikaneMedia.jar',
@@ -81,7 +85,8 @@ dependencies {
                   'lib/Configuratron.jar',
                   'lib/FXExperienceControls.jar',
                   'lib/JavaFxDialog.jar',
-                  'lib/jfxrt.jar')
+                  'lib/jfxrt.jar',
+                  'lib/hsqldb-1.8.1.2.jar')
 	runtime files('lib/OmoikaneMedia.jar',
 				  'lib/nimbus.jar')
 	testCompile ('junit:junit:4.8.1',
@@ -101,7 +106,10 @@ dependencies {
 				 [group: 'org.synyx.hades'     , name: 'org.synyx.hades'        , version: '2.0.3.RELEASE', transitive:false],
 				 [group: 'org.hibernate'       , name: 'hibernate-entitymanager', version: '3.6.5.Final'],
                  [group: 'org.hibernate'       , name: 'hibernate-validator'    , version: '4.2.0.Final'],
-				 [group: 'commons-dbcp'        , name: 'commons-dbcp'           , version: '1.4'])
+				 [group: 'commons-dbcp'        , name: 'commons-dbcp'           , version: '1.4'],
+                 'org.dbunit:dbunit:2.4.8',
+                 'com.github.springtestdbunit:spring-test-dbunit:1.0.0')
+    testCompile files('lib/hsqldb-1.8.1.2.jar')
 }
 
 jar {

@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.synyx.hades.domain.Pageable;
 
 import java.math.BigDecimal;
 
@@ -24,6 +25,7 @@ public class CajaModel {
     private ObjectProperty<BigDecimal> descuento;
     private ObjectProperty<BigDecimal> impuestos;
     private ObjectProperty<BigDecimal> total;
+    private Pageable paginacionBusqueda;
 
     /**
      * Instancía todos los atributos
@@ -101,5 +103,13 @@ public class CajaModel {
 
     public void setTotal(BigDecimal total) {
         this.total.set( total );
+    }
+
+    public Pageable getPaginacionBusqueda() {
+        return paginacionBusqueda;
+    }
+
+    public void setPaginacionBusqueda(Pageable paginacionBusqueda) {
+        this.paginacionBusqueda = paginacionBusqueda;
     }
 }

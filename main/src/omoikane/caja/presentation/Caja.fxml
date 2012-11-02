@@ -54,8 +54,9 @@
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="377.0">
                       <children>
                         <Label text="Captura:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                        <TextField id="captura" fx:id="capturaTextField" onKeyReleased="#onCapturaKeyReleased" onKeyTyped="#onCapturaKeyTyped" prefWidth="275.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="11.0" />
-                        <TableView fx:id="productosTableView" prefHeight="310.0" prefWidth="350.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="39.0">
+                        <TextField id="captura" fx:id="capturaTextField" onKeyPressed="#onCapturaKeyPressed" onKeyReleased="#onCapturaKeyReleased" onKeyTyped="#onCapturaKeyTyped" prefWidth="275.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="11.0" />
+                        <TableView fx:id="productosTableView" onMouseClicked="#onBusquedaIntegradaClicked" prefHeight="310.0" prefWidth="350.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="39.0">
+
                           <columns>
                             <TableColumn prefWidth="225.0" text="Descripcion" fx:id="descripcionProductoColumn" />
                             <TableColumn prefWidth="75.0" text="Precio" fx:id="precioProductoColumn" />

@@ -16,4 +16,5 @@ public interface ICajaLogic {
     public void calcularCambio(CajaModel model);
     public void terminarVenta(CajaModel model);
     public void onProductListChanged(CajaModel model);
+
 }
