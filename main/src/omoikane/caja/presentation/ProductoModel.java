@@ -1,9 +1,7 @@
 package omoikane.caja.presentation;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import omoikane.producto.Producto;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -16,6 +14,7 @@ import java.text.NumberFormat;
  * To change this template use File | Settings | File Templates.
  */
 public class ProductoModel {
+    private LongProperty id;
     private StringProperty concepto;
     private StringProperty codigo;
     private ObjectProperty<BigDecimal> cantidad;
@@ -23,8 +22,10 @@ public class ProductoModel {
     private ObjectProperty<BigDecimal> precioBase;
     private ObjectProperty<BigDecimal> impuestos;
     private ObjectProperty<BigDecimal> descuentos;
+    private Producto productoData;
 
     public ProductoModel() {
+        id         = new SimpleLongProperty(0l);
         concepto   = new SimpleStringProperty("Concepto vacío");
         setCodigo  ( new SimpleStringProperty(null) );
         cantidad   = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
@@ -46,6 +47,14 @@ public class ProductoModel {
     public BigDecimal getImporte() {
         BigDecimal importe = cantidad.get().multiply( precio.get() );
         return importe;
+    }
+
+    public LongProperty getId() {
+        return id;
+    }
+
+    public Long getLongId() {
+        return id.get();
     }
 
 
@@ -161,5 +170,13 @@ public class ProductoModel {
 
     public void setCodigo(StringProperty codigo) {
         this.codigo = codigo;
+    }
+
+    public Producto getProductoData() {
+        return productoData;
+    }
+
+    public void setProductoData(Producto productoData) {
+        this.productoData = productoData;
     }
 }

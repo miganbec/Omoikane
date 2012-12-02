@@ -1,0 +1,445 @@
+<!ELEMENT dataset (
+    almacenes*,
+    anotaciones*,
+    articulos*,
+    cajas*,
+    base_para_precios*,
+    clientes*,
+    codigos_articulos*,
+    cortes*,
+    cortes_dual*,
+    cortes_sucursal*,
+    existencias*,
+    facturas*,
+    grupos*,
+    lineas*,
+    lineas_dual*,
+    memventasxarticuloxmes*,
+    memventasxgrupoxdia*,
+    memventasxgrupoxmes*,
+    movimientos_almacen*,
+    movimientos_almacen_detalles*,
+    movimientos_cortes*,
+    movimientoscortes*,
+    paquetes*,
+    pr3*,
+    precios*,
+    preferencia*,
+    preferencias*,
+    ramcachearticulos*,
+    ramcachecodigos*,
+    sincronizacion*,
+    sucursales*,
+    usr_sucursal*,
+    usuarios*,
+    ventas*,
+    ventas_detalles*,
+    ventas_facturadas*,
+    ventasprecioespecial*)>
+
+<!ELEMENT almacenes EMPTY>
+<!ATTLIST almacenes
+    id_almacen CDATA #REQUIRED
+    descripcion CDATA #IMPLIED
+    uModificacion CDATA #REQUIRED
+>
+
+<!ELEMENT anotaciones EMPTY>
+<!ATTLIST anotaciones
+    id_almacen CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+    texto CDATA #REQUIRED
+>
+
+<!ELEMENT articulos EMPTY>
+<!ATTLIST articulos
+    id_articulo CDATA #REQUIRED
+    codigo CDATA #IMPLIED
+    id_linea CDATA #IMPLIED
+    descripcion CDATA #IMPLIED
+    unidad CDATA #IMPLIED
+    impuestos CDATA #IMPLIED
+    uModificacion CDATA #REQUIRED
+    version CDATA #IMPLIED
+    id_grupo CDATA #REQUIRED
+>
+
+<!ELEMENT base_para_precios EMPTY>
+<!ATTLIST base_para_precios
+    id_articulo CDATA #REQUIRED
+    costo CDATA #IMPLIED
+    descripcion CDATA #IMPLIED
+    porcentajeDescuentoGrupo CDATA #IMPLIED
+    porcentajeDescuentoLinea CDATA #IMPLIED
+    porcentajeDescuentoProducto CDATA #IMPLIED
+    porcentajeImpuestos CDATA #REQUIRED
+    porcentajeUtilidad CDATA #IMPLIED
+>
+
+<!ELEMENT cajas EMPTY>
+<!ATTLIST cajas
+    id_caja CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    descripcion CDATA #REQUIRED
+    creado CDATA #REQUIRED
+    uModificacion CDATA #REQUIRED
+    horaAbierta CDATA #REQUIRED
+    horaCerrada CDATA #REQUIRED
+    abierta CDATA #IMPLIED
+    uFolio CDATA #REQUIRED
+>
+
+<!ELEMENT clientes EMPTY>
+<!ATTLIST clientes
+    id_cliente CDATA #REQUIRED
+    RFC CDATA #IMPLIED
+    razonSocial CDATA #IMPLIED
+    direccion CDATA #IMPLIED
+    telefono CDATA #IMPLIED
+    cp CDATA #IMPLIED
+    descuento CDATA #IMPLIED
+    saldo CDATA #IMPLIED
+    uModificacion CDATA #REQUIRED
+    version CDATA #IMPLIED
+    razon_social CDATA #REQUIRED
+>
+
+<!ELEMENT codigos_articulos EMPTY>
+<!ATTLIST codigos_articulos
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+    codigo CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+    articulo_id CDATA #IMPLIED
+>
+
+<!ELEMENT cortes EMPTY>
+<!ATTLIST cortes
+    id_corte CDATA #REQUIRED
+    id_caja CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    fecha_hora CDATA #REQUIRED
+    subtotal CDATA #REQUIRED
+    impuestos CDATA #REQUIRED
+    descuentos CDATA #REQUIRED
+    total CDATA #REQUIRED
+    n_ventas CDATA #REQUIRED
+    desde CDATA #REQUIRED
+    hasta CDATA #REQUIRED
+    depositos CDATA #REQUIRED
+    retiros CDATA #REQUIRED
+    folio_inicial CDATA #REQUIRED
+    folio_final CDATA #REQUIRED
+>
+
+<!ELEMENT cortes_dual EMPTY>
+<!ATTLIST cortes_dual
+    id_corte CDATA #REQUIRED
+    id_caja CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    fecha_hora CDATA #REQUIRED
+    subtotal CDATA #REQUIRED
+    impuestos CDATA #REQUIRED
+    descuentos CDATA #REQUIRED
+    total CDATA #REQUIRED
+    n_ventas CDATA #REQUIRED
+    desde CDATA #REQUIRED
+    hasta CDATA #REQUIRED
+    depositos CDATA #REQUIRED
+    retiros CDATA #REQUIRED
+    folio_inicial CDATA #REQUIRED
+    folio_final CDATA #REQUIRED
+>
+
+<!ELEMENT cortes_sucursal EMPTY>
+<!ATTLIST cortes_sucursal
+    id_corte CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    creacion CDATA #REQUIRED
+    desde CDATA #REQUIRED
+    hasta CDATA #REQUIRED
+    depositos CDATA #REQUIRED
+    retiros CDATA #REQUIRED
+>
+
+<!ELEMENT existencias EMPTY>
+<!ATTLIST existencias
+    id_almacen CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+    cantidad CDATA #IMPLIED
+    uModificacion CDATA #REQUIRED
+    version CDATA #IMPLIED
+>
+
+<!ELEMENT facturas EMPTY>
+<!ATTLIST facturas
+    id_factura CDATA #REQUIRED
+    id_cliente CDATA #REQUIRED
+    fecha CDATA #REQUIRED
+    usuario_expidio CDATA #REQUIRED
+    subtotal CDATA #REQUIRED
+    total CDATA #REQUIRED
+    cancelada CDATA #REQUIRED
+    usuario_cancelo CDATA #REQUIRED
+    impuestos CDATA #REQUIRED
+>
+
+<!ELEMENT grupos EMPTY>
+<!ATTLIST grupos
+    id_grupo CDATA #REQUIRED
+    descripcion CDATA #REQUIRED
+    descuento CDATA #REQUIRED
+    uModificacion CDATA #REQUIRED
+    version CDATA #IMPLIED
+    u_modificacion CDATA #IMPLIED
+>
+
+<!ELEMENT lineas EMPTY>
+<!ATTLIST lineas
+    id_linea CDATA #REQUIRED
+    descripcion CDATA #REQUIRED
+    descuento CDATA #REQUIRED
+    uModificacion CDATA #REQUIRED
+    version CDATA #IMPLIED
+>
+
+<!ELEMENT lineas_dual EMPTY>
+<!ATTLIST lineas_dual
+    id CDATA #REQUIRED
+    id_linea CDATA #REQUIRED
+    version CDATA #IMPLIED
+>
+
+<!ELEMENT memventasxarticuloxmes EMPTY>
+<!ATTLIST memventasxarticuloxmes
+    mes CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+    descripcion CDATA #IMPLIED
+    id_linea CDATA #IMPLIED
+    id_grupo CDATA #IMPLIED
+    codigo CDATA #IMPLIED
+    impuestos CDATA #IMPLIED
+    total CDATA #IMPLIED
+>
+
+<!ELEMENT memventasxgrupoxdia EMPTY>
+<!ATTLIST memventasxgrupoxdia
+    id_grupo CDATA #REQUIRED
+    fecha CDATA #REQUIRED
+    impuestos CDATA #IMPLIED
+    total CDATA #IMPLIED
+>
+
+<!ELEMENT memventasxgrupoxmes EMPTY>
+<!ATTLIST memventasxgrupoxmes
+    id_grupo CDATA #REQUIRED
+    fecha CDATA #REQUIRED
+    impuestos CDATA #IMPLIED
+    total CDATA #IMPLIED
+>
+
+<!ELEMENT movimientos_almacen EMPTY>
+<!ATTLIST movimientos_almacen
+    id_almacen CDATA #REQUIRED
+    id_movimiento CDATA #REQUIRED
+    descripcion CDATA #REQUIRED
+    tipo CDATA #REQUIRED
+    monto CDATA #REQUIRED
+    fecha CDATA #REQUIRED
+    folio CDATA #REQUIRED
+    creacion CDATA #REQUIRED
+>
+
+<!ELEMENT movimientos_almacen_detalles EMPTY>
+<!ATTLIST movimientos_almacen_detalles
+    id_movimiento CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+    cantidad CDATA #REQUIRED
+    costo CDATA #REQUIRED
+    id_detalle CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+>
+
+<!ELEMENT movimientos_cortes EMPTY>
+<!ATTLIST movimientos_cortes
+    tipo CDATA #REQUIRED
+    id CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    id_caja CDATA #REQUIRED
+    id_cajero CDATA #REQUIRED
+    momento CDATA #REQUIRED
+    importe CDATA #REQUIRED
+    id_usuario CDATA #REQUIRED
+>
+
+<!ELEMENT movimientoscortes EMPTY>
+<!ATTLIST movimientoscortes
+    tipo CDATA #REQUIRED
+    id CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    id_caja CDATA #REQUIRED
+    id_cajero CDATA #REQUIRED
+    momento CDATA #REQUIRED
+    cantidad CDATA #REQUIRED
+    id_usuario CDATA #REQUIRED
+>
+
+<!ELEMENT paquetes EMPTY>
+<!ATTLIST paquetes
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+    articulo_id CDATA #REQUIRED
+    cantidad CDATA #REQUIRED
+    codigo CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+>
+
+<!ELEMENT pr3 EMPTY>
+<!ATTLIST pr3
+    ooo CDATA #REQUIRED
+>
+
+<!ELEMENT precios EMPTY>
+<!ATTLIST precios
+    id_precio CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    costo CDATA #IMPLIED
+    descuento CDATA #IMPLIED
+    utilidad CDATA #REQUIRED
+    uModificacion CDATA #REQUIRED
+    version CDATA #IMPLIED
+>
+
+<!ELEMENT preferencia EMPTY>
+<!ATTLIST preferencia
+    id CDATA #REQUIRED
+    clave CDATA #REQUIRED
+    valor CDATA #REQUIRED
+>
+
+<!ELEMENT preferencias EMPTY>
+<!ATTLIST preferencias
+    ID CDATA #REQUIRED
+    clave CDATA #REQUIRED
+    valor CDATA #IMPLIED
+>
+
+<!ELEMENT ramcachearticulos EMPTY>
+<!ATTLIST ramcachearticulos
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+    codigo CDATA #REQUIRED
+    costo CDATA #REQUIRED
+    descripcion CDATA #REQUIRED
+    id_linea CDATA #REQUIRED
+    impuestos CDATA #REQUIRED
+    linea CDATA #REQUIRED
+    precio CDATA #REQUIRED
+    precio_descuento CDATA #REQUIRED
+    unidad CDATA #REQUIRED
+    utilidad CDATA #REQUIRED
+    existencias CDATA #IMPLIED
+    grupo_descuento CDATA #IMPLIED
+    id_grupo CDATA #IMPLIED
+    grupo CDATA #IMPLIED
+    id_articulo CDATA #IMPLIED
+>
+
+<!ELEMENT ramcachecodigos EMPTY>
+<!ATTLIST ramcachecodigos
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+    codigo CDATA #REQUIRED
+    id_articulo CDATA #REQUIRED
+    nCodigo CDATA #REQUIRED
+>
+
+<!ELEMENT sincronizacion EMPTY>
+<!ATTLIST sincronizacion
+    tabla CDATA #REQUIRED
+    uModificacion CDATA #REQUIRED
+>
+
+<!ELEMENT sucursales EMPTY>
+<!ATTLIST sucursales
+    id_almacen CDATA #REQUIRED
+    creacion CDATA #REQUIRED
+    hAbierta CDATA #REQUIRED
+    hCerrada CDATA #REQUIRED
+    uModificacion CDATA #REQUIRED
+    abierta CDATA #REQUIRED
+>
+
+<!ELEMENT usr_sucursal EMPTY>
+<!ATTLIST usr_sucursal
+    id_usuario CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    perfil CDATA #IMPLIED
+    uModificacion CDATA #REQUIRED
+>
+
+<!ELEMENT usuarios EMPTY>
+<!ATTLIST usuarios
+    id_usuario CDATA #REQUIRED
+    fecha_hora_alta CDATA #REQUIRED
+    nombre CDATA #IMPLIED
+    huella1 CDATA #IMPLIED
+    huella2 CDATA #IMPLIED
+    huella3 CDATA #IMPLIED
+    nip CDATA #IMPLIED
+    uModificacion CDATA #REQUIRED
+>
+
+<!ELEMENT ventas EMPTY>
+<!ATTLIST ventas
+    id_venta CDATA #REQUIRED
+    id_caja CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    id_cliente CDATA #IMPLIED
+    fecha_hora CDATA #REQUIRED
+    uModificacion CDATA #REQUIRED
+    facturada CDATA #IMPLIED
+    completada CDATA #IMPLIED
+    eliminar CDATA #REQUIRED
+    subtotal CDATA #IMPLIED
+    descuento CDATA #IMPLIED
+    impuestos CDATA #IMPLIED
+    total CDATA #IMPLIED
+    id_usuario CDATA #REQUIRED
+    efectivo CDATA #REQUIRED
+    cambio CDATA #REQUIRED
+    centecimosredondeados CDATA #REQUIRED
+    folio CDATA #REQUIRED
+>
+
+<!ELEMENT ventas_detalles EMPTY>
+<!ATTLIST ventas_detalles
+    id_renglon CDATA #REQUIRED
+    id_venta CDATA #REQUIRED
+    id_caja CDATA #REQUIRED
+    id_almacen CDATA #REQUIRED
+    id_articulo CDATA #IMPLIED
+    precio CDATA #REQUIRED
+    cantidad CDATA #IMPLIED
+    tipo_salida CDATA #IMPLIED
+    subtotal CDATA #IMPLIED
+    impuestos CDATA #IMPLIED
+    descuento CDATA #IMPLIED
+    total CDATA #IMPLIED
+    id_linea CDATA #IMPLIED
+>
+
+<!ELEMENT ventas_facturadas EMPTY>
+<!ATTLIST ventas_facturadas
+    id_factura CDATA #REQUIRED
+    id_venta CDATA #REQUIRED
+>
+
+<!ELEMENT ventasprecioespecial EMPTY>
+<!ATTLIST ventasprecioespecial
+    id CDATA #REQUIRED
+    id_venta CDATA #REQUIRED
+    id_autorizador CDATA #REQUIRED
+>
+

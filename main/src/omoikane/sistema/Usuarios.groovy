@@ -36,7 +36,7 @@ package omoikane.sistema;
 
     //public Usuario usrActivo = new Usuario();
     private static boolean autorizado = false;
-    public static def usuarioActivo = null
+    public static def usuarioActivo = [:]
     public static def    CAJERO        = 0
     public static def    CAPTURISTA    = 0.5
     public static def    SUPERVISOR    = 1
@@ -51,6 +51,16 @@ package omoikane.sistema;
     }
     public static def logout() {
         usuarioActivo = null
+    }
+    public static int getIDUsuarioActivo() {
+        return usuarioActivo.ID;
+    }
+    public static int setIDUsuarioActivo(Integer id) {
+        if(usuarioActivo==null) {
+            usuarioActivo = [ID: id, huella: "", nombre: "", sucursales: null];
+        } else {
+            usuarioActivo.ID = id;
+        }
     }
     public static def identificaPersona() throws Exception {
             def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()

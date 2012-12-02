@@ -38,9 +38,9 @@
 
 
     <URLServidor>http://localhost:5542</URLServidor>
-    <URLMySQL>jdbc:mysql://192.168.2.111:3306/omoikane</URLMySQL>
-    <loginJasper>ZooMMX</loginJasper>
-    <passJasper>GatoGato00</passJasper>
+    <URLMySQL>jdbc:mysql://sfmvaldez.poweredbyclear.com:3308/omoikane</URLMySQL>
+    <loginJasper>Jasper</loginJasper>
+    <passJasper>gatogato</passJasper>
 
     <impresoraActiva>false</impresoraActiva>
     <puertoImpresion>LPT1:</puertoImpresion>
@@ -52,6 +52,6 @@
     <bascula activa='false' port='COM2' baud='9600' bits='8' stopBits='1' parity='None' stopChar='3' weightCommand=''/>
     <fondoBlur>true</fondoBlur>
     <idAlmacen>1</idAlmacen>
-    <idCaja>3</idCaja>
+    <idCaja>4</idCaja>
     <tipoCorte>1</tipoCorte>
 </document>

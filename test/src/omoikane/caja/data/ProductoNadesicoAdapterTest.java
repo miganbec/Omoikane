@@ -1,8 +1,10 @@
-package omoikane.repository;
+package omoikane.caja.data;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import omoikane.caja.data.ProductosNadesicoAdapter;
 import omoikane.producto.Articulo;
+import omoikane.producto.Producto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,25 +32,26 @@ import java.util.ArrayList;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("sampleData.xml")
-public class ProductoRepoTest {
+@DatabaseSetup("../../repository/sampleData.xml")
+public class ProductoNadesicoAdapterTest {
     @Autowired
-    ProductoRepo productoRepo;
+    ProductosNadesicoAdapter productoRepo;
 
     @Test
     public void testFindByDescripcion() {
         Pageable pagina = new PageRequest(0, 10);
-        ArrayList<Articulo> productos = (ArrayList<Articulo>) productoRepo.findByDescripcionLike("%" + "CONCEPCION" + "%", pagina);
-        for(Articulo p : productos) {
+        ArrayList<Producto> productos = (ArrayList<Producto>) productoRepo.findByDescripcionLike("%" + "CONCEPCION" + "%", pagina);
+        for(Producto p : productos) {
             System.out.println("-" + p.getDescripcion());
         }
     }
 
     @Test
     public void testFindByCodigo() {
-        ArrayList<Articulo> productos = (ArrayList<Articulo>) productoRepo.findByCodigo("7501059238305");
-        for(Articulo a : productos) {
+        ArrayList<Producto> productos = (ArrayList<Producto>) productoRepo.findByCodigo("7501059238305");
+        for(Producto a : productos) {
             System.out.println("-" + a.getDescripcion());
         }
     }
 }
+

@@ -5,15 +5,17 @@ package omoikane.caja.presentation;
  * You can copy and paste this code into your favorite IDE
  **/
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import javafx.application.Platform;
-import javafx.beans.binding.StringExpression;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -21,8 +23,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.AnchorPane;
+import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.caja.business.ICajaLogic;
+import omoikane.principal.Principal;
 import omoikane.sistema.Dialogos;
 import omoikane.sistema.Herramientas;
 import org.synyx.hades.domain.PageRequest;
@@ -35,6 +39,9 @@ public class CajaController
     private ICajaLogic cajaLogic;
 
     private TimerBusqueda timerBusqueda;
+
+    @FXML
+    private AnchorPane mainAnchorPane;
 
     @FXML
     private Button buscarProductoButton;
@@ -58,7 +65,7 @@ public class CajaController
     private Label descuentoLabel;
 
     @FXML
-    private TextField efectivoTextField;
+    private BigDecimalField efectivoTextField;
 
     @FXML
     private Label fechaLabel;
@@ -100,10 +107,15 @@ public class CajaController
 
     @FXML private TableColumn descripcionProductoColumn;
     @FXML private TableColumn precioProductoColumn;
+    @FXML private ToggleButton btnEfectivo;
+    @FXML private ToggleButton btnVale;
+    @FXML private ToggleButton btnCheque;
+    @FXML private ToggleButton btnTarjeta;
+    @FXML private Button btnCobrar;
 
     @FXML
     private void onCapturaKeyReleased(KeyEvent event) {
-        if ( !modelo.getCaptura().get().isEmpty() && event.getCode() == KeyCode.ENTER ) {
+        if ( (modelo.getCaptura().get() != null && !modelo.getCaptura().get().isEmpty()) && event.getCode() == KeyCode.ENTER ) {
 
             ifAnySelectedProductoThenSelect();
             getCajaLogic().onCaptura(modelo);
@@ -140,6 +152,11 @@ public class CajaController
         }
     }
 
+    @FXML
+    private void onTerminarVentaClicked(ActionEvent event) {
+        cajaLogic.terminarVenta(getModel());
+    }
+
     private void scroll() {
         SelectionModel selectionModel = productosTableView.getSelectionModel();
         productosTableView.scrollTo(selectionModel.getSelectedIndex());
@@ -168,16 +185,15 @@ public class CajaController
         return modelo;
     }
 
-    @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         assert buscarProductoButton != null : "fx:id=\"buscarProductoButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert cajaLabel != null : "fx:id=\"cajaLabel\" was not injected: check your FXML file 'Caja.fxml'.";
-        assert cambioTextField != null : "fx:id=\"cambioTextField\" was not injected: check your FXML file 'Caja.fxml'.";
+        assert getCambioTextField() != null : "fx:id=\"cambioTextField\" was not injected: check your FXML file 'Caja.fxml'.";
         assert cancelarArtículoButton != null : "fx:id=\"cancelarArtículoButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert cancelarVentaButton != null : "fx:id=\"cancelarVentaButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert capturaTextField != null : "fx:id=\"capturaTextField\" was not injected: check your FXML file 'Caja.fxml'.";
         assert descuentoLabel != null : "fx:id=\"descuentoLabel\" was not injected: check your FXML file 'Caja.fxml'.";
-        assert efectivoTextField != null : "fx:id=\"efectivoTextField\" was not injected: check your FXML file 'Caja.fxml'.";
+        assert getEfectivoTextField() != null : "fx:id=\"efectivoTextField\" was not injected: check your FXML file 'Caja.fxml'.";
         assert fechaLabel != null : "fx:id=\"fechaLabel\" was not injected: check your FXML file 'Caja.fxml'.";
         assert impuestosLabel != null : "fx:id=\"impuestosLabel\" was not injected: check your FXML file 'Caja.fxml'.";
         assert movimientosButton != null : "fx:id=\"movimientosButton\" was not injected: check your FXML file 'Caja.fxml'.";
@@ -203,7 +219,16 @@ public class CajaController
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE d 'de' MMMM 'de' yyyy");
         String fecha = sdf.format(new Date());
         fechaLabel.textProperty().set( capitalizarFecha(fecha) );
+
+        //Escribir leyenda de caja
+        Integer idCaja = Principal.IDCaja;
+        cajaLabel.textProperty().set( "Caja "+idCaja );
+
+        //Agregar el controlador de nevegación por teclado
+        KBNavigationController kbnc = new KBNavigationController(this);
+        mainAnchorPane.addEventFilter(KeyEvent.KEY_RELEASED, kbnc);
     }
+
 
     public String capitalizarFecha(String s) {
 
@@ -239,6 +264,24 @@ public class CajaController
         totalLabel.textProperty().bind(
                 new Number2StringBinding(modelo.getTotal(), NumberFormat.getCurrencyInstance())
         );
+        getCambioTextField().textProperty().bind(
+                new Number2StringBinding(modelo.getCambio(), NumberFormat.getCurrencyInstance())
+        );
+        getEfectivoTextField().numberProperty().bindBidirectional(modelo.getEfectivo());
+
+        //Binding efectivo and cambio to logic
+        getModel().getEfectivo().addListener(new ChangeListener<BigDecimal>() {
+            @Override
+            public void changed(ObservableValue<? extends BigDecimal> observableValue, BigDecimal bigDecimal, BigDecimal bigDecimal1) {
+                getCajaLogic().calcularCambio(getModel());
+            }
+        });
+        getModel().getTotal().addListener( new ChangeListener<BigDecimal>() {
+            @Override
+            public void changed(ObservableValue<? extends BigDecimal> observableValue, BigDecimal bigDecimal, BigDecimal bigDecimal1) {
+                getCajaLogic().calcularCambio(getModel());
+            }
+        });
 
         //Setup table view and table model (ventas)
         ventaTableView.setItems(modelo.getVenta());
@@ -266,7 +309,7 @@ public class CajaController
 
         nArticulosLabel.textProperty().set(modelo.getVenta().size() + " artículo(s)");
         ventaTableView.getItems().addListener(new ListChangeListener<ProductoModel>() {
-            @Override
+
             public void onChanged(Change<? extends ProductoModel> change) {
                 getCajaLogic().onProductListChanged(modelo);
                 nArticulosLabel.textProperty().set( modelo.getVenta().size() + " artículo(s)" );
@@ -280,6 +323,39 @@ public class CajaController
 
     public void setCajaLogic(ICajaLogic cajaLogic) {
         this.cajaLogic = cajaLogic;
+        cajaLogic.setController(this);
+    }
+
+    public TextField getCapturaTextField() {
+        return capturaTextField;
+    }
+
+    public TextField getCambioTextField() {
+        return cambioTextField;
+    }
+
+    public void setCambioTextField(TextField cambioTextField) {
+        this.cambioTextField = cambioTextField;
+    }
+
+    public BigDecimalField getEfectivoTextField() {
+        return efectivoTextField;
+    }
+
+    public void setEfectivoTextField(BigDecimalField efectivoTextField) {
+        this.efectivoTextField = efectivoTextField;
+    }
+
+    public Button getBtnCobrar() {
+        return btnCobrar;
+    }
+
+    public void setBtnCobrar(Button btnCobrar) {
+        this.btnCobrar = btnCobrar;
+    }
+
+    public ToggleButton getBtnEfectivo() {
+        return btnEfectivo;
     }
 
     class TimerBusqueda extends Thread
@@ -295,7 +371,7 @@ public class CajaController
                 busquedaActiva = true;
                 try { this.wait(500); } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error en el timer de búsqueda automática", Herramientas.getStackTraceString(e)); }
                 if(busquedaActiva && cc.modelo != null) {
-                    getModel().setPaginacionBusqueda(new PageRequest(1,10));
+                    getModel().setPaginacionBusqueda(new PageRequest(0,10));
                     cc.getCajaLogic().buscar(cc.getModel());
                 }
             }

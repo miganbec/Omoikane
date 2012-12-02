@@ -15,23 +15,30 @@ import java.util.Collection;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-//@Entity
+@Entity
+// **15/11/2012: Retrocompatibilidad ==(nuevo)caja --> cajas(antiguo)==
+@Table(name="cajas")
 public class Caja {
 
     private int id;
+
+    private int idAlmacen;
 
     @NotBlank
     private String descripcion;
 
     @NotNull
-    private Timestamp creacion;
-
+    private Timestamp creado;
     @NotNull
     private Timestamp umodificacion;
+    private Timestamp horaAbierta;
+    private Timestamp horaCerrada;
+    private boolean abierta;
+    private Integer uFolio;
 
     @PrePersist
     protected void onCreate() {
-        creacion      = new Timestamp(Calendar.getInstance().getTime().getTime());
+        creado      = new Timestamp(Calendar.getInstance().getTime().getTime());
         umodificacion = new Timestamp(Calendar.getInstance().getTime().getTime());
     }
 
@@ -40,7 +47,7 @@ public class Caja {
         umodificacion = new Timestamp(Calendar.getInstance().getTime().getTime());
     }
 
-    @Column(name = "id")
+    @Column(name = "id_caja")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
@@ -49,6 +56,16 @@ public class Caja {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Column(name = "id_almacen")
+    public int getIdAlmacen() {
+        return idAlmacen;
+    }
+
+    @Deprecated
+    public void setIdAlmacen(int idAlmacen) {
+        this.idAlmacen = idAlmacen;
     }
 
     @Column(name = "descripcion", length = 128)
@@ -61,14 +78,14 @@ public class Caja {
         this.descripcion = descripcion;
     }
 
-    @Column(name = "creacion")
+    @Column(name = "creado")
     @Basic
-    public Timestamp getCreacion() {
-        return creacion;
+    public Timestamp getCreado() {
+        return creado;
     }
 
-    public void setCreacion(Timestamp creacion) {
-        this.creacion = creacion;
+    public void setCreado(Timestamp creado) {
+        this.creado = creado;
     }
 
     @Column(name = "uModificacion")
@@ -81,6 +98,54 @@ public class Caja {
         this.umodificacion = umodificacion;
     }
 
+    @Deprecated
+    @Column(name = "horaabierta")
+    @Basic
+    public Timestamp getHoraAbierta() {
+        return horaAbierta;
+    }
+
+    @Deprecated
+    public void setHoraAbierta(Timestamp horaAbierta) {
+        this.horaAbierta = horaAbierta;
+    }
+
+    @Deprecated
+    @Column(name = "horacerrada")
+    @Basic
+    public Timestamp getHoraCerrada() {
+        return horaCerrada;
+    }
+
+    @Deprecated
+    public void setHoraCerrada(Timestamp horaCerrada) {
+        this.horaCerrada = horaCerrada;
+    }
+
+    @Deprecated
+    @Column(name = "abierta")
+    @Basic
+    public boolean getAbierta() {
+        return abierta;
+    }
+
+    @Deprecated
+    public void setAbierta(boolean abierta) {
+        this.abierta = abierta;
+    }
+
+    @Deprecated
+    @Column(name = "uFolio")
+    @Basic
+    public Integer getUFolio() {
+        return uFolio;
+    }
+
+    @Deprecated
+    public void setUFolio(Integer uFolio) {
+        this.uFolio = uFolio;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,7 +154,7 @@ public class Caja {
         Caja caja = (Caja) o;
 
         if (id != caja.id) return false;
-        if (creacion != null ? !creacion.equals(caja.creacion) : caja.creacion != null) return false;
+        if (creado != null ? !creado.equals(caja.creado) : caja.creado != null) return false;
         if (descripcion != null ? !descripcion.equals(caja.descripcion) : caja.descripcion != null) return false;
         if (umodificacion != null ? !umodificacion.equals(caja.umodificacion) : caja.umodificacion != null)
             return false;
@@ -97,6 +162,7 @@ public class Caja {
         return true;
     }
 
+    /*
     private Corte corte;
 
     @ManyToOne
@@ -132,4 +198,5 @@ public class Caja {
     public void setVentaDetallesById(Collection<VentaDetalle> ventaDetallesById) {
         this.ventaDetallesById = ventaDetallesById;
     }
+    */
 }

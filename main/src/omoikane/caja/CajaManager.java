@@ -5,14 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import omoikane.caja.business.CajaLogic;
+import omoikane.caja.business.CajaLogicImpl;
 import omoikane.caja.business.ICajaLogic;
 import omoikane.caja.presentation.CajaController;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.principal.Principal;
-import omoikane.producto.Articulo;
-import omoikane.repository.ProductoRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -39,13 +36,13 @@ public class CajaManager extends Application {
         try {
 
             omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
-            omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+            omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
 
             /* PRuebas */
 
-            ProductoRepo productoRepo = Principal.applicationContext.getBean(ProductoRepo.class);
-            Articulo art = productoRepo.readByPrimaryKey(1000l);
-            System.out.print("pausa");
+            //ProductoRepo productoRepo = Principal.applicationContext.getBean(ProductoRepo.class);
+            //Articulo art = productoRepo.readByPrimaryKey(1000l);
+            //System.out.print("pausa");
 
             /* end of pruebas */
 
@@ -61,7 +58,7 @@ public class CajaManager extends Application {
             controller = fxmlLoader.getController();
             controller.setModel(model);
 
-            ICajaLogic cajaLogic = Principal.applicationContext.getBean(CajaLogic.class);
+            ICajaLogic cajaLogic = (ICajaLogic) Principal.applicationContext.getBean("cajaLogic");
             controller.setCajaLogic( cajaLogic );
 
         } catch (Exception ex) {

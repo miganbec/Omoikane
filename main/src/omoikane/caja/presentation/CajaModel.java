@@ -26,6 +26,8 @@ public class CajaModel {
     private ObjectProperty<BigDecimal> impuestos;
     private ObjectProperty<BigDecimal> total;
     private Pageable paginacionBusqueda;
+    private ObjectProperty<BigDecimal> efectivo;
+    private ObjectProperty<BigDecimal> cambio;
 
     /**
      * Instancía todos los atributos
@@ -36,11 +38,15 @@ public class CajaModel {
         impuestos   = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
         subtotal    = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
         total       = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
+        efectivo    = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
+        cambio      = new SimpleObjectProperty<BigDecimal>( new BigDecimal( 0 ) );
 
         getDescuento().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
         getImpuestos().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
         getSubtotal ().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
         getTotal    ().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
+        getEfectivo ().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
+        getCambio   ().get().setScale( 2, BigDecimal.ROUND_HALF_UP );
 
         ObservableList<ProductoModel> list = FXCollections.observableArrayList();
         setVenta(list);
@@ -111,5 +117,21 @@ public class CajaModel {
 
     public void setPaginacionBusqueda(Pageable paginacionBusqueda) {
         this.paginacionBusqueda = paginacionBusqueda;
+    }
+
+    public ObjectProperty<BigDecimal> getCambio() {
+        return cambio;
+    }
+
+    public ObjectProperty<BigDecimal> getEfectivo() {
+        return efectivo;
+    }
+
+    public void setEfectivo( BigDecimal efectivo ) {
+        this.efectivo.set(  efectivo );
+    }
+
+    public void setCambio( BigDecimal cambio ) {
+        this.efectivo.set( cambio );
     }
 }

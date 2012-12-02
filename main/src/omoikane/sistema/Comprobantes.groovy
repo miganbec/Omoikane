@@ -11,16 +11,59 @@ package omoikane.sistema
 import java.io.*;
 import groovy.text.GStringTemplateEngine
 import java.text.SimpleDateFormat
-import omoikane.sistema.*
 import groovy.inspect.swingui.*
+ import javax.persistence.PersistenceContext
+ import javax.persistence.EntityManager
+ import omoikane.entities.LegacyVenta
+ import omoikane.entities.Caja
+ import omoikane.entities.Usuario
+ import omoikane.entities.LegacyVentaDetalle
+ import javax.persistence.TypedQuery
+ import org.springframework.beans.factory.annotation.Autowired
+ import omoikane.repository.ProductoRepo
 
-class Comprobantes {
+ class Comprobantes {
 
     def data
     def generado
     def impresora = omoikane.principal.Principal.impresoraActiva
     def protocolo = omoikane.principal.Principal.puertoImpresion
 
+     @PersistenceContext
+     EntityManager entityManager;
+
+     @Autowired
+     ProductoRepo productoRepo;
+
+    /**
+     * Método que utiliza hibernate para acceder a los datos de la venta en lugar de nadesico (versión antigua ticket())
+     */
+    public void ticketVenta( Integer idVenta ) {
+        LegacyVenta venta = entityManager.find(LegacyVenta.class, idVenta);
+        data              = venta.properties;
+        data.date         = data.fechaHora
+        data.caja         = entityManager.find(Caja.class, data.idCaja as Integer).properties;
+        data.usuario      = entityManager.find(Usuario.class, data.idUsuario as Long).properties;
+        data.detalles     = []
+        data.id_almacen = data.idAlmacen;
+        data.id_caja    = data.idCaja;
+        data.id_venta   = venta.getId();
+
+        TypedQuery<LegacyVentaDetalle> query = entityManager.createQuery("SELECT lvd FROM LegacyVentaDetalle lvd WHERE id_venta = ?", LegacyVentaDetalle.class);
+        query.setParameter(1, venta.getId());
+        List<LegacyVentaDetalle> detalles = query.getResultList();
+        for( LegacyVentaDetalle lvd : detalles) {
+            final temp = [:];
+            omoikane.producto.Articulo art = productoRepo.readByPrimaryKey( lvd.idArticulo as Long );
+            temp             = lvd.properties;
+            temp.descripcion = art.getDescripcion();
+            data.detalles << temp;
+        }
+
+        generado          = generarTicket()
+    }
+
+    @Override
     def ticket(IDAlmacen, IDVenta) {
         def serv = new Nadesico().conectar()
         try {
