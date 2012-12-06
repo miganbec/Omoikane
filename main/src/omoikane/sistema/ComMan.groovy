@@ -56,8 +56,14 @@ class ComMan implements SerialPortEventListener {
             write(command.getBytes()); // $
             flush();
 
+            int waits = 0;
             try {
-                while(buffer.size() < 13) { wait(100); println "esperando en método pesar (${buffer.size()})" }
+                while(buffer.size() < 13) {
+                    waits++;
+                    wait(100);
+                    println "esperando en método pesar (${buffer.size()})"
+                    if(waits>3) { println "Tiempo excedido de método pesar, abortado."; throw new Exception("Abortar peso. Tiempo excedido"); }
+                }
                 //wait(500)
             } catch (InterruptedException e) {
             }

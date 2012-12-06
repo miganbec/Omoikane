@@ -3,7 +3,6 @@ package omoikane.caja.business;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
-import jfxtras.labs.dialogs.DialogFX;
 import name.antonsmirnov.javafx.dialog.Dialog;
 import omoikane.caja.data.IProductosDAO;
 import omoikane.caja.presentation.BuscarMasDummyProducto;
@@ -16,21 +15,15 @@ import omoikane.entities.LegacyVentaDetalle;
 import omoikane.principal.Principal;
 import omoikane.producto.Producto;
 import omoikane.sistema.Comprobantes;
-import omoikane.sistema.Dialogos;
 import omoikane.sistema.Usuarios;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.synyx.hades.domain.PageRequest;
 import org.synyx.hades.domain.Pageable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -67,10 +60,10 @@ public class CajaLogicImpl implements ICajaLogic {
         if(!capturaBloqueada) {
             capturaBloqueada = true;
             try {
-                LineaDeCaptura captura = new LineaDeCaptura(model.getCaptura().get());
+                LineaDeCapturaFilter capturaFilter = new LineaDeCapturaFilter(model.getCaptura().get());
                 model.getCaptura().set("");
 
-                addProducto(model, captura);
+                addProducto(model, capturaFilter);
 
             } catch (Exception e) {
                 logger.error("Error durante captura ('evento onCaptura')", e);
@@ -103,17 +96,31 @@ public class CajaLogicImpl implements ICajaLogic {
     }
 
 
-    private void addProducto(CajaModel model, LineaDeCaptura captura) {
+    private void addProducto(CajaModel model, LineaDeCapturaFilter capturaFilter) {
         model.getProductos().clear(); // Borra resultados de la búsqueda integrada
 
-        Producto producto = productosDAO.findByCodigo(captura.getCodigo()).get(0);
+        Producto producto = productosDAO.findByCodigo(capturaFilter.getCodigo()).get(0);
         /*Articulo producto = productoRepo.findByCodigo(captura.getCodigo()).get(0);*/
 
         ProductoModel productoModel = new ProductoModel();
         productoToProductoModel(producto, productoModel);
-        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(captura.getCantidad()));
+        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(capturaFilter.getCantidad()));
 
-        model.getVenta().add(productoModel);
+        //Agrupar o agregar
+        Boolean       agrupar = false;
+        ProductoModel productoBase = null;
+        for ( ProductoModel p : model.getVenta() ) {
+            if(p.getId().get() == productoModel.getId().get()) { agrupar = true; productoBase = p; break; }
+        }
+        if(agrupar) {
+            BigDecimal cantidadBase  = productoBase.getCantidad().get();
+            BigDecimal nuevaCantidad = cantidadBase.add(productoModel.getCantidad().get());
+            productoModel.getCantidad().set( nuevaCantidad );
+            model.getVenta().remove(productoBase);
+            model.getVenta().add(productoModel);
+        }   else {
+            model.getVenta().add(productoModel);
+        }
     }
 
     private void productoToProductoModel(Producto producto, ProductoModel productoModel) {
@@ -148,13 +155,18 @@ public class CajaLogicImpl implements ICajaLogic {
                 Dialog.showInfo("Venta registrada",
                         "Venta registrada");
 
-                getController().setModel( new CajaModel() );
-                getController().getCapturaTextField().requestFocus();
+                nuevaVenta();
             } catch (Exception e) {
                 logger.error("Error al guardar venta, venta no registrada.", e);
             }
         }
 
+    }
+
+    @Override
+    public void nuevaVenta() {
+        getController().setModel( new CajaModel() );
+        getController().getCapturaTextField().requestFocus();
     }
 
     private void imprimirVenta(LegacyVenta venta) {

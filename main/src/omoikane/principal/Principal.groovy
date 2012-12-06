@@ -43,7 +43,7 @@ public class Principal {
         public static boolean               impresoraActiva
         public static boolean               scannerActivo
         public static boolean               basculaActiva
-        public static def                   driverBascula
+        public static HashMap               driverBascula
         public static String                URLMySQL
         public static String                loginJasper
         public static String                passJasper

@@ -36,13 +36,13 @@ package omoikane.sistema;
 
     //public Usuario usrActivo = new Usuario();
     private static boolean autorizado = false;
-    public static def usuarioActivo = [:]
-    public static def    CAJERO        = 0
-    public static def    CAPTURISTA    = 0.5
-    public static def    SUPERVISOR    = 1
-    public static def    GERENTE       = 2
-    public static def    ADMINISTRADOR = 3
-    public static def    PROPIETARIO   = 4
+    public static def    usuarioActivo = [:]
+    public static def CAJERO        = 0
+    public static def CAPTURISTA    = 0.5
+    public static def SUPERVISOR    = 1
+    public static def GERENTE       = 2
+    public static def ADMINISTRADOR = 3
+    public static def PROPIETARIO   = 4
     public static Logger logger        = Logger.getLogger(Usuarios.class);
 
     public static def login() throws Exception {
@@ -63,7 +63,7 @@ package omoikane.sistema;
         }
     }
     public static def identificaPersona() throws Exception {
-            def escritorio   = omoikane.principal.Principal.escritorio.getFrameEscritorio()
+            def escritorio   = omoikane.principal.Principal?.escritorio?.getFrameEscritorio()
             def respuesta
             MiniLeerHuella fingerPrint
             Usuarios sysUsers = omoikane.principal.Principal.applicationContext.getBean(Usuarios.class);

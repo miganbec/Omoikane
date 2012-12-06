@@ -10,12 +10,14 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -26,9 +28,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.caja.business.ICajaLogic;
+import omoikane.caja.handlers.AbrirCajon;
+import omoikane.caja.handlers.CancelarProducto;
+import omoikane.caja.handlers.CancelarVenta;
 import omoikane.principal.Principal;
+import omoikane.sistema.ComMan;
 import omoikane.sistema.Dialogos;
 import omoikane.sistema.Herramientas;
+import org.apache.log4j.Logger;
 import org.synyx.hades.domain.PageRequest;
 
 
@@ -111,7 +118,12 @@ public class CajaController
     @FXML private ToggleButton btnVale;
     @FXML private ToggleButton btnCheque;
     @FXML private ToggleButton btnTarjeta;
+    @FXML private Button abrirCajonButton;
     @FXML private Button btnCobrar;
+    @FXML private Button btnCancelarProducto;
+    @FXML private AnchorPane capturaPane;
+    BasculaHandler basculaHandler;
+    public static Logger logger = Logger.getLogger(CajaController.class);
 
     @FXML
     private void onCapturaKeyReleased(KeyEvent event) {
@@ -122,6 +134,38 @@ public class CajaController
 
         } else if ( event.getCode() == KeyCode.ESCAPE ) {
             modelo.getCaptura().set("");
+        } else if( event.getCode() == KeyCode.PLUS ) {
+            basculaHandler.pesar();
+            event.consume();
+        }
+
+    }
+
+    private class BasculaHandler {
+
+        boolean basculaActiva = omoikane.principal.Principal.basculaActiva;
+        HashMap miniDriver    = omoikane.principal.Principal.driverBascula;
+        ComMan comMan;
+        boolean pesando       = false;
+        CajaModel cajaModel;
+
+        public BasculaHandler(CajaModel cajaModel) {
+            this.cajaModel = cajaModel;
+            if(basculaActiva) { new ComMan((String) miniDriver.get("port")); }
+        }
+
+        private void pesar() {
+            if(basculaActiva && !pesando) {
+                try {
+                    pesando = true;
+                    Double peso = (Double) comMan.readWeight(miniDriver.get("weightCommand"), miniDriver);
+                    getModel().getCaptura().set( peso + "*" );
+                } catch(ExceptionInInitializerError exPeso) {
+                    throw exPeso;
+                } finally {
+                    pesando = false;
+                }
+            }
         }
     }
 
@@ -130,6 +174,14 @@ public class CajaController
         if(pm != null) {
             modelo.getCaptura().set( pm.getCodigo().get() );
         }
+    }
+
+    public void setCapturaPaneDisable(Boolean b) {
+        capturaPane.setDisable(b);
+    }
+
+    public TableView<ProductoModel> getVentaTableView() {
+        return ventaTableView;
     }
 
     @FXML void onBusquedaIntegradaClicked(MouseEvent event) {
@@ -225,10 +277,32 @@ public class CajaController
         cajaLabel.textProperty().set( "Caja "+idCaja );
 
         //Agregar el controlador de nevegación por teclado
-        KBNavigationController kbnc = new KBNavigationController(this);
+        KBNavigationHandler kbnc = new KBNavigationHandler(this);
         mainAnchorPane.addEventFilter(KeyEvent.KEY_RELEASED, kbnc);
+
+        //Agregar el controlador de clicks
+        ClickHandler clickHandler = new ClickHandler(this);
+        abrirCajonButton.onActionProperty().set(clickHandler);
     }
 
+
+    private class ClickHandler implements EventHandler<ActionEvent> {
+        CajaController controller;
+
+        public ClickHandler(CajaController cajaController) {
+            this.controller = cajaController;
+        }
+
+        @Override
+        public void handle(ActionEvent event) {
+            if(event.getSource() == abrirCajonButton)
+                new AbrirCajon(controller).handle(event);
+            if(event.getSource() == cancelarVentaButton)
+                new CancelarVenta(controller).handle(event);
+            if(event.getSource() == btnCancelarProducto)
+                new CancelarProducto(controller).handle(event);
+        }
+    }
 
     public String capitalizarFecha(String s) {
 
@@ -249,6 +323,9 @@ public class CajaController
 
     public void setModel(final CajaModel modelo) {
         this.modelo = modelo;
+
+        //Handlers
+        basculaHandler = new BasculaHandler(modelo);
 
         //Bindings
         capturaTextField.textProperty().bindBidirectional(modelo.getCaptura());

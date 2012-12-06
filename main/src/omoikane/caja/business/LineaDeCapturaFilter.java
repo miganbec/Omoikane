@@ -12,12 +12,12 @@ import java.util.Arrays;
  * Time: 01:36 PM
  * To change this template use File | Settings | File Templates.
  */
-public class LineaDeCaptura {
+public class LineaDeCapturaFilter {
 
     private BigDecimal cantidad;
     private String codigo;
 
-    public LineaDeCaptura(String lineaDeCapturaString) {
+    public LineaDeCapturaFilter(String lineaDeCapturaString) {
         fromString(lineaDeCapturaString);
     }
 

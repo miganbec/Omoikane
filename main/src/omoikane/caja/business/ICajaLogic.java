@@ -20,4 +20,6 @@ public interface ICajaLogic {
     public void        onProductListChanged(CajaModel model);
 
     void setController(CajaController cajaController);
+
+    void nuevaVenta();
 }

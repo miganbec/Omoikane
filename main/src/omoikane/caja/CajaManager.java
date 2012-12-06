@@ -38,14 +38,6 @@ public class CajaManager extends Application {
             omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
             omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
 
-            /* PRuebas */
-
-            //ProductoRepo productoRepo = Principal.applicationContext.getBean(ProductoRepo.class);
-            //Articulo art = productoRepo.readByPrimaryKey(1000l);
-            //System.out.print("pausa");
-
-            /* end of pruebas */
-
             FXMLLoader fxmlLoader = new FXMLLoader(CajaManager.class.getResource("presentation/Caja.fxml"));
             AnchorPane page = (AnchorPane) fxmlLoader.load();
 

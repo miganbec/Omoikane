@@ -21,6 +21,7 @@ import groovy.inspect.swingui.*
  import javax.persistence.TypedQuery
  import org.springframework.beans.factory.annotation.Autowired
  import omoikane.repository.ProductoRepo
+ import org.apache.log4j.Logger
 
  class Comprobantes {
 
@@ -28,6 +29,7 @@ import groovy.inspect.swingui.*
     def generado
     def impresora = omoikane.principal.Principal.impresoraActiva
     def protocolo = omoikane.principal.Principal.puertoImpresion
+    public static Logger logger = Logger.getLogger(Comprobantes.class);
 
      @PersistenceContext
      EntityManager entityManager;
@@ -222,21 +224,29 @@ import groovy.inspect.swingui.*
 	 */
     def imprimir() { return probar() }
     def probar() {
-        if (impresora)
-        {
-        try {
-            FileOutputStream os = new FileOutputStream("$protocolo");
-            PrintStream ps = new PrintStream(os);
-            ps.println(generado);
-            ps.close();
-        } catch (FileNotFoundException fnf) { Dialogos.lanzarAlerta("Error al imprimir al puerto lpt1"); }
-        }
-        else
-        {
+        Thread.start {
+            if (impresora)
+            {
             try {
-            println generado
-            } catch (e) { Dialogos.lanzarAlerta("Error al mandar a al consola"); }
+                FileOutputStream os = new FileOutputStream("$protocolo");
+                PrintStream ps = new PrintStream(os);
+                ps.println(generado);
+                ps.close();
+            } catch (FileNotFoundException fnf) { Dialogos.lanzarAlerta("Error al imprimir al puerto lpt1"); }
+            }
+            else
+            {
+                try {
+                    logger.info(generado)
+                } catch (e) { Dialogos.lanzarAlerta("Error al mandar a al consola"); }
+            }
         }
+    }
+
+    public void abrirCajon() {
+        String generado = (27 as char)+(100 as char)+(8 as char);
+        logger.info("Teóricamente expulsando cajón de dinero");
+        imprimir();
     }
 
 }

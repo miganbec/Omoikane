@@ -1,15 +1,19 @@
 package omoikane.caja.presentation;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Control;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import omoikane.caja.handlers.AbrirCajon;
+import omoikane.caja.handlers.CancelarProducto;
+import omoikane.caja.handlers.CancelarVenta;
 
-public class KBNavigationController implements EventHandler<KeyEvent> {
+public class KBNavigationHandler implements EventHandler<KeyEvent> {
 
         CajaController cc;
 
-        public KBNavigationController(CajaController controller) {
+        public KBNavigationHandler(CajaController controller) {
             cc = controller;
         }
 
@@ -18,7 +22,7 @@ public class KBNavigationController implements EventHandler<KeyEvent> {
             Object target = event.getTarget();
             if (isControl(target)) {
                 Control control = (Control) target;
-                enterKeyNavigationRules(event.getCode(), control);
+                enterKeyNavigationRules(event.getCode(), control, event);
             }
         }
 
@@ -26,7 +30,7 @@ public class KBNavigationController implements EventHandler<KeyEvent> {
             return Control.class.isAssignableFrom(o.getClass());
         }
 
-        private void enterKeyNavigationRules(KeyCode keyCode, Control control) {
+        private void enterKeyNavigationRules(KeyCode keyCode, Control control, Event event) {
             if (keyCode.equals(KeyCode.ENTER))
                 switch (control.getId()) {
                     case "capturaTextField":
@@ -55,5 +59,11 @@ public class KBNavigationController implements EventHandler<KeyEvent> {
                 }
             if (keyCode.equals(KeyCode.F3))
                 cc.getCapturaTextField().requestFocus();
+            if (keyCode.equals(KeyCode.F6))
+                new AbrirCajon(cc).handle(event);
+            if (keyCode.equals(KeyCode.F7))
+                new CancelarProducto(cc).handle(event);
+            if (keyCode.equals(KeyCode.F12))
+                new CancelarVenta(cc).handle(event);
         }
     }
