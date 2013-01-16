@@ -170,6 +170,65 @@ class Caja implements Serializable {
         }
         if(!importeCorrecto) { panel.txtImporte.requestFocusInWindow() }
     }
+
+    static def btnMovimientosAction() {
+        Thread.start {
+            def panel  = new omoikane.formularios.PanelMovimientosCaja()
+            if(omoikane.sistema.Usuarios.autentifica(PMA_MOVIMIENTOSCAJA)) {
+                try {
+
+                    panel.setVisible(true)
+                    Herramientas.In2ActionX(panel, KeyEvent.VK_F6, "retiro"   ) { panel.btnRetiro.doClick()     }
+                    Herramientas.In2ActionX(panel, KeyEvent.VK_F5, "deposito"   ) { panel.btnDeposito.doClick()     }
+                    Herramientas.In2ActionX(panel, KeyEvent.VK_ENTER, "cerrar"   ) { panel.btnCerrar.doClick()     }
+                    Herramientas.In2ActionX(panel, KeyEvent.VK_ESCAPE, "cerrar"   ) { panel.btnCerrar.doClick()     }
+                    def movServ = Nadesico.conectar()
+                    SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    def horas = movServ.getCaja(IDCaja)
+
+                    def ventas= movServ.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), 'CURRENT_TIMESTAMP')
+                    movServ.desconectar()
+
+                    panel.txtNVentas.text   = ventas.nVentas
+                    panel.txtVentas.text    = ventas.total
+                    panel.txtRetiros.text   = ventas.retiros
+                    panel.txtDepositos.text = ventas.depositos
+
+                    panel.btnRetiro.actionPerformed = {
+                        Thread.start {
+                            def sisUsers = omoikane.sistema.Usuarios
+                            def usuario = sisUsers.identificaPersona()
+                            if(usuario.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
+                                Caja.doMovimientoCaja(panel, "Retiro",usuario.ID)
+                            }
+                            else{Dialogos.lanzarAlerta("Sin Permiso"); }
+                        }
+                    }
+
+                    panel.btnDeposito.actionPerformed = {
+                        Thread.start {
+                            def sisUsers = omoikane.sistema.Usuarios
+                            def usuario = sisUsers.identificaPersona()
+                            if(usuario.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
+                                Caja.doMovimientoCaja(panel, "Deposito",usuario.ID)
+                            }
+                            else{Dialogos.lanzarAlerta("Sin Permiso"); }
+                        }
+                    }
+
+                    def dialog = new JInternalDialog2(((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio(), "Movimientos Caja", panel)
+                    panel.btnCerrar.actionPerformed = { Thread.start { dialog.setActivo(false);  } }
+                    panel.txtImporte.requestFocusInWindow()
+                    dialog.setActivo(true)
+                    panel.txtImporte.requestFocusInWindow()
+                } catch(exce) {
+                    Dialogos.error("Error en movimientos caja: ${exce.getMessage()}", exce)
+                }} else {
+                javax.swing.JOptionPane.showMessageDialog(panel, "Acceso denegado")
+            }
+
+        }
+    }
     static def lanzarCaja() {
         if(cerrojo(PMA_LANZARCAJA)){
 
@@ -326,62 +385,7 @@ class Caja implements Serializable {
                 
             }
             form.btnMovimientos.actionPerformed = {
-                Thread.start {
-                    def panel  = new omoikane.formularios.PanelMovimientosCaja()
-                    if(cerrojo(PMA_MOVIMIENTOSCAJA)) {
-                    try {
-                        
-                        panel.setVisible(true)
-                        Herramientas.In2ActionX(panel, KeyEvent.VK_F6, "retiro"   ) { panel.btnRetiro.doClick()     }
-                        Herramientas.In2ActionX(panel, KeyEvent.VK_F5, "deposito"   ) { panel.btnDeposito.doClick()     }
-                        Herramientas.In2ActionX(panel, KeyEvent.VK_ENTER, "cerrar"   ) { panel.btnCerrar.doClick()     }
-                        Herramientas.In2ActionX(panel, KeyEvent.VK_ESCAPE, "cerrar"   ) { panel.btnCerrar.doClick()     }
-                        def movServ = Nadesico.conectar()
-                        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        def horas = serv.getCaja(IDCaja)
-
-                        def ventas= movServ.sumaVentas(IDCaja, sdf.format(horas.horaAbierta), 'CURRENT_TIMESTAMP')
-                        movServ.desconectar()
-
-                        panel.txtNVentas.text   = ventas.nVentas
-                        panel.txtVentas.text    = ventas.total
-                        panel.txtRetiros.text   = ventas.retiros
-                        panel.txtDepositos.text = ventas.depositos
-
-                        panel.btnRetiro.actionPerformed = {
-                            Thread.start {
-                                def sisUsers = omoikane.sistema.Usuarios
-                                def usuario = sisUsers.identificaPersona()
-                                if(usuario.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
-                                Caja.doMovimientoCaja(panel, "Retiro",usuario.ID)
-                                }
-                                else{Dialogos.lanzarAlerta("Sin Permiso");panel.txtImporte.requestFocusInWindow()}
-                            }
-                        }
-
-                        panel.btnDeposito.actionPerformed = {
-                            Thread.start {
-                                def sisUsers = omoikane.sistema.Usuarios
-                                def usuario = sisUsers.identificaPersona()
-                                if(usuario.cerrojo(omoikane.sistema.Usuarios.SUPERVISOR)){
-                                Caja.doMovimientoCaja(panel, "Deposito",usuario.ID)
-                                }
-                                else{Dialogos.lanzarAlerta("Sin Permiso");panel.txtImporte.requestFocusInWindow()}
-                            }
-                        }
-
-                        def dialog = new JInternalDialog2(((omoikane.principal.Escritorio)omoikane.principal.Principal.getEscritorio()).getFrameEscritorio(), "Movimientos Caja", panel)
-                        panel.btnCerrar.actionPerformed = { Thread.start { dialog.setActivo(false); form.txtCaptura.requestFocusInWindow() } }
-                        panel.txtImporte.requestFocusInWindow()
-                        dialog.setActivo(true)
-                        panel.txtImporte.requestFocusInWindow()
-                    } catch(exce) {
-                        Dialogos.error("Error en movimientos caja: ${exce.getMessage()}", exce)
-                    }} else {
-                        javax.swing.JOptionPane.showMessageDialog(panel, "Acceso denegado")
-                    }
-                    
-                }
+                btnMovimientosAction()
             }
             form.btnCancelaArt.actionPerformed = {
                 Thread.start {

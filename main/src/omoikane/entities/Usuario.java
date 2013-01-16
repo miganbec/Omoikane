@@ -41,6 +41,10 @@ public class Usuario {
 
     @NotNull    private Timestamp umodificacion;
 
+    public Usuario() {
+
+    }
+
     @PrePersist
     protected void onCreate() {
         umodificacion = new Timestamp(Calendar.getInstance().getTime().getTime());
@@ -125,6 +129,10 @@ public class Usuario {
 
     public void setUmodificacion(Timestamp umodificacion) {
         this.umodificacion = umodificacion;
+    }
+
+    public Usuario(Long id) {
+        this.id = id;
     }
 
     @Override

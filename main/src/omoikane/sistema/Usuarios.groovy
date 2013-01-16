@@ -36,7 +36,8 @@ package omoikane.sistema;
 
     //public Usuario usrActivo = new Usuario();
     private static boolean autorizado = false;
-    public static def    usuarioActivo = [:]
+    public static def usuarioActivo             = [:]
+    public static def ultimoUsuarioIdentificado = [:]
     public static def CAJERO        = 0
     public static def CAPTURISTA    = 0.5
     public static def SUPERVISOR    = 1
@@ -54,6 +55,9 @@ package omoikane.sistema;
     }
     public static int getIDUsuarioActivo() {
         return usuarioActivo.ID;
+    }
+    public static int getIDUltimoAutorizado() {
+        return ultimoUsuarioIdentificado.ID;
     }
     public static int setIDUsuarioActivo(Integer id) {
         if(usuarioActivo==null) {
@@ -104,6 +108,7 @@ package omoikane.sistema;
                 respuesta.cerrojo= { llave ->
                   return llave<=respuesta.sucursales[Principal.IDAlmacen as String]
                 }
+                ultimoUsuarioIdentificado = respuesta
             } else {
                 respuesta = [:]
                 respuesta.cerrojo= { return false; }
@@ -111,10 +116,10 @@ package omoikane.sistema;
 
             respuesta
     }
-    //Esta función sirve para dar un acceso especial a un usuario, por ejemplo para cancelaciones
+     //** Esta función sirve para dar un acceso especial a un usuario, por ejemplo para cancelaciones
 
-    public static def autentifica(llave) {
-        return identificaPersona().cerrojo(llave)
+    public static boolean autentifica(llave) {
+        return identificaPersona().cerrojo(llave) as boolean
     }
 
     public static boolean cerrojo(llave) {

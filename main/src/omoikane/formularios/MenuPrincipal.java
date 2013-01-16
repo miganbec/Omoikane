@@ -17,7 +17,10 @@ import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 
+import omoikane.caja.CajaManager;
+import omoikane.configuracion.ConfiguratorAppManager;
 import omoikane.moduloreportes.MenuOmoikane;
+import omoikane.sistema.Herramientas;
 import omoikane.sistema.StopWatch;
 import phesus.configuratron.ConfiguratorApp;
 
@@ -408,7 +411,20 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         StopWatch timer = new StopWatch().start();
-        omoikane.principal.Caja.lanzar();
+
+        //omoikane.principal.Caja.lanzar(); //Caja antigua
+
+        CajaManager manager = new CajaManager();
+        JInternalFrame internalFrame = manager.startJFXCaja();
+
+        Herramientas.panelCatalogo(internalFrame);
+        omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(internalFrame);
+        internalFrame.setBounds(10,10,990,570);
+        internalFrame.setVisible(true);
+        Herramientas.centrarVentana(internalFrame);
+        Herramientas.iconificable(internalFrame);
+        internalFrame.toFront();
+
         System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnVenderActionPerformed
 
@@ -476,7 +492,17 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //new omoikane.menudinamico.MenuModulos();
-        ConfiguratorApp.main(null);
+        ConfiguratorAppManager manager = new ConfiguratorAppManager();
+        JInternalFrame internalFrame = manager.startJFXConfigurator();
+
+        Herramientas.panelCatalogo(internalFrame);
+        omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(internalFrame);
+        internalFrame.setBounds(10,10,499,595);
+        internalFrame.setVisible(true);
+        Herramientas.centrarVentana(internalFrame);
+        Herramientas.iconificable(internalFrame);
+        internalFrame.toFront();
+
     }
 
     @Override

@@ -12,6 +12,6 @@ import javafx.beans.property.SimpleStringProperty;
 public class BuscarMasDummyProducto extends ProductoModel {
     public BuscarMasDummyProducto() {
         super();
-        setConcepto(new SimpleStringProperty("Buscar más productos..."));
+        conceptoProperty().set("Buscar más productos...");
     }
 }

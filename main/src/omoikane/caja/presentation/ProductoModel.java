@@ -1,6 +1,8 @@
 package omoikane.caja.presentation;
 
 import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import omoikane.producto.Producto;
 
 import java.math.BigDecimal;
@@ -22,31 +24,45 @@ public class ProductoModel {
     private ObjectProperty<BigDecimal> precioBase;
     private ObjectProperty<BigDecimal> impuestos;
     private ObjectProperty<BigDecimal> descuentos;
+    private StringProperty importeString;
     private Producto productoData;
 
     public ProductoModel() {
         id         = new SimpleLongProperty(0l);
         concepto   = new SimpleStringProperty("Concepto vacío");
-        setCodigo  ( new SimpleStringProperty(null) );
-        cantidad   = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
-        precio     = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+        setCodigo   ( new SimpleStringProperty(null) );
+        setCantidad ( new SimpleObjectProperty<BigDecimal>(new BigDecimal(0)) );
+        setPrecio   ( new SimpleObjectProperty<BigDecimal>(new BigDecimal(0)) );
+        precioBase = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
         impuestos  = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
         descuentos = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+        importeString = new SimpleStringProperty("");
+
     }
 
     /**
      *
      * @return String del importe formateado con el tipo de moneda predeterminado
      */
-    public String getImporteString() {
-        NumberFormat nf = NumberFormat.getCurrencyInstance();
-        BigDecimal importe = getImporte();
-        return nf.format( importe );
-    }
+    //public String getImporteString() {
+    //    NumberFormat nf = NumberFormat.getCurrencyInstance();
+    //    BigDecimal importe = getImporte();
+    //    return nf.format( importe );
+    //}
 
     public BigDecimal getImporte() {
         BigDecimal importe = cantidad.get().multiply( precio.get() );
         return importe;
+    }
+
+    private void updateImporteStringProperty() {
+        NumberFormat nf      = NumberFormat.getCurrencyInstance();
+        BigDecimal   importe = getImporte();
+        importeStringProperty().set( nf.format( importe ) );
+    }
+
+    public StringProperty importeStringProperty() {
+        return importeString;
     }
 
     public LongProperty getId() {
@@ -62,11 +78,11 @@ public class ProductoModel {
         return concepto.get();
     }
 
-    public StringProperty getConcepto() {
+    public StringProperty conceptoProperty() {
         return concepto;
     }
 
-    public void setConcepto(StringProperty concepto) {
+    private void setConcepto(StringProperty concepto) {
         this.concepto = concepto;
     }
 
@@ -81,7 +97,7 @@ public class ProductoModel {
         return nf.format(cantidad.get());
     }
 
-    public ObjectProperty<BigDecimal> getCantidad() {
+    public ObjectProperty<BigDecimal> cantidadProperty() {
         return cantidad;
     }
 
@@ -90,12 +106,20 @@ public class ProductoModel {
      * Redondeo BigDecimal.ROUND_HALF_UP
      * @param cantidad
      */
-    public void setCantidad(ObjectProperty<BigDecimal> cantidad) {
+
+    private void setCantidad(ObjectProperty<BigDecimal> cantidad) {
         cantidad.get().setScale(3, BigDecimal.ROUND_HALF_UP);
         this.cantidad = cantidad;
+
+        cantidad.addListener(new ChangeListener<BigDecimal>() {
+            @Override
+            public void changed(ObservableValue<? extends BigDecimal> observableValue, BigDecimal bigDecimal, BigDecimal bigDecimal1) {
+                updateImporteStringProperty();
+            }
+        });
     }
 
-    public ObjectProperty<BigDecimal> getPrecio() {
+    public ObjectProperty<BigDecimal> precioProperty() {
         return precio;
     }
 
@@ -110,18 +134,25 @@ public class ProductoModel {
 
     /**
      * Asigna el precio y establece la precisión a dos dígitos decimales y redondeo BigDecimal.ROUND_HALF_UP
-     * @param precio
      */
-    public void setPrecio(ObjectProperty<BigDecimal> precio) {
+    private void setPrecio(ObjectProperty<BigDecimal> precio) {
         precio.get().setScale(2, BigDecimal.ROUND_HALF_UP);
         this.precio = precio;
+
+        precio.addListener(new ChangeListener<BigDecimal>() {
+            @Override
+            public void changed(ObservableValue<? extends BigDecimal> observableValue, BigDecimal bigDecimal, BigDecimal bigDecimal1) {
+                updateImporteStringProperty();
+            }
+        });
+
     }
 
-    public ObjectProperty<BigDecimal> getImpuestos() {
+    public ObjectProperty<BigDecimal> impuestosProperty() {
         return impuestos;
     }
 
-    public void setImpuestos(ObjectProperty<BigDecimal> impuestos) {
+    private void setImpuestos(ObjectProperty<BigDecimal> impuestos) {
         impuestos.get().setScale(2, BigDecimal.ROUND_HALF_UP);
         this.impuestos = impuestos;
     }
@@ -142,11 +173,11 @@ public class ProductoModel {
         return nf.format(impuestos.get());
     }
 
-    public ObjectProperty<BigDecimal> getDescuentos() {
+    public ObjectProperty<BigDecimal> descuentoProperty() {
         return descuentos;
     }
 
-    public void setDescuentos(ObjectProperty<BigDecimal> descuentos) {
+    private void setDescuentos(ObjectProperty<BigDecimal> descuentos) {
         descuentos.get().setScale(2, BigDecimal.ROUND_HALF_UP);
         this.descuentos = descuentos;
     }
@@ -156,19 +187,19 @@ public class ProductoModel {
         return nf.format(descuentos.get());
     }
 
-    public void setPrecioBase(ObjectProperty<BigDecimal> precioBase) {
+    private void setPrecioBase(ObjectProperty<BigDecimal> precioBase) {
         this.precioBase = precioBase;
     }
 
-    public ObjectProperty<BigDecimal> getPrecioBase() {
+    public ObjectProperty<BigDecimal> precioBaseProperty() {
         return precioBase;
     }
 
-    public StringProperty getCodigo() {
+    public StringProperty codigoProperty() {
         return codigo;
     }
 
-    public void setCodigo(StringProperty codigo) {
+    private void setCodigo(StringProperty codigo) {
         this.codigo = codigo;
     }
 

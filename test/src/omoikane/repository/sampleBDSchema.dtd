@@ -3,6 +3,7 @@
     anotaciones*,
     articulos*,
     cajas*,
+    Cancelacion*,
     base_para_precios*,
     clientes*,
     codigos_articulos*,
@@ -88,6 +89,8 @@
     abierta CDATA #IMPLIED
     uFolio CDATA #REQUIRED
 >
+
+<!ELEMENT Cancelacion EMPTY>
 
 <!ELEMENT clientes EMPTY>
 <!ATTLIST clientes

@@ -75,6 +75,7 @@ public class Principal {
             configExceptions()
             def splash = new Splash()
             splash.iniciar()
+            Locale.setDefault(Locale.US);
 
             shutdownHandler = new ShutdownHandler()
             Runtime.getRuntime().addShutdownHook(shutdownHandler);

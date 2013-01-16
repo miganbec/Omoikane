@@ -15,6 +15,11 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: octavioruizcastillo
@@ -30,6 +35,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("../repository/sampleData.xml")
 public class CajaManagerTest {
+
     @Test
     public void cajaTest() {
         omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
@@ -41,5 +47,27 @@ public class CajaManagerTest {
 
         Application.launch(CajaManager.class, (java.lang.String[]) null);
 
+    }
+    @Test
+    public void cajaSwingTest() throws InvocationTargetException, InterruptedException {
+
+        SwingUtilities.invokeAndWait(new Runnable() {
+            @Override
+            public void run() {
+                omoikane.principal.Principal.setConfig(new omoikane.sistema.Config());
+                omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
+
+                CajaManager manager = new CajaManager();
+                JInternalFrame frame = manager.startJFXCaja();
+                JFrame jFrame = new JFrame("Caja");
+                jFrame.setContentPane(frame);
+                jFrame.setVisible(true);
+
+            }
+        });
+
+        while(true) {
+            Thread.sleep(10000);
+        }
     }
 }

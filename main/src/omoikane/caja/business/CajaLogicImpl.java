@@ -25,6 +25,7 @@ import org.synyx.hades.domain.Pageable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -86,7 +87,7 @@ public class CajaLogicImpl implements ICajaLogic {
         for( Producto p : productos ) {
             ProductoModel productoModel = new ProductoModel();
             productoToProductoModel(p, productoModel);
-            productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>( new BigDecimal(1) ));
+            productoModel.cantidadProperty().set( new BigDecimal(1) );
 
             obsProductos.add(productoModel);
         }
@@ -96,7 +97,7 @@ public class CajaLogicImpl implements ICajaLogic {
     }
 
 
-    private void addProducto(CajaModel model, LineaDeCapturaFilter capturaFilter) {
+    private void addProducto(CajaModel model, LineaDeCapturaFilter capturaFilter) throws Exception {
         model.getProductos().clear(); // Borra resultados de la búsqueda integrada
 
         Producto producto = productosDAO.findByCodigo(capturaFilter.getCodigo()).get(0);
@@ -104,7 +105,8 @@ public class CajaLogicImpl implements ICajaLogic {
 
         ProductoModel productoModel = new ProductoModel();
         productoToProductoModel(producto, productoModel);
-        productoModel.setCantidad(new SimpleObjectProperty<BigDecimal>(capturaFilter.getCantidad()));
+        productoModel.cantidadProperty().set( capturaFilter.getCantidad() );
+        reglasDeCantidad(productoModel);
 
         //Agrupar o agregar
         Boolean       agrupar = false;
@@ -113,9 +115,9 @@ public class CajaLogicImpl implements ICajaLogic {
             if(p.getId().get() == productoModel.getId().get()) { agrupar = true; productoBase = p; break; }
         }
         if(agrupar) {
-            BigDecimal cantidadBase  = productoBase.getCantidad().get();
-            BigDecimal nuevaCantidad = cantidadBase.add(productoModel.getCantidad().get());
-            productoModel.getCantidad().set( nuevaCantidad );
+            BigDecimal cantidadBase  = productoBase.cantidadProperty().get();
+            BigDecimal nuevaCantidad = cantidadBase.add(productoModel.cantidadProperty().get());
+            productoModel.cantidadProperty().set( nuevaCantidad );
             model.getVenta().remove(productoBase);
             model.getVenta().add(productoModel);
         }   else {
@@ -123,14 +125,31 @@ public class CajaLogicImpl implements ICajaLogic {
         }
     }
 
+    private void reglasDeCantidad(ProductoModel productoModel) throws Exception {
+        try {
+            String unidad = productoModel.getProductoData().getUnidad();
+            BigDecimal cantidad = productoModel.cantidadProperty().get();
+
+            if(!unidad.equalsIgnoreCase("KG") && !unidad.equalsIgnoreCase("LT"))
+            { productoModel.cantidadProperty().set( cantidad.setScale(0, RoundingMode.CEILING) ); }
+            else
+            {
+                if(cantidad.compareTo(new BigDecimal("0.025")) < 0)
+                    productoModel.cantidadProperty().set(new BigDecimal("0.025"));
+            }
+        } catch(Exception e) {
+            throw new Exception("Error en caja comprobando unidad de producto", e);
+        }
+    }
+
     private void productoToProductoModel(Producto producto, ProductoModel productoModel) {
-        productoModel.getId().set( producto.getId() );
-        productoModel.setCodigo(new SimpleStringProperty(producto.getCodigo()));
-        productoModel.setPrecioBase(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecioBase()));
-        productoModel.setConcepto(new SimpleStringProperty(producto.getDescripcion()));
-        productoModel.setDescuentos(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getDescuento()));
-        productoModel.setImpuestos(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getImpuestos()));
-        productoModel.setPrecio(new SimpleObjectProperty<BigDecimal>(producto.getPrecio().getPrecio()));
+        productoModel.getId()             .set( producto.getId() );
+        productoModel.codigoProperty()    .set( producto.getCodigo() );
+        productoModel.precioBaseProperty().set( producto.getPrecio().getPrecioBase() );
+        productoModel.conceptoProperty()  .set( producto.getDescripcion() );
+        productoModel.descuentoProperty() .set( producto.getPrecio().getDescuento() );
+        productoModel.impuestosProperty() .set( producto.getPrecio().getImpuestos() );
+        productoModel.precioProperty()    .set( producto.getPrecio().getPrecio() );
         productoModel.setProductoData(producto);
     }
 
@@ -212,10 +231,10 @@ public class CajaLogicImpl implements ICajaLogic {
             lvd.setIdCaja    ( idCaja );
             lvd.setIdLinea   ( producto.getProductoData().getLineaByLineaId().getId() );
             lvd.setIdVenta   ( venta.getId() );
-            lvd.setCantidad  ( producto.getCantidad().get().doubleValue() );
-            lvd.setPrecio    ( producto.getPrecio().get().doubleValue() );
-            lvd.setDescuento ( producto.getDescuentos().get().doubleValue() );
-            lvd.setImpuestos ( producto.getImpuestos().get().doubleValue() );
+            lvd.setCantidad  ( producto.cantidadProperty().get().doubleValue() );
+            lvd.setPrecio    ( producto.precioProperty().get().doubleValue() );
+            lvd.setDescuento ( producto.descuentoProperty().get().doubleValue() );
+            lvd.setImpuestos ( producto.impuestosProperty().get().doubleValue() );
             lvd.setSubtotal  ( producto.getSubtotal().doubleValue() );
             lvd.setTotal     ( producto.getImporte().doubleValue() );
             lvd.setTipoSalida( "" );
@@ -236,7 +255,7 @@ public class CajaLogicImpl implements ICajaLogic {
         return folioActual;
     }
 
-    public void onProductListChanged(CajaModel model) {
+    public void onVentaListChanged(CajaModel model) {
         BigDecimal subtotal = new BigDecimal(0);
         subtotal.setScale(2, BigDecimal.ROUND_HALF_UP);
 
@@ -251,8 +270,8 @@ public class CajaLogicImpl implements ICajaLogic {
 
         for ( ProductoModel producto : model.getVenta() ) {
             subtotal   = subtotal  .add( producto.getSubtotal() );
-            descuentos = descuentos.add( producto.getDescuentos().get() );
-            impuestos  = impuestos .add( producto.getImpuestos().get() );
+            descuentos = descuentos.add( producto.descuentoProperty().get() );
+            impuestos  = impuestos .add( producto.impuestosProperty().get() );
         }
 
         total = total.add( subtotal );

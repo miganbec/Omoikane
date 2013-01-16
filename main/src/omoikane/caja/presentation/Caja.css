@@ -1,0 +1,17 @@
+.label:hover {
+	-fx-scale-y: 1.2;
+	-fx-scale-x: 1.2;
+}
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+.anchor-pane {
+	-fx-background-color: transparent;
+}
+.split-pane {
+	-fx-background-color: transparent;
+}

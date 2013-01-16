@@ -8,6 +8,7 @@ import javafx.scene.input.KeyEvent;
 import omoikane.caja.handlers.AbrirCajon;
 import omoikane.caja.handlers.CancelarProducto;
 import omoikane.caja.handlers.CancelarVenta;
+import omoikane.caja.handlers.MovimientosDeCaja;
 
 public class KBNavigationHandler implements EventHandler<KeyEvent> {
 
@@ -31,7 +32,7 @@ public class KBNavigationHandler implements EventHandler<KeyEvent> {
         }
 
         private void enterKeyNavigationRules(KeyCode keyCode, Control control, Event event) {
-            if (keyCode.equals(KeyCode.ENTER))
+            if (keyCode.equals(KeyCode.ENTER) && control.getId() != null)
                 switch (control.getId()) {
                     case "capturaTextField":
                         String text = cc.getCapturaTextField().getText();
@@ -59,6 +60,10 @@ public class KBNavigationHandler implements EventHandler<KeyEvent> {
                 }
             if (keyCode.equals(KeyCode.F3))
                 cc.getCapturaTextField().requestFocus();
+            if (keyCode.equals(KeyCode.F4))
+                cc.ventaEspecialHandler.handle(event);
+            if (keyCode.equals(KeyCode.F5))
+                new MovimientosDeCaja(cc).handle(event);
             if (keyCode.equals(KeyCode.F6))
                 new AbrirCajon(cc).handle(event);
             if (keyCode.equals(KeyCode.F7))

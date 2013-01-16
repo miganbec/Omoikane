@@ -17,7 +17,7 @@ public interface ICajaLogic {
     public void        buscar(CajaModel model);
     public void        calcularCambio(CajaModel model);
     public void        terminarVenta(CajaModel model);
-    public void        onProductListChanged(CajaModel model);
+    public void onVentaListChanged(CajaModel model);
 
     void setController(CajaController cajaController);
 

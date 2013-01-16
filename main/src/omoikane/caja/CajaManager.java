@@ -1,6 +1,8 @@
 package omoikane.caja;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -11,6 +13,11 @@ import omoikane.caja.presentation.CajaController;
 import omoikane.caja.presentation.CajaModel;
 import omoikane.principal.Principal;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,34 +34,75 @@ public class CajaManager extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Application.launch(CajaManager.class, (java.lang.String[])null);
+    public static void main(String[] args) throws InvocationTargetException, InterruptedException {
+        SwingUtilities.invokeAndWait(new Runnable() {
+            @Override
+            public void run() {
+                omoikane.principal.Principal.setConfig(new omoikane.sistema.Config());
+                omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
+
+                CajaManager manager = new CajaManager();
+                manager.startJFXCaja();
+
+            }
+        });
     }
 
     @Override
     public void start(Stage primaryStage) {
         try {
 
-            omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
-            omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
+            Scene scene = initCaja();
 
-            FXMLLoader fxmlLoader = new FXMLLoader(CajaManager.class.getResource("presentation/Caja.fxml"));
-            AnchorPane page = (AnchorPane) fxmlLoader.load();
-
-            Scene scene = new Scene(page);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Caja 3.0 alfa");
             primaryStage.show();
 
-            model      = new CajaModel();
-            controller = fxmlLoader.getController();
-            controller.setModel(model);
-
-            ICajaLogic cajaLogic = (ICajaLogic) Principal.applicationContext.getBean("cajaLogic");
-            controller.setCajaLogic( cajaLogic );
-
         } catch (Exception ex) {
             logger.error( ex.getMessage(), ex );
         }
+    }
+
+    private Scene initCaja() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(CajaManager.class.getResource("presentation/Caja.fxml"));
+        AnchorPane page = (AnchorPane) fxmlLoader.load();
+
+        Scene scene = new Scene(page);
+        scene.getStylesheets().add(CajaController.class.getResource("Caja.css").toExternalForm());
+
+        model      = new CajaModel();
+        controller = fxmlLoader.getController();
+        controller.setModel(model);
+
+        ICajaLogic cajaLogic = (ICajaLogic) Principal.applicationContext.getBean("cajaLogic");
+        controller.setCajaLogic( cajaLogic );
+        return scene;
+
+    }
+
+    public JInternalFrame startJFXCaja() {
+        JInternalFrame frame = new JInternalFrame("FX");
+        final JFXPanel fxPanel = new JFXPanel();
+
+        frame.add(fxPanel);
+        frame.setVisible(true);
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = null;
+                try {
+                    scene = initCaja();
+                    scene.setFill(null);
+                    fxPanel.setScene(scene);
+                } catch (IOException e) {
+                    logger.error(e.getMessage(), e);
+                }
+
+            }
+        });
+
+        return frame;
     }
 }

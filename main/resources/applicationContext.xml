@@ -28,12 +28,14 @@
     <bean id="huellasCache" class="omoikane.sistema.huellas.HuellasCache"></bean>
     <bean id="config" class="omoikane.sistema.Config"></bean>
     <bean id="productoDao" class="omoikane.caja.data.ProductosNadesicoAdapter"></bean>
+    <bean id="comprobantes" class="omoikane.sistema.Comprobantes"></bean>
 
     <hades:dao-config base-package="omoikane.repository"
                       entity-manager-factory-ref="entityManagerFactory">
         <hades:dao id="usuarioRepo" />
         <hades:dao id="productoRepo" />
         <hades:dao id="ventaRepo" />
+        <hades:dao id="cancelacionRepo" />
     </hades:dao-config>
 
     <bean id="log4jInitializer" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">

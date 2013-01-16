@@ -1,9 +1,17 @@
 package omoikane.caja.handlers;
 
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import omoikane.caja.presentation.CajaController;
+import omoikane.caja.presentation.ProductoModel;
+import omoikane.entities.Cancelacion;
+import omoikane.entities.Usuario;
+import omoikane.principal.Principal;
+import omoikane.producto.Articulo;
+import omoikane.repository.CancelacionRepo;
 import omoikane.sistema.Usuarios;
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,22 +22,36 @@ import org.apache.log4j.Logger;
  */
 public class CancelarVenta extends ICajaEventHandler {
     public static Logger logger = Logger.getLogger(CancelarVenta.class);
+    CancelacionRepo repo;
 
     public CancelarVenta(CajaController controller) {
         super(controller);
+        repo = (CancelacionRepo) Principal.applicationContext.getBean("cancelacionRepo");
     }
 
     @Override
     public void handle(Event event) {
         try {
-            Usuarios.login();
-            if(Usuarios.cerrojo(Usuarios.SUPERVISOR)) {
+            if(Usuarios.autentifica(Usuarios.SUPERVISOR)) {
+                registrar(getController().getModel().getVenta());
                 getController().getCajaLogic().nuevaVenta();
             } else {
                 getController().getCapturaTextField().requestFocus();
             }
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            logger.error("Error al cancelar venta", e);
+        }
+    }
+
+    @Transactional
+    private void registrar(ObservableList<ProductoModel> venta) {
+
+        for(ProductoModel pm : venta) {
+            Cancelacion c = new Cancelacion();
+            c.setArticulo   ( new Articulo( pm.getLongId() ) );
+            c.setCajero     ( new Usuario( new Long(Usuarios.getIDUsuarioActivo()   ) ) );
+            c.setAutorizador( new Usuario( new Long(Usuarios.getIDUltimoAutorizado()) ) );
+            repo.save(c);
         }
     }
 }

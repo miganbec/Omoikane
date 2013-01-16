@@ -4,16 +4,18 @@
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import jfxtras.labs.scene.control.*?>
 <?import jfxtras.labs.scene.control.BigDecimalField?>
+<?scenebuilder-stylesheet Caja.css?>
 
 <AnchorPane id="AnchorPane" fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.9998847412135" prefWidth="957.9999000000025" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.caja.presentation.CajaController">
   <children>
-    <ToolBar minHeight="29.0001220703125" prefHeight="31.99999986419425" prefWidth="957.9999000000025" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
+    <ToolBar fx:id="mainToolBar" disable="false" minHeight="29.0001220703125" prefHeight="31.99999986419425" prefWidth="957.9999000000025" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
       <items>
         <Button id="buscar" fx:id="buscarProductoButton" mnemonicParsing="false" prefHeight="21.0" prefWidth="147.0" text="Catálogo... [F1]">
           <font>
@@ -21,18 +23,18 @@
           </font>
         </Button>
         <Button fx:id="ventaEspecialButton" font="$x3" mnemonicParsing="false" text="Venta Especial [F4]" />
+        <Button fx:id="movimientosButton" font="$x3" mnemonicParsing="false" text="Movimientos de Caja [F5]" />
         <Button id="buscar" fx:id="abrirCajonButton" font="$x3" mnemonicParsing="false" prefHeight="21.0" prefWidth="147.0" text="Abrir Cajón [F6]" />
         <Button id="cancelarArticuloButton" fx:id="btnCancelarProducto" font="$x3" mnemonicParsing="false" text="Cancelar Artículo [F7]" />
-        <Button fx:id="movimientosButton" font="$x3" mnemonicParsing="false" text="Movimientos de Caja [F5]" />
         <Button fx:id="pausarButton" font="$x3" mnemonicParsing="false" text="Pausar [Pause]" />
         <Button fx:id="cancelarVentaButton" font="$x3" mnemonicParsing="false" text="Cancelar Venta [F12]" />
       </items>
     </ToolBar>
-    <SplitPane dividerPositions="0.5941423215630027" focusTraversable="true" prefHeight="506.99988474121346" prefWidth="957.9999000000025" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.5951883467770221" focusTraversable="true" prefHeight="506.99988474121346" prefWidth="957.9999000000025" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <TableView fx:id="ventaTableView" prefHeight="417.0" prefWidth="538.0" style="-fx-font-size: 16" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="56.0">
+            <TableView fx:id="ventaTableView" editable="false" prefHeight="417.0" prefWidth="538.0" style="-fx-font-size: 16" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="56.0">
               <columns>
                 <TableColumn prefWidth="225.0" text="Concepto" fx:id="conceptoVentaColumn" />
                 <TableColumn prefWidth="75.0" text="Cantidad" fx:id="cantidadVentaColumn" />
@@ -57,7 +59,7 @@
             </Label>
           </children>
         </AnchorPane>
-        <AnchorPane fx:id="capturaPane" maxWidth="384.0" minHeight="0.0" minWidth="384.0" prefHeight="480.0" prefWidth="384.0">
+        <AnchorPane fx:id="capturaPane" disable="false" maxWidth="384.0" minHeight="0.0" minWidth="384.0" prefHeight="480.0" prefWidth="384.0">
           <children>
             <Label fx:id="totalLabel" alignment="CENTER_RIGHT" minHeight="32.0" prefHeight="43.0" prefWidth="201.0" text="\$ 180.93" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="14.0">
               <font>
@@ -96,6 +98,16 @@
             </TableView>
             <TextField fx:id="capturaTextField" onKeyPressed="#onCapturaKeyPressed" onKeyReleased="#onCapturaKeyReleased" onKeyTyped="#onCapturaKeyTyped" prefWidth="259.0" style="-fx-font-size: 16&#10;" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="17.0" />
             <Label font="$x1" text="Captura [F3]:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="17.0" />
+            <Rectangle fx:id="hudRectangle" arcHeight="11.0" arcWidth="11.0" disable="false" fill="BLACK" focusTraversable="true" height="220.0" mouseTransparent="false" opacity="0.82" pickOnBounds="true" stroke="BLACK" strokeType="INSIDE" visible="true" width="331.5" AnchorPane.leftAnchor="24.5" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="130.0">
+              <effect>
+                <Bloom threshold="0.4580152671755725" />
+              </effect>
+            </Rectangle>
+            <Text fx:id="hudText" disable="false" fill="WHITE" font="$x3" scaleX="1.0" scaleY="1.0" smooth="true" strokeType="OUTSIDE" strokeWidth="0.0" text="[Enter] para cancelar un producto&#10;[Esc] para no cancelar" textAlignment="LEFT" textOrigin="CENTER" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="226.0">
+              <effect>
+                <Bloom threshold="0.732824427480916" />
+              </effect>
+            </Text>
           </children>
         </AnchorPane>
       </items>

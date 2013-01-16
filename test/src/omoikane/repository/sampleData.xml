@@ -200,6 +200,8 @@
   <articulos id_articulo="22726" codigo="650240015861" id_linea="11" descripcion="SUEROX CHICLE 500 ML" unidad="PZA" impuestos="16.0" uModificacion="2012-05-26 11:59:53.0" version="0" id_grupo="1"/>
   <articulos id_articulo="22725" codigo="650240015878" id_linea="11" descripcion="SUEROX ENERGY 500 ML" unidad="PZA" impuestos="16.0" uModificacion="2012-04-05 09:26:05.0" version="0" id_grupo="1"/>
   <articulos id_articulo="22724" codigo="650240015892" id_linea="11" descripcion="SUEROX MANGO ENCHILADO 500 ML" unidad="PZA" impuestos="16.0" uModificacion="2012-08-16 20:26:34.0" version="0" id_grupo="1"/>
+  <articulos id_articulo="500"   codigo="500" id_linea="11" descripcion="PLATANO DOMINICO 1KG" unidad="KG" impuestos="0.0" uModificacion="2012-08-16 20:26:34.0" version="0" id_grupo="1"/>
+  <base_para_precios id_articulo="500"   descripcion="PLATANO DOMINICO" costo="10.50" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="20.12"/>
   <base_para_precios id_articulo="22941" descripcion="RANCHO SAN NICOLAS LECHE 1LT" costo="6.66" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="20.12"/>
   <base_para_precios id_articulo="22940" descripcion="SAMEYRO SALSA HABANERA 160ML" costo="12.5" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="60.0"/>
   <base_para_precios id_articulo="22939" descripcion="SAMEYRO SALSA ESPECIAL 160ML" costo="12.5" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="60.0"/>
@@ -665,5 +667,6 @@
   <cajas id_caja="4" id_almacen="1" descripcion="Caja 4" creado="2009-08-16 09:17:59.0" uModificacion="2009-08-16 09:17:59.0" horaAbierta="2012-11-15 09:48:45.0" horaCerrada="2012-11-14 22:43:34.0" abierta="true" uFolio="751195"/>
   <cajas id_caja="5" id_almacen="1" descripcion="Caja 5" creado="2009-08-30 04:34:38.0" uModificacion="2009-08-30 04:34:38.0" horaAbierta="2012-11-15 07:47:34.0" horaCerrada="2012-11-14 22:06:48.0" abierta="true" uFolio="492456"/>
   <cajas id_caja="6" id_almacen="1" descripcion="Caja Mayoreo" creado="2010-06-06 07:44:17.0" uModificacion="2010-06-06 07:44:17.0" horaAbierta="2010-06-08 18:36:35.0" horaCerrada="2010-06-08 23:05:00.0" abierta="false" uFolio="0"/>
+  <Cancelacion/>
   <usuarios id_usuario="1" nombre="Peluso" fecha_hora_alta="2009-01-01 00:00:01:00.0" huella1="" huella2="" huella3="" nip="1234" uModificacion="2009-08-30 04:34:38.0"/>
 </dataset>

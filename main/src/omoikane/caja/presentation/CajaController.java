@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
@@ -26,11 +27,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.caja.business.ICajaLogic;
-import omoikane.caja.handlers.AbrirCajon;
-import omoikane.caja.handlers.CancelarProducto;
-import omoikane.caja.handlers.CancelarVenta;
+import omoikane.caja.handlers.*;
 import omoikane.principal.Principal;
 import omoikane.sistema.ComMan;
 import omoikane.sistema.Dialogos;
@@ -122,7 +124,13 @@ public class CajaController
     @FXML private Button btnCobrar;
     @FXML private Button btnCancelarProducto;
     @FXML private AnchorPane capturaPane;
+    @FXML private ToolBar mainToolBar;
+
+    @FXML private Rectangle hudRectangle;
+    @FXML private Text hudText;
+
     BasculaHandler basculaHandler;
+    VentaEspecialHandler ventaEspecialHandler;
     public static Logger logger = Logger.getLogger(CajaController.class);
 
     @FXML
@@ -139,6 +147,10 @@ public class CajaController
             event.consume();
         }
 
+    }
+
+    public TableColumn getPrecioVentaColumn() {
+        return precioVentaColumn;
     }
 
     private class BasculaHandler {
@@ -172,12 +184,16 @@ public class CajaController
     private void ifAnySelectedProductoThenSelect() {
         ProductoModel pm = productosTableView.getSelectionModel().getSelectedItem();
         if(pm != null) {
-            modelo.getCaptura().set( pm.getCodigo().get() );
+            modelo.getCaptura().set( pm.codigoProperty().get() );
         }
     }
 
     public void setCapturaPaneDisable(Boolean b) {
         capturaPane.setDisable(b);
+    }
+
+    public void setMainToolBarDisable(Boolean b) {
+        mainToolBar.setDisable(b);
     }
 
     public TableView<ProductoModel> getVentaTableView() {
@@ -207,6 +223,34 @@ public class CajaController
     @FXML
     private void onTerminarVentaClicked(ActionEvent event) {
         cajaLogic.terminarVenta(getModel());
+    }
+
+    public void showHud(String msg) {
+        hudText.setDisable(false);
+        hudRectangle.setVisible(true);
+        FadeTransition ft = new FadeTransition(Duration.millis(1000), hudRectangle);
+        ft.setFromValue(0.0);
+        ft.setToValue(0.8);
+        ft.setCycleCount(1);
+        ft.play();
+
+        hudText.setText(msg);
+        hudText.setVisible(true);
+    }
+
+    public void hideHud() {
+        FadeTransition ft = new FadeTransition(Duration.millis(1000), hudRectangle);
+        ft.setFromValue(0.8);
+        ft.setToValue(0.0);
+        ft.setCycleCount(1);
+        ft.play();
+        ft.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                hudRectangle.setVisible(false);
+                hudText.setVisible(false);
+            }
+        });
     }
 
     private void scroll() {
@@ -261,11 +305,14 @@ public class CajaController
         // initialize your logic here: all @FXML variables will have been injected
         conceptoVentaColumn     .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.545d) );
         cantidadVentaColumn     .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
-        precioVentaColumn       .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
+        getPrecioVentaColumn().prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
         importeVentaColumn      .prefWidthProperty().bind( ventaTableView.widthProperty().multiply(0.15d) );
 
         descripcionProductoColumn.prefWidthProperty().bind( productosTableView.widthProperty().multiply(0.743d) );
         precioProductoColumn     .prefWidthProperty().bind( productosTableView.widthProperty().multiply(0.25d ) );
+
+        //Preparar GUI
+        hideHud();
 
         //Escribir la fecha
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE d 'de' MMMM 'de' yyyy");
@@ -282,7 +329,10 @@ public class CajaController
 
         //Agregar el controlador de clicks
         ClickHandler clickHandler = new ClickHandler(this);
-        abrirCajonButton.onActionProperty().set(clickHandler);
+        mainToolBar.addEventFilter(ActionEvent.ACTION, clickHandler);
+
+        //Agregar el manejador de ventas especiales
+        ventaEspecialHandler = new VentaEspecialHandler(this);
     }
 
 
@@ -295,12 +345,16 @@ public class CajaController
 
         @Override
         public void handle(ActionEvent event) {
-            if(event.getSource() == abrirCajonButton)
+            if(event.getTarget() == abrirCajonButton)
                 new AbrirCajon(controller).handle(event);
-            if(event.getSource() == cancelarVentaButton)
+            if(event.getTarget() == cancelarVentaButton)
                 new CancelarVenta(controller).handle(event);
-            if(event.getSource() == btnCancelarProducto)
+            if(event.getTarget() == btnCancelarProducto)
                 new CancelarProducto(controller).handle(event);
+            if(event.getTarget() == movimientosButton)
+                new MovimientosDeCaja(controller).handle(event);
+            if(event.getTarget() == ventaEspecialButton)
+                ventaEspecialHandler.handle(event);
         }
     }
 
@@ -368,7 +422,7 @@ public class CajaController
         cantidadVentaColumn.setCellValueFactory(
                 new PropertyValueFactory<ProductoModel, String>("cantidadString")
         );
-        precioVentaColumn.setCellValueFactory(
+        getPrecioVentaColumn().setCellValueFactory(
                 new PropertyValueFactory<ProductoModel, String>("precioString")
         );
         importeVentaColumn.setCellValueFactory(
@@ -388,7 +442,7 @@ public class CajaController
         ventaTableView.getItems().addListener(new ListChangeListener<ProductoModel>() {
 
             public void onChanged(Change<? extends ProductoModel> change) {
-                getCajaLogic().onProductListChanged(modelo);
+                getCajaLogic().onVentaListChanged(modelo);
                 nArticulosLabel.textProperty().set( modelo.getVenta().size() + " artículo(s)" );
             }
         });
@@ -459,4 +513,5 @@ public class CajaController
             try { this.notify(); } catch(Exception e) {}
         }
     }
+
 }
