@@ -5,9 +5,10 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
+#define SrcOmoikaneFolder = SourcePath
 AppId={{38A4709D-FE9E-4F0F-AE9F-C721A7FDC32A}
 AppName=Omoikane
-AppVersion=1.3.3
+AppVersion={#AppVersion}
 ;AppVerName=Omoikane 1.3.3
 AppPublisher=Phesus
 AppPublisherURL=http://www.phesus.com/
@@ -16,7 +17,8 @@ AppUpdatesURL=http://www.phesus.com/
 DefaultDirName=c:\Phesus\Omoikane\Omoikane
 DefaultGroupName=Omoikane
 DisableProgramGroupPage=yes
-OutputBaseFilename=setup
+OutputDir={#SrcOmoikaneFolder}\archive
+OutputBaseFilename=omoikane-{#AppVersion}
 Compression=lzma
 SolidCompression=yes
 
@@ -28,28 +30,28 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\inicio.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPCOper2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPCrStor.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPDevice2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPDevTS.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DpHostW.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPJasPer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPmsg.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPMux.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DpSvInfo2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\DPTSClnt.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\inicio.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\Omoikane.jar"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\RXTXcomm.jar"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\rxtxSerial.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\wyUpdate\client.wyc"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\wyUpdate\wyUpdate.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\AppDev\Proyectos\Omoikane\archive\dist-1.3.3\lib\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\AppDev\Proyectos\Omoikane\3rd party\jre-7u5-windows-i586.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\AppDev\Proyectos\Omoikane\3rd party\NetFx20SP2_x86.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\AppDev\Proyectos\Omoikane\3rd party\RTE\setup.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\AppDev\Proyectos\Omoikane\3rd party\Driver uareu4500\Setup.msi"; DestDir: "{tmp}"; Flags: ignoreversion createallsubdirs deleteafterinstall recursesubdirs
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\inicio.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPCOper2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPCrStor.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPDevice2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPDevTS.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DpHostW.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPJasPer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPmsg.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPMux.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DpSvInfo2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\DPTSClnt.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\inicio.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\Omoikane.jar"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\RXTXcomm.jar"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\rxtxSerial.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\wyUpdate\client.wyc"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\wyUpdate\wyUpdate.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\lib\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SrcOmoikaneFolder}\3rd party\jre-7u5-windows-i586.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SrcOmoikaneFolder}\3rd party\NetFx20SP2_x86.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SrcOmoikaneFolder}\3rd party\RTE\setup.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SrcOmoikaneFolder}\3rd party\Driver uareu 4500\Setup.msi"; DestDir: "{tmp}"; Flags: ignoreversion createallsubdirs deleteafterinstall recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

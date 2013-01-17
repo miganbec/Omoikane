@@ -7,11 +7,17 @@ apply plugin: 'eclipse'
 
 version = '1.4.0 alfa'
 
-mainClassName = "omoikane.principal.MainJava"
-
+mainClassName       = "omoikane.principal.MainJava"
 sourceCompatibility = 1.6
-
-title = 'Omoikane'
+title               = 'Omoikane'
+innoSetupCompiler   = 'c:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe'
+wyUpdateCompiler    = 'c:\\Program Files (x86)\\wyBuild\\wybuild.cmd.exe'
+versionNotes        = 
+    """
+        Versión 1.4
+        Novedades:
+            - Prueba
+    """;
 
 def defaultEncoding = "UTF-8"
 [compileGroovy, compileTestGroovy]*.options*.encoding = defaultEncoding
@@ -189,6 +195,40 @@ task distribuir(dependsOn: 'installApp') {
         into "$miDistArchiveDir"
     }
 
-
 }
 
+/** El instalador requiere incluir la última versión del actualizador */
+task makeInstaller(type:Exec, dependsOn: 'makeUpdate') {
+    miDistArchiveDir = "archive/dist-${version}"
+    commandLine innoSetupCompiler, 'InstallerScript.iss', "/DAppVersion=$version"
+}
+
+task makeUpdateScript() {
+    miDistArchiveDir = "archive/dist-${version}"
+    addVersionXML = 
+    """<?xml version="1.0" encoding="utf-8"?>
+    <Versions>
+        <AddVersion overwrite="true">
+            <Version>$version</Version>
+            <Changes>$versionNotes</Changes>
+
+            <Files dir="basedir">
+                <Folder source="${miDistArchiveDir}" insideonly="true"/>
+            </Files>
+
+        </AddVersion>
+    </Versions>
+    """;
+    
+    File xmlFile = new File("archive/update-${version}.xml");
+    xmlFile.write(addVersionXML, 'UTF-8');
+
+}
+task makeUpdate(type:Exec) {
+    updateScript = "archive/update-${version}.xml";
+    commandLine wyUpdateCompiler, "\"updater.wyp\"", "/bwu", "/bu", "-ve='${version}'", "-add='${updateScript}'"
+}
+
+task uploadUpdate(type:Exec, dependsOn: 'makeUpdate') {
+    commandLine wyUpdateCompiler, "\"updater.wyp\"", "/upload"
+}
