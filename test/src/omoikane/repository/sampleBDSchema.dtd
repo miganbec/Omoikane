@@ -287,14 +287,12 @@
     id_usuario CDATA #REQUIRED
 >
 
-<!ELEMENT paquetes EMPTY>
-<!ATTLIST paquetes
+<!ELEMENT paquete EMPTY>
+<!ATTLIST paquete
     id CDATA #REQUIRED
-    version CDATA #REQUIRED
-    articulo_id CDATA #REQUIRED
+    productoContenido CDATA #REQUIRED
     cantidad CDATA #REQUIRED
-    codigo CDATA #REQUIRED
-    id_articulo CDATA #REQUIRED
+    productoContenedor CDATA #REQUIRED
 >
 
 <!ELEMENT pr3 EMPTY>

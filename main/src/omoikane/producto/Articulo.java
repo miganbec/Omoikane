@@ -3,11 +3,13 @@ package omoikane.producto;
 
 
 import omoikane.entities.Anotacion;
+import omoikane.entities.Paquete;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -145,6 +147,9 @@ public class Articulo implements Serializable, IProductoApreciado {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_articulo")
     private BaseParaPrecio baseParaPrecio;
+
+    @OneToMany(mappedBy = "productoContenedor")
+    public List<Paquete> renglonesPaquete;
 
     @Override
     public int hashCode() {

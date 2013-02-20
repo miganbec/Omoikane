@@ -1,5 +1,6 @@
 package omoikane.entities;
 
+import omoikane.producto.Articulo;
 import omoikane.producto.Producto;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -13,13 +14,11 @@ import javax.validation.constraints.Min;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-//@Entity
+@Entity
 public class Paquete {
                 private int id;
 
     @Min(1)     private int cantidad;
-
-    @NotEmpty   private String codigo;
 
     @Column(name = "id")
     @Id
@@ -42,15 +41,6 @@ public class Paquete {
         this.cantidad = cantidad;
     }
 
-    @Column(name = "codigo")
-    @Basic
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,21 +51,34 @@ public class Paquete {
 
         if (cantidad != paquete.cantidad) return false;
         if (id != paquete.id) return false;
-        if (codigo != null ? !codigo.equals(paquete.codigo) : paquete.codigo != null) return false;
+
 
         return true;
     }
 
-    private Producto productoByProductoId;
+    private Articulo productoContenedor;
 
     @ManyToOne
     public
-    @JoinColumn(name = "producto_id", referencedColumnName = "id")
-    Producto getProductoByProductoId() {
-        return productoByProductoId;
+    @JoinColumn(referencedColumnName = "id_articulo")
+    Articulo getProductoContenedor() {
+        return productoContenedor;
     }
 
-    public void setProductoByProductoId(Producto productoByProductoId) {
-        this.productoByProductoId = productoByProductoId;
+    public void setProductoContenedor(Articulo productoByProductoId) {
+        this.productoContenedor = productoByProductoId;
+    }
+
+    private Articulo productoContenido;
+
+    @ManyToOne
+    public
+    @JoinColumn(referencedColumnName = "id_articulo")
+    Articulo getProductoContenido() {
+        return productoContenido;
+    }
+
+    public void setProductoContenido(Articulo productoByProductoId) {
+        this.productoContenido = productoByProductoId;
     }
 }

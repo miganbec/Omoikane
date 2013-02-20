@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
+  <articulos id_articulo="1"     codigo="Pr1"           id_linea="84" descripcion="Paquete promocional de pruebas" unidad="KIT" impuestos="0.0" uModificacion="2013-02-16 19:10:36.0" version="0" id_grupo="1"/>
   <articulos id_articulo="22941" codigo="7500074009853" id_linea="84" descripcion="RANCHO SAN NICOLAS LECHE 1LT" unidad="PZA" impuestos="0.0" uModificacion="2012-11-14 16:25:36.0" version="0" id_grupo="1"/>
   <articulos id_articulo="22940" codigo="7503017809008" id_linea="55" descripcion="SAMEYRO SALSA HABANERA 160ML" unidad="PZA" impuestos="0.0" uModificacion="2012-11-13 12:38:19.0" version="1" id_grupo="1"/>
   <articulos id_articulo="22939" codigo="7503017809039" id_linea="55" descripcion="SAMEYRO SALSA ESPECIAL 160ML" unidad="PZA" impuestos="0.0" uModificacion="2012-11-13 12:35:05.0" version="0" id_grupo="1"/>
@@ -201,6 +202,7 @@
   <articulos id_articulo="22725" codigo="650240015878" id_linea="11" descripcion="SUEROX ENERGY 500 ML" unidad="PZA" impuestos="16.0" uModificacion="2012-04-05 09:26:05.0" version="0" id_grupo="1"/>
   <articulos id_articulo="22724" codigo="650240015892" id_linea="11" descripcion="SUEROX MANGO ENCHILADO 500 ML" unidad="PZA" impuestos="16.0" uModificacion="2012-08-16 20:26:34.0" version="0" id_grupo="1"/>
   <articulos id_articulo="500"   codigo="500" id_linea="11" descripcion="PLATANO DOMINICO 1KG" unidad="KG" impuestos="0.0" uModificacion="2012-08-16 20:26:34.0" version="0" id_grupo="1"/>
+  <base_para_precios id_articulo="1"     descripcion="Paquete promocional de pruebas" costo="10.50" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="20.12"/>
   <base_para_precios id_articulo="500"   descripcion="PLATANO DOMINICO" costo="10.50" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="20.12"/>
   <base_para_precios id_articulo="22941" descripcion="RANCHO SAN NICOLAS LECHE 1LT" costo="6.66" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="20.12"/>
   <base_para_precios id_articulo="22940" descripcion="SAMEYRO SALSA HABANERA 160ML" costo="12.5" porcentajeImpuestos="0.0" porcentajeDescuentoLinea="0.0" porcentajeDescuentoGrupo="0.0" porcentajeDescuentoProducto="0.0" porcentajeUtilidad="60.0"/>
@@ -669,4 +671,6 @@
   <cajas id_caja="6" id_almacen="1" descripcion="Caja Mayoreo" creado="2010-06-06 07:44:17.0" uModificacion="2010-06-06 07:44:17.0" horaAbierta="2010-06-08 18:36:35.0" horaCerrada="2010-06-08 23:05:00.0" abierta="false" uFolio="0"/>
   <Cancelacion/>
   <usuarios id_usuario="1" nombre="Peluso" fecha_hora_alta="2009-01-01 00:00:01:00.0" huella1="" huella2="" huella3="" nip="1234" uModificacion="2009-08-30 04:34:38.0"/>
+  <paquete id="1" cantidad="2" productoContenido_id_articulo="22940" productoContenedor_id_articulo="1" />
+  <paquete id="2" cantidad="2" productoContenido_id_articulo="22939" productoContenedor_id_articulo="1" />
 </dataset>

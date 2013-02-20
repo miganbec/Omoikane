@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="MainGUIController">
+  <children>
+    <HBox layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+      <children>
+        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="NEVER">
+          <children>
+            <TitledPane animated="false" layoutX="14.0" layoutY="14.0" minWidth="172.0" prefHeight="153.0" prefWidth="172.0" text="untitled">
+              <content>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                  <children>
+                    <Hyperlink onAction="viewPaquetes" text="Paquetes" />
+                    <Hyperlink onAction="viewProveedores" text="Proveedores" />
+                  </children>
+                </VBox>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="14.0" layoutY="179.0" minWidth="172.0" prefWidth="172.0" text="untitled">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+          </children>
+        </Pane>
+        <TabPane fx:id="workArea" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+          <tabs>
+            <Tab text="Untitled Tab 1">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Untitled Tab 2">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </children>
+    </HBox>
+  </children>
+</AnchorPane>
