@@ -22,7 +22,6 @@ import omoikane.configuracion.ConfiguratorAppManager;
 import omoikane.moduloreportes.MenuOmoikane;
 import omoikane.sistema.Herramientas;
 import omoikane.sistema.StopWatch;
-import phesus.configuratron.ConfiguratorApp;
 
 /**
  *
@@ -339,9 +338,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnReportes.setIconTextGap(-15);
         btnReportes.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                jButton1ActionPerformed(e);
-            }
+            public void actionPerformed(ActionEvent e) { btnReportesActionPerformed(e); }
         });
         contentPane.add(btnReportes);
         btnReportes.setBounds(240, 410, 200, 70);
@@ -482,7 +479,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         System.out.println(timer.getElapsedTime());
     }//GEN-LAST:event_btnFacturas1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //new omoikane.menudinamico.MenuModulos();
         MenuOmoikane menuOmoikane = new MenuOmoikane();
@@ -494,15 +491,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         //new omoikane.menudinamico.MenuModulos();
         ConfiguratorAppManager manager = new ConfiguratorAppManager();
         JInternalFrame internalFrame = manager.startJFXConfigurator();
-
-        Herramientas.panelCatalogo(internalFrame);
-        omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(internalFrame);
-        internalFrame.setBounds(10,10,499,595);
-        internalFrame.setVisible(true);
-        Herramientas.centrarVentana(internalFrame);
-        Herramientas.iconificable(internalFrame);
-        internalFrame.toFront();
-
     }
 
     @Override

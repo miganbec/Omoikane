@@ -6,6 +6,8 @@
 package omoikane.moduloreportes;
 
 import com.phesus.omoikaneapi.Menus.MenuBean;
+import omoikane.sistema.Permisos;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -21,18 +23,20 @@ public class MenuOmoikane extends MenuBean {
         super.setID("MOD-Reportes");
     }
     public void launch() {
-        final VentanaPrincipal  vp = new VentanaPrincipal();
-        panelReportes pvl= new panelReportes();
-        vp.getContentPane().add(pvl);
-        vp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        vp.setTitle("Reportes avanzados");
-        vp.setVisible(true);
-        pvl.getSalir().addActionListener(new ActionListener() {
+        if(omoikane.sistema.Usuarios.autentifica(Permisos.PMA_REPORTES)) {
+            final VentanaPrincipal  vp = new VentanaPrincipal();
+            panelReportes pvl= new panelReportes();
+            vp.getContentPane().add(pvl);
+            vp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            vp.setTitle("Reportes avanzados");
+            vp.setVisible(true);
+            pvl.getSalir().addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent e) {
-                vp.dispose();
-            }
-        });
+                public void actionPerformed(ActionEvent e) {
+                    vp.dispose();
+                }
+            });
+        }
     }
 
 }

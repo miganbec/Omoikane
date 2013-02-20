@@ -123,6 +123,7 @@ public class CajaController
     @FXML private Button abrirCajonButton;
     @FXML private Button btnCobrar;
     @FXML private Button btnCancelarProducto;
+    @FXML private Button cerrarButton;
     @FXML private AnchorPane capturaPane;
     @FXML private ToolBar mainToolBar;
 
@@ -132,6 +133,8 @@ public class CajaController
     BasculaHandler basculaHandler;
     VentaEspecialHandler ventaEspecialHandler;
     public static Logger logger = Logger.getLogger(CajaController.class);
+
+    public Button getCerrarButton() { return cerrarButton; }
 
     @FXML
     private void onCapturaKeyReleased(KeyEvent event) {

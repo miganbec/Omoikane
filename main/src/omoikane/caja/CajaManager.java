@@ -3,6 +3,8 @@ package omoikane.caja;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -82,12 +84,13 @@ public class CajaManager extends Application {
     }
 
     public JInternalFrame startJFXCaja() {
-        JInternalFrame frame = new JInternalFrame("FX");
+        final JInternalFrame frame = new JInternalFrame("FX");
         final JFXPanel fxPanel = new JFXPanel();
 
         frame.add(fxPanel);
         frame.setVisible(true);
 
+        Platform.setImplicitExit(false);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -96,6 +99,7 @@ public class CajaManager extends Application {
                     scene = initCaja();
                     scene.setFill(null);
                     fxPanel.setScene(scene);
+                    controller.getCerrarButton().setOnAction(new SwingCerrarHandler(frame));
                 } catch (IOException e) {
                     logger.error(e.getMessage(), e);
                 }
@@ -104,5 +108,18 @@ public class CajaManager extends Application {
         });
 
         return frame;
+    }
+
+    private class SwingCerrarHandler implements EventHandler<ActionEvent> {
+        JInternalFrame frame;
+        public SwingCerrarHandler(JInternalFrame frame) {
+            this.frame = frame;
+        }
+
+        @Override
+        public void handle(ActionEvent event) {
+            frame.setVisible(false);
+            frame.dispose();
+        }
     }
 }
