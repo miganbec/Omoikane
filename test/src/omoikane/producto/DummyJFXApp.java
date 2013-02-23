@@ -5,10 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import omoikane.caja.CajaManager;
 import omoikane.principal.Principal;
 import omoikane.sistema.SpringFxmlLoader;
+import omoikane.sistema.Usuarios;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,8 +32,14 @@ public class DummyJFXApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
+            omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
 
-            Scene scene = initView();
+            //Principal.IDCaja = 1;
+            Principal.IDAlmacen = 1;
+            Usuarios.setIDUsuarioActivo(1);
+
+            Scene scene = (Scene) Principal.applicationContext.getBean("paqueteView");
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("View Test");
@@ -40,14 +50,4 @@ public class DummyJFXApp extends Application {
         }
     }
 
-    private Scene initView() throws IOException {
-        ApplicationContext context = Principal.applicationContext;
-        Map<String,String> parametros = getParameters().getNamed();
-        URL urlFxml = DummyJFXApp.class.getResource(parametros.get("view"));
-        SpringFxmlLoader fxmlLoader = context.getBean(SpringFxmlLoader.class);
-        AnchorPane page = (AnchorPane) fxmlLoader.load(urlFxml);
-
-        Scene scene = new Scene(page);
-        return scene;
-    }
 }

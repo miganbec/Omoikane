@@ -2,12 +2,18 @@ package omoikane.producto;
 
 
 
+import net.sf.ehcache.hibernate.HibernateUtil;
 import omoikane.entities.Anotacion;
 import omoikane.entities.Paquete;
+import omoikane.inventarios.Stock;
+import org.hibernate.Hibernate;
+import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -53,6 +59,10 @@ public class Articulo implements Serializable, IProductoApreciado {
     @Basic(optional = false)
     @Column(name = "id_grupo")
     private int idGrupo;
+
+    @Transient private Boolean esPaqueteDefaultValue = false;
+    private Boolean esPaquete = esPaqueteDefaultValue;
+
     @Transient
     PrecioOmoikaneLogic precio;
 
@@ -151,6 +161,18 @@ public class Articulo implements Serializable, IProductoApreciado {
     @OneToMany(mappedBy = "productoContenedor")
     public List<Paquete> renglonesPaquete;
 
+    @Transactional
+    public List<Paquete> getRenglonesPaquete() {
+        List<Paquete> p = renglonesPaquete;
+        Hibernate.initialize(p);
+        return p;
+    }
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    public Stock stock;
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -193,5 +215,13 @@ public class Articulo implements Serializable, IProductoApreciado {
         return "javaapplication1.Articulos[ idArticulo=" + idArticulo + " ]";
     }
 
+    public Boolean getEsPaquete() {
+        Boolean r = esPaquete != null ? esPaquete : esPaqueteDefaultValue;
+        return r;
+    }
+
+    public void setEsPaquete(Boolean esGrupo) {
+        this.esPaquete = esGrupo;
+    }
 }
 

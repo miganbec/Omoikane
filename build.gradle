@@ -8,7 +8,7 @@ apply plugin: 'eclipse'
 version = '1.4.0 alfa'
 
 mainClassName       = "omoikane.principal.MainJava"
-sourceCompatibility = 1.6
+sourceCompatibility = 1.7
 title               = 'Omoikane'
 innoSetupCompiler   = 'c:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe'
 wyUpdateCompiler    = 'c:\\Program Files (x86)\\wyBuild\\wybuild.cmd.exe'
@@ -65,11 +65,13 @@ dependencies {
 		[group: 'javassist'           , name: 'javassist'              , version: '3.12.1.GA'],
 		[group: 'org.hibernate'       , name: 'hibernate-core'         , version: '3.6.5.Final'],
 		[group: 'org.slf4j'           , name: 'slf4j-log4j12'          , version: '1.6.1'],
-		[group: 'org.springframework' , name: 'spring-core'            , version: '3.0.5.RELEASE'],
-		[group: 'org.springframework' , name: 'spring-aop'             , version: '3.0.5.RELEASE'],
-		[group: 'org.springframework' , name: 'spring-context'         , version: '3.0.5.RELEASE'],
-		[group: 'org.springframework' , name: 'spring-orm'             , version: '3.0.5.RELEASE'],
-    	[group: 'org.springframework' , name: 'spring-aspects'         , version: '3.0.5.RELEASE'],						
+		[group: 'org.springframework' , name: 'spring-core'            , version: '3.2.1.RELEASE'],
+		[group: 'org.springframework' , name: 'spring-aop'             , version: '3.2.1.RELEASE'],
+		[group: 'org.springframework' , name: 'spring-context'         , version: '3.2.1.RELEASE'],
+		[group: 'org.springframework' , name: 'spring-orm'             , version: '3.2.1.RELEASE'],
+    	[group: 'org.springframework' , name: 'spring-aspects'         , version: '3.2.1.RELEASE'],						
+        [group: 'org.springframework' , name: 'spring-tx'              , version: '3.2.1.RELEASE'],
+        [group: 'org.springframework' , name: 'spring-jdbc'            , version: '3.2.1.RELEASE'],
 		[group: 'org.hibernate'       , name: 'hibernate-ehcache'      , version: '3.6.5.Final'],
 		[group: 'org.hibernate'       , name: 'hibernate-c3p0'         , version: '3.6.5.Final'],
 		[group: 'org.synyx.hades'     , name: 'org.synyx.hades'        , version: '2.0.3.RELEASE', transitive:false],
@@ -102,12 +104,14 @@ dependencies {
 		 		 [group: 'javassist'           , name: 'javassist'              , version: '3.12.1.GA'],
 				 [group: 'org.hibernate'       , name: 'hibernate-core'         , version: '3.6.5.Final'],	
 				 [group: 'org.slf4j'           , name: 'slf4j-log4j12'          , version: '1.6.1'],
-				 [group: 'org.springframework' , name: 'spring-core'            , version: '3.0.5.RELEASE'],
-				 [group: 'org.springframework' , name: 'spring-aop'             , version: '3.0.5.RELEASE'],
-				 [group: 'org.springframework' , name: 'spring-context'         , version: '3.0.5.RELEASE'],
- 				 [group: 'org.springframework' , name: 'spring-orm'             , version: '3.0.5.RELEASE'],
-				 [group: 'org.springframework' , name: 'spring-test'            , version: '3.0.5.RELEASE'],
-				 [group: 'org.springframework' , name: 'spring-aspects'         , version: '3.0.5.RELEASE'],				
+				 [group: 'org.springframework' , name: 'spring-core'            , version: '3.2.1.RELEASE'],
+				 [group: 'org.springframework' , name: 'spring-aop'             , version: '3.2.1.RELEASE'],
+				 [group: 'org.springframework' , name: 'spring-context'         , version: '3.2.1.RELEASE'],
+ 				 [group: 'org.springframework' , name: 'spring-orm'             , version: '3.2.1.RELEASE'],
+				 [group: 'org.springframework' , name: 'spring-test'            , version: '3.2.1.RELEASE'],
+				 [group: 'org.springframework' , name: 'spring-aspects'         , version: '3.2.1.RELEASE'],				
+                 [group: 'org.springframework' , name: 'spring-tx'              , version: '3.2.1.RELEASE'],
+                 [group: 'org.springframework' , name: 'spring-jdbc'            , version: '3.2.1.RELEASE'],
 				 [group: 'org.hibernate'       , name: 'hibernate-ehcache'      , version: '3.6.5.Final'],
 				 [group: 'org.hibernate'       , name: 'hibernate-c3p0'         , version: '3.6.5.Final'],
 				 [group: 'org.synyx.hades'     , name: 'org.synyx.hades'        , version: '2.0.3.RELEASE', transitive:false],

@@ -62,6 +62,7 @@
     uModificacion CDATA #REQUIRED
     version CDATA #IMPLIED
     id_grupo CDATA #REQUIRED
+    esPaquete CDATA #REQUIRED
 >
 
 <!ELEMENT base_para_precios EMPTY>

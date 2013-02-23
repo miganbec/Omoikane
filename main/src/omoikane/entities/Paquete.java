@@ -5,7 +5,12 @@ import omoikane.producto.Producto;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,7 +23,9 @@ import javax.validation.constraints.Min;
 public class Paquete {
                 private int id;
 
-    @Min(1)     private int cantidad;
+    @DecimalMin(value = "1")
+    @NotNull
+    private BigDecimal cantidad;
 
     @Column(name = "id")
     @Id
@@ -33,11 +40,11 @@ public class Paquete {
 
     @Column(name = "cantidad")
     @Basic
-    public int getCantidad() {
+    public BigDecimal getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(BigDecimal cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -56,6 +63,7 @@ public class Paquete {
         return true;
     }
 
+    @NotNull
     private Articulo productoContenedor;
 
     @ManyToOne
@@ -69,9 +77,10 @@ public class Paquete {
         this.productoContenedor = productoByProductoId;
     }
 
+    @NotNull
     private Articulo productoContenido;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     public
     @JoinColumn(referencedColumnName = "id_articulo")
     Articulo getProductoContenido() {
@@ -80,5 +89,21 @@ public class Paquete {
 
     public void setProductoContenido(Articulo productoByProductoId) {
         this.productoContenido = productoByProductoId;
+    }
+    @Transient
+    public String getDescripcion() {
+        return getProductoContenido().getDescripcion();
+    }
+    @Transient
+    public BigDecimal getPrecio() {
+        return getProductoContenido().getPrecio().getPrecio();
+    }
+    @Transient
+    public String getPrecioString() {
+        BigDecimal precio = getPrecio();
+        NumberFormat nb = NumberFormat.getCurrencyInstance();
+        nb.setMinimumFractionDigits(2);
+        nb.setMaximumFractionDigits(2);
+        return nb.format(precio.doubleValue());
     }
 }

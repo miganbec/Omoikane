@@ -40,6 +40,7 @@ public class CajaManager extends Application {
         SwingUtilities.invokeAndWait(new Runnable() {
             @Override
             public void run() {
+
                 omoikane.principal.Principal.setConfig(new omoikane.sistema.Config());
                 omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
 

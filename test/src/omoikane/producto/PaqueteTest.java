@@ -15,6 +15,7 @@ import omoikane.principal.Principal;
 import omoikane.sistema.Usuarios;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -41,22 +42,15 @@ import java.lang.reflect.InvocationTargetException;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("../repository/sampleData.xml")
+@DatabaseSetup("../repository/sampleDataLight.xml")
 public class PaqueteTest {
 
     final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(PaqueteTest.class);
 
     @Test
     public void cajaTest() {
-        omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
-        omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
 
-        //Principal.IDCaja = 1;
-        Principal.IDAlmacen = 1;
-        Usuarios.setIDUsuarioActivo( 1 );
-
-        String[] params = {"--view=PaqueteView.fxml"};
-        Application.launch(DummyJFXApp.class, params);
+        Application.launch(DummyJFXApp.class);
 
     }
 

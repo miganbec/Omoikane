@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.9998779296875" prefWidth="357.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Stock">
+      <font>
+        <Font size="23.0" />
+      </font>
+    </Label>
+    <TextField layoutX="146.0" layoutY="116.0" prefWidth="200.0" />
+    <TextField layoutX="146.0" layoutY="147.0" prefWidth="200.0" />
+    <Label layoutX="17.0" layoutY="119.0" text="Stock mínimo:" />
+    <Label layoutX="17.0" layoutY="150.0" text="Stock máximo:" />
+    <Button layoutX="197.0" layoutY="246.0" mnemonicParsing="false" text="Guardar" />
+    <Button layoutX="279.0" layoutY="246.0" mnemonicParsing="false" text="Cerrar" />
+    <Label layoutX="17.0" layoutY="176.0" text="Ubicación:" />
+    <Label layoutX="17.0" layoutY="67.0" text="Stock en piso:" />
+    <Label layoutX="16.0" layoutY="95.0" text="Stock en bodega:" />
+    <Label layoutX="17.0" layoutY="202.0" text="Clasificación:" />
+    <RadioButton layoutX="192.0" layoutY="201.0" mnemonicParsing="false" text="A" />
+    <RadioButton layoutX="235.0" layoutY="201.0" mnemonicParsing="false" text="B" />
+    <RadioButton layoutX="275.0" layoutY="201.0" mnemonicParsing="false" text="C" />
+    <TextField layoutX="146.0" layoutY="67.0" prefWidth="200.0" />
+    <TextField layoutX="146.0" layoutY="89.0" prefWidth="200.0" />
+    <TextField layoutX="148.0" layoutY="173.0" prefWidth="200.0" />
+  </children>
+</AnchorPane>
