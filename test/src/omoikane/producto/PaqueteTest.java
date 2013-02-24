@@ -28,6 +28,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -48,10 +49,11 @@ public class PaqueteTest {
     final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(PaqueteTest.class);
 
     @Test
-    public void cajaTest() {
-
+    public void paqueteViewTest() {
+        omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
+        HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "testProperties" );
+        testProperties.put("DummyJFXApp.viewBeanToTest", "paqueteView");
         Application.launch(DummyJFXApp.class);
-
     }
 
 }

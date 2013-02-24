@@ -16,6 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -33,13 +34,14 @@ public class DummyJFXApp extends Application {
     public void start(Stage primaryStage) {
         try {
             omoikane.principal.Principal.setConfig( new omoikane.sistema.Config() );
-            omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
 
             //Principal.IDCaja = 1;
             Principal.IDAlmacen = 1;
             Usuarios.setIDUsuarioActivo(1);
 
-            Scene scene = (Scene) Principal.applicationContext.getBean("paqueteView");
+            HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "testProperties" );
+            String beanToTest = (String) testProperties.get("DummyJFXApp.viewBeanToTest");
+            Scene scene = (Scene) Principal.applicationContext.getBean(beanToTest);
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("View Test");

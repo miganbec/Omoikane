@@ -34,12 +34,14 @@ public class Stock {
     private BigDecimal enBodega;
     @NotNull @DecimalMin(value = "0")
     private BigDecimal minimo;
-    @NotNull @DecimalMax(value = "0")
+    @NotNull @DecimalMin(value = "0")
     private BigDecimal maximo;
     @NotNull
     private Character clasificacion;
     @NotNull
     private Timestamp modificado;
+    @NotNull
+    private String ubicacion;
 
     @PrePersist
     protected void onCreate() {
@@ -121,5 +123,14 @@ public class Stock {
 
     public void setModificado(Timestamp modificado) {
         this.modificado = modificado;
+    }
+
+    @Column
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 }

@@ -50,6 +50,9 @@ public class PaqueteController
     @Autowired
     Validator validator;
 
+    @Autowired
+    JpaTransactionManager transactionManager;
+
     @PersistenceContext
     EntityManager entityManager;
 
@@ -64,15 +67,15 @@ public class PaqueteController
 
     @FXML //  fx:id="removeButton"
     private Button removeButton;
-
     @FXML private TableColumn<Paquete, String> cantidadCol;
     @FXML private TableColumn<Paquete, String> productoCol;
+
     @FXML private TableColumn<Paquete, String> precioCol;
-
     @FXML private BigDecimalField txtCantidad;
-    @FXML private TextField txtIdProducto;
 
+    @FXML private TextField txtIdProducto;
     @FXML private Label notaCantidad;
+
     @FXML private Label notaIdProducto;
 
     @FXML
@@ -164,11 +167,11 @@ public class PaqueteController
             }
         });
     }
-
     PaqueteController me;
     public PaqueteController() {
         me = this;
     }
+
     public PaqueteController me() { return me; }
 
     @Override // This method is called by the FXMLLoader when initialization is complete
@@ -199,9 +202,6 @@ public class PaqueteController
         paqueteCheckbox.setSelected( producto.getEsPaquete() );
 
     }
-
-    @Autowired
-    JpaTransactionManager transactionManager;
 
     public void llenarTabla() {
         /* Éste código también funciona, es otra opción:  */

@@ -173,6 +173,10 @@ public class Articulo implements Serializable, IProductoApreciado {
     @PrimaryKeyJoinColumn
     public Stock stock;
 
+    public Stock getStock() {
+        return stock;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

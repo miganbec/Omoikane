@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import omoikane.inventarios.StockLevelsController;
 import omoikane.principal.Principal;
 import omoikane.producto.PaqueteController;
 import org.apache.log4j.Logger;
@@ -30,6 +31,18 @@ public class SpringAnnotatedConfig {
     @Scope("prototype")
     PaqueteController paqueteController() {
         return new PaqueteController();
+    }
+
+    @Bean
+    @Scope("prototype")
+    StockLevelsController stockLevelsController() {
+        return new StockLevelsController();
+    }
+
+    @Bean
+    @Scope("prototype")
+    Scene stockLevelsView() {
+        return initView("/omoikane/inventarios/StockLevelsView.fxml", stockLevelsController());
     }
 
     @Bean
