@@ -17,34 +17,32 @@
         <Font size="23.0" />
       </font>
     </Label>
-    <BigDecimalField fx:id="stockMin" layoutX="149.0" layoutY="140.0" prefWidth="200.00009999999747" />
-    <BigDecimalField id="StockMax" fx:id="stockMax" layoutX="149.0" layoutY="177.0" prefWidth="200.0001220703125" />
+    <BigDecimalField fx:id="stockMin" layoutY="140.0" prefWidth="200.00009999999747" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="7.0" />
+    <BigDecimalField id="StockMax" fx:id="stockMax" layoutY="177.0" prefWidth="200.0001220703125" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="7.0" />
     <Label layoutX="14.0" layoutY="143.0" text="Stock mínimo:" />
     <Label layoutX="15.0" layoutY="179.0" text="Stock máximo:" />
-    <Button id="guardarBtn" cancelButton="false" defaultButton="false" layoutX="218.0" layoutY="334.0" mnemonicParsing="false" onAction="#accionGuardar" text="Guardar" />
-    <Button defaultButton="true" layoutX="291.0" layoutY="334.0" mnemonicParsing="false" onAction="#accionCerrar" text="Cerrar" />
+    <Button id="guardarBtn" cancelButton="false" defaultButton="false" mnemonicParsing="false" onAction="#accionGuardar" text="Guardar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="76.0" />
+    <Button defaultButton="true" mnemonicParsing="false" onAction="#accionCerrar" text="Cerrar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="13.0" />
     <Label layoutX="15.0" layoutY="217.0" text="Ubicación:" />
     <Label layoutX="14.0" layoutY="67.0" text="Stock en piso:" />
     <Label layoutX="14.0" layoutY="105.0" text="Stock en bodega:" />
-    <Label layoutX="15.0" layoutY="302.0" text="Clasificación:" />
-    <RadioButton id="claseA" fx:id="radioClaseA" layoutX="194.0" layoutY="302.0" mnemonicParsing="false" text="A">
+    <Label text="Clasificación:" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="15.0" />
+    <RadioButton id="claseA" fx:id="radioClaseA" mnemonicParsing="false" text="A" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="194.0">
       <toggleGroup>
         <ToggleGroup fx:id="clasificacion" />
       </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="radioClaseB" layoutX="237.0" layoutY="302.0" mnemonicParsing="false" text="B" toggleGroup="$clasificacion" />
-    <RadioButton fx:id="radioClaseC" layoutX="277.0" layoutY="302.0" mnemonicParsing="false" text="C" toggleGroup="$clasificacion" />
-    <BigDecimalField fx:id="stockTienda" disable="true" layoutX="148.0" layoutY="64.0" opacity="1.0" prefWidth="200.0001220703125" />
-    <BigDecimalField fx:id="stockBodega" disable="true" layoutX="149.0" layoutY="102.0" opacity="1.0" prefWidth="200.0" />
-    <TextArea fx:id="ubicacion" layoutX="151.0" layoutY="217.0" prefHeight="67.0" prefWidth="200.0" wrapText="true" />
-    <Label layoutX="14.0" layoutY="86.0" prefWidth="334.0" text="Label">
+    <RadioButton fx:id="radioClaseB" mnemonicParsing="false" text="B" toggleGroup="$clasificacion" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="237.0" />
+    <RadioButton fx:id="radioClaseC" mnemonicParsing="false" text="C" toggleGroup="$clasificacion" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="277.0" />
+    <BigDecimalField fx:id="stockTienda" disable="true" layoutY="64.0" opacity="1.0" prefWidth="200.0001220703125" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="8.0" />
+    <BigDecimalField fx:id="stockBodega" disable="true" layoutY="102.0" opacity="1.0" prefWidth="200.0" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="8.0" />
+    <TextArea fx:id="ubicacion" prefHeight="67.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="217.0" />
+    <Label fx:id="notaStockMin" layoutY="162.0" prefWidth="334.0" text="" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="8.0">
       <textFill>
         <Color blue="0.000" green="0.000" red="0.800" fx:id="x1" />
       </textFill>
     </Label>
-    <Label layoutX="14.0" layoutY="124.0" prefWidth="334.0" text="Label" textFill="$x1" />
-    <Label layoutX="15.0" layoutY="162.0" prefWidth="334.0" text="Label" textFill="$x1" />
-    <Label layoutX="14.0" layoutY="201.0" prefWidth="334.0" text="Label" textFill="$x1" />
-    <Label layoutX="14.0" layoutY="284.0" prefWidth="334.0" text="Label" textFill="$x1" />
+    <Label fx:id="notaStockMax" layoutY="201.0" prefWidth="334.0" text="" textFill="$x1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="9.0" />
+    <Label fx:id="notaUbicacion" layoutY="284.0" prefWidth="334.0" text="" textFill="$x1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="9.0" />
   </children>
 </AnchorPane>

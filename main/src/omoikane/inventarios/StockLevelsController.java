@@ -3,18 +3,14 @@ package omoikane.inventarios;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.producto.Articulo;
 import omoikane.repository.ProductoRepo;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
-import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.validation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,10 +32,15 @@ public class StockLevelsController implements Initializable {
     @Autowired
     JpaTransactionManager transactionManager;
 
+    @Autowired
+    Validator validator;
+
     @PersistenceContext
     EntityManager entityManager;
 
     Long idProducto = 1l;
+
+    public Logger logger = Logger.getLogger(getClass());
 
     @FXML BigDecimalField stockTienda;
     @FXML BigDecimalField stockBodega;
@@ -50,6 +51,9 @@ public class StockLevelsController implements Initializable {
     @FXML RadioButton radioClaseA;
     @FXML RadioButton radioClaseB;
     @FXML RadioButton radioClaseC;
+    @FXML Label notaStockMin;
+    @FXML Label notaStockMax;
+    @FXML Label notaUbicacion;
 
     Articulo producto;
     Stock stock;
@@ -65,8 +69,20 @@ public class StockLevelsController implements Initializable {
                 entityManager.merge(stock);
             }
         });*/
+        if(radioClaseA.isSelected())
+            stock.setClasificacion('A');
+        else if (radioClaseB.isSelected())
+            stock.setClasificacion('B');
+        else
+            stock.setClasificacion('C');
+        stock.setMaximo( stockMax.getNumber() );
+        stock.setMinimo(stockMin.getNumber());
         stock.setUbicacion( ubicacion.getText() );
-        productoRepo.saveAndFlush(producto);
+        if(validar(producto.stock))
+        {
+            productoRepo.saveAndFlush(producto);
+            logger.info("Información de stock del producto actualizada");
+        }
     }
 
     @FXML
@@ -98,5 +114,32 @@ public class StockLevelsController implements Initializable {
                 break;
         }
 
+    }
+
+    private boolean validar(Stock stock) {
+        DataBinder binder = new DataBinder(stock);
+        binder.setValidator(validator);
+        binder.validate();
+        BindingResult bindingResult = binder.getBindingResult();
+        notaStockMax.setText("");
+        notaStockMin.setText("");
+        notaUbicacion.setText("");
+
+
+        if(bindingResult.hasErrors()) {
+            for( ObjectError oe : bindingResult.getAllErrors() ) {
+                if(oe.getClass() == FieldError.class) {
+                    FieldError fe = (FieldError) oe;
+                    if(fe.getField().equals("minimo"))    { notaStockMin .setText(fe.getDefaultMessage());  }
+                    if(fe.getField().equals("maximo"))    { notaStockMax .setText(fe.getDefaultMessage());  }
+                    if(fe.getField().equals("ubicacion")){ notaUbicacion.setText(fe.getDefaultMessage());  }
+                } else {
+                    logger.info(oe.getDefaultMessage());
+                }
+            }
+        } else {
+            return true;
+        }
+        return false;
     }
 }
