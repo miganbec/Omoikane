@@ -8,6 +8,7 @@ import javafx.util.Callback;
 import omoikane.inventarios.StockLevelsController;
 import omoikane.principal.Principal;
 import omoikane.producto.PaqueteController;
+import omoikane.proveedores.ProveedoresController;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,6 +42,12 @@ public class SpringAnnotatedConfig {
 
     @Bean
     @Scope("prototype")
+    ProveedoresController proveedoresController() {
+        return new ProveedoresController();
+    }
+
+    @Bean
+    @Scope("prototype")
     Scene stockLevelsView() {
         return initView("/omoikane/inventarios/StockLevelsView.fxml", stockLevelsController());
     }
@@ -49,6 +56,12 @@ public class SpringAnnotatedConfig {
     @Scope("prototype")
     Scene paqueteView() {
         return initView("/omoikane/producto/PaqueteView.fxml", paqueteController());
+    }
+
+    @Bean
+    @Scope("prototype")
+    Scene proveedoresView() {
+        return initView("/omoikane/proveedores/ProveedoresView.fxml", proveedoresController());
     }
 
     private Scene initView(String fxml, final Object controller) {
