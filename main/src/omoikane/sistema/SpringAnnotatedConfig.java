@@ -1,12 +1,11 @@
 package omoikane.sistema;
 
-import com.sun.javafx.binding.StringFormatter;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import omoikane.inventarios.StockLevelsController;
-import omoikane.principal.Principal;
+import omoikane.inventarios.TomaInventarioController;
 import omoikane.producto.PaqueteController;
 import omoikane.proveedores.ProveedoresController;
 import org.apache.log4j.Logger;
@@ -15,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Created with IntelliJ IDEA.
@@ -48,6 +46,12 @@ public class SpringAnnotatedConfig {
 
     @Bean
     @Scope("prototype")
+    TomaInventarioController tomaInventarioController() {
+        return new TomaInventarioController();
+    }
+
+    @Bean
+    @Scope("prototype")
     Scene stockLevelsView() {
         return initView("/omoikane/inventarios/StockLevelsView.fxml", stockLevelsController());
     }
@@ -62,6 +66,12 @@ public class SpringAnnotatedConfig {
     @Scope("prototype")
     Scene proveedoresView() {
         return initView("/omoikane/proveedores/ProveedoresView.fxml", proveedoresController());
+    }
+
+    @Bean
+    @Scope("prototype")
+    Scene tomaInventarioView() {
+        return initView("/omoikane/inventarios/TomaInventarioView.fxml", tomaInventarioController());
     }
 
     private Scene initView(String fxml, final Object controller) {

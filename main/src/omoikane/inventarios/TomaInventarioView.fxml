@@ -7,26 +7,40 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.inventarios.TomaInventarioController">
   <children>
-    <Label layoutX="14.0" layoutY="14.0" text="Toma de inventario">
+    <Label layoutX="14.0" layoutY="42.0" text="Toma de inventario físico">
       <font>
         <Font size="23.0" />
       </font>
     </Label>
-    <TableView layoutX="14.0" layoutY="75.0" prefHeight="200.0" prefWidth="572.0">
+    <TableView fx:id="itemsTable" editable="true" layoutX="14.0" layoutY="103.0" prefHeight="254.0" prefWidth="572.0">
       <columns>
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="144.0" text="Código" />
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="241.0" text="Producto" />
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="Conteo" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="144.0" text="Código" fx:id="codigoCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="241.0" text="Producto" fx:id="nombreProductoCol" />
+        <TableColumn editable="true" maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="Conteo" fx:id="conteoCol" />
       </columns>
     </TableView>
-    <Label layoutX="14.0" layoutY="51.0" text="Almacén:" />
-    <MenuButton layoutX="102.0" layoutY="49.0" mnemonicParsing="false" text="MenuButton">
+    <Label layoutX="14.0" layoutY="76.0" prefHeight="21.0" text="Almacén:" />
+    <MenuButton layoutX="76.0" layoutY="76.0" minHeight="16.0" mnemonicParsing="false" prefHeight="21.0" text="MenuButton">
       <items>
-        <MenuItem mnemonicParsing="false" text="Action 1" />
-        <MenuItem mnemonicParsing="false" text="Action 2" />
+        <MenuItem mnemonicParsing="false" text="Tienda" />
+        <MenuItem mnemonicParsing="false" text="Bodega" />
       </items>
     </MenuButton>
+    <ToolBar layoutX="0.0" layoutY="0.0" minHeight="18.0" prefHeight="32.0" prefWidth="600.0">
+      <items>
+        <Button mnemonicParsing="false" text="Exportar a terminales" />
+        <Button mnemonicParsing="false" text="Importar desde terminal" />
+        <Button mnemonicParsing="false" text="Imprimir" />
+        <Button mnemonicParsing="false" text="Aplicar inventario" />
+      </items>
+    </ToolBar>
+    <Label layoutX="433.0" layoutY="50.0" prefWidth="34.0" text="ID:" />
+    <Label layoutX="433.0" layoutY="79.0" text="Fecha:" />
+    <Label layoutX="478.0" layoutY="79.0" prefWidth="108.0" text="" />
+    <Label fx:id="idLabel" layoutX="478.0" layoutY="50.0" prefWidth="94.0" text="" />
+    <Button layoutX="523.0" layoutY="365.0" mnemonicParsing="false" text="Guardar" />
+    <Button layoutX="450.0" layoutY="365.0" mnemonicParsing="false" text="Eliminar" />
   </children>
 </AnchorPane>

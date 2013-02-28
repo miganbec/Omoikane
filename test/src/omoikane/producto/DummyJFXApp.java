@@ -1,23 +1,12 @@
 package omoikane.producto;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import omoikane.caja.CajaManager;
 import omoikane.principal.Principal;
-import omoikane.sistema.SpringFxmlLoader;
 import omoikane.sistema.Usuarios;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
