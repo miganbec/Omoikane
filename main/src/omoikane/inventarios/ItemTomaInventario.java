@@ -20,15 +20,13 @@ public class ItemTomaInventario {
     private ObjectProperty<BigDecimal> conteo;
 
     public ItemTomaInventario() {
-        setCodigo( new SimpleStringProperty("") );
-        setNombre( new SimpleStringProperty("") );
-        setConteo( new SimpleObjectProperty<BigDecimal>(new BigDecimal("0.00")) );
+        this("", "", new BigDecimal("0.00"));
     }
 
-    public ItemTomaInventario(SimpleStringProperty codigo, SimpleStringProperty nombre, SimpleObjectProperty<BigDecimal> conteo) {
-        setCodigo( codigo );
-        setNombre( nombre );
-        setConteo( conteo );
+    public ItemTomaInventario(String codigo, String nombre, BigDecimal conteo) {
+            setCodigo( new SimpleStringProperty( codigo ) );
+            setNombre( new SimpleStringProperty( nombre ) );
+            setConteo( new SimpleObjectProperty<BigDecimal>( conteo ) );
     }
 
     public StringProperty codigoProperty() {
