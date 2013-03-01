@@ -14,7 +14,7 @@
         <Font size="23.0" />
       </font>
     </Label>
-    <TableView fx:id="itemsTable" editable="true" focusTraversable="false" layoutX="14.0" layoutY="103.0" prefHeight="175.0" prefWidth="572.0">
+    <TableView fx:id="itemsTable" editable="true" focusTraversable="true" layoutX="14.0" layoutY="103.0" prefHeight="175.0" prefWidth="572.0">
       <columns>
         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="144.0" text="Código" fx:id="codigoCol" />
         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="241.0" text="Producto" fx:id="nombreProductoCol" />

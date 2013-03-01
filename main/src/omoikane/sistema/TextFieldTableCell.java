@@ -117,8 +117,10 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
      * input from the TextField (as it will not know how to convert this back
      * to the domain object). It is therefore strongly encouraged to not use
      * this constructor unless you intend to set the converter separately.
+     * @param impl
+     * @param tStringConverter
      */
-    public TextFieldTableCell() {
+    public TextFieldTableCell(Class<T> impl, StringConverter<T> tStringConverter) {
         this(null);
     }
 

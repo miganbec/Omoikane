@@ -3,6 +3,7 @@ package omoikane.inventarios;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -54,13 +55,13 @@ public class TomaInventarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         codigoCol        .setCellValueFactory(new PropertyValueFactory<ItemTomaInventario, String>("codigo"));
-        codigoCol        .setCellFactory(new ImprovedCellFactory<ItemTomaInventario>());
+        codigoCol        .setCellFactory(new ImprovedCellFactory<ItemTomaInventario>(ItemTomaInventario.class));
 
         nombreProductoCol.setCellValueFactory(new PropertyValueFactory<ItemTomaInventario, String>("nombre"));
-        nombreProductoCol.setCellFactory(new ImprovedCellFactory<ItemTomaInventario>());
+        nombreProductoCol.setCellFactory(new ImprovedCellFactory<ItemTomaInventario>(ItemTomaInventario.class));
 
         conteoCol        .setCellValueFactory(new PropertyValueFactory<ItemTomaInventario, BigDecimal>("conteo"));
-        conteoCol        .setCellFactory(new NumericCellFactory<ItemTomaInventario>());
+        conteoCol        .setCellFactory(new NumericCellFactory<ItemTomaInventario>(ItemTomaInventario.class));
 
         codigoTextField.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
@@ -78,29 +79,54 @@ public class TomaInventarioController implements Initializable {
         items.add(item);
         itemsTable.setItems(items);
 
+        items.addListener(new ListChangeListener<ItemTomaInventario>() {
+            @Override
+            public void onChanged(final Change<? extends ItemTomaInventario> change) {
+
+                change.next();
+                if(change.wasAdded()) {
+
+                    //itemsTable.getFocusModel().focus(itemsTable.getSelectionModel().getSelectedIndex(), itemsTable.getColumns().get(0));
+
+                    //itemsTable.getFocusModel().focus(0, codigoCol);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            itemsTable.edit(itemsTable.getSelectionModel().getSelectedIndex()+1, itemsTable.getColumns().get(0));
+                        }
+                    });
+
+                }
+
+            }
+        });
     }
     public class ImprovedCellFactory<S> implements Callback<TableColumn<S, String>, TableCell<S, String>> {
 
+        Class<S> impl;
+        public ImprovedCellFactory(Class<S> impl) { this.impl = impl;  }
         @Override
         public TableCell<S, String> call(TableColumn<S, String> stTableColumn) {
-            return new ImprovedTableCell<S, String>();
+            return new ImprovedTableCell<S, String>(impl);
         }
 
     }
 
     public class NumericCellFactory<S> implements Callback<TableColumn<S, BigDecimal>, TableCell<S, BigDecimal>> {
 
+        Class<S> impl;
+        public NumericCellFactory(Class<S> impl) { this.impl = impl;  }
         @Override
         public TableCell<S, BigDecimal> call(TableColumn<S, BigDecimal> stTableColumn) {
-            return new NumericTableCell<S, BigDecimal>();
+            return new NumericTableCell<S, BigDecimal>(impl);
         }
 
     }
 
     public class NumericTableCell<S, T> extends ImprovedTableCell<S, BigDecimal> {
 
-        public NumericTableCell() {
-            super(new BigDecimalStringConverter());
+        public NumericTableCell(Class<S> impl) {
+            super(impl, new BigDecimalStringConverter());
         }
 
         @Override
@@ -128,11 +154,13 @@ public class TomaInventarioController implements Initializable {
 
     public class ImprovedTableCell<S, T> extends TextFieldTableCell<S, T> {
 
-        public ImprovedTableCell() {
-            super((StringConverter<T>) new DefaultStringConverter());
+        Class<S> impl;
+        public ImprovedTableCell(Class<S> impl) {
+            this(impl, (StringConverter<T>) new DefaultStringConverter());
         }
-        public ImprovedTableCell(StringConverter<T> sc) {
+        public ImprovedTableCell(Class<S> impl, StringConverter<T> sc) {
             super(sc);
+            this.impl = impl;
         }
 
         @Override
@@ -150,8 +178,36 @@ public class TomaInventarioController implements Initializable {
                                             + "in your cell factory.");
                         }
                         commitEdit(getConverter().fromString(textField.getText()));
-                        getTableView().getFocusModel().focusRightCell();
-                        getTableView().edit(getTableRow().getIndex(), getTableView().getFocusModel().getFocusedCell().getTableColumn());
+                        TablePosition position = getTableView().getFocusModel().getFocusedCell();
+                        int nextCol;
+                        int nextRow;
+                        if(position.getColumn() == getTableView().getColumns().size()-1)
+                        {
+                            nextRow = position.getRow() + 1;
+                            nextCol = 0;
+                        } else {
+                            nextRow = position.getRow();
+                            nextCol = getTableView().getColumns().indexOf(getTableColumn())+1;
+                        }
+                        if(getTableView().getItems().size()-1 < nextRow) {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    textField.requestFocus();
+                                }
+                            });
+                            try {
+                                getTableView().getItems().add(impl.newInstance());
+                            } catch (InstantiationException e) {
+                                logger.error(e.getMessage(), e);
+                            } catch (IllegalAccessException e) {
+                                logger.error(e.getMessage(), e);
+                            }
+                        } else {
+                            getTableView().getFocusModel().focus(nextRow, getTableView().getColumns().get(nextCol));
+                            position = getTableView().getFocusModel().getFocusedCell();
+                            getTableView().edit(position.getRow(), getTableView().getFocusModel().getFocusedCell().getTableColumn());
+                        }
 
                     } else if (t.getCode() == KeyCode.ESCAPE) {
                         cancelEdit();
