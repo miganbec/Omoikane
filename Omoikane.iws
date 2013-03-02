@@ -3,42 +3,44 @@
   <component name="ChangeListManager">
     <list readonly="true" id="2afe5804-b09c-4b36-a223-c0088e978786" name="Default" comment="Snapshot&#10;- Optimización de modelo&#10;- Implementación de capa ORM&#10;- Implementación de repositorios de datos&#10;- Implementación de entidades, eventos y restricciones JPA&#10;- Refactorización del esquema de base de datos" />
     <list id="49f24c3e-f1dd-495c-a07c-2375f3225374" name="PrChangeList" comment="comentario..." />
-    <list default="true" id="18478f5e-e12e-4818-b885-b2c1d4616a4d" name="Test de entidades" comment="- Implemención de DBUnit&#10;- Creación de script para importar la BD de omoikane en fixtures XML para DBUnit&#10;- Buscador con paginación integrado en caja">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/src/omoikane/inventarios/Stock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/producto/Articulo.java" afterPath="$PROJECT_DIR$/main/src/omoikane/producto/Articulo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/caja/CajaManager.java" afterPath="$PROJECT_DIR$/main/src/omoikane/caja/CajaManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/omoikane/producto/DummyJFXApp.java" afterPath="$PROJECT_DIR$/test/src/omoikane/producto/DummyJFXApp.java" />
+    <list id="18478f5e-e12e-4818-b885-b2c1d4616a4d" name="Test de entidades" comment="- Implemención de DBUnit&#10;- Creación de script para importar la BD de omoikane en fixtures XML para DBUnit&#10;- Buscador con paginación integrado en caja" />
+    <list id="0d868af4-3d23-47a9-b469-985e7d6a9147" name="SotckLevesView" comment="" />
+    <list default="true" id="5f867679-01d8-4233-a162-75411aa92c1d" name="New changelist" comment="- Implementando tomas de inventario">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Omoikane.iws" afterPath="$PROJECT_DIR$/Omoikane.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/entities/Paquete.java" afterPath="$PROJECT_DIR$/main/src/omoikane/entities/Paquete.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" afterPath="$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/omoikane/producto/PaqueteTest.java" afterPath="$PROJECT_DIR$/test/src/omoikane/producto/PaqueteTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/producto/PaqueteView.fxml" afterPath="$PROJECT_DIR$/main/src/omoikane/producto/PaqueteView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/SpringAnnotatedConfig.java" afterPath="$PROJECT_DIR$/main/src/omoikane/sistema/SpringAnnotatedConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema.dtd" afterPath="$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema.dtd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema20121117.dtd" afterPath="$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema20121117.dtd" />
-      <change type="MOVED" beforePath="F:\AppDev\Proyectos\Omoikane\main\src\omoikane\producto\StockLevelsView.fxml" afterPath="$PROJECT_DIR$/main/src/omoikane/inventarios/StockLevelsView.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/sistema/TextFieldTableCell.java" afterPath="$PROJECT_DIR$/main/src/omoikane/sistema/TextFieldTableCell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java" afterPath="$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/ehcache.xml" afterPath="$PROJECT_DIR$/main/resources/ehcache.xml" />
     </list>
-    <list id="efab7105-a172-4e1c-a7be-ef862723753d" name="Configuraciones" comment="Configuraciones" />
-    <list id="71d76b17-e4d1-4d9a-bd81-cbfd4ca29435" name="Prueba" comment="Prueba" />
     <ignored path="Omoikane.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/DummyJFXApp.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361384415764" ignored="false" />
-    <file path="/applicationContext-test.xml" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361565079380" ignored="false" />
-    <file path="/SpringAnnotatedConfig.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361405820731" ignored="false" />
+    <file path="/DummyJFXApp.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362010615184" ignored="false" />
+    <file path="/applicationContext-test.xml" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361852375291" ignored="false" />
+    <file path="/SpringAnnotatedConfig.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362010943943" ignored="false" />
     <file path="/PaqueteController.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361524204978" ignored="false" />
-    <file path="/PaqueteTest.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361494578289" ignored="false" />
+    <file path="/PaqueteTest.java" changelist="0d868af4-3d23-47a9-b469-985e7d6a9147" time="1361671142625" ignored="false" />
     <file path="/CajaManager.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361473009061" ignored="false" />
-    <file path="/Articulo.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361567728925" ignored="false" />
+    <file path="/Articulo.java" changelist="0d868af4-3d23-47a9-b469-985e7d6a9147" time="1361657186480" ignored="false" />
     <file path="/Paquete.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361502187781" ignored="false" />
     <file path="/PaqueteView.fxml" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361478170586" ignored="false" />
-    <file path="/Dummy.txt" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361493406677" ignored="false" />
+    <file path="/Dummy.txt" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362112251472" ignored="false" />
     <file path="/sampleBDSchema20121117.dtd" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361523798265" ignored="false" />
     <file path="/sampleBDSchema.dtd" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361523806279" ignored="false" />
     <file path="/sampleBDSchemaLight.dtd" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361523811511" ignored="false" />
-    <file path="/sampleDataLight.xml" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361571449659" ignored="false" />
-    <file path="/Stock.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361587130430" ignored="false" />
-    <file path="/fragment.java" changelist="18478f5e-e12e-4818-b885-b2c1d4616a4d" time="1361563838264" ignored="false" />
+    <file path="/sampleDataLight.xml" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361913129459" ignored="false" />
+    <file path="/Stock.java" changelist="0d868af4-3d23-47a9-b469-985e7d6a9147" time="1361679434202" ignored="false" />
+    <file path="/fragment.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362010384787" ignored="false" />
+    <file path="/StockLevesController.java" changelist="0d868af4-3d23-47a9-b469-985e7d6a9147" time="1361679502801" ignored="false" />
+    <file path="/StockLevelTest.java" changelist="0d868af4-3d23-47a9-b469-985e7d6a9147" time="1361671175382" ignored="false" />
+    <file path="/StockLevelsController.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361928143192" ignored="false" />
+    <file path="/Proveedor.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361912908602" ignored="false" />
+    <file path="/ProveedoresController.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361925655766" ignored="false" />
+    <file path="/ProveedorRepo.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361913959692" ignored="false" />
+    <file path="/ProveedoresViewTest.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361852997954" ignored="false" />
+    <file path="$PROJECT_DIR$/main/src/omoikane/proveedores/ProveedoresView.fxml.bak" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1361924537677" ignored="false" />
+    <file path="/ItemTomaInventario.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362014337503" ignored="false" />
+    <file path="/TomaInventarioController.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362178035938" ignored="false" />
+    <file path="/TomaInventarioTest.java" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362010419587" ignored="false" />
+    <file path="/ehcache.xml" changelist="5f867679-01d8-4233-a162-75411aa92c1d" time="1362184667204" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,78 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/inventarios/StockLevelsController.java" line="68" class="omoikane.inventarios.StockLevelsController" package="omoikane.inventarios">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/proveedores/ProveedoresController.java" line="136" class="omoikane.proveedores.ProveedoresController" package="omoikane.proveedores">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java" line="69" class="omoikane.inventarios.TomaInventarioController$1" package="omoikane.inventarios">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java" line="88" class="omoikane.inventarios.TomaInventarioController$2" package="omoikane.inventarios">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java" line="229" class="omoikane.inventarios.TomaInventarioController.ImprovedTableCell$2" package="omoikane.inventarios">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -104,146 +177,55 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/sistema/Comprobantes.groovy" line="64" class="omoikane.sistema.Comprobantes" package="omoikane.sistema">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/sistema/Comprobantes.groovy" line="60" class="omoikane.sistema.Comprobantes" package="omoikane.sistema">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/caja/presentation/CajaController.java" line="350" class="omoikane.caja.presentation.CajaController.ClickHandler" package="omoikane.caja.presentation">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/caja/business/CajaLogicImpl.java" line="132" class="omoikane.caja.business.CajaLogicImpl" package="omoikane.caja.business">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/sistema/SpringAnnotatedConfig.java" line="54" class="omoikane.sistema.SpringAnnotatedConfig" package="omoikane.sistema">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" line="115" class="omoikane.producto.PaqueteController" package="omoikane.producto">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" line="164" class="omoikane.producto.PaqueteController$3" package="omoikane.producto">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" line="197" class="omoikane.producto.PaqueteController" package="omoikane.producto">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" line="220" class="omoikane.producto.PaqueteController$5" package="omoikane.producto">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
   <component name="DockManager">
-    <window id="2">
+    <window id="3">
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="sampleDataLight.xml" pinned="false" current="false" current-in-tab="true">
+            <file leaf-file-name="PaqueteController.java" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="222" column="71" selection-start="8783" selection-end="8783" vertical-scroll-proportion="0.63203466">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="PaqueteTest.java" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/test/src/omoikane/producto/PaqueteTest.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="47" column="0" selection-start="1930" selection-end="1930" vertical-scroll-proportion="0.0">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="sampleDataLight.xml" pinned="false" current="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/test/src/omoikane/repository/sampleDataLight.xml">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="51" column="21" selection-start="11010" selection-end="11010" vertical-scroll-proportion="0.8710167">
+                  <state line="46" column="121" selection-start="10448" selection-end="10448" vertical-scroll-proportion="0.0">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="Articulo.java" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/Articulo.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="231" column="0" selection-start="5689" selection-end="5689" vertical-scroll-proportion="0.0">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="ProductoRepo.java" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/main/src/omoikane/repository/ProductoRepo.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="21" column="1" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
                     <folding />
                   </state>
                 </provider>
@@ -259,63 +241,25 @@
     <favorites_list name="Omoikane">
       <favorite_root url="file://$PROJECT_DIR$/main/src/omoikane" module="Omoikane" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
     </favorites_list>
+    <favorites_list name="FavoritosDePrueba">
+      <favorite_root url="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PaqueteController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java">
+      <file leaf-file-name="ProveedoresController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/proveedores/ProveedoresController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="221" column="0" selection-start="8648" selection-end="8648" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3293#3515#0" expanded="true" />
-                <element signature="e#3504#3505#0" expanded="true" />
-                <element signature="e#4955#5326#0" expanded="true" />
-                <element signature="e#5315#5316#0" expanded="true" />
-                <element signature="e#5535#5965#0" expanded="true" />
-                <element signature="e#5954#5955#0" expanded="true" />
-                <element signature="e#6950#7282#0" expanded="true" />
-                <element signature="e#7271#7272#0" expanded="true" />
-                <element signature="e#8432#8859#0" expanded="true" />
-                <element signature="e#8848#8849#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransactionCallbackWithoutResult.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/artifacts-7/artifacts/56865c09425cc6ecda8606d7e6035ceb/org.springframework/spring-tx/3.2.1.RELEASE/source/spring-tx-3.2.1.RELEASE-sources.jar!/org/springframework/transaction/support/TransactionCallbackWithoutResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0">
+            <state line="122" column="30" selection-start="4042" selection-end="4042" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="applicationContext-test.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/resources/applicationContext-test.xml">
+      <file leaf-file-name="SpringAnnotatedConfig.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/SpringAnnotatedConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="20" selection-start="1784" selection-end="1784" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stock.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/Stock.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="26" selection-start="588" selection-end="588" vertical-scroll-proportion="0.23448277">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Producto.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/Producto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="17" selection-start="1190" selection-end="1190" vertical-scroll-proportion="0.0">
+            <state line="72" column="24" selection-start="1946" selection-end="1946" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -324,34 +268,65 @@
       <file leaf-file-name="DummyJFXApp.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/src/omoikane/producto/DummyJFXApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.0">
+            <state line="8" column="25" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Articulo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/Articulo.java">
+      <file leaf-file-name="StockLevelsController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/StockLevelsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="40" selection-start="2062" selection-end="2062" vertical-scroll-proportion="0.0">
+            <state line="98" column="48" selection-start="3084" selection-end="3084" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CajaController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/caja/presentation/CajaController.java">
+      <file leaf-file-name="ItemTomaInventario.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/ItemTomaInventario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.0">
+            <state line="44" column="0" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Paquete.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/omoikane/entities/Paquete.java">
+      <file leaf-file-name="TomaInventarioController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0">
+            <state line="240" column="0" selection-start="9302" selection-end="9302" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#9065#9279#0" expanded="true" />
+                <element signature="e#9264#9265#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TextFieldTableCell.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/TextFieldTableCell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="250" column="5" selection-start="10305" selection-end="10305" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ehcache.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/resources/ehcache.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="21" selection-start="769" selection-end="769" vertical-scroll-proportion="0.14252874">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext-test.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/resources/applicationContext-test.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="21" selection-start="2697" selection-end="2697" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -367,22 +342,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/src/omoikane/sistema/SpringFxmlLoader.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/inventarios/Stock.java" />
+        <option value="$PROJECT_DIR$/test/src/omoikane/proveedores/ProveedoresViewTest.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/proveedores/Proveedor.java" />
+        <option value="$PROJECT_DIR$/test/src/omoikane/repository/sampleDataLight.xml" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/repository/ProveedorRepo.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/proveedores/ProveedoresController.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/inventarios/StockLevelsController.java" />
+        <option value="$PROJECT_DIR$/test/src/omoikane/producto/PaqueteTest.java" />
+        <option value="$PROJECT_DIR$/test/src/omoikane/inventarios/TomaInventarioTest.java" />
         <option value="$PROJECT_DIR$/test/src/omoikane/producto/DummyJFXApp.java" />
         <option value="$PROJECT_DIR$/main/src/omoikane/sistema/SpringAnnotatedConfig.java" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/caja/CajaManager.java" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/producto/PaqueteView.fxml" />
-        <option value="$PROJECT_DIR$/main/resources/applicationContext-testPaqueteView.xml" />
-        <option value="$PROJECT_DIR$/test/src/omoikane/producto/PaqueteTest.java" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/entities/Paquete.java" />
-        <option value="$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema20121117.dtd" />
-        <option value="$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema.dtd" />
-        <option value="$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchemaLight.dtd" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/inventarios/ItemTomaInventario.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/sistema/TextFieldTableCell.java" />
+        <option value="$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java" />
         <option value="$PROJECT_DIR$/main/resources/applicationContext-test.xml" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/producto/Articulo.java" />
-        <option value="$PROJECT_DIR$/test/src/omoikane/repository/sampleDataLight.xml" />
-        <option value="$PROJECT_DIR$/main/src/omoikane/inventarios/Stock.java" />
+        <option value="$PROJECT_DIR$/main/resources/ehcache.xml" />
       </list>
     </option>
   </component>
@@ -422,7 +397,7 @@
   </component>
   <component name="ProjectView">
     <navigator currentView="PackagesPane" proportions="" version="1" splitterProportion="0.5">
-      <flattenPackages />
+      <flattenPackages Scope="true" />
       <showMembers />
       <showModules />
       <showLibraryContents />
@@ -541,363 +516,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Problems" />
-        <subPane subId="Production">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="entities">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Tests">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test/src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="sistema">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test/src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="repository">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test/src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="producto">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test/src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="caja">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="repository">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="entities">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Omoikane">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="META-INF">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -921,6 +539,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="omoikane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -955,10 +577,6 @@
               <option name="myItemId" value="omoikane" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="producto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -978,18 +596,264 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane>
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Omoikane" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Omoikane" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="META-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+          </PATH>
+        </subPane>
+        <subPane subId="Default" />
+        <subPane subId="Prueba">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Problems" />
+        <subPane subId="Tests">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="omoikane/proveedores">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="omoikane/producto">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="omoikane/inventarios">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Production">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="omoikane/sistema">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="omoikane/producto">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="omoikane/sistema">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main/resources">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="PrChangeList" />
+        <subPane subId="Test de entidades" />
+        <subPane subId="Configuraciones">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Changed Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main/src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Omoikane">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1012,15 +876,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="62" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="56" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="42" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="56" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="64" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="42" />
     <property name="OverrideImplement.combined" value="true" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="64" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
@@ -1036,26 +900,26 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="57" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="598" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="542" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="542" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/main/src/omoikane/sistema" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/test/src/omoikane/inventarios" />
     <property name="options.lastSelected" value="Web Contexts" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -1092,84 +956,7 @@
       <recent name="$PROJECT_DIR$/test/src/omoikane/repository" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PaqueteTest">
-    <configuration default="false" name="CajaManager" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="omoikane.caja.CajaManager" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Omoikane" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="CajaManagerTest.cajaTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea" />
-      <module name="Omoikane" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="omoikane.caja" />
-      <option name="MAIN_CLASS_NAME" value="omoikane.caja.CajaManagerTest" />
-      <option name="METHOD_NAME" value="cajaTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="PaqueteTest.cajaTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea" />
-      <module name="Omoikane" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="omoikane.producto" />
-      <option name="MAIN_CLASS_NAME" value="omoikane.producto.PaqueteTest" />
-      <option name="METHOD_NAME" value="cajaTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Cover" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Cover" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.TomaInventarioTest.tomaInventarioTest">
     <configuration default="false" name="PaqueteTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -1204,20 +991,20 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="CajaManagerTest" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="PaqueteTest.paqueteViewTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
-          <option name="PATTERN" value="omoikane.caja.*" />
+          <option name="PATTERN" value="omoikane.producto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="Omoikane" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="omoikane.caja" />
-      <option name="MAIN_CLASS_NAME" value="omoikane.caja.CajaManagerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="omoikane.producto" />
+      <option name="MAIN_CLASS_NAME" value="omoikane.producto.PaqueteTest" />
+      <option name="METHOD_NAME" value="paqueteViewTest" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1232,25 +1019,114 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="StockLevelsTest.stockLevelViewTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="omoikane.inventarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Omoikane" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="omoikane.inventarios" />
+      <option name="MAIN_CLASS_NAME" value="omoikane.inventarios.StockLevelsTest" />
+      <option name="METHOD_NAME" value="stockLevelViewTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ProveedoresViewTest.proveedoresViewTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="omoikane.proveedores.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Omoikane" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="omoikane.proveedores" />
+      <option name="MAIN_CLASS_NAME" value="omoikane.proveedores.ProveedoresViewTest" />
+      <option name="METHOD_NAME" value="proveedoresViewTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TomaInventarioTest.tomaInventarioTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="omoikane.inventarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Omoikane" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="omoikane.inventarios" />
+      <option name="MAIN_CLASS_NAME" value="omoikane.inventarios.TomaInventarioTest" />
+      <option name="METHOD_NAME" value="tomaInventarioTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -1279,6 +1155,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1342,18 +1231,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.omoikane in Omoikane" />
-      <item index="1" class="java.lang.String" itemvalue="Application.CajaManager" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.CajaManagerTest.cajaTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PaqueteTest.cajaTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PaqueteTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.CajaManagerTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PaqueteTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PaqueteTest.paqueteViewTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.StockLevelsTest.stockLevelViewTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ProveedoresViewTest.proveedoresViewTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.TomaInventarioTest.tomaInventarioTest" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PaqueteTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.CajaManagerTest" />
-        <item index="2" class="java.lang.String" itemvalue="Application.CajaManager" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PaqueteTest.cajaTest" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TomaInventarioTest.tomaInventarioTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.StockLevelsTest.stockLevelViewTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ProveedoresViewTest.proveedoresViewTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PaqueteTest.paqueteViewTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PaqueteTest" />
       </list>
     </recent_temporary>
     <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy Script">
@@ -1426,23 +1316,19 @@
       <created>1307737537787</created>
       <updated>1311642413244</updated>
     </task>
-    <task active="true" id="LOCAL-00002" summary="Test de entidades">
+    <task id="LOCAL-00002" summary="Test de entidades">
       <changelist id="18478f5e-e12e-4818-b885-b2c1d4616a4d" name="Test de entidades" comment="" />
       <changelist id="18478f5e-e12e-4818-b885-b2c1d4616a4d" name="Test de entidades" comment="" />
       <created>1311636686838</created>
-      <updated>1311875394030</updated>
+      <updated>1361655942500</updated>
     </task>
     <task id="LOCAL-00003" summary="Configuraciones">
-      <changelist id="efab7105-a172-4e1c-a7be-ef862723753d" name="Configuraciones" comment="" />
-      <changelist id="efab7105-a172-4e1c-a7be-ef862723753d" name="Configuraciones" comment="" />
       <created>1311642425803</created>
-      <updated>1311875364925</updated>
+      <updated>1361655985722</updated>
     </task>
     <task id="LOCAL-00004" summary="Prueba">
-      <changelist id="71d76b17-e4d1-4d9a-bd81-cbfd4ca29435" name="Prueba" comment="" />
-      <changelist id="71d76b17-e4d1-4d9a-bd81-cbfd4ca29435" name="Prueba" comment="" />
       <created>1311875364894</created>
-      <updated>1311875393872</updated>
+      <updated>1361655946667</updated>
     </task>
     <task id="LOCAL-00005" summary="Primera parte del adaptador Omoikane-SmartPOS (viejo esquema de BD vs nuevo)">
       <created>1348766791102</created>
@@ -1460,7 +1346,37 @@
       <created>1351826358128</created>
       <updated>1351826358128</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task active="true" id="LOCAL-00009" summary="SotckLevesView">
+      <changelist id="0d868af4-3d23-47a9-b469-985e7d6a9147" name="SotckLevesView" comment="" />
+      <changelist id="5f867679-01d8-4233-a162-75411aa92c1d" name="New changelist" comment="" />
+      <created>1361655980923</created>
+      <updated>1361655985728</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- StockLevels: Formulario para ajustar propiedades de inventario de un producto y revisar su existencia&#10;-- Test / Vista / Controlador&#10;- DummyFX ahora acepta parámetros a través de inyección de dependencia en un bean. &#10;-- Agregué parámetro para seleccionar la vista que se debe probar">
+      <created>1361679840192</created>
+      <updated>1361679840192</updated>
+    </task>
+    <task id="LOCAL-00011" summary="- Nuevo CRUD de proveedores">
+      <created>1361924496117</created>
+      <updated>1361924496117</updated>
+    </task>
+    <task id="LOCAL-00012">
+      <created>1361924560119</created>
+      <updated>1361924560119</updated>
+    </task>
+    <task id="LOCAL-00013" summary="- Validación de campos en stocklevelview">
+      <created>1361930748121</created>
+      <updated>1361930748121</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- Implementando tomas de inventario">
+      <created>1362025271240</created>
+      <updated>1362025271240</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- Implementando tomas de inventario">
+      <created>1362112272274</created>
+      <updated>1362112272274</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -1485,33 +1401,32 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32524964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25761974" sideWeight="0.21337126" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.7462437" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3240612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32127956" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25394547" sideWeight="0.34909597" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.7462437" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32127956" sideWeight="0.66883117" order="3" side_tool="false" content_ui="tabs" x="10" y="449" width="1394" height="277" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23252496" sideWeight="0.5105519" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25664452" sideWeight="0.21594684" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25394547" sideWeight="0.18776079" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959446" sideWeight="0.6714801" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32823366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22114047" sideWeight="0.48376623" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6703755" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21974966" sideWeight="0.48376623" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266762" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2784091" sideWeight="0.21825963" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25394547" sideWeight="0.107093185" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32873377" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39853895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39813486" sideWeight="0.6703755" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25394547" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" x="0" y="22" width="1280" height="714" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962447" sideWeight="0.99121845" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25394547" sideWeight="0.5535466" order="0" side_tool="false" content_ui="combo" x="0" y="22" width="1280" height="714" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962447" sideWeight="0.99121845" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.7462437" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Code explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JFormDesigner Form Converter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6703755" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Dynamic properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1519,6 +1434,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32267037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JFormDesigner Bindings" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7394958" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1562,7 +1478,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Implemención de DBUnit&#10;- Creación de script para importar la BD de omoikane en fixtures XML para DBUnit&#10;- Buscador con paginación integrado en caja" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Implementando tomas de inventario" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1583,6 +1499,10 @@
     <MESSAGE value="- Mejoras en en el subsistema de cálculo de precios&#10;- Implementción básica del buscador de productos" />
     <MESSAGE value="- Mejoras en en el subsistema de cálculo de precios&#10;- Implementción básica del buscador de productos&#10;- Implementé una prueba unitaria para la búsqueda de productos por código" />
     <MESSAGE value="- Implemención de DBUnit&#10;- Creación de script para importar la BD de omoikane en fixtures XML para DBUnit&#10;- Buscador con paginación integrado en caja" />
+    <MESSAGE value="- StockLevels: Formulario para ajustar propiedades de inventario de un producto y revisar su existencia&#10;-- Test / Vista / Controlador&#10;- DummyFX ahora acepta parámetros a través de inyección de dependencia en un bean. &#10;-- Agregué parámetro para seleccionar la vista que se debe probar" />
+    <MESSAGE value="- Nuevo CRUD de proveedores" />
+    <MESSAGE value="- Validación de campos en stocklevelview" />
+    <MESSAGE value="- Implementando tomas de inventario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1592,163 +1512,115 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema20121117.dtd">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/Stock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="13" selection-start="1359" selection-end="1359" vertical-scroll-proportion="-10.461538">
+        <state line="24" column="86" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchema.dtd">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_06/jre/lib/jfxrt.jar!/javafx/scene/control/TableView.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="13" selection-start="1377" selection-end="1377" vertical-scroll-proportion="-1.9615384">
+        <state line="99" column="17" selection-start="6750" selection-end="6862" vertical-scroll-proportion="0.3317757" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_06/jre/lib/jfxrt.jar!/javafx/scene/control/TableCell.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/omoikane/inventarios/TomaInventarioTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="15" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/repository/sampleBDSchemaLight.dtd">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/proveedores/ProveedoresController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="13" selection-start="624" selection-end="624" vertical-scroll-proportion="-8.730769">
+        <state line="122" column="30" selection-start="4042" selection-end="4042" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/producto/DummyJFXApp.java">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/SpringAnnotatedConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.0">
+        <state line="72" column="24" selection-start="1946" selection-end="1946" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_06/jre/lib/jfxrt.jar!/javafx/fxml/FXMLLoader.class">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/StockLevelsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="28" selection-start="7971" selection-end="7971" vertical-scroll-proportion="0.3317757">
+        <state line="98" column="48" selection-start="3084" selection-end="3084" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="uml://JAVA/omoikane.entities">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>omoikane.entities</OriginalElement>
-          <nodes>
-            <node x="" y="">omoikane.entities.CodigoProducto</node>
-            <node x="" y="">omoikane.entities.VentaEspecial</node>
-            <node x="" y="">omoikane.entities.Cancelacion</node>
-            <node x="" y="">omoikane.entities.CortePK</node>
-            <node x="" y="">omoikane.entities.MovimientoCorte</node>
-            <node x="" y="">omoikane.entities.VentaDetalle</node>
-            <node x="" y="">omoikane.entities.MovimientoAlmacen</node>
-            <node x="" y="">omoikane.entities.Usuario</node>
-            <node x="" y="">omoikane.entities.MovimientoAlmacenDetalle</node>
-            <node x="" y="">omoikane.entities.Corte</node>
-            <node x="" y="">omoikane.entities.Caja</node>
-            <node x="" y="">omoikane.entities.LegacyVentaDetalle</node>
-            <node x="" y="">omoikane.entities.CorteSucursal</node>
-            <node x="" y="">omoikane.entities.VentaFacturada</node>
-            <node x="" y="">omoikane.entities.Cliente</node>
-            <node x="" y="">omoikane.entities.Anotacion</node>
-            <node x="" y="">omoikane.entities.Venta</node>
-            <node x="" y="">omoikane.entities.LegacyVenta</node>
-            <node x="" y="">omoikane.entities.MovimientoCortePK</node>
-            <node x="" y="">omoikane.entities.Linea</node>
-            <node x="" y="">omoikane.entities.Grupo</node>
-            <node x="" y="">omoikane.entities.Preferencia</node>
-            <node x="" y="">omoikane.entities.VentaEspecialPK</node>
-            <node x="" y="">omoikane.entities.Paquete</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.7674418604651163" x="242.5" y="269.5" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/BaseParaPrecio.java">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/ItemTomaInventario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="524" selection-end="524" vertical-scroll-proportion="-0.5011287">
+        <state line="44" column="0" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/entities/Paquete.java">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/repository/ProductoRepo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/caja/presentation/CajaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/artifacts-7/artifacts/56865c09425cc6ecda8606d7e6035ceb/org.springframework/spring-tx/3.2.1.RELEASE/source/spring-tx-3.2.1.RELEASE-sources.jar!/org/springframework/transaction/support/TransactionCallbackWithoutResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0">
+        <state line="21" column="1" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/PaqueteController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="221" column="0" selection-start="8648" selection-end="8648" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3293#3515#0" expanded="true" />
-            <element signature="e#3504#3505#0" expanded="true" />
-            <element signature="e#4955#5326#0" expanded="true" />
-            <element signature="e#5315#5316#0" expanded="true" />
-            <element signature="e#5535#5965#0" expanded="true" />
-            <element signature="e#5954#5955#0" expanded="true" />
-            <element signature="e#6950#7282#0" expanded="true" />
-            <element signature="e#7271#7272#0" expanded="true" />
-            <element signature="e#8432#8859#0" expanded="true" />
-            <element signature="e#8848#8849#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/Producto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="17" selection-start="1190" selection-end="1190" vertical-scroll-proportion="0.0">
+        <state line="222" column="71" selection-start="8783" selection-end="8783" vertical-scroll-proportion="0.63203466">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/omoikane/repository/sampleDataLight.xml">
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/TomaInventarioController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="21" selection-start="11010" selection-end="11010" vertical-scroll-proportion="0.8710167">
+        <state line="240" column="0" selection-start="9302" selection-end="9302" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9065#9279#0" expanded="true" />
+            <element signature="e#9264#9265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/TextFieldTableCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="250" column="5" selection-start="10305" selection-end="10305" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/omoikane/producto/DummyJFXApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="25" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/omoikane/sistema/huellas/HuellasCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="64" selection-start="354" selection-end="354" vertical-scroll-proportion="0.03908046">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/resources/applicationContext-test.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="20" selection-start="1784" selection-end="1784" vertical-scroll-proportion="0.0">
+        <state line="54" column="21" selection-start="2697" selection-end="2697" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/producto/Articulo.java">
+    <entry file="file://$PROJECT_DIR$/main/resources/ehcache.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="40" selection-start="2062" selection-end="2062" vertical-scroll-proportion="0.0">
+        <state line="15" column="21" selection-start="769" selection-end="769" vertical-scroll-proportion="0.14252874">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/omoikane/inventarios/Stock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="26" selection-start="588" selection-end="588" vertical-scroll-proportion="0.23448277">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -21,7 +21,7 @@
     Subdirectories can be specified below the property e.g. java.io.tmpdir/one
 
     -->
-    <diskStore path="java.io.tmpdir"/>
+    <diskStore path="temp/"/>
 
     <!--
     Specifies a CacheManagerEventListenerFactory, be used to create a CacheManagerPeerProvider,
@@ -294,5 +294,14 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="3600"
            memoryStoreEvictionPolicy="LRU"
+    />
+    <cache name="test"
+           maxElementsInMemory="10"
+           eternal="true"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="1"
+           memoryStoreEvictionPolicy="LFU"
     />
 </ehcache>

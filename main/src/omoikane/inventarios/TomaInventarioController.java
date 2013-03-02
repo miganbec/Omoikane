@@ -168,8 +168,12 @@ public class TomaInventarioController implements Initializable {
 
             t.setOnKeyReleased(new EventHandler<KeyEvent>() {
                 @Override
-                public void handle(KeyEvent t) {
-                    if (t.getCode() == KeyCode.ENTER || t.getCode() == KeyCode.TAB) {
+                public void handle(final KeyEvent t) {
+                            toRunLater(t);
+                }
+
+                private void toRunLater(KeyEvent t) {
+                    if (t.getCode() == KeyCode.ENTER) {
                         t.consume();
                         if (getConverter() == null) {
                             throw new IllegalStateException(
@@ -178,36 +182,38 @@ public class TomaInventarioController implements Initializable {
                                             + "in your cell factory.");
                         }
                         commitEdit(getConverter().fromString(textField.getText()));
+
                         TablePosition position = getTableView().getFocusModel().getFocusedCell();
-                        int nextCol;
-                        int nextRow;
-                        if(position.getColumn() == getTableView().getColumns().size()-1)
+                        int nextCol = position.getColumn()+1;
+                        int nextRow = position.getRow();
+
+                        if(getTableView().getColumns().size()-1 < nextCol)
                         {
-                            nextRow = position.getRow() + 1;
+                            //nextRow = position.getRow() + 1;
+                            /*
+                            if(getTableView().getItems().size()-1 < nextRow) {
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            getTableView().getItems().add(impl.newInstance());
+                                        } catch (InstantiationException e) {
+                                            logger.error(e.getMessage(), e);
+                                        } catch (IllegalAccessException e) {
+                                            logger.error(e.getMessage(), e);
+                                        }
+                                    }
+                                });
+
+                            }*/
                             nextCol = 0;
-                        } else {
-                            nextRow = position.getRow();
-                            nextCol = getTableView().getColumns().indexOf(getTableColumn())+1;
                         }
-                        if(getTableView().getItems().size()-1 < nextRow) {
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    textField.requestFocus();
-                                }
-                            });
-                            try {
-                                getTableView().getItems().add(impl.newInstance());
-                            } catch (InstantiationException e) {
-                                logger.error(e.getMessage(), e);
-                            } catch (IllegalAccessException e) {
-                                logger.error(e.getMessage(), e);
-                            }
-                        } else {
-                            getTableView().getFocusModel().focus(nextRow, getTableView().getColumns().get(nextCol));
-                            position = getTableView().getFocusModel().getFocusedCell();
-                            getTableView().edit(position.getRow(), getTableView().getFocusModel().getFocusedCell().getTableColumn());
-                        }
+
+                        final int finalNextRow = nextRow;
+                        final int finalNextCol = nextCol;
+                        getTableView().edit(finalNextRow, getTableView().getColumns().get(finalNextCol));
+                        getTableView().getFocusModel().focus(finalNextRow, getTableView().getColumns().get(finalNextCol));
+
 
                     } else if (t.getCode() == KeyCode.ESCAPE) {
                         cancelEdit();
@@ -218,14 +224,17 @@ public class TomaInventarioController implements Initializable {
 
         @Override
         public void startEdit() {
-            super.startEdit();
+
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
+                    ImprovedTableCell.super.startEdit();
                     textField.requestFocus();
+
                 }
             });
         }
     }
+
 
 }

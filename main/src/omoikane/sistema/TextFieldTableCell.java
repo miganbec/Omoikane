@@ -257,6 +257,7 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
 
     static <T> TextField createTextField(final Cell<T> cell, final StringConverter<T> converter) {
         final TextField textField = new TextField(getItemText(cell, converter));
+        /*
         textField.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override public void handle(KeyEvent t) {
                 if (t.getCode() == KeyCode.ENTER) {
@@ -272,7 +273,7 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
                 }
             }
         });
-
+        */
         return textField;
     }
 
