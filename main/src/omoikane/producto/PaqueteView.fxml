@@ -25,7 +25,7 @@
       </columns>
     </TableView>
     <Button fx:id="addButton" layoutX="523.0" layoutY="409.0" mnemonicParsing="false" onAction="#actionAdd" text="Agregar" />
-    <Button fx:id="removeButton" layoutX="472.0" layoutY="347.0" mnemonicParsing="false" onAction="#actionRemove" text="Eliminar selección" />
+    <Button fx:id="removeButton" layoutX="450.0" layoutY="347.0" mnemonicParsing="false" onAction="#actionRemove" text="Eliminar selección" />
     <CheckBox fx:id="paqueteCheckbox" layoutX="16.0" layoutY="52.0" mnemonicParsing="false" onAction="#paqueteStateSwitched" text="Activar éste producto como kit / paquete / producto compuesto">
       <tooltip>
         <Tooltip text="Se desactivarán algunas características de un producto unitario" />
