@@ -16,8 +16,11 @@ import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.DefaultStringConverter;
+import net.sf.ehcache.Element;
 import omoikane.sistema.TextFieldTableCell;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 
 import java.math.BigDecimal;
 import java.net.URL;
@@ -38,6 +41,9 @@ public class TomaInventarioController implements Initializable {
     public Logger logger = Logger.getLogger(getClass());
 
     ObservableList<ItemTomaInventario> items;
+
+    @Autowired
+    EhCacheManagerFactoryBean cacheManager;
 
     @FXML TableView<ItemTomaInventario> itemsTable;
     @FXML TableColumn<ItemTomaInventario, String> codigoCol;
@@ -72,7 +78,11 @@ public class TomaInventarioController implements Initializable {
             }
         });
 
-        items = FXCollections.observableArrayList();
+        items = (ObservableList<ItemTomaInventario>) cacheManager.getObject().getCache("test").get("prueba").getObjectValue();
+        get ( prueba ) es nulo
+        if(items == null)
+            items = FXCollections.observableArrayList();
+
         ItemTomaInventario item = new ItemTomaInventario();
         item.setNombre(new SimpleStringProperty("prueba"));
         item.setCodigo(new SimpleStringProperty("0001"));
@@ -85,14 +95,14 @@ public class TomaInventarioController implements Initializable {
 
                 change.next();
                 if(change.wasAdded()) {
-
+                    cacheManager.getObject().getCache("test").put(new Element("prueba", items));
                     //itemsTable.getFocusModel().focus(itemsTable.getSelectionModel().getSelectedIndex(), itemsTable.getColumns().get(0));
 
                     //itemsTable.getFocusModel().focus(0, codigoCol);
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            itemsTable.edit(itemsTable.getSelectionModel().getSelectedIndex()+1, itemsTable.getColumns().get(0));
+                            itemsTable.edit(itemsTable.getSelectionModel().getSelectedIndex() + 1, itemsTable.getColumns().get(0));
                         }
                     });
 
