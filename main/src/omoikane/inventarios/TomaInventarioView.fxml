@@ -33,10 +33,10 @@
     </ToolBar>
     <Label layoutX="433.0" layoutY="50.0" prefWidth="34.0" text="ID:" />
     <Label layoutX="433.0" layoutY="79.0" text="Fecha:" />
-    <Label layoutX="478.0" layoutY="79.0" prefWidth="108.0" text="" />
+    <Label fx:id="fechaLabel" layoutX="478.0" layoutY="79.0" prefWidth="108.0" text="" />
     <Label fx:id="idLabel" layoutX="478.0" layoutY="50.0" prefWidth="94.0" text="" />
-    <Button layoutX="513.0" layoutY="365.0" mnemonicParsing="false" text="Guardar" />
-    <Button layoutX="426.0" layoutY="365.0" mnemonicParsing="false" text="Eliminar" />
+    <Button layoutX="513.0" layoutY="365.0" mnemonicParsing="false" onAction="#guardarAction" text="Guardar" />
+    <Button layoutX="426.0" layoutY="365.0" mnemonicParsing="false" onAction="#onEliminarAction" text="Eliminar" />
     <TextField fx:id="codigoTextField" layoutX="14.0" layoutY="364.0" prefWidth="200.0" promptText="Campo de pruebas. Eliminar" />
     <ChoiceBox layoutX="86.0" layoutY="76.0">
       <items>

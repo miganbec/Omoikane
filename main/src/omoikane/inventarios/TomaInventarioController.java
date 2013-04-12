@@ -1,10 +1,15 @@
 package omoikane.inventarios;
 
 import javafx.application.Platform;
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,15 +22,24 @@ import javafx.util.StringConverter;
 import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.DefaultStringConverter;
 import net.sf.ehcache.Element;
+import omoikane.repository.ConteoInventarioRepo;
 import omoikane.sistema.TextFieldTableCell;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.TransactionManager;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.text.DecimalFormatSymbols;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,17 +54,53 @@ public class TomaInventarioController implements Initializable {
 
     public Logger logger = Logger.getLogger(getClass());
 
-    ObservableList<ItemTomaInventario> items;
+    ConteoInventarioPropWrapper modelo;
 
     @Autowired
     EhCacheManagerFactoryBean cacheManager;
 
-    @FXML TableView<ItemTomaInventario> itemsTable;
-    @FXML TableColumn<ItemTomaInventario, String> codigoCol;
-    @FXML TableColumn<ItemTomaInventario, String> nombreProductoCol;
-    @FXML TableColumn<ItemTomaInventario, BigDecimal> conteoCol;
+    @PersistenceContext
+    EntityManager entityManager;
+
+    @Autowired
+    PlatformTransactionManager transactionManager;
+
+    @Autowired
+    ConteoInventarioRepo repo;
+
+    @FXML TableView<ItemConteoPropWrapper> itemsTable;
+    @FXML TableColumn<ItemConteoPropWrapper, String> codigoCol;
+    @FXML TableColumn<ItemConteoPropWrapper, String> nombreProductoCol;
+    @FXML TableColumn<ItemConteoPropWrapper, BigDecimal> conteoCol;
     @FXML Label idLabel;
+    @FXML Label fechaLabel;
     @FXML TextField codigoTextField;
+
+    @FXML public void guardarAction(ActionEvent actionEvent) {
+        modelo.setCompletado(true);
+        Task<Void> persistTask = persistModel();
+        persistTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent workerStateEvent) {
+                initModel();
+                logger.info("Captura de conteo guardada");
+            }
+        });
+        new Thread(persistTask).start();
+    }
+
+    @FXML public void onEliminarAction(ActionEvent actionEvent) {
+        Task<Void> deleteTask = deleteModel();
+        deleteTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent workerStateEvent) {
+                initModel();
+                logger.info("Captura eliminada");
+            }
+        });
+        new Thread(deleteTask).start();
+    }
+
     Character decimalSeparator = getDecimalSeparator();
 
     private Character getDecimalSeparator() {
@@ -60,57 +110,112 @@ public class TomaInventarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        codigoCol        .setCellValueFactory(new PropertyValueFactory<ItemTomaInventario, String>("codigo"));
-        codigoCol        .setCellFactory(new ImprovedCellFactory<ItemTomaInventario>(ItemTomaInventario.class));
+        codigoCol        .setCellValueFactory(new PropertyValueFactory<ItemConteoPropWrapper, String>("codigo"));
+        codigoCol        .setCellFactory(new ImprovedCellFactory<ItemConteoPropWrapper>(ItemConteoPropWrapper.class));
 
-        nombreProductoCol.setCellValueFactory(new PropertyValueFactory<ItemTomaInventario, String>("nombre"));
-        nombreProductoCol.setCellFactory(new ImprovedCellFactory<ItemTomaInventario>(ItemTomaInventario.class));
+        nombreProductoCol.setCellValueFactory(new PropertyValueFactory<ItemConteoPropWrapper, String>("nombre"));
+        nombreProductoCol.setCellFactory(new ImprovedCellFactory<ItemConteoPropWrapper>(ItemConteoPropWrapper.class));
 
-        conteoCol        .setCellValueFactory(new PropertyValueFactory<ItemTomaInventario, BigDecimal>("conteo"));
-        conteoCol        .setCellFactory(new NumericCellFactory<ItemTomaInventario>(ItemTomaInventario.class));
+        conteoCol        .setCellValueFactory(new PropertyValueFactory<ItemConteoPropWrapper, BigDecimal>("conteo"));
+        conteoCol        .setCellFactory(new NumericCellFactory<ItemConteoPropWrapper>(ItemConteoPropWrapper.class));
+
+        initModel();
 
         codigoTextField.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode() == KeyCode.ENTER) {
-                    items.add(new ItemTomaInventario(codigoTextField.getText(), "", new BigDecimal("0")));
+                    ItemConteoInventario newItemBean = new ItemConteoInventario(codigoTextField.getText(), "prueba", new BigDecimal("10"));
+                    ItemConteoPropWrapper newItem = new ItemConteoPropWrapper(newItemBean);
+                    modelo.addItem(newItem);
                 }
             }
         });
 
-        items = (ObservableList<ItemTomaInventario>) cacheManager.getObject().getCache("test").get("prueba").getObjectValue();
-        get ( prueba ) es nulo
-        if(items == null)
-            items = FXCollections.observableArrayList();
 
-        ItemTomaInventario item = new ItemTomaInventario();
-        item.setNombre(new SimpleStringProperty("prueba"));
-        item.setCodigo(new SimpleStringProperty("0001"));
-        items.add(item);
-        itemsTable.setItems(items);
-
-        items.addListener(new ListChangeListener<ItemTomaInventario>() {
-            @Override
-            public void onChanged(final Change<? extends ItemTomaInventario> change) {
-
-                change.next();
-                if(change.wasAdded()) {
-                    cacheManager.getObject().getCache("test").put(new Element("prueba", items));
-                    //itemsTable.getFocusModel().focus(itemsTable.getSelectionModel().getSelectedIndex(), itemsTable.getColumns().get(0));
-
-                    //itemsTable.getFocusModel().focus(0, codigoCol);
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            itemsTable.edit(itemsTable.getSelectionModel().getSelectedIndex() + 1, itemsTable.getColumns().get(0));
-                        }
-                    });
-
-                }
-
-            }
-        });
     }
+
+    private void initModel() {
+        modelo = loadOrCreateModel();
+        itemsTable.setItems(modelo.getItems());
+        fechaLabel.textProperty().bind(Bindings.convert(modelo.getDate()));
+        idLabel.textProperty().bind(Bindings.convert(modelo.getId()));
+
+        modelo.getItems().addListener(new MyListChangeListener());
+    }
+
+    @Transactional
+    private ConteoInventarioPropWrapper loadOrCreateModel() {
+        ConteoInventario conteoInventario = repo.findByCompletado(false);
+
+        if(conteoInventario != null) {
+            conteoInventario = repo.findByCompletado(false);
+        } else {
+            conteoInventario = new ConteoInventario();
+            conteoInventario.setFecha( new Date() );
+            conteoInventario = repo.saveAndFlush(conteoInventario);
+        }
+
+        ConteoInventarioPropWrapper conteoInventarioPropWrapper = new ConteoInventarioPropWrapper(conteoInventario);
+
+        return conteoInventarioPropWrapper;
+    }
+
+    private class MyListChangeListener implements ListChangeListener<ItemConteoPropWrapper> {
+
+        @Override
+        public void onChanged(Change<? extends ItemConteoPropWrapper> change) {
+            change.next();
+            new Thread(
+                    persistModel()
+            ).start();
+        }
+    }
+
+    /**
+     * Ésta función almacena todo el modelo de esta vista.
+     * Nota: Éste método utiliza Spring e Hibernate directamente, TransactionTemplate para la transacción
+     * y entityManager para persistir a diferencia del método deleteModel. Simplemente por experimentación.
+     * @return
+     */
+
+    private Task<Void> persistModel() {
+        Task persistTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
+                transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+
+                    protected void doInTransactionWithoutResult(TransactionStatus status) {
+                        entityManager.merge(modelo._conteoInventario);
+                        entityManager.flush();
+                    }
+                });
+
+                itemsTable.edit(itemsTable.getSelectionModel().getSelectedIndex() + 1, itemsTable.getColumns().get(0));
+                return null;
+            }
+        };
+        return persistTask;
+    }
+
+    /**
+     * Elimina el modelo de la presentación.
+     * Nota: Utiliza Hades/Spring DAO para la eliminación a diferencia del método persistModel, claramente
+     * el código es más simple y legible.
+     * @return
+     */
+    private Task<Void> deleteModel() {
+        Task deleteTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                repo.delete(modelo._conteoInventario);
+                return null;
+            }
+        };
+        return deleteTask;
+    }
+
     public class ImprovedCellFactory<S> implements Callback<TableColumn<S, String>, TableCell<S, String>> {
 
         Class<S> impl;
@@ -192,6 +297,7 @@ public class TomaInventarioController implements Initializable {
                                             + "in your cell factory.");
                         }
                         commitEdit(getConverter().fromString(textField.getText()));
+                        persistModel();
 
                         TablePosition position = getTableView().getFocusModel().getFocusedCell();
                         int nextCol = position.getColumn()+1;
