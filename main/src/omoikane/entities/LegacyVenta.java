@@ -4,10 +4,14 @@
  */
 package omoikane.entities;
 
+import omoikane.inventarios.ItemConteoInventario;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,7 +27,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class LegacyVenta implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private int id;
+    @Column(name = "id_venta")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "id_caja")
     private int idCaja;
@@ -45,7 +52,7 @@ public class LegacyVenta implements Serializable {
     @Column(name = "facturada")
     private Integer facturada;
     @Column(name = "completada")
-    private Integer completada;
+    private Boolean completada;
     @Basic(optional = false)
     @Lob
     @Column(name = "eliminar")
@@ -75,21 +82,28 @@ public class LegacyVenta implements Serializable {
     @Column(name = "folio")
     private long folio;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "venta")
+    List<LegacyVentaDetalle> items;
+
+    public void addItem(LegacyVentaDetalle item) {
+        if(getItems() == null) {
+            setItems(new ArrayList<LegacyVentaDetalle>());
+        }
+        items.add(item);
+        item.setVenta(this);
+    }
+
     public LegacyVenta() {
     }
 
-    @Column(name = "id_venta")
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Column(name = "id_caja")
     public int getIdCaja() {
         return idCaja;
     }
@@ -98,7 +112,6 @@ public class LegacyVenta implements Serializable {
         this.idCaja = idCaja;
     }
 
-    @Column(name = "id_almacen")
     public int getIdAlmacen() {
         return idAlmacen;
     }
@@ -107,7 +120,6 @@ public class LegacyVenta implements Serializable {
         this.idAlmacen = idAlmacen;
     }
 
-    @Column(name = "id_cliente")
     public Integer getIdCliente() {
         return idCliente;
     }
@@ -116,7 +128,6 @@ public class LegacyVenta implements Serializable {
         this.idCliente = idCliente;
     }
 
-    @Column(name = "fecha_hora")
     public Date getFechaHora() {
         return fechaHora;
     }
@@ -151,11 +162,11 @@ public class LegacyVenta implements Serializable {
         this.facturada = facturada;
     }
 
-    public Integer getCompletada() {
+    public Boolean getCompletada() {
         return completada;
     }
 
-    public void setCompletada(Integer completada) {
+    public void setCompletada(Boolean completada) {
         this.completada = completada;
     }
 
@@ -199,7 +210,6 @@ public class LegacyVenta implements Serializable {
         this.total = total;
     }
 
-    @Column(name = "id_usuario")
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -239,6 +249,10 @@ public class LegacyVenta implements Serializable {
     public void setFolio(long folio) {
         this.folio = folio;
     }
+
+    public List<LegacyVentaDetalle> getItems() { return items; }
+
+    private void setItems(List<LegacyVentaDetalle> lvd) { items = lvd; }
 
     @Override
     public int hashCode() {

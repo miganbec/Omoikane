@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class VentaRepoTest {
         LegacyVenta venta = new LegacyVenta();
         venta.setCambio(0f);
         venta.setCentecimosredondeados(0f);
-        venta.setCompletada(1);
+        venta.setCompletada(true);
         venta.setDescuento(0d);
         venta.setEfectivo(0d);
         venta.setEliminar(null);
@@ -59,10 +60,7 @@ public class VentaRepoTest {
         venta.setImpuestos(0d);
         venta.setTotal(0d);
 
-        ventaRepo.saveAndFlush(venta);
-
         LegacyVentaDetalle lvd = new LegacyVentaDetalle();
-        lvd.setIdVenta(venta.getId());
         lvd.setIdAlmacen(1);
         lvd.setIdArticulo(500);
         lvd.setIdLinea(1);
@@ -75,13 +73,15 @@ public class VentaRepoTest {
         lvd.setTipoSalida("");
         lvd.setTotal(100d);
 
-        entityManager.persist( lvd );
-        entityManager.flush();
+        venta.addItem(lvd);
+
+        venta = ventaRepo.saveAndFlush(venta);
 
         System.out.println("Venta ID: "+venta.getId());
-        System.out.println("Venta detalle ID: "+lvd.getIdRenglon());
+        Integer idRenglon = venta.getItems().get(0).getIdRenglon();
+        System.out.println("Venta detalle ID: "+ idRenglon);
         Assert.assertTrue( ventaRepo.count() == 51);
-        Assert.assertTrue( entityManager.find(LegacyVentaDetalle.class, lvd.getIdRenglon()).getTotal() == 100d );
+        Assert.assertTrue( entityManager.find(LegacyVentaDetalle.class, idRenglon).getTotal() == 100d );
     }
 
     @Test

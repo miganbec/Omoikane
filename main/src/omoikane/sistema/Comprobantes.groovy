@@ -40,7 +40,7 @@ import groovy.inspect.swingui.*
     /**
      * Método que utiliza hibernate para acceder a los datos de la venta en lugar de nadesico (versión antigua ticket())
      */
-    public void ticketVenta( Integer idVenta ) {
+    public void ticketVenta( Long idVenta ) {
         LegacyVenta venta = entityManager.find(LegacyVenta.class, idVenta);
         data              = venta.properties;
         data.date         = data.fechaHora

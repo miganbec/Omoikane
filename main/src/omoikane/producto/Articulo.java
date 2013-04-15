@@ -169,7 +169,7 @@ public class Articulo implements Serializable, IProductoApreciado {
     }
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     public Stock stock;
 

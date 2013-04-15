@@ -14,6 +14,7 @@ import omoikane.entities.LegacyVenta;
 import omoikane.entities.LegacyVentaDetalle;
 import omoikane.principal.Principal;
 import omoikane.producto.Producto;
+import omoikane.repository.VentaRepo;
 import omoikane.sistema.Comprobantes;
 import omoikane.sistema.Usuarios;
 import org.apache.log4j.Logger;
@@ -48,6 +49,9 @@ public class CajaLogicImpl implements ICajaLogic {
 
     @Autowired
     Comprobantes comprobantes;
+
+    @Autowired
+    VentaRepo ventaRepo;
 
     @PersistenceContext
     EntityManager entityManager;
@@ -213,7 +217,7 @@ public class CajaLogicImpl implements ICajaLogic {
         venta.setEfectivo(efectivo);
         venta.setCambio(cambio);
         venta.setCentecimosredondeados(0d);
-        venta.setCompletada(1);
+        venta.setCompletada(false);
         venta.setFacturada(0);
         venta.setFechaHora ( fechaHora );
         venta.setDescuento (model.getDescuento().get().doubleValue());
@@ -221,8 +225,7 @@ public class CajaLogicImpl implements ICajaLogic {
         venta.setImpuestos (model.getImpuestos().getValue().doubleValue());
         venta.setTotal     (model.getTotal().get().doubleValue());
 
-
-        entityManager.persist(venta);
+        //entityManager.persist(venta);
 
         for (ProductoModel producto : model.getVenta()) {
             LegacyVentaDetalle lvd = new LegacyVentaDetalle();
@@ -230,7 +233,7 @@ public class CajaLogicImpl implements ICajaLogic {
             lvd.setIdArticulo( producto.getLongId().intValue() );
             lvd.setIdCaja    ( idCaja );
             lvd.setIdLinea   ( producto.getProductoData().getLineaByLineaId().getId() );
-            lvd.setIdVenta   ( venta.getId() );
+            //lvd.setIdVenta   ( venta.getId() );
             lvd.setCantidad  ( producto.cantidadProperty().get().doubleValue() );
             lvd.setPrecio    ( producto.precioProperty().get().doubleValue() );
             lvd.setDescuento ( producto.descuentoProperty().get().doubleValue() );
@@ -239,9 +242,12 @@ public class CajaLogicImpl implements ICajaLogic {
             lvd.setTotal     ( producto.getImporte().doubleValue() );
             lvd.setTipoSalida( "" );
 
-            entityManager.persist( lvd );
+            venta.addItem(lvd);
+            //entityManager.persist( lvd );
         }
-        entityManager.flush();
+
+        venta = ventaRepo.saveAndFlush(venta);
+        //entityManager.flush();
         return venta;
     }
 

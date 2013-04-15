@@ -18,12 +18,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 public class LegacyVentaDetalle implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_renglon")
     private int idRenglon;
-    @Basic(optional = false)
-    @Column(name = "id_venta")
-    private int idVenta;
+    @ManyToOne
+    @JoinColumn(name = "id_venta")
+    private LegacyVenta venta;
     @Basic(optional = false)
     @Column(name = "id_caja")
     private int idCaja;
@@ -54,7 +55,6 @@ public class LegacyVentaDetalle implements Serializable {
     public LegacyVentaDetalle() {
     }
 
-    @Column(name = "id_articulo")
     public Integer getIdArticulo() {
         return idArticulo;
     }
@@ -63,9 +63,6 @@ public class LegacyVentaDetalle implements Serializable {
         this.idArticulo = idArticulo;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_renglon")
     public int getIdRenglon() {
         return idRenglon;
     }
@@ -74,16 +71,14 @@ public class LegacyVentaDetalle implements Serializable {
         this.idRenglon = idRenglon;
     }
 
-    @Column(name = "id_venta")
-    public int getIdVenta() {
-        return idVenta;
+    public LegacyVenta getVenta() {
+        return venta;
     }
 
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
+    public void setVenta(LegacyVenta venta) {
+        this.venta = venta;
     }
 
-    @Column(name = "id_caja")
     public int getIdCaja() {
         return idCaja;
     }
@@ -92,7 +87,6 @@ public class LegacyVentaDetalle implements Serializable {
         this.idCaja = idCaja;
     }
 
-    @Column(name = "id_almacen")
     public int getIdAlmacen() {
         return idAlmacen;
     }
@@ -117,7 +111,6 @@ public class LegacyVentaDetalle implements Serializable {
         this.cantidad = cantidad;
     }
 
-    @Column(name = "tipo_salida")
     public String getTipoSalida() {
         return tipoSalida;
     }
@@ -158,7 +151,6 @@ public class LegacyVentaDetalle implements Serializable {
         this.total = total;
     }
 
-    @Column(name = "id_linea")
     public Integer getIdLinea() {
         return idLinea;
     }
