@@ -12,6 +12,7 @@ import omoikane.entities.Usuario;
 import omoikane.principal.Principal;
 import omoikane.producto.Articulo;
 import omoikane.repository.CancelacionRepo;
+import omoikane.repository.VentaRepo;
 import omoikane.sistema.Usuarios;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class CancelarProducto extends ICajaEventHandler {
 
     VentaKBHandler ventaKBHandler;
     CancelacionRepo repo;
+    VentaRepo ventaRepo;
 
     public static Logger logger = Logger.getLogger(CancelarVenta.class);
 
@@ -34,6 +36,7 @@ public class CancelarProducto extends ICajaEventHandler {
         super(controller);
         ventaKBHandler = new VentaKBHandler();
         repo = (CancelacionRepo) Principal.applicationContext.getBean("cancelacionRepo");
+        ventaRepo = (VentaRepo) Principal.applicationContext.getBean("ventaRepo");
     }
 
     @Override
@@ -44,8 +47,9 @@ public class CancelarProducto extends ICajaEventHandler {
     public void cancelar() {
         try {
             if(Usuarios.autentifica(Usuarios.SUPERVISOR)) {
+                Integer selectedRow = getController().getVentaTableView().getSelectionModel().selectedIndexProperty().getValue();
                 ProductoModel quitar = getController().getVentaTableView().getSelectionModel().getSelectedItem();
-                getController().getModel().getVenta().remove(quitar);
+                getController().getCajaLogic().deleteRowFromVenta(selectedRow);
                 registrar(quitar);
             } else {
                 getController().getCapturaTextField().requestFocus();

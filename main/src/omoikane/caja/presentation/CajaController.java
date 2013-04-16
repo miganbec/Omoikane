@@ -358,6 +358,8 @@ public class CajaController
                 new MovimientosDeCaja(controller).handle(event);
             if(event.getTarget() == ventaEspecialButton)
                 ventaEspecialHandler.handle(event);
+            if(event.getTarget() == cerrarButton)
+                new CerrarCajaHandler(controller).handle(event);
         }
     }
 

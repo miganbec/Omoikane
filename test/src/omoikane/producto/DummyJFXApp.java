@@ -28,7 +28,7 @@ public class DummyJFXApp extends Application {
             Principal.IDAlmacen = 1;
             Usuarios.setIDUsuarioActivo(1);
 
-            HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "testProperties" );
+            HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "properties" );
             String beanToTest = (String) testProperties.get("DummyJFXApp.viewBeanToTest");
             Scene scene = (Scene) Principal.applicationContext.getBean(beanToTest);
 

@@ -1,7 +1,5 @@
 package omoikane.caja.business;
 
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import name.antonsmirnov.javafx.dialog.Dialog;
 import omoikane.caja.data.IProductosDAO;
@@ -29,6 +27,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -127,6 +126,20 @@ public class CajaLogicImpl implements ICajaLogic {
         }   else {
             model.getVenta().add(productoModel);
         }
+        persistirVenta();
+    }
+
+    @Override
+    public void deleteRowFromVenta(int row) {
+        getController().getModel().getVenta().remove(row);
+        getVentaAbiertaBean().getItems().remove(row);
+        persistirVenta();
+    }
+
+    @Override
+    public void persistirVenta() {
+        CajaModel model = getController().getModel();
+        ventaAbiertaBean = guardarVenta(model);
     }
 
     private void reglasDeCantidad(ProductoModel productoModel) throws Exception {
@@ -172,6 +185,7 @@ public class CajaLogicImpl implements ICajaLogic {
         BigDecimal ventaTotal = model.getTotal().get();
         if( ventaTotal.compareTo( new BigDecimal("0.10") ) > 0 ) {
             try {
+                ventaAbiertaBean.setCompletada(true);
                 LegacyVenta venta = guardarVenta(model);
                 imprimirVenta(venta);
 
@@ -186,10 +200,40 @@ public class CajaLogicImpl implements ICajaLogic {
 
     }
 
+    private LegacyVenta ventaAbiertaBean;
+    @Override
+    public LegacyVenta getVentaAbiertaBean() { return ventaAbiertaBean; }
+
     @Override
     public void nuevaVenta() {
+        LegacyVenta ventaIncompleta = buscarVentaIncompleta();
         getController().setModel( new CajaModel() );
+
+        if(ventaIncompleta == null) {
+            ventaAbiertaBean = null;
+            persistirVenta();
+        } else {
+            cargarVentaIncompleta(ventaIncompleta);
+            ventaAbiertaBean = ventaIncompleta;
+        }
+
         getController().getCapturaTextField().requestFocus();
+    }
+
+    private LegacyVenta buscarVentaIncompleta() {
+        Integer idCaja    = Principal.IDCaja;
+        LegacyVenta venta = ventaRepo.findByIdCajaAndCompletada(idCaja, false);
+        return venta;
+    }
+
+    private void cargarVentaIncompleta(LegacyVenta venta) {
+
+        for( LegacyVentaDetalle lvd : venta.getItems()) {
+            ProductoModel productoModel = new ProductoModel();
+            productoToProductoModel(productosDAO.findById(new Long(lvd.getIdArticulo())), productoModel);
+            productoModel.cantidadProperty().set(BigDecimal.valueOf(lvd.getCantidad()));
+            getController().getModel().getVenta().add(productoModel);
+        }
     }
 
     private void imprimirVenta(LegacyVenta venta) {
@@ -206,18 +250,23 @@ public class CajaLogicImpl implements ICajaLogic {
         Double  cambio    = model.getCambio().get().doubleValue();
         Date    fechaHora = (Date) entityManager.createNativeQuery("SELECT current_timestamp").getSingleResult();
 
-        Integer folio     = asignarFolio(idCaja);
+        LegacyVenta venta;
+        if(ventaAbiertaBean == null) {
+            Integer folio     = asignarFolio(idCaja);
+            venta = new LegacyVenta();
+            venta.setCompletada(false);
+            venta.setFolio(folio);
+        } else {
+            venta = ventaAbiertaBean;
+        }
 
-        LegacyVenta venta = new LegacyVenta();
         venta.setIdCliente ( 1 );
         venta.setIdUsuario(idUsuario);
         venta.setIdAlmacen(idAlmacen);
         venta.setIdCaja(idCaja);
-        venta.setFolio(folio);
         venta.setEfectivo(efectivo);
         venta.setCambio(cambio);
         venta.setCentecimosredondeados(0d);
-        venta.setCompletada(false);
         venta.setFacturada(0);
         venta.setFechaHora ( fechaHora );
         venta.setDescuento (model.getDescuento().get().doubleValue());
@@ -225,15 +274,21 @@ public class CajaLogicImpl implements ICajaLogic {
         venta.setImpuestos (model.getImpuestos().getValue().doubleValue());
         venta.setTotal     (model.getTotal().get().doubleValue());
 
-        //entityManager.persist(venta);
+        int i = 0;
+        List<LegacyVentaDetalle> itemsTmp = venta.getItems();
+        venta.setItems(null);
 
         for (ProductoModel producto : model.getVenta()) {
-            LegacyVentaDetalle lvd = new LegacyVentaDetalle();
+            LegacyVentaDetalle lvd;
+            if(itemsTmp == null || itemsTmp.size() <= i)
+                    lvd = new LegacyVentaDetalle();
+                else
+                    lvd = itemsTmp.get(i);
+
             lvd.setIdAlmacen ( idAlmacen );
             lvd.setIdArticulo( producto.getLongId().intValue() );
             lvd.setIdCaja    ( idCaja );
             lvd.setIdLinea   ( producto.getProductoData().getLineaByLineaId().getId() );
-            //lvd.setIdVenta   ( venta.getId() );
             lvd.setCantidad  ( producto.cantidadProperty().get().doubleValue() );
             lvd.setPrecio    ( producto.precioProperty().get().doubleValue() );
             lvd.setDescuento ( producto.descuentoProperty().get().doubleValue() );
@@ -243,11 +298,10 @@ public class CajaLogicImpl implements ICajaLogic {
             lvd.setTipoSalida( "" );
 
             venta.addItem(lvd);
-            //entityManager.persist( lvd );
+            i++;
         }
 
         venta = ventaRepo.saveAndFlush(venta);
-        //entityManager.flush();
         return venta;
     }
 

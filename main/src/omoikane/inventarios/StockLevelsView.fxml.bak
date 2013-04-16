@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-classpath-element ../../../../lib/jfxtras-labs-2.2-r4.jar?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import jfxtras.labs.scene.control.*?>
+<?import jfxtras.labs.scene.control.BigDecimalField?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.9998779296875" prefWidth="357.0" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.inventarios.StockLevelsController">
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Stock">
+      <font>
+        <Font size="23.0" />
+      </font>
+    </Label>
+    <BigDecimalField fx:id="stockMin" layoutX="149.0" layoutY="140.0" prefWidth="200.00009999999747" />
+    <BigDecimalField id="StockMax" fx:id="stockMax" layoutX="149.0" layoutY="177.0" prefWidth="200.0001220703125" />
+    <Label layoutX="14.0" layoutY="143.0" text="Stock mínimo:" />
+    <Label layoutX="15.0" layoutY="179.0" text="Stock máximo:" />
+    <Button id="guardarBtn" cancelButton="false" defaultButton="false" layoutX="218.0" layoutY="334.0" mnemonicParsing="false" onAction="#accionGuardar" text="Guardar" />
+    <Button defaultButton="true" layoutX="291.0" layoutY="334.0" mnemonicParsing="false" onAction="#accionCerrar" text="Cerrar" />
+    <Label layoutX="15.0" layoutY="217.0" text="Ubicación:" />
+    <Label layoutX="14.0" layoutY="67.0" text="Stock en piso:" />
+    <Label layoutX="14.0" layoutY="105.0" text="Stock en bodega:" />
+    <Label layoutX="15.0" layoutY="302.0" text="Clasificación:" />
+    <RadioButton id="claseA" fx:id="radioClaseA" layoutX="194.0" layoutY="302.0" mnemonicParsing="false" text="A">
+      <toggleGroup>
+        <ToggleGroup fx:id="clasificacion" />
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="radioClaseB" layoutX="237.0" layoutY="302.0" mnemonicParsing="false" text="B" toggleGroup="$clasificacion" />
+    <RadioButton fx:id="radioClaseC" layoutX="277.0" layoutY="302.0" mnemonicParsing="false" text="C" toggleGroup="$clasificacion" />
+    <BigDecimalField fx:id="stockTienda" disable="true" layoutX="148.0" layoutY="64.0" opacity="1.0" prefWidth="200.0001220703125" />
+    <BigDecimalField fx:id="stockBodega" disable="true" layoutX="149.0" layoutY="102.0" opacity="1.0" prefWidth="200.0" />
+    <TextArea fx:id="ubicacion" layoutX="151.0" layoutY="217.0" prefHeight="67.0" prefWidth="200.0" wrapText="true" />
+    <Label layoutX="14.0" layoutY="86.0" prefWidth="334.0" text="Label">
+      <textFill>
+        <Color blue="0.000" green="0.000" red="0.800" fx:id="x1" />
+      </textFill>
+    </Label>
+    <Label layoutX="14.0" layoutY="124.0" prefWidth="334.0" text="Label" textFill="$x1" />
+    <Label layoutX="15.0" layoutY="162.0" prefWidth="334.0" text="Label" textFill="$x1" />
+    <Label layoutX="14.0" layoutY="201.0" prefWidth="334.0" text="Label" textFill="$x1" />
+    <Label layoutX="14.0" layoutY="284.0" prefWidth="334.0" text="Label" textFill="$x1" />
+  </children>
+</AnchorPane>

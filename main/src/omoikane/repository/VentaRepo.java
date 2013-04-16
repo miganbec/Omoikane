@@ -11,4 +11,5 @@ import org.synyx.hades.dao.GenericDao;
  * To change this template use File | Settings | File Templates.
  */
 public interface VentaRepo extends GenericDao<LegacyVenta, Integer> {
+    LegacyVenta findByIdCajaAndCompletada(int idCaja, Boolean completada);
 }

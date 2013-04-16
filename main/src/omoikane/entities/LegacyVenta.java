@@ -252,7 +252,7 @@ public class LegacyVenta implements Serializable {
 
     public List<LegacyVentaDetalle> getItems() { return items; }
 
-    private void setItems(List<LegacyVentaDetalle> lvd) { items = lvd; }
+    public void setItems(List<LegacyVentaDetalle> lvd) { items = lvd; }
 
     @Override
     public int hashCode() {

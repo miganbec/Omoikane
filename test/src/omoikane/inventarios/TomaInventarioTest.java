@@ -37,7 +37,7 @@ public class TomaInventarioTest {
     @Test
     public void tomaInventarioTest() {
         omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
-        HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "testProperties" );
+        HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "properties" );
         testProperties.put("DummyJFXApp.viewBeanToTest", "tomaInventarioView");
         Application.launch(DummyJFXApp.class);
     }

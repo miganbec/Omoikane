@@ -31,7 +31,7 @@
         <Button fx:id="cerrarButton" font="$x3" mnemonicParsing="false" text="Cerrar [ESC]" />
       </items>
     </ToolBar>
-    <SplitPane dividerPositions="0.5951883467770221" focusTraversable="true" prefHeight="506.99988474121346" prefWidth="957.9999000000025" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.5941423215630027" focusTraversable="true" prefHeight="506.99988474121346" prefWidth="957.9999000000025" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>

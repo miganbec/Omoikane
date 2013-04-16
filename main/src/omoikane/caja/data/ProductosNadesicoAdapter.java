@@ -48,6 +48,18 @@ public class ProductosNadesicoAdapter implements IProductosDAO {
     }
 
     @Override
+    public Producto findById(Long id) {
+
+        Articulo articulo = (Articulo) productoRepo.readByPrimaryKey(id);
+        Producto producto = new Producto();
+
+        articuloToProducto(articulo, producto);
+
+        return producto;
+
+    }
+
+    @Override
     public List<Producto> findByDescripcionLike(String descripcion, Pageable pagina) {
         Pageable pageable = new PageRequest(pagina.getPageNumber(), pagina.getPageSize());
         ArrayList<Articulo> articulos = (ArrayList<Articulo>) productoRepo.findByDescripcionLike( descripcion, pageable );

@@ -22,4 +22,11 @@ public interface ICajaLogic {
     void setController(CajaController cajaController);
 
     void nuevaVenta();
+
+    LegacyVenta getVentaAbiertaBean();
+
+    void deleteRowFromVenta(int row);
+
+    void persistirVenta();
+
 }

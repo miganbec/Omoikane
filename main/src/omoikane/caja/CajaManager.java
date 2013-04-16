@@ -74,12 +74,14 @@ public class CajaManager extends Application {
         Scene scene = new Scene(page);
         scene.getStylesheets().add(CajaController.class.getResource("Caja.css").toExternalForm());
 
-        model      = new CajaModel();
+        //model      = new CajaModel();
         controller = fxmlLoader.getController();
-        controller.setModel(model);
+        //controller.setModel(model);
 
         ICajaLogic cajaLogic = (ICajaLogic) Principal.applicationContext.getBean("cajaLogic");
         controller.setCajaLogic( cajaLogic );
+        cajaLogic.nuevaVenta();
+
         return scene;
 
     }

@@ -16,4 +16,6 @@ public interface IProductosDAO {
 
     public List<Producto> findByCodigo(String codigo);
     public List<Producto> findByDescripcionLike(String descripcion, Pageable pagina);
+
+    Producto findById(Long id);
 }

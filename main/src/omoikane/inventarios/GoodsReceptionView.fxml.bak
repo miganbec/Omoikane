@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Goods reception">
+      <font>
+        <Font size="26.0" />
+      </font>
+    </Label>
+    <Label layoutX="14.0" layoutY="59.0" text="Shopping Order:" />
+    <TextField layoutX="110.0" layoutY="56.0" prefWidth="200.0" />
+    <Button layoutX="321.0" layoutY="57.0" mnemonicParsing="false" text="Load" />
+    <Label layoutX="14.0" layoutY="151.0" text="Excesses or shortages">
+      <font>
+        <Font name="System Bold" size="12.0" fx:id="x1" />
+      </font>
+    </Label>
+    <TableView layoutX="14.0" layoutY="167.0" prefHeight="221.0" prefWidth="572.0">
+      <columns>
+        <TableColumn prefWidth="75.0" text="Column X" />
+        <TableColumn prefWidth="75.0" text="Column X" />
+      </columns>
+    </TableView>
+    <Label font="$x1" layoutX="14.0" layoutY="86.0" text="Capture products received" />
+    <Label layoutX="14.0" layoutY="109.0" text="Quantity:" />
+    <Label layoutX="174.0" layoutY="109.0" text="Code:" />
+    <TextField layoutX="72.0" layoutY="106.0" prefWidth="82.0" />
+    <TextField layoutX="210.0" layoutY="106.0" prefWidth="228.0" />
+    <Button layoutX="464.0" layoutY="106.0" mnemonicParsing="false" prefWidth="122.0" text="Add" />
+  </children>
+</AnchorPane>
