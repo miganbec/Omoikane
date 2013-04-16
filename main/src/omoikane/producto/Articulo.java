@@ -177,6 +177,10 @@ public class Articulo implements Serializable, IProductoApreciado {
         return stock;
     }
 
+    public void setStock(Stock s) {
+        this.stock = s;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

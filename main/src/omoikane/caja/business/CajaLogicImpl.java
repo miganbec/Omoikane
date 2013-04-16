@@ -3,6 +3,7 @@ package omoikane.caja.business;
 import javafx.collections.ObservableList;
 import name.antonsmirnov.javafx.dialog.Dialog;
 import omoikane.caja.data.IProductosDAO;
+import omoikane.caja.handlers.StockIssuesHandler;
 import omoikane.caja.presentation.BuscarMasDummyProducto;
 import omoikane.caja.presentation.CajaController;
 import omoikane.caja.presentation.CajaModel;
@@ -187,6 +188,10 @@ public class CajaLogicImpl implements ICajaLogic {
             try {
                 ventaAbiertaBean.setCompletada(true);
                 LegacyVenta venta = guardarVenta(model);
+
+                //Hace las salidas de inventario / Make inventory issues
+                new StockIssuesHandler(getController()).handle();
+
                 imprimirVenta(venta);
 
                 Dialog.showInfo("Venta registrada",

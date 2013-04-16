@@ -97,6 +97,14 @@ public class ProductoModel {
         return nf.format(cantidad.get());
     }
 
+    /**
+     *
+     * @return Quantity sold
+     */
+    public BigDecimal getCantidad() {
+        return cantidad.get();
+    }
+
     public ObjectProperty<BigDecimal> cantidadProperty() {
         return cantidad;
     }
