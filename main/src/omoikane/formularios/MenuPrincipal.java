@@ -19,6 +19,7 @@ import java.awt.event.*;
 
 import omoikane.caja.CajaManager;
 import omoikane.configuracion.ConfiguratorAppManager;
+import omoikane.etiquetas.ImpresionEtiquetasManager;
 import omoikane.moduloreportes.MenuOmoikane;
 import omoikane.sistema.Herramientas;
 import omoikane.sistema.StopWatch;
@@ -30,7 +31,6 @@ import omoikane.sistema.StopWatch;
 public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     BufferedImage fondo;
-
     /** Creates new form MenuPrincipal */
     public MenuPrincipal() {
         
@@ -90,6 +90,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnReportes = new JButton();
         btnConfig = new JButton();
         lblVersion = new JLabel();
+        btnEtiquetas = new JButton();
 
         //======== this ========
         setVisible(true);
@@ -139,6 +140,20 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         contentPane.add(btnVender);
         btnVender.setBounds(20, 110, 210, 70);
+
+        //----- btnEtiquetas
+        btnEtiquetas.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnEtiquetas.setIcon(new ImageIcon(getClass().getResource("/128x128/printer.png")));
+        btnEtiquetas.setText("Etiquetas");
+        btnEtiquetas.setIconTextGap(-20);
+        btnEtiquetas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnEtiquetasActionPerformed(e);
+            }
+        });
+        contentPane.add(btnEtiquetas);
+        btnEtiquetas.setBounds(660, 210, 200, 70);
 
         //---- jLabel2 ----
         jLabel2.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -493,6 +508,13 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         JInternalFrame internalFrame = manager.startJFXConfigurator();
     }
 
+    private void btnEtiquetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //new omoikane.menudinamico.MenuModulos();
+        ImpresionEtiquetasManager manager = new ImpresionEtiquetasManager();
+        JInternalFrame internalFrame = manager.startJFXEtiqueta();
+    }
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -541,6 +563,9 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private JButton btnReportes;
     private JLabel lblVersion;
     private JButton btnConfig;
+    private JButton btnEtiquetas;
+
+
     // End of variables declaration//GEN-END:variables
 
 }

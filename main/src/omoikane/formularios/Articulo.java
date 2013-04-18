@@ -499,6 +499,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     }
     public void setModoDetalles()
     {
+        setModo(Modos.DETALLES);
         setEditable(false);
         this.txtExistencias.setBorder(null);
         this.btnGuardar.setVisible(false);
@@ -507,6 +508,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     }
     public void setModoModificar()
     {
+        setModo(Modos.MODIFICAR);
         setEditable(true);
         this.txtExistencias.setBorder(null);
         this.btnGuardar.setVisible(false);
@@ -514,6 +516,7 @@ public class Articulo extends javax.swing.JInternalFrame {
     }
     public void setModoNuevo()
     {
+        setModo(Modos.NUEVO);
         setEditable(true);
         this.txtExistencias.setEditable(true);
         this.txtExistencias.setFocusable(true);
@@ -521,6 +524,11 @@ public class Articulo extends javax.swing.JInternalFrame {
         this.txtExistencias.setForeground(Color.BLACK);
         this.btnModificar.setVisible(false);
     }
+
+    public enum Modos { NUEVO, DETALLES, MODIFICAR };
+    private Modos modo;
+    private void setModo(Modos m) { modo = m; }
+    public Modos getModo() { return modo; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCode;

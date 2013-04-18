@@ -1,6 +1,8 @@
 package omoikane.principal
 
+import omoikane.inventarios.Stock
 import omoikane.principal.*
+import omoikane.repository.ProductoRepo
 import omoikane.sistema.*
 import groovy.sql.*;
 import groovy.swing.*;
@@ -165,7 +167,7 @@ public class Articulos
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
-    static def guardar(formArticulo)
+    static def guardar(omoikane.formularios.Articulo formArticulo)
     {
         if(cerrojo(PMA_MODIFICARARTICULO)){
             Herramientas.verificaCampos {
@@ -200,15 +202,23 @@ public class Articulos
                     def serv   = Nadesico.conectar()
                     def datAdd = serv.addArticulo(IDAlmacen, IDLinea, IDGrupo, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias)
                     def notasAdd = serv.addAnotacion(IDAlmacen, datAdd.ID, notas )
-
                     Dialogos.lanzarAlerta(datAdd.mensaje)
                     serv.desconectar()
+                    if( formArticulo.getModo() == formArticulo.Modos.NUEVO) { stockAdd(datAdd.ID) }
+
                     PuertoNadesico.workIn() { it.CacheArticulos.actualizar(datAdd.ID) }
                     formArticulo.dispose()
-                } catch(e) { Dialogos.error("Error al enviar a la base de datos. El artículo no se registró verifique que el codigo no exista", e) }
+                } catch(e) { Dialogos.error("Error al enviar a la base de datos. El artículo no se registró verifique que el código no exista", e) }
                 
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
+    }
+    static def stockAdd(idArticulo) {
+        ProductoRepo repo = (ProductoRepo) Principal.applicationContext.getBean("productoRepo");
+        omoikane.producto.Articulo a = repo.readByPrimaryKey(idArticulo)
+        Stock s = new Stock()
+        a.setStock(s)
+        repo.save(a)
     }
 
     static def lanzarFormNuevoArticulo()
@@ -398,9 +408,6 @@ public class Articulos
         def formateador = new java.text.DecimalFormat("#0.00");
         c.poi=c.poi/100
         c.pod=c.pod/100
-
-
-
 
         def porcentajeUtilidad  =   (c.pre/(c.cos*(1+c.poi)*(1-c.pod)))-1
         def utilidad            =   c.cos*porcentajeUtilidad

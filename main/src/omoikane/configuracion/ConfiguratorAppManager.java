@@ -35,6 +35,7 @@ public class ConfiguratorAppManager {
         frame = new JInternalFrame("FX");
         final JFXPanel fxPanel = new JFXPanel();
 
+        frame.setClosable(true);
         frame.add(fxPanel);
         frame.setVisible(true);
 

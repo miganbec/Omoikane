@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-classpath-element ../../../../lib/jfxtras-labs-2.2-r4.jar?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import jfxtras.labs.scene.control.BigDecimalField?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="600.0000999999975" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.etiquetas.ImpresionEtiquetasController">
+  <children>
+    <TableView fx:id="tablaContenido" editable="true" layoutX="23.0" layoutY="100.0" prefHeight="243.0" prefWidth="549.0">
+      <columns>
+        <TableColumn prefWidth="180.0" sortable="false" text="Codigo" fx:id="codigoCol"/>
+        <TableColumn editable="false" prefWidth="180.0" sortable="false" text="Producto" fx:id="productoCol" />
+        <TableColumn prefWidth="186.0" resizable="false" sortable="false" text="Cantidad" fx:id="cantidadCol" />
+      </columns>
+    </TableView>
+    <Label layoutX="23.0" layoutY="70.0" text="Lista de etiquetas:" />
+    <Label layoutX="23.0" layoutY="20.0" text="Impresión de etiquetas y cenefas">
+      <font>
+        <Font size="24.0" />
+      </font>
+    </Label>
+    <Button fx:id="addButton" layoutX="484.0" layoutY="70.0" mnemonicParsing="false" onAction="#actionAdd" text="+">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button fx:id="removeButton" font="$x1" layoutX="540.0" layoutY="70.0" minWidth="27.0" mnemonicParsing="false" onAction="#actionRemove" prefWidth="34.0" text="-" />
+    <Label layoutX="24.0" layoutY="356.0" text="Tipo de etiqueta:" />
+    <ComboBox fx:id="tipoEtiqueta" layoutX="127.0" layoutY="356.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Standard" />
+          <String fx:value="Label Printer" />
+          <String fx:value="Big label" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <Button fx:id="seguienteButton" layoutX="470.0" layoutY="356.0" mnemonicParsing="false" onAction="#actionSeguiente" prefWidth="103.0" text="Siguiente..." />
+  </children>
+</AnchorPane>

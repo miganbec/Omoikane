@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import omoikane.etiquetas.ImpresionEtiquetasController;
 import omoikane.inventarios.StockLevelsController;
 import omoikane.inventarios.TomaInventarioController;
 import omoikane.producto.PaqueteController;
@@ -52,6 +53,12 @@ public class SpringAnnotatedConfig {
 
     @Bean
     @Scope("prototype")
+    ImpresionEtiquetasController impresionEtiquetasController() {
+        return new ImpresionEtiquetasController();
+    }
+
+    @Bean
+    @Scope("prototype")
     Scene stockLevelsView() {
         return initView("/omoikane/inventarios/StockLevelsView.fxml", stockLevelsController());
     }
@@ -72,6 +79,12 @@ public class SpringAnnotatedConfig {
     @Scope("prototype")
     Scene tomaInventarioView() {
         return initView("/omoikane/inventarios/TomaInventarioView.fxml", tomaInventarioController());
+    }
+
+    @Bean
+    @Scope("prototype")
+    Scene impresionEtiquetasView() {
+        return initView("/omoikane/etiquetas/presentation/ImpresionetiquetasView.fxml", impresionEtiquetasController());
     }
 
     private Scene initView(String fxml, final Object controller) {
