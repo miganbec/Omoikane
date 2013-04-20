@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import omoikane.etiquetas.presentation.EditableTableCell;
 import omoikane.etiquetas.presentation.NumericEditableTableCell;
+import omoikane.principal.Principal;
 import omoikane.producto.*;
 import omoikane.repository.ProductoRepo;
 import org.apache.log4j.Logger;
@@ -109,7 +110,7 @@ public class ImpresionEtiquetasController implements Initializable {
     public static void main(String args[]) { }
 
     public ImpresionEtiquetasController() {
-        ApplicationContext applicationContext = omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext applicationContext = Principal.applicationContext;
         productoRepo = (ProductoRepo)applicationContext.getBean("productoRepo");
     }
 

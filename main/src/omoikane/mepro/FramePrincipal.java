@@ -47,7 +47,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24));
         jLabel1.setText("Phesus Mepro");
 
-        jLabel2.setText("Phesus MePro '08-'10. 1.1");
+        jLabel2.setText("Phesus MePro '08-'13. 1.2");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 8));
         jLabel3.setText("Menú Programable mediante lenguaje Groovy");
@@ -68,7 +68,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -83,7 +83,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addComponent(pnlScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -35,6 +35,5 @@
     <Separator orientation="VERTICAL" prefHeight="327.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="303.0" AnchorPane.topAnchor="14.0" />
     <Button mnemonicParsing="false" onAction="#eliminarAction" text="Desactivar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="150.0" />
     <CheckBox id="chkInactivos" fx:id="chkIncluirInactivos" mnemonicParsing="false" onAction="#mostrarInactivosAction" text="Incluir inactivos" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
-    <Button layoutX="206.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
   </children>
 </AnchorPane>

@@ -78,6 +78,9 @@ class Permisos {
 
     public static def PMA_CONFIGURACION         = SUPERVISOR;
     public static def PMA_REPORTES              = SUPERVISOR;
+    public static def PMA_MEPRO                 = ADMINISTRADOR;
+    public static def PMA_ETIQUETAS             = CAPTURISTA;
+    public static def PMA_PROVEEDORES           = CAPTURISTA;
 }
 
 

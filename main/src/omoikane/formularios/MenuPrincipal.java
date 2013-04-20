@@ -20,7 +20,9 @@ import java.awt.event.*;
 import omoikane.caja.CajaManager;
 import omoikane.configuracion.ConfiguratorAppManager;
 import omoikane.etiquetas.ImpresionEtiquetasManager;
+import omoikane.mepro.Mepro;
 import omoikane.moduloreportes.MenuOmoikane;
+import omoikane.proveedores.ProveedoresManager;
 import omoikane.sistema.Herramientas;
 import omoikane.sistema.StopWatch;
 
@@ -91,6 +93,8 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnConfig = new JButton();
         lblVersion = new JLabel();
         btnEtiquetas = new JButton();
+        btnMepro    = new JButton();
+        btnProveedores = new JButton();
 
         //======== this ========
         setVisible(true);
@@ -154,6 +158,20 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         contentPane.add(btnEtiquetas);
         btnEtiquetas.setBounds(660, 210, 200, 70);
+
+        //----- btnMepro
+        btnMepro.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnMepro.setIcon(new ImageIcon(getClass().getResource("/128x128/computer.png")));
+        btnMepro.setText("Scripting");
+        btnMepro.setIconTextGap(-20);
+        btnMepro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnMeproActionPerformed(e);
+            }
+        });
+        contentPane.add(btnMepro);
+        btnMepro.setBounds(660, 410, 200, 70);
 
         //---- jLabel2 ----
         jLabel2.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -372,6 +390,20 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         contentPane.add(btnConfig);
         btnConfig.setBounds(450, 410, 200, 70);
 
+        //---- btnProveedores ----
+        btnProveedores.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnProveedores.setText("Proveedores");
+        btnProveedores.setIcon(new ImageIcon(getClass().getResource("/128x128/community_users.png")));
+        btnProveedores.setIconTextGap(-37);
+        btnProveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnProveedoresActionPerformed(e);
+            }
+        });
+        contentPane.add(btnProveedores);
+        btnProveedores.setBounds(660, 310, 200, 70);
+
         //---- lblVersion ----
         lblVersion.setHorizontalAlignment(SwingConstants.RIGHT);
         lblVersion.setText("Versi\u00f3n");
@@ -423,7 +455,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         StopWatch timer = new StopWatch().start();
-
         //omoikane.principal.Caja.lanzar(); //Caja antigua
 
         CajaManager manager = new CajaManager();
@@ -431,7 +462,9 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
         Herramientas.panelCatalogo(internalFrame);
         omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(internalFrame);
-        internalFrame.setBounds(10,10,990,570);
+        internalFrame.setSize(990, 570);
+        internalFrame.setPreferredSize(new Dimension(990, 570));
+
         internalFrame.setVisible(true);
         Herramientas.centrarVentana(internalFrame);
         Herramientas.iconificable(internalFrame);
@@ -505,14 +538,27 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         //new omoikane.menudinamico.MenuModulos();
         ConfiguratorAppManager manager = new ConfiguratorAppManager();
-        JInternalFrame internalFrame = manager.startJFXConfigurator();
+        JInternalFrame frame = manager.startJFXConfigurator();
     }
 
     private void btnEtiquetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //new omoikane.menudinamico.MenuModulos();
+
         ImpresionEtiquetasManager manager = new ImpresionEtiquetasManager();
         JInternalFrame internalFrame = manager.startJFXEtiqueta();
+
+    }
+
+    private void btnMeproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Mepro mepro = new Mepro();
+        JFrame frameMepro = (JFrame) mepro.getMainMenu();
+        frameMepro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        ProveedoresManager pm = new ProveedoresManager();
+        JInternalFrame frame = pm.startJFXProveedores();
     }
 
     @Override
@@ -564,7 +610,8 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private JLabel lblVersion;
     private JButton btnConfig;
     private JButton btnEtiquetas;
-
+    private JButton btnMepro;
+    private JButton btnProveedores;
 
     // End of variables declaration//GEN-END:variables
 

@@ -20,6 +20,7 @@
     <context:annotation-config/>
 
     <context:component-scan base-package="omoikane.entities"/>
+    <context:component-scan base-package="omoikane.inventarios"/>
     <!--<context:component-scan base-package="omoikane.sistema"/>-->
     <bean id="articulo" class="omoikane.producto.Articulo"></bean>
     <bean id="baseParaPrecio" class="omoikane.producto.BaseParaPrecio"></bean>
@@ -29,12 +30,16 @@
     <bean id="config" class="omoikane.sistema.Config"></bean>
     <bean id="productoDao" class="omoikane.caja.data.ProductosNadesicoAdapter"></bean>
     <bean id="comprobantes" class="omoikane.sistema.Comprobantes"></bean>
+    <!--<bean id="paqueteController" class="omoikane.producto.PaqueteController"></bean>-->
+    <bean id="/SpringAnnotatedConfig" class="omoikane.sistema.SpringAnnotatedConfig"></bean>
+    <bean id="properties" class="java.util.HashMap"></bean>
 
     <hades:dao-config base-package="omoikane.repository"
                       entity-manager-factory-ref="entityManagerFactory">
         <hades:dao id="usuarioRepo" />
         <hades:dao id="productoRepo" />
         <hades:dao id="ventaRepo" />
+        <hades:dao id="proveedorRepo" />
         <hades:dao id="cancelacionRepo" />
     </hades:dao-config>
 
@@ -48,6 +53,10 @@
         </property>
     </bean>
 
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" scope="singleton">
+        <property name="shared" value="true"/>
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+    </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="password" value="#{ T(omoikane.principal.Principal).passJasper }"/>
@@ -77,6 +86,7 @@
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
     <tx:annotation-driven/>
 

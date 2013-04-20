@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?scenebuilder-classpath-element ../../../../lib/jfxtras-labs-2.2-r4.jar?>
+<?scenebuilder-classpath-element ../../../../../lib/jfxtras-labs-2.2-r4.jar?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.collections.*?>
@@ -10,11 +11,11 @@
 <?import javafx.scene.text.*?>
 <?import jfxtras.labs.scene.control.BigDecimalField?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="600.0000999999975" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.etiquetas.ImpresionEtiquetasController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="600.0000999999975" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.etiquetas.ImpresionEtiquetasController">
   <children>
     <TableView fx:id="tablaContenido" editable="true" layoutX="23.0" layoutY="100.0" prefHeight="243.0" prefWidth="549.0">
       <columns>
-        <TableColumn prefWidth="180.0" sortable="false" text="Codigo" fx:id="codigoCol"/>
+        <TableColumn prefWidth="180.0" sortable="false" text="Codigo" fx:id="codigoCol" />
         <TableColumn editable="false" prefWidth="180.0" sortable="false" text="Producto" fx:id="productoCol" />
         <TableColumn prefWidth="186.0" resizable="false" sortable="false" text="Cantidad" fx:id="cantidadCol" />
       </columns>

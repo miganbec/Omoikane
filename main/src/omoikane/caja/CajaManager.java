@@ -87,7 +87,7 @@ public class CajaManager extends Application {
     }
 
     public JInternalFrame startJFXCaja() {
-        final JInternalFrame frame = new JInternalFrame("FX");
+        final JInternalFrame frame = new JInternalFrame("Caja");
         final JFXPanel fxPanel = new JFXPanel();
 
         frame.add(fxPanel);

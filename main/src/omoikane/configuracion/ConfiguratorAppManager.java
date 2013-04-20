@@ -10,6 +10,7 @@ import phesus.configuratron.ConfiguratorApp;
 import phesus.configuratron.ConfiguratorController;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 import omoikane.sistema.Permisos;
@@ -32,7 +33,7 @@ public class ConfiguratorAppManager {
     }
 
     private JInternalFrame _startJFXConfigurator() {
-        frame = new JInternalFrame("FX");
+        frame = new JInternalFrame("Configuración");
         final JFXPanel fxPanel = new JFXPanel();
 
         frame.setClosable(true);
@@ -41,7 +42,9 @@ public class ConfiguratorAppManager {
 
         Herramientas.panelCatalogo(frame);
         omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(frame);
-        frame.setBounds(10,10,499,595);
+        frame.setSize(499, 595);
+        frame.setPreferredSize(new Dimension(499, 595));
+
         frame.setVisible(true);
         Herramientas.centrarVentana(frame);
         Herramientas.iconificable(frame);

@@ -7,20 +7,19 @@
 package omoikane.mepro;
 
 import groovy.swing.SwingBuilder
-import java.awt.BorderLayout
-import groovy.inspect.swingui.*;
 import groovy.util.*
+import omoikane.sistema.Permisos
+
 import javax.swing.BoxLayout
-import javax.swing.ImageIcon
-import javax.swing.JButton
-import javax.swing.Icon
+import javax.swing.JInternalFrame
 import javax.swing.JOptionPane
+import groovy.ui.Console;
 
 /**
  *
  * @author Octavio
  */
-public class Main {
+public class Mepro {
 
     /**
      * @param args the command line arguments
@@ -37,10 +36,14 @@ public class Main {
                 println "No exíste el archivo que se quiere ejecutar"
             }
         } else
-            new Main()
+            new Mepro()
     }
 
-    Main() {
+    public def Mepro() {
+        if(omoikane.sistema.Usuarios.autentifica(Permisos.PMA_MEPRO)) _Mepro();
+    }
+
+    private def _Mepro() {
         swing = SwingBuilder.build {
             lookAndFeel( 'nimbus' )
             mainMenu = new FramePrincipal(title:"Phesus MePro")
@@ -64,6 +67,7 @@ public class Main {
             mainMenu.pnlScripts.add(
                 swing.panel() {
                     swing.button(text: nombre, actionCommand:it, actionPerformed: { ejecutarScript(archivos[it.actionCommand]) }, preferredSize:[130,35])
+                    swing.button(text: "GC", actionCommand:archivo, actionPerformed: { lanzarGC(archivo) })
                     swing.button(icon: imageIcon("/omoikane/mepro/media/blog_post_edit.png"), actionCommand:archivo, actionPerformed: { modificarScript(archivo) })
                     swing.button(icon: imageIcon("/omoikane/mepro/media/remove.png"), actionCommand:archivo, actionPerformed: { eliminarScript(archivo) } )
                 }
@@ -74,11 +78,18 @@ public class Main {
 
     static def ejecutarScript(archivo) { evalScript(archivo.text) }
 
-    def archivo2Nombre(archivo) { (archivo =~ /.*\\(.*)\.groovy/)[0][1] }
+    def archivo2Nombre(archivo) { return (archivo.nombre =~ /(.+?)(\.[^.]*$|$)/)[0][1]; }
+
+    def lanzarGC(archivo) {
+        Console console = new Console();
+        console.set
+        console.run();
+        console.loadScriptFile(archivo);
+    }
 
     static def evalScript(script) {
         try {
-          Eval.me("Omoikane", omoikane, script)
+          Eval.me(script)
         } catch (Exception e) {
           MeproKit.lanzarDialogoError(null, "Exíste un error en su script", e)  
         }
@@ -97,7 +108,8 @@ public class Main {
     }
     def guardarScript(Map p)
     {
-        def file = new File("./${p.nombre}")
+        def nombre = archivo2Nombre(p);
+        def file = new File("./${nombre}.groovy")
         file.delete()
         file << p.script
         refrescaLista()
