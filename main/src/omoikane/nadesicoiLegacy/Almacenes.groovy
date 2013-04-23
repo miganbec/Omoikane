@@ -27,7 +27,7 @@ class Almacenes {
     static def getAlmacen = { ID ->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def almacen = db.firstRow("SELECT * FROM almacenes WHERE id_almacen = $ID")
             db.close()
             salida = almacen
@@ -38,7 +38,7 @@ class Almacenes {
     static def addAlmacen = {descripcion ->
         def db
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            db = Db.connect()
             try {
                 db.connection.autoCommit = false
                 def IDAlmacen = db.executeInsert("INSERT INTO almacenes SET descripcion = ?",[descripcion])
@@ -57,7 +57,7 @@ class Almacenes {
     }
 
     static def modAlmacen = { IDAlmacen, descripcion ->
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         try {
           db.connection.autoCommit = false
           db.executeUpdate("UPDATE almacenes SET descripcion = ? WHERE id_almacen = ?",[descripcion, IDAlmacen])
@@ -78,7 +78,7 @@ class Almacenes {
     static def getMovimiento = { ID ->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def Movimiento = db.firstRow("SELECT * FROM movimientos_almacen WHERE id_movimiento = $ID")
         Movimiento.fecha = Movimiento.fecha as String
         def articulo
@@ -103,7 +103,7 @@ class Almacenes {
         
                 try {
 
-                db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+                db = Db.connect()
                 db.connection.autoCommit = false
 
                 IDMov   = db.executeInsert("INSERT INTO movimientos_almacen SET id_almacen = ?, fecha = ?, descripcion = ?, tipo = ?, monto = ?, folio = ?"
@@ -156,7 +156,7 @@ class Almacenes {
         }
 
     static def getArticuloAlmacen = { query ->
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def art  = db.rows(query)
 
         db.close()

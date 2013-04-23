@@ -143,7 +143,7 @@ public class CajaManager extends Application {
         Integer abierta = (Integer) Sucursales.abierta(Principal.IDAlmacen);
 
         switch(abierta) {
-            case -1: Dialogos.lanzarAlerta("Configuración de sucursal-almacen errónea."); break;
+            case -1: logger.info( "Configuración de sucursal-almacen errónea." ); break;
             case  0: abierta = (Integer) Sucursales.abrirSucursal(Principal.IDAlmacen);  //Sin break para continuar
             case  1:
 

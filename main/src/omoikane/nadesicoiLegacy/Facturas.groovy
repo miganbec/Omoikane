@@ -25,8 +25,7 @@ class Facturas {
     }
 
     static def getArregloVentas = { idFactura ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=",
-                "root", "", "com.mysql.jdbc.Driver");
+        def db = Db.connect()
         def detallesVentas = [];
         // Consola.aviso("getDetallesVenta accedido con idVenta = " + idVenta, "");
         db.eachRow("SELECT id_venta FROM ventas_facturadas WHERE id_factura = ?" , [idFactura] , {
@@ -41,8 +40,7 @@ class Facturas {
     static def getFactura = { idFactura ->
         def facturaCompleta;
         try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=",
-                "root", "", "com.mysql.jdbc.Driver");
+            def db = Db.connect()
             def datosFactura = db.firstRow("SELECT * FROM facturas WHERE id_factura = ?", [idFactura] );
             def usuarioExpidio = db.firstRow("SELECT nombre FROM usuarios " +
                 "WHERE id_usuario IN ( SELECT usuario_expidio FROM facturas " +
@@ -108,8 +106,7 @@ class Facturas {
     }
 
     static def getDetallesVenta = { idVenta ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=",
-                "root", "", "com.mysql.jdbc.Driver");
+        def db = Db.connect()
         def detallesVentas = [];
         // Consola.aviso("getDetallesVenta accedido con idVenta = " + idVenta, "");
         db.eachRow("SELECT id_venta, ventas_detalles.id_articulo, descripcion, precio, cantidad, total " +
@@ -131,8 +128,7 @@ class Facturas {
     }
 
     static def getTotalesVenta = { idVenta ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=",
-                "root", "", "com.mysql.jdbc.Driver");
+        def db = Db.connect()
         def totales = db.firstRow("SELECT subtotal, impuestos, total FROM ventas " +
             "WHERE id_venta = ? ;",[idVenta]);
         return totales;
@@ -143,8 +139,7 @@ class Facturas {
     static def getLastIDFactura = {
         def folioFactura;
         try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=",
-                "root", "", "com.mysql.jdbc.Driver");
+            def db = Db.connect()
             def resultadoFilas = db.firstRow("SELECT COUNT(*) FROM facturas;");
             if ( resultadoFilas[0] == 0 )
                 folioFactura = "0";
@@ -161,8 +156,7 @@ class Facturas {
     }
 
     static def addFactura = { factura, ventas -> // Recibe un mapa con los datos de la factura y un arreglo con ids de ventas
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=",
-            "root", "", "com.mysql.jdbc.Driver");
+        def db = Db.connect()
         try {
             db.connection.autoCommit = false;
             def usuario_exp = db.firstRow("SELECT id_usuario FROM usuarios " +
@@ -193,8 +187,7 @@ class Facturas {
     }
 
     static def cancelFactura = { factura, ventas -> // Recibe un mapa con los datos de la factura y un arreglo con ids de ventas
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=",
-            "root", "", "com.mysql.jdbc.Driver");
+        def db = Db.connect()
         try {
             db.connection.autoCommit = false;
             def usuario_c = db.firstRow("SELECT id_usuario FROM usuarios " +

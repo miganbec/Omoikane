@@ -22,7 +22,7 @@ class Cortes {
     static def addCorte = { IDCaja, IDAlmacen, subtotal, impuestos, descuentos, total, nVentas, desde, hasta , depositos , retiros->
         def db
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            db = Db.connect()
             try {
 				def folios  = [ini:0,fin:0]  
 				folios.ini  = db.firstRow('SELECT min(folio) as fol FROM ventas WHERE fecha_hora >= ? and fecha_hora <= ? and id_caja = ? and id_almacen = ?', [desde, hasta, IDCaja, IDAlmacen]).fol
@@ -48,7 +48,7 @@ class Cortes {
     static def getCorteWhere = { where ->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def where2 = "id_caja = 1 AND desde = '2009-01-08 23:35:35' AND hasta = '2009-01-10 09:22:48'"
         String query= "SELECT * FROM cortes WHERE "+where
 
@@ -65,7 +65,7 @@ class Cortes {
     static def getCorteSucursal = { IDAlmacen, IDCorteSucursal ->
         def corteSuc = ""
         try {
-            def db       = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db       = Db.connect()
             corteSuc = db.firstRow("SELECT desde, hasta FROM cortes_sucursal WHERE id_corte = ? AND id_almacen = ?", [IDCorteSucursal, IDAlmacen])
 
             if(corteSuc==null) { throw new Exception("Error al consultar la tabla cortes_sucursal, resultado de la consulta: "+corteSuc.inspect()) }
@@ -76,7 +76,7 @@ class Cortes {
     static def getSumaCorteSucursal = { IDAlmacen, IDCorteSucursal ->
         def salida = ""
         try {
-            def db       = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db       = Db.connect()
             def corteSuc = db.firstRow("SELECT desde, hasta FROM cortes_sucursal WHERE id_corte = ? AND id_almacen = ?", [IDCorteSucursal, IDAlmacen])
             
             if(corteSuc==null) { throw new Exception("Error al consultar la tabla cortes_sucursal, resultado de la consulta: "+corteSuc.inspect()) }

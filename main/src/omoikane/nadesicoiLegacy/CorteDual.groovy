@@ -26,7 +26,7 @@ class CorteDual {
     static def sumaDual = { IDCaja, desde, hasta ->
         def salida = ""
         try {
-            def db     = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db     = Db.connect()
             def ventas = db.firstRow("""SELECT count(id_venta) as nVentas, sum(subtotal) as subtotal, sum(impuestos) as impuestos,
                                     sum(descuento) as descuento, sum(total) as total FROM ventas WHERE id_caja = ?
                                     AND fecha_hora >= ? AND fecha_hora <= ?""", [IDCaja, desde, hasta])
@@ -60,7 +60,7 @@ class CorteDual {
     static def addCorteDual = { IDCaja, IDAlmacen, subtotal,subtotalDual, impuestos,impuestoDual, descuentos,descuentoDual,total, totalDual, nVentas, desde, hasta , depositos , retiros ->
         def db
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            db = Db.connect()
             try {
 				def folios  = [ini:0,fin:0]  
 				folios.ini  = db.firstRow('SELECT min(folio) as fol FROM ventas WHERE fecha_hora >= ? and fecha_hora <= ? and id_caja = ? and id_almacen = ?', [desde, hasta, IDCaja, IDAlmacen]).fol
@@ -94,7 +94,7 @@ class CorteDual {
     static def getSumaCorteSucursalDual = { IDAlmacen, IDCorteSucursal ->
         def salida = ""
         try {
-            def db       = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db       = Db.connect()
             def corteSuc = db.firstRow("SELECT desde, hasta FROM cortes_sucursal WHERE id_corte = ? AND id_almacen = ?", [IDCorteSucursal, IDAlmacen])
 
             if(corteSuc==null) { throw new Exception("Error al consultar la tabla cortes_sucursal, resultado de la consulta: "+corteSuc.inspect()) }
@@ -109,7 +109,7 @@ class CorteDual {
     static def getCorteWhereFrom = { where,tabla ->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         String query= "SELECT * FROM $tabla as cortes WHERE "+where
 
         def corte= db.firstRow(query)

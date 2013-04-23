@@ -23,7 +23,7 @@ class Db {
         def salida = ""
         try {
 
-            def db   = Sql.newInstance(Principal.URLMySQL, Principal.loginJasper, Principal.passJasper, "com.mysql.jdbc.Driver")
+            def db   = connect()
             def rows = db.rows(query)
             db.close()
             salida = rows

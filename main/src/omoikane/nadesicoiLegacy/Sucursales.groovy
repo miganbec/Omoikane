@@ -24,7 +24,7 @@ class Sucursales {
         serv.corteSucursal            = corteSucursal
     }
     static def corteSucursal = { IDAlmacen ->
-        def db        = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db        = Db.connect()
         def resultado = db.firstRow("SELECT * FROM sucursales WHERE id_almacen = ?", [IDAlmacen])
         resultado     = db.executeInsert("INSERT INTO cortes_sucursal SET id_almacen = ?, desde = ?, hasta = ?",
                                          [IDAlmacen, resultado.hAbierta, resultado.hCerrada])
@@ -32,13 +32,13 @@ class Sucursales {
         resultado[0][0]
     }
     static def abrirSucursal = { IDAlmacen ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def resultado = db.executeUpdate("UPDATE sucursales SET abierta = ?, hAbierta = CURRENT_TIMESTAMP WHERE id_almacen = ?", [1, IDAlmacen]);
         db.close()
         resultado
     }
     static def cerrarSucursal = { IDAlmacen ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def resultado = db.executeUpdate("UPDATE sucursales SET abierta = ?, hCerrada = CURRENT_TIMESTAMP WHERE id_almacen = ?", [0, IDAlmacen]);
         db.close()
     }
@@ -52,7 +52,7 @@ class Sucursales {
 
     static def getCajasSucursal = { IDAlmacen ->
         try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db = Db.connect()
             def resultado = db.rows("SELECT * FROM cajas WHERE id_almacen = ?", [IDAlmacen]);
             db.close()
             return resultado
@@ -60,7 +60,7 @@ class Sucursales {
     }
     static def sucursalAbierta = { IDAlmacen ->
         try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db = Db.connect()
             def resultado = db.firstRow("SELECT abierta FROM sucursales, almacenes WHERE sucursales.id_almacen = almacenes.id_almacen AND sucursales.id_almacen = ?", [IDAlmacen])
             db.close()
             if(resultado != null && resultado.size()==1) { return resultado.abierta } else { return -1 }
@@ -68,7 +68,7 @@ class Sucursales {
     }
     static def sucursalCortePendiente = { IDAlmacen ->
         try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db = Db.connect()
             def resultado = db.firstRow("SELECT hAbierta, hCerrada FROM sucursales WHERE id_almacen = ?", [IDAlmacen])
             resultado     = db.firstRow("SELECT desde, hasta FROM cortes_sucursal WHERE id_almacen = ? AND desde = ? AND hasta = ?",
                                 [IDAlmacen, resultado.hAbierta, resultado.hCerrada])
@@ -78,7 +78,7 @@ class Sucursales {
     }
     static def sucursalExiste  = { IDAlmacen ->
         try {
-            def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db = Db.connect()
             def resultado = db.firstRow("SELECT abierta FROM sucursales, almacenes WHERE sucursales.id_almacen = almacenes.id_almacen AND sucursales.id_almacen = ?", [IDAlmacen])
         db.close()
         if(resultado != null && resultado.size()==1) { return true } else { return false }

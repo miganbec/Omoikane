@@ -39,7 +39,7 @@ class Caja {
     static def getDoMovimiento = { ID, tipo ->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def Caja = db.firstRow("SELECT * FROM movimientos_cortes WHERE id = $ID and tipo= $tipo")
             db.close()
             salida = Caja
@@ -48,15 +48,13 @@ class Caja {
     }
 
     static def abrirCaja = { IDCaja ->
-        def db = Sql.newInstance(
-
-    "jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def resultado = db.executeUpdate("UPDATE cajas SET abierta = ?, horaAbierta = CURRENT_TIMESTAMP WHERE id_caja = ?", [1, IDCaja]);
         db.close()
         resultado
     }
     static def doRetiro = { IDAlmacen, IDCaja, IDCajero, IDUsuario, importe ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def resultado = db.executeInsert("""INSERT INTO movimientos_cortes (tipo, id_almacen, id_caja, id_cajero, id_usuario, importe)
                                             VALUES (?,?,?,?,?,?) """,
                                           ['retiro', IDAlmacen, IDCaja, IDCajero, IDUsuario, importe]);        
@@ -65,7 +63,7 @@ class Caja {
         resultado
     }
     static def doDeposito = { IDAlmacen, IDCaja, IDCajero, IDUsuario, importe ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def resultado = db.executeInsert("""INSERT INTO movimientos_cortes (tipo, id_almacen, id_caja, id_cajero, id_usuario, importe)
                                             VALUES (?,?,?,?,?,?) """,
                                           ['deposito', IDAlmacen, IDCaja, IDCajero, IDUsuario, importe]);
@@ -74,12 +72,12 @@ class Caja {
         resultado
     }
     static def cerrarCaja = { IDCaja ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def resultado = db.executeUpdate("UPDATE cajas SET abierta = ?, horaCerrada = CURRENT_TIMESTAMP WHERE id_caja = ?", [0, IDCaja]);
         db.close()
     }
     static def cajaAbierta = { IDCaja ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def resultado = db.rows("SELECT abierta FROM cajas WHERE id_caja = ?", [IDCaja])
         db.close()
         if(resultado.size()==1) { return resultado[0].abierta } else { return -1 }
@@ -90,7 +88,7 @@ class Caja {
     static def aplicarVenta = { IDCaja, IDAlmacen, IDCliente, IDUsuario, subtotal, descuento, impuestos, total, detalles ,efectivo,cambio,centecimos->
         def db, retorna = [], artDetalles
 
-        db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        db = Db.connect()
         try {
             db.connection.autoCommit = false
 			def folio   = Ventas.generaFolioSync(IDCaja, db)
@@ -128,7 +126,7 @@ class Caja {
     static def getCaja = { ID ->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def Caja = db.firstRow("SELECT * FROM cajas WHERE id_caja = $ID")
             db.close()
             salida = Caja
@@ -139,7 +137,7 @@ class Caja {
     static def addCaja = {IDAlmacen,descripcion ->
         def db
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            db = Db.connect()
             try {
                 db.connection.autoCommit = false
                 def IDCaja = db.executeInsert("INSERT INTO cajas SET id_almacen= ? , descripcion = ?, uModificacion = NOW() ",[IDAlmacen,descripcion])
@@ -158,7 +156,7 @@ class Caja {
     }
 
     static def modCaja = { IDCaja,IDAlmacen,descripcion ->
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         try {
           db.connection.autoCommit = false
           db.executeUpdate("UPDATE cajas SET descripcion = ? WHERE id_caja = ? and id_almacen=? ",[descripcion, IDCaja, IDAlmacen])

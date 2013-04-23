@@ -39,7 +39,7 @@ class ArticulosFunciones {
     static def selectArticuloCompleto  = { IDAlmacen, select, selCampos = [] ->
         def salida = ""
         try {
-            def db       = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db       = Db.connect()
             def query    = select
             def articulo = db.firstRow(query, selCampos)
             if(articulo==null) { return null }
@@ -81,7 +81,7 @@ class ArticulosFunciones {
         def db
         try {
             //!!!!Aquí­ la conexión lleva un argumento extra!!! useOldAliasMetadataBehavior=true
-            db       = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=&useOldAliasMetadataBehavior=true", "root", "", "com.mysql.jdbc.Driver")
+            db       = Db.connect()
             return getPrecioConConexion(db , IDArt, IDAlmacen,IDCli)
         } catch(e) { Consola.error("[Excepción al obtener precio: ${e.message}]",e); throw new Exception("Error al obtener precio",e) 
         } finally { if(db!=null) { db.close() } }
@@ -90,7 +90,7 @@ class ArticulosFunciones {
     static def addArticulo = { IDAlmacen, IDLinea, IDGrupo, codigo, descripcion, unidad, impuestos, costo, descuento, utilidad, existencias ->
         def db
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            db = Db.connect()
             try {
                 db.connection.autoCommit = false
                 def IDArticulo = db.executeInsert("INSERT INTO articulos SET codigo = ?, id_linea = ?, id_grupo = ?, descripcion = ?, unidad = ? , impuestos = ? ", [codigo, IDLinea, IDGrupo, descripcion, unidad, impuestos])
@@ -114,7 +114,7 @@ class ArticulosFunciones {
         }
     }
     static def modArticulo = { IDAlmacen, IDArticulo, codigo, IDLinea, IDGrupo, descripcion, unidad, impuestos, costo, utilidad, descuento ->
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         try {
           db.connection.autoCommit = false
           db.executeUpdate("UPDATE articulos SET codigo = ?, id_linea = ?, id_grupo = ?, descripcion = ?, unidad = ?, impuestos = ? WHERE id_articulo = ?"
@@ -133,7 +133,7 @@ class ArticulosFunciones {
         }
     }
     static def modPrecio = { Map cambios, IDAlmacen, IDArticulo ->
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         db.connection.autoCommit = false
         try {
             cambios.each { clv, val ->
@@ -156,7 +156,7 @@ class ArticulosFunciones {
     }
 
     static def getAnotacion = {id_almacen, id_articulo ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         def notas = db.firstRow("SELECT * FROM anotaciones WHERE id_almacen = ? AND id_articulo = ? ", [id_almacen, id_articulo])
         if (notas != null) {
             return notas.texto
@@ -167,14 +167,14 @@ class ArticulosFunciones {
     }
 
     static def addAnotacion = {id_almacen, id_articulo, texto ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         db.connection.autoCommit = false
         db.executeInsert("INSERT INTO anotaciones (id_almacen, id_articulo, texto) VALUES(?, ?, ?)", [id_almacen, id_articulo, texto])
         db.commit()
     }
 
     static def modAnotacion = {id_almacen, id_articulo, texto ->
-        def db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db = Db.connect()
         db.connection.autoCommit = false
         if ( db.firstRow("SELECT * FROM anotaciones WHERE id_almacen = ? AND id_articulo = ? ", [id_almacen, id_articulo]) != null )
             db.executeUpdate("UPDATE anotaciones SET texto = ? WHERE id_almacen = ? AND id_articulo = ?", [texto, id_almacen, id_articulo])

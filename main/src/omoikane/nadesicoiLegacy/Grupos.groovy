@@ -22,7 +22,7 @@ class Grupos {
     static def getGrupo = { ID ->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def grupo = db.firstRow("SELECT * FROM grupos WHERE id_grupo = $ID")
             db.close()
             salida = grupo
@@ -33,7 +33,7 @@ class Grupos {
     static def addGrupo = {descripcion, descuento ->
         def db
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            db = Db.connect()
             try {
                 db.connection.autoCommit = false
                 def IDGrupo = db.executeInsert("INSERT INTO grupos SET descripcion = ?, descuento = ?",[descripcion, descuento])
@@ -52,7 +52,7 @@ class Grupos {
     }
 
     static def modGrupo = { IDGrupo, descripcion, descuento ->
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         try {
           db.connection.autoCommit = false
           db.executeUpdate("UPDATE grupos SET descripcion = ?, descuento = ? WHERE id_grupo = ?",[descripcion, descuento, IDGrupo])

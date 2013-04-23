@@ -22,7 +22,7 @@ class Ventas {
 	 * Obtiene y guarda el siguiente folio disponible para la caja, sin rollback
 	 */
 	static def generaFolio ( IDCaja ) {
-		def db     = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+		def db     = Db.connect()
 		def folio = generaFolioSync(IDCaja, db)
 		((Sql)db).close()
 		return folio
@@ -39,7 +39,7 @@ class Ventas {
     static def sumaVentas = { IDCaja, desde, hasta ->
         def salida = ""
         try {
-            def db     = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            def db     = Db.connect()
             def ventas = db.firstRow("""SELECT count(id_venta) as nVentas, sum(subtotal) as subtotal, sum(impuestos) as impuestos,
                                     sum(descuento) as descuento, sum(total) as total FROM ventas WHERE id_caja = ?
                                     AND fecha_hora >= ? AND fecha_hora <= ?""", [IDCaja, desde, hasta])
@@ -58,7 +58,7 @@ class Ventas {
     static def getVenta = { ID ,IDAlmacen->
         def salida = ""
         try {
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         def Venta = db.firstRow("SELECT * FROM ventas WHERE id_almacen = $IDAlmacen AND id_venta = $ID")
         def Cliente=db.firstRow("SELECT razonSocial FROM clientes WHERE id_cliente=$Venta.id_cliente")
         def Almacen=db.firstRow("SELECT descripcion FROM almacenes WHERE id_almacen=$Venta.id_almacen")
@@ -89,7 +89,7 @@ class Ventas {
     static def addVentaEspecial={IDVenta,IDAutorizador->
         def db
         try {
-            db = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+            db = Db.connect()
             try {
                 db.connection.autoCommit = false
                 def IDVentaEspecial = db.executeInsert("INSERT INTO ventasprecioespecial SET id_venta = ?, id_autorizador = ?",[IDVenta, IDAutorizador])
@@ -109,7 +109,7 @@ class Ventas {
     }
 
     static def modVenta = { IDVenta,IDCliente ->
-        def db   = Sql.newInstance("jdbc:mysql://localhost/omoikane?user=root&password=", "root", "", "com.mysql.jdbc.Driver")
+        def db   = Db.connect()
         try {
           db.connection.autoCommit = false
           db.executeUpdate("UPDATE ventas SET id_cliente=?,facturada=? WHERE id_venta = ?"
