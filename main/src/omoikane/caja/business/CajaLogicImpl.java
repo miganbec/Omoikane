@@ -1,5 +1,6 @@
 package omoikane.caja.business;
 
+import groovy.util.Eval;
 import javafx.collections.ObservableList;
 import name.antonsmirnov.javafx.dialog.Dialog;
 import omoikane.caja.data.IProductosDAO;
@@ -12,9 +13,13 @@ import omoikane.entities.Caja;
 import omoikane.entities.LegacyVenta;
 import omoikane.entities.LegacyVentaDetalle;
 import omoikane.principal.Principal;
+import omoikane.principal.Sucursales;
 import omoikane.producto.Producto;
+import omoikane.repository.CajaRepo;
 import omoikane.repository.VentaRepo;
 import omoikane.sistema.Comprobantes;
+import omoikane.sistema.Dialogos;
+import omoikane.sistema.Nadesico;
 import omoikane.sistema.Usuarios;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +57,9 @@ public class CajaLogicImpl implements ICajaLogic {
 
     @Autowired
     VentaRepo ventaRepo;
+
+    @Autowired
+    CajaRepo cajaRepo;
 
     @PersistenceContext
     EntityManager entityManager;
@@ -211,6 +219,13 @@ public class CajaLogicImpl implements ICajaLogic {
 
     @Override
     public void nuevaVenta() {
+
+        instanciarModeloVenta();
+        getController().getCapturaTextField().requestFocus();
+    }
+
+
+    private void instanciarModeloVenta() {
         LegacyVenta ventaIncompleta = buscarVentaIncompleta();
         getController().setModel( new CajaModel() );
 
@@ -221,8 +236,6 @@ public class CajaLogicImpl implements ICajaLogic {
             cargarVentaIncompleta(ventaIncompleta);
             ventaAbiertaBean = ventaIncompleta;
         }
-
-        getController().getCapturaTextField().requestFocus();
     }
 
     private LegacyVenta buscarVentaIncompleta() {

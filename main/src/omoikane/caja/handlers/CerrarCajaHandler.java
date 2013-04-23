@@ -37,4 +37,5 @@ public class CerrarCajaHandler extends ICajaEventHandler {
         stage.close();
     }
 
+
 }
