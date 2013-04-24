@@ -41,6 +41,8 @@
         <hades:dao id="ventaRepo" />
         <hades:dao id="proveedorRepo" />
         <hades:dao id="cancelacionRepo" />
+        <hades:dao id="conteoInventarioRepo" />
+        <hades:dao id="cajaRepo" />
     </hades:dao-config>
 
     <bean id="log4jInitializer" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">

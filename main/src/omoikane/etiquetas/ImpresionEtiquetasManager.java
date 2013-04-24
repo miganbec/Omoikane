@@ -34,7 +34,7 @@ import java.lang.reflect.InvocationTargetException;
  * Time: 01:41
  * To change this template use File | Settings | File Templates.
  */
-public class ImpresionEtiquetasManager  {
+public class    ImpresionEtiquetasManager  {
 
     ImpresionEtiquetasController controller;
     ImpresionEtiquetasModel model;

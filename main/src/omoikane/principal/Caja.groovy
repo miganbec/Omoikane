@@ -23,7 +23,8 @@ import static omoikane.sistema.Permisos.*
 import omoikane.sistema.cortes.*
 import omoikane.sistema.excepciones.*
  import javax.swing.JOptionPane
- import omoikane.entities.CorteSucursal;
+ import omoikane.entities.CorteSucursal
+ import javax.swing.JInternalFrame;
 
 class Caja implements Serializable {
 
@@ -32,7 +33,7 @@ class Caja implements Serializable {
     static def IDAlmacen = Principal.IDAlmacen
     static def IDCliente = 1 //cambiar cuando se mejore el modulo cliente
     static def queryCaja  = ""
-    static def escritorio = omoikane.principal.Principal.escritorio
+    static def escritorio = omoikane.principal.Principal.getEscritorio()
     static def comMan     = new ComMan()
     static def basculaActiva = omoikane.principal.Principal.basculaActiva
     static def miniDriver = omoikane.principal.Principal.driverBascula
@@ -43,9 +44,9 @@ class Caja implements Serializable {
             if(ID == -1){
                 def retorna = false
                 def foco = new Object()
-                def form = new omoikane.formularios.AbrirCaja()
-                form.visible = true
+                JInternalFrame form = new omoikane.formularios.AbrirCaja()
                 escritorio.getPanelEscritorio().add(form)
+                form.visible = true
                 Herramientas.centrarAbsoluto(form);
                 Herramientas.iconificable(form)
                 Herramientas.In2ActionX(form          , KeyEvent.VK_ESCAPE, "cerrar"      ) { form.btnCerrar.doClick()        }
@@ -101,11 +102,13 @@ class Caja implements Serializable {
                         def cajaAbierta = serv.cajaAbierta(IDCaja)
                         serv.desconectar()
 
-                        Thread.start {
-                            cajaAbierta = cajaAbierta?true:abrirCaja()
-                            if(cajaAbierta) { lanzarCaja() }
-                        }
-
+                        Thread t = new Thread() {
+                            public void run() {
+                                cajaAbierta = cajaAbierta?true:abrirCaja()
+                                if(cajaAbierta) { lanzarCaja() }
+                            }
+                        };
+                        t.start();
                 break;
             }
     }

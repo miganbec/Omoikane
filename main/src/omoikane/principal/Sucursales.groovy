@@ -54,9 +54,9 @@ class Sucursales {
         serv.desconectar()
         return salida
     }
-    static def abierta(IDAlmacen) {
+    static def abierta() {
         def serv  = Nadesico.conectar()
-        def salida= serv.sucursalAbierta(IDAlmacen)
+        def salida= serv.sucursalAbierta()
         serv.desconectar()
         salida
     }

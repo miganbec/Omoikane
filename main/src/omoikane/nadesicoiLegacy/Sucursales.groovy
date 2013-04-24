@@ -58,10 +58,10 @@ class Sucursales {
             return resultado
         } catch(e) { def msg = "Error al abrir sucursal: ${e.message}"; Consola.error(msg, e); throw new Exception(msg) }
     }
-    static def sucursalAbierta = { IDAlmacen ->
+    static def sucursalAbierta = {
         try {
             def db = Db.connect()
-            def resultado = db.firstRow("SELECT abierta FROM sucursales, almacenes WHERE sucursales.id_almacen = almacenes.id_almacen AND sucursales.id_almacen = ?", [IDAlmacen])
+            def resultado = db.firstRow("SELECT abierta FROM sucursales LIMIT 1")
             db.close()
             if(resultado != null && resultado.size()==1) { return resultado.abierta } else { return -1 }
         } catch(e) { def msg = "Error al abrir sucursal: ${e.message}"; Consola.error(msg, e); throw new Exception(msg) }

@@ -460,16 +460,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         CajaManager manager = new CajaManager();
         JInternalFrame internalFrame = manager.startJFXCaja();
 
-        Herramientas.panelCatalogo(internalFrame);
-        omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(internalFrame);
-        internalFrame.setSize(990, 570);
-        internalFrame.setPreferredSize(new Dimension(990, 570));
-
-        internalFrame.setVisible(true);
-        Herramientas.centrarVentana(internalFrame);
-        Herramientas.iconificable(internalFrame);
-        internalFrame.toFront();
-
         System.out.println(timer.getElapsedTime());
 }//GEN-LAST:event_btnVenderActionPerformed
 

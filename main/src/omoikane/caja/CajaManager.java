@@ -17,6 +17,8 @@ import omoikane.caja.presentation.CajaModel;
 import omoikane.principal.Principal;
 import omoikane.principal.Sucursales;
 import omoikane.sistema.Dialogos;
+import omoikane.sistema.Herramientas;
+import omoikane.sistema.Permisos;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.swing.*;
@@ -93,11 +95,28 @@ public class CajaManager extends Application {
     }
 
     public JInternalFrame startJFXCaja() {
+        JInternalFrame frame = null;
+        if(!omoikane.sistema.Usuarios.autentifica(Permisos.getPMA_LANZARCAJA())) return null;
+        if(!cajaAbierta()) return null;
+        return _startJFXCaja();
+
+    }
+
+    private JInternalFrame _startJFXCaja() {
         final JInternalFrame frame = new JInternalFrame("Caja");
         final JFXPanel fxPanel = new JFXPanel();
 
         frame.add(fxPanel);
         frame.setVisible(true);
+
+        Herramientas.panelCatalogo(frame);
+        omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(frame);
+        frame.setSize(990, 570);
+        frame.setPreferredSize(new Dimension(990, 570));
+        frame.setVisible(true);
+        Herramientas.centrarVentana(frame);
+        Herramientas.iconificable(frame);
+        frame.toFront();
 
         Platform.setImplicitExit(false);
         Platform.runLater(new Runnable() {
@@ -140,11 +159,11 @@ public class CajaManager extends Application {
      */
     @Deprecated
     public Boolean cajaAbierta() {
-        Integer abierta = (Integer) Sucursales.abierta(Principal.IDAlmacen);
+        Integer abierta = ((Long)Sucursales.abierta()).intValue();
 
         switch(abierta) {
             case -1: logger.info( "Configuración de sucursal-almacen errónea." ); break;
-            case  0: abierta = (Integer) Sucursales.abrirSucursal(Principal.IDAlmacen);  //Sin break para continuar
+            case  0: abierta = (Integer) omoikane.principal.Sucursales.abrirSucursal(Principal.IDAlmacen);  //Sin break para continuar
             case  1:
 
                 if(abierta!=1) { break; }
@@ -152,7 +171,8 @@ public class CajaManager extends Application {
                 cajaAbierta = Eval.me("cajaAbierta", cajaAbierta,
                         "def serv = omoikane.sistema.Nadesico.conectar();" +
                                 "cajaAbierta = serv.cajaAbierta(omoikane.principal.Principal.IDCaja);" +
-                                "serv.desconectar();");
+                                "serv.desconectar();" +
+                                "return cajaAbierta;");
 
                 cajaAbierta = ((Boolean)cajaAbierta) ?true: omoikane.principal.Caja.abrirCaja();
                 if((Boolean) cajaAbierta) { return true; }
