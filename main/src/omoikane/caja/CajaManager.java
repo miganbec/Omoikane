@@ -25,6 +25,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,31 +41,9 @@ public class CajaManager extends Application {
     CajaController controller;
     final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(CajaManager.class);
 
-    /**
-     * Ésto se debe pasar a un test
-     * @param args the command line arguments
-     */
-    /*
-    public static void main(String[] args) throws InvocationTargetException, InterruptedException {
-        SwingUtilities.invokeAndWait(new Runnable() {
-            @Override
-            public void run() {
-
-                omoikane.principal.Principal.setConfig(new omoikane.sistema.Config());
-                omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
-
-                CajaManager manager = new CajaManager();
-                manager.startJFXCaja();
-
-            }
-        });
-    }
-    */
-
     @Override
     public void start(Stage primaryStage) {
         try {
-            if(!cajaAbierta()) return;
             Scene scene = initCaja();
 
             primaryStage.setScene(scene);
@@ -97,8 +78,8 @@ public class CajaManager extends Application {
     public JInternalFrame startJFXCaja() {
         JInternalFrame frame = null;
         if(!omoikane.sistema.Usuarios.autentifica(Permisos.getPMA_LANZARCAJA())) return null;
-        if(!cajaAbierta()) return null;
-        return _startJFXCaja();
+        abrirCaja();
+        return null;
 
     }
 
@@ -158,7 +139,7 @@ public class CajaManager extends Application {
      * @return
      */
     @Deprecated
-    public Boolean cajaAbierta() {
+    public void abrirCaja() {
         Integer abierta = ((Long)Sucursales.abierta()).intValue();
 
         switch(abierta) {
@@ -174,11 +155,22 @@ public class CajaManager extends Application {
                                 "serv.desconectar();" +
                                 "return cajaAbierta;");
 
-                cajaAbierta = ((Boolean)cajaAbierta) ?true: omoikane.principal.Caja.abrirCaja();
-                if((Boolean) cajaAbierta) { return true; }
+                new Thread(new MostrarCaja(cajaAbierta)).start();
                 break;
         }
-        return false;
+
+    }
+
+    class MostrarCaja implements Runnable {
+
+        private Boolean cajaAbierta;
+
+        public MostrarCaja(Object cajaAbierta) { this.cajaAbierta = (Boolean) cajaAbierta; }
+        @Override
+        public void run() {
+            cajaAbierta = cajaAbierta?true: (Boolean) omoikane.principal.Caja.abrirCaja();
+            if(cajaAbierta) { _startJFXCaja(); }
+        }
     }
 
 }
