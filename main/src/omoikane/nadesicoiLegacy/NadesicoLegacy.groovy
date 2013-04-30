@@ -14,20 +14,14 @@ public class NadesicoLegacy {
     def propertyMissing(String name, value) { storage[name] = value }
     def propertyMissing(String name) { storage[name] }
 
-    Object methodMissing(String name, args) {
-        if(args.size() == 1) {
-            return this."${name}".call(args[0])
-        } else {
-            return this."${name}".call(args)
-        }
-
+    Object methodMissing(String name, Object args) {
+            return this."${name}".call( * args)
     }
     /**
      * @param args the command line arguments
      */
     public NadesicoLegacy() {
         try {
-
               def driver   = "com.mysql.jdbc.Driver";
               Class.forName(driver).newInstance();
 
