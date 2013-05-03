@@ -19,4 +19,7 @@ public interface ProductoRepo extends GenericDao<Articulo, Long>
     List<Articulo> findByCodigo(String codigo);
     @Query("FROM Articulo a JOIN FETCH a.baseParaPrecio bp WHERE a.descripcion like ?1")
     List<Articulo> findByDescripcionLike(String descripcion, Pageable pageable);
+
+    @Query("FROM Articulo a JOIN FETCH a.stock s WHERE a.idArticulo = ?1")
+    Articulo findByIdIncludeStock(Long id);
 }

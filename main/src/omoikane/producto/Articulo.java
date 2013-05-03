@@ -173,8 +173,11 @@ public class Articulo implements Serializable, IProductoApreciado {
     @PrimaryKeyJoinColumn
     public Stock stock;
 
+    @Transactional
     public Stock getStock() {
-        return stock;
+        Stock s = stock;
+        Hibernate.initialize(s);
+        return s;
     }
 
     public void setStock(Stock s) {

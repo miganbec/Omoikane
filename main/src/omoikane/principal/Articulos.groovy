@@ -15,6 +15,9 @@ import java.awt.event.*;
 import groovy.swing.*;
 import static omoikane.sistema.Usuarios.*;
 import static omoikane.sistema.Permisos.*
+import javafx.embed.swing.JFXPanel
+import javafx.scene.Scene
+import javafx.application.Platform
 
 
 public class Articulos
@@ -161,6 +164,7 @@ public class Articulos
             omoikane.principal.Articulos.recalcularCampos(formArticulo);
             rellenarCodigosAlternos(ID, formArticulo)
             //rellenarPaquetes(ID, formArticulo)
+            addJFXStock(formArticulo);
             return formArticulo
             
             } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
@@ -213,12 +217,27 @@ public class Articulos
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
-    static def stockAdd(idArticulo) {
+    static def addJFXStockPanel(idArticulo, omoikane.formularios.Articulo a) {
+
+        JFXPanel panel = new JFXPanel();
+        a.tabbedPane.addTab("Stock", panel);
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = (Scene) Principal.applicationContext.getBean("stockLevelsView");
+                panel.setScene(scene);
+
+            }
+        });
+
+        /*
         ProductoRepo repo = (ProductoRepo) Principal.applicationContext.getBean("productoRepo");
         omoikane.producto.Articulo a = repo.readByPrimaryKey(idArticulo)
         Stock s = new Stock()
         a.setStock(s)
         repo.save(a)
+        */
     }
 
     static def lanzarFormNuevoArticulo()
@@ -226,9 +245,11 @@ public class Articulos
         if(cerrojo(PMA_MODIFICARARTICULO)){
             try{
             def form = new omoikane.formularios.Articulo()
+            addJFXStockPanel(null, form);
             form.setVisible(true)
             Herramientas.panelFormulario(form)
             escritorio.getPanelEscritorio().add(form)
+
             form.toFront()
             SwingBuilder.build {
                 //Al presionar F1: (lanzarCatalogoDialogo)

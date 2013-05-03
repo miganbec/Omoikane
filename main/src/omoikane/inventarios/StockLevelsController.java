@@ -8,8 +8,13 @@ import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.producto.Articulo;
 import omoikane.repository.ProductoRepo;
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.validation.*;
 
 import javax.persistence.EntityManager;
@@ -38,7 +43,7 @@ public class StockLevelsController implements Initializable {
     @PersistenceContext
     EntityManager entityManager;
 
-    Long idProducto = 1l;
+    Long idProducto = 500l;
 
     public Logger logger = Logger.getLogger(getClass());
 
@@ -90,8 +95,8 @@ public class StockLevelsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        producto = productoRepo.readByPrimaryKey(idProducto);
-        stock = producto.stock;
+        producto = productoRepo.findByIdIncludeStock(idProducto);
+        stock = producto.getStock();
 
         stockTienda.setNumber( stock.getEnTienda() );
         stockBodega.setNumber(stock.getEnBodega());

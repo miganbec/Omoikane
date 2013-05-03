@@ -30,7 +30,8 @@
     <bean id="config" class="omoikane.sistema.Config"></bean>
     <bean id="productoDao" class="omoikane.caja.data.ProductosNadesicoAdapter"></bean>
     <bean id="comprobantes" class="omoikane.sistema.Comprobantes"></bean>
-    <!--<bean id="paqueteController" class="omoikane.producto.PaqueteController"></bean>-->
+    <bean id="paqueteController" class="omoikane.producto.PaqueteController"></bean>
+
     <bean id="/SpringAnnotatedConfig" class="omoikane.sistema.SpringAnnotatedConfig"></bean>
     <bean id="properties" class="java.util.HashMap"></bean>
 
