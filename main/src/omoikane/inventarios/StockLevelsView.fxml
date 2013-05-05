@@ -21,8 +21,7 @@
     <BigDecimalField id="StockMax" fx:id="stockMax" layoutY="177.0" prefWidth="200.0001220703125" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="7.0" />
     <Label layoutX="14.0" layoutY="143.0" text="Stock mínimo:" />
     <Label layoutX="15.0" layoutY="179.0" text="Stock máximo:" />
-    <Button id="guardarBtn" cancelButton="false" defaultButton="false" mnemonicParsing="false" onAction="#accionGuardar" text="Guardar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="76.0" />
-    <Button defaultButton="true" mnemonicParsing="false" onAction="#accionCerrar" text="Cerrar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="13.0" />
+    <Button id="guardarBtn" cancelButton="false" defaultButton="false" mnemonicParsing="false" onAction="#accionGuardar" prefWidth="112.0" text="Guardar Stock" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="8.0" />
     <Label layoutX="15.0" layoutY="217.0" text="Ubicación:" />
     <Label layoutX="14.0" layoutY="67.0" text="Stock en piso:" />
     <Label layoutX="14.0" layoutY="105.0" text="Stock en bodega:" />

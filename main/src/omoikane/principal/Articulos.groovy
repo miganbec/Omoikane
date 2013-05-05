@@ -1,6 +1,7 @@
 package omoikane.principal
 
 import omoikane.inventarios.Stock
+import omoikane.inventarios.StockLevelsController
 import omoikane.principal.*
 import omoikane.repository.ProductoRepo
 import omoikane.sistema.*
@@ -163,12 +164,12 @@ public class Articulos
             formArticulo.setModoDetalles();
             omoikane.principal.Articulos.recalcularCampos(formArticulo);
             rellenarCodigosAlternos(ID, formArticulo)
+            addJFXStockPanel(formArticulo, ID);
             //rellenarPaquetes(ID, formArticulo)
-            addJFXStock(formArticulo);
             return formArticulo
             
             } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }
-        }else{Dialogos.lanzarAlerta("Acceso Denegado")}
+        }else{ Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
     static def guardar(omoikane.formularios.Articulo formArticulo)
@@ -217,7 +218,7 @@ public class Articulos
             }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
-    static def addJFXStockPanel(idArticulo, omoikane.formularios.Articulo a) {
+    static def addJFXStockPanel(Long idArticulo, omoikane.formularios.Articulo a) {
 
         JFXPanel panel = new JFXPanel();
         a.tabbedPane.addTab("Stock", panel);
@@ -225,7 +226,8 @@ public class Articulos
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                Scene scene = (Scene) Principal.applicationContext.getBean("stockLevelsView");
+                SceneOverloaded scene = (SceneOverloaded) Principal.applicationContext.getBean("stockLevelsView");
+                ((StockLevelsController)scene.getController()).setProducto(idArticulo);
                 panel.setScene(scene);
 
             }
@@ -245,7 +247,7 @@ public class Articulos
         if(cerrojo(PMA_MODIFICARARTICULO)){
             try{
             def form = new omoikane.formularios.Articulo()
-            addJFXStockPanel(null, form);
+            addJFXStockPanel(1l, form);
             form.setVisible(true)
             Herramientas.panelFormulario(form)
             escritorio.getPanelEscritorio().add(form)

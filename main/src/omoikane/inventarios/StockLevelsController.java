@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.producto.Articulo;
 import omoikane.repository.ProductoRepo;
+import omoikane.sistema.Dialogos;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static omoikane.sistema.Permisos.PMA_DETALLESARTICULO;
+import static omoikane.sistema.Permisos.getPMA_MODIFICARARTICULO;
+import static omoikane.sistema.Usuarios.cerrojo;
 
 /**
  * Created with IntelliJ IDEA.
@@ -43,7 +48,7 @@ public class StockLevelsController implements Initializable {
     @PersistenceContext
     EntityManager entityManager;
 
-    Long idProducto = 500l;
+    //Long idProducto = 1l;
 
     public Logger logger = Logger.getLogger(getClass());
 
@@ -65,6 +70,7 @@ public class StockLevelsController implements Initializable {
 
     @FXML
     private void accionGuardar(ActionEvent actionEvent) {
+        if(!cerrojo(getPMA_MODIFICARARTICULO())){ Dialogos.lanzarAlerta("Acceso Denegado"); return; }
         /*
         TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
         Object result = transactionTemplate.execute(new TransactionCallbackWithoutResult() {
@@ -95,7 +101,11 @@ public class StockLevelsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        producto = productoRepo.findByIdIncludeStock(idProducto);
+        //setProducto(idProducto);
+    }
+
+    public void setProducto(Long id) {
+        producto = productoRepo.findByIdIncludeStock(id);
         stock = producto.getStock();
 
         stockTienda.setNumber( stock.getEnTienda() );
@@ -118,7 +128,6 @@ public class StockLevelsController implements Initializable {
                 clasificacion.selectToggle( radioClaseC );
                 break;
         }
-
     }
 
     private boolean validar(Stock stock) {

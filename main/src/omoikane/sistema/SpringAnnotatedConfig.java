@@ -1,6 +1,7 @@
 package omoikane.sistema;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
@@ -87,7 +88,7 @@ public class SpringAnnotatedConfig {
         return initView("/omoikane/etiquetas/presentation/ImpresionetiquetasView.fxml", impresionEtiquetasController());
     }
 
-    private Scene initView(String fxml, final Object controller) {
+    private SceneOverloaded initView(String fxml, final Initializable controller) {
         FXMLLoader fxmlLoader;
         try {
             fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
@@ -98,7 +99,7 @@ public class SpringAnnotatedConfig {
                 }
             });
             AnchorPane page = (AnchorPane) fxmlLoader.load();
-            Scene scene = new Scene(page);
+            SceneOverloaded scene = new SceneOverloaded(page, controller);
             return scene;
         } catch(IOException exception) {
             logger.error(exception.getMessage(), exception);
