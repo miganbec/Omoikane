@@ -23,7 +23,6 @@ import javax.persistence.PersistenceContext;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static omoikane.sistema.Permisos.PMA_DETALLESARTICULO;
 import static omoikane.sistema.Permisos.getPMA_MODIFICARARTICULO;
 import static omoikane.sistema.Usuarios.cerrojo;
 

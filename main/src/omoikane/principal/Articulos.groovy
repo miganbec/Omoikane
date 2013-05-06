@@ -3,6 +3,7 @@ package omoikane.principal
 import omoikane.inventarios.Stock
 import omoikane.inventarios.StockLevelsController
 import omoikane.principal.*
+import omoikane.producto.PaqueteController
 import omoikane.repository.ProductoRepo
 import omoikane.sistema.*
 import groovy.sql.*;
@@ -164,7 +165,8 @@ public class Articulos
             formArticulo.setModoDetalles();
             omoikane.principal.Articulos.recalcularCampos(formArticulo);
             rellenarCodigosAlternos(ID, formArticulo)
-            addJFXStockPanel(formArticulo, ID);
+            addJFXStockPanel(ID, formArticulo);
+            addJFXPaquetePanel(ID, formArticulo);
             //rellenarPaquetes(ID, formArticulo)
             return formArticulo
             
@@ -219,7 +221,6 @@ public class Articulos
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
     static def addJFXStockPanel(Long idArticulo, omoikane.formularios.Articulo a) {
-
         JFXPanel panel = new JFXPanel();
         a.tabbedPane.addTab("Stock", panel);
 
@@ -232,14 +233,20 @@ public class Articulos
 
             }
         });
+    }
+    static def addJFXPaquetePanel(Long idArticulo, omoikane.formularios.Articulo a) {
+        JFXPanel panel = new JFXPanel();
+        a.tabbedPane.addTab("Paquete", panel);
 
-        /*
-        ProductoRepo repo = (ProductoRepo) Principal.applicationContext.getBean("productoRepo");
-        omoikane.producto.Articulo a = repo.readByPrimaryKey(idArticulo)
-        Stock s = new Stock()
-        a.setStock(s)
-        repo.save(a)
-        */
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                SceneOverloaded scene = (SceneOverloaded) Principal.applicationContext.getBean("paqueteView");
+                ((PaqueteController)scene.getController()).setProducto(idArticulo);
+                panel.setScene(scene);
+
+            }
+        });
     }
 
     static def lanzarFormNuevoArticulo()
@@ -248,6 +255,7 @@ public class Articulos
             try{
             def form = new omoikane.formularios.Articulo()
             addJFXStockPanel(1l, form);
+            addJFXPaquetePanel(1l, form);
             form.setVisible(true)
             Herramientas.panelFormulario(form)
             escritorio.getPanelEscritorio().add(form)

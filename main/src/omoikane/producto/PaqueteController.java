@@ -24,6 +24,7 @@ import javafx.scene.input.KeyEvent;
 import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.entities.Paquete;
 import omoikane.repository.ProductoRepo;
+import omoikane.sistema.Dialogos;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -34,6 +35,9 @@ import org.springframework.validation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import static omoikane.sistema.Permisos.getPMA_MODIFICARARTICULO;
+import static omoikane.sistema.Usuarios.cerrojo;
 
 
 public class PaqueteController
@@ -100,6 +104,7 @@ public class PaqueteController
     }
 
     private void guardar(final Paquete renglonPaquete) {
+        if(!cerrojo(getPMA_MODIFICARARTICULO())){ Dialogos.lanzarAlerta("Acceso Denegado"); return; }
         TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
         Object result = transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
@@ -196,11 +201,14 @@ public class PaqueteController
         productoCol.setCellValueFactory(new PropertyValueFactory<Paquete, String>("descripcion"));
         precioCol.setCellValueFactory(new PropertyValueFactory<Paquete, String>("precioString"));
 
+    }
+
+    public void setProducto(Long id) {
+        this.productoId = id;
         llenarTabla();
 
         Articulo producto = productoRepo.readByPrimaryKey(productoId);
         paqueteCheckbox.setSelected( producto.getEsPaquete() );
-
     }
 
     public void llenarTabla() {
