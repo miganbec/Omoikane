@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
@@ -39,7 +39,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Movimiento de almac&#xe9;n"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;head&gt;&lt;style type=&apos;text/css&apos;&gt;body { font-family: &apos;Roboto Thin&apos;; font-size: 28px; }&lt;/style&gt;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;Movimiento de almac&#xe9;n&#xa;&lt;/body&gt;&lt;/html&gt;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

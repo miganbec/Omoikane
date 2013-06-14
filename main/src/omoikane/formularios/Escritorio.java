@@ -10,9 +10,8 @@
  */
 
 package omoikane.formularios;
-import java.awt.Component;
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
+import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 import omoikane.sistema.Apagado;
@@ -92,9 +91,11 @@ public class Escritorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelEscritorio = new javax.swing.JDesktopPane();
+        PanelEscritorio = new FrostedGlassDesktopPane();
         reloj = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
+        calculadoraCanvas = new java.awt.Canvas();
+        calendarioCanvas = new java.awt.Canvas();
         lblImagenFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,26 +110,48 @@ public class Escritorio extends javax.swing.JFrame {
         PanelEscritorio.setMinimumSize(new java.awt.Dimension(1280, 800));
         PanelEscritorio.setOpaque(false);
 
+        reloj.setForeground(new java.awt.Color(255, 255, 255));
+        reloj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         reloj.setText("HORA");
-        reloj.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        reloj.setBounds(930, 160, 130, 30);
+        reloj.setBounds(1140, 0, 130, 70);
         PanelEscritorio.add(reloj, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        usuario.setFont(new java.awt.Font("Tahoma", 1, 18));
+        usuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        usuario.setForeground(new java.awt.Color(255, 255, 255));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usuario.setText("Sin Sesión");
-        usuario.setBounds(260, 180, 180, 20);
+        usuario.setBounds(10, 10, 90, 50);
         PanelEscritorio.add(usuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        calculadoraCanvas.setBackground(new Color(Color.OPAQUE));
+        calculadoraCanvas.setVisible(false);
+        calculadoraCanvas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calculadoraCanvas(evt);
+            }
+        });
+        calculadoraCanvas.setBounds(1160, 90, 90, 100);
+        PanelEscritorio.add(calculadoraCanvas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        calendarioCanvas.setVisible(false);
+        calendarioCanvas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calendarioCanvasClicked(evt);
+            }
+        });
+        calendarioCanvas.setBounds(1160, 200, 90, 110);
+        PanelEscritorio.add(calendarioCanvas, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lblImagenFondo.setBackground(new java.awt.Color(0, 0, 0));
         lblImagenFondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo.png"))); // NOI18N
+        lblImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/omoikane/Media2/skin/SkinMadera1280x720.png"))); // NOI18N
         lblImagenFondo.setAlignmentY(0.0F);
         lblImagenFondo.setFocusable(false);
         lblImagenFondo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblImagenFondo.setIconTextGap(0);
         lblImagenFondo.setInheritsPopupMenu(false);
         lblImagenFondo.setOpaque(true);
-        lblImagenFondo.setBounds(0, 0, 1280, 800);
+        lblImagenFondo.setBounds(0, 0, 1280, 720);
         PanelEscritorio.add(lblImagenFondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(PanelEscritorio);
@@ -136,13 +159,25 @@ public class Escritorio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void calendarioCanvasClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calendarioCanvasClicked
+        Component invocador = getFocusOwner();
+        Calendario.lanzarCalendario(invocador);
+    }//GEN-LAST:event_calendarioCanvasClicked
+
+    private void calculadoraCanvas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculadoraCanvas
+        Component invocador = getFocusOwner();
+        Calculadora.lanzarCalculadora(clipboard, invocador);
+    }//GEN-LAST:event_calculadoraCanvas
+
     /**
     * @param args the command line arguments
     */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JDesktopPane PanelEscritorio;
+    public JDesktopPane PanelEscritorio;
+    private java.awt.Canvas calculadoraCanvas;
+    private java.awt.Canvas calendarioCanvas;
     public javax.swing.JLabel lblImagenFondo;
     public javax.swing.JLabel reloj;
     public javax.swing.JLabel usuario;

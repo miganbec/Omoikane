@@ -218,11 +218,11 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
         setTitle("Catálogo de Ventas");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Catálogo de Ventas");
+        jLabel2.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 28px; }</style></head>\n<body>\nCatálogo de Ventas\n</body></html>");
 
-        txtBusqueda.setFont(new java.awt.Font("Arial", 0, 14));
+        txtBusqueda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyPressed(evt);
@@ -235,19 +235,19 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar [F3]:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Desde:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Hasta:");
 
-        btnFiltrar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnFiltrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
         btnFiltrar.setText("Filtrar [F1]");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +282,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
         jTable1.setRowHeight(20);
         jScrollPane1.setViewportView(jTable1);
 
-        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
@@ -297,7 +297,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        txtFechaDesde.setFont(new java.awt.Font("Arial", 0, 14));
+        txtFechaDesde.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFechaDesde.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
         txtFechaDesde.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -305,7 +305,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        txtFechaHasta.setFont(new java.awt.Font("Arial", 0, 14));
+        txtFechaHasta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFechaHasta.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
         txtFechaHasta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -313,20 +313,20 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        chkCajero.setFont(new java.awt.Font("Arial", 0, 14));
+        chkCajero.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chkCajero.setText("Cajero [F5]");
         chkCajero.setFocusable(false);
 
-        chkCliente.setFont(new java.awt.Font("Arial", 0, 14));
+        chkCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chkCliente.setSelected(true);
         chkCliente.setText("Id Venta [F6]");
         chkCliente.setFocusable(false);
 
-        chkCaja.setFont(new java.awt.Font("Arial", 0, 14));
+        chkCaja.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chkCaja.setText("Caja [F7]");
         chkCaja.setFocusable(false);
 
-        btnAceptar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnAceptar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/accept.png"))); // NOI18N
         btnAceptar.setText("Aceptar [Enter]");
         btnAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -335,7 +335,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDetalles.setFont(new java.awt.Font("Arial", 0, 14));
+        btnDetalles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnDetalles.setText("Detalles [F4]");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -349,7 +349,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnImprimir.setFont(new java.awt.Font("Arial", 0, 14));
+        btnImprimir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F8]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -363,7 +363,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnVentasXLinea.setFont(new java.awt.Font("Arial", 0, 14));
+        btnVentasXLinea.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnVentasXLinea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/page_search.png"))); // NOI18N
         btnVentasXLinea.setText("Ventas X Linea");
 
@@ -378,17 +378,17 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(10, 10, 10)
-                                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(chkCajero)
                                 .addGap(34, 34, 34))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -421,8 +421,8 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCerrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -643,7 +643,7 @@ public class CatalogoVentas extends javax.swing.JInternalFrame {
 
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(55,55,255,165));
+      g2d.setColor(new Color(0,0,0,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
     }

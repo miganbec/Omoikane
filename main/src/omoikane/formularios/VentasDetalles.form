@@ -58,12 +58,12 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtCliente" min="-2" pref="230" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel2" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -158,12 +158,12 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="36" style="1"/>
+          <Font name="Arial" size="24" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ventas Detalles"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;head&gt;&lt;style type=&apos;text/css&apos;&gt;body { font-family: &apos;Roboto Thin&apos;; font-size: 28px; }&lt;/style&gt;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;Ventas Detalles&#xa;&lt;/body&gt;&lt;/html&gt;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCerrar">
@@ -362,14 +362,14 @@
     </Component>
     <Component class="org.jdesktop.swingx.JXDatePicker" name="txtFecha">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="12" style="0"/>
         </Property>
         <Property name="formats" type="[Ljava.text.DateFormat;" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM)" type="code"/>
         </Property>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkFacturado">

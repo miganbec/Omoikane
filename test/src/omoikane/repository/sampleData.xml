@@ -893,4 +893,6 @@
   <cancelacion id="1" fechaHora = "2013-04-15 17:59:45.0" articulo_id_articulo="22776" autorizador_id_usuario="1" cajero_id_usuario="1" />
   <paquete id="1" cantidad="2" productoContenido_id_articulo="22940" productoContenedor_id_articulo="1" />
   <paquete id="2" cantidad="2" productoContenido_id_articulo="22939" productoContenedor_id_articulo="1" />
+  <codigo_producto id="1" producto_id_articulo="1" codigo="codsec01"/>
+  <codigo_producto id="2" producto_id_articulo="22941" codigo="codsec02"/>
 </dataset>

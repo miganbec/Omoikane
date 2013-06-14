@@ -4,6 +4,7 @@ package omoikane.producto;
 
 import net.sf.ehcache.hibernate.HibernateUtil;
 import omoikane.entities.Anotacion;
+import omoikane.entities.CodigoProducto;
 import omoikane.entities.Paquete;
 import omoikane.inventarios.Stock;
 import org.hibernate.Hibernate;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -37,7 +39,7 @@ public class Articulo implements Serializable, IProductoApreciado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_articulo")
+    @Column(name = "id_articulo", columnDefinition = "int(11)")
     private Long idArticulo;
     @Column(name = "codigo")
     private String codigo;
@@ -207,6 +209,18 @@ public class Articulo implements Serializable, IProductoApreciado {
         return this.baseParaPrecio;
     }
 
+    /*
+    @OneToMany(mappedBy = "codigoProducto")
+    private Collection<CodigoProducto> codigosAlternos;
+
+    public Collection<CodigoProducto> getCodigosAlternos() {
+        return codigosAlternos;
+    }
+
+    public void setCodigosAlternos(Collection<CodigoProducto> codigosAlternos) {
+        this.codigosAlternos = codigosAlternos;
+    }
+    */
 
     @Override
     public boolean equals(Object object) {

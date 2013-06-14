@@ -75,9 +75,9 @@ public class CajaDetalles extends javax.swing.JInternalFrame {
         setTitle("Caja");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Caja");
+        jLabel1.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 28px; }</style></head>\n<body>\nCaja\n</body></html>");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,7 +237,7 @@ public class CajaDetalles extends javax.swing.JInternalFrame {
 
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(55,55,255,225));
+      g2d.setColor(new Color(0,0,0,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
     }

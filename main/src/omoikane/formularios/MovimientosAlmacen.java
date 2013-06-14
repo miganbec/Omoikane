@@ -108,17 +108,17 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Movimientos del almacén");
+        jLabel2.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 28px; }</style></head>\n<body>\nMovimientos del almacén\n</body></html>");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 30));
 
-        txtBusqueda.setFont(new java.awt.Font("Arial", 0, 14));
+        txtBusqueda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyPressed(evt);
@@ -126,17 +126,17 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 310, 30));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Desde:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, 30));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Hasta:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, 30));
 
-        btnFiltrar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnFiltrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
         btnFiltrar.setText("Filtrar [enter]");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +146,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 160, 30));
 
-        movimientos.setFont(new java.awt.Font("Arial", 0, 14));
+        movimientos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         movimientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -169,7 +169,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 920, 310));
 
-        btnDetalles.setFont(new java.awt.Font("Arial", 0, 14));
+        btnDetalles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_search.png"))); // NOI18N
         btnDetalles.setText("<html><center>Detalles [F4]</center></html>");
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +179,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 180, 60));
 
-        btnNuevo.setFont(new java.awt.Font("Arial", 0, 14));
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_add.png"))); // NOI18N
         btnNuevo.setText("<html><center>Nuevo <br>Movimiento[F5]</center></html>");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 200, 60));
 
-        btnModificar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/page_edit.png"))); // NOI18N
         btnModificar.setText("<html><center>Modificar o eliminar [F6]</center></html>");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +199,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 190, 60));
 
-        btnImprimir.setFont(new java.awt.Font("Arial", 0, 14));
+        btnImprimir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/printer.png"))); // NOI18N
         btnImprimir.setText("<html><center>Imprimir [F7]</center></html>");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +224,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 510, 10, 10));
 
-        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14));
+        btnCerrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
         btnCerrar.setText("<HTML>Regresar a menú [Esc]</HTML>");
         btnCerrar.setRequestFocusEnabled(false);
@@ -235,11 +235,11 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 230, 40));
 
-        txtFechaDesde.setFont(new java.awt.Font("Arial", 0, 10));
+        txtFechaDesde.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         txtFechaDesde.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
         getContentPane().add(txtFechaDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 120, 30));
 
-        txtFechaHasta.setFont(new java.awt.Font("Arial", 0, 10));
+        txtFechaHasta.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         txtFechaHasta.setFormats(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM));
         getContentPane().add(txtFechaHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 120, 30));
         getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 920, 20));
@@ -407,7 +407,7 @@ public class MovimientosAlmacen extends javax.swing.JInternalFrame {
 
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(55,55,255,165));
+      g2d.setColor(new Color(0,0,0,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
 

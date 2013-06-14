@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
@@ -29,10 +29,10 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="964" max="32767" attributes="1"/>
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="1"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="375" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnCerrar" min="-2" pref="221" max="-2" attributes="1"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -46,9 +46,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnImprimir" pref="267" max="32767" attributes="0"/>
+                      <Component id="btnImprimir" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel1" min="-2" pref="83" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtBusqueda" min="-2" pref="557" max="-2" attributes="0"/>
@@ -61,7 +61,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="chkGrupos" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="cargaProgressBar" alignment="1" pref="964" max="32767" attributes="0"/>
+                  <Component id="cargaProgressBar" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -87,7 +87,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="cargaProgressBar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="392" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="383" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnDetalles" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -200,7 +200,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cat&#xe1;logo de Art&#xed;culos"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;head&gt;&lt;style type=&apos;text/css&apos;&gt;body { font-family: &apos;Roboto Thin&apos;; font-size: 36px; }&lt;/style&gt;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;Cat&#xe1;logo de Art&#xed;culos&#xa;&lt;/body&gt;&lt;/html&gt;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCerrar">
@@ -296,7 +296,6 @@
         </Property>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="C&#xf3;d, Desc"/>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkCodigoActionPerformed"/>
@@ -308,7 +307,6 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="L&#xed;neas"/>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkLineasActionPerformed"/>
@@ -320,7 +318,6 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Grupos"/>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkGruposActionPerformed"/>

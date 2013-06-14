@@ -41,18 +41,18 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnBuscar" pref="161" max="32767" attributes="0"/>
-                                  <Component id="btnCerrar" alignment="0" pref="161" max="32767" attributes="0"/>
+                                  <Component id="btnBuscar" max="32767" attributes="0"/>
+                                  <Component id="btnCerrar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnModificar" pref="174" max="32767" attributes="1"/>
-                                  <Component id="btnNuevo" alignment="1" pref="174" max="32767" attributes="1"/>
-                                  <Component id="btnDetalles" alignment="0" pref="174" max="32767" attributes="1"/>
-                                  <Component id="btnImprimir" alignment="0" pref="174" max="32767" attributes="0"/>
-                                  <Component id="btnCorte" alignment="0" pref="174" max="32767" attributes="0"/>
-                                  <Component id="btnEliminar" alignment="0" pref="174" max="32767" attributes="0"/>
+                                  <Component id="btnModificar" max="32767" attributes="1"/>
+                                  <Component id="btnNuevo" alignment="1" max="32767" attributes="1"/>
+                                  <Component id="btnDetalles" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="btnImprimir" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnCorte" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnEliminar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="648" max="-2" attributes="1"/>
@@ -61,7 +61,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="664" max="-2" attributes="0"/>
-                      <Component id="btnAceptar" pref="174" max="32767" attributes="0"/>
+                      <Component id="btnAceptar" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -136,7 +136,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cat&#xe1;logo Cajas"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;head&gt;&lt;style type=&apos;text/css&apos;&gt;body { font-family: &apos;Roboto Thin&apos;; font-size: 36px; }&lt;/style&gt;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;Cat&#xe1;logo Cajas&#xa;&lt;/body&gt;&lt;/html&gt;"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

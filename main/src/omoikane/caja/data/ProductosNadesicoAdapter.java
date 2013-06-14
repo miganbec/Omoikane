@@ -32,9 +32,16 @@ public class ProductosNadesicoAdapter implements IProductosDAO {
     private ProductoRepo productoRepo;
 
     @Override
+    /**
+     * Busca productos por código primario, si ninguno es encontrado entonces busca por código secundario.
+     * Convierte los productos de la entidad Articulo (antigua por comptabilidad) a la entidad Producto (entidad
+     * moderna con correcciones)
+     */
     public List<Producto> findByCodigo(String codigo) {
 
         ArrayList<Articulo> articulos = (ArrayList<Articulo>) productoRepo.findByCodigo( codigo );
+        if(articulos.size() == 0)
+            articulos = (ArrayList<Articulo>) productoRepo.findByCodigoAlterno( codigo );
         ArrayList<Producto> productos = new ArrayList<>();
 
         for( Articulo articulo : articulos ) {

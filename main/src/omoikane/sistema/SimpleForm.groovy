@@ -63,7 +63,7 @@ class SimpleForm {
                   GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
                   tmp = gc.createCompatibleImage(areaDibujo.width as int, areaDibujo.height as int,BufferedImage.TRANSLUCENT);
                   Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-                  g2d.setColor(new Color(55,55,255,225));
+                  g2d.setColor(new Color(0,0,0,165));
                   g2d.fillRect(0,0,areaDibujo.width as int, areaDibujo.height as int);
                   form.fondo = tmp;
                 }

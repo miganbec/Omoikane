@@ -19,7 +19,12 @@ import javax.swing.event.*;
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;
+
+import com.jhlabs.image.*;
+import omoikane.principal.Principal;
 import omoikane.sistema.*;
+import org.jdesktop.swingx.graphics.GraphicsUtilities;
+import org.jdesktop.swingx.image.GaussianBlurFilter;
 
 /** ////////////////////////////////////////////////////////////////////////////////////////////////
  * /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,8 +90,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                     //jTable1.enableInputMethods(false);
                     
                     modelo = modeloTabla;
-                    setQueryTable("select id_articulo as xID, codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias " +
-                        "from ramcachearticulos");
+                    setQueryTable("select id_articulo as xID, codigo as xCodigo, id_linea as xLinea, 'NA' as xGrupo, descripcion as xDescripcion, unidad as xUnidad, 0 as xPrecio, 0 as xExistencias " +
+                        "from articulos");
                     
                     jTable1.setModel(modeloTabla);
 
@@ -96,20 +101,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
                 }
             }.start();
-
-            /*setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
-                    "from articulos, precios, existencias, lineas , grupos " +
-                    "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
-                    "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
-            */
-            /*
-            setQueryTable("select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
-                    ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
-                    "from articulos, precios, existencias, lineas, clientes, grupos " +
-                    "where articulos.id_articulo=precios.id_articulo and precios.id_almacen = "+IDAlmacen+" AND existencias.id_almacen = "+IDAlmacen+" AND existencias.id_articulo = articulos.id_articulo " +
-                    "AND clientes.id_cliente = 1 " +
-                    "AND lineas.id_linea = articulos.id_linea AND grupos.id_grupo = articulos.id_grupo ");
-             * */
 
             //Instrucciones para el funcionamiento del fondo semistransparente
             this.setOpaque(false);
@@ -126,14 +117,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
     }
     public void programarShortcuts() {
-        /*
-            Herramientas.In2ActionX(cat, KeyEvent.VK_ESCAPE, "cerrar"   ) { cat.btnCerrar.doClick()   }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F3    , "buscar"   ) { cat.txtBusqueda.requestFocusInWindow()  }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F4    , "detalles" ) { cat.btnDetalles.doClick() }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F5    , "nuevo"    ) { cat.btnNuevo.doClick()    }
-            Herramientas.In2ActionX(cat, KeyEvent.VK_F6    , "modificar") { cat.btnModificar.doClick()}
-            Herramientas.In2ActionX(cat, KeyEvent.VK_DELETE, "eliminar" ) { cat.btnEliminar.doClick() }
-         */
 
         Action buscar = new AbstractAction() { public void actionPerformed(ActionEvent e) { txtBusqueda.requestFocusInWindow(); } };
         getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0), "buscar");
@@ -212,9 +195,11 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         setTitle("Catálogo de artículos");
         setPreferredSize(new java.awt.Dimension(1000, 590));
 
+
+
         jScrollPane1.setAutoscrolls(true);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 17));
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -238,13 +223,13 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar [F3]:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Catálogo de Artículos");
+        jLabel2.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 36px; }</style></head>\n<body>\nCatálogo de Artículos\n</body></html>");
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/32x32/back.png"))); // NOI18N
         btnCerrar.setText("Cerrar [Esc]");
@@ -309,7 +294,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         chkCodigo.setForeground(new java.awt.Color(255, 255, 255));
         chkCodigo.setSelected(true);
         chkCodigo.setText("Cód, Desc");
-        chkCodigo.setOpaque(false);
         chkCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkCodigoActionPerformed(evt);
@@ -318,7 +302,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         chkLineas.setForeground(new java.awt.Color(255, 255, 255));
         chkLineas.setText("Líneas");
-        chkLineas.setOpaque(false);
         chkLineas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkLineasActionPerformed(evt);
@@ -327,7 +310,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
         chkGrupos.setForeground(new java.awt.Color(255, 255, 255));
         chkGrupos.setText("Grupos");
-        chkGrupos.setOpaque(false);
         chkGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkGruposActionPerformed(evt);
@@ -341,10 +323,10 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptar)
@@ -357,7 +339,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
+                        .addComponent(btnImprimir))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -370,7 +352,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                         .addComponent(chkLineas, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(chkGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(cargaProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE))
+                    .addComponent(cargaProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -378,7 +360,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -391,7 +373,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cargaProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDetalles)
@@ -580,33 +562,22 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     public void buscar()
     {
         boolean xCodDes = getBuscarCodigoDescripcion();
-        boolean xLineas = false; /*getBuscarLineas();*/
-        boolean xGrupos = false; /*getBuscarGrupos();*/
+        boolean xLineas = getBuscarLineas();
+        boolean xGrupos = getBuscarGrupos();
         String busqueda = this.txtBusqueda.getText();
-        /*
-        String query    = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecio,existencias.cantidad as xExistencias " +
-                "from articulos, precios, existencias, lineas, grupos " +
-                "WHERE precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
-         * */
-        /*
-        String query = "select articulos.id_articulo as xID,articulos.codigo as xCodigo,lineas.descripcion as xLinea,grupos.descripcion as xGrupo,articulos.descripcion as xDescripcion,articulos.unidad as xUnidad,articulos.id_articulo as xIDPrecioCA,existencias.cantidad as xExistencias" +
-                ", precios.utilidad as xUtilidadCA, articulos.impuestos as xImpuestosCA, precios.costo as xCostoCA, precios.descuento as xDescuentoCA, lineas.descuento as xLineaDescuentoCA, clientes.descuento as xClienteDescuentoCA, grupos.descuento as xGrupoDescuentoCA " +
-                "from articulos, precios, existencias, lineas, clientes, grupos " +
-                "WHERE clientes.id_cliente=1 AND precios.id_almacen="+IDAlmacen+" AND existencias.id_almacen="+IDAlmacen+" AND existencias.id_articulo=articulos.id_articulo AND articulos.id_linea = lineas.id_linea AND articulos.id_grupo = grupos.id_grupo AND articulos.id_articulo = precios.id_articulo ";
-         */
+
         if(busqueda==null) { xCodDes = xLineas = xGrupos = false; }
-        String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, linea as xLinea, grupo as xGrupo, descripcion as xDescripcion, unidad as xUnidad, precio as xPrecio, existencias as xExistencias" +
-                " from ramcachearticulos as a ";
+        String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, id_linea as xLinea, 'NA' as xGrupo, descripcion as xDescripcion, unidad as xUnidad, 1 as xPrecio, 1 as xExistencias" +
+                " from articulos as a ";
 
         if(xCodDes) {
-            query += ", ramcachecodigos as b ";
+            query += "LEFT JOIN codigo_producto as b ON a.id_articulo = b.producto_id_articulo ";
         }
         
         if(xCodDes || xLineas || xGrupos) { query += "WHERE "; }
         if(xCodDes) {
                 query += " (a.descripcion like '%"+busqueda+"%' or " +
-                        "b.codigo like '%"+busqueda+"%') and (a.id_articulo = b.id_articulo) ";
-                //query += "(descripcion like '%"+busqueda+"%' or id_articulo in (select id_articulo from ramcachecodigos where codigo like '%"+busqueda+"%')) ";
+                        "b.codigo like '%"+busqueda+"%') ";
         }
         if(xCodDes && (xLineas || xGrupos)) { query += "OR "; }
         if(xLineas) {
@@ -616,19 +587,96 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         if(xGrupos) {
                 query += "(grupo like '%"+busqueda+"%' ) ";
         }
-        //if(xCodDes || xLineas || xGrupos) { query += ")"; }
 
         
         setQueryTable(query);
     }
+    Rectangle lastBounds;
+    public Boolean areSameBounds(Rectangle r) {
+        if(lastBounds == null) { lastBounds = r; return false; }
+        else if(lastBounds.equals(r)) { return true; }
+        else { lastBounds = r; return false; }
+    }
 
-
-    public void paintComponent(Graphics g)
+    /*public void paintComponent(Graphics g)
     {
       Graphics2D g2d = (Graphics2D) g;
-      g2d.drawImage(fondo, 0, 0, null);
+      g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+
+      if(!areSameBounds(getBounds())) {
+          BoxBlurFilter filter = new BoxBlurFilter();
+          BufferedImage fondo = Principal.getEscritorio().getPanelEscritorio().getBufferImage(getHeight(), getWidth());
+          fondo = fondo.getSubimage(0+5+5, 0+5+5, getWidth()-10, getHeight()-10);
+          System.out.println("Fondo: "+getX()+","+getY()+","+getWidth()+","+getHeight());
+
+          //fondo = new GaussianBlurFilter(4).filter(fondo, null);
+          filter.setIterations(1);
+          filter.setRadius(1);
+          //filter.filter(fondo, fondo);
+          PointillizeFilter pointillizeFilter = new PointillizeFilter();
+          pointillizeFilter.setEdgeColor(1);
+          pointillizeFilter.setEdgeThickness(1);
+          pointillizeFilter.setFadeEdges(true);
+          pointillizeFilter.setFuzziness(1);
+          //pointillizeFilter.filter(fondo, fondo);
+
+          g2d.setColor(new Color(0,0,0,165));
+          g2d.fillRect(0,0,getWidth(),getHeight());
+          fondo.getGraphics().setColor(Color.RED);
+          fondo.getGraphics().drawRect(0,0,50,50);
+      }
+
+    } */
+
+    public BufferedImage cacheFondo;
+    public void paintComponent(Graphics g)
+    {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        BufferedImage fondo = Principal.getEscritorio().getPanelEscritorio().getBufferImage(getHeight(), getWidth());
+
+        if(cacheFondo == null) {
+            BoxBlurFilter filter = new BoxBlurFilter();
+
+            cacheFondo = copyImage(fondo);
+            System.out.println("Bounds: "+getX()+","+getY()+","+getWidth()+","+getHeight());
+
+            //fondo = new GaussianBlurFilter(4).filter(fondo, null);
+            filter.setIterations(2);
+            filter.setRadius(5);
+
+            PointillizeFilter pointillizeFilter = new PointillizeFilter();
+            pointillizeFilter.setEdgeColor(10);
+            pointillizeFilter.setEdgeThickness(10);
+            pointillizeFilter.setFadeEdges(false);
+            pointillizeFilter.setFuzziness(10);
+            pointillizeFilter.filter(cacheFondo, cacheFondo);
+
+            filter.filter(cacheFondo, cacheFondo);
+
+            Graphics2D graphics2D = (Graphics2D) cacheFondo.getGraphics();
+            graphics2D.setColor(new Color(0,0,0,125));
+            graphics2D.fillRect(0,0,cacheFondo.getWidth(),cacheFondo.getHeight());
+
+
+        }
+
+        BufferedImage fondoVentana = cacheFondo.getSubimage(getX(), getY(), getWidth(), getHeight());
+        g.drawImage(fondoVentana, 0, 0, null);
+
 
     }
+
+    static BufferedImage copyImage(BufferedImage bi) {
+        //BufferedImage copyOfImage =
+        //        new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+        BufferedImage copyOfImage = gc.createCompatibleImage(bi.getWidth(), bi.getHeight(),BufferedImage.TRANSLUCENT);
+        Graphics g = copyOfImage.getGraphics();
+        g.drawImage(bi, 0, 0, null);
+        return copyOfImage;
+    }
+
     public void generarFondo(Component componente)
     {
       Rectangle areaDibujo = this.getBounds();
@@ -637,10 +685,11 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(55,55,255,165));
+      g2d.setColor(new Color(0,0,0,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
-      fondo = tmp;
+      //fondo = tmp;
     }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

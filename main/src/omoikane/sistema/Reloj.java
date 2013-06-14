@@ -29,12 +29,13 @@ import java.util.Calendar;
                 h = String.format("%d"  , (int) hora.get(Calendar.HOUR));
                 m = String.format("%02d", (int) hora.get(Calendar.MINUTE));
                 s = String.format("%02d", (int) hora.get(Calendar.SECOND));
-                am= (hora.get(Calendar.AM_PM)==Calendar.AM) ? "am" : "pm";
+                am= (hora.get(Calendar.AM_PM)==Calendar.AM) ? "AM" : "PM";
 
                 if(Integer.parseInt(h) == 0) { h = "12"; }
                 if(objetivo != null)
                 {
-                    objetivo.setText("<html><font size=5 face=verdana color=white><b>" + h + ":" + m + " " + am + "</b></font></html>");
+                    objetivo.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 28px; } .ampm { font-family: 'Roboto Medium'; font-size: 14px; }</style></head>" +
+                            "<body>" + h + ":" + m + "<span class='ampm'>" + am + "</span></body></html>");
                 }
 
                 try {

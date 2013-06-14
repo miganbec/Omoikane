@@ -68,71 +68,95 @@ public class CorteMovimientoDetalles extends javax.swing.JInternalFrame {
 
         btnAceptar.setText("Aceptar");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Importe:");
 
+        txtTotal.setBackground(new java.awt.Color(0, 0, 0));
         txtTotal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtTotal.setText("0.00");
+        txtTotal.setOpaque(true);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha:");
 
-        txtRetiros.setFont(new java.awt.Font("Tahoma", 1, 18));
+        txtRetiros.setBackground(new java.awt.Color(0, 0, 0));
+        txtRetiros.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtRetiros.setForeground(new java.awt.Color(255, 255, 255));
+        txtRetiros.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtRetiros.setText("0.00");
+        txtRetiros.setOpaque(true);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Autorizado:");
 
+        txtDepositos.setBackground(new java.awt.Color(0, 0, 0));
         txtDepositos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtDepositos.setForeground(new java.awt.Color(255, 255, 255));
+        txtDepositos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtDepositos.setText("0.00");
+        txtDepositos.setOpaque(true);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Almacen:");
 
+        txtImpuestos.setBackground(new java.awt.Color(0, 0, 0));
         txtImpuestos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtImpuestos.setForeground(new java.awt.Color(255, 255, 255));
+        txtImpuestos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtImpuestos.setText("0.00");
+        txtImpuestos.setOpaque(true);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Cajero:");
 
+        txtSubtotal.setBackground(new java.awt.Color(0, 0, 0));
         txtSubtotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtSubtotal.setForeground(new java.awt.Color(255, 255, 255));
+        txtSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtSubtotal.setText("0.00");
+        txtSubtotal.setOpaque(true);
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Caja:");
 
+        txtDescuentos.setBackground(new java.awt.Color(0, 0, 0));
         txtDescuentos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtDescuentos.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuentos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtDescuentos.setText("0.00");
+        txtDescuentos.setOpaque(true);
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Id de movimiento :");
 
+        txtVentas.setBackground(new java.awt.Color(0, 0, 0));
         txtVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtVentas.setForeground(new java.awt.Color(255, 255, 255));
+        txtVentas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtVentas.setText("0.00");
+        txtVentas.setOpaque(true);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Movimientos de Caja");
+        jLabel15.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 28px; }</style></head>\n<body>\nMovimientos de Caja\n</body></html>");
 
+        txtNVentas.setBackground(new java.awt.Color(0, 0, 0));
         txtNVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtNVentas.setForeground(new java.awt.Color(255, 255, 255));
+        txtNVentas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtNVentas.setText("0");
+        txtNVentas.setOpaque(true);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Tipo de movimiento :");
 
@@ -149,7 +173,7 @@ public class CorteMovimientoDetalles extends javax.swing.JInternalFrame {
                         .addComponent(btnImprimir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
                         .addComponent(btnAceptar))
-                    .addComponent(jLabel15)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
@@ -162,7 +186,7 @@ public class CorteMovimientoDetalles extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtImpuestos, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
@@ -179,8 +203,8 @@ public class CorteMovimientoDetalles extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtNVentas))
@@ -261,7 +285,7 @@ public class CorteMovimientoDetalles extends javax.swing.JInternalFrame {
 
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(55,55,255,225));
+      g2d.setColor(new Color(0,0,0,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
     }

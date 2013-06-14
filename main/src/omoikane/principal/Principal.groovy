@@ -17,6 +17,11 @@ import omoikane.exceptions.UEHandler
 import omoikane.sistema.huellas.ContextoFPSDK
 import omoikane.sistema.huellas.ContextoFPSDK.SDK
 import omoikane.sistema.huellas.HuellasCache
+import javax.swing.JInternalFrame
+import javax.swing.JComponent
+import javax.swing.plaf.LayerUI
+import omoikane.formularios.BlurLayerUI
+import javax.swing.JLayer
 
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +35,7 @@ import omoikane.sistema.huellas.HuellasCache
  */
 public class Principal {
         static Escritorio escritorio
-        static def        menuPrincipal
+        static MenuPrincipal        menuPrincipal;
         static def        config
         public static int                   IDAlmacen
         public static int                   IDCaja
@@ -97,6 +102,7 @@ public class Principal {
             println "iniciando menús"
             splash.setText("Inicializando menú principal...")
             menuPrincipal = new MenuPrincipal()
+
             splash.detener()
             iniciarSesion()
             menuPrincipal.iniciar()

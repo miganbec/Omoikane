@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
@@ -25,31 +25,31 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="855" max="32767" attributes="2"/>
-                  <Component id="jProgressBar1" alignment="0" pref="855" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="2"/>
+                  <Component id="jProgressBar1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="1">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtBusqueda" min="-2" pref="658" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" pref="115" max="32767" attributes="1"/>
+                      <Component id="jButton1" max="32767" attributes="1"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDetalles" min="-2" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnNuevo" pref="152" max="32767" attributes="1"/>
+                      <Component id="btnNuevo" max="32767" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnModificar" pref="135" max="32767" attributes="1"/>
+                      <Component id="btnModificar" max="32767" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnEliminar" pref="137" max="32767" attributes="1"/>
+                      <Component id="btnEliminar" max="32767" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnImprimir" pref="129" max="32767" attributes="1"/>
+                      <Component id="btnImprimir" max="32767" attributes="1"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="372" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnCerrar" min="-2" pref="154" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -121,7 +121,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cat&#xe1;logo de Lineas"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;head&gt;&lt;style type=&apos;text/css&apos;&gt;body { font-family: &apos;Roboto Thin&apos;; font-size: 36px; }&lt;/style&gt;&lt;/head&gt;&#xa;&lt;body&gt;&#xa;Cat&#xe1;logo de Lineas&#xa;&lt;/body&gt;&lt;/html&gt;"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

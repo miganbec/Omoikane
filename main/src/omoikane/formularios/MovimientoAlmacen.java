@@ -92,18 +92,18 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         setTitle("Movimiento de almacén");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitulo.setFont(new java.awt.Font("Arial", 1, 36));
+        lblTitulo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("Movimiento de almacén");
+        lblTitulo.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 28px; }</style></head>\n<body>\nMovimiento de almacén\n</body></html>");
         getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Descripción:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 30));
         getContentPane().add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 600, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Folio:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, -1, 30));
@@ -178,17 +178,17 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 230, 40));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tipo de movimiento:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, 30));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 40, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Almacén [F1]:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 90, 30));
@@ -200,7 +200,7 @@ public class MovimientoAlmacen extends javax.swing.JInternalFrame {
         getContentPane().add(tipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 140, -1));
         getContentPane().add(txtSumaTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 170, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Total:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, 20));
@@ -329,7 +329,7 @@ public void setModoDetalles()
 
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(55,55,255,165));
+      g2d.setColor(new Color(0,0,0,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
 

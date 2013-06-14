@@ -224,7 +224,7 @@ public class JInternalDialog extends javax.swing.JInternalFrame {
           } else {
               tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
               Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-              g2d.setColor(new Color(55,55,255,145));
+              g2d.setColor(new Color(0,0,0,165));
               g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
               fondo = tmp;
           }

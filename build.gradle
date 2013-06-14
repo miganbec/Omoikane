@@ -5,7 +5,7 @@ apply plugin: 'application'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
-version = '1.4.0 alfa'
+version = '1.4.0 beta'
 
 mainClassName       = "omoikane.principal.MainJava"
 sourceCompatibility = 1.7

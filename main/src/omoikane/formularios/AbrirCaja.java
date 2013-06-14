@@ -42,7 +42,7 @@ public class AbrirCaja extends javax.swing.JInternalFrame {
 
       tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
       Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(255,255,255,240));
+      g2d.setColor(new Color(0,0,0,165));
       g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
       fondo = tmp;
     }
@@ -55,86 +55,78 @@ public class AbrirCaja extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    // Generated using JFormDesigner Evaluation license - Octavio Ruiz Castillo
     private void initComponents() {
-        txtIDCaja = new JTextField();
-        jLabel1 = new JLabel();
-        btnBuscar = new JButton();
-        btnAceptar = new JButton();
-        jLabel2 = new JLabel();
-        btnCerrar = new JButton();
 
-        //======== this ========
-        setVisible(true);
+        txtIDCaja = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
+
         setTitle("Abrir caja");
-        Container contentPane = getContentPane();
 
-        //---- txtIDCaja ----
-        txtIDCaja.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        txtIDCaja.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        //---- jLabel1 ----
-        jLabel1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        jLabel1.setText("ID Caja:");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("ID Caja:"); // NOI18N
 
-        //---- btnBuscar ----
-        btnBuscar.setIcon(new ImageIcon(getClass().getResource("/16x16/search.png")));
-        btnBuscar.setText("[F1] Buscar Caja...");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/search.png"))); // NOI18N
+        btnBuscar.setText("[F1] Buscar Caja..."); // NOI18N
 
-        //---- btnAceptar ----
-        btnAceptar.setIcon(new ImageIcon(getClass().getResource("/16x16/accept.png")));
-        btnAceptar.setText("[Enter] Aceptar");
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/accept.png"))); // NOI18N
+        btnAceptar.setText("[Enter] Aceptar"); // NOI18N
 
-        //---- jLabel2 ----
-        jLabel2.setFont(new Font("Arial", Font.BOLD, 36));
-        jLabel2.setForeground(new Color(0, 0, 102));
-        jLabel2.setText("Abrir Caja");
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 28px; }</style></head>\n<body>\nAbrir Caja\n</body></html>"); // NOI18N
 
-        //---- btnCerrar ----
-        btnCerrar.setIcon(new ImageIcon(getClass().getResource("/64x64/back.png")));
-        btnCerrar.setText("Cancelar [Esc]");
-        btnCerrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnCerrarActionPerformed(e);
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/64x64/back.png"))); // NOI18N
+        btnCerrar.setText("Cancelar [Esc]"); // NOI18N
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
             }
         });
 
-        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
-        contentPane.setLayout(contentPaneLayout);
-        contentPaneLayout.setHorizontalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                            .addComponent(btnCerrar, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtIDCaja, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnAceptar, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap())
-        );
-        contentPaneLayout.setVerticalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCerrar, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addComponent(btnBuscar)
-                        .addComponent(txtIDCaja, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAceptar))
-                    .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIDCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnBuscar)
+                    .addComponent(txtIDCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAceptar))
+                .addContainerGap())
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -144,13 +136,12 @@ public class AbrirCaja extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_btnCerrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Octavio Ruiz Castillo
-    public JTextField txtIDCaja;
-    private JLabel jLabel1;
-    public JButton btnBuscar;
-    public JButton btnAceptar;
-    private JLabel jLabel2;
-    public JButton btnCerrar;
+    public javax.swing.JButton btnAceptar;
+    public javax.swing.JButton btnBuscar;
+    public javax.swing.JButton btnCerrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    public javax.swing.JTextField txtIDCaja;
     // End of variables declaration//GEN-END:variables
 
 }

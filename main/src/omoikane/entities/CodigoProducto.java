@@ -1,5 +1,6 @@
 package omoikane.entities;
 
+import omoikane.producto.Articulo;
 import omoikane.producto.Producto;
 
 import javax.persistence.*;
@@ -11,8 +12,8 @@ import javax.persistence.*;
  * Time: 04:04
  * To change this template use File | Settings | File Templates.
  */
-//@javax.persistence.Table(name = "codigo_producto", catalog = "Omoikane")
-//@Entity
+@Entity
+@Table(name = "codigo_producto")
 public class CodigoProducto {
     private Long id;
 
@@ -27,18 +28,6 @@ public class CodigoProducto {
         this.id = id;
     }
 
-    private int version;
-
-    @Column(name = "version", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
-    @Basic
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
     private String codigo;
 
     @Column(name = "codigo", nullable = false, insertable = true, updatable = true, length = 255, precision = 0)
@@ -51,30 +40,16 @@ public class CodigoProducto {
         this.codigo = codigo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CodigoProducto that = (CodigoProducto) o;
-
-        if (id != that.id) return false;
-        if (version != that.version) return false;
-        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
-
-        return true;
-    }
-
-    private Producto producto;
+    private Articulo producto;
 
     @ManyToOne
     public
-    @JoinColumn(name = "producto_id", referencedColumnName = "id", nullable = false)
-    Producto getProducto() {
+    @JoinColumn(referencedColumnName = "id_articulo")
+    Articulo getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
+    public void setProducto(Articulo producto) {
         this.producto = producto;
     }
 }

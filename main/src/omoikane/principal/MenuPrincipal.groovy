@@ -15,7 +15,7 @@ import javax.swing.JFrame
  import java.awt.Rectangle;
 
 class MenuPrincipal {
-    def menuPrincipal = new omoikane.formularios.MenuPrincipal()
+    omoikane.formularios.MenuPrincipal menuPrincipal = new omoikane.formularios.MenuPrincipal()
 
     void iniciar()
     { if(!SisUsuarios.cerrojo(SisUsuarios.CAPTURISTA)) {
@@ -32,7 +32,7 @@ class MenuPrincipal {
             menuPrincipal.requestFocusInWindow()
             Herramientas.iconificable(menuPrincipal)
 
-            menuPrincipal.lblVersion.setText Herramientas.getVersion()
+            menuPrincipal.lblVersion.setText "<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 10px; }</style></head> <body>"+Herramientas.getVersion()+"</span></body></html>"
 
             try {
                 menuPrincipal.setSelected(true)
