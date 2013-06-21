@@ -53,10 +53,7 @@ public class LegacyVenta implements Serializable {
     private Integer facturada;
     @Column(name = "completada")
     private Boolean completada;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "eliminar")
-    private byte[] eliminar;
+
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "subtotal")
     private Double subtotal;
@@ -168,14 +165,6 @@ public class LegacyVenta implements Serializable {
 
     public void setCompletada(Boolean completada) {
         this.completada = completada;
-    }
-
-    public byte[] getEliminar() {
-        return eliminar;
-    }
-
-    public void setEliminar(byte[] eliminar) {
-        this.eliminar = eliminar;
     }
 
     public Double getSubtotal() {

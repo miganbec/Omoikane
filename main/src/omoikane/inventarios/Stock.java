@@ -24,7 +24,7 @@ public class Stock {
 
     @MapsId
     @OneToOne
-    @JoinColumn(name = "idArticulo")
+    @JoinColumn(name = "idArticulo", columnDefinition = "int(11)")
     public
     Articulo producto;
 

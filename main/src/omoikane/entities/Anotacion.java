@@ -21,7 +21,7 @@ public class Anotacion {
     @NotNull
     private String texto;
 
-    @Column(name = "producto_id")
+    @Column(name = "producto_id", columnDefinition = "int(11)")
     @Id
     public int getProductoId() {
         return productoId;

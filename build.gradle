@@ -5,7 +5,7 @@ apply plugin: 'application'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
-version = '1.4.0 beta'
+version = '1.4.0'
 
 mainClassName       = "omoikane.principal.MainJava"
 sourceCompatibility = 1.7
@@ -14,9 +14,31 @@ innoSetupCompiler   = 'c:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe'
 wyUpdateCompiler    = 'c:\\Program Files (x86)\\wyBuild\\wybuild.cmd.exe'
 versionNotes        = 
     """
-        Versi�n 1.4
+        Versión 1.4
         Novedades:
-            - Prueba
+            - Cambio de skin
+			- Registro de máximos y mínimos
+			- Registro de ubicación de artículos
+			- GUI de configuración
+			- Configurador de plantilla de tickets (txt)
+			- Integrado antiguo módulo de reportes
+			- Nueva caja completamente reescrita
+			- Mapeo ORM de artículos y precios
+			- Depuración de modelo
+			- Minibuscador integrado en caja
+			- Fixtures de todo el modelo usado para crear ésta versión usando DBUnit
+			- Botón de expulsión de cajón de dinero en caja
+			- Registro de cancelaciones en BD
+			- [Bugfix] Fallas en báscula ya no detienen caja
+			- [Bugfix] Fallas en impresora ya no detienen caja
+			- [Ajuste] Piso de venta de decimales movido de 0.05 a 0.025
+			- Instalador y script para generar nuevos instaladores
+			- Actualizador y script para cargar nuevas actualizaciones
+			- Modulo de impresión de etiquetas
+			- Administración de proveedores
+			- ¡Soporte para paquetes de productos!
+			- Ventas persistentes
+			- Acoplamiento del servidor y cliente (nadesico y omoikane)			
     """;
 
 def defaultEncoding = "UTF-8"
@@ -144,7 +166,7 @@ jar {
 	              
         attributes 'Implementation-Title': title, 
 				   'Implementation-Version': version,
-				   'Mepro-Class': mainClassName,
+				   'Main-Class': mainClassName,
 				   'Class-Path': manifestClasspath
     }
 }

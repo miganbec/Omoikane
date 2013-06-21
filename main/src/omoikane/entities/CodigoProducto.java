@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class CodigoProducto {
     private Long id;
 
-    @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
+    @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0, columnDefinition = "int(11)")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {

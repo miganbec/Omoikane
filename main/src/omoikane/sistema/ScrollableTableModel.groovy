@@ -135,11 +135,11 @@ public class ScrollableTableModel extends AbstractTableModel {
                 //rs.next()
                 fila = []
 
-				
                 (nCols+1).times {
                     
                     filaDat = rs.getObject(it+1); //+1 Porqué comienza el conteo en 1 y no 0 como la matríz y +1 por saltarse el ID
 
+                    /*
                     if(meta.getColumnName(it+1) == "xIDPrecioCA") { catArts = true; CADataPrecio = [:] }
                     if(catArts) {
                         switch(meta.getColumnName(it+1)) {
@@ -156,10 +156,11 @@ public class ScrollableTableModel extends AbstractTableModel {
 								
                             break;
                         }
-                        /*println "***Precio:"+ArticulosFunciones.getPrecioConDatos(
-                            [costo:,clienteDescuento:,lineaDescuento:,precioDescuento:,impuestos:]
-                        ) */
-                    }
+                          //println "***Precio:"+ArticulosFunciones.getPrecioConDatos(
+                          //  [costo:,clienteDescuento:,lineaDescuento:,precioDescuento:,impuestos:]
+                        ) //
+                    } */
+
                     if(filaDat != null) {
                         fila << filaDat
 						

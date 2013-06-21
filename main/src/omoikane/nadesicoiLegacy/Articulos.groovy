@@ -53,7 +53,7 @@ class ArticulosFunciones {
         salida
     }
     static def getArticuloWhere= { IDAlmacen, where ->
-        nadesicoi.ArticulosFunciones.selectArticuloCompleto(IDAlmacen, "SELECT * FROM articulos WHERE " + where)
+        ArticulosFunciones.selectArticuloCompleto(IDAlmacen, "SELECT * FROM articulos WHERE " + where)
     }
     /** Prueba */
     static def codigo2Articulo = { IDAlmacen, codigo ->
@@ -71,7 +71,7 @@ class ArticulosFunciones {
     }
     static def getArticulo = { ID, IDAlmacen ->
         try {
-            return nadesicoi.ArticulosFunciones.getArticuloWhere(IDAlmacen, "id_articulo = $ID")
+            return ArticulosFunciones.getArticuloWhere(IDAlmacen, "id_articulo = $ID")
         } catch(e) { 
             Consola.error("Error al obtener artículo por ID en nadesico", e)
             throw new Exception("Error al obtener artículo por ID en nadesico",e)

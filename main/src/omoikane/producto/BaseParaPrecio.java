@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class BaseParaPrecio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "id_articulo")
+    @Column(name = "id_articulo", columnDefinition = "int(11)")
     private Long idArticulo;
     @Basic(optional = false)
     @Column(name = "descripcion")

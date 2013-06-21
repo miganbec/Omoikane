@@ -11,7 +11,9 @@
 
 package omoikane.formularios;
 
+import java.math.BigDecimal;
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.*;
 import javax.swing.table.*;
 import javax.swing.*;
@@ -22,6 +24,8 @@ import java.awt.event.*;
 
 import com.jhlabs.image.*;
 import omoikane.principal.Principal;
+import omoikane.producto.BaseParaPrecio;
+import omoikane.producto.PrecioOmoikaneLogic;
 import omoikane.sistema.*;
 import org.jdesktop.swingx.graphics.GraphicsUtilities;
 import org.jdesktop.swingx.image.GaussianBlurFilter;
@@ -70,6 +74,9 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
     {
         
     }
+    private String mainQuery;
+    public String getMainQuery() { return mainQuery; }
+    public void setMainQuery(String mainQuery) { this.mainQuery = mainQuery; }
     /** Creates new form CatalogoArticulos */
     public CatalogoArticulos() {
         //Conectar a MySQL
@@ -82,7 +89,7 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                 public void run() {
                     String[]  columnas = {"Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"};
                     ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-                    Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, Double.class, Double.class};
+                    Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, String.class, Double.class};
                     ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
                     double[]  widths   = {0.16,0.16,0.07,0.41,0.05,0.08,0.06};
 
@@ -90,10 +97,16 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                     //jTable1.enableInputMethods(false);
                     
                     modelo = modeloTabla;
-                    setQueryTable("select id_articulo as xID, codigo as xCodigo, id_linea as xLinea, 'NA' as xGrupo, descripcion as xDescripcion, unidad as xUnidad, 0 as xPrecio, 0 as xExistencias " +
-                        "from articulos");
+                    setMainQuery("select a.id_articulo as xID, a.codigo as xCodigo, a.id_linea as xLinea, a.id_grupo as xGrupo, a.descripcion as xDescripcion, a.unidad as xUnidad, 0 as xPrecio, 0 as xExistencias, " +
+                            "bp.costo as xCosto, bp.porcentajeImpuestos, bp.porcentajeDescuentoLinea, bp.porcentajeDescuentoGrupo, bp.porcentajeDescuentoProducto, bp.porcentajeUtilidad " +
+                            "from articulos a JOIN base_para_precios bp ON a.id_articulo = bp.id_articulo ");
+                    setQueryTable(getMainQuery());
                     
                     jTable1.setModel(modeloTabla);
+                    DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+                    rightRenderer.setHorizontalAlignment( DefaultTableCellRenderer.RIGHT );
+                    jTable1.getColumnModel().getColumn(5).setCellRenderer( rightRenderer );
+                    jTable1.getColumnModel().getColumn(6).setCellRenderer( rightRenderer );
 
                     cargaProgressBar.setIndeterminate(false);
 
@@ -567,8 +580,9 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
         String busqueda = this.txtBusqueda.getText();
 
         if(busqueda==null) { xCodDes = xLineas = xGrupos = false; }
-        String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, id_linea as xLinea, 'NA' as xGrupo, descripcion as xDescripcion, unidad as xUnidad, 1 as xPrecio, 1 as xExistencias" +
-                " from articulos as a ";
+        //String query = "select DISTINCT a.id_articulo as xID,a.codigo as xCodigo, id_linea as xLinea, 'NA' as xGrupo, descripcion as xDescripcion, unidad as xUnidad, 1 as xPrecio, 1 as xExistencias" +
+        //        " from articulos as a ";
+        String query = getMainQuery();
 
         if(xCodDes) {
             query += "LEFT JOIN codigo_producto as b ON a.id_articulo = b.producto_id_articulo ";
@@ -646,11 +660,11 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
             filter.setRadius(5);
 
             PointillizeFilter pointillizeFilter = new PointillizeFilter();
-            pointillizeFilter.setEdgeColor(10);
-            pointillizeFilter.setEdgeThickness(10);
+            pointillizeFilter.setEdgeColor(6);
+            pointillizeFilter.setEdgeThickness(1);
             pointillizeFilter.setFadeEdges(false);
-            pointillizeFilter.setFuzziness(10);
-            pointillizeFilter.filter(cacheFondo, cacheFondo);
+            pointillizeFilter.setFuzziness(6);
+            //pointillizeFilter.filter(cacheFondo, cacheFondo);
 
             filter.filter(cacheFondo, cacheFondo);
 
@@ -715,18 +729,36 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 }
 
 class ArticulosTableModel extends ScrollableTableModel {
-    ArticulosTableModel(java.util.List ColNames,ArrayList ColClasses){super(ColNames,ColClasses);}
-    public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
 
-    /*
+    public int IDAlmacen = omoikane.principal.Principal.IDAlmacen;
+    NumberFormat numberFormat;
+
+    public ArticulosTableModel(java.util.List colNames, ArrayList colClases) {
+        super(colNames, colClases);
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setMaximumFractionDigits(2);
+        numberFormat.setMinimumFractionDigits(2);
+        numberFormat.setGroupingUsed(false);
+    }
+
+
     public Object getValueAt(int row,int col){
         if(col==5) {
+            BaseParaPrecio bp = new BaseParaPrecio();
+            bp.setCosto((Double) super.getValueAt(row, 7));
+            bp.setPorcentajeDescuentoLinea((Double) super.getValueAt(row, 8));
+            bp.setPorcentajeDescuentoGrupo((Double) super.getValueAt(row, 9));
+            bp.setPorcentajeDescuentoProducto((Double) super.getValueAt(row, 10));
+            bp.setPorcentajeUtilidad((Double) super.getValueAt(row, 11));
 
-            return (omoikane.sistema.Articulo.precio((super.getValueAt(row, col)),IDAlmacen));
+            PrecioOmoikaneLogic precioOmoikaneLogic = new PrecioOmoikaneLogic(bp);
+
+            return numberFormat.format(precioOmoikaneLogic.getPrecio());
+
 
         } else {
             return super.getValueAt(row,col);
         }
     }
-     * */
+
 }

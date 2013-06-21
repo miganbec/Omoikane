@@ -65,7 +65,6 @@ import groovy.inspect.swingui.*
         generado          = generarTicket()
     }
 
-    @Override
     def ticket(IDAlmacen, IDVenta) {
         def serv = new Nadesico().conectar()
         try {

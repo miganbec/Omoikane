@@ -52,7 +52,6 @@ public class VentaRepoTest {
         venta.setCompletada(true);
         venta.setDescuento(0d);
         venta.setEfectivo(0d);
-        venta.setEliminar(null);
         venta.setFacturada(0);
         venta.setFolio(0);
         venta.setIdCliente(1);
