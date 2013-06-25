@@ -54,8 +54,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtDescripcion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtUnidad = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
-        txtExistencias = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -131,7 +129,7 @@ public class Articulo extends javax.swing.JInternalFrame {
         getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 100, -1));
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 490, 10, 10));
 
-        jPanel1.setOpaque(false);
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -182,17 +180,6 @@ public class Articulo extends javax.swing.JInternalFrame {
         txtUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PZA", "CAJA", "PAQ", "KG", "LT" }));
         txtUnidad.setEnabled(false);
         jPanel1.add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, -1));
-
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Existencias:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
-
-        txtExistencias.setBackground(new java.awt.Color(55, 55, 255));
-        txtExistencias.setEditable(false);
-        txtExistencias.setForeground(new java.awt.Color(255, 255, 255));
-        txtExistencias.setFocusable(false);
-        jPanel1.add(txtExistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 240, 30));
 
         txtPrecio.setBackground(new java.awt.Color(55, 55, 255));
         txtPrecio.setEditable(false);
@@ -251,7 +238,7 @@ public class Articulo extends javax.swing.JInternalFrame {
 
         tabbedPane.addTab("<html>General</html>", jPanel1);
 
-        jPanel2.setOpaque(false);
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblCodigos.setModel(new javax.swing.table.DefaultTableModel(
@@ -274,7 +261,7 @@ public class Articulo extends javax.swing.JInternalFrame {
 
         tabbedPane.addTab("<html>C&oacute;digos</html>", jPanel2);
 
-        jPanel5.setOpaque(false);
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -427,15 +414,18 @@ public class Articulo extends javax.swing.JInternalFrame {
 
         tabbedPane.addTab("<html>Precio</html>", jPanel5);
 
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
+
         txtComentarios.setColumns(25);
         txtComentarios.setRows(20);
+        txtComentarios.setPreferredSize(new java.awt.Dimension(504, 364));
         jScrollPane4.setViewportView(txtComentarios);
 
         jPanel7.add(jScrollPane4);
 
         tabbedPane.addTab("<html>Notas</html>", jPanel7);
 
-        getContentPane().add(tabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 370, 400));
+        getContentPane().add(tabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 430, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -502,7 +492,6 @@ public class Articulo extends javax.swing.JInternalFrame {
     public void setModoDetalles() {
         setModo(Modos.DETALLES);
         setEditable(false);
-        this.txtExistencias.setBorder(null);
         this.btnGuardar.setVisible(false);
         this.btnModificar.setVisible(false);
 
@@ -511,7 +500,6 @@ public class Articulo extends javax.swing.JInternalFrame {
     public void setModoModificar() {
         setModo(Modos.MODIFICAR);
         setEditable(true);
-        this.txtExistencias.setBorder(null);
         this.btnGuardar.setVisible(false);
         this.btnModificar.setVisible(true);
     }
@@ -519,10 +507,6 @@ public class Articulo extends javax.swing.JInternalFrame {
     public void setModoNuevo() {
         setModo(Modos.NUEVO);
         setEditable(true);
-        this.txtExistencias.setEditable(true);
-        this.txtExistencias.setFocusable(true);
-        this.txtExistencias.setBackground(new Color(240, 240, 240));
-        this.txtExistencias.setForeground(Color.BLACK);
         this.btnModificar.setVisible(false);
     }
 
@@ -546,7 +530,6 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -586,7 +569,6 @@ public class Articulo extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField txtDesctoPorcentaje;
     private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtDescuento2;
-    private javax.swing.JTextField txtExistencias;
     private javax.swing.JTextField txtIDArticulo;
     public javax.swing.JTextField txtIDGrupo;
     public javax.swing.JTextField txtIDGrupoDes;
@@ -636,10 +618,6 @@ public class Articulo extends javax.swing.JInternalFrame {
 
     public String getTxtCosto() {
         return txtCosto.getText();
-    }
-
-    public String getTxtExistencias() {
-        return txtExistencias.getText();
     }
 
     public String getTxtPrecio() {
@@ -740,10 +718,6 @@ public class Articulo extends javax.swing.JInternalFrame {
 
     public void setTxtCosto(String costo) {
         txtCosto.setText(costo);
-    }
-
-    public void setTxtExistencias(String existencias) {
-        txtExistencias.setText(existencias);
     }
 
     public void setTxtPrecio(String precio) {

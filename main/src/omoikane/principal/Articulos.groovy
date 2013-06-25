@@ -152,7 +152,7 @@ public class Articulos
             formArticulo.setTxtDescuento     art.precio['descuento$']  as String
             formArticulo.setTxtCosto         art.costo                 as String
             formArticulo.setTxtUtilidadPorc  art.utilidad              as String
-            formArticulo.setTxtExistencias   art.cantidad              as String
+            //formArticulo.setTxtExistencias   art.cantidad              as String
             formArticulo.setTxtPrecio        art.precio.total          as String
             formArticulo.setTxtComentarios   notas                     as String
             formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuArt%'] as String
@@ -164,10 +164,9 @@ public class Articulos
             formArticulo.ID                   = ID
             formArticulo.setModoDetalles();
             omoikane.principal.Articulos.recalcularCampos(formArticulo);
-            rellenarCodigosAlternos(ID, formArticulo)
             addJFXStockPanel(ID, formArticulo);
             addJFXPaquetePanel(ID, formArticulo);
-            //rellenarPaquetes(ID, formArticulo)
+
             return formArticulo
             
             } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario detalles artículo", Herramientas.getStackTraceString(e)) }

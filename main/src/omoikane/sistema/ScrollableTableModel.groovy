@@ -81,7 +81,8 @@ public class ScrollableTableModel extends AbstractTableModel {
        public int getRowCount() {
 
             if(rowCount == -1) {
-                def tmpQ = queryAct?.toLowerCase()
+                //def tmpQ = queryAct?.toLowerCase()
+                def tmpQ = queryAct;
                 //println "->>"+tmpQ
                 def replaced = tmpQ.replaceAll(/(select (distinct)|select) ([a-zA-Z0-9\._]+)(.*?) (from.*)/, '$1 count($2 $3) $5')
 

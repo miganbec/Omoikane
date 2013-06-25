@@ -52,7 +52,8 @@ sourceSets {
             srcDir 'main/src'
         }
 	 	resources {
-	        srcDir 'main/resources'
+	        //srcDir 'main/resources'
+            srcDirs = ['main/resources', 'main/src']
 	    }
     }
 	test {
@@ -113,6 +114,7 @@ dependencies {
 	)
 	compile files('lib/jcalc-1.0.4.jar',
 				  'lib/OmoikaneMedia.jar',
+                  'lib/OmoikaneMedia2.jar',
 				  'lib/nimbus.jar',
 				  'lib/OmoikaneAPI-1.0-SNAPSHOT.jar',
 				  'lib/AbsoluteLayout.jar',
@@ -126,6 +128,7 @@ dependencies {
                   'lib/jfxrt.jar',
                   'lib/hsqldb-1.8.1.2.jar')
 	runtime files('lib/OmoikaneMedia.jar',
+                  'lib/OmoikaneMedia2.jar',
 				  'lib/nimbus.jar')
 	testCompile ('junit:junit:4.8.1',
                  [group: 'org.codehaus.groovy' , name: 'groovy-all'             , version: '1.7.6'],
@@ -213,7 +216,7 @@ task distribuir(dependsOn: 'installApp') {
 		into "$miDistDir"
 		rename { "Omoikane.jar" }
 	}
-	
+    
 	//Copy libs without main binary
 	daLibs = new File("$miDistDir/lib")
 	copy {
@@ -228,6 +231,13 @@ task distribuir(dependsOn: 'installApp') {
 		from "lib/ext"
 		into "$daExts"
 	}*/
+    
+    //Copy templates
+    templatesFolder = new File("$miDistDir/Plantillas")
+	copy {
+		from "Plantillas"
+		into "$templatesFolder"
+	}
 
     //Copy to local repo
     miDistArchiveDir = new File("archive/dist-${version}")
@@ -240,6 +250,11 @@ task distribuir(dependsOn: 'installApp') {
 
 /** El instalador requiere incluir la �ltima versi�n del actualizador */
 task makeInstaller(type:Exec, dependsOn: 'makeUpdate') {
+    miDistArchiveDir = "archive/dist-${version}"
+    commandLine innoSetupCompiler, 'InstallerScript.iss', "/DAppVersion=$version"
+}
+
+task makeInstallerSinUpdate(type:Exec) {
     miDistArchiveDir = "archive/dist-${version}"
     commandLine innoSetupCompiler, 'InstallerScript.iss', "/DAppVersion=$version"
 }

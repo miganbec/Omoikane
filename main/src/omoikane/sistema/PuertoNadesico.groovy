@@ -16,8 +16,8 @@ class PuertoNadesico {
 
 	static def uno = 1
 	def PuertoNadesico() {
-                def nad= new Nadesico()
-		conn   = nad.conn
+        def nad= new Nadesico()
+		conn   = nad
 		IDConn = conn.conectar()
 	}
 	Object methodMissing(String name, Object args) {

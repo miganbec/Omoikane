@@ -16,7 +16,7 @@ class PuertoNadesico {
 
     static def conectar = { user = "public", pass = "" ->
         try {
-            def UID = nadesicoi.Util.generarUID()
+            def UID = Util.generarUID()
             sesiones[UID] = [user:user, pass:pass]
             nodos[UID]    = [:]
             return UID
@@ -66,13 +66,13 @@ class PuertoNadesico {
         lista
     }
     static def invocaPropiedadOClase = { IDSesion, IDObjeto, name ->
-        if(!sesiones.containsKey(IDSesion)) { throw new Exception("Permiso denegado para invocar propiedad o clase en puerto nadesico") }
+
         try {
             //if(Class.forName("nadesicoi."+name) instanceof Class) {  }
             if(IDObjeto == "" || IDObjeto == null) {
-                IDObjeto = "nadesicoi"
+                IDObjeto = ""
             } else {
-                IDObjeto = "nadesicoi.PuertoNadesico.nodos['${IDSesion}']['${IDObjeto}'].objeto"
+                IDObjeto = "PuertoNadesico.nodos['${IDSesion}']['${IDObjeto}'].objeto"
             }
             //println "IDObjeto: "+IDObjeto
             def generatedCode = "class X { def getIt = { "+IDObjeto+"."+name+"} }"
@@ -108,7 +108,7 @@ class PuertoNadesico {
             args
     }
     static def invocaMetodo = { IDSesion, IDObj, methodName, args ->
-        if(!sesiones.containsKey(IDSesion)) { throw new Exception("Permiso denegado para invocar métodos en puerto nadesico") }
+
         try {
             def obj
             args = PuertoNadesico.procesarArgs(IDSesion, args)

@@ -12,7 +12,7 @@ import omoikane.principal.Articulos;
 import omoikane.producto.Articulo;
 
 import java.awt.*;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -49,8 +49,18 @@ public class EtiquetaGenerator {
     }
 
     private InputStream loadReport (String reportURL) throws Exception{
-        InputStream is = ClassLoader.getSystemResourceAsStream(reportURL);
+        FileInputStream is = readFile(reportURL);
         if(is == null) { throw new Exception("Plantilla de reporte no encontrada. " + reportURL); }
         return is;
+    }
+
+    private FileInputStream readFile(String filename) throws IOException {
+        File file = new File( filename );
+        if ( !file.exists() ) {
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+            out.close();
+        }
+        FileInputStream fis = new FileInputStream(file);
+        return fis;
     }
 }

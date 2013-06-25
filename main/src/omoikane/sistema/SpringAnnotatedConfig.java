@@ -85,7 +85,7 @@ public class SpringAnnotatedConfig {
     @Bean
     @Scope("prototype")
     Scene impresionEtiquetasView() {
-        return initView("/omoikane/etiquetas/presentation/ImpresionetiquetasView.fxml", impresionEtiquetasController());
+        return initView("/omoikane/etiquetas/presentation/ImpresionEtiquetasView.fxml", impresionEtiquetasController());
     }
 
     private SceneOverloaded initView(String fxml, final Initializable controller) {

@@ -95,12 +95,12 @@ public class ImpresionEtiquetasController implements Initializable {
             if (tipoEtiqueta.getValue() != null) {
                 if (tipoEtiqueta.getValue().equals("Big label"))
                 {
-                    eg.generate("omoikane/etiquetas/reportes/bigLabel.jrxml",articulosToReport);
+                    eg.generate("Plantillas/bigLabel.jrxml",articulosToReport);
                 }
                 else if (tipoEtiqueta.getValue().equals("Label Printer")) {
-                    eg.generate("omoikane/etiquetas/reportes/labelPrint.jrxml",articulosToReport);
+                    eg.generate("Plantillas/labelPrint.jrxml",articulosToReport);
                 }else if (tipoEtiqueta.getValue().equals("Standard")) {
-                    eg.generate("omoikane/etiquetas/reportes/standardLabel.jrxml",articulosToReport);
+                    eg.generate("Plantillas/standardLabel.jrxml",articulosToReport);
                 }
             }
         }

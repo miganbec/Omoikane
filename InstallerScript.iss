@@ -14,7 +14,7 @@ AppPublisher=Phesus
 AppPublisherURL=http://www.phesus.com/
 AppSupportURL=http://www.phesus.com/
 AppUpdatesURL=http://www.phesus.com/
-DefaultDirName=c:\Phesus\Omoikane\Omoikane
+DefaultDirName=c:\Phesus\Omoikane
 DefaultGroupName=Omoikane
 DisableProgramGroupPage=yes
 OutputDir={#SrcOmoikaneFolder}\archive
@@ -47,11 +47,12 @@ Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\RXTXcomm.jar"; DestDir:
 Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\rxtxSerial.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\wyUpdate\client.wyc"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\wyUpdate\wyUpdate.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\lib\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SrcOmoikaneFolder}\3rd party\jre-7u5-windows-i586.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SrcOmoikaneFolder}\3rd party\NetFx20SP2_x86.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SrcOmoikaneFolder}\3rd party\RTE\setup.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SrcOmoikaneFolder}\3rd party\Driver uareu 4500\Setup.msi"; DestDir: "{tmp}"; Flags: ignoreversion createallsubdirs deleteafterinstall recursesubdirs
+Source: "{#SrcOmoikaneFolder}\Plantillas\*"; DestDir: "{app}\Plantillas"; Flags: ignoreversion createallsubdirs recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

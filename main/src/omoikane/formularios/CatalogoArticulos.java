@@ -89,17 +89,25 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
                 public void run() {
                     String[]  columnas = {"Código", "Línea", "Grupo", "Concepto", "Unidad", "Precio", "Existencias"};
                     ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-                    Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, String.class, Double.class};
+                    Class[]   clases   = {String.class, String.class, String.class, String.class, String.class, String.class, String.class};
                     ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
-                    double[]  widths   = {0.16,0.16,0.07,0.41,0.05,0.08,0.06};
+                    double[]  widths   = {0.16,0.15,0.07,0.40,0.05,0.08,0.08};
 
                     ArticulosTableModel modeloTabla = new ArticulosTableModel(cols, cls);
                     //jTable1.enableInputMethods(false);
                     
                     modelo = modeloTabla;
-                    setMainQuery("select a.id_articulo as xID, a.codigo as xCodigo, a.id_linea as xLinea, a.id_grupo as xGrupo, a.descripcion as xDescripcion, a.unidad as xUnidad, 0 as xPrecio, 0 as xExistencias, " +
-                            "bp.costo as xCosto, bp.porcentajeImpuestos, bp.porcentajeDescuentoLinea, bp.porcentajeDescuentoGrupo, bp.porcentajeDescuentoProducto, bp.porcentajeUtilidad " +
-                            "from articulos a JOIN base_para_precios bp ON a.id_articulo = bp.id_articulo ");
+                    //Notas:
+                    //(1) Favor de no alterar el orden  de los campos, añadir nuevos campos al final. Por defecto ArticulosTableModel depende de éste orden
+                    //(2) Por defecto select, distinct y from deben estár escritos con minúsculas. Ver omoikane.sistema.ScrollableTableModel.getRowCount(ScrollableTableModel.groovy).
+                    setMainQuery("select a.id_articulo as xID, a.codigo as xCodigo, l.descripcion as xLinea, g.descripcion as xGrupo, a.descripcion as xDescripcion, a.unidad as xUnidad, 0 as xPrecio, 0 as xExistencias, " +
+                            "bp.costo as xCosto, bp.porcentajeImpuestos, bp.porcentajeDescuentoLinea, bp.porcentajeDescuentoGrupo, bp.porcentajeDescuentoProducto, bp.porcentajeUtilidad, " +
+                            "s.enTienda + s.enBodega " +
+                            "from articulos a " +
+                            "JOIN base_para_precios bp ON a.id_articulo = bp.id_articulo " +
+                            "JOIN Stock s ON s.idArticulo = a.id_articulo " +
+                            "JOIN lineas l ON l.id_linea = a.id_linea " +
+                            "JOIN grupos g ON g.id_grupo = a.id_grupo ");
                     setQueryTable(getMainQuery());
                     
                     jTable1.setModel(modeloTabla);
@@ -735,7 +743,7 @@ class ArticulosTableModel extends ScrollableTableModel {
 
     public ArticulosTableModel(java.util.List colNames, ArrayList colClases) {
         super(colNames, colClases);
-        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat = NumberFormat.getNumberInstance();
         numberFormat.setMaximumFractionDigits(2);
         numberFormat.setMinimumFractionDigits(2);
         numberFormat.setGroupingUsed(false);
@@ -746,16 +754,19 @@ class ArticulosTableModel extends ScrollableTableModel {
         if(col==5) {
             BaseParaPrecio bp = new BaseParaPrecio();
             bp.setCosto((Double) super.getValueAt(row, 7));
-            bp.setPorcentajeDescuentoLinea((Double) super.getValueAt(row, 8));
-            bp.setPorcentajeDescuentoGrupo((Double) super.getValueAt(row, 9));
-            bp.setPorcentajeDescuentoProducto((Double) super.getValueAt(row, 10));
-            bp.setPorcentajeUtilidad((Double) super.getValueAt(row, 11));
+            bp.setPorcentajeImpuestos((Double) super.getValueAt(row, 8));
+            bp.setPorcentajeDescuentoLinea((Double) super.getValueAt(row, 9));
+            bp.setPorcentajeDescuentoGrupo((Double) super.getValueAt(row, 10));
+            bp.setPorcentajeDescuentoProducto((Double) super.getValueAt(row, 11));
+            bp.setPorcentajeUtilidad((Double) super.getValueAt(row, 12));
 
             PrecioOmoikaneLogic precioOmoikaneLogic = new PrecioOmoikaneLogic(bp);
 
             return numberFormat.format(precioOmoikaneLogic.getPrecio());
-
-
+        } else if(col == 6) {
+            BigDecimal existencias = (BigDecimal) super.getValueAt(row, 13);
+            String display = existencias.compareTo(BigDecimal.ZERO) <= 0 ? "N/D" : numberFormat.format(existencias);
+            return display;
         } else {
             return super.getValueAt(row,col);
         }
