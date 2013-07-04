@@ -325,7 +325,7 @@ import java.text.SimpleDateFormat
 
     public static def getVersion() {
 
-      return "1.4.0 beta"
+      return omoikane.principal.Principal.VERSION;
     }
 
 }

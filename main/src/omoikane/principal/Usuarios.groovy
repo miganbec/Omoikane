@@ -142,7 +142,7 @@ import static omoikane.sistema.Permisos.*
         if(cerrojo(PMA_MODIFICARUSUARIO)){
             Herramientas.verificaCampos {
                 def nombre            = formUsuario.getTxtNombre()
-                def h1                = formUsuario.getTxtH1()
+                def h1                = new byte[0]; //formUsuario.getTxtH1()
                 def h2                = new byte[0]; //formUsuario.getTxtH2()
                 def h3                = new byte[0];//formUsuario.getTxtH3()
                 def NIP               = formUsuario.getTxtNIP()
@@ -160,9 +160,11 @@ import static omoikane.sistema.Permisos.*
                 if (perfil instanceof String ){perfil = -1}
                 try {
                 if(perfil>=0){
-                    def serv = Nadesico.conectar()
-                    Dialogos.lanzarAlerta(serv.addUsuario(nombre,h1,h2,h3,NIP,perfil,almacen))
-                    serv.desconectar()
+
+                    Integer idUsuario = omoikane.nadesicoiLegacy.Usuarios.addUsuario(nombre,h1,h2,h3,NIP,perfil,almacen);
+                    guardarUsuario(idUsuario, formUsuario);
+
+                    Dialogos.lanzarAlerta("Usuario $nombre agregado");
 
                     formUsuario.dispose()
                     return formUsuario
@@ -170,6 +172,15 @@ import static omoikane.sistema.Permisos.*
                 }
         }else{Dialogos.lanzarAlerta("Acceso Denegado")}
         } catch(e) { Dialogos.error("Error al lanzar guardar Usuario", e) }
+    }
+
+    static def guardarUsuario(Integer id, formUsuario) {
+        UsuarioRepo repo;
+        repo = Principal.applicationContext.getBean(UsuarioRepo.class);
+        Usuario usuario = repo.readByPrimaryKey(Long.valueOf(id));
+        usuario.huella1 = formUsuario.getTemplates().serializar();
+
+        repo.saveAndFlush(usuario);
     }
 
     static def lanzarFormNuevoUsuario()
@@ -229,12 +240,9 @@ import static omoikane.sistema.Permisos.*
                 try{
                     def serv = Nadesico.conectar()
                     String mensajeNadesicoModUsuario = serv.modUsuario(Nombre,NIP,Perfil,Almacen,USR)
-                    UsuarioRepo repo;
-                    repo = Principal.applicationContext.getBean(UsuarioRepo.class);
-                    Usuario usuario = repo.readByPrimaryKey(Long.valueOf(USR));
-                    usuario.huella1 = formUsuario.getTemplates().serializar();
 
-                    repo.saveAndFlush(usuario);
+                    guardarUsuario(USR as Integer, formUsuario);
+
                     Dialogos.lanzarAlerta(mensajeNadesicoModUsuario)
                     serv.desconectar()
                 } catch(ConstraintViolationException e) {

@@ -1,13 +1,40 @@
-.label:hover {
-	-fx-scale-y: 1.2;
-	-fx-scale-x: 1.2;
+
+.label {
+    -fx-text-fill: ghostwhite;
+}
+.table-view {
+    -fx-background-color: darkslategray;
+}
+.table-row-cell {
+    -fx-background-color: darkslategray;
+}
+.cell {
+    -fx-text-fill: ghostwhite;
+    -fx-font-size: 16px;
+}
+.table-row-cell:filled:selected  {
+    -fx-background-color: #181818;
+}
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #181818;
+    -fx-border-color: #181818;
+}
+.tool-bar {
+    -fx-background-color: #181818;
 }
 .button {
-    -fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-background-color: darkslategray;
+    -fx-text-fill: ghostwhite;
+}
+.button:pressed {
+    -fx-background-color: slategray;
+}
+.button:focused {
+    -fx-border-color: slategray;
+}
+.text-field {
+    -fx-background-color: darkslategray;
+    -fx-text-fill: ghostwhite;
 }
 .anchor-pane {
 	-fx-background-color: transparent;

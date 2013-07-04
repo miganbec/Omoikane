@@ -4,30 +4,24 @@ import groovy.util.Eval;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import omoikane.caja.business.CajaLogicImpl;
 import omoikane.caja.business.ICajaLogic;
+import omoikane.caja.handlers.CerrarCajaSwingHandler;
 import omoikane.caja.presentation.CajaController;
 import omoikane.caja.presentation.CajaModel;
+import omoikane.formularios.OmJInternalFrame;
 import omoikane.principal.Principal;
 import omoikane.principal.Sucursales;
-import omoikane.sistema.Dialogos;
 import omoikane.sistema.Herramientas;
 import omoikane.sistema.Permisos;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Color;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
 /**
  * Created with IntelliJ IDEA.
@@ -59,8 +53,10 @@ public class CajaManager extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(CajaManager.class.getResource("presentation/Caja.fxml"));
         AnchorPane page = (AnchorPane) fxmlLoader.load();
+        page.setStyle("-fx-background-color: transparent;");
 
         Scene scene = new Scene(page);
+        scene.setFill(javafx.scene.paint.Color.BLUE);
         scene.getStylesheets().add(CajaController.class.getResource("Caja.css").toExternalForm());
 
         //model      = new CajaModel();
@@ -77,23 +73,26 @@ public class CajaManager extends Application {
 
     public JInternalFrame startJFXCaja() {
         JInternalFrame frame = null;
-        if(!omoikane.sistema.Usuarios.autentifica(Permisos.getPMA_LANZARCAJA())) return null;
+        if(!omoikane.sistema.Usuarios.cerrojo(Permisos.getPMA_LANZARCAJA())) return null;
         abrirCaja();
         return null;
 
     }
 
     private JInternalFrame _startJFXCaja() {
-        final JInternalFrame frame = new JInternalFrame("Caja");
+        final JInternalFrame frame = new OmJInternalFrame();
         final JFXPanel fxPanel = new JFXPanel();
+        fxPanel.setBackground(Color.black);
+        fxPanel.setOpaque(true);
 
         frame.add(fxPanel);
         frame.setVisible(true);
+        frame.setTitle("Caja");
 
         Herramientas.panelCatalogo(frame);
         omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(frame);
-        frame.setSize(990, 570);
-        frame.setPreferredSize(new Dimension(990, 570));
+        frame.setSize(1120, 615);
+        frame.setPreferredSize(new Dimension(1120, 615));
         frame.setVisible(true);
         Herramientas.centrarVentana(frame);
         Herramientas.iconificable(frame);
@@ -108,7 +107,8 @@ public class CajaManager extends Application {
                     scene = initCaja();
                     scene.setFill(null);
                     fxPanel.setScene(scene);
-                    controller.getCerrarButton().setOnAction(new SwingCerrarHandler(frame));
+                    controller.setCerrarCajaSwingHandler(new CerrarCajaSwingHandler(frame));
+
                 } catch (IOException e) {
                     logger.error(e.getMessage(), e);
                 }
@@ -118,20 +118,6 @@ public class CajaManager extends Application {
 
         return frame;
     }
-
-    private class SwingCerrarHandler implements EventHandler<ActionEvent> {
-        JInternalFrame frame;
-        public SwingCerrarHandler(JInternalFrame frame) {
-            this.frame = frame;
-        }
-
-        @Override
-        public void handle(ActionEvent event) {
-            frame.setVisible(false);
-            frame.dispose();
-        }
-    }
-
 
     /**
      * El mecanismo de este método es atrasado, utiliza "nadesico" en lugar de hibernate.

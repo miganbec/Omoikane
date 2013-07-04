@@ -51,7 +51,7 @@ public class    ImpresionEtiquetasManager  {
 
     public JInternalFrame startJFXEtiqueta() {
         JInternalFrame frame = null;
-        if(omoikane.sistema.Usuarios.autentifica(Permisos.PMA_ETIQUETAS)) frame = _startJFXEtiqueta();
+        if(omoikane.sistema.Usuarios.cerrojo(Permisos.PMA_ETIQUETAS)) frame = _startJFXEtiqueta();
         return frame;
     }
 

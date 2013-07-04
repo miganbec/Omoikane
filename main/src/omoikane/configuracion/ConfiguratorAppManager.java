@@ -28,7 +28,7 @@ public class ConfiguratorAppManager {
 
     public JInternalFrame startJFXConfigurator() {
         JInternalFrame frame = null;
-        if(omoikane.sistema.Usuarios.autentifica(Permisos.PMA_CONFIGURACION)) frame = _startJFXConfigurator();
+        if(omoikane.sistema.Usuarios.cerrojo(Permisos.PMA_CONFIGURACION)) frame = _startJFXConfigurator();
         return frame;
     }
 

@@ -45,7 +45,10 @@ import groovy.inspect.swingui.*
         data              = venta.properties;
         data.date         = data.fechaHora
         data.caja         = entityManager.find(Caja.class, data.idCaja as Integer).properties;
-        data.usuario      = entityManager.find(Usuario.class, data.idUsuario as Long).properties;
+        data.usuario      = entityManager.find(Usuario.class, data.idUsuario as Long);
+        if(data.usuario == null) { throw new Exception("Usuario inválido"); }
+        data.usuario = data.usuario.properties;
+
         data.detalles     = []
         data.id_almacen = data.idAlmacen;
         data.id_caja    = data.idCaja;
@@ -236,15 +239,15 @@ import groovy.inspect.swingui.*
             else
             {
                 try {
-                    logger.info(generado)
+                    logger.debug(generado)
                 } catch (e) { Dialogos.lanzarAlerta("Error al mandar a al consola"); }
             }
         }
     }
 
     public void abrirCajon() {
-        String generado = (27 as char)+(100 as char)+(8 as char);
-        logger.info("Teóricamente expulsando cajón de dinero");
+        generado = "" + (27 as char)+(112 as char)+(0 as char)+(25 as char)+(250 as char);
+
         imprimir();
     }
 

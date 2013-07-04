@@ -186,7 +186,8 @@ public class Articulos
                 def costo         = formArticulo.getTxtCosto()
                 def descuento     = formArticulo.getTxtDesctoPorcentaje().text
                 def utilidad      = formArticulo.getTxtUtilidadPorc().text
-                def existencias   = formArticulo.getTxtExistencias()
+                def existencias   = 0;
+
                 def notas   = formArticulo.getTxtComentarios()
                 Herramientas.verificaCampo(codigo,Herramientas.texto,"codigo"+Herramientas.error1)
                 Herramientas.verificaCampo(IDLinea,Herramientas.numero,"ID linea"+Herramientas.error2)
@@ -196,7 +197,7 @@ public class Articulos
                 Herramientas.verificaCampo(costo,Herramientas.numeroReal,"costos"+Herramientas.error3)
                 Herramientas.verificaCampo(descuento,Herramientas.numeroReal,"descuento"+Herramientas.error3)
                 Herramientas.verificaCampo(utilidad,Herramientas.numeroReal,"utilidad"+Herramientas.error3)
-                Herramientas.verificaCampo(existencias,Herramientas.numeroReal,"existencias"+Herramientas.error3)
+
                 IDLinea       = java.lang.Integer.valueOf(IDLinea)
                 IDGrupo       = java.lang.Integer.valueOf(IDGrupo)
                 impuestos     = impuestos as Double

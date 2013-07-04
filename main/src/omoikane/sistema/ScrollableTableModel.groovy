@@ -84,9 +84,7 @@ public class ScrollableTableModel extends AbstractTableModel {
                 //def tmpQ = queryAct?.toLowerCase()
                 def tmpQ = queryAct;
                 //println "->>"+tmpQ
-                def replaced = tmpQ.replaceAll(/(select (distinct)|select) ([a-zA-Z0-9\._]+)(.*?) (from.*)/, '$1 count($2 $3) $5')
-
-                //println "Conteo query: " + replaced
+                def replaced = tmpQ.replaceAll(/(?i)(select (distinct)|select) ([a-zA-Z0-9\._]+)(.*?) (from .*?)(order by.*|$)/, '$1 count($2 $3) $5')
                 def stmt      = conn.createStatement()
                 def res       = stmt.executeQuery(replaced);
                 res.next()
@@ -229,7 +227,7 @@ public class ScrollableTableModel extends AbstractTableModel {
             //println "destruyendo modelo"
             conn.close()
             control.close()
-            rs.close()
+            rs?.close()
             System.gc();
 
         } catch(Exception e) { Dialogos.error("No se pudo cerrar la conexión con el servidor", e); }

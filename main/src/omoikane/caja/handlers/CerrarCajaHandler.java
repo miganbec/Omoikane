@@ -1,5 +1,6 @@
 package omoikane.caja.handlers;
 
+import com.sun.javafx.stage.EmbeddedWindow;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.scene.Node;
@@ -15,6 +16,8 @@ import omoikane.repository.VentaRepo;
 import omoikane.sistema.Usuarios;
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.awt.*;
 
 /**
  * Created with IntelliJ IDEA.

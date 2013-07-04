@@ -64,7 +64,7 @@ class Cortes {
             def cat = (new omoikane.formularios.CatalogoSucursal())
             cat.setVisible(true);
             escritorio.getPanelEscritorio().add(cat)
-            Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.4,0.4]);
+            Herramientas.setColumnsWidth(cat.jTable1, [0.2,0.8]);
             Herramientas.panelCatalogo(cat)
 
             cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }

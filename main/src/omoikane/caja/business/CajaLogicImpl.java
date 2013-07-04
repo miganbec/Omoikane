@@ -78,6 +78,8 @@ public class CajaLogicImpl implements ICajaLogic {
 
                 addProducto(model, capturaFilter);
 
+            } catch(IndexOutOfBoundsException e) {
+                logger.trace("Producto no encontrado");
             } catch (Exception e) {
                 logger.error("Error durante captura ('evento onCaptura')", e);
             }
@@ -88,6 +90,7 @@ public class CajaLogicImpl implements ICajaLogic {
     public void buscar(CajaModel model) {
         Pageable pagina = model.getPaginacionBusqueda();
         String descripcion = model.getCaptura().get();
+        if(descripcion.isEmpty()) return;
         ArrayList<Producto> productos = (ArrayList<Producto>) productosDAO.findByDescripcionLike( "%"+descripcion+"%", pagina);
         ObservableList<ProductoModel> obsProductos = model.getProductos();
 
@@ -208,6 +211,7 @@ public class CajaLogicImpl implements ICajaLogic {
                 nuevaVenta();
             } catch (Exception e) {
                 logger.error("Error al guardar venta, venta no registrada.", e);
+                throw new RuntimeException("prueba");
             }
         }
 

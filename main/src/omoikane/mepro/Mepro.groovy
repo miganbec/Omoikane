@@ -40,7 +40,7 @@ public class Mepro {
     }
 
     public def Mepro() {
-        if(omoikane.sistema.Usuarios.autentifica(Permisos.PMA_MEPRO)) _Mepro();
+        if(omoikane.sistema.Usuarios.cerrojo(Permisos.PMA_MEPRO)) _Mepro();
     }
 
     private def _Mepro() {

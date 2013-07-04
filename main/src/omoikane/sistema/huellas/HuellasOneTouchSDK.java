@@ -56,7 +56,7 @@ public class HuellasOneTouchSDK extends MiniLeerHuella implements DPFPReaderStat
 
             init();
             startCapture();
-            logger.info ("Lector Huella DigitalPersona inicializado");
+            logger.trace ("Lector Huella DigitalPersona inicializado");
 
         } catch(Exception GrEx)
         {
@@ -122,7 +122,7 @@ public class HuellasOneTouchSDK extends MiniLeerHuella implements DPFPReaderStat
                         aceptable = false;
                     }
 				}});
-                logger.info("¿Calidad aceptable de la huella? "+aceptable);
+                logger.trace("¿Calidad aceptable de la huella? "+aceptable);
 			}
 		});
 	}

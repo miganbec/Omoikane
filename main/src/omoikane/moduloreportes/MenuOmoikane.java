@@ -23,7 +23,7 @@ public class MenuOmoikane extends MenuBean {
         super.setID("MOD-Reportes");
     }
     public void launch() {
-        if(omoikane.sistema.Usuarios.autentifica(Permisos.PMA_REPORTES)) {
+        if(omoikane.sistema.Usuarios.cerrojo(Permisos.PMA_REPORTES)) {
             final VentanaPrincipal  vp = new VentanaPrincipal();
             panelReportes pvl= new panelReportes();
             vp.getContentPane().add(pvl);

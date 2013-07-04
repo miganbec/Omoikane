@@ -27,7 +27,8 @@ class Usuarios {
         def idUsr    = usr.id_usuario
         def usra = db.firstRow("SELECT * FROM usr_sucursal WHERE id_almacen = $IDAlmacen AND id_usuario = "+ idUsr)
             db.close()
-            salida = usr + usra
+            salida = usra + usr
+            salida.uModificacion = usr.uModificacion
         } catch(e) { Consola.error("Error al consultar usuario (getUsuario)", e); throw new Exception("Error al consultar usuario") }
         salida
     }
@@ -41,11 +42,11 @@ class Usuarios {
                 Huella1 = Sql.BLOB(Huella1)
                 Huella2 = Sql.BLOB(Huella2)
                 Huella3 = Sql.BLOB(Huella3)
-                def IDCliente = db.executeInsert("INSERT INTO usuarios SET fecha_hora_alta=NOW(),nombre=?,huella1=?,huella2=?,huella3=?,nip=?", [Nombre,Huella1,Huella2,Huella3,NIP])
-                IDCliente = IDCliente[0][0]
-                db.executeInsert("INSERT INTO usr_sucursal SET id_almacen = ?, id_usuario= ?, perfil = ?",[IDAlmacen, IDCliente, Perfil])
+                def idUsuario = db.executeInsert("INSERT INTO usuarios SET fecha_hora_alta=NOW(),nombre=?,huella1=?,huella2=?,huella3=?,nip=?,uModificacion=NOW()", [Nombre,Huella1,Huella2,Huella3,NIP])
+                idUsuario = idUsuario[0][0]
+                db.executeInsert("INSERT INTO usr_sucursal SET id_almacen = ?, id_usuario= ?, perfil = ?",[IDAlmacen, idUsuario, Perfil])
                 db.commit()
-                return "Usuario $Nombre agregado."
+                return idUsuario
             } catch(Exception e) {
                 db.rollback()
                 if(e.message.contains("Duplicate entry")) { return "El usuario que intenta capturar ya exíste" }

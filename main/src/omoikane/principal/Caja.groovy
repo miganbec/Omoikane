@@ -580,7 +580,7 @@ class Caja implements Serializable {
                 SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy @ hh:mm:ss a ");
                 Calendar         fecha= Calendar.getInstance()
-                if(serv.getCorteWhere("id_caja = $IDCaja AND desde = '${sdf.format(horas.horaAbierta)}' AND hasta = '${sdf.format(horas.horaCerrada)}'")!=0) {
+                if(serv.getCorteWhere("id_caja = $IDCaja AND desde = '${sdf.format(horas.horaAbierta)}' AND hasta = '${sdf.format(horas.horaCerrada)}'")!=null) {
                     Dialogos.lanzarAlerta("Ya se realizó corte de Caja y no se han hecho ventas desde el último corte de caja")
                 } else {
                     if(cortar) { serv.cerrarCaja(IDCaja) }
@@ -687,7 +687,7 @@ class Caja implements Serializable {
                 dataTabMovs.addRow(filaNva.toArray())
             }
         } catch(Exception e) {
-            Dialogos.lanzarDialogoError(null, "Error grave. No hay conexion con la base de datos!", omoikane.sistema.Herramientas.getStackTraceString(e))
+            Dialogos.lanzarDialogoError(null, "Error grave. No hay conexión con la base de datos!", omoikane.sistema.Herramientas.getStackTraceString(e))
         }
     }
 

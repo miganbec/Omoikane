@@ -5,10 +5,13 @@
 
 package omoikane.exceptions;
 
+import omoikane.principal.Principal;
 import org.apache.log4j.Appender;
 import org.apache.log4j.AppenderSkeleton;
+import org.apache.log4j.Priority;
 import org.apache.log4j.spi.LoggingEvent;
 
+import javax.swing.*;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
@@ -30,7 +33,23 @@ public class CEAppender extends AppenderSkeleton {
 
     @Override
     protected void append(LoggingEvent event) {
-        System.out.println(event.getMessage());
+        if ( event.getLevel().isGreaterOrEqual(Priority.WARN) ) {
+            errorWindow(event);
+        } else if(event.getLevel().isGreaterOrEqual(Priority.INFO)) {
+            JOptionPane.showMessageDialog(null,
+                    event.getMessage(),
+                    "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } else if(Principal.DEBUG) {
+            JOptionPane.showMessageDialog(null,
+                    event.getMessage(),
+                    "Información de depuración",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+
+    private void errorWindow(LoggingEvent event) {
         ExceptionWindow ew = new ExceptionWindow();
         ew.getLblTituloError().setText((String) event.getMessage());
 
@@ -40,4 +59,5 @@ public class CEAppender extends AppenderSkeleton {
         }
         ew.setVisible(true);
     }
+
 }

@@ -2,7 +2,7 @@ ${""+ (27 as char)+(112 as char)+(0 as char)+(25 as char)+(250 as char)}
   *  * SUPER  FARMACIA  MEDINA  *  *
 NAHUM MEDINA GARCIA      MEGN560328MQ0
   HEROES DE TLAPACOYAN 207 COL CENTRO
-       TLAPACOYAN, VER. CP 93650
+       TLAPACOYAN, VER. CP 93650-
  - - - - - - - - - - - - - - - - - - -
 
 ${caja.descripcion}  ${cajero}

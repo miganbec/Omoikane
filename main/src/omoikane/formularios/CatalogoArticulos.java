@@ -34,7 +34,7 @@ import org.jdesktop.swingx.image.GaussianBlurFilter;
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  * @author Octavio
  */
-public class CatalogoArticulos extends javax.swing.JInternalFrame {
+public class CatalogoArticulos extends OmJInternalFrame {
 
     TimerBusqueda          timerBusqueda;
     BufferedImage          fondo;
@@ -125,10 +125,8 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
 
             //Instrucciones para el funcionamiento del fondo semistransparente
             this.setOpaque(false);
-            ((JPanel)this.getContentPane()).setOpaque(false);
-            this.getLayeredPane().setOpaque(false);
-            this.getRootPane().setOpaque(false);
-            this.generarFondo(this);
+
+            this.generarFondo();
             Herramientas.centrarVentana(this);
             this.btnAceptar.setVisible(false);
        } catch(Exception e) {
@@ -649,68 +647,6 @@ public class CatalogoArticulos extends javax.swing.JInternalFrame {
       }
 
     } */
-
-    public BufferedImage cacheFondo;
-    public void paintComponent(Graphics g)
-    {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        BufferedImage fondo = Principal.getEscritorio().getPanelEscritorio().getBufferImage(getHeight(), getWidth());
-
-        if(cacheFondo == null) {
-            BoxBlurFilter filter = new BoxBlurFilter();
-
-            cacheFondo = copyImage(fondo);
-            System.out.println("Bounds: "+getX()+","+getY()+","+getWidth()+","+getHeight());
-
-            //fondo = new GaussianBlurFilter(4).filter(fondo, null);
-            filter.setIterations(2);
-            filter.setRadius(5);
-
-            PointillizeFilter pointillizeFilter = new PointillizeFilter();
-            pointillizeFilter.setEdgeColor(6);
-            pointillizeFilter.setEdgeThickness(1);
-            pointillizeFilter.setFadeEdges(false);
-            pointillizeFilter.setFuzziness(6);
-            //pointillizeFilter.filter(cacheFondo, cacheFondo);
-
-            filter.filter(cacheFondo, cacheFondo);
-
-            Graphics2D graphics2D = (Graphics2D) cacheFondo.getGraphics();
-            graphics2D.setColor(new Color(0,0,0,125));
-            graphics2D.fillRect(0,0,cacheFondo.getWidth(),cacheFondo.getHeight());
-
-
-        }
-
-        BufferedImage fondoVentana = cacheFondo.getSubimage(getX(), getY(), getWidth(), getHeight());
-        g.drawImage(fondoVentana, 0, 0, null);
-
-
-    }
-
-    static BufferedImage copyImage(BufferedImage bi) {
-        //BufferedImage copyOfImage =
-        //        new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-        BufferedImage copyOfImage = gc.createCompatibleImage(bi.getWidth(), bi.getHeight(),BufferedImage.TRANSLUCENT);
-        Graphics g = copyOfImage.getGraphics();
-        g.drawImage(bi, 0, 0, null);
-        return copyOfImage;
-    }
-
-    public void generarFondo(Component componente)
-    {
-      Rectangle areaDibujo = this.getBounds();
-      BufferedImage tmp;
-      GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-
-      tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
-      Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(0,0,0,165));
-      g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
-      //fondo = tmp;
-    }
 
 
 

@@ -303,8 +303,8 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         getContentPane().add(btnEtiquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 200, 70));
 
         lblVersion.setForeground(new java.awt.Color(255, 255, 255));
-        lblVersion.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 10px; }</style></head> <body> Versión </span></body></html>");
-        getContentPane().add(lblVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(807, 490, 60, 10));
+        lblVersion.setText("<html><head><style type='text/css'>body { font-family: 'Roboto Thin'; font-size: 10px; }</style></head> <body> Versi�n </span></body></html>");
+        getContentPane().add(lblVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 490, 140, 20));
 
         btnReportes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnReportes.setText("<html>Reportes</html>");

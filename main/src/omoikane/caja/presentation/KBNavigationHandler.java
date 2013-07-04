@@ -5,10 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Control;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import omoikane.caja.handlers.AbrirCajon;
-import omoikane.caja.handlers.CancelarProducto;
-import omoikane.caja.handlers.CancelarVenta;
-import omoikane.caja.handlers.MovimientosDeCaja;
+import jfxtras.labs.internal.scene.control.skin.BigDecimalFieldSkin;
+import omoikane.caja.handlers.*;
 
 public class KBNavigationHandler implements EventHandler<KeyEvent> {
 
@@ -28,7 +26,10 @@ public class KBNavigationHandler implements EventHandler<KeyEvent> {
         }
 
         private boolean isControl(Object o) {
-            return Control.class.isAssignableFrom(o.getClass());
+            boolean isControl = Control.class.isAssignableFrom(o.getClass());
+            if (isControl && BigDecimalFieldSkin.NumberTextField.class.isAssignableFrom(o.getClass()))
+                ((Control) o).setId("efectivoBigDecimalField");
+            return isControl;
         }
 
         private void enterKeyNavigationRules(KeyCode keyCode, Control control, Event event) {
@@ -37,7 +38,8 @@ public class KBNavigationHandler implements EventHandler<KeyEvent> {
                     case "capturaTextField":
                         String text = cc.getCapturaTextField().getText();
                         if (text == null || text.equals("")) {
-                            cc.getBtnEfectivo().requestFocus();
+                            //cc.getBtnEfectivo().requestFocus();
+                            cc.getEfectivoTextField().requestFocus();
                         }
                         break;
                     case "btnEfectivo":
@@ -49,6 +51,7 @@ public class KBNavigationHandler implements EventHandler<KeyEvent> {
 
                         break;
                     case "efectivoTextField":
+                    case "efectivoBigDecimalField":
                         cc.getCambioTextField().requestFocus();
                         break;
                     case "cambioTextField":
@@ -58,6 +61,8 @@ public class KBNavigationHandler implements EventHandler<KeyEvent> {
                         cc.getBtnCobrar().fire();
                         break;
                 }
+            if (keyCode.equals(KeyCode.ESCAPE))
+                cc.getCerrarCajaSwingHandler().handle(event);
             if (keyCode.equals(KeyCode.F3))
                 cc.getCapturaTextField().requestFocus();
             if (keyCode.equals(KeyCode.F4))

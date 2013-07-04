@@ -61,16 +61,18 @@ public class CatalogoSucursal extends javax.swing.JInternalFrame {
         initComponents();
         programarShortcuts();
 
-        String[]  columnas = { "ID Corte","Almacen","Fecha"};
+        String[]  columnas = { "ID Corte","Fecha"};
         ArrayList cols     = new ArrayList<String>(Arrays.asList(columnas));
-        Class[]   clases   = {Integer.class, String.class, String.class};
+        Class[]   clases   = {Integer.class, String.class};
         ArrayList cls      = new ArrayList<Class>(Arrays.asList(clases));
         SucursalTableModel modeloTabla = new SucursalTableModel(cols, cls);
 
         //jTable1.enableInputMethods(false);
         this.modelo = modeloTabla;
         this.jTable1.setModel(modeloTabla);
-        setQueryTable("SELECT cortes_sucursal.id_corte,(cortes_sucursal.id_corte)as id,(almacenes.descripcion)as almacen,(cortes_sucursal.creacion)as fecha FROM cortes_sucursal,almacenes WHERE cortes_sucursal.id_almacen=almacenes.id_almacen order by fecha desc");
+        setQueryTable("SELECT cs.id_corte AS id, cs.creacion AS fecha " +
+                "FROM cortes_sucursal cs " +
+                "ORDER BY fecha DESC");
 
         //Instrucciones para el funcionamiento del fondo semistransparente
         this.setOpaque(false);
@@ -410,9 +412,9 @@ public class CatalogoSucursal extends javax.swing.JInternalFrame {
                 Hasta = sdf.format(this.fechaHasta.getDate());
             } catch(Exception e) { omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error en el registro: Fecha inválida", omoikane.sistema.Herramientas.getStackTraceString(e)); }
         }
-        String whereFecha = " AND cortes_sucursal.creacion >= '"+Desde+"' AND cortes_sucursal.creacion < '"+Hasta+"' ";
+        String whereFecha = " AND cs.creacion >= '"+Desde+"' AND cs.creacion < '"+Hasta+"' ";
         System.out.println(whereFecha);
-        String query    = "SELECT cortes_sucursal.id_corte,(cortes_sucursal.id_corte)as id,(almacenes.descripcion)as almacen,(cortes_sucursal.creacion)as fecha FROM cortes_sucursal,almacenes WHERE cortes_sucursal.id_almacen=almacenes.id_almacen and cortes_sucursal.id_corte like '%"+txtBusqueda.getText()+"%'"+whereFecha;
+        String query    = "SELECT cs.id_corte AS id, cs.creacion AS fecha FROM cortes_sucursal cs WHERE cs.id_corte like '%"+txtBusqueda.getText()+"%'"+whereFecha;
         System.out.println(query);
         setQueryTable(query);
     }
@@ -457,12 +459,14 @@ public class CatalogoSucursal extends javax.swing.JInternalFrame {
 
 }
 
-class SucursalTableModel extends NadesicoTableModel{
+class SucursalTableModel extends ScrollableTableModel {
 SucursalTableModel(java.util.List ColNames,ArrayList ColClasses){super((ArrayList)ColNames,ColClasses);}
-public Object getValueAt(int row,int col){    if(col==2)
+public Object getValueAt(int row,int col){    if(col==0)
     {
     SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy '@' hh:mm a");
     return sdf.format((java.util.Date) super.getValueAt(row, col));}
     else
-    {return super.getValueAt(row,col);}
+    {
+        return super.getValueAt(row,col-1);
+    }
 }}

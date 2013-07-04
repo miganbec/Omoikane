@@ -13,15 +13,8 @@ import org.apache.log4j.Logger
 import org.springframework.context.support.ClassPathXmlApplicationContext
 import org.springframework.context.ApplicationContext
 import omoikane.exceptions.UEHandler
-
-import omoikane.sistema.huellas.ContextoFPSDK
 import omoikane.sistema.huellas.ContextoFPSDK.SDK
 import omoikane.sistema.huellas.HuellasCache
-import javax.swing.JInternalFrame
-import javax.swing.JComponent
-import javax.swing.plaf.LayerUI
-import omoikane.formularios.BlurLayerUI
-import javax.swing.JLayer
 
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,14 +52,16 @@ public class Principal {
         public static def                   toFinalizeTracker       = [:]
         public static def                   scanMan
         public static def                   tipoCorte               = ContextoCorte.TIPO_DUAL
-        final  static def                   ASEGURADO               = false
-        final  static def                   DEPURAR                 = false
+        final  static def                   ASEGURADO               = true
+        final  static def                   SHOW_UNHANDLED_EXCEPTIONS = true
         public static Logger                logger                  = Logger.getLogger(Principal.class);
         public static ApplicationContext    applicationContext;
+        public static final Boolean         DEBUG = false;
+        public static final String          VERSION = "1.4.0 Beta 3";
 
-	    public static void main(args)
+    public static void main(args)
         {
-            logger.info( "Prueba de codificación: áéíóú" )
+            logger.trace( "Prueba de codificación: áéíóú" )
             iniciar()
         }
         public static ApplicationContext getContext() {
@@ -76,7 +71,7 @@ public class Principal {
         {
             try {
 
-            logger.info("Iniciando sistema");
+            logger.trace("Iniciando sistema");
             configExceptions()
             def splash = new Splash()
             splash.iniciar()
@@ -166,7 +161,7 @@ public class Principal {
     }
 
     static def configExceptions() {
-        if(DEPURAR) {
+        if(SHOW_UNHANDLED_EXCEPTIONS) {
             Thread.setDefaultUncaughtExceptionHandler(new UEHandler());
         }
         //Logger.getRootLogger().addAppender(new CEAppender());

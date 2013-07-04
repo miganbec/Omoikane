@@ -1,5 +1,6 @@
 package omoikane.formularios;
 
+import omoikane.principal.Principal;
 import org.jdesktop.swingx.graphics.GraphicsUtilities;
 
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class FrostedGlassDesktopPane extends JDesktopPane {
     }
 
     public void paint(Graphics g) {
+        if(!Principal.fondoBlur) { super.paint(g); return; }
 
         Rectangle clipBounds = g.getClipBounds();
         BufferedImage bufferImage = GraphicsUtilities.createCompatibleImage(clipBounds.width, clipBounds.height);

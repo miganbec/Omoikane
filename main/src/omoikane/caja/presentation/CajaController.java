@@ -133,6 +133,7 @@ public class CajaController
     BasculaHandler basculaHandler;
     VentaEspecialHandler ventaEspecialHandler;
     public static Logger logger = Logger.getLogger(CajaController.class);
+    private CerrarCajaSwingHandler cerrarCajaSwingHandler;
 
     public Button getCerrarButton() { return cerrarButton; }
 
@@ -154,6 +155,14 @@ public class CajaController
 
     public TableColumn getPrecioVentaColumn() {
         return precioVentaColumn;
+    }
+
+    public void setCerrarCajaSwingHandler(CerrarCajaSwingHandler cerrarCajaSwingHandler) {
+        this.cerrarCajaSwingHandler = cerrarCajaSwingHandler;
+    }
+
+    public CerrarCajaSwingHandler getCerrarCajaSwingHandler() {
+        return cerrarCajaSwingHandler;
     }
 
     private class BasculaHandler {
@@ -359,7 +368,7 @@ public class CajaController
             if(event.getTarget() == ventaEspecialButton)
                 ventaEspecialHandler.handle(event);
             if(event.getTarget() == cerrarButton)
-                new CerrarCajaHandler(controller).handle(event);
+                getCerrarCajaSwingHandler().handle(event);
         }
     }
 

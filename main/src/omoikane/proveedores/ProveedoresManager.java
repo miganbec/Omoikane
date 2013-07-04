@@ -39,7 +39,7 @@ public class ProveedoresManager {
 
     public JInternalFrame startJFXProveedores() {
         JInternalFrame frame = null;
-        if(omoikane.sistema.Usuarios.autentifica(Permisos.PMA_PROVEEDORES)) frame = _startJFXProveedores();
+        if(omoikane.sistema.Usuarios.cerrojo(Permisos.PMA_PROVEEDORES)) frame = _startJFXProveedores();
         return frame;
     }
 
