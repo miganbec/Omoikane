@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0000999999975" prefWidth="613.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.artemisa.presentation.PacientesController">
+  <children>
+    <Label layoutX="14.0" layoutY="14.0" text="Pacientes">
+      <font>
+        <Font size="23.0" />
+      </font>
+    </Label>
+    <Button defaultButton="false" mnemonicParsing="false" onAction="#agregarAction" text="Nuevo" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="233.0" />
+    <TableView id="proveedoresTable" fx:id="pacientesTable" prefHeight="245.00009999999747" prefWidth="286.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="75.0">
+      <columns>
+        <TableColumn prefWidth="75.0" text="Id" fx:id="idCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="203.0" text="Nombre" fx:id="nombreCol" />
+      </columns>
+    </TableView>
+    <Label layoutX="14.0" layoutY="51.0" text="Buscar:" />
+    <TextField fx:id="txtBuscar" onKeyTyped="#onBusquedaKey" prefWidth="230.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="48.0" />
+    <Label layoutY="51.0" prefWidth="63.0" text="ID:" AnchorPane.rightAnchor="225.0" />
+    <Label layoutY="75.0" prefWidth="63.0" text="Nombre:" AnchorPane.rightAnchor="225.0" />
+    <Label layoutY="110.0" text="Habitación" AnchorPane.rightAnchor="230.0" />
+    <TextField fx:id="txtId" editable="false" prefWidth="200.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="48.0" />
+    <TextField fx:id="txtNombre" prefWidth="200.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="72.0" />
+    <Button defaultButton="true" mnemonicParsing="false" onAction="#guardarAction" text="Guardar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+    <Label fx:id="notaNombre" layoutY="94.0" prefWidth="274.0" text="" textFill="#cc0000" AnchorPane.rightAnchor="14.0" />
+    <Label id="notaNota" fx:id="notaHabitacion" prefWidth="274.0" text="" textFill="RED" AnchorPane.bottomAnchor="210.0" AnchorPane.rightAnchor="14.0" />
+    <Separator orientation="VERTICAL" prefHeight="327.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="303.0" AnchorPane.topAnchor="14.0" />
+    <Button mnemonicParsing="false" onAction="#eliminarAction" text="Liquidar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="150.0" />
+    <CheckBox id="chkInactivos" fx:id="chkIncluirInactivos" mnemonicParsing="false" onAction="#mostrarInactivosAction" text="Incluir cuentas liquidadas" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+    <TextField id="txtNombre" fx:id="txtHabitacion" layoutX="400.0" layoutY="107.0" prefWidth="200.0" />
+  </children>
+</AnchorPane>
