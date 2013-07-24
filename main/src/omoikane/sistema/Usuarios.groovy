@@ -38,12 +38,12 @@ package omoikane.sistema;
     private static boolean autorizado = false;
     public static def usuarioActivo             = [:]
     public static def ultimoUsuarioIdentificado = [:]
-    public static def CAJERO        = 0
-    public static def CAPTURISTA    = 0.5
-    public static def SUPERVISOR    = 1
-    public static def GERENTE       = 2
-    public static def ADMINISTRADOR = 3
-    public static def PROPIETARIO   = 4
+    public static Float CAJERO        = 0
+    public static Float CAPTURISTA    = 0.5
+    public static Float SUPERVISOR    = 1
+    public static Float GERENTE       = 2
+    public static Float ADMINISTRADOR = 3
+    public static Float PROPIETARIO   = 4
     public static Logger logger        = Logger.getLogger(Usuarios.class);
 
     public static def login() throws Exception {
@@ -121,9 +121,13 @@ package omoikane.sistema;
     public static boolean autentifica(llave) {
         return identificaPersona().cerrojo(llave) as boolean
     }
+    public static boolean cerrojo(Object llave) { return cerrojo(llave as Float) }
 
-    public static boolean cerrojo(llave) {
-        return usuarioActivo.cerrojo(llave) as boolean
+    public static boolean cerrojo(Float llave) {
+        if(usuarioActivo.size() == 0)
+            return autentifica(llave) as boolean
+        else
+            return usuarioActivo.cerrojo(llave) as boolean
     }
 
     public static MiniLeerHuella leerHuella(){

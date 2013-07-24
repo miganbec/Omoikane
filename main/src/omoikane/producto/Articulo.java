@@ -63,6 +63,7 @@ public class Articulo implements Serializable, IProductoApreciado {
     private int idGrupo;
 
     @Transient private Boolean esPaqueteDefaultValue = false;
+
     private Boolean esPaquete = esPaqueteDefaultValue;
 
     @Transient

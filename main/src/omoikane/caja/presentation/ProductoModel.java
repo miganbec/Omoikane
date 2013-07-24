@@ -22,8 +22,9 @@ public class ProductoModel {
     private ObjectProperty<BigDecimal> cantidad;
     private ObjectProperty<BigDecimal> precio;
     private ObjectProperty<BigDecimal> precioBase;
+    private ObjectProperty<BigDecimal> impuestosBase;
     private ObjectProperty<BigDecimal> impuestos;
-    private ObjectProperty<BigDecimal> descuentos;
+    private ObjectProperty<BigDecimal> descuentosBase;
     private StringProperty importeString;
     private Producto productoData;
 
@@ -34,8 +35,8 @@ public class ProductoModel {
         setCantidad ( new SimpleObjectProperty<BigDecimal>(new BigDecimal(0)) );
         setPrecio   ( new SimpleObjectProperty<BigDecimal>(new BigDecimal(0)) );
         precioBase = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
-        impuestos  = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
-        descuentos = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+        impuestosBase = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
+        descuentosBase = new SimpleObjectProperty<BigDecimal>(new BigDecimal(0));
         importeString = new SimpleStringProperty("");
 
     }
@@ -156,13 +157,17 @@ public class ProductoModel {
 
     }
 
-    public ObjectProperty<BigDecimal> impuestosProperty() {
-        return impuestos;
+    public BigDecimal getImpuestos() {
+        return impuestosBase.get().multiply(cantidad.get());
     }
 
-    private void setImpuestos(ObjectProperty<BigDecimal> impuestos) {
-        impuestos.get().setScale(2, BigDecimal.ROUND_HALF_UP);
-        this.impuestos = impuestos;
+    public ObjectProperty<BigDecimal> impuestosBaseProperty() {
+        return impuestosBase;
+    }
+
+    private void setImpuestosBase(ObjectProperty<BigDecimal> impuestosBase) {
+        impuestosBase.get().setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.impuestosBase = impuestosBase;
     }
 
     public String getSubtotalString() {
@@ -178,21 +183,25 @@ public class ProductoModel {
 
     public String getImpuestosString() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
-        return nf.format(impuestos.get());
+        return nf.format(getImpuestos());
     }
 
-    public ObjectProperty<BigDecimal> descuentoProperty() {
-        return descuentos;
+    public BigDecimal getDescuentos() {
+        return descuentosBase.get().multiply(cantidad.get());
     }
 
-    private void setDescuentos(ObjectProperty<BigDecimal> descuentos) {
-        descuentos.get().setScale(2, BigDecimal.ROUND_HALF_UP);
-        this.descuentos = descuentos;
+    public ObjectProperty<BigDecimal> descuentosBaseProperty() {
+        return descuentosBase;
+    }
+
+    private void setDescuentosBase(ObjectProperty<BigDecimal> descuentosBase) {
+        descuentosBase.get().setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.descuentosBase = descuentosBase;
     }
 
     public String getDescuentosString() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
-        return nf.format(descuentos.get());
+        return nf.format(descuentosBase.get());
     }
 
     private void setPrecioBase(ObjectProperty<BigDecimal> precioBase) {

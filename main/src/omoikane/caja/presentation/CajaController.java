@@ -32,6 +32,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import jfxtras.labs.scene.control.BigDecimalField;
 import omoikane.caja.business.ICajaLogic;
+import omoikane.caja.business.LineaDeCapturaFilter;
 import omoikane.caja.handlers.*;
 import omoikane.principal.Principal;
 import omoikane.sistema.ComMan;
@@ -62,7 +63,7 @@ public class CajaController
     private TextField cambioTextField;
 
     @FXML
-    private Button cancelarArtículoButton;
+    private Button cancelarArticuloButton;
 
     @FXML
     private Button cancelarVentaButton;
@@ -195,8 +196,11 @@ public class CajaController
 
     private void ifAnySelectedProductoThenSelect() {
         ProductoModel pm = productosTableView.getSelectionModel().getSelectedItem();
+        LineaDeCapturaFilter capturaFilter = new LineaDeCapturaFilter(modelo.getCaptura().get());
+        String cantidad = capturaFilter.getCantidad().toPlainString();
+
         if(pm != null) {
-            modelo.getCaptura().set( pm.codigoProperty().get() );
+            modelo.getCaptura().set( cantidad + "*" + pm.codigoProperty().get() );
         }
     }
 
@@ -297,7 +301,7 @@ public class CajaController
         assert buscarProductoButton != null : "fx:id=\"buscarProductoButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert cajaLabel != null : "fx:id=\"cajaLabel\" was not injected: check your FXML file 'Caja.fxml'.";
         assert getCambioTextField() != null : "fx:id=\"cambioTextField\" was not injected: check your FXML file 'Caja.fxml'.";
-        assert cancelarArtículoButton != null : "fx:id=\"cancelarArtículoButton\" was not injected: check your FXML file 'Caja.fxml'.";
+        //assert cancelarArticuloButton != null : "fx:id=\"cancelarArticuloButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert cancelarVentaButton != null : "fx:id=\"cancelarVentaButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert capturaTextField != null : "fx:id=\"capturaTextField\" was not injected: check your FXML file 'Caja.fxml'.";
         assert descuentoLabel != null : "fx:id=\"descuentoLabel\" was not injected: check your FXML file 'Caja.fxml'.";
@@ -309,7 +313,7 @@ public class CajaController
         assert pausarButton != null : "fx:id=\"pausarButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert productosTableView != null : "fx:id=\"productosTableView\" was not injected: check your FXML file 'Caja.fxml'.";
         assert subtotalLabel != null : "fx:id=\"subtotalLabel\" was not injected: check your FXML file 'Caja.fxml'.";
-        assert terminarVentaButton != null : "fx:id=\"terminarVentaButton\" was not injected: check your FXML file 'Caja.fxml'.";
+        //assert terminarVentaButton != null : "fx:id=\"terminarVentaButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert totalLabel != null : "fx:id=\"totalLabel\" was not injected: check your FXML file 'Caja.fxml'.";
         assert ventaEspecialButton != null : "fx:id=\"ventaEspecialButton\" was not injected: check your FXML file 'Caja.fxml'.";
         assert ventaTableView != null : "fx:id=\"ventaTableView\" was not injected: check your FXML file 'Caja.fxml'.";

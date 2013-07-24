@@ -34,6 +34,8 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -88,9 +90,13 @@ public class CajaLogicImpl implements ICajaLogic {
     }
 
     public void buscar(CajaModel model) {
+
         Pageable pagina = model.getPaginacionBusqueda();
-        String descripcion = model.getCaptura().get();
+
+        LineaDeCapturaFilter capturaFilter = new LineaDeCapturaFilter(model.getCaptura().get());
+        String descripcion = capturaFilter.getCodigo();
         if(descripcion.isEmpty()) return;
+
         ArrayList<Producto> productos = (ArrayList<Producto>) productosDAO.findByDescripcionLike( "%"+descripcion+"%", pagina);
         ObservableList<ProductoModel> obsProductos = model.getProductos();
 
@@ -172,13 +178,13 @@ public class CajaLogicImpl implements ICajaLogic {
     }
 
     private void productoToProductoModel(Producto producto, ProductoModel productoModel) {
-        productoModel.getId()             .set( producto.getId() );
-        productoModel.codigoProperty()    .set( producto.getCodigo() );
-        productoModel.precioBaseProperty().set( producto.getPrecio().getPrecioBase() );
-        productoModel.conceptoProperty()  .set( producto.getDescripcion() );
-        productoModel.descuentoProperty() .set( producto.getPrecio().getDescuento() );
-        productoModel.impuestosProperty() .set( producto.getPrecio().getImpuestos() );
-        productoModel.precioProperty()    .set( producto.getPrecio().getPrecio() );
+        productoModel.getId()                 .set( producto.getId() );
+        productoModel.codigoProperty()        .set( producto.getCodigo() );
+        productoModel.precioBaseProperty()    .set( producto.getPrecio().getPrecioBase() );
+        productoModel.conceptoProperty()      .set( producto.getDescripcion() );
+        productoModel.descuentosBaseProperty().set( producto.getPrecio().getDescuento() );
+        productoModel.impuestosBaseProperty() .set( producto.getPrecio().getImpuestos() );
+        productoModel.precioProperty()        .set( producto.getPrecio().getPrecio() );
         productoModel.setProductoData(producto);
     }
 
@@ -313,8 +319,8 @@ public class CajaLogicImpl implements ICajaLogic {
             lvd.setIdLinea   ( producto.getProductoData().getLineaByLineaId().getId() );
             lvd.setCantidad  ( producto.cantidadProperty().get().doubleValue() );
             lvd.setPrecio    ( producto.precioProperty().get().doubleValue() );
-            lvd.setDescuento ( producto.descuentoProperty().get().doubleValue() );
-            lvd.setImpuestos ( producto.impuestosProperty().get().doubleValue() );
+            lvd.setDescuento ( producto.getDescuentos().doubleValue() );
+            lvd.setImpuestos ( producto.getImpuestos().doubleValue() );
             lvd.setSubtotal  ( producto.getSubtotal().doubleValue() );
             lvd.setTotal     ( producto.getImporte().doubleValue() );
             lvd.setTipoSalida( "" );
@@ -352,8 +358,8 @@ public class CajaLogicImpl implements ICajaLogic {
 
         for ( ProductoModel producto : model.getVenta() ) {
             subtotal   = subtotal  .add( producto.getSubtotal() );
-            descuentos = descuentos.add( producto.descuentoProperty().get() );
-            impuestos  = impuestos .add( producto.impuestosProperty().get() );
+            descuentos = descuentos.add( producto.getDescuentos() );
+            impuestos  = impuestos .add( producto.getImpuestos() );
         }
 
         total = total.add( subtotal );

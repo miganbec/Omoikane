@@ -77,9 +77,9 @@ public class VentaEspecialHandler extends ICajaEventHandler {
             try {
                 bd = (BigDecimal) df.parse(t.getNewValue());
                 ProductoModel pm = t.getTableView().getSelectionModel().getSelectedItem();
-                pm.impuestosProperty().set(pm.getProductoData().getImpuestos().divide(new BigDecimal(100)).multiply(bd));
-                pm.descuentoProperty().set(pm.getProductoData().getDescuento().divide(new BigDecimal(100)).multiply(bd));
-                pm.precioBaseProperty().set(bd.subtract(pm.impuestosProperty().get()).add(pm.descuentoProperty().get()));
+                pm.impuestosBaseProperty().set(pm.getProductoData().getImpuestos().divide(new BigDecimal(100)).multiply(bd));
+                pm.descuentosBaseProperty().set(pm.getProductoData().getDescuento().divide(new BigDecimal(100)).multiply(bd));
+                pm.precioBaseProperty().set(bd.subtract(pm.impuestosBaseProperty().get()).add(pm.descuentosBaseProperty().get()));
                 pm.precioProperty().set(bd);
 
                 getController().getCajaLogic().onVentaListChanged(getController().getModel());

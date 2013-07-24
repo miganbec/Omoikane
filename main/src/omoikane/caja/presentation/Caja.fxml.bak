@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?scenebuilder-background-color 0x000000ff?>
 <?scenebuilder-classpath-element ../../../../../lib/jfxtras-labs-2.2-r4.jar?>
 <?import java.lang.*?>
 <?import java.util.*?>

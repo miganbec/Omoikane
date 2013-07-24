@@ -73,7 +73,7 @@ public class CajaManager extends Application {
 
     public JInternalFrame startJFXCaja() {
         JInternalFrame frame = null;
-        if(!omoikane.sistema.Usuarios.cerrojo(Permisos.getPMA_LANZARCAJA())) return null;
+        if(!omoikane.sistema.Usuarios.cerrojo((Object) Permisos.getPMA_LANZARCAJA())) return null;
         abrirCaja();
         return null;
 

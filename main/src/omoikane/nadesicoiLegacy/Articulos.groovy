@@ -357,7 +357,7 @@ class ArticulosFunciones {
                             break;
                         }
                         /*println "***Precio:"+ArticulosFunciones.getPrecioConDatos(
-                            [costo:,clienteDescuento:,lineaDescuento:,precioDescuento:,impuestos:]
+                            [costo:,clienteDescuento:,lineaDescuento:,precioDescuento:,impuestosBase:]
                         ) */
                     }
                     if(filaDat != null) {

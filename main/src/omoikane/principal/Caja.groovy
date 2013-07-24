@@ -299,7 +299,7 @@ class Caja implements Serializable {
                                                "Descuento"  : precio['descuento$'] , "Impuestos"          : impuesto                    ,
                                                "Total"      : total                , "Impuestos%"         : precio['impuestos%']        ,
                                                "Descuento%" : precio['descuento%'] , "DescuentoReferencia": descuento])
-                        //println "impuestos->"+art.impuestos
+                        //println "impuestosBase->"+art.impuestosBase
                         Caja.sumarTodo(form)
                         form.repaint()
                         form.tablaVenta.scrollRectToVisible(form.tablaVenta.getCellRect(form.tablaVenta.getRowCount()-1, 1, true));

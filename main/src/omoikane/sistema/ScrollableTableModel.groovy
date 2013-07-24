@@ -142,7 +142,7 @@ public class ScrollableTableModel extends AbstractTableModel {
                     if(meta.getColumnName(it+1) == "xIDPrecioCA") { catArts = true; CADataPrecio = [:] }
                     if(catArts) {
                         switch(meta.getColumnName(it+1)) {
-                            case "xImpuestosCA": CADataPrecio['impuestos'] = resultSet.getObject(it+1); filaDat = null; break;
+                            case "xImpuestosCA": CADataPrecio['impuestosBase'] = resultSet.getObject(it+1); filaDat = null; break;
                             case "xCostoCA": CADataPrecio['costo'] = resultSet.getObject(it+1); filaDat = null; break;
                             case "xUtilidadCA": CADataPrecio['utilidad'] = resultSet.getObject(it+1); filaDat = null; break;
                             case "xDescuentoCA": CADataPrecio['precioDescuento'] = resultSet.getObject(it+1); filaDat = null; break;
@@ -156,7 +156,7 @@ public class ScrollableTableModel extends AbstractTableModel {
                             break;
                         }
                           //println "***Precio:"+ArticulosFunciones.getPrecioConDatos(
-                          //  [costo:,clienteDescuento:,lineaDescuento:,precioDescuento:,impuestos:]
+                          //  [costo:,clienteDescuento:,lineaDescuento:,precioDescuento:,impuestosBase:]
                         ) //
                     } */
 
