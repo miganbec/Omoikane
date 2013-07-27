@@ -1,6 +1,8 @@
 package omoikane.artemisa.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,6 +29,10 @@ public class Paciente {
 
     public Paciente() {
         liquidado = false;
+    }
+
+    public String toString() {
+        return getNombre();
     }
 
     public Integer getId() {

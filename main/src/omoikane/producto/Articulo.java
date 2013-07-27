@@ -238,7 +238,7 @@ public class Articulo implements Serializable, IProductoApreciado {
 
     @Override
     public String toString() {
-        return "javaapplication1.Articulos[ idArticulo=" + idArticulo + " ]";
+        return descripcion;
     }
 
     public Boolean getEsPaquete() {

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="256.0" prefWidth="301.0" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.artemisa.presentation.ConsumoController">
+  <children>
+    <Label layoutX="14.0" layoutY="50.0" prefWidth="160.0" text="Paciente">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Button id="aceptarButton" fx:id="registrarButton" mnemonicParsing="false" onAction="#registrar" prefHeight="32.0" prefWidth="273.0" text="Registrar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+    <ComboBox fx:id="pacienteField" editable="false" layoutY="71.0" prefHeight="21.0" prefWidth="273.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <Label font="$x1" layoutX="14.0" layoutY="101.0" text="Cantidad" />
+    <TextField fx:id="cantidadField" layoutY="120.0" prefWidth="273.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+    <Label font="$x1" layoutX="14.0" layoutY="148.0" text="Producto o servicio" />
+    <ComboBox fx:id="productoField" editable="false" layoutY="173.0" prefHeight="21.0" prefWidth="273.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <Pane prefHeight="50.0" prefWidth="301.0" style="-fx-background-color: dodgerblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefWidth="273.0" text="Formulario de consumo" textAlignment="CENTER" textFill="WHITE">
+          <font>
+            <Font name="System Bold" size="16.0" />
+          </font>
+        </Label>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

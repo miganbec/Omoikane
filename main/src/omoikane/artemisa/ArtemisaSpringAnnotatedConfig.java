@@ -5,6 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import omoikane.artemisa.presentation.CajaClinicaController;
+import omoikane.artemisa.presentation.ConsumoController;
 import omoikane.artemisa.presentation.PacientesController;
 import omoikane.etiquetas.ImpresionEtiquetasController;
 import omoikane.inventarios.StockLevelsController;
@@ -40,6 +42,30 @@ public class ArtemisaSpringAnnotatedConfig {
     @Scope("prototype")
     Scene pacientesView() {
         return initView("/omoikane/artemisa/presentation/PacientesView.fxml", pacientesController());
+    }
+
+    @Bean
+    @Scope("prototype")
+     ConsumoController consumoController() {
+     return new ConsumoController();
+    }
+
+    @Bean
+    @Scope("prototype")
+    Scene consumoView() {
+        return initView("/omoikane/artemisa/presentation/ConsumoView.fxml", consumoController());
+    }
+
+    @Bean
+    @Scope("prototype")
+    CajaClinicaController cajaClinicaController() {
+        return new CajaClinicaController();
+    }
+
+    @Bean
+    @Scope("prototype")
+    Scene cajaClinicaView() {
+        return initView("/omoikane/artemisa/presentation/CajaClinicaView.fxml", cajaClinicaController());
     }
 
     private SceneOverloaded initView(String fxml, final Initializable controller) {

@@ -41,4 +41,20 @@ public class PacienteViewTest {
         testProperties.put("DummyJFXApp.viewBeanToTest", "pacientesView");
         Application.launch(DummyJFXApp.class);
     }
+
+    @Test
+    public void consumoViewTest() {
+        omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
+        HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "properties" );
+        testProperties.put("DummyJFXApp.viewBeanToTest", "consumoView");
+        Application.launch(DummyJFXApp.class);
+    }
+
+    @Test
+    public void cajaClinicaViewTest() {
+        omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
+        HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "properties" );
+        testProperties.put("DummyJFXApp.viewBeanToTest", "cajaClinicaView");
+        Application.launch(DummyJFXApp.class);
+    }
 }
