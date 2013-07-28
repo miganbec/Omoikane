@@ -100,9 +100,8 @@ public class PacientesController implements Initializable {
         pacientesTable.getSelectionModel().select(paciente);
     }
 
-    @FXML
     /**
-     * Ésta acción en realidad desactiva al proveedor
+     * Ésta acción en realidad desactiva al paciente. Nota: Ésta función ya no está en uso, sigue aquí solo para referencia
      */
     public void eliminarAction(ActionEvent event) {
         Paciente paciente = selectedPaciente;

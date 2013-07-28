@@ -28,6 +28,7 @@
     <Label fx:id="notaNombre" layoutY="110.0" prefWidth="274.0" text="" textFill="#cc0000" AnchorPane.rightAnchor="15.0" />
     <Label id="notaNota" fx:id="notaHabitacion" prefWidth="274.0" text="" textFill="RED" AnchorPane.bottomAnchor="194.0" AnchorPane.rightAnchor="15.0" />
     <Separator orientation="VERTICAL" prefHeight="327.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="303.0" AnchorPane.topAnchor="14.0" />
+    <Button mnemonicParsing="false" onAction="#eliminarAction" text="Liquidar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="150.0" />
     <CheckBox id="chkInactivos" fx:id="chkIncluirInactivos" mnemonicParsing="false" onAction="#mostrarInactivosAction" text="Incluir cuentas liquidadas" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefHeight="45.0" prefWidth="613.0" style="-fx-background-color: dodgerblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>

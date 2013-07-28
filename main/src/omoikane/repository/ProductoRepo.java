@@ -26,4 +26,9 @@ public interface ProductoRepo extends GenericDao<Articulo, Long>
 
     @Query("SELECT cp.producto FROM CodigoProducto cp WHERE cp.codigo = ?1")
     List<Articulo> findByCodigoAlterno(String codigo);
+
+    //Usar éste método en lugar de readAll para mayor eficiencia
+    @Query("SELECT a FROM Articulo a JOIN FETCH a.baseParaPrecio")
+    List<Articulo> findAll();
+
 }

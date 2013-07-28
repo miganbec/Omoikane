@@ -57,4 +57,12 @@ public class PacienteViewTest {
         testProperties.put("DummyJFXApp.viewBeanToTest", "cajaClinicaView");
         Application.launch(DummyJFXApp.class);
     }
+
+    @Test
+    public void uiManagerViewTest() {
+        omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
+        HashMap testProperties = (HashMap) Principal.applicationContext.getBean( "properties" );
+        testProperties.put("DummyJFXApp.viewBeanToTest", "uiManagerView");
+        Application.launch(DummyJFXApp.class);
+    }
 }

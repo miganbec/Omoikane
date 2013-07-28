@@ -112,7 +112,7 @@ public class ConsumoController implements Initializable {
         ObservableList observableList = FXCollections.observableArrayList(pacientesActivos);
         pacienteField.setItems( observableList );
 
-        List productos = productoRepo.readAll();
+        List productos = productoRepo.findAll();
         ObservableList observableList1 = FXCollections.observableArrayList(productos);
         productoField.setItems( observableList1 );
 
