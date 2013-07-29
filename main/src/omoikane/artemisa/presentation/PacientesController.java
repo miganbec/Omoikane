@@ -11,12 +11,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import omoikane.artemisa.entity.Paciente;
+import omoikane.artemisa.reports.PacientePrint;
 import omoikane.proveedores.Proveedor;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.*;
 
 import java.net.URL;
+import java.text.DateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 import omoikane.artemisa.PacienteRepo;
@@ -33,13 +35,19 @@ public class PacientesController implements Initializable {
     @FXML TextField txtId;
     @FXML TextField txtNombre;
 
+    @FXML private Button imprimirButton; // Value injected by FXMLLoader
+
     @FXML TableView<Paciente> pacientesTable;
     @FXML TextField txtHabitacion;
+    @FXML TextField responsableTxt;
+    @FXML TextField edadTxt;
+    @FXML TextArea anotacionTxt;
 
     @FXML Label notaNombre;
     @FXML Label notaHabitacion;
+    @FXML Label ingresoDateLabel;
 
-    @FXML TableColumn idCol;
+    @FXML TableColumn habitacionCol;
     @FXML TableColumn nombreCol;
 
     @FXML CheckBox chkIncluirInactivos;
@@ -59,7 +67,7 @@ public class PacientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        idCol.setCellValueFactory(new PropertyValueFactory<Proveedor, Long>("id"));
+        habitacionCol.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("habitacion"));
         nombreCol.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("nombre"));
 
         pacientes = FXCollections.observableArrayList();
@@ -70,19 +78,20 @@ public class PacientesController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Paciente> observableValue, Paciente paciente, Paciente paciente2) {
                 if(paciente2 != null) {
+                    borrarCampos();
                     selectedPaciente = paciente2;
-                    notaHabitacion.setText("");
-                    notaNombre.setText("");
-                    txtNombre.textProperty().set(paciente2.getNombre());
-                    txtHabitacion.textProperty().set(paciente2.getHabitacion());
-                    if(paciente2.getId() != null)
-                        txtId.textProperty().set(paciente2.getId().toString());
-                    else
-                        txtId.textProperty().set("");
+                    llenarCampos(paciente2);
                 }
             }
         });
 
+
+        imprimirButton.disableProperty().bind(txtId.textProperty().isEqualTo(""));
+    }
+
+    public void onImprimir(ActionEvent event) {
+        PacientePrint pacientePrint = new PacientePrint(selectedPaciente);
+        pacientePrint.show();
     }
 
     public void llenarTabla() {
@@ -120,7 +129,24 @@ public class PacientesController implements Initializable {
         txtHabitacion.setText("");
         notaHabitacion.setText("");
         notaNombre.setText("");
+        anotacionTxt.setText("");
+        responsableTxt.setText("");
+        edadTxt.setText("");
+        ingresoDateLabel.setText("");
         selectedPaciente = null;
+    }
+
+    private void llenarCampos(Paciente p) {
+        txtNombre.textProperty().set(p.getNombre());
+        txtHabitacion.textProperty().set(p.getHabitacion());
+        edadTxt.textProperty().set(( p.getEdad() ));
+        responsableTxt.textProperty().set( p.getResponsable() );
+        anotacionTxt.textProperty().set( p.getAnotacion() );
+        ingresoDateLabel.setText("Fecha / hora de ingreso: " + DateFormat.getDateTimeInstance().format( p.getEntrada() ));
+        if(p.getId() != null)
+            txtId.textProperty().set(p.getId().toString());
+        else
+            txtId.textProperty().set("");
     }
 
     @FXML
@@ -128,6 +154,9 @@ public class PacientesController implements Initializable {
         Paciente paciente = selectedPaciente != null ? selectedPaciente : new Paciente();
         paciente.setNombre( txtNombre.getText() );
         paciente.setHabitacion(txtHabitacion.getText());
+        paciente.setEdad( edadTxt.getText() );
+        paciente.setResponsable( responsableTxt.getText() );
+        paciente.setAnotacion( anotacionTxt.getText() );
 
         if(validar(paciente)) {
             pacienteRepo.saveAndFlush(paciente);

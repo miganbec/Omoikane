@@ -48,21 +48,38 @@ class Reporte {
         }
     }
 
-    Reporte(String reporteJasper,java.util.List matriz)
+    Reporte(String reporteJasper,java.util.List matriz, boolean compilar = false)
     {
         try {
-            def stream = cargarPlantilla(reporteJasper)
+            def stream
+            if(compilar)
+                    stream = cargarYCompilarJXML(reporteJasper)
+                else
+                    stream = cargarPlantilla(reporteJasper)
             jp = JasperFillManager.fillReport(stream, new java.util.HashMap(), new JRMapCollectionDataSource(matriz))
         } catch(Exception e) {
             omoikane.sistema.Dialogos.lanzarDialogoError(null, "Error generando reporte desde matriz", omoikane.sistema.Herramientas.getStackTraceString(e))
         }
     }
+
+    public JPanel getPreviewPanel() {
+        return new net.sf.jasperreports.view.JRViewer(jp);
+    }
+
     def cargarPlantilla(String reporteURL)
     {
         def stream = ClassLoader.getSystemResourceAsStream(reporteURL)
         if(stream == null) { throw new Exception("Plantilla de reporte no encontrada. " + reporteURL); }
         return stream
     }
+
+    def cargarYCompilarJXML(String reporteURL)
+    {
+        def stream = cargarPlantilla(reporteURL)
+        JasperReport report = JasperCompileManager.compileReport(reporteURL);
+        return report;
+    }
+
     def toPDF(salida)
     {
         JasperExportManager.exportReportToPdfFzile(jp, salida);

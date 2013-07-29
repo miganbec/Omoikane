@@ -37,6 +37,7 @@ import omoikane.artemisa.entity.Abono;
 import omoikane.artemisa.entity.CancelacionTransaccion;
 import omoikane.artemisa.entity.Paciente;
 import omoikane.artemisa.entity.Transaccion;
+import omoikane.artemisa.reports.AbonoPrint;
 import omoikane.caja.presentation.ProductoModel;
 import omoikane.entities.Cancelacion;
 import omoikane.entities.Usuario;
@@ -245,6 +246,8 @@ public class CajaClinicaController
         nvoAbono.setPaciente(paciente);
 
         entityManager.persist(nvoAbono);
+        AbonoPrint abonoPrint = new AbonoPrint(nvoAbono);
+        abonoPrint.show();
         logger.info("Abono registrado");
         abonoTxt.setText("");
         selectPaciente(paciente);

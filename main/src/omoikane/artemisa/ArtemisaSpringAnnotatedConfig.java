@@ -5,10 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
-import omoikane.artemisa.presentation.CajaClinicaController;
-import omoikane.artemisa.presentation.ConsumoController;
-import omoikane.artemisa.presentation.PacientesController;
-import omoikane.artemisa.presentation.UIManagerController;
+import omoikane.artemisa.presentation.*;
 import omoikane.etiquetas.ImpresionEtiquetasController;
 import omoikane.inventarios.StockLevelsController;
 import omoikane.inventarios.TomaInventarioController;
@@ -79,6 +76,18 @@ public class ArtemisaSpringAnnotatedConfig {
     @Scope("prototype")
     Scene uiManagerView() {
         return initView("/omoikane/artemisa/presentation/UIManagerView.fxml", uiManagerController());
+    }
+
+    @Bean
+    @Scope("prototype")
+    ReportesController reportesController() {
+        return new ReportesController();
+    }
+
+    @Bean
+    @Scope("prototype")
+    Scene reportesView() {
+        return initView("/omoikane/artemisa/presentation/ReportesView.fxml", reportesController());
     }
 
     private SceneOverloaded initView(String fxml, final Initializable controller) {

@@ -1,0 +1,29 @@
+{
+    "pacientes": [
+        {
+        "id": 1,
+        "nombre": "Ralph Demoledor",
+        "habitacion": "101",
+        "edad": "30",
+        "responsable": "Vanellope Von Schweetz",
+        "entrada": "29/07/2013 02:17 PM"
+        },
+        {
+        "id": 2,
+        "nombre": "Wall-E",
+        "habitacion": "102",
+        "edad": "700",
+        "responsable": "E.V.A.",
+        "entrada": "29/07/2013 12:16 PM"
+        }
+
+    ],
+    "recibos": [
+        {
+        "fecha": "29/07/2013 3:56 PM",
+        "paciente": "Ralph Demoledor",
+        "concepto": "Abono a cuenta del paciente",
+        "importe": "125.50"
+        }
+    ]
+}

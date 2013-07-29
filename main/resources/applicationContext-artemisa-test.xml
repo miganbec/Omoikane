@@ -15,6 +15,7 @@
                       entity-manager-factory-ref="entityManagerFactory">
         <hades:dao id="pacienteRepo" />
         <hades:dao id="cancelacionTransaccionDAO" />
+        <hades:dao id="transaccionDAO" />
     </hades:dao-config>
 
 </beans>

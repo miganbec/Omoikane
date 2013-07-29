@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import jfxtras.labs.scene.control.CalendarTextField?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="379.0000999999975" prefWidth="613.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.artemisa.presentation.PacientesController">
+  <children>
+    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefHeight="45.0" prefWidth="613.0" style="-fx-background-color: dodgerblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="777.0" text="Reportes" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="12.0">
+          <font>
+            <Font name="System Bold" size="12.0" />
+          </font>
+        </Label>
+      </children>
+    </AnchorPane>
+    <Accordion layoutX="0.0" layoutY="45.0" prefHeight="334.0001220703125" prefWidth="613.0">
+      <expandedPane>
+        <TitledPane fx:id="x1" animated="false" text="Reporte de transacciones">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label layoutX="14.0" layoutY="21.0" text="Desde" />
+                <CalendarTextField layoutX="14.0" layoutY="21.0"/>
+                <Label layoutX="240.0" layoutY="21.0" text="Hasta" />
+                <Button layoutX="532.0" layoutY="19.0" mnemonicParsing="false" text="Generar" />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
+        <fx:reference source="x1" />
+      </panes>
+    </Accordion>
+  </children>
+</AnchorPane>

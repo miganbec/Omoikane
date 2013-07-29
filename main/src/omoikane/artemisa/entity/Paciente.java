@@ -1,7 +1,10 @@
 package omoikane.artemisa.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,13 +22,24 @@ public class Paciente {
     @Column
     private String nombre;
     @Column
-    private Integer edad;
+    private String edad;
     @Column
     private String habitacion;
     @Column
     private String responsable;
     @Column
     private Boolean liquidado;
+    @Column (columnDefinition = "text")
+    private
+    String anotacion;
+    @Column
+    private
+    Date entrada;
+
+    @PrePersist
+    protected void onCreate() {
+        setEntrada( new Timestamp(Calendar.getInstance().getTime().getTime()) );
+    }
 
     public Paciente() {
         liquidado = false;
@@ -51,11 +65,11 @@ public class Paciente {
         this.nombre = nombre;
     }
 
-    public Integer getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 
@@ -81,5 +95,21 @@ public class Paciente {
 
     public void setLiquidado(Boolean liquidado) {
         this.liquidado = liquidado;
+    }
+
+    public String getAnotacion() {
+        return anotacion;
+    }
+
+    public void setAnotacion(String anotacion) {
+        this.anotacion = anotacion;
+    }
+
+    public Date getEntrada() {
+        return entrada;
+    }
+
+    public void setEntrada(Date entrada) {
+        this.entrada = entrada;
     }
 }

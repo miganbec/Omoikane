@@ -85,6 +85,10 @@ class Reporte {
         form.panel.add(new net.sf.jasperreports.view.JRViewer(jp));
         form.panel.updateUI()
     }
+
+    public JPanel getPreviewPanel() {
+        return new net.sf.jasperreports.view.JRViewer(jp);
+    }
     
     private FileInputStream readFile(String filename) throws IOException {
         File file = new File( filename );
