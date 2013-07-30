@@ -8,10 +8,12 @@
 
 package omoikane.principal
 
-import omoikane.*;
-import omoikane.sistema.*
+import omoikane.*
+ import omoikane.caja.CajaManager;
+ import omoikane.sistema.*
 import omoikane.sistema.Usuarios as SisUsuarios
 import javax.swing.JFrame
+ import javax.swing.JInternalFrame
  import java.awt.Rectangle;
 
 class MenuPrincipal {
@@ -19,8 +21,9 @@ class MenuPrincipal {
 
     void iniciar()
     { if(!SisUsuarios.cerrojo(SisUsuarios.CAPTURISTA)) {
-      //Si es cajero no se lanza el menú, ingresa directo a caja
-       Caja.lanzar()
+            //Si es cajero no se lanza el menú, ingresa directo a caja
+            CajaManager manager = new CajaManager();
+            JInternalFrame internalFrame = manager.startJFXCaja();
     } else {
             menuPrincipal.setBounds(new Rectangle(menuPrincipal.getPreferredSize()))
             Herramientas.panelCatalogo(menuPrincipal);

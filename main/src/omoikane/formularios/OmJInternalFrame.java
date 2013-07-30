@@ -37,18 +37,17 @@ public class OmJInternalFrame extends javax.swing.JInternalFrame {
             BoxBlurFilter filter = new BoxBlurFilter();
 
             cacheFondo = copyImage(fondo);
-            System.out.println("Bounds: "+getX()+","+getY()+","+getWidth()+","+getHeight());
 
             //fondo = new GaussianBlurFilter(4).filter(fondo, null);
             filter.setIterations(2);
             filter.setRadius(5);
 
-            PointillizeFilter pointillizeFilter = new PointillizeFilter();
+            /*PointillizeFilter pointillizeFilter = new PointillizeFilter();
             pointillizeFilter.setEdgeColor(6);
             pointillizeFilter.setEdgeThickness(1);
             pointillizeFilter.setFadeEdges(false);
             pointillizeFilter.setFuzziness(6);
-            //pointillizeFilter.filter(cacheFondo, cacheFondo);
+            pointillizeFilter.filter(cacheFondo, cacheFondo);*/
 
             filter.filter(cacheFondo, cacheFondo);
 

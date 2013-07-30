@@ -70,10 +70,6 @@ public class CatalogoArticulos extends OmJInternalFrame {
         }
     }
 
-    public void actionPerformed(ActionEvent ae)
-    {
-        
-    }
     private String mainQuery;
     public String getMainQuery() { return mainQuery; }
     public void setMainQuery(String mainQuery) { this.mainQuery = mainQuery; }

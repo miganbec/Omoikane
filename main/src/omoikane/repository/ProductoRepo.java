@@ -31,4 +31,7 @@ public interface ProductoRepo extends GenericDao<Articulo, Long>
     @Query("SELECT a FROM Articulo a JOIN FETCH a.baseParaPrecio")
     List<Articulo> findAll();
 
+    @Query("SELECT a FROM Articulo a JOIN FETCH a.baseParaPrecio WHERE a.descripcion like ?1 OR a.codigo like ?1")
+    List<Articulo> findByDescripcionLikeOrCodigoLike(String busqueda);
+
 }

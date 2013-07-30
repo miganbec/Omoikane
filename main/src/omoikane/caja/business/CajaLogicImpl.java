@@ -149,6 +149,7 @@ public class CajaLogicImpl implements ICajaLogic {
 
     @Override
     public void deleteRowFromVenta(int row) {
+
         getController().getModel().getVenta().remove(row);
         getVentaAbiertaBean().getItems().remove(row);
         persistirVenta();
@@ -269,7 +270,7 @@ public class CajaLogicImpl implements ICajaLogic {
         comprobantes.imprimir();
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     private LegacyVenta guardarVenta(CajaModel model) {
         Integer idCaja    = Principal.IDCaja;
         Integer idAlmacen = Principal.IDAlmacen;
@@ -328,6 +329,10 @@ public class CajaLogicImpl implements ICajaLogic {
             venta.addItem(lvd);
             i++;
         }
+
+        //Si no se agrego ningún renglón a "venta" entonces retomamos la colección original "itemsTmp".
+        //  Nota: Agregué ésta línea para corregir un bug causado por eliminar mediante cancelación el último renglón de la venta
+        if(venta.getItems() == null) venta.setItems(itemsTmp);
 
         venta = ventaRepo.saveAndFlush(venta);
         return venta;

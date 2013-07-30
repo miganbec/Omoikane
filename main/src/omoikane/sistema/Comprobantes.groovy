@@ -10,7 +10,9 @@ package omoikane.sistema
 
 import java.io.*;
 import groovy.text.GStringTemplateEngine
-import java.text.SimpleDateFormat
+
+ import java.text.NumberFormat
+ import java.text.SimpleDateFormat
 import groovy.inspect.swingui.*
  import javax.persistence.PersistenceContext
  import javax.persistence.EntityManager
@@ -220,6 +222,14 @@ import groovy.inspect.swingui.*
         def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(plantilla).make(binding)
         template.toString()
+    }
+
+    def setComprobante(String filePath, Map data) {
+        def plantilla = new File(filePath).getText('UTF-8') as String
+        def binding = data;
+        def engine = new GStringTemplateEngine()
+        def template = engine.createTemplate(plantilla).make(binding)
+        generado = template;
     }
 	/* 
 	 * Imprime el comprobante generado, alias de probar() 

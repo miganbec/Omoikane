@@ -80,7 +80,7 @@ public class CajaManager extends Application {
     }
 
     private JInternalFrame _startJFXCaja() {
-        final JInternalFrame frame = new OmJInternalFrame();
+        final OmJInternalFrame frame = new OmJInternalFrame();
         final JFXPanel fxPanel = new JFXPanel();
         fxPanel.setBackground(Color.black);
         fxPanel.setOpaque(true);
@@ -93,6 +93,7 @@ public class CajaManager extends Application {
         omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(frame);
         frame.setSize(1120, 615);
         frame.setPreferredSize(new Dimension(1120, 615));
+        frame.generarFondo();
         frame.setVisible(true);
         Herramientas.centrarVentana(frame);
         Herramientas.iconificable(frame);

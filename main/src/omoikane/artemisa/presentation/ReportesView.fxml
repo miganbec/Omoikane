@@ -19,7 +19,7 @@
         </Label>
       </children>
     </AnchorPane>
-    <Accordion layoutX="0.0" layoutY="45.0" prefHeight="334.0001220703125" prefWidth="613.0">
+    <Accordion layoutX="0.0" layoutY="45.0" prefHeight="334" prefWidth="613.0" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="45" AnchorPane.leftAnchor="0">
       <expandedPane>
         <TitledPane fx:id="x1" animated="false" text="Reporte de transacciones">
           <content>

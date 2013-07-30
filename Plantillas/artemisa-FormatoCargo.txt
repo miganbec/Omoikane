@@ -1,0 +1,22 @@
+<% 
+    def moneda        = java.text.NumberFormat.getCurrencyInstance();
+    def formatoFecha  = java.text.DateFormat.getDateTimeInstance();
+%>
+${""+ (27 as char)+(112 as char)+(0 as char)+(25 as char)+(250 as char)}
+
+
+== Cargo a la cuenta del paciente ==
+
+Paciente: (${paciente.id}) ${paciente.nombre}
+
+Concepto: ${producto.descripcion}
+Cantidad: ${cantidad}
+Precio unitario: ${ moneda.format( producto.precio.precio ) }
+
+Importe: ${ moneda.format( importe ) }
+
+== ${formatoFecha.format ( fecha )} ==
+
+
+
+${""+ (27 as char)+(100 as char)+(8 as char)}

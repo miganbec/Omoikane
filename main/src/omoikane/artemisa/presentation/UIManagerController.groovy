@@ -52,7 +52,8 @@ public class UIManagerController
         def menu = [
                 [icono: "/omoikane/artemisa/images/address-book.png", vista: "pacientesView"],
                 [icono: "/omoikane/artemisa/images/coin.png", vista: "cajaClinicaView"],
-                [icono: "/omoikane/artemisa/images/barcode.png", vista: "consumoView"]
+                [icono: "/omoikane/artemisa/images/barcode.png", vista: "consumoView"],
+                [icono: "/omoikane/artemisa/images/print.png", vista: "reportesView"]
         ]
 
         generarMenu(menu)
@@ -84,6 +85,7 @@ public class UIManagerController
         AnchorPane.setRightAnchor(parent, 0d);
         AnchorPane.setTopAnchor(parent, 0d);
         Button dummyButton = new Button("");
+        contentPane.getChildren().removeAll();
         contentPane.getChildren().addAll(parent, dummyButton);
         contentPane.getChildren().remove(dummyButton);
         parent.setVisible(true);
