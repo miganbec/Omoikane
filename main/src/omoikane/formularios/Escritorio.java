@@ -32,7 +32,7 @@ public class Escritorio extends javax.swing.JFrame {
     /** Creates new form Escritorio */
     public Escritorio() {
         initComponents();
-        this.PanelEscritorio.setVisible(true);
+        //this.PanelEscritorio.setVisible(true);
         //lblImagenFondo.setVisible(true);
 
         this.transferFocus();
@@ -156,7 +156,7 @@ public class Escritorio extends javax.swing.JFrame {
 
         getContentPane().add(PanelEscritorio);
 
-        pack();
+        //pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void calendarioCanvasClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calendarioCanvasClicked

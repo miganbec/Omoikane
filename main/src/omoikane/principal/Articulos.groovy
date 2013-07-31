@@ -1,5 +1,6 @@
 package omoikane.principal
 
+import omoikane.formularios.OmJInternalFrame
 import omoikane.inventarios.Stock
 import omoikane.inventarios.StockLevelsController
 import omoikane.principal.*
@@ -33,6 +34,24 @@ public class Articulos
         def res
         PuertoNadesico.workIn() { res = it.RAMCacheCodigos.executeQuery("select id_articulo from nadesicoi.RAMCacheCodigos as rca WHERE rca like '%"+busqueda+"%'") /*it.RAMCacheCodigos.findAllByCodigoLike("%"+busqueda+"%");*/ }
         //println "resu:"+res.dump()
+    }
+
+    static OmJInternalFrame getCatalogoFrameInstance()
+    {
+        if(cerrojo(PMA_ABRIRARTICULO)){
+            StopWatch timer = new StopWatch().start();
+            OmJInternalFrame cat = (new omoikane.formularios.CatalogoArticulos());
+
+            cat.setVisible(true);
+
+            cat.txtBusqueda.keyReleased = { if(it.keyCode == it.VK_ESCAPE) cat.btnCerrar.doClick() }
+            cat.toFront()
+
+            try { cat.setSelected(true) } catch(Exception e) { Dialogos.lanzarDialogoError(null, "Error al iniciar formulario catálogo de artículos", Herramientas.getStackTraceString(e)) }
+            cat.txtBusqueda.requestFocus()
+
+            return cat
+        }else{Dialogos.lanzarAlerta("Acceso Denegado")}
     }
 
     static def lanzarCatalogo()

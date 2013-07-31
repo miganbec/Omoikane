@@ -1,9 +1,14 @@
 package omoikane.artemisa.presentation
 
+import javafx.embed.swing.JFXPanel
 import javafx.event.EventHandler
 import javafx.scene.control.Hyperlink
 import javafx.scene.image.Image
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.VBox
+import omoikane.principal.Articulos
+import omoikane.principal.Escritorio
+
+import javax.swing.JFrame;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,8 +57,9 @@ public class UIManagerController
         def menu = [
                 [icono: "/omoikane/artemisa/images/address-book.png", vista: "pacientesView"],
                 [icono: "/omoikane/artemisa/images/coin.png", vista: "cajaClinicaView"],
-                [icono: "/omoikane/artemisa/images/barcode.png", vista: "consumoView"],
-                [icono: "/omoikane/artemisa/images/print.png", vista: "reportesView"]
+                [icono: "/omoikane/artemisa/images/aid.png", vista: "consumoView"],
+                [icono: "/omoikane/artemisa/images/print.png", vista: "reportesView"],
+                [icono: "/omoikane/artemisa/images/barcode.png", comando: { new CatalogoArticulosManager().show() }]
         ]
 
         generarMenu(menu)
@@ -71,7 +77,10 @@ public class UIManagerController
             link.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 void handle(ActionEvent t) {
-                    cargarVista(elemento.vista);
+                    if(elemento.vista != null)
+                        cargarVista(elemento.vista);
+                    if(elemento.comando != null)
+                        elemento.comando()
                 }
             })
         }

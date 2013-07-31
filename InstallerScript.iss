@@ -48,7 +48,7 @@ Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\rxtxSerial.dll"; DestDi
 Source: "{#SrcOmoikaneFolder}\wyUpdate\client.wyc"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\wyUpdate\wyUpdate.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SrcOmoikaneFolder}\3rd party\jre-7u5-windows-i586.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SrcOmoikaneFolder}\3rd party\jre-7u25-windows-i586.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SrcOmoikaneFolder}\3rd party\NetFx20SP2_x86.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SrcOmoikaneFolder}\3rd party\RTE\setup.exe"; DestDir: "{tmp}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SrcOmoikaneFolder}\3rd party\Driver uareu 4500\Setup.msi"; DestDir: "{tmp}"; Flags: ignoreversion createallsubdirs deleteafterinstall recursesubdirs
@@ -63,7 +63,7 @@ Name: "{commondesktop}\Omoikane"; Filename: "{app}\inicio.bat"; Tasks: desktopic
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Omoikane"; Filename: "{app}\inicio.bat"; Tasks: quicklaunchicon
 
 [Run]
-Filename: "{tmp}\jre-7u5-windows-i586.exe"
+Filename: "{tmp}\jre-7u25-windows-i586.exe"
 Filename: "{tmp}\NetFx20SP2_x86.exe"
 Filename: "{tmp}\setup.exe"
 Filename: "{tmp}\Setup.msi"

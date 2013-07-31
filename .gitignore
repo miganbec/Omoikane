@@ -4,3 +4,4 @@ archive/**
 .gradle/**
 config.xml
 cache/**
+build/**
