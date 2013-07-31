@@ -5,9 +5,9 @@ Software de punto de venta opensource que utiliza tecnologías libres de alto im
 
 ![Alt MainMenu](https://github.com/Phesus/Omoikane/raw/gh-pages/images/SS-MainMenu-2013-06-20.png)
 
-### Instalación
-## Instalación de la base de datos
-## Instalación del cliente
+## Instalación
+### Instalación de la base de datos
+### Instalación del cliente
 
 ### Welcome to GitHub Pages.
 This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:
