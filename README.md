@@ -5,6 +5,9 @@ Software de punto de venta opensource que utiliza tecnologías libres de alto im
 
 ![Alt MainMenu](https://github.com/Phesus/Omoikane/raw/gh-pages/images/SS-MainMenu-2013-06-20.png)
 
+## Características
+
+
 ## Instalación
 ### Requisitos mínimos
 - Windows XP y superiores: Si bien la mayor parte del programa es multiplataforma, exíste un componente que solo funciona con windows, estoy trabajando en quitar ese componente (OneTouch SDK).
