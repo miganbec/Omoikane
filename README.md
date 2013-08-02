@@ -1,7 +1,7 @@
 Omoikane
 ========
 
-Software de punto de venta opensource que utiliza tecnologías libres de alto impacto: Java, MySQL, JavaFX, JasperReports.
+Punto de venta grauito y opensource. Para cualquier tipo de negocio, moderno y con instrumentación avanzada.
 
 ![Alt MainMenu](https://github.com/Phesus/Omoikane/raw/gh-pages/images/SS-MainMenu-2013-06-20.png)
 
@@ -46,7 +46,21 @@ Además se agendarán las características sugeridas por nuestros usuarios, prev
 java -classpath omoikane.jar phesus.configuratron.Configurator
 ```
 
+Instrumentación
+===============
+Para los preocupados por el lado técnico, Omoikane utiliza las siguientes tecnologías libres:
+- Java
+- MySQL
+- JavaFX y swing en los componentes más viejos
+- JasperReports
+- Spring
+- Hibernate
+
 Descargas
 =========
 
 https://github.com/Phesus/Omoikane/releases
+
+Licencia
+========
+
