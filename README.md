@@ -36,22 +36,34 @@ Además se agendarán las características sugeridas por nuestros usuarios, prev
 
 ### Instalación de la base de datos
 ### Instalación del cliente
-1. Descargar el último instalador de omoikane y el archivo 'config.xml' del [área de releases](https://github.com/Phesus/Omoikane/releases)
+1. Descargar el último instalador de omoikane del [área de releases](https://github.com/Phesus/Omoikane/releases)
 2. Ejecutar el instalador, la instalación de omoikane, se divide en 5 instaladores, lanzado uno después de otro automáticamente: Instalador del Omoikane, Java JRE 7u25, .NET Framework 2.0, DigitalPersona RTE, driver u.are.u 4500
-3. Ejecutar el siguiente comando en la línea de comandos:
+3. Configurar usando el configurador integrado, para ello ejecutar el siguiente comando en la línea de comandos desde la carpeta donde se instaló el programa:
 
 ```
 java -classpath omoikane.jar omoikane.configuracion.ConfiguratorAppManager
 ```
+
+Por ejemplo, si el programa se instaló en windows, en la carpeta default (c:\Phesus\Omoikane), entonces:
+```
+c:
+cd c:\phesus\omoikane
+java -classpath omoikane.jar omoikane.configuracion.ConfiguratorAppManager
+```
+
 4. Utilizar el configurador para establecer los principales parámetros del sistema. La parte más importante de la configuración es establecer los parámetros de conexión a la base de datos, estos parámetros tienen que ser consistentes con los que se introdujeron cuando se configuró la base de datos:
-#### Configuración
+
+### Configuración
+
 Sección General:
-- La IP del servidor donde se instaló MYSql
+- La IP del servidor donde se instaló MySql
 - Usuario BD y contraseña BD: Por default el nombre de usuario será "root" y la clave que se eligiera cuando se instaló la BD, sin embargo opcionalmente, por seguridad, recomendamos establecer perfiles personalizados para cada equipo.
 - El ID de caja: La base de datos viene configurada con la caja 1 registrada, si se necesitan más cajas, es necesario agregarlas desde el sistema.
 - ID de almacén: Hasta la versión actual, este valor siempre será 1. 
+
 Sección "Perifericos":
 - Se pueden configurar los 3 dispositivos más comunes en un POS, impresoras, escáneres y básculas. Si requieren más información sobre como configurar este apartado, escríbanos a admin@phesus.com.
+
 Sección Plantillas: 
 - Omoikane incluye reportes de dos tipos: Para impresora de tickets y para impresoras normales, ambos se pueden personalizar.
 - En el configurador se pueden modificar las plantillas para impresora de tickets, que están en formato TXT, se incluye un ejemplo para facilitar la personalización.
