@@ -26,6 +26,10 @@ public class ConfiguratorAppManager {
     final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ConfiguratorApp.class);
     private JInternalFrame frame;
 
+    public static void main(String args[]) {
+        ConfiguratorApp.main(args);
+    }
+
     public JInternalFrame startJFXConfigurator() {
         JInternalFrame frame = null;
         if(omoikane.sistema.Usuarios.cerrojo(Permisos.PMA_CONFIGURACION)) frame = _startJFXConfigurator();

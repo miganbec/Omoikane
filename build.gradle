@@ -9,7 +9,7 @@ version = '1.4.0_b4'
 
 mainClassName       = "omoikane.principal.MainJava"
 sourceCompatibility = 1.7
-title               = 'Omoikane'
+    title               = 'Omoikane'
 innoSetupCompiler   = 'c:\\Program Files (x86)\\Inno Setup 5\\ISCC.exe'
 wyUpdateCompiler    = 'c:\\Program Files (x86)\\wyBuild\\wybuild.cmd.exe'
 versionNotes        = 
@@ -128,7 +128,7 @@ dependencies {
                   'lib/Configuratron.jar',
                   'lib/FXExperienceControls.jar',
                   'lib/JavaFxDialog.jar',
-                  /*'lib/jfxrt.jar',*/
+                  'lib/jfxrt.jar',
                   'lib/hsqldb-1.8.1.2.jar')
 	runtime files('lib/OmoikaneMedia.jar',
                   'lib/OmoikaneMedia2.jar',
@@ -222,6 +222,14 @@ task distribuir(dependsOn: 'installApp') {
 		into "$miDistDir"
 		rename { "Omoikane.jar" }
 	}
+    
+    //Copy defaultConfig
+    copy {
+		from "defaultConfig.xml"
+		into "$miDistDir"
+		rename { "config.xml" }
+	}
+    
     
 	//Copy libs without main binary
 	daLibs = new File("$miDistDir/lib")

@@ -45,6 +45,7 @@ Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\inicio.bat"; DestDir: "
 Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\Omoikane.jar"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\RXTXcomm.jar"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\rxtxSerial.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\config.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\wyUpdate\client.wyc"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\wyUpdate\wyUpdate.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SrcOmoikaneFolder}\archive\dist-{#AppVersion}\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion recursesubdirs createallsubdirs

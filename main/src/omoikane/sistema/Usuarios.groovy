@@ -15,6 +15,8 @@ package omoikane.sistema;
  import omoikane.principal.*
 
  import omoikane.repository.UsuarioRepo
+ import omoikane.sistema.seguridad.FingerprintAuthProvider
+ import omoikane.sistema.seguridad.NipAuthProvider
  import org.apache.log4j.Logger
 
  import omoikane.entities.Usuario
@@ -67,21 +69,16 @@ package omoikane.sistema;
         }
     }
     public static def identificaPersona() throws Exception {
-            def escritorio   = omoikane.principal.Principal?.escritorio?.getFrameEscritorio()
             def respuesta
-            MiniLeerHuella fingerPrint
+
             Usuarios sysUsers = omoikane.principal.Principal.applicationContext.getBean(Usuarios.class);
 
             if(Principal.ASEGURADO && sysUsers.getUserCount() > 0) {
-                while(true) {
-                    fingerPrint  = new omoikane.formularios.WndLeerHuella(escritorio).getMiniLeerHuella()
-                    if (fingerPrint.verifyFeatureSet != null && fingerPrint.verifyFeatureSet.length > 0) { break; }
-                }
+                Usuario usuario;
+                //usuario = new FingerprintAuthProvider().authenticate();
+                usuario = new NipAuthProvider().authenticate();
 
                 def serv          = Nadesico.conectar()
-                //Aquí sucede la identificación del usuario
-                Usuario usuario = fingerPrint.identify();
-
                 if(usuario == null) {
                     respuesta = 0;
                 } else {

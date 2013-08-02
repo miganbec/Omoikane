@@ -20,7 +20,7 @@ public class ArtemisaManager extends Application {
     final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ArtemisaManager.class);
 
     public static void main(String[] args) {
-
+        omoikane.principal.Principal.configExceptions();
         Application.launch(ArtemisaManager.class);
     }
 
