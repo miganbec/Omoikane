@@ -12,6 +12,7 @@ package omoikane.sistema
 import groovy.inspect.swingui.*
  import omoikane.principal.Principal
  import omoikane.sistema.huellas.ContextoFPSDK
+ import omoikane.sistema.seguridad.AuthContext
 
  class Config {
     def    prefs
@@ -59,6 +60,7 @@ import groovy.inspect.swingui.*
             Principal.sdkFingerprint          = ContextoFPSDK.sdkValueOf(String.valueOf(config.fingerPrintSDK[0].text()))
             Principal.basculaActiva           = Boolean.valueOf(config.bascula.@activa[0])
             Principal.tipoCorte               = Integer.valueOf(config.tipoCorte[0].text())
+            Principal.authType                = AuthContext.valueOf(String.valueOf(config.authType[0].text()))
             if(Principal.basculaActiva) {
                 String cmd = ""
                 String.valueOf(config.bascula.@weightCommand[0]).split(",").each { cmd += (it as Integer) as char }

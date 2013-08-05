@@ -1,5 +1,6 @@
 package omoikane.sistema.seguridad;
 
+import jfxtras.labs.dialogs.MonologFXBuilder;
 import omoikane.entities.Usuario;
 import omoikane.principal.Principal;
 import omoikane.repository.UsuarioRepo;
@@ -26,6 +27,7 @@ public class NipAuthProvider implements AuthProvider {
 
         while(true) {
             String nip = JOptionPane.showInputDialog(null, "NIP?");
+
             List<Usuario> usuarios = usuarioRepo.readAll();
             for(Usuario u : usuarios) {
                 if( Integer.valueOf(nip).equals( u.getNip() ) ) return u;

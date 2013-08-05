@@ -24,6 +24,7 @@ package omoikane.sistema;
  import org.springframework.stereotype.Service
 
  import omoikane.sistema.huellas.MiniLeerHuella
+ import omoikane.sistema.seguridad.AuthContext
 
  @Service
  public class Usuarios {
@@ -75,8 +76,8 @@ package omoikane.sistema;
 
             if(Principal.ASEGURADO && sysUsers.getUserCount() > 0) {
                 Usuario usuario;
-                //usuario = new FingerprintAuthProvider().authenticate();
-                usuario = new NipAuthProvider().authenticate();
+
+                usuario = AuthContext.instanciar().authenticate();
 
                 def serv          = Nadesico.conectar()
                 if(usuario == null) {
@@ -121,7 +122,7 @@ package omoikane.sistema;
     public static boolean cerrojo(Object llave) { return cerrojo(llave as Float) }
 
     public static boolean cerrojo(Float llave) {
-        if(usuarioActivo.size() == 0)
+        if(usuarioActivo.size() == 0 || usuarioActivo.cerrojo == null)
             return autentifica(llave) as boolean
         else
             return usuarioActivo.cerrojo(llave) as boolean

@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import omoikane.artemisa.entity.Paciente;
 import omoikane.artemisa.reports.PacientePrint;
 import omoikane.proveedores.Proveedor;
+import omoikane.sistema.Permisos;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.*;

@@ -81,6 +81,12 @@ class Permisos {
     public static def PMA_MEPRO                 = ADMINISTRADOR;
     public static def PMA_ETIQUETAS             = CAPTURISTA;
     public static def PMA_PROVEEDORES           = CAPTURISTA;
+
+    public static def PMA_ABRIRPACIENTES        = CAPTURISTA;
+    public static def PMA_CONSUMOPACIENTE       = CAJERO;
+    public static def PMA_CAJACLINICA           = CAPTURISTA;
+    public static def PMA_ARTEMISA_REPORTES     = CAPTURISTA;
+    public static def PMA_ARTEMISA_ARTICULOS    = CAPTURISTA;
 }
 
 

@@ -12,6 +12,7 @@ import net.sf.dynamicreports.report.constant.VerticalAlignment;
 import net.sf.dynamicreports.report.exception.DRException;
 import omoikane.artemisa.TransaccionDAO;
 import omoikane.artemisa.entity.Transaccion;
+import omoikane.sistema.Permisos;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 

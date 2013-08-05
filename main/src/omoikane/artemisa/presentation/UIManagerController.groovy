@@ -31,7 +31,8 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import omoikane.principal.Principal;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired
+import omoikane.sistema.Permisos;
 
 
 public class UIManagerController
@@ -55,11 +56,11 @@ public class UIManagerController
         Tooltip tooltipPacientes = new Tooltip("hola");
 
         def menu = [
-                [icono: "/omoikane/artemisa/images/address-book.png", vista: "pacientesView"],
-                [icono: "/omoikane/artemisa/images/coin.png", vista: "cajaClinicaView"],
-                [icono: "/omoikane/artemisa/images/aid.png", vista: "consumoView"],
-                [icono: "/omoikane/artemisa/images/print.png", vista: "reportesView"],
-                [icono: "/omoikane/artemisa/images/barcode.png", comando: { new CatalogoArticulosManager().show() }]
+                [icono: "/omoikane/artemisa/images/address-book.png", vista: "pacientesView", permiso: Permisos.PMA_ABRIRPACIENTES],
+                [icono: "/omoikane/artemisa/images/coin.png"        , vista: "cajaClinicaView", permiso: Permisos.PMA_CAJACLINICA],
+                [icono: "/omoikane/artemisa/images/aid.png"         , vista: "consumoView", permiso: Permisos.PMA_CONSUMOPACIENTE],
+                [icono: "/omoikane/artemisa/images/print.png"       , vista: "reportesView", permiso: Permisos.PMA_ARTEMISA_REPORTES],
+                [icono: "/omoikane/artemisa/images/barcode.png"     , comando: { new CatalogoArticulosManager().show() }, permiso: Permisos.PMA_ARTEMISA_ARTICULOS]
         ]
 
         generarMenu(menu)
@@ -75,8 +76,11 @@ public class UIManagerController
             link.setGraphic(iv)
             menuVBox.getChildren().addAll(menuVBox.getChildren().size() - 2, link);
             link.setOnAction(new EventHandler<ActionEvent>() {
+
                 @Override
                 void handle(ActionEvent t) {
+                    if(elemento.permiso != null)
+                        if(!omoikane.sistema.Usuarios.cerrojo((Object) elemento.permiso)) return ;
                     if(elemento.vista != null)
                         cargarVista(elemento.vista);
                     if(elemento.comando != null)

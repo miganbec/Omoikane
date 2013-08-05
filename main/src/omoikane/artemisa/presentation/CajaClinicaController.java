@@ -224,6 +224,9 @@ public class CajaClinicaController
                                             cmp.text("Estado de cuenta").setStyle(titleStyle).setHorizontalAlignment(HorizontalAlignment.LEFT),
                                             cmp.text("Hospital Ángel").setStyle(titleStyle).setHorizontalAlignment(HorizontalAlignment.RIGHT))
                                     .newRow()
+                                    .add(
+                                            cmp.text("Paciente: "+pacienteLbl.getText()).setStyle(titleStyle))
+                                    .newRow()
                                     .add(cmp.filler().setStyle(stl.style().setTopBorder(stl.pen2Point())).setFixedHeight(10)))
                     .pageFooter(cmp.pageXofY().setStyle(boldCenteredStyle))
                     .subtotalsAtSummary(

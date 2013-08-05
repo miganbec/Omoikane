@@ -3,7 +3,8 @@ package omoikane.artemisa.presentation;
 import omoikane.principal.Articulos;
 import omoikane.principal.Escritorio;
 
-import javax.swing.*;
+import javax.swing.*
+import omoikane.sistema.Permisos;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +15,7 @@ import javax.swing.*;
  */
 public class CatalogoArticulosManager {
     public void show() {
+
         if(omoikane.principal.Principal.escritorio == null) {
             omoikane.principal.Principal.escritorio = new Escritorio();
             omoikane.principal.Principal.escritorio.frameEscritorio.setUndecorated(false)

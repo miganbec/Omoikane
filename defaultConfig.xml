@@ -13,8 +13,18 @@
         puerto paralelo      linux : /dev/lpX       windows: LPTX:
         puerto serial a usb  linux : /dev/ttyUSBX   windows: COMX
         X es el valor del puerto en el que se encuentra
+
+    04/08/2013
+    - Se agrega el nodo authType, sus opciones:
+        - "NIP": Los usuarios se identifican mediante nips
+        - "FINGERPRINT": Los usuarios se identifican mediante huellas dactilares
+
     02/08/2013
     - Actualmente no se usa el campo "URLServidor" puesto que todo el programa se conecta directamente a MySQL
+
+
+    09/01/2013
+    - URLServidor default: http://localhost:5542
 
 	26/04/2012
 	- Se agrega nodo fingerPrintSDK, opciones (quitar comillas):
@@ -46,6 +56,7 @@
     <ScannerPort>COM4</ScannerPort>
     <ScannerBaudRate>9600</ScannerBaudRate>
     <fingerPrintSDK>ONETOUCH</fingerPrintSDK>
+    <authType>NIP</authType>
     
     <bascula activa="false" baud="9600" bits="8" parity="None" port="COM2" stopBits="1" stopChar="3" weightCommand=""/>
     <fondoBlur>true</fondoBlur>

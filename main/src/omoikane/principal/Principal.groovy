@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationContext
 import omoikane.exceptions.UEHandler
 import omoikane.sistema.huellas.ContextoFPSDK.SDK
 import omoikane.sistema.huellas.HuellasCache
+import omoikane.sistema.seguridad.AuthContext
 
 /**
  * ////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,6 +95,7 @@ public class Principal {
         public static ApplicationContext    applicationContext;
         public static final Boolean         DEBUG = false;
         public static final String          VERSION = "1.4.0 Beta 4";
+        public static def                   authType                = AuthContext.AuthType.NIP;
 
     public static void main(args)
         {

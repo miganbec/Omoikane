@@ -26,6 +26,7 @@ import omoikane.artemisa.reports.CargoPrint;
 import omoikane.producto.Articulo;
 import omoikane.producto.Producto;
 import omoikane.repository.ProductoRepo;
+import omoikane.sistema.Permisos;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -73,6 +74,7 @@ public class ConsumoController implements Initializable {
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+
         assert cantidadField != null : "fx:id=\"cantidadField\" was not injected: check your FXML file 'ConsumoView.fxml'.";
         assert pacienteField != null : "fx:id=\"pacienteField\" was not injected: check your FXML file 'ConsumoView.fxml'.";
         assert productoList != null : "fx:id=\"productoField\" was not injected: check your FXML file 'ConsumoView.fxml'.";
