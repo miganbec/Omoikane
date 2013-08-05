@@ -37,13 +37,12 @@ public class ArtemisaManager extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            exitOnClose(primaryStage);
-
             //Principal.IDCaja = 1;
             //Principal.IDAlmacen = 1;
             //Usuarios.setIDUsuarioActivo(1);
 
             Scene scene = (Scene) Principal.applicationContext.getBean("uiManagerView");
+            exitOnClose(primaryStage);
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("Artemisa");
@@ -60,6 +59,7 @@ public class ArtemisaManager extends Application {
             @Override
             public void handle(WindowEvent windowEvent) {
                 Platform.exit();
+                System.exit(0);
             }
         });
     }

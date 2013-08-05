@@ -123,7 +123,7 @@ package omoikane.sistema;
 
     public static boolean cerrojo(Float llave) {
         if(usuarioActivo.size() == 0 || usuarioActivo.cerrojo == null)
-            return autentifica(llave) as boolean
+            return login().cerrojo(llave) as boolean
         else
             return usuarioActivo.cerrojo(llave) as boolean
     }

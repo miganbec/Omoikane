@@ -20,23 +20,39 @@
       </children>
     </AnchorPane>
     <Accordion layoutX="0.0" layoutY="45.0" prefHeight="334" prefWidth="613.0" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="45" AnchorPane.leftAnchor="0">
-      <expandedPane>
-        <TitledPane fx:id="x1" animated="false" text="Reporte de transacciones">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              <children>
-                <Label layoutX="14.0" layoutY="21.0" text="Desde" />
-                <CalendarTextField fx:id="desde" layoutX="60.0" layoutY="21.0"/>
-                <Label layoutX="240.0" layoutY="21.0" text="Hasta" />
-                <CalendarTextField fx:id="hasta" layoutX="300.0" layoutY="21.0"/>
-                <Button fx:id="generarButton" layoutX="532.0" layoutY="19.0" mnemonicParsing="false" text="Generar" onAction="#onGenerar"/>
-              </children>
-            </AnchorPane>
-          </content>
-        </TitledPane>
-      </expandedPane>
+        <expandedPane>
+            <TitledPane fx:id="x1" animated="false" text="Reporte de transacciones">
+                <content>
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <Label layoutX="14.0" layoutY="21.0" text="Desde" />
+                            <CalendarTextField fx:id="txDesde" layoutX="60.0" layoutY="21.0"/>
+                            <Label layoutX="240.0" layoutY="21.0" text="Hasta" />
+                            <CalendarTextField fx:id="txHasta" layoutX="300.0" layoutY="21.0"/>
+                            <Button fx:id="txGenerarButton" layoutX="532.0" layoutY="19.0" mnemonicParsing="false" text="Generar" onAction="#onTxGenerar"/>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </TitledPane>
+        </expandedPane>
+        <expandedPane>
+            <TitledPane fx:id="x2" animated="false" text="Reporte de cancelaciones de transacciones">
+                <content>
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <Label layoutX="14.0" layoutY="21.0" text="Desde" />
+                            <CalendarTextField fx:id="cancDesde" layoutX="60.0" layoutY="21.0"/>
+                            <Label layoutX="240.0" layoutY="21.0" text="Hasta" />
+                            <CalendarTextField fx:id="cancHasta" layoutX="300.0" layoutY="21.0"/>
+                            <Button fx:id="txGenerarButton" layoutX="532.0" layoutY="19.0" mnemonicParsing="false" text="Generar" onAction="#onCancGenerar"/>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </TitledPane>
+        </expandedPane>
       <panes>
         <fx:reference source="x1" />
+        <fx:reference source="x2" />
       </panes>
     </Accordion>
   </children>
