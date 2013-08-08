@@ -85,7 +85,11 @@ class Caja implements Serializable {
                 synchronized(foco){foco.wait()}
                 return retorna
             }
-        }else{Dialogos.lanzarAlerta("Caja Cerrada... Habilitar para continuar :)");omoikane.principal.Principal.cerrarSesion();}
+        }else{
+            Dialogos.lanzarAlerta("Caja Cerrada... Habilitar para continuar :)");
+            omoikane.principal.Principal.cerrarSesion();
+            return false;
+        }
     }
 
     static def lanzar() 
