@@ -11,4 +11,8 @@ public class AuthException extends Exception {
     public AuthException(Exception e) {
         super("Authentication issue.", e);
     }
+
+    public AuthException(String msj, Exception e) {
+        super(msj, e);
+    }
 }

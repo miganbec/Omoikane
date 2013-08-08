@@ -24,7 +24,7 @@ public class AuthContext {
         try {
             return AuthType.valueOf(a);
         } catch(IllegalArgumentException exc) {
-            throw new AuthException(exc);
+            throw new AuthException("Se especificó un valor inválido en el valor authType de la configuración.", exc);
         }
     }
 }

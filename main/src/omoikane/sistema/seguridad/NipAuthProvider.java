@@ -29,9 +29,13 @@ public class NipAuthProvider implements AuthProvider {
             String nip = JOptionPane.showInputDialog(null, "NIP?");
             if(nip == null || nip.isEmpty()) continue;
 
+            Integer nipInt;
+            try { nipInt = Integer.valueOf(nip); } catch(NumberFormatException n) { continue; }
+
+
             List<Usuario> usuarios = usuarioRepo.readAll();
             for(Usuario u : usuarios) {
-                if( Integer.valueOf(nip).equals( u.getNip() ) ) return u;
+                if( nipInt.equals( u.getNip() ) ) return u;
             }
         }
 
