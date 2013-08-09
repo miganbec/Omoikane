@@ -22,11 +22,9 @@ class MenuPrincipal {
     void iniciar()
     { if(!SisUsuarios.cerrojo(SisUsuarios.CAPTURISTA)) {
             //Si es cajero no se lanza el menú, ingresa directo a caja
-            //Thread.start {
-                CajaManager manager = new CajaManager();
-                JInternalFrame internalFrame = manager.startJFXCaja();
-            //}.join();
-            iniciar();
+            CajaManager manager = new CajaManager();
+            JInternalFrame internalFrame = manager.startJFXCaja();
+
     } else {
             menuPrincipal.setBounds(new Rectangle(menuPrincipal.getPreferredSize()))
             Herramientas.panelCatalogo(menuPrincipal);

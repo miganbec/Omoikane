@@ -3,6 +3,8 @@ package omoikane.caja.handlers;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import omoikane.principal.Principal;
+import omoikane.sistema.Usuarios;
 
 import javax.swing.*;
 
@@ -23,5 +25,7 @@ public class CerrarCajaSwingHandler implements EventHandler<Event> {
     public void handle(Event event) {
         frame.setVisible(false);
         frame.dispose();
+        //Si es cajero, se cierra la sesión
+        if( !Usuarios.cerrojo(Usuarios.CAPTURISTA) ) Principal.cerrarSesion();
     }
 }

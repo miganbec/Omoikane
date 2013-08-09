@@ -147,7 +147,7 @@ public class CajaController
 
         } else if ( event.getCode() == KeyCode.ESCAPE ) {
             modelo.getCaptura().set("");
-        } else if( event.getCode() == KeyCode.PLUS ) {
+        } else if( event.getCode() == KeyCode.ADD ) {
             basculaHandler.pesar();
             event.consume();
         }

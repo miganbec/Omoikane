@@ -44,7 +44,9 @@ class Sucursales {
     }
     static def getCajasSucursalCerradas = { IDAlmacen ->
         def res = true
-        this.getCajasSucursal(IDAlmacen).each {
+        def db = Db.connect()
+        def cajas = db.rows("SELECT * FROM cajas WHERE id_almacen = ?", [IDAlmacen]);
+        cajas.each {
             res = !it.abierta && res
         }
         res
