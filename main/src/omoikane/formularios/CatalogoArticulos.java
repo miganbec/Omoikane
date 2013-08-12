@@ -593,6 +593,7 @@ public class CatalogoArticulos extends OmJInternalFrame {
         if(xCodDes || xLineas || xGrupos) { query += "WHERE "; }
         if(xCodDes) {
                 query += " (a.descripcion like '%"+busqueda+"%' or " +
+                        "a.codigo like '%"+busqueda+"%' or " +
                         "b.codigo like '%"+busqueda+"%') ";
         }
         if(xCodDes && (xLineas || xGrupos)) { query += "OR "; }
