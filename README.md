@@ -58,20 +58,7 @@ java -classpath omoikane.jar omoikane.configuracion.ConfiguratorAppManager
 
 ### Configuración
 
-Sección General:
-- La IP del servidor donde se instaló MySql
-- Usuario BD y contraseña BD: Por default el nombre de usuario será "root" y la clave que se eligiera cuando se instaló la BD, sin embargo opcionalmente, por seguridad, recomendamos establecer perfiles personalizados para cada equipo.
-- El ID de caja: La base de datos viene configurada con la caja 1 registrada, si se necesitan más cajas, es necesario agregarlas desde el sistema.
-- ID de almacén: Hasta la versión actual, este valor siempre será 1. 
-
-Sección "Perifericos":
-- Se pueden configurar los 3 dispositivos más comunes en un POS, impresoras, escáneres y básculas. Si requieren más información sobre como configurar este apartado, escríbanos a admin@phesus.com.
-
-Sección Plantillas: 
-- Omoikane incluye reportes de dos tipos: Para impresora de tickets y para impresoras normales, ambos se pueden personalizar.
-- En el configurador se pueden modificar las plantillas para impresora de tickets, que están en formato TXT, se incluye un ejemplo para facilitar la personalización.
-- Para modificar las plantillas de los reportes para impresoras estándar, es necesario utilizar Jasper Studio, si requiere más información escríbamos a admin@phesus.com.
-
+[Leer acerca de la configuración en nuestro wiki/manual](https://github.com/Phesus/Omoikane/wiki/Configuraci%C3%B3n)
 
 Instrumentación
 ===============
@@ -86,8 +73,9 @@ Para los preocupados por el lado técnico, Omoikane utiliza las siguientes tecno
 Descargas
 =========
 
-https://github.com/Phesus/Omoikane/releases
+[Área de descargas](https://github.com/Phesus/Omoikane/releases)
 
 Licencia
 ========
 
+Licenciado bajo GNUv2. Para más detalles ver el archivo LICENSE adjunto al código en éste repositorio.
