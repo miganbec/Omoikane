@@ -84,7 +84,7 @@ public class ScrollableTableModel extends AbstractTableModel {
                 //def tmpQ = queryAct?.toLowerCase()
                 def tmpQ = queryAct;
                 //println "->>"+tmpQ
-                def replaced = tmpQ.replaceAll(/(?i)(select (distinct)|select) ([a-zA-Z0-9\._]+)(.*?) (from .*?)(order by.*|$)/, '$1 count($2 $3) $5')
+                def replaced = tmpQ.replaceAll(/(?i)(select (distinct)|select) ([a-zA-Z0-9\._]+)(.*?) (from .*?)(group by.*|$)(order by.*|$)/, 'SELECT COUNT(*) FROM ($1 $2 $3 $5 $6) as t1')
                 def stmt      = conn.createStatement()
                 def res       = stmt.executeQuery(replaced);
                 res.next()

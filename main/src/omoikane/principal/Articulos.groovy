@@ -120,14 +120,17 @@ public class Articulos
     }
 
     static def rellenarCodigosAlternos(ID, form) {
-        PuertoNadesico.workIn() {
-            def artGorm = it.Articulos.get(ID)
-            form.tblCodigos.setModel(new ModeloCodigos (0,1))
-            form.tblCodigos.getModel().setColumnIdentifiers("Código")
-            artGorm.get(ID).codigos.each {
-                form.tblCodigos.getModel().addRowHash([codigo:it.codigo,id:it.id])
-            }
+        /*
+        ProductoRepo repo = Principal.applicationContext.getBean(ProductoRepo.class);
+        omoikane.producto.Articulo art = repo.readByPrimaryKey(ID)
+
+        form.tblCodigos.setModel(new ModeloCodigos (0,1))
+        form.tblCodigos.getModel().setColumnIdentifiers("Código")
+        art.get
+        artGorm.get(ID).codigos.each {
+            form.tblCodigos.getModel().addRowHash([codigo:it.codigo,id:it.id])
         }
+        */
     }
 
     static def rellenarPaquetes(ID, form) {
@@ -169,20 +172,21 @@ public class Articulos
             formArticulo.setTxtImpuestos     art.impuestos             as String
             formArticulo.setTxtUModificacion art.uModificacion         as String
             formArticulo.setTxtDescuento     art.precio['descuento$']  as String
-            formArticulo.setTxtCosto         art.costo                 as String
-            formArticulo.setTxtUtilidadPorc  art.utilidad              as String
+            formArticulo.setTxtCosto         formateador.format( art.costo    )
+            formArticulo.setTxtUtilidadPorc  formateador.format( art.utilidad )
             //formArticulo.setTxtExistencias   art.cantidad              as String
             formArticulo.setTxtPrecio        art.precio.total          as String
             formArticulo.setTxtComentarios   notas                     as String
-            formArticulo.getTxtDesctoPorcentaje().text = art.precio['descuArt%'] as String
+            formArticulo.getTxtDesctoPorcentaje().text = formateador.format( art.precio['descuArt%'] )
             formArticulo.getTxtDescuento2().text       = (art.precio['PrecioConImpuestos']*art.precio['descuArt%']) as String
             formArticulo.getTxtPrecioTotal().text          = (art.precio['PrecioConImpuestos']+(art.precio['PrecioConImpuestos']*art.precio['descuArt%']) )as String
-            formArticulo.getTxtImpuestosPorc().text    = art.impuestos            as String
+            formArticulo.getTxtImpuestosPorc().text    = formateador.format( art.impuestos )
             formArticulo.getTxtImpuestos().text        = art.precio['impuestos']  as String
             formArticulo.getTxtUtilidad().text         = art.precio['utilidad']   as String
             formArticulo.ID                   = ID
             formArticulo.setModoDetalles();
             omoikane.principal.Articulos.recalcularCampos(formArticulo);
+            Platform.setImplicitExit(false);
             addJFXStockPanel(ID, formArticulo);
             addJFXPaquetePanel(ID, formArticulo);
 

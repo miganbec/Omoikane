@@ -604,7 +604,7 @@ public class CatalogoArticulos extends OmJInternalFrame {
         if(xGrupos) {
                 query += "(grupo like '%"+busqueda+"%' ) ";
         }
-
+        query += "GROUP BY a.id_articulo";
         
         setQueryTable(query);
     }

@@ -110,7 +110,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 80, -1));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 80, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 80, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 80, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,115 +126,140 @@ public class Articulo extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 100, -1));
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 490, 10, 10));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 100, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 10, 10));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("<html>ID Art&iacute;culo:</html>");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
 
-        txtIDArticulo.setBackground(new java.awt.Color(55, 55, 255));
         txtIDArticulo.setEditable(false);
+        txtIDArticulo.setBackground(new java.awt.Color(51, 51, 51));
+        txtIDArticulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtIDArticulo.setForeground(new java.awt.Color(255, 255, 255));
+        txtIDArticulo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtIDArticulo.setBorder(null);
         txtIDArticulo.setFocusable(false);
-        jPanel1.add(txtIDArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 240, 20));
+        txtIDArticulo.setOpaque(false);
+        jPanel1.add(txtIDArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 300, 30));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("<html>C&oacute;digo <br>principal:<html>");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, 30));
 
         txtCodigo.setEditable(false);
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 240, -1));
+        txtCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 51, 300, 30));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("<html>ID L&iacute;nea [F1]:</html>");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 90, 20));
 
-        txtIDGrupoDes.setBackground(new java.awt.Color(55, 55, 255));
         txtIDGrupoDes.setEditable(false);
+        txtIDGrupoDes.setBackground(new java.awt.Color(51, 51, 51));
         txtIDGrupoDes.setForeground(new java.awt.Color(255, 255, 255));
         txtIDGrupoDes.setBorder(null);
         txtIDGrupoDes.setFocusable(false);
-        jPanel1.add(txtIDGrupoDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, 20));
+        txtIDGrupoDes.setOpaque(false);
+        jPanel1.add(txtIDGrupoDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 250, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("<html>Descripci&oacute;n:</html>");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 90, 20));
 
         txtDescripcion.setEditable(false);
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 240, -1));
+        txtDescripcion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 300, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Unidad:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 90, 20));
 
+        txtUnidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PZA", "CAJA", "PAQ", "KG", "LT" }));
         txtUnidad.setEnabled(false);
-        jPanel1.add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 240, -1));
+        jPanel1.add(txtUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 300, 30));
 
-        txtPrecio.setBackground(new java.awt.Color(55, 55, 255));
         txtPrecio.setEditable(false);
+        txtPrecio.setBackground(new java.awt.Color(51, 51, 51));
         txtPrecio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
         txtPrecio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPrecio.setText("0.0");
         txtPrecio.setBorder(null);
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 240, 30));
+        txtPrecio.setOpaque(false);
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 300, 30));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setText("Precio:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("<html>&Uacute;ltima<br>Modificaci&oacute;n:</html>");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
-        txtUModificacion.setBackground(new java.awt.Color(55, 55, 255));
         txtUModificacion.setEditable(false);
+        txtUModificacion.setBackground(new java.awt.Color(51, 51, 51));
+        txtUModificacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtUModificacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtUModificacion.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtUModificacion.setText("Sin fecha");
         txtUModificacion.setBorder(null);
         txtUModificacion.setFocusable(false);
-        jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 240, 30));
+        txtUModificacion.setOpaque(false);
+        jPanel1.add(txtUModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 300, 30));
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, -1, 20));
 
         jLabel19.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setForeground(new java.awt.Color(204, 204, 204));
         jLabel19.setText("Descuento:");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 20));
 
-        txtDescuento.setBackground(new java.awt.Color(55, 55, 255));
         txtDescuento.setEditable(false);
+        txtDescuento.setBackground(new java.awt.Color(51, 51, 51));
+        txtDescuento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtDescuento.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuento.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtDescuento.setText("0.0");
         txtDescuento.setBorder(null);
-        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 240, 30));
+        txtDescuento.setOpaque(false);
+        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 300, 30));
 
         txtIDGrupo.setEditable(false);
-        jPanel1.add(txtIDGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 40, -1));
+        txtIDGrupo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtIDGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDGrupoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtIDGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 40, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("ID Grupo [F1] :");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 80, 20));
 
         txtIDLinea.setEditable(false);
-        jPanel1.add(txtIDLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 40, -1));
+        txtIDLinea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel1.add(txtIDLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 40, 30));
 
-        txtIDLineaDes.setBackground(new java.awt.Color(55, 55, 255));
         txtIDLineaDes.setEditable(false);
+        txtIDLineaDes.setBackground(new java.awt.Color(51, 51, 51));
         txtIDLineaDes.setForeground(new java.awt.Color(255, 255, 255));
         txtIDLineaDes.setBorder(null);
         txtIDLineaDes.setFocusable(false);
-        jPanel1.add(txtIDLineaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 190, 20));
+        txtIDLineaDes.setOpaque(false);
+        jPanel1.add(txtIDLineaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 250, 30));
 
         tabbedPane.addTab("<html>General</html>", jPanel1);
 
@@ -251,13 +276,13 @@ public class Articulo extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblCodigos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 300));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 400, 320));
 
         btnAddCode.setText("+");
-        jPanel2.add(btnAddCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 40, 20));
+        jPanel2.add(btnAddCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 40, 20));
 
         btnDelCode.setText("-");
-        jPanel2.add(btnDelCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, 20));
+        jPanel2.add(btnDelCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, 20));
 
         tabbedPane.addTab("<html>C&oacute;digos</html>", jPanel2);
 
@@ -266,16 +291,16 @@ public class Articulo extends javax.swing.JInternalFrame {
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Impuestos (%):");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 20));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, 20));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Costo:");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, 30));
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, 30));
 
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Utilidad (%):");
-        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 20));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -285,68 +310,71 @@ public class Articulo extends javax.swing.JInternalFrame {
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Precio:");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 30));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, 30));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("$:");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, 20));
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("$");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 20, 30));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 20, 30));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("$");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 20, 30));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 20, 30));
 
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("$:");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, 20));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, 20));
 
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("$:");
-        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, 20));
+        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, 20));
 
-        txtImpuestos.setBackground(new java.awt.Color(55, 55, 255));
         txtImpuestos.setEditable(false);
+        txtImpuestos.setBackground(new java.awt.Color(51, 51, 51));
         txtImpuestos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtImpuestos.setForeground(new java.awt.Color(255, 255, 255));
         txtImpuestos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtImpuestos.setBorder(null);
+        txtImpuestos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txtImpuestos.setFocusable(false);
-        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, 30));
+        txtImpuestos.setOpaque(false);
+        jPanel5.add(txtImpuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 110, 30));
 
-        txtUtilidad.setBackground(new java.awt.Color(55, 55, 255));
         txtUtilidad.setEditable(false);
+        txtUtilidad.setBackground(new java.awt.Color(51, 51, 51));
         txtUtilidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtUtilidad.setForeground(new java.awt.Color(255, 255, 255));
         txtUtilidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUtilidad.setBorder(null);
+        txtUtilidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txtUtilidad.setFocusable(false);
-        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 110, 30));
+        txtUtilidad.setOpaque(false);
+        jPanel5.add(txtUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 110, 30));
 
-        txtDescuento2.setBackground(new java.awt.Color(55, 55, 255));
         txtDescuento2.setEditable(false);
+        txtDescuento2.setBackground(new java.awt.Color(51, 51, 51));
         txtDescuento2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtDescuento2.setForeground(new java.awt.Color(255, 255, 255));
         txtDescuento2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDescuento2.setBorder(null);
+        txtDescuento2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txtDescuento2.setFocusable(false);
-        jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 110, 30));
+        txtDescuento2.setOpaque(false);
+        jPanel5.add(txtDescuento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 110, 30));
 
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("el precio siguiente no incluye los demas descuentos");
-        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 340, 20));
+        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 340, 20));
 
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Descuento (%):");
-        jPanel5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
+        jPanel5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, 20));
 
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("<html>Nota: El descuento que aparece es solo por art&iacute;culo  </html>");
-        jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 340, 20));
+        jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 340, 20));
 
         txtCosto.setEditable(false);
         txtCosto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -359,7 +387,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtCostoKeyReleased(evt);
             }
         });
-        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 140, 30));
+        jPanel5.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 140, 30));
 
         txtPrecioTotal.setEditable(false);
         txtPrecioTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -372,7 +400,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtPrecioTotalKeyReleased(evt);
             }
         });
-        jPanel5.add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 140, 30));
+        jPanel5.add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 140, 30));
 
         txtDesctoPorcentaje.setEditable(false);
         txtDesctoPorcentaje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -385,7 +413,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtDesctoPorcentajeKeyReleased(evt);
             }
         });
-        jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, 30));
+        jPanel5.add(txtDesctoPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 110, 30));
 
         txtImpuestosPorc.setEditable(false);
         txtImpuestosPorc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -398,7 +426,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtImpuestosPorcKeyReleased(evt);
             }
         });
-        jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, 30));
+        jPanel5.add(txtImpuestosPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 110, 30));
 
         txtUtilidadPorc.setEditable(false);
         txtUtilidadPorc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -410,18 +438,23 @@ public class Articulo extends javax.swing.JInternalFrame {
                 txtUtilidadPorcKeyReleased(evt);
             }
         });
-        jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, 30));
+        jPanel5.add(txtUtilidadPorc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 110, 30));
 
         tabbedPane.addTab("<html>Precio</html>", jPanel5);
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane4.setMaximumSize(new java.awt.Dimension(32767, 200));
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(406, 383));
 
         txtComentarios.setColumns(25);
         txtComentarios.setRows(20);
-        txtComentarios.setPreferredSize(new java.awt.Dimension(504, 364));
+        txtComentarios.setMaximumSize(new java.awt.Dimension(2147483647, 200));
+        txtComentarios.setPreferredSize(new java.awt.Dimension(404, 364));
         jScrollPane4.setViewportView(txtComentarios);
 
-        jPanel7.add(jScrollPane4);
+        jPanel7.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 350));
 
         tabbedPane.addTab("<html>Notas</html>", jPanel7);
 
@@ -469,6 +502,10 @@ public class Articulo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         omoikane.principal.Articulos.recalcularCampos(this);
     }//GEN-LAST:event_txtCostoKeyReleased
+
+    private void txtIDGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDGrupoActionPerformed
 
     public void setEditable(boolean editable) {
         this.tblCodigos.setEnabled(editable);
