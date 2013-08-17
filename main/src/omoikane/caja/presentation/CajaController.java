@@ -10,10 +10,10 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
@@ -35,7 +35,6 @@ import omoikane.caja.business.ICajaLogic;
 import omoikane.caja.business.LineaDeCapturaFilter;
 import omoikane.caja.handlers.*;
 import omoikane.principal.Principal;
-import omoikane.sistema.ComMan;
 import omoikane.sistema.Dialogos;
 import omoikane.sistema.Herramientas;
 import org.apache.log4j.Logger;
@@ -131,12 +130,14 @@ public class CajaController
     @FXML private Rectangle hudRectangle;
     @FXML private Text hudText;
 
-    BasculaHandler basculaHandler;
+    private BasculaHandler basculaHandler;
     VentaEspecialHandler ventaEspecialHandler;
     public static Logger logger = Logger.getLogger(CajaController.class);
     private CerrarCajaSwingHandler cerrarCajaSwingHandler;
 
     public Button getCerrarButton() { return cerrarButton; }
+
+    public void shutdownBasculaHandler() { basculaHandler.close(); }
 
     @FXML
     private void onCapturaKeyReleased(KeyEvent event) {
@@ -148,8 +149,8 @@ public class CajaController
         } else if ( event.getCode() == KeyCode.ESCAPE ) {
             modelo.getCaptura().set("");
         } else if( event.getCode() == KeyCode.ADD ) {
-            basculaHandler.pesar();
             event.consume();
+            basculaHandler.pesar();
         }
 
     }
@@ -164,34 +165,6 @@ public class CajaController
 
     public CerrarCajaSwingHandler getCerrarCajaSwingHandler() {
         return cerrarCajaSwingHandler;
-    }
-
-    private class BasculaHandler {
-
-        boolean basculaActiva = omoikane.principal.Principal.basculaActiva;
-        HashMap miniDriver    = omoikane.principal.Principal.driverBascula;
-        ComMan comMan;
-        boolean pesando       = false;
-        CajaModel cajaModel;
-
-        public BasculaHandler(CajaModel cajaModel) {
-            this.cajaModel = cajaModel;
-            if(basculaActiva) { new ComMan((String) miniDriver.get("port")); }
-        }
-
-        private void pesar() {
-            if(basculaActiva && !pesando) {
-                try {
-                    pesando = true;
-                    Double peso = (Double) comMan.readWeight(miniDriver.get("weightCommand"), miniDriver);
-                    getModel().getCaptura().set( peso + "*" );
-                } catch(ExceptionInInitializerError exPeso) {
-                    throw exPeso;
-                } finally {
-                    pesando = false;
-                }
-            }
-        }
     }
 
     private void ifAnySelectedProductoThenSelect() {
@@ -349,6 +322,14 @@ public class CajaController
 
         //Agregar el manejador de ventas especiales
         ventaEspecialHandler = new VentaEspecialHandler(this);
+
+        //Coloco el cursor en el campo de captura (quiza seria mejor moverlo a un evento)
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                capturaTextField.requestFocus();
+            }
+        });
     }
 
 
@@ -397,7 +378,7 @@ public class CajaController
         this.modelo = modelo;
 
         //Handlers
-        basculaHandler = new BasculaHandler(modelo);
+        basculaHandler = new BasculaHandler(this, modelo);
 
         //Bindings
         capturaTextField.textProperty().bindBidirectional(modelo.getCaptura());

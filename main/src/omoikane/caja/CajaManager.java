@@ -108,7 +108,7 @@ public class CajaManager extends Application {
                     scene = initCaja();
                     scene.setFill(null);
                     fxPanel.setScene(scene);
-                    controller.setCerrarCajaSwingHandler(new CerrarCajaSwingHandler(frame));
+                    controller.setCerrarCajaSwingHandler(new CerrarCajaSwingHandler(controller, frame));
 
                 } catch (IOException e) {
                     logger.error(e.getMessage(), e);

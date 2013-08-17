@@ -94,7 +94,7 @@ public class Principal {
         public static Logger                logger                  = Logger.getLogger(Principal.class);
         public static ApplicationContext    applicationContext;
         public static final Boolean         DEBUG = false;
-        public static final String          VERSION = "1.4.0 Beta 5";
+        public static final String          VERSION = "1.4.0 RC 1";
         public static def                   authType                = AuthContext.AuthType.NIP;
 
     public static void main(args)
@@ -109,7 +109,7 @@ public class Principal {
         {
             try {
 
-            logger.trace("Iniciando sistema");
+            logger.trace("Iniciando sistema. Versión " + VERSION);
             configExceptions()
             def splash = new Splash()
             splash.iniciar()

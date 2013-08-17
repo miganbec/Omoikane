@@ -205,36 +205,45 @@ class ComMan implements SerialPortEventListener {
 
         } 
         */
+        //if(e.getEventType() == SerialPortEvent.
         int data;
         def in7 = m_in
 
         try
         {
-            println "comienza try de recopilar letras de escáner"
+            println "comienza try de recopilar letras del puerto serial"
             int len = 0;
             while ( ( data = in7.read()) > -1 )
             {
-                println "comienza while de recopilar letras de escáner"
+                println "comienza while de recopilar letras del puerto serial"
                 //println "a "+data
                 if ( data == (13 as char) ) {
-                    println "salto de líneo, termina la recolección de letras del escáner"
+                    println "salto de línea, termina la recolección de letras del puerto serial"
                     break;
                 }
                 println "se va a agregar una letra a la recolección"
                 buffer += data as char;
                 println "se agregó una letra a la recolección"
             }
-            println "se llamará al handler de la cadena completa del escáner"
-            println new String(buffer,0,len)
+            //println "se llamará al handler de la cadena completa del escáner"
+            //println new String(buffer,0,len)
             println "terminó la llamada al handler"
         }
         catch ( Exception ex2 )
         {
-            println "se econtró una excepción"
-            e.printStackTrace();
-            Dialogos.error("Error al leer desde el escáner de códigos de barras", e)
+            if(ex2.getMessage() == "No error in readByte") return;
+            println "se encontró una excepción"
+            ex2.printStackTrace();
+            Dialogos.error("Error al leer desde el puerto serial", ex2)
             //System.exit(-1);
         }
+    }
+
+    public void close() {
+        if(serialScale == null) return ;
+        m_in.close();
+        m_out.close();
+        serialScale.close();
     }
 
 }

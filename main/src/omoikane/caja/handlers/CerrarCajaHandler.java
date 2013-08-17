@@ -38,6 +38,7 @@ public class CerrarCajaHandler extends ICajaEventHandler {
         Node  source = (Node)  event.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
+        getController().shutdownBasculaHandler();
     }
 
 
