@@ -39,12 +39,17 @@ Además se agendarán las características sugeridas por nuestros usuarios, prev
 
 ### Instalación de la base de datos
 1. Descargar MySQL Server, desde la página oficial. [Página oficial de MySQL Server](http://dev.mysql.com/downloads/mysql/)
-2. Instalar MySQL con los parámetros deseados, para un negocio pequeño los parámetros que vienen por default en el instalador serán más que suficientes. Es importante recordar el password que pongamos durante la instalación.
-3. 
+2. [Descargar MySQL Workbench](http://dev.mysql.com/downloads/tools/workbench/)
+3. Instalar MySQL con los parámetros deseados, para un negocio pequeño los parámetros que vienen por default en el instalador serán más que suficientes. Es importante recordar el password que pongamos durante la instalación.
+4. Instalar MySQL Workbench, éste software facilita las operaciones con la base de datos y será de gran utilidad para administrarla.
+5. Abrir workbench, la interfaz está dividida en 3 columnas: "SQL Development", "Data Modeling" y "Server Administration".
+6. Cargar la base de datos de Omoikane, en la columna "Server Administration", después haga doble click en "mysql@localhost", ahora vaya a "Data export and restore", seleccione la pestaña "Import from disk", seleccione "Import from self-contained file", haga click en "..." y busque el archivo "schema.sql" en la carpeta de instalación de Omoikane. Por último haga click en "Select all tables" y "Start import".
+7. ¡Felicidades! Si los pasos anteriores se han seguido con éxito, la base de datos estará lista para ser utilizada.
 
 #### Notas
 - Es posible conectarse a cualquier otro tipo de instalación de MySQL y resultaría útil para configuraciones excentricas, por ejemplo usando LAMP, TurnKey Linux, WAMP, etc.
 - Para un negocio grande, digamos más de 4 cajas de cobro, simplemente utilicen la configuración "Para producción" del instalador
+
 ### Instalación del cliente
 1. Descargar el último instalador de omoikane del [área de releases](https://github.com/Phesus/Omoikane/releases)
 2. Ejecutar el instalador, la instalación de omoikane, se divide en 5 instaladores, lanzado uno después de otro automáticamente: Instalador del Omoikane, Java JRE 7u25, .NET Framework 2.0, DigitalPersona RTE, driver u.are.u 4500
