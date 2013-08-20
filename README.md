@@ -38,6 +38,13 @@ Además se agendarán las características sugeridas por nuestros usuarios, prev
 - Lector de huella DigitalPersona u.are.u 4000 o 4500
 
 ### Instalación de la base de datos
+1. Descargar MySQL Server, desde la página oficial. [Página oficial de MySQL Server](http://dev.mysql.com/downloads/mysql/)
+2. Instalar MySQL con los parámetros deseados, para un negocio pequeño los parámetros que vienen por default en el instalador serán más que suficientes. Es importante recordar el password que pongamos durante la instalación.
+3. 
+
+#### Notas
+- Es posible conectarse a cualquier otro tipo de instalación de MySQL y resultaría útil para configuraciones excentricas, por ejemplo usando LAMP, TurnKey Linux, WAMP, etc.
+- Para un negocio grande, digamos más de 4 cajas de cobro, simplemente utilicen la configuración "Para producción" del instalador
 ### Instalación del cliente
 1. Descargar el último instalador de omoikane del [área de releases](https://github.com/Phesus/Omoikane/releases)
 2. Ejecutar el instalador, la instalación de omoikane, se divide en 5 instaladores, lanzado uno después de otro automáticamente: Instalador del Omoikane, Java JRE 7u25, .NET Framework 2.0, DigitalPersona RTE, driver u.are.u 4500
