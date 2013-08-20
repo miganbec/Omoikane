@@ -323,6 +323,9 @@ public class CajaController
         //Agregar el manejador de ventas especiales
         ventaEspecialHandler = new VentaEspecialHandler(this);
 
+        //Agrego bascula handler
+        basculaHandler = new BasculaHandler(this, modelo);
+
         //Coloco el cursor en el campo de captura (quiza seria mejor moverlo a un evento)
         Platform.runLater(new Runnable() {
             @Override
@@ -376,9 +379,6 @@ public class CajaController
 
     public void setModel(final CajaModel modelo) {
         this.modelo = modelo;
-
-        //Handlers
-        basculaHandler = new BasculaHandler(this, modelo);
 
         //Bindings
         capturaTextField.textProperty().bindBidirectional(modelo.getCaptura());

@@ -29,6 +29,9 @@ public class CerrarCajaSwingHandler extends ICajaEventHandler implements EventHa
         frame.dispose();
         getController().shutdownBasculaHandler();
         //Si es cajero, se cierra la sesión
-        if( !Usuarios.cerrojo(Usuarios.CAPTURISTA) ) Principal.cerrarSesion();
+        if( !Usuarios.cerrojo(Usuarios.CAPTURISTA) )
+            Principal.cerrarSesion();
+        else
+            Principal.getMenuPrincipal().getMenuPrincipal().requestFocus();
     }
 }

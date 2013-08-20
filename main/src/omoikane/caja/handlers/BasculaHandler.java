@@ -20,13 +20,11 @@ public class BasculaHandler extends ICajaEventHandler {
     HashMap miniDriver    = omoikane.principal.Principal.driverBascula;
     ComMan comMan;
     boolean pesando       = false;
-    CajaModel cajaModel;
 
 
     public BasculaHandler(CajaController cajaController, CajaModel cajaModel) {
         super(cajaController);
 
-        this.cajaModel = cajaModel;
         if(basculaActiva) { comMan = new ComMan((String) miniDriver.get("port")); }
     }
 
