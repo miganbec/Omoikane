@@ -295,13 +295,4 @@
            diskExpiryThreadIntervalSeconds="3600"
            memoryStoreEvictionPolicy="LRU"
     />
-    <cache name="test"
-           maxElementsInMemory="10"
-           eternal="true"
-           timeToIdleSeconds="0"
-           timeToLiveSeconds="0"
-           diskPersistent="true"
-           diskExpiryThreadIntervalSeconds="1"
-           memoryStoreEvictionPolicy="LFU"
-    />
 </ehcache>

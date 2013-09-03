@@ -43,7 +43,7 @@ import groovy.inspect.swingui.*
         return escritorioFrame
     }
 
-    def ajustarTam() {
+    private def ajustarTam() {
 
         def ancho = Principal.config.resolucionPantalla.@ancho[0]
         def alto  = Principal.config.resolucionPantalla.@alto [0]

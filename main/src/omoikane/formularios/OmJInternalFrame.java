@@ -42,12 +42,12 @@ public class OmJInternalFrame extends javax.swing.JInternalFrame {
             filter.setIterations(2);
             filter.setRadius(5);
 
-            /*PointillizeFilter pointillizeFilter = new PointillizeFilter();
-            pointillizeFilter.setEdgeColor(6);
-            pointillizeFilter.setEdgeThickness(1);
-            pointillizeFilter.setFadeEdges(false);
-            pointillizeFilter.setFuzziness(6);
-            pointillizeFilter.filter(cacheFondo, cacheFondo);*/
+            //PointillizeFilter pointillizeFilter = new PointillizeFilter();
+            //pointillizeFilter.setEdgeColor(6);
+            //pointillizeFilter.setEdgeThickness(1);
+            //pointillizeFilter.setFadeEdges(false);
+            //pointillizeFilter.setFuzziness(6);
+            //pointillizeFilter.filter(cacheFondo, cacheFondo);
 
             filter.filter(cacheFondo, cacheFondo);
 

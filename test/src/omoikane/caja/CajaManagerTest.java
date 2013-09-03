@@ -33,7 +33,7 @@ import java.lang.reflect.InvocationTargetException;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("../repository/sampleData.xml")
+@DatabaseSetup("../repository/sampleDataLight.xml")
 public class CajaManagerTest {
 
     @Test

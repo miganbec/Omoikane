@@ -18,6 +18,7 @@ import java.util.Calendar;
         Reloj(JLabel obj)
         {
             objetivo = obj;
+            setName("Thread del reloj");
         }
         public void run()
         {

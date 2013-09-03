@@ -30,9 +30,9 @@ import omoikane.sistema.StopWatch;
  *
  * @author Octavio
  */
-public class MenuPrincipal extends javax.swing.JInternalFrame {
+public class MenuPrincipal extends OmJInternalFrame {
 
-    BufferedImage fondo;
+
     /** Creates new form MenuPrincipal */
     public MenuPrincipal() {
         
@@ -43,7 +43,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         ((JPanel)this.getContentPane()).setOpaque(false);
         this.getLayeredPane().setOpaque(false);
         this.getRootPane().setOpaque(false);
-        this.generarFondo(this);
+        this.generarFondo();
         
         //Instrucciones para el funcionamiento de las teclas de navegación
         Set newKeys = new HashSet(getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
@@ -422,27 +422,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         frameMepro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    @Override
-    public void paintComponent(Graphics g)
-    {
-      Graphics2D g2d = (Graphics2D) g;
-      g2d.drawImage(fondo, 0, 0, null);
-
-    }
-
-    public void generarFondo(Component componente)
-    {
-      Rectangle areaDibujo = new Rectangle(this.getPreferredSize());
-      BufferedImage tmp;
-      GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-
-      tmp = gc.createCompatibleImage(areaDibujo.width, areaDibujo.height,BufferedImage.TRANSLUCENT);
-      Graphics2D g2d = (Graphics2D) tmp.getGraphics();
-      g2d.setColor(new Color(0,0,0,65));
-      g2d.fillRect(0,0,areaDibujo.width,areaDibujo.height);
-      fondo = tmp;
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlmacenes;

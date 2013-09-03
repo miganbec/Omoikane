@@ -27,7 +27,8 @@ public class FrostedGlassDesktopPane extends JDesktopPane {
         if(!Principal.fondoBlur) { super.paint(g); return; }
 
         Rectangle clipBounds = g.getClipBounds();
-        BufferedImage bufferImage = GraphicsUtilities.createCompatibleImage(clipBounds.width, clipBounds.height);
+        //BufferedImage bufferImage = GraphicsUtilities.createCompatibleImage(clipBounds.width, clipBounds.height);
+        BufferedImage bufferImage = getBufferImage(clipBounds.width, clipBounds.height);
 
         Graphics bufferGraphics = bufferImage.createGraphics();
         bufferGraphics.translate(-clipBounds.x, -clipBounds.y);

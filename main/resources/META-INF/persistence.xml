@@ -9,12 +9,13 @@
             <!--<property name="hibernate.hbm2ddl.auto" value="validate"/>-->
             <property name="hibernate.show_sql" value="true"/>
             <property name= "hibernate.format_sql" value="true"/>
-            <property name= "hibernate.c3p0.min_size" value="5"/>
-            <property name= "hibernate.c3p0.max_size" value="20"/>
-            <property name= "hibernate.c3p0.timeout" value="300"/>
+            <property name= "hibernate.c3p0.min_size" value="2"/>
+            <property name= "hibernate.c3p0.max_size" value="10"/>
+            <property name= "hibernate.c3p0.timeout" value="3000"/>
             <property name= "hibernate.c3p0.max_statements" value="50"/>
             <property name= "hibernate.c3p0.idle_test_period" value="3000"/>
-            <property name= "hibernate.jdbc.batch_size" value="20"/>
+            <property name= "hibernate.c3p0.maxIdleTimeExcessConnections" value="3000"/>
+            <property name= "hibernate.jdbc.batch_size" value="10"/>
             <property name= "hibernate.cache.provider_class" value="org.hibernate.cache.EhCacheProvider"/>
             <property name= "hibernate.cache.use_structured_entries" value="true"/>
             <property name= "hibernate.cache.use_second_level_cache" value="true"/>
