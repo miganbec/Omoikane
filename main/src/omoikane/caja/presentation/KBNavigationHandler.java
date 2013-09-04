@@ -61,6 +61,8 @@ public class KBNavigationHandler implements EventHandler<KeyEvent> {
                         cc.getBtnCobrar().fire();
                         break;
                 }
+            if (keyCode.equals(KeyCode.F1))
+                new MostrarCatalogoHandler(cc).handle(event);
             if (keyCode.equals(KeyCode.F8))
                 cc.getCerrarCajaSwingHandler().handle(event);
             if (keyCode.equals(KeyCode.F3))

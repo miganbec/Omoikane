@@ -87,7 +87,7 @@ public class Articulos
         }
         def retorno
         cat.btnAceptar.actionPerformed = {
-            println "Enter desde closure btnAceptar.actionPerformed en lanzarDialogoCatalogo()"
+
             JTable catTab = cat.jTable1;
 
             Boolean isSelected = catTab.getSelectionModel().getMinSelectionIndex() >= 0;

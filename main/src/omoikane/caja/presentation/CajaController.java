@@ -40,6 +40,8 @@ import omoikane.sistema.Herramientas;
 import org.apache.log4j.Logger;
 import org.synyx.hades.domain.PageRequest;
 
+import javax.xml.ws.spi.http.HttpHandler;
+
 
 public class CajaController
         implements Initializable {
@@ -124,6 +126,7 @@ public class CajaController
     @FXML private Button btnCobrar;
     @FXML private Button btnCancelarProducto;
     @FXML private Button cerrarButton;
+    @FXML private Button abrirCatalogoButton;
     @FXML private AnchorPane capturaPane;
     @FXML private ToolBar mainToolBar;
 
@@ -134,8 +137,10 @@ public class CajaController
     VentaEspecialHandler ventaEspecialHandler;
     public static Logger logger = Logger.getLogger(CajaController.class);
     private CerrarCajaSwingHandler cerrarCajaSwingHandler;
+    private MostrarCatalogoHandler mostrarCatalogoHandler;
 
     public Button getCerrarButton() { return cerrarButton; }
+    public AnchorPane getMainAnchorPane() { return mainAnchorPane; }
 
     public void shutdownBasculaHandler() { basculaHandler.close(); }
 
@@ -335,7 +340,6 @@ public class CajaController
         });
     }
 
-
     private class ClickHandler implements EventHandler<ActionEvent> {
         CajaController controller;
 
@@ -345,18 +349,20 @@ public class CajaController
 
         @Override
         public void handle(ActionEvent event) {
-            if(event.getTarget() == abrirCajonButton)
+            if (event.getTarget() == abrirCajonButton)
                 new AbrirCajon(controller).handle(event);
-            if(event.getTarget() == cancelarVentaButton)
+            if (event.getTarget() == cancelarVentaButton)
                 new CancelarVenta(controller).handle(event);
-            if(event.getTarget() == btnCancelarProducto)
+            if (event.getTarget() == btnCancelarProducto)
                 new CancelarProducto(controller).handle(event);
-            if(event.getTarget() == movimientosButton)
+            if (event.getTarget() == movimientosButton)
                 new MovimientosDeCaja(controller).handle(event);
-            if(event.getTarget() == ventaEspecialButton)
+            if (event.getTarget() == ventaEspecialButton)
                 ventaEspecialHandler.handle(event);
-            if(event.getTarget() == cerrarButton)
+            if (event.getTarget() == cerrarButton)
                 getCerrarCajaSwingHandler().handle(event);
+            if (event.getTarget() == abrirCatalogoButton)
+                new MostrarCatalogoHandler(controller).handle(event);
         }
     }
 

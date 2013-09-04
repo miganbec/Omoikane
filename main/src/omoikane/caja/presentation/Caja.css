@@ -12,6 +12,9 @@
     -fx-text-fill: ghostwhite;
     -fx-font-size: 16px;
 }
+#fontX3 {
+    -fx-font-size: 15px;
+}
 .table-row-cell:filled:selected  {
     -fx-background-color: #181818;
 }

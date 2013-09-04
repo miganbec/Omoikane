@@ -16,20 +16,19 @@
 
 <AnchorPane id="AnchorPane" fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.9998847412135" prefWidth="1099.99977792969" xmlns:fx="http://javafx.com/fxml" fx:controller="omoikane.caja.presentation.CajaController">
   <children>
-    <ToolBar fx:id="mainToolBar" disable="false" minHeight="29.0001220703125" prefHeight="43.0" prefWidth="1099.99977792969" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
+
+      <ToolBar fx:id="mainToolBar" disable="false" minHeight="29.0001220703125" prefHeight="43.0" prefWidth="1099.99977792969" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
       <items>
-        <Button fx:id="ventaEspecialButton" mnemonicParsing="false" prefHeight="43.000000953674316" text="Venta Especial [F4]">
-          <font>
-            <Font size="15.0" fx:id="x3" />
-          </font>
+        <Button fx:id="abrirCatalogoButton" id="fontX3" mnemonicParsing="false" prefHeight="33.0" prefWidth="122.0" text="Búsqueda [F1]" visible="true">
+
         </Button>
-        <Button fx:id="movimientosButton" font="$x3" mnemonicParsing="false" prefHeight="35.33203125" text="Movimientos de Caja [F5]" />
-        <Button id="buscar" fx:id="abrirCajonButton" font="$x3" mnemonicParsing="false" prefHeight="33.0" prefWidth="147.0" text="Abrir Cajón [F6]" />
-        <Button id="cancelarArticuloButton" fx:id="btnCancelarProducto" font="$x3" mnemonicParsing="false" prefHeight="33.0" text="Cancelar Artículo [F7]" />
-        <Button fx:id="cerrarButton" font="$x3" mnemonicParsing="false" prefHeight="33.0" text="Cerrar [F8]" />
-        <Button fx:id="cancelarVentaButton" font="$x3" mnemonicParsing="false" prefHeight="33.0" text="Cancelar Venta [F12]" />
-        <Button fx:id="pausarButton" font="$x3" mnemonicParsing="false" prefWidth="70.0" text="Pausar [Pause]" visible="false" />
-        <Button id="buscar" fx:id="buscarProductoButton" font="$x3" mnemonicParsing="false" prefHeight="23.0" prefWidth="97.0" text="Catálogo... [F1]" visible="false" />
+        <Button fx:id="ventaEspecialButton" id="fontX3" mnemonicParsing="false" prefHeight="33" prefWidth="152.0" text="Venta Especial [F4]"/>
+        <Button fx:id="movimientosButton" id="fontX3" mnemonicParsing="false" prefHeight="33.0"  prefWidth="177.0" text="Movimientos Caja [F5]" />
+        <Button fx:id="abrirCajonButton" id="fontX3" mnemonicParsing="false" prefHeight="33.0" prefWidth="137.0" text="Abrir Cajón [F6]" />
+        <Button fx:id="btnCancelarProducto" id="fontX3" mnemonicParsing="false" prefHeight="33.0" text="Cancelar Artículo [F7]" />
+        <Button fx:id="cerrarButton" id="fontX3" mnemonicParsing="false" prefHeight="33.0" text="Cerrar [F8]" />
+        <Button fx:id="cancelarVentaButton" id="fontX3" mnemonicParsing="false" prefHeight="33.0" text="Cancelar Venta [F12]" />
+        <Button fx:id="pausarButton" id="fontX3" mnemonicParsing="false" prefWidth="70.0" text="Pausar [Pause]" visible="false" />
       </items>
     </ToolBar>
     <SplitPane dividerPositions="0.6475411145716358" focusTraversable="true" prefHeight="506.99988474121346" prefWidth="957.9999000000025" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
