@@ -33,7 +33,7 @@ import java.lang.reflect.InvocationTargetException;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("../repository/sampleDataLight.xml")
+@DatabaseSetup("../repository/sampleData.xml")
 public class CajaManagerTest {
 
     @Test
@@ -58,7 +58,7 @@ public class CajaManagerTest {
                 omoikane.principal.Principal.applicationContext = new ClassPathXmlApplicationContext("applicationContext-test.xml");
 
                 CajaManager manager = new CajaManager();
-                JInternalFrame frame = manager.startJFXCaja();
+                JInternalFrame frame = manager._startJFXCaja(false);
                 JFrame jFrame = new JFrame("Caja");
                 jFrame.setContentPane(frame);
                 jFrame.setVisible(true);

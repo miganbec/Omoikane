@@ -176,6 +176,7 @@ public class Articulo implements Serializable, IProductoApreciado {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
+    //@JoinColumn(name="id_articulo")
     public Stock stock;
 
     @Transactional

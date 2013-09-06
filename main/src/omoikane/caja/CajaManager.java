@@ -79,7 +79,7 @@ public class CajaManager extends Application {
 
     }
 
-    private JInternalFrame _startJFXCaja() {
+    public JInternalFrame _startJFXCaja(Boolean onDesktop) {
         final OmJInternalFrame frame = new OmJInternalFrame();
         final JFXPanel fxPanel = new JFXPanel();
         fxPanel.setBackground(Color.black);
@@ -90,13 +90,13 @@ public class CajaManager extends Application {
         frame.setTitle("Caja");
 
         Herramientas.panelCatalogo(frame);
-        omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(frame);
+        if(onDesktop) omoikane.principal.Principal.getEscritorio().getPanelEscritorio().add(frame);
         frame.setSize(1120, 615);
         frame.setPreferredSize(new Dimension(1120, 615));
         frame.generarFondo();
         frame.setVisible(true);
-        Herramientas.centrarVentana(frame);
-        Herramientas.iconificable(frame);
+        if(onDesktop) Herramientas.centrarVentana(frame);
+        if(onDesktop) Herramientas.iconificable(frame);
         frame.toFront();
 
         Platform.setImplicitExit(false);
@@ -156,7 +156,7 @@ public class CajaManager extends Application {
         @Override
         public void run() {
             cajaAbierta = cajaAbierta?true: (Boolean) omoikane.principal.Caja.abrirCaja();
-            if(cajaAbierta) { _startJFXCaja(); }
+            if(cajaAbierta) { _startJFXCaja(true); }
         }
     }
 
